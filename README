@@ -1,0 +1,4 @@
+To test this code:
+1. Fork the repo onto your local machine alongside a valid source installation of Minecraft Forge.
+2. Initialize Eclipse to the Forge workspace and add "resources" and "source" as build paths.
+3. Press the green arrow on the top bar.
