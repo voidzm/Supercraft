@@ -6,17 +6,21 @@
 
 package com.voidzm.supercraft;
 
+import com.voidzm.supercraft.gui.SCMainMenu;
 import com.voidzm.supercraft.handler.BiomeHandler;
 import com.voidzm.supercraft.handler.BlockHandler;
 import com.voidzm.supercraft.handler.CraftingHandler;
 import com.voidzm.supercraft.handler.FuelHandler;
 import com.voidzm.supercraft.handler.ItemHandler;
+import com.voidzm.supercraft.handler.SCTickHandler;
 
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockHalfSlab;
 import net.minecraft.block.BlockLeaves;
 import net.minecraft.block.BlockWoodSlab;
 import net.minecraft.block.material.Material;
+import net.minecraft.client.Minecraft;
+import net.minecraft.client.gui.GuiScreen;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.EnumToolMaterial;
 import net.minecraft.item.Item;
@@ -37,6 +41,8 @@ import cpw.mods.fml.common.event.FMLPreInitializationEvent;
 import cpw.mods.fml.common.network.NetworkMod;
 import cpw.mods.fml.common.registry.GameRegistry;
 import cpw.mods.fml.common.registry.LanguageRegistry;
+import cpw.mods.fml.common.registry.TickRegistry;
+import cpw.mods.fml.relauncher.Side;
 
 @Mod(modid="Supercraft", name="Supercraft", version="0.1.0")
 @NetworkMod(clientSideRequired=true, serverSideRequired=false)
@@ -48,11 +54,14 @@ public class Supercraft {
 	@SidedProxy(clientSide="com.voidzm.supercraft.client.ClientProxy", serverSide="com.voidzm.supercraft.CommonProxy")
 	public static CommonProxy proxy;
 	
+	public static GuiScreen mainMenu;
+	
 	public static final BlockHandler blockHandler = new BlockHandler();
 	public static final ItemHandler itemHandler = new ItemHandler();
 	public static final CraftingHandler craftingHandler = new CraftingHandler();
 	public static final BiomeHandler biomeHandler = new BiomeHandler();
 	public static final FuelHandler fuelHandler = new FuelHandler();
+	public static final SCTickHandler tickHandler = new SCTickHandler();
 	
 	@PreInit
 	public void preInit(FMLPreInitializationEvent event) {
@@ -62,10 +71,12 @@ public class Supercraft {
 	@Init
 	public void load(FMLInitializationEvent event) {
 		proxy.registerRenderers();
+		mainMenu = new SCMainMenu();
 		blockHandler.populateAllAndInitialize();
 		itemHandler.populateAllAndInitialize();
 		craftingHandler.populateAllAndInitialize();
 		GameRegistry.registerFuelHandler(fuelHandler);
+		TickRegistry.registerTickHandler(tickHandler, Side.CLIENT);
 		System.out.println("[Supercraft] Loaded.");
 	}
 	
