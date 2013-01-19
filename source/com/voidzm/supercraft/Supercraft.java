@@ -9,6 +9,7 @@ package com.voidzm.supercraft;
 import com.voidzm.supercraft.handler.BiomeHandler;
 import com.voidzm.supercraft.handler.BlockHandler;
 import com.voidzm.supercraft.handler.CraftingHandler;
+import com.voidzm.supercraft.handler.FuelHandler;
 import com.voidzm.supercraft.handler.ItemHandler;
 
 import net.minecraft.block.Block;
@@ -51,6 +52,7 @@ public class Supercraft {
 	public static final ItemHandler itemHandler = new ItemHandler();
 	public static final CraftingHandler craftingHandler = new CraftingHandler();
 	public static final BiomeHandler biomeHandler = new BiomeHandler();
+	public static final FuelHandler fuelHandler = new FuelHandler();
 	
 	@PreInit
 	public void preInit(FMLPreInitializationEvent event) {
@@ -61,7 +63,9 @@ public class Supercraft {
 	public void load(FMLInitializationEvent event) {
 		proxy.registerRenderers();
 		blockHandler.populateAllAndInitialize();
+		itemHandler.populateAllAndInitialize();
 		craftingHandler.populateAllAndInitialize();
+		GameRegistry.registerFuelHandler(fuelHandler);
 		System.out.println("[Supercraft] Loaded.");
 	}
 	
