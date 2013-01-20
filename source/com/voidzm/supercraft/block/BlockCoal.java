@@ -10,7 +10,9 @@ import com.voidzm.supercraft.CommonProxy;
 
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
+import net.minecraft.client.MinecraftFakeLauncher;
 import net.minecraft.creativetab.CreativeTabs;
+import net.minecraftforge.common.MinecraftForge;
 
 public class BlockCoal extends Block {
 
@@ -21,6 +23,7 @@ public class BlockCoal extends Block {
 		this.setStepSound(Block.soundStoneFootstep);
 		this.setBlockName("coalBlock");
 		this.setCreativeTab(CreativeTabs.tabBlock);
+		MinecraftForge.setBlockHarvestLevel(this, "pickaxe", 1);
 	}
 
 	@Override

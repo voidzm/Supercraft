@@ -47,8 +47,8 @@ public class ItemHandler {
 	}
 	
 	private void initializeLanguage() {
-		LanguageRegistry.addName(ironScrap, this.languageHandler.getString(ironScrap));
-		LanguageRegistry.addName(diamondShard, this.languageHandler.getString(diamondShard));
+		LanguageRegistry.addName(ironScrap, (String)this.languageHandler.getString(ironScrap));
+		LanguageRegistry.addName(diamondShard, (String)this.languageHandler.getString(diamondShard));
 	}
 	
 }

@@ -6,6 +6,7 @@
 
 package com.voidzm.supercraft;
 
+import com.voidzm.supercraft.event.EventBonemeal;
 import com.voidzm.supercraft.gui.SCMainMenu;
 import com.voidzm.supercraft.handler.BiomeHandler;
 import com.voidzm.supercraft.handler.BlockHandler;
@@ -75,8 +76,13 @@ public class Supercraft {
 		blockHandler.populateAllAndInitialize();
 		itemHandler.populateAllAndInitialize();
 		craftingHandler.populateAllAndInitialize();
+		biomeHandler.populateAllAndInitialize();
+		
+		//biomeHandler.removeVanillaBiomes(); // For biome testing only.
+		
 		GameRegistry.registerFuelHandler(fuelHandler);
 		TickRegistry.registerTickHandler(tickHandler, Side.CLIENT);
+		MinecraftForge.EVENT_BUS.register(new EventBonemeal());
 		System.out.println("[Supercraft] Loaded.");
 	}
 	

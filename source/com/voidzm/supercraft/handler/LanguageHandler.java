@@ -15,9 +15,9 @@ import java.util.Map;
 
 public class LanguageHandler {
 
-	private HashMap<Object, String> itemMap = new HashMap<Object, String>();
+	private HashMap<Object, Object> itemMap = new HashMap<Object, Object>();
 	
-	public void add(Object key, String languageValue) {
+	public void add(Object key, Object languageValue) {
 		itemMap.put(key, languageValue);
 	}
 	
@@ -25,7 +25,7 @@ public class LanguageHandler {
 		itemMap.remove(key);
 	}
 	
-	public String getString(Object key) {
+	public Object getString(Object key) {
 		return itemMap.get(key);
 	}
 	

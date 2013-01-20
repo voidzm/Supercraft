@@ -29,11 +29,14 @@ public class CraftingHandler {
 	
 	// Supercraft
 	
+	private static ItemStack oliveWood;
+	private static ItemStack olivePlanks;
+	
 	public void populateAllAndInitialize() {
 		this.initializeCraftingRefs();
 		this.addRecipes();
 		this.addShapelessRecipes();
-		System.out.println("[Supercraft] 10 recipes added.");
+		System.out.println("[Supercraft] 14 recipes added.");
 	}
 	
 	private void initializeCraftingRefs() {
@@ -46,6 +49,8 @@ public class CraftingHandler {
 		diamond = new ItemStack(Item.diamond);
 		diamondShard = new ItemStack(ItemHandler.diamondShard);
 		obsidian = new ItemStack(Block.obsidian);
+		oliveWood = new ItemStack(BlockHandler.supercraftLog, 1, 0);
+		olivePlanks = new ItemStack(BlockHandler.supercraftPlanks, 1, 0);
 	}
 	
 	private void addRecipes() {
@@ -63,6 +68,12 @@ public class CraftingHandler {
 		GameRegistry.addRecipe(new ItemStack(Item.ingotIron), "aaa", "aaa", "aaa", 'a', ironScrap);
 		GameRegistry.addRecipe(new ItemStack(Item.diamond), "aaa", "aaa", "aaa", 'a', diamondShard);
 		
+		// Supercraft Trees
+		
+		GameRegistry.addRecipe(new ItemStack(BlockHandler.supercraftWoodSlab, 6, 0), "aaa", 'a', olivePlanks);
+		GameRegistry.addRecipe(new ItemStack(BlockHandler.oliveStairs, 4), "a  ", "aa ", "aaa", 'a', olivePlanks);
+		GameRegistry.addRecipe(new ItemStack(BlockHandler.oliveStairs, 4), "  a", " aa", "aaa", 'a', olivePlanks);
+		
 	}
 	
 	private void addShapelessRecipes() {
@@ -72,6 +83,10 @@ public class CraftingHandler {
 		GameRegistry.addShapelessRecipe(new ItemStack(Item.coal, 9), coalBlock);
 		GameRegistry.addShapelessRecipe(new ItemStack(ItemHandler.ironScrap, 9), ironIngot);
 		GameRegistry.addShapelessRecipe(new ItemStack(ItemHandler.diamondShard, 9), diamond);
+		
+		// Supercraft Trees
+		
+		GameRegistry.addShapelessRecipe(new ItemStack(BlockHandler.supercraftPlanks, 4, 0), oliveWood);
 		
 	}
 	
