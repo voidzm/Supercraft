@@ -26,16 +26,20 @@ public class CraftingHandler {
 	private static ItemStack diamond;
 	private static ItemStack diamondShard;
 	private static ItemStack obsidian;
+	private static ItemStack stick;
 	
 	// Supercraft
 	
 	private static ItemStack oliveWood;
 	private static ItemStack olivePlanks;
+	private static ItemStack aluminum;
+	private static ItemStack aluminumBlock;
 	
 	public void populateAllAndInitialize() {
 		this.initializeCraftingRefs();
 		this.addRecipes();
 		this.addShapelessRecipes();
+		this.addSmelting();
 		System.out.println("[Supercraft] 14 recipes added.");
 	}
 	
@@ -49,8 +53,12 @@ public class CraftingHandler {
 		diamond = new ItemStack(Item.diamond);
 		diamondShard = new ItemStack(ItemHandler.diamondShard);
 		obsidian = new ItemStack(Block.obsidian);
+		stick = new ItemStack(Item.stick);
+		
 		oliveWood = new ItemStack(BlockHandler.supercraftLog, 1, 0);
 		olivePlanks = new ItemStack(BlockHandler.supercraftPlanks, 1, 0);
+		aluminum = new ItemStack(ItemHandler.aluminumIngot);
+		aluminumBlock = new ItemStack(BlockHandler.aluminumBlock);
 	}
 	
 	private void addRecipes() {
@@ -74,6 +82,17 @@ public class CraftingHandler {
 		GameRegistry.addRecipe(new ItemStack(BlockHandler.oliveStairs, 4), "a  ", "aa ", "aaa", 'a', olivePlanks);
 		GameRegistry.addRecipe(new ItemStack(BlockHandler.oliveStairs, 4), "  a", " aa", "aaa", 'a', olivePlanks);
 		
+		// Aluminum Material
+		
+		GameRegistry.addRecipe(new ItemStack(BlockHandler.aluminumBlock), "aaa", "aaa", "aaa", 'a', aluminum);
+		GameRegistry.addRecipe(new ItemStack(ItemHandler.aluminumPickaxe), "aaa", " b ", " b ", 'a', aluminum, 'b', stick);
+		GameRegistry.addRecipe(new ItemStack(ItemHandler.aluminumSaber), "a", "a", "b", 'a', aluminum, 'b', stick);
+		GameRegistry.addRecipe(new ItemStack(ItemHandler.aluminumShovel), "a", "b", "b", 'a', aluminum, 'b', stick);
+		GameRegistry.addRecipe(new ItemStack(ItemHandler.aluminumAxe), "aa", "ab", " b", 'a', aluminum, 'b', stick);
+		GameRegistry.addRecipe(new ItemStack(ItemHandler.aluminumAxe), "aa", "ba", "b ", 'a', aluminum, 'b', stick);
+		GameRegistry.addRecipe(new ItemStack(ItemHandler.aluminumHoe), "aa", " b", " b", 'a', aluminum, 'b', stick);
+		GameRegistry.addRecipe(new ItemStack(ItemHandler.aluminumHoe), "aa", "b ", "b ", 'a', aluminum, 'b', stick);
+		
 	}
 	
 	private void addShapelessRecipes() {
@@ -87,6 +106,18 @@ public class CraftingHandler {
 		// Supercraft Trees
 		
 		GameRegistry.addShapelessRecipe(new ItemStack(BlockHandler.supercraftPlanks, 4, 0), oliveWood);
+		
+		// Aluminum Material
+		
+		GameRegistry.addShapelessRecipe(new ItemStack(ItemHandler.aluminumIngot, 9), aluminumBlock);
+		
+	}
+	
+	private void addSmelting() {
+		
+		// Aluminum Material
+		
+		GameRegistry.addSmelting(BlockHandler.aluminumOre.blockID, new ItemStack(ItemHandler.aluminumIngot, 1), 0.4F);
 		
 	}
 	

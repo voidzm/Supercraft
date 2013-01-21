@@ -7,6 +7,7 @@
 package com.voidzm.supercraft;
 
 import com.voidzm.supercraft.event.EventBonemeal;
+import com.voidzm.supercraft.gen.WorldGenOre;
 import com.voidzm.supercraft.gui.SCMainMenu;
 import com.voidzm.supercraft.handler.BiomeHandler;
 import com.voidzm.supercraft.handler.BlockHandler;
@@ -64,6 +65,8 @@ public class Supercraft {
 	public static final FuelHandler fuelHandler = new FuelHandler();
 	public static final SCTickHandler tickHandler = new SCTickHandler();
 	
+	public static EnumToolMaterial aluminumTool = EnumHelper.addToolMaterial("aluminum", 1, 2343, 4.0F, 1, 1);
+	
 	@PreInit
 	public void preInit(FMLPreInitializationEvent event) {
 		// Nothing here yet.
@@ -83,6 +86,7 @@ public class Supercraft {
 		GameRegistry.registerFuelHandler(fuelHandler);
 		TickRegistry.registerTickHandler(tickHandler, Side.CLIENT);
 		MinecraftForge.EVENT_BUS.register(new EventBonemeal());
+		GameRegistry.registerWorldGenerator(new WorldGenOre());
 		System.out.println("[Supercraft] Loaded.");
 	}
 	

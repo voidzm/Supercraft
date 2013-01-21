@@ -10,6 +10,8 @@ package com.voidzm.supercraft.handler;
 
 import java.util.ArrayList;
 
+import com.voidzm.supercraft.block.BlockAluminum;
+import com.voidzm.supercraft.block.BlockAluminumOre;
 import com.voidzm.supercraft.block.BlockCoal;
 import com.voidzm.supercraft.block.BlockImpactGlass;
 import com.voidzm.supercraft.block.BlockOrnateGlass;
@@ -54,6 +56,9 @@ public class BlockHandler {
 	
 	public static Block oliveStairs;
 	
+	public static Block aluminumOre;
+	public static Block aluminumBlock;
+	
 	public void populateAllAndInitialize() {
 		this.createBlocks();
 		this.populateLanguage();
@@ -95,6 +100,11 @@ public class BlockHandler {
 		
 		languageHandler.add(oliveStairs, "Olive Wood Stairs");
 		
+		// Aluminum Material
+		
+		languageHandler.add(aluminumOre, "Aluminum Ore");
+		languageHandler.add(aluminumBlock, "Block of Aluminum");
+		
 	}
 	
 	private void createBlocks() {
@@ -119,6 +129,11 @@ public class BlockHandler {
 		supercraftWoodSlab = new BlockSupercraftWoodSlab(1609);
 		
 		oliveStairs = new BlockSupercraftStairs(1610, supercraftPlanks, 0).setBlockName("oliveStairs");
+		
+		// Aluminum Material
+		
+		aluminumOre = new BlockAluminumOre(1611);
+		aluminumBlock = new BlockAluminum(1612);
 	
 	}
 	
@@ -148,6 +163,11 @@ public class BlockHandler {
 		// Ore Dictionary references
 		
 		OreDictionary.registerOre("plankWood", supercraftPlanks);
+		
+		// Aluminum Material
+		
+		GameRegistry.registerBlock(aluminumOre, "aluminumOre");
+		GameRegistry.registerBlock(aluminumBlock, "aluminumBlock");
 		
 	}
 	
@@ -198,6 +218,11 @@ public class BlockHandler {
 		}
 		
 		LanguageRegistry.addName(oliveStairs, (String)this.languageHandler.getString(oliveStairs));
+		
+		// Aluminum Material
+		
+		LanguageRegistry.addName(aluminumOre, (String)this.languageHandler.getString(aluminumOre));
+		LanguageRegistry.addName(aluminumBlock, (String)this.languageHandler.getString(aluminumBlock));
 		
 	}
 	
