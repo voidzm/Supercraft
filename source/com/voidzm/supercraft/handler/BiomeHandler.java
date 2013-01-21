@@ -9,7 +9,9 @@ package com.voidzm.supercraft.handler;
 import com.voidzm.supercraft.biome.BiomeGenAlpha;
 import com.voidzm.supercraft.biome.BiomeGenExtremeForest;
 import com.voidzm.supercraft.biome.BiomeGenGrassySummits;
+import com.voidzm.supercraft.biome.BiomeGenIcyRidges;
 import com.voidzm.supercraft.biome.BiomeGenInsaneHills;
+import com.voidzm.supercraft.biome.BiomeGenSandyPeaks;
 import com.voidzm.supercraft.biome.BiomeGenSavanna;
 import com.voidzm.supercraft.biome.BiomeGenWinterForest;
 
@@ -25,11 +27,13 @@ public class BiomeHandler {
 	public static BiomeGenBase winterForest;
 	public static BiomeGenBase alpha;
 	public static BiomeGenBase savanna;
+	public static BiomeGenBase sandyPeaks;
+	public static BiomeGenBase icyRidges;
 	
 	public void populateAllAndInitialize() {
 		this.createBiomes();
 		this.registerBiomes();
-		System.out.println("[Supercraft] 6 biomes added.");
+		System.out.println("[Supercraft] 8 biomes added.");
 	}
 	
 	private void createBiomes() {
@@ -39,6 +43,8 @@ public class BiomeHandler {
 		winterForest = new BiomeGenWinterForest(26);
 		alpha = new BiomeGenAlpha(27);
 		savanna = new BiomeGenSavanna(28);
+		sandyPeaks = new BiomeGenSandyPeaks(29);
+		icyRidges = new BiomeGenIcyRidges(30);
 	}
 	
 	private void registerBiomes() {
@@ -48,6 +54,8 @@ public class BiomeHandler {
 		GameRegistry.addBiome(winterForest);
 		GameRegistry.addBiome(alpha);
 		GameRegistry.addBiome(savanna);
+		GameRegistry.addBiome(sandyPeaks);
+		GameRegistry.addBiome(icyRidges);
 	}
 	
 	public void removeVanillaBiomes() {
