@@ -45,6 +45,13 @@ public class WorldGenOre implements IWorldGenerator {
 			int rz = (cz * 16) + rand.nextInt(16);
 			new WorldGenMinable(BlockHandler.aluminumOre.blockID, 12).generate(world, rand, rx, ry, rz);
 		}
+		ky = 0;
+		for(int i = 0; i < 1; i++) {
+			int rx = (cx * 16) + rand.nextInt(16);
+			int ry = ky + rand.nextInt(24);
+			int rz = (cz * 16) + rand.nextInt(16);
+			new WorldGenMinable(BlockHandler.tantalumOre.blockID, 4).generate(world, rand, rx, ry, rz);
+		}
 	}
 	
 	private void generateEnd() {

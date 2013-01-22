@@ -16,6 +16,7 @@ import com.voidzm.supercraft.item.ItemAluminumSaber;
 import com.voidzm.supercraft.item.ItemAluminumShovel;
 import com.voidzm.supercraft.item.ItemDiamondShard;
 import com.voidzm.supercraft.item.ItemIronScrap;
+import com.voidzm.supercraft.item.ItemTantalumCrystal;
 
 import cpw.mods.fml.common.registry.GameRegistry;
 import cpw.mods.fml.common.registry.LanguageRegistry;
@@ -36,6 +37,8 @@ public class ItemHandler {
 	public static Item aluminumShovel;
 	public static Item aluminumAxe;
 	public static Item aluminumHoe;
+	
+	public static Item tantalumCrystal;
 	
 	public void populateAllAndInitialize() {
 		this.createItems();
@@ -61,6 +64,10 @@ public class ItemHandler {
 		languageHandler.add(aluminumAxe, "Aluminum Axe");
 		languageHandler.add(aluminumHoe, "Aluminum Hoe");
 		
+		// Tantalum Material
+		
+		languageHandler.add(tantalumCrystal, "Tantalum Crystal");
+		
 	}
 	
 	private void createItems() {
@@ -79,6 +86,10 @@ public class ItemHandler {
 		aluminumAxe = new ItemAluminumAxe(23006);
 		aluminumHoe = new ItemAluminumHoe(23007);
 		
+		// Tantalum Material
+		
+		tantalumCrystal = new ItemTantalumCrystal(23008);
+		
 	}
 	
 	private void registerItems() {
@@ -96,6 +107,10 @@ public class ItemHandler {
 		GameRegistry.registerItem(aluminumShovel, "aluminumShovel");
 		GameRegistry.registerItem(aluminumAxe, "aluminumAxe");
 		GameRegistry.registerItem(aluminumHoe, "aluminumHoe");
+		
+		// Tantalum Material
+		
+		GameRegistry.registerItem(tantalumCrystal, "tantalumCrystal");
 		
 		// Ore Dictionary references
 		
@@ -118,6 +133,10 @@ public class ItemHandler {
 		LanguageRegistry.addName(aluminumShovel, (String)this.languageHandler.getString(aluminumShovel));
 		LanguageRegistry.addName(aluminumAxe, (String)this.languageHandler.getString(aluminumAxe));
 		LanguageRegistry.addName(aluminumHoe, (String)this.languageHandler.getString(aluminumHoe));
+		
+		// Tantalum Material
+		
+		LanguageRegistry.addName(tantalumCrystal, (String)this.languageHandler.getString(tantalumCrystal));
 		
 	}
 	

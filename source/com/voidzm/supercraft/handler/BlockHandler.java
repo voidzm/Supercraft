@@ -22,6 +22,7 @@ import com.voidzm.supercraft.block.BlockSupercraftPlanks;
 import com.voidzm.supercraft.block.BlockSupercraftSapling;
 import com.voidzm.supercraft.block.BlockSupercraftStairs;
 import com.voidzm.supercraft.block.BlockSupercraftWoodSlab;
+import com.voidzm.supercraft.block.BlockTantalumOre;
 import com.voidzm.supercraft.block.BlockTemperedGlass;
 import com.voidzm.supercraft.item.ItemSupercraftLeaves;
 import com.voidzm.supercraft.item.ItemSupercraftLog;
@@ -58,6 +59,8 @@ public class BlockHandler {
 	
 	public static Block aluminumOre;
 	public static Block aluminumBlock;
+	
+	public static Block tantalumOre;
 	
 	public void populateAllAndInitialize() {
 		this.createBlocks();
@@ -105,6 +108,10 @@ public class BlockHandler {
 		languageHandler.add(aluminumOre, "Aluminum Ore");
 		languageHandler.add(aluminumBlock, "Block of Aluminum");
 		
+		// Tantalum Material
+		
+		languageHandler.add(tantalumOre, "Tantalum Ore");
+		
 	}
 	
 	private void createBlocks() {
@@ -134,6 +141,10 @@ public class BlockHandler {
 		
 		aluminumOre = new BlockAluminumOre(1611);
 		aluminumBlock = new BlockAluminum(1612);
+		
+		// Tantalum Material
+		
+		tantalumOre = new BlockTantalumOre(1613);
 	
 	}
 	
@@ -168,6 +179,10 @@ public class BlockHandler {
 		
 		GameRegistry.registerBlock(aluminumOre, "aluminumOre");
 		GameRegistry.registerBlock(aluminumBlock, "aluminumBlock");
+		
+		// Tantalum Material
+		
+		GameRegistry.registerBlock(tantalumOre, "tantalumOre");
 		
 	}
 	
@@ -223,6 +238,10 @@ public class BlockHandler {
 		
 		LanguageRegistry.addName(aluminumOre, (String)this.languageHandler.getString(aluminumOre));
 		LanguageRegistry.addName(aluminumBlock, (String)this.languageHandler.getString(aluminumBlock));
+		
+		// Tantalum Material
+		
+		LanguageRegistry.addName(tantalumOre, (String)this.languageHandler.getString(tantalumOre));
 		
 	}
 	
