@@ -13,6 +13,8 @@ import java.util.ArrayList;
 import com.voidzm.supercraft.block.BlockAluminum;
 import com.voidzm.supercraft.block.BlockAluminumOre;
 import com.voidzm.supercraft.block.BlockCoal;
+import com.voidzm.supercraft.block.BlockElinvar;
+import com.voidzm.supercraft.block.BlockElinvarOre;
 import com.voidzm.supercraft.block.BlockImpactGlass;
 import com.voidzm.supercraft.block.BlockOrnateGlass;
 import com.voidzm.supercraft.block.BlockReinforcedGlass;
@@ -61,6 +63,9 @@ public class BlockHandler {
 	public static Block aluminumBlock;
 	
 	public static Block tantalumOre;
+	
+	public static Block elinvarOre;
+	public static Block elinvarBlock;
 	
 	public void populateAllAndInitialize() {
 		this.createBlocks();
@@ -112,6 +117,11 @@ public class BlockHandler {
 		
 		languageHandler.add(tantalumOre, "Tantalum Ore");
 		
+		// Elinvar Ore
+		
+		languageHandler.add(elinvarOre, "Elinvar Ore");
+		languageHandler.add(elinvarBlock, "Block of Elinvar");
+		
 	}
 	
 	private void createBlocks() {
@@ -145,6 +155,11 @@ public class BlockHandler {
 		// Tantalum Material
 		
 		tantalumOre = new BlockTantalumOre(1613);
+		
+		// Elinvar Material
+		
+		elinvarOre = new BlockElinvarOre(1614);
+		elinvarBlock = new BlockElinvar(1615);
 	
 	}
 	
@@ -183,6 +198,11 @@ public class BlockHandler {
 		// Tantalum Material
 		
 		GameRegistry.registerBlock(tantalumOre, "tantalumOre");
+		
+		// Elinvar Material
+		
+		GameRegistry.registerBlock(elinvarOre, "elinvarOre");
+		GameRegistry.registerBlock(elinvarBlock, "elinvarBlock");
 		
 	}
 	
@@ -242,6 +262,11 @@ public class BlockHandler {
 		// Tantalum Material
 		
 		LanguageRegistry.addName(tantalumOre, (String)this.languageHandler.getString(tantalumOre));
+		
+		// Elinvar Material
+		
+		LanguageRegistry.addName(elinvarOre, (String)this.languageHandler.getString(elinvarOre));
+		LanguageRegistry.addName(elinvarBlock, (String)this.languageHandler.getString(elinvarBlock));
 		
 	}
 	

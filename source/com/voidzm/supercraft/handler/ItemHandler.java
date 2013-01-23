@@ -15,6 +15,7 @@ import com.voidzm.supercraft.item.ItemAluminumPickaxe;
 import com.voidzm.supercraft.item.ItemAluminumSaber;
 import com.voidzm.supercraft.item.ItemAluminumShovel;
 import com.voidzm.supercraft.item.ItemDiamondShard;
+import com.voidzm.supercraft.item.ItemElinvarDust;
 import com.voidzm.supercraft.item.ItemIronScrap;
 import com.voidzm.supercraft.item.ItemTantalumCrystal;
 
@@ -39,6 +40,7 @@ public class ItemHandler {
 	public static Item aluminumHoe;
 	
 	public static Item tantalumCrystal;
+	public static Item elinvarDust;
 	
 	public void populateAllAndInitialize() {
 		this.createItems();
@@ -68,6 +70,10 @@ public class ItemHandler {
 		
 		languageHandler.add(tantalumCrystal, "Tantalum Crystal");
 		
+		// Elinvar Material
+		
+		languageHandler.add(elinvarDust, "Elinvar Dust");
+		
 	}
 	
 	private void createItems() {
@@ -90,6 +96,10 @@ public class ItemHandler {
 		
 		tantalumCrystal = new ItemTantalumCrystal(23008);
 		
+		// Elinvar Material
+		
+		elinvarDust = new ItemElinvarDust(23009);
+		
 	}
 	
 	private void registerItems() {
@@ -111,6 +121,10 @@ public class ItemHandler {
 		// Tantalum Material
 		
 		GameRegistry.registerItem(tantalumCrystal, "tantalumCrystal");
+		
+		// Elinvar Material
+		
+		GameRegistry.registerItem(elinvarDust, "elinvarDust");
 		
 		// Ore Dictionary references
 		
@@ -137,6 +151,10 @@ public class ItemHandler {
 		// Tantalum Material
 		
 		LanguageRegistry.addName(tantalumCrystal, (String)this.languageHandler.getString(tantalumCrystal));
+		
+		// Elinvar Material
+		
+		LanguageRegistry.addName(elinvarDust, (String)this.languageHandler.getString(elinvarDust));
 		
 	}
 	

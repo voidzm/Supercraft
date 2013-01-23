@@ -34,13 +34,15 @@ public class CraftingHandler {
 	private static ItemStack olivePlanks;
 	private static ItemStack aluminum;
 	private static ItemStack aluminumBlock;
+	private static ItemStack elinvarDust;
+	private static ItemStack elinvarBlock;
 	
 	public void populateAllAndInitialize() {
 		this.initializeCraftingRefs();
 		this.addRecipes();
 		this.addShapelessRecipes();
 		this.addSmelting();
-		System.out.println("[Supercraft] 14 recipes added.");
+		System.out.println("[Supercraft] Recipes added.");
 	}
 	
 	private void initializeCraftingRefs() {
@@ -59,6 +61,8 @@ public class CraftingHandler {
 		olivePlanks = new ItemStack(BlockHandler.supercraftPlanks, 1, 0);
 		aluminum = new ItemStack(ItemHandler.aluminumIngot);
 		aluminumBlock = new ItemStack(BlockHandler.aluminumBlock);
+		elinvarDust = new ItemStack(ItemHandler.elinvarDust);
+		elinvarBlock = new ItemStack(BlockHandler.elinvarBlock);
 	}
 	
 	private void addRecipes() {
@@ -93,6 +97,10 @@ public class CraftingHandler {
 		GameRegistry.addRecipe(new ItemStack(ItemHandler.aluminumHoe), "aa", " b", " b", 'a', aluminum, 'b', stick);
 		GameRegistry.addRecipe(new ItemStack(ItemHandler.aluminumHoe), "aa", "b ", "b ", 'a', aluminum, 'b', stick);
 		
+		// Elinvar Material
+		
+		GameRegistry.addRecipe(new ItemStack(BlockHandler.elinvarBlock), "aaa", "aaa", "aaa", 'a', elinvarDust);
+		
 	}
 	
 	private void addShapelessRecipes() {
@@ -111,6 +119,10 @@ public class CraftingHandler {
 		
 		GameRegistry.addShapelessRecipe(new ItemStack(ItemHandler.aluminumIngot, 9), aluminumBlock);
 		
+		// Elinvar Material
+		
+		GameRegistry.addShapelessRecipe(new ItemStack(ItemHandler.elinvarDust, 9), elinvarBlock);
+		
 	}
 	
 	private void addSmelting() {
@@ -119,7 +131,7 @@ public class CraftingHandler {
 		
 		GameRegistry.addSmelting(BlockHandler.aluminumOre.blockID, new ItemStack(ItemHandler.aluminumIngot, 1), 0.4F);
 		
-		GameRegistry.addSmelting(BlockHandler.tantalumOre.blockID, new ItemStack(ItemHandler.tantalumCrystal, 1), 1.0F); // Temporary until Elivar machines.
+		GameRegistry.addSmelting(BlockHandler.tantalumOre.blockID, new ItemStack(ItemHandler.tantalumCrystal, 1), 1.0F); // Temporary until Elinvar machines.
 		
 	}
 	

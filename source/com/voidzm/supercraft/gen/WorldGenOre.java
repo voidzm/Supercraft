@@ -22,7 +22,7 @@ public class WorldGenOre implements IWorldGenerator {
 	public void generate(Random random, int chunkX, int chunkZ, World world, IChunkProvider chunkGenerator, IChunkProvider chunkProvider) {
 		switch(world.provider.dimensionId) {
 		case -1:
-			generateNether();
+			generateNether(world, random, chunkX, chunkZ);
 			break;
 		case 0:
 			generateOverworld(world, random, chunkX, chunkZ);
@@ -33,8 +33,14 @@ public class WorldGenOre implements IWorldGenerator {
 		}
 	}
 
-	private void generateNether() {
-		// No Nether ores...yet.
+	private void generateNether(World world, Random rand, int cx, int cz) {
+		int ky = 104;
+		for(int i = 0; i < 2; i++) {
+			int rx = (cx * 16) + rand.nextInt(16);
+			int ry = ky + rand.nextInt(24);
+			int rz = (cz * 16) + rand.nextInt(16);
+			new SCWorldGenMinable(BlockHandler.elinvarOre.blockID, 16).generate(world, rand, rx, ry, rz);
+		}
 	}
 	
 	private void generateOverworld(World world, Random rand, int cx, int cz) {
