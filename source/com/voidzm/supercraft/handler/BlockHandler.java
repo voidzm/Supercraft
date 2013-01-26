@@ -13,6 +13,7 @@ import java.util.ArrayList;
 import com.voidzm.supercraft.block.BlockAluminum;
 import com.voidzm.supercraft.block.BlockAluminumOre;
 import com.voidzm.supercraft.block.BlockCoal;
+import com.voidzm.supercraft.block.BlockConduit;
 import com.voidzm.supercraft.block.BlockElinvar;
 import com.voidzm.supercraft.block.BlockElinvarOre;
 import com.voidzm.supercraft.block.BlockImpactGlass;
@@ -66,6 +67,10 @@ public class BlockHandler {
 	
 	public static Block elinvarOre;
 	public static Block elinvarBlock;
+	
+	
+	public static Block conduit;
+	
 	
 	public void populateAllAndInitialize() {
 		this.createBlocks();
@@ -122,6 +127,10 @@ public class BlockHandler {
 		languageHandler.add(elinvarOre, "Elinvar Ore");
 		languageHandler.add(elinvarBlock, "Block of Elinvar");
 		
+		
+		languageHandler.add(conduit, "Conduit");
+		
+		
 	}
 	
 	private void createBlocks() {
@@ -160,6 +169,9 @@ public class BlockHandler {
 		
 		elinvarOre = new BlockElinvarOre(1614);
 		elinvarBlock = new BlockElinvar(1615);
+		
+		
+		conduit = new BlockConduit(1616);
 	
 	}
 	
@@ -203,6 +215,10 @@ public class BlockHandler {
 		
 		GameRegistry.registerBlock(elinvarOre, "elinvarOre");
 		GameRegistry.registerBlock(elinvarBlock, "elinvarBlock");
+		
+		
+		GameRegistry.registerBlock(conduit, "conduit");
+		
 		
 	}
 	
@@ -267,6 +283,10 @@ public class BlockHandler {
 		
 		LanguageRegistry.addName(elinvarOre, (String)this.languageHandler.getString(elinvarOre));
 		LanguageRegistry.addName(elinvarBlock, (String)this.languageHandler.getString(elinvarBlock));
+		
+		
+		LanguageRegistry.addName(conduit, (String)this.languageHandler.getString(conduit));
+		
 		
 	}
 	

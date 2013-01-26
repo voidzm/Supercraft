@@ -6,6 +6,7 @@
 
 package com.voidzm.supercraft;
 
+import com.voidzm.supercraft.entity.TileEntityConduit;
 import com.voidzm.supercraft.event.EventBonemeal;
 import com.voidzm.supercraft.gen.WorldGenOre;
 import com.voidzm.supercraft.gui.SCMainMenu;
@@ -87,6 +88,7 @@ public class Supercraft {
 		TickRegistry.registerTickHandler(tickHandler, Side.CLIENT);
 		MinecraftForge.EVENT_BUS.register(new EventBonemeal());
 		GameRegistry.registerWorldGenerator(new WorldGenOre());
+		GameRegistry.registerTileEntity(TileEntityConduit.class, "tileEntityConduit");
 		System.out.println("[Supercraft] Loaded.");
 	}
 	
