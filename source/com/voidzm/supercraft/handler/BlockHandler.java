@@ -17,8 +17,10 @@ import com.voidzm.supercraft.block.BlockConduit;
 import com.voidzm.supercraft.block.BlockElinvar;
 import com.voidzm.supercraft.block.BlockElinvarOre;
 import com.voidzm.supercraft.block.BlockImpactGlass;
+import com.voidzm.supercraft.block.BlockIronConduit;
 import com.voidzm.supercraft.block.BlockOrnateGlass;
 import com.voidzm.supercraft.block.BlockReinforcedGlass;
+import com.voidzm.supercraft.block.BlockStoneConduit;
 import com.voidzm.supercraft.block.BlockSupercraftLeaves;
 import com.voidzm.supercraft.block.BlockSupercraftLog;
 import com.voidzm.supercraft.block.BlockSupercraftPlanks;
@@ -27,6 +29,7 @@ import com.voidzm.supercraft.block.BlockSupercraftStairs;
 import com.voidzm.supercraft.block.BlockSupercraftWoodSlab;
 import com.voidzm.supercraft.block.BlockTantalumOre;
 import com.voidzm.supercraft.block.BlockTemperedGlass;
+import com.voidzm.supercraft.block.BlockWoodenConduit;
 import com.voidzm.supercraft.item.ItemSupercraftLeaves;
 import com.voidzm.supercraft.item.ItemSupercraftLog;
 import com.voidzm.supercraft.item.ItemSupercraftPlanks;
@@ -68,9 +71,9 @@ public class BlockHandler {
 	public static Block elinvarOre;
 	public static Block elinvarBlock;
 	
-	
-	public static Block conduit;
-	
+	public static Block woodenConduit;
+	public static Block stoneConduit;
+	public static Block ironConduit;
 	
 	public void populateAllAndInitialize() {
 		this.createBlocks();
@@ -122,14 +125,16 @@ public class BlockHandler {
 		
 		languageHandler.add(tantalumOre, "Tantalum Ore");
 		
-		// Elinvar Ore
+		// Elinvar Material
 		
 		languageHandler.add(elinvarOre, "Elinvar Ore");
 		languageHandler.add(elinvarBlock, "Block of Elinvar");
 		
+		// Elinvar Conduits
 		
-		languageHandler.add(conduit, "Conduit");
-		
+		languageHandler.add(woodenConduit, "Wooden Conduit");
+		languageHandler.add(stoneConduit, "Stone Conduit");
+		languageHandler.add(ironConduit, "Iron Conduit");
 		
 	}
 	
@@ -170,9 +175,12 @@ public class BlockHandler {
 		elinvarOre = new BlockElinvarOre(1614);
 		elinvarBlock = new BlockElinvar(1615);
 		
+		// Elinvar Conduits
 		
-		conduit = new BlockConduit(1616);
-	
+		woodenConduit = new BlockWoodenConduit(1616);
+		stoneConduit = new BlockStoneConduit(1617);
+		ironConduit = new BlockIronConduit(1618);
+		
 	}
 	
 	private void registerBlocks() {
@@ -216,9 +224,11 @@ public class BlockHandler {
 		GameRegistry.registerBlock(elinvarOre, "elinvarOre");
 		GameRegistry.registerBlock(elinvarBlock, "elinvarBlock");
 		
+		// Elinvar Conduits
 		
-		GameRegistry.registerBlock(conduit, "conduit");
-		
+		GameRegistry.registerBlock(woodenConduit, "woodenConduit");
+		GameRegistry.registerBlock(stoneConduit, "stoneConduit");
+		GameRegistry.registerBlock(ironConduit, "ironConduit");
 		
 	}
 	
@@ -284,9 +294,11 @@ public class BlockHandler {
 		LanguageRegistry.addName(elinvarOre, (String)this.languageHandler.getString(elinvarOre));
 		LanguageRegistry.addName(elinvarBlock, (String)this.languageHandler.getString(elinvarBlock));
 		
+		// Elinvar Conduits
 		
-		LanguageRegistry.addName(conduit, (String)this.languageHandler.getString(conduit));
-		
+		LanguageRegistry.addName(woodenConduit, (String)this.languageHandler.getString(woodenConduit));
+		LanguageRegistry.addName(stoneConduit, (String)this.languageHandler.getString(stoneConduit));
+		LanguageRegistry.addName(ironConduit, (String)this.languageHandler.getString(ironConduit));
 		
 	}
 	

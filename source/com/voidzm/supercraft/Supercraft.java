@@ -15,6 +15,7 @@ import com.voidzm.supercraft.handler.BlockHandler;
 import com.voidzm.supercraft.handler.CraftingHandler;
 import com.voidzm.supercraft.handler.FuelHandler;
 import com.voidzm.supercraft.handler.ItemHandler;
+import com.voidzm.supercraft.handler.PacketHandler;
 import com.voidzm.supercraft.handler.SCTickHandler;
 
 import net.minecraft.block.Block;
@@ -48,7 +49,7 @@ import cpw.mods.fml.common.registry.TickRegistry;
 import cpw.mods.fml.relauncher.Side;
 
 @Mod(modid="Supercraft", name="Supercraft", version="0.1.0")
-@NetworkMod(clientSideRequired=true, serverSideRequired=false)
+@NetworkMod(clientSideRequired=true, serverSideRequired=false, channels={"SCElinvar"}, packetHandler=PacketHandler.class)
 public class Supercraft {
 
 	@Instance

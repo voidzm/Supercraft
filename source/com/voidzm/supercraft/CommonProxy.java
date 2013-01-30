@@ -12,7 +12,7 @@ public class CommonProxy {
 	public static String BLOCKS_PNG = "/supercraft/img/supercraft_blocks_1.png";
 
 	public void registerRenderers() {
-		// Nothing here yet.
+		// Servers don't need renderers, silly!
 	}
 	
 }

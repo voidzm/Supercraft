@@ -8,20 +8,19 @@ package com.voidzm.supercraft.client;
 
 import net.minecraftforge.client.MinecraftForgeClient;
 import com.voidzm.supercraft.CommonProxy;
-import com.voidzm.supercraft.render.ConduitRenderer;
+import com.voidzm.supercraft.entity.TileEntityConduit;
+import com.voidzm.supercraft.render.TileConduitRender;
 
+import cpw.mods.fml.client.registry.ClientRegistry;
 import cpw.mods.fml.client.registry.RenderingRegistry;
 
 public class ClientProxy extends CommonProxy {
-	
-	public static int conduitRenderID;
 	
 	@Override
 	public void registerRenderers() {
 		MinecraftForgeClient.preloadTexture(ITEMS_PNG);
 		MinecraftForgeClient.preloadTexture(BLOCKS_PNG);
-		conduitRenderID = RenderingRegistry.getNextAvailableRenderId();
-		RenderingRegistry.registerBlockHandler(conduitRenderID, new ConduitRenderer());
+		ClientRegistry.bindTileEntitySpecialRenderer(TileEntityConduit.class, new TileConduitRender());
 	}
 	
 }
