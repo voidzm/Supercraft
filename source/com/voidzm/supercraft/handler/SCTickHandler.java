@@ -9,6 +9,7 @@ package com.voidzm.supercraft.handler;
 import java.util.EnumSet;
 
 import com.voidzm.supercraft.Supercraft;
+import com.voidzm.supercraft.client.ClientProxy;
 
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiMainMenu;
@@ -22,7 +23,7 @@ public class SCTickHandler implements ITickHandler {
 	public void tickStart(EnumSet<TickType> type, Object... tickData) {
 		Minecraft mcRef = Minecraft.getMinecraft();
 		if(mcRef.currentScreen instanceof GuiMainMenu) {
-			mcRef.displayGuiScreen(Supercraft.mainMenu);
+			mcRef.displayGuiScreen(ClientProxy.mainMenu);
 		}
 	}
 

@@ -280,7 +280,7 @@ public class TileConduitRender extends TileEntitySpecialRenderer {
 		else return false;
 	}
 	
-	public void renderCuboidInGlobalCoords(Tessellator t, double x1, double y1, double z1, double width, double height, double depth, int texture) {
+	public static void renderCuboidInGlobalCoords(Tessellator t, double x1, double y1, double z1, double width, double height, double depth, int texture) {
 		int pixX = (texture & 15) << 4;
 		int pixY = texture & 240;
 		double xStart = (double)(float)(pixX / 256.0F);
@@ -377,6 +377,54 @@ public class TileConduitRender extends TileEntitySpecialRenderer {
 		ysm += widthDiff;
 		yem -= widthDiff;
 		
+		t.addVertexWithUV(x1+width, y1, z1+depth, xsm, ysm);
+		t.addVertexWithUV(x1, y1, z1+depth, xsm, yem);
+		t.addVertexWithUV(x1, y1, z1, xem, yem);
+		t.addVertexWithUV(x1+width, y1, z1, xem, ysm);
+	}
+	
+	public static void renderCuboidInGlobalCoordsNoCheck(Tessellator t, double x1, double y1, double z1, double width, double height, double depth, int texture) {
+		int pixX = (texture & 15) << 4;
+		int pixY = texture & 240;
+		double xStart = (double)(float)(pixX / 256.0F);
+		double xEnd = (double)(float)((pixX + 15.99F) / 256.0F);
+		double yStart = (double)(float)(pixY / 256.0F);
+		double yEnd = (double)(float)((pixY + 15.99F) / 256.0F);
+		
+		double xsm = xStart;
+		double xem = xEnd;
+		double ysm = yStart;
+		double yem = yEnd;
+		
+		double widthDiff = ((16 - (width * 16)) / 2) / 256.0F;
+		double depthDiff = ((16 - (depth * 16)) / 2) / 256.0F;
+		double heightDiff = ((16 - (height * 16)) / 2) / 256.0F;
+
+		t.addVertexWithUV(x1, y1+height, z1, xsm, ysm);
+		t.addVertexWithUV(x1, y1, z1, xsm, yem);
+		t.addVertexWithUV(x1, y1, z1+depth, xem, yem);
+		t.addVertexWithUV(x1, y1+height, z1+depth, xem, ysm);
+		
+		t.addVertexWithUV(x1+width, y1+height, z1, xsm, ysm);
+		t.addVertexWithUV(x1+width, y1, z1, xsm, yem);
+		t.addVertexWithUV(x1, y1, z1, xem, yem);
+		t.addVertexWithUV(x1, y1+height, z1, xem, ysm);
+		
+		t.addVertexWithUV(x1+width, y1+height, z1+depth, xsm, ysm);
+		t.addVertexWithUV(x1+width, y1, z1+depth, xsm, yem);
+		t.addVertexWithUV(x1+width, y1, z1, xem, yem);
+		t.addVertexWithUV(x1+width, y1+height, z1, xem, ysm);
+		
+		t.addVertexWithUV(x1, y1+height, z1+depth, xsm, ysm);
+		t.addVertexWithUV(x1, y1, z1+depth, xsm, yem);
+		t.addVertexWithUV(x1+width, y1, z1+depth, xem, yem);
+		t.addVertexWithUV(x1+width, y1+height, z1+depth, xem, ysm);
+		
+		t.addVertexWithUV(x1+width, y1+height, z1, xsm, ysm);
+		t.addVertexWithUV(x1, y1+height, z1, xsm, yem);
+		t.addVertexWithUV(x1, y1+height, z1+depth, xem, yem);
+		t.addVertexWithUV(x1+width, y1+height, z1+depth, xem, ysm);
+
 		t.addVertexWithUV(x1+width, y1, z1+depth, xsm, ysm);
 		t.addVertexWithUV(x1, y1, z1+depth, xsm, yem);
 		t.addVertexWithUV(x1, y1, z1, xem, yem);

@@ -58,14 +58,11 @@ public class Supercraft {
 	@SidedProxy(clientSide="com.voidzm.supercraft.client.ClientProxy", serverSide="com.voidzm.supercraft.CommonProxy")
 	public static CommonProxy proxy;
 	
-	public static GuiScreen mainMenu;
-	
 	public static final BlockHandler blockHandler = new BlockHandler();
 	public static final ItemHandler itemHandler = new ItemHandler();
 	public static final CraftingHandler craftingHandler = new CraftingHandler();
 	public static final BiomeHandler biomeHandler = new BiomeHandler();
 	public static final FuelHandler fuelHandler = new FuelHandler();
-	public static final SCTickHandler tickHandler = new SCTickHandler();
 	
 	public static EnumToolMaterial aluminumTool = EnumHelper.addToolMaterial("aluminum", 1, 2343, 4.0F, 1, 1);
 	
@@ -76,9 +73,9 @@ public class Supercraft {
 	
 	@Init
 	public void load(FMLInitializationEvent event) {
-		proxy.registerRenderers();
-		mainMenu = new SCMainMenu();
 		blockHandler.populateAllAndInitialize();
+		proxy.registerRenderers();
+		proxy.initializeGui();
 		itemHandler.populateAllAndInitialize();
 		craftingHandler.populateAllAndInitialize();
 		biomeHandler.populateAllAndInitialize();
@@ -86,7 +83,6 @@ public class Supercraft {
 		//biomeHandler.removeVanillaBiomes(); // For biome testing only.
 		
 		GameRegistry.registerFuelHandler(fuelHandler);
-		TickRegistry.registerTickHandler(tickHandler, Side.CLIENT);
 		MinecraftForge.EVENT_BUS.register(new EventBonemeal());
 		GameRegistry.registerWorldGenerator(new WorldGenOre());
 		GameRegistry.registerTileEntity(TileEntityConduit.class, "tileEntityConduit");

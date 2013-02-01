@@ -33,7 +33,7 @@ public class SCMainMenu extends GuiScreen {
 	public SCMainMenu() {
 		buttons = new ArrayList<SCGuiButton>();
 		try {
-			background = ImageIO.read(this.getClass().getResourceAsStream("/supercraft/img/bg.png"));
+			background = ImageIO.read(this.getClass().getResourceAsStream("/com/voidzm/supercraft/img/bg.png"));
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -88,13 +88,13 @@ public class SCMainMenu extends GuiScreen {
 	}
 	
 	public void drawScreen(int mouseX, int mouseY, float tick) {
-		GL11.glBindTexture(GL11.GL_TEXTURE_2D, this.mc.renderEngine.getTexture("/supercraft/img/bg.png"));
+		GL11.glBindTexture(GL11.GL_TEXTURE_2D, this.mc.renderEngine.getTexture("/com/voidzm/supercraft/img/bg.png"));
 		GL11.glColor4f(1.0F, 1.0F, 1.0F, 1.0F);
 		int[] locs = this.calcPositions();
 		this.drawTexture(locs[0], locs[1], locs[2], locs[3]);
 		this.drawRect(0, 0, 150, height, 0x88000000);
 		this.drawRect(150, 0, 151, height, 0xAA000000);
-		GL11.glBindTexture(GL11.GL_TEXTURE_2D, this.mc.renderEngine.getTexture("/supercraft/img/minecraft.png"));
+		GL11.glBindTexture(GL11.GL_TEXTURE_2D, this.mc.renderEngine.getTexture("/com/voidzm/supercraft/img/minecraft.png"));
 		GL11.glColor4f(1.0F, 1.0F, 1.0F, 1.0F);
 		this.drawTexture(22, 22, 106, 16);
 		for(SCGuiButton iterated : buttons) {

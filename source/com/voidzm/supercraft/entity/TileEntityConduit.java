@@ -92,7 +92,7 @@ public class TileEntityConduit extends TileEntity {
 		}
 		if(shouldUpdateRender && !this.worldObj.playerEntities.isEmpty()) {
 			if(FMLCommonHandler.instance().getEffectiveSide() == Side.SERVER) {
-				this.dispatchConduitRenderPacket(this.xCoord, this.yCoord, this.zCoord, this.powerLevel, this.conduitType);
+				if(this.worldObj.blockHasTileEntity(this.xCoord, this.yCoord, this.zCoord)) this.dispatchConduitRenderPacket(this.xCoord, this.yCoord, this.zCoord, this.powerLevel, this.conduitType);
 			}	
 			shouldUpdateRender = false;
 		}

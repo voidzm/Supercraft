@@ -73,7 +73,7 @@ public class PacketHandler implements IPacketHandler {
 		World world = player.worldObj;
 		TileEntityConduit te = (TileEntityConduit)world.getBlockTileEntity(x, y, z);
 		if(te == null) {
-			System.out.println("[Supercraft] Failed to find a TileEntity for Elinvar propagation!");
+			System.out.println("[Supercraft] Could not find a client-side TileEntity at {"+x+", "+y+", "+z+"} for propagation.");
 			return;
 		}
 		te.setPower(newVal);
@@ -83,7 +83,8 @@ public class PacketHandler implements IPacketHandler {
 		World world = player.worldObj;
 		TileEntityConduit te = (TileEntityConduit)world.getBlockTileEntity(x, y, z);
 		if(te == null) {
-			System.out.println("[Supercraft] Failed to find a TileEntityConduit on the client to update renderers!");
+			// This is sometimes a legitimate error, but usually if the chunk a CTE is in hasn't fully loaded yet,
+			// this packet will arrive on the clients before the chunk data and be erroneously interpreted as a missing TE.
 			return;
 		}
 		te.setPower(correctVal);

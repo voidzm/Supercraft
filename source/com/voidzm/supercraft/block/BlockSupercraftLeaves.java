@@ -13,6 +13,7 @@ import java.util.Random;
 import com.voidzm.supercraft.CommonProxy;
 import com.voidzm.supercraft.handler.BlockHandler;
 
+import cpw.mods.fml.common.FMLCommonHandler;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 import net.minecraft.block.Block;
@@ -36,7 +37,7 @@ public class BlockSupercraftLeaves extends BlockLeavesBase implements IShearable
 		super(par1, textureIndex, Material.leaves, false);
 		this.setTickRandomly(true);
 		this.setCreativeTab(CreativeTabs.tabDecorations);
-		this.setGraphicsLevel(true);
+		if(FMLCommonHandler.instance().getEffectiveSide() == Side.CLIENT) this.setGraphics();
 		this.setHardness(0.2F);
 		this.setLightOpacity(1);
 		this.setStepSound(Block.soundGrassFootstep);
@@ -54,6 +55,11 @@ public class BlockSupercraftLeaves extends BlockLeavesBase implements IShearable
 	@SideOnly(Side.CLIENT)
 	public int getRenderColor(int par1) {
 		return ColorizerFoliage.getFoliageColorBasic();
+	}
+	
+	@SideOnly(Side.CLIENT)
+	private void setGraphics() {
+		this.setGraphicsLevel(true);
 	}
 	
 	public int colorMultiplier(IBlockAccess par1IBlockAccess, int par2, int par3, int par4) {

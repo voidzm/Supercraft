@@ -83,6 +83,11 @@ public class BlockConduit extends BlockContainer {
 		this.setBlockBounds(lowX, lowY, lowZ, highX, highY, highZ);
 	}
 	
+	public AxisAlignedBB getCollisionBoundingBoxFromPool(World par1World, int par2, int par3, int par4) {
+		this.setBlockBoundsBasedOnState(par1World, par2, par3, par4);
+		return super.getCollisionBoundingBoxFromPool(par1World, par2, par3, par4);
+	}
+	
 	public void onBlockAdded(World par1World, int par2, int par3, int par4) {
 		this.performElinvarUpdateChecks(par1World, par2, par3, par4, 0);
 	}
@@ -186,7 +191,7 @@ public class BlockConduit extends BlockContainer {
 	}
 
 	public boolean shouldSideBeRendered(IBlockAccess par1IBlockAccess, int par2, int par3, int par4, int par5) {
-		return true;
+		return false;
 	}
 	
 	public boolean isOpaqueCube() {
@@ -216,7 +221,8 @@ public class BlockConduit extends BlockContainer {
 	}
 	
 	public int getRenderType() {
-		return -1;
+		if(FMLCommonHandler.instance().getEffectiveSide() == Side.SERVER) return -1; // Added this to stop crashing the server.
+		else return ClientProxy.conduitInvRenderID;
 	}
 	
 	public static boolean isGenerator(int blockID) {
