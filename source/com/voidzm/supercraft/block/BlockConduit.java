@@ -9,6 +9,7 @@ package com.voidzm.supercraft.block;
 import java.io.ByteArrayOutputStream;
 import java.io.DataOutputStream;
 import java.util.Iterator;
+import java.util.Random;
 
 import com.voidzm.supercraft.CommonProxy;
 import com.voidzm.supercraft.client.ClientProxy;
@@ -25,6 +26,8 @@ import net.minecraft.block.Block;
 import net.minecraft.block.BlockContainer;
 import net.minecraft.block.material.Material;
 import net.minecraft.creativetab.CreativeTabs;
+import net.minecraft.entity.Entity;
+import net.minecraft.entity.item.EntityItem;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.inventory.IInventory;
 import net.minecraft.network.packet.Packet250CustomPayload;
@@ -44,11 +47,25 @@ public class BlockConduit extends BlockContainer {
 		this.setCreativeTab(CreativeTabs.tabBlock);
 		this.setLightOpacity(0);
 		this.useNeighborBrightness[par1] = true;
+		this.setTickRandomly(true);
 	}
 	
 	@Override
 	public String getTextureFile() {
 		return CommonProxy.BLOCKS_PNG;
+	}
+	
+	public void updateTick(World par1World, int par2, int par3, int par4, Random par5Random) {
+		if(!par1World.isRemote) {
+			super.updateTick(par1World, par2, par3, par4, par5Random);
+			TileEntityConduit te = (TileEntityConduit)par1World.getBlockTileEntity(par2, par3, par4);
+			if(te == null) return;
+			if(te.powerLevel() > te.limitForType(te.conduitType())) {
+				par1World.removeBlockTileEntity(par2, par3, par4);
+				par1World.setBlockWithNotify(par2, par3, par4, 0);
+				par1World.createExplosion(new EntityItem(par1World), (double)par2, (double)par3, (double)par4, 1.0F, true);
+			}
+		}
 	}
 	
 	public boolean getBlocksMovement(IBlockAccess par1IBlockAccess, int par2, int par3, int par4) {

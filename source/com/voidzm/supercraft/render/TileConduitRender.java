@@ -30,6 +30,9 @@ import net.minecraftforge.common.MinecraftForge;
 
 public class TileConduitRender extends TileEntitySpecialRenderer {
 
+	public static int normalPowerLineTexture = 14;
+	public static int dangerPowerLineTexture = 15;
+	
 	@Override
 	public void renderTileEntityAt(TileEntity var1, double var2, double var4, double var6, float var8) {
 		this.render(var1, var2, var4, var6, var8);
@@ -51,6 +54,7 @@ public class TileConduitRender extends TileEntitySpecialRenderer {
 			int iz = var1.zCoord;
 			World world = var1.worldObj;
 			Block targetBlock = Block.blocksList[world.getBlockId(ix, iy, iz)];
+			if(targetBlock == null) return;
 			if(this.isConduitConnectable(world.getBlockId(ix+1, iy, iz))) {
 				maxX = 1.0F;
 			}
@@ -80,7 +84,9 @@ public class TileConduitRender extends TileEntitySpecialRenderer {
 			//System.out.println("Comparing " + ((TileEntityConduit)var1).powerLevel() + " to 0.");
 			
 			if(((TileEntityConduit)var1).powerLevel() != 0) {
-				int texIndex = BlockHandler.elinvarBlock.blockIndexInTexture;
+				int texIndex;
+				if(((TileEntityConduit)var1).powerLevel() <= TileEntityConduit.limitForType(((TileEntityConduit)var1).conduitType())) texIndex = this.normalPowerLineTexture;
+				else texIndex = this.dangerPowerLineTexture;
 				this.renderCuboidInGlobalCoords(tes, x+minX, y+0.4375, z+0.4375, (maxX-minX), 0.125, 0.125, texIndex);
 				if(minZ != 0.4375F) {
 					this.renderCuboidInGlobalCoords(tes, x+0.4375, y+0.4375, z, 0.125, 0.125, 0.4375, texIndex);

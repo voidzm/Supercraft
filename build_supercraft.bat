@@ -11,9 +11,10 @@ call reobfuscate.bat
 echo Source compiled and obfuscated.
 cd ..\..\supercraft
 XCOPY resources\com\voidzm\supercraft\img ..\forge\mcp\reobf\minecraft\com\voidzm\supercraft\img /E /I /Q
+XCOPY mcmod.info ..\forge\mcp\reobf\minecraft\mcmod.info /E /I /Q
 echo Added resources and assets to artifact.
 RMDIR /S /Q ..\forge\mcp\src
 cd ..\forge\mcp
 REN src-backup src
-echo ----- Build complete! Artifact is located at forge\mcp\reobf. -----
+echo ----- Build complete! Artifact is located at forge\mcp\reobf\minecraft. -----
 PAUSE

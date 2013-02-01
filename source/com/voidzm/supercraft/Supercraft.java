@@ -48,7 +48,7 @@ import cpw.mods.fml.common.registry.LanguageRegistry;
 import cpw.mods.fml.common.registry.TickRegistry;
 import cpw.mods.fml.relauncher.Side;
 
-@Mod(modid="Supercraft", name="Supercraft", version="0.1.0")
+@Mod(modid="Supercraft", name="Supercraft", version="0.2.0")
 @NetworkMod(clientSideRequired=true, serverSideRequired=false, channels={"SCElinvar"}, packetHandler=PacketHandler.class)
 public class Supercraft {
 
