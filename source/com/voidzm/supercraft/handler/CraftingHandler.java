@@ -39,6 +39,8 @@ public class CraftingHandler {
 	private static ItemStack copperChunk;
 	private static ItemStack copper;
 	private static ItemStack copperBlock;
+	private static ItemStack silver;
+	private static ItemStack silverBlock;
 	private static ItemStack elinvarDust;
 	private static ItemStack elinvarBlock;
 	
@@ -69,6 +71,8 @@ public class CraftingHandler {
 		copperChunk = new ItemStack(ItemHandler.copperChunk);
 		copper = new ItemStack(ItemHandler.copperIngot);
 		copperBlock = new ItemStack(BlockHandler.copperBlock);
+		silver = new ItemStack(ItemHandler.silverIngot);
+		silverBlock = new ItemStack(BlockHandler.silverBlock);
 		elinvarDust = new ItemStack(ItemHandler.elinvarDust);
 		elinvarBlock = new ItemStack(BlockHandler.elinvarBlock);
 	}
@@ -109,6 +113,17 @@ public class CraftingHandler {
 		
 		GameRegistry.addRecipe(new ItemStack(ItemHandler.copperIngot), "aaa", "aaa", "aaa", 'a', copperChunk);
 		GameRegistry.addRecipe(new ItemStack(BlockHandler.copperBlock), "aaa", "aaa", "aaa", 'a', copper);
+		GameRegistry.addRecipe(new ItemStack(ItemHandler.copperPickaxe), "aaa", " b ", " b ", 'a', copper, 'b', stick);
+		GameRegistry.addRecipe(new ItemStack(ItemHandler.copperSword), "a", "a", "b", 'a', copper, 'b', stick);
+		GameRegistry.addRecipe(new ItemStack(ItemHandler.copperShovel), "a", "b", "b", 'a', copper, 'b', stick);
+		GameRegistry.addRecipe(new ItemStack(ItemHandler.copperAxe), "aa", "ab", " b", 'a', copper, 'b', stick);
+		GameRegistry.addRecipe(new ItemStack(ItemHandler.copperAxe), "aa", "ba", "b ", 'a', copper, 'b', stick);
+		GameRegistry.addRecipe(new ItemStack(ItemHandler.copperHoe), "aa", " b", " b", 'a', copper, 'b', stick);
+		GameRegistry.addRecipe(new ItemStack(ItemHandler.copperHoe), "aa", "b ", "b ", 'a', copper, 'b', stick);
+		
+		// Aluminum Material
+		
+		GameRegistry.addRecipe(new ItemStack(BlockHandler.silverBlock), "aaa", "aaa", "aaa", 'a', silver);
 		
 		// Elinvar Material
 		
@@ -141,6 +156,10 @@ public class CraftingHandler {
 		GameRegistry.addShapelessRecipe(new ItemStack(ItemHandler.copperChunk, 9), copper);
 		GameRegistry.addShapelessRecipe(new ItemStack(ItemHandler.copperIngot, 9), copperBlock);
 		
+		// Silver Material
+		
+		GameRegistry.addShapelessRecipe(new ItemStack(ItemHandler.silverIngot, 9), silverBlock);
+		
 		// Elinvar Material
 		
 		GameRegistry.addShapelessRecipe(new ItemStack(ItemHandler.elinvarDust, 9), elinvarBlock);
@@ -157,6 +176,10 @@ public class CraftingHandler {
 		
 		GameRegistry.addSmelting(BlockHandler.copperOre.blockID, new ItemStack(ItemHandler.copperIngot, 1), 0.4F);
 		
+		// Silver Material
+		
+		GameRegistry.addSmelting(BlockHandler.silverOre.blockID, new ItemStack(ItemHandler.silverIngot, 1), 0.5F);
+		
 		// Tantalum Material -- TEMPORARY until Crystalline Extracter
 		
 		GameRegistry.addSmelting(BlockHandler.tantalumOre.blockID, new ItemStack(ItemHandler.tantalumCrystal, 1), 1.0F); // Temporary until Elinvar machines.
@@ -167,6 +190,10 @@ public class CraftingHandler {
 		CraftingManager.getInstance().getRecipeList().add(new ShapedOreRecipe(new ItemStack(BlockHandler.woodenConduit, 8), new Object[]{"aba", "ccc", "aba", Character.valueOf('a'), "plankWood", Character.valueOf('b'), Block.glass, Character.valueOf('c'), ItemHandler.elinvarDust}));
 		CraftingManager.getInstance().getRecipeList().add(new ShapedOreRecipe(new ItemStack(BlockHandler.stoneConduit, 8), new Object[]{"aba", "ccc", "aba", Character.valueOf('a'), Block.stone, Character.valueOf('b'), Block.glass, Character.valueOf('c'), ItemHandler.elinvarDust}));
 		CraftingManager.getInstance().getRecipeList().add(new ShapedOreRecipe(new ItemStack(BlockHandler.ironConduit, 8), new Object[]{"aba", "ccc", "aba", Character.valueOf('a'), Item.ingotIron, Character.valueOf('b'), Block.glass, Character.valueOf('c'), ItemHandler.elinvarDust}));
+		CraftingManager.getInstance().getRecipeList().add(new ShapedOreRecipe(new ItemStack(BlockHandler.copperConduit, 8), new Object[]{"aba", "ccc", "aba", Character.valueOf('a'), "ingotCopper", Character.valueOf('b'), Block.glass, Character.valueOf('c'), ItemHandler.elinvarDust}));
+		CraftingManager.getInstance().getRecipeList().add(new ShapedOreRecipe(new ItemStack(BlockHandler.aluminumConduit, 8), new Object[]{"aba", "ccc", "aba", Character.valueOf('a'), "ingotAluminum", Character.valueOf('b'), Block.glass, Character.valueOf('c'), ItemHandler.elinvarDust}));
+		CraftingManager.getInstance().getRecipeList().add(new ShapedOreRecipe(new ItemStack(BlockHandler.silverConduit, 8), new Object[]{"aba", "ccc", "aba", Character.valueOf('a'), "ingotSilver", Character.valueOf('b'), Block.glass, Character.valueOf('c'), ItemHandler.elinvarDust}));
+		CraftingManager.getInstance().getRecipeList().add(new ShapedOreRecipe(new ItemStack(BlockHandler.goldenConduit, 8), new Object[]{"aba", "ccc", "aba", Character.valueOf('a'), Item.ingotGold, Character.valueOf('b'), Block.glass, Character.valueOf('c'), ItemHandler.elinvarDust}));
 	}
 	
 }

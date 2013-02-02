@@ -65,6 +65,7 @@ public class Supercraft {
 	public static final FuelHandler fuelHandler = new FuelHandler();
 	
 	public static EnumToolMaterial aluminumTool = EnumHelper.addToolMaterial("aluminum", 1, 2343, 4.0F, 1, 1);
+	public static EnumToolMaterial copperTool = EnumHelper.addToolMaterial("copper", 2, 593, 9.0F, 2, 10);
 	
 	@PreInit
 	public void preInit(FMLPreInitializationEvent event) {

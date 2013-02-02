@@ -10,28 +10,8 @@ package com.voidzm.supercraft.handler;
 
 import java.util.ArrayList;
 
-import com.voidzm.supercraft.block.BlockAluminum;
-import com.voidzm.supercraft.block.BlockAluminumOre;
-import com.voidzm.supercraft.block.BlockCoal;
-import com.voidzm.supercraft.block.BlockConduit;
-import com.voidzm.supercraft.block.BlockCopper;
-import com.voidzm.supercraft.block.BlockCopperOre;
-import com.voidzm.supercraft.block.BlockElinvar;
-import com.voidzm.supercraft.block.BlockElinvarOre;
-import com.voidzm.supercraft.block.BlockImpactGlass;
-import com.voidzm.supercraft.block.BlockIronConduit;
-import com.voidzm.supercraft.block.BlockOrnateGlass;
-import com.voidzm.supercraft.block.BlockReinforcedGlass;
-import com.voidzm.supercraft.block.BlockStoneConduit;
-import com.voidzm.supercraft.block.BlockSupercraftLeaves;
-import com.voidzm.supercraft.block.BlockSupercraftLog;
-import com.voidzm.supercraft.block.BlockSupercraftPlanks;
-import com.voidzm.supercraft.block.BlockSupercraftSapling;
-import com.voidzm.supercraft.block.BlockSupercraftStairs;
-import com.voidzm.supercraft.block.BlockSupercraftWoodSlab;
-import com.voidzm.supercraft.block.BlockTantalumOre;
-import com.voidzm.supercraft.block.BlockTemperedGlass;
-import com.voidzm.supercraft.block.BlockWoodenConduit;
+import com.voidzm.supercraft.block.*;
+import com.voidzm.supercraft.client.ClientProxy;
 import com.voidzm.supercraft.item.ItemSupercraftLeaves;
 import com.voidzm.supercraft.item.ItemSupercraftLog;
 import com.voidzm.supercraft.item.ItemSupercraftPlanks;
@@ -76,15 +56,23 @@ public class BlockHandler {
 	public static Block elinvarOre;
 	public static Block elinvarBlock;
 	
+	public static Block silverOre;
+	public static Block silverBlock;
+	
 	public static Block woodenConduit;
 	public static Block stoneConduit;
 	public static Block ironConduit;
+	public static Block copperConduit;
+	public static Block aluminumConduit;
+	public static Block silverConduit;
+	public static Block goldenConduit;
 	
 	public void populateAllAndInitialize() {
 		this.createBlocks();
 		this.populateLanguage();
 		this.registerBlocks();
 		this.initializeLanguage();
+		this.overrideDefaultTextures();
 		System.out.println("[Supercraft] " + languageHandler.count() + " blocks added.");
 	}
 	
@@ -135,6 +123,11 @@ public class BlockHandler {
 		languageHandler.add(copperOre, "Copper Ore");
 		languageHandler.add(copperBlock, "Block of Copper");
 		
+		// Silver Material
+		
+		languageHandler.add(silverOre, "Silver Ore");
+		languageHandler.add(silverBlock, "Block of Silver");
+		
 		// Elinvar Material
 		
 		languageHandler.add(elinvarOre, "Elinvar Ore");
@@ -145,6 +138,10 @@ public class BlockHandler {
 		languageHandler.add(woodenConduit, "Wooden Conduit");
 		languageHandler.add(stoneConduit, "Stone Conduit");
 		languageHandler.add(ironConduit, "Iron Conduit");
+		languageHandler.add(copperConduit, "Copper Conduit");
+		languageHandler.add(aluminumConduit, "Aluminum Conduit");
+		languageHandler.add(silverConduit, "Silver Conduit");
+		languageHandler.add(goldenConduit, "Golden Conduit");
 		
 	}
 	
@@ -185,6 +182,11 @@ public class BlockHandler {
 		copperOre = new BlockCopperOre(1619);
 		copperBlock = new BlockCopper(1620);
 		
+		// Silver Material
+		
+		silverOre = new BlockSilverOre(1623);
+		silverBlock = new BlockSilver(1624);
+		
 		// Elinvar Material
 		
 		elinvarOre = new BlockElinvarOre(1614);
@@ -195,6 +197,10 @@ public class BlockHandler {
 		woodenConduit = new BlockWoodenConduit(1616);
 		stoneConduit = new BlockStoneConduit(1617);
 		ironConduit = new BlockIronConduit(1618);
+		copperConduit = new BlockCopperConduit(1621);
+		aluminumConduit = new BlockAluminumConduit(1622);
+		silverConduit = new BlockSilverConduit(1625);
+		goldenConduit = new BlockGoldenConduit(1626);
 		
 	}
 	
@@ -239,6 +245,11 @@ public class BlockHandler {
 		GameRegistry.registerBlock(copperOre, "copperOre");
 		GameRegistry.registerBlock(copperBlock, "copperBlock");
 		
+		// Silver Material
+		
+		GameRegistry.registerBlock(silverOre, "silverOre");
+		GameRegistry.registerBlock(silverBlock, "silverBlock");
+		
 		// Elinvar Material
 		
 		GameRegistry.registerBlock(elinvarOre, "elinvarOre");
@@ -249,6 +260,10 @@ public class BlockHandler {
 		GameRegistry.registerBlock(woodenConduit, "woodenConduit");
 		GameRegistry.registerBlock(stoneConduit, "stoneConduit");
 		GameRegistry.registerBlock(ironConduit, "ironConduit");
+		GameRegistry.registerBlock(copperConduit, "copperConduit");
+		GameRegistry.registerBlock(aluminumConduit, "aluminumConduit");
+		GameRegistry.registerBlock(silverConduit, "silverConduit");
+		GameRegistry.registerBlock(goldenConduit, "goldenConduit");
 		
 	}
 	
@@ -309,10 +324,15 @@ public class BlockHandler {
 		
 		LanguageRegistry.addName(tantalumOre, (String)this.languageHandler.getString(tantalumOre));
 		
-		// Copper Ore
+		// Copper Material
 		
 		LanguageRegistry.addName(copperOre, (String)this.languageHandler.getString(copperOre));
 		LanguageRegistry.addName(copperBlock, (String)this.languageHandler.getString(copperBlock));
+		
+		// Silver Material
+		
+		LanguageRegistry.addName(silverOre, (String)this.languageHandler.getString(silverOre));
+		LanguageRegistry.addName(silverBlock, (String)this.languageHandler.getString(silverBlock));
 		
 		// Elinvar Material
 		
@@ -324,7 +344,18 @@ public class BlockHandler {
 		LanguageRegistry.addName(woodenConduit, (String)this.languageHandler.getString(woodenConduit));
 		LanguageRegistry.addName(stoneConduit, (String)this.languageHandler.getString(stoneConduit));
 		LanguageRegistry.addName(ironConduit, (String)this.languageHandler.getString(ironConduit));
+		LanguageRegistry.addName(copperConduit, (String)this.languageHandler.getString(copperConduit));
+		LanguageRegistry.addName(aluminumConduit, (String)this.languageHandler.getString(aluminumConduit));
+		LanguageRegistry.addName(silverConduit, (String)this.languageHandler.getString(silverConduit));
+		LanguageRegistry.addName(goldenConduit, (String)this.languageHandler.getString(goldenConduit));
 		
+	}
+	
+	private void overrideDefaultTextures() {
+		Block.blockGold.setTextureFile(ClientProxy.BLOCKS_PNG);
+		Block.blockGold.blockIndexInTexture = 52;
+		Block.blockDiamond.setTextureFile(ClientProxy.BLOCKS_PNG);
+		Block.blockDiamond.blockIndexInTexture = 53;
 	}
 	
 }

@@ -8,18 +8,7 @@
 
 package com.voidzm.supercraft.handler;
 
-import com.voidzm.supercraft.item.ItemAluminumAxe;
-import com.voidzm.supercraft.item.ItemAluminumHoe;
-import com.voidzm.supercraft.item.ItemAluminumIngot;
-import com.voidzm.supercraft.item.ItemAluminumPickaxe;
-import com.voidzm.supercraft.item.ItemAluminumSaber;
-import com.voidzm.supercraft.item.ItemAluminumShovel;
-import com.voidzm.supercraft.item.ItemCopperChunk;
-import com.voidzm.supercraft.item.ItemCopperIngot;
-import com.voidzm.supercraft.item.ItemDiamondShard;
-import com.voidzm.supercraft.item.ItemElinvarDust;
-import com.voidzm.supercraft.item.ItemIronScrap;
-import com.voidzm.supercraft.item.ItemTantalumCrystal;
+import com.voidzm.supercraft.item.*;
 
 import cpw.mods.fml.common.registry.GameRegistry;
 import cpw.mods.fml.common.registry.LanguageRegistry;
@@ -45,6 +34,13 @@ public class ItemHandler {
 	
 	public static Item copperIngot;
 	public static Item copperChunk;
+	public static Item copperPickaxe;
+	public static Item copperSword;
+	public static Item copperShovel;
+	public static Item copperAxe;
+	public static Item copperHoe;
+	
+	public static Item silverIngot;
 	
 	public static Item elinvarDust;
 	
@@ -80,6 +76,15 @@ public class ItemHandler {
 		
 		languageHandler.add(copperIngot, "Copper Ingot");
 		languageHandler.add(copperChunk, "Copper Chunk");
+		languageHandler.add(copperPickaxe, "Copper Pickaxe");
+		languageHandler.add(copperSword, "Copper Sword");
+		languageHandler.add(copperShovel, "Copper Shovel");
+		languageHandler.add(copperAxe, "Copper Axe");
+		languageHandler.add(copperHoe, "Copper Hoe");
+		
+		// Silver Material
+		
+		languageHandler.add(silverIngot, "Silver Ingot");
 		
 		// Elinvar Material
 		
@@ -111,6 +116,15 @@ public class ItemHandler {
 		
 		copperIngot = new ItemCopperIngot(23010);
 		copperChunk = new ItemCopperChunk(23011);
+		copperPickaxe = new ItemCopperPickaxe(23012);
+		copperSword = new ItemCopperSword(23013);
+		copperShovel = new ItemCopperShovel(23014);
+		copperAxe = new ItemCopperAxe(23015);
+		copperHoe = new ItemCopperHoe(23016);
+		
+		// Silver Material
+		
+		silverIngot = new ItemSilverIngot(23017);
 		
 		// Elinvar Material
 		
@@ -142,6 +156,15 @@ public class ItemHandler {
 		
 		GameRegistry.registerItem(copperIngot, "copperIngot");
 		GameRegistry.registerItem(copperChunk, "copperChunk");
+		GameRegistry.registerItem(copperPickaxe, "copperPickaxe");
+		GameRegistry.registerItem(copperSword, "copperSword");
+		GameRegistry.registerItem(copperShovel, "copperShovel");
+		GameRegistry.registerItem(copperAxe, "copperAxe");
+		GameRegistry.registerItem(copperHoe, "copperHoe");
+		
+		// Silver Material
+		
+		GameRegistry.registerItem(silverIngot, "silverIngot");
 		
 		// Elinvar Material
 		
@@ -151,6 +174,7 @@ public class ItemHandler {
 		
 		OreDictionary.registerOre("ingotAluminum", aluminumIngot);
 		OreDictionary.registerOre("ingotCopper", copperIngot);
+		OreDictionary.registerOre("ingotSilver", silverIngot);
 		
 	}
 	
@@ -178,6 +202,15 @@ public class ItemHandler {
 		
 		LanguageRegistry.addName(copperIngot, (String)this.languageHandler.getString(copperIngot));
 		LanguageRegistry.addName(copperChunk, (String)this.languageHandler.getString(copperChunk));
+		LanguageRegistry.addName(copperPickaxe, (String)this.languageHandler.getString(copperPickaxe));
+		LanguageRegistry.addName(copperSword, (String)this.languageHandler.getString(copperSword));
+		LanguageRegistry.addName(copperShovel, (String)this.languageHandler.getString(copperShovel));
+		LanguageRegistry.addName(copperAxe, (String)this.languageHandler.getString(copperAxe));
+		LanguageRegistry.addName(copperHoe, (String)this.languageHandler.getString(copperHoe));
+		
+		// Silver Material
+		
+		LanguageRegistry.addName(silverIngot, (String)this.languageHandler.getString(silverIngot));
 		
 		// Elinvar Material
 		

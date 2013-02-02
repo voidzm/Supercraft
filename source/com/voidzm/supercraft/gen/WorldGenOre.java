@@ -65,6 +65,13 @@ public class WorldGenOre implements IWorldGenerator {
 			int rz = (cz * 16) + rand.nextInt(16);
 			new WorldGenMinable(BlockHandler.copperOre.blockID, 4).generate(world, rand, rx, ry, rz);
 		}
+		ky = 0; // Silver
+		for(int i = 0; i < 3; i++) {
+			int rx = (cx * 16) + rand.nextInt(16);
+			int ry = ky + rand.nextInt(10);
+			int rz = (cz * 16) + rand.nextInt(16);
+			new WorldGenMinable(BlockHandler.silverOre.blockID, 6).generate(world, rand, rx, ry, rz);
+		}
 	}
 	
 	private void generateEnd() {
