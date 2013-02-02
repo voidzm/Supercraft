@@ -36,6 +36,9 @@ public class CraftingHandler {
 	private static ItemStack olivePlanks;
 	private static ItemStack aluminum;
 	private static ItemStack aluminumBlock;
+	private static ItemStack copperChunk;
+	private static ItemStack copper;
+	private static ItemStack copperBlock;
 	private static ItemStack elinvarDust;
 	private static ItemStack elinvarBlock;
 	
@@ -63,6 +66,9 @@ public class CraftingHandler {
 		olivePlanks = new ItemStack(BlockHandler.supercraftPlanks, 1, 0);
 		aluminum = new ItemStack(ItemHandler.aluminumIngot);
 		aluminumBlock = new ItemStack(BlockHandler.aluminumBlock);
+		copperChunk = new ItemStack(ItemHandler.copperChunk);
+		copper = new ItemStack(ItemHandler.copperIngot);
+		copperBlock = new ItemStack(BlockHandler.copperBlock);
 		elinvarDust = new ItemStack(ItemHandler.elinvarDust);
 		elinvarBlock = new ItemStack(BlockHandler.elinvarBlock);
 	}
@@ -99,6 +105,11 @@ public class CraftingHandler {
 		GameRegistry.addRecipe(new ItemStack(ItemHandler.aluminumHoe), "aa", " b", " b", 'a', aluminum, 'b', stick);
 		GameRegistry.addRecipe(new ItemStack(ItemHandler.aluminumHoe), "aa", "b ", "b ", 'a', aluminum, 'b', stick);
 		
+		// Copper Material
+		
+		GameRegistry.addRecipe(new ItemStack(ItemHandler.copperIngot), "aaa", "aaa", "aaa", 'a', copperChunk);
+		GameRegistry.addRecipe(new ItemStack(BlockHandler.copperBlock), "aaa", "aaa", "aaa", 'a', copper);
+		
 		// Elinvar Material
 		
 		GameRegistry.addRecipe(new ItemStack(BlockHandler.elinvarBlock), "aaa", "aaa", "aaa", 'a', elinvarDust);
@@ -125,6 +136,11 @@ public class CraftingHandler {
 		
 		GameRegistry.addShapelessRecipe(new ItemStack(ItemHandler.aluminumIngot, 9), aluminumBlock);
 		
+		// Copper Material
+		
+		GameRegistry.addShapelessRecipe(new ItemStack(ItemHandler.copperChunk, 9), copper);
+		GameRegistry.addShapelessRecipe(new ItemStack(ItemHandler.copperIngot, 9), copperBlock);
+		
 		// Elinvar Material
 		
 		GameRegistry.addShapelessRecipe(new ItemStack(ItemHandler.elinvarDust, 9), elinvarBlock);
@@ -137,7 +153,11 @@ public class CraftingHandler {
 		
 		GameRegistry.addSmelting(BlockHandler.aluminumOre.blockID, new ItemStack(ItemHandler.aluminumIngot, 1), 0.4F);
 		
-		// Tantalum Material -- TEMPORARY
+		// Copper Material
+		
+		GameRegistry.addSmelting(BlockHandler.copperOre.blockID, new ItemStack(ItemHandler.copperIngot, 1), 0.4F);
+		
+		// Tantalum Material -- TEMPORARY until Crystalline Extracter
 		
 		GameRegistry.addSmelting(BlockHandler.tantalumOre.blockID, new ItemStack(ItemHandler.tantalumCrystal, 1), 1.0F); // Temporary until Elinvar machines.
 		

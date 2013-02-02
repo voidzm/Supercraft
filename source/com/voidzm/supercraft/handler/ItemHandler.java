@@ -14,6 +14,8 @@ import com.voidzm.supercraft.item.ItemAluminumIngot;
 import com.voidzm.supercraft.item.ItemAluminumPickaxe;
 import com.voidzm.supercraft.item.ItemAluminumSaber;
 import com.voidzm.supercraft.item.ItemAluminumShovel;
+import com.voidzm.supercraft.item.ItemCopperChunk;
+import com.voidzm.supercraft.item.ItemCopperIngot;
 import com.voidzm.supercraft.item.ItemDiamondShard;
 import com.voidzm.supercraft.item.ItemElinvarDust;
 import com.voidzm.supercraft.item.ItemIronScrap;
@@ -40,6 +42,10 @@ public class ItemHandler {
 	public static Item aluminumHoe;
 	
 	public static Item tantalumCrystal;
+	
+	public static Item copperIngot;
+	public static Item copperChunk;
+	
 	public static Item elinvarDust;
 	
 	public void populateAllAndInitialize() {
@@ -70,6 +76,11 @@ public class ItemHandler {
 		
 		languageHandler.add(tantalumCrystal, "Tantalum Crystal");
 		
+		// Copper Material
+		
+		languageHandler.add(copperIngot, "Copper Ingot");
+		languageHandler.add(copperChunk, "Copper Chunk");
+		
 		// Elinvar Material
 		
 		languageHandler.add(elinvarDust, "Elinvar Dust");
@@ -95,6 +106,11 @@ public class ItemHandler {
 		// Tantalum Material
 		
 		tantalumCrystal = new ItemTantalumCrystal(23008);
+		
+		// Copper Material
+		
+		copperIngot = new ItemCopperIngot(23010);
+		copperChunk = new ItemCopperChunk(23011);
 		
 		// Elinvar Material
 		
@@ -122,13 +138,19 @@ public class ItemHandler {
 		
 		GameRegistry.registerItem(tantalumCrystal, "tantalumCrystal");
 		
+		// Copper Material
+		
+		GameRegistry.registerItem(copperIngot, "copperIngot");
+		GameRegistry.registerItem(copperChunk, "copperChunk");
+		
 		// Elinvar Material
 		
 		GameRegistry.registerItem(elinvarDust, "elinvarDust");
 		
 		// Ore Dictionary references
 		
-		OreDictionary.registerOre("aluminumIngot", aluminumIngot);
+		OreDictionary.registerOre("ingotAluminum", aluminumIngot);
+		OreDictionary.registerOre("ingotCopper", copperIngot);
 		
 	}
 	
@@ -151,6 +173,11 @@ public class ItemHandler {
 		// Tantalum Material
 		
 		LanguageRegistry.addName(tantalumCrystal, (String)this.languageHandler.getString(tantalumCrystal));
+		
+		// Copper Material
+		
+		LanguageRegistry.addName(copperIngot, (String)this.languageHandler.getString(copperIngot));
+		LanguageRegistry.addName(copperChunk, (String)this.languageHandler.getString(copperChunk));
 		
 		// Elinvar Material
 		

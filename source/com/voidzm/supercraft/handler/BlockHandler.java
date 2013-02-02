@@ -14,6 +14,8 @@ import com.voidzm.supercraft.block.BlockAluminum;
 import com.voidzm.supercraft.block.BlockAluminumOre;
 import com.voidzm.supercraft.block.BlockCoal;
 import com.voidzm.supercraft.block.BlockConduit;
+import com.voidzm.supercraft.block.BlockCopper;
+import com.voidzm.supercraft.block.BlockCopperOre;
 import com.voidzm.supercraft.block.BlockElinvar;
 import com.voidzm.supercraft.block.BlockElinvarOre;
 import com.voidzm.supercraft.block.BlockImpactGlass;
@@ -67,6 +69,9 @@ public class BlockHandler {
 	public static Block aluminumBlock;
 	
 	public static Block tantalumOre;
+	
+	public static Block copperOre;
+	public static Block copperBlock;
 	
 	public static Block elinvarOre;
 	public static Block elinvarBlock;
@@ -125,6 +130,11 @@ public class BlockHandler {
 		
 		languageHandler.add(tantalumOre, "Tantalum Ore");
 		
+		// Copper Material
+		
+		languageHandler.add(copperOre, "Copper Ore");
+		languageHandler.add(copperBlock, "Block of Copper");
+		
 		// Elinvar Material
 		
 		languageHandler.add(elinvarOre, "Elinvar Ore");
@@ -169,6 +179,11 @@ public class BlockHandler {
 		// Tantalum Material
 		
 		tantalumOre = new BlockTantalumOre(1613);
+		
+		// Copper Material
+		
+		copperOre = new BlockCopperOre(1619);
+		copperBlock = new BlockCopper(1620);
 		
 		// Elinvar Material
 		
@@ -218,6 +233,11 @@ public class BlockHandler {
 		// Tantalum Material
 		
 		GameRegistry.registerBlock(tantalumOre, "tantalumOre");
+		
+		// Copper Material
+		
+		GameRegistry.registerBlock(copperOre, "copperOre");
+		GameRegistry.registerBlock(copperBlock, "copperBlock");
 		
 		// Elinvar Material
 		
@@ -288,6 +308,11 @@ public class BlockHandler {
 		// Tantalum Material
 		
 		LanguageRegistry.addName(tantalumOre, (String)this.languageHandler.getString(tantalumOre));
+		
+		// Copper Ore
+		
+		LanguageRegistry.addName(copperOre, (String)this.languageHandler.getString(copperOre));
+		LanguageRegistry.addName(copperBlock, (String)this.languageHandler.getString(copperBlock));
 		
 		// Elinvar Material
 		

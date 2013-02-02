@@ -44,19 +44,26 @@ public class WorldGenOre implements IWorldGenerator {
 	}
 	
 	private void generateOverworld(World world, Random rand, int cx, int cz) {
-		int ky = 96;
+		int ky = 96; // Aluminum
 		for(int i = 0; i < 6; i++) {
 			int rx = (cx * 16) + rand.nextInt(16);
 			int ry = ky + rand.nextInt(32);
 			int rz = (cz * 16) + rand.nextInt(16);
 			new WorldGenMinable(BlockHandler.aluminumOre.blockID, 12).generate(world, rand, rx, ry, rz);
 		}
-		ky = 0;
+		ky = 0; // Tantalum
 		for(int i = 0; i < 1; i++) {
 			int rx = (cx * 16) + rand.nextInt(16);
 			int ry = ky + rand.nextInt(24);
 			int rz = (cz * 16) + rand.nextInt(16);
 			new WorldGenMinable(BlockHandler.tantalumOre.blockID, 4).generate(world, rand, rx, ry, rz);
+		}
+		ky = 64; // Copper
+		for(int i = 0; i < 8; i++) {
+			int rx = (cx * 16) + rand.nextInt(16);
+			int ry = ky + rand.nextInt(32);
+			int rz = (cz * 16) + rand.nextInt(16);
+			new WorldGenMinable(BlockHandler.copperOre.blockID, 4).generate(world, rand, rx, ry, rz);
 		}
 	}
 	
