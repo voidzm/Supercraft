@@ -255,6 +255,8 @@ public class BlockConduit extends BlockContainer {
 		else if(blockID == BlockHandler.aluminumConduit.blockID) return true;
 		else if(blockID == BlockHandler.silverConduit.blockID) return true;
 		else if(blockID == BlockHandler.goldenConduit.blockID) return true;
+		else if(blockID == BlockHandler.electrumConduit.blockID) return true;
+		else if(blockID == BlockHandler.diamondConduit.blockID) return true;
 		else return false;
 	}
 	

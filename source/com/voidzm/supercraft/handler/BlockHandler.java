@@ -69,6 +69,8 @@ public class BlockHandler {
 	public static Block aluminumConduit;
 	public static Block silverConduit;
 	public static Block goldenConduit;
+	public static Block electrumConduit;
+	public static Block diamondConduit;
 	
 	public void populateAllAndInitialize() {
 		this.createBlocks();
@@ -150,6 +152,8 @@ public class BlockHandler {
 		languageHandler.add(aluminumConduit, "Aluminum Conduit");
 		languageHandler.add(silverConduit, "Silver Conduit");
 		languageHandler.add(goldenConduit, "Golden Conduit");
+		languageHandler.add(electrumConduit, "Electrum Conduit");
+		languageHandler.add(diamondConduit, "Diamond Conduit");
 		
 	}
 	
@@ -214,6 +218,8 @@ public class BlockHandler {
 		aluminumConduit = new BlockAluminumConduit(1622);
 		silverConduit = new BlockSilverConduit(1625);
 		goldenConduit = new BlockGoldenConduit(1626);
+		electrumConduit = new BlockElectrumConduit(1629);
+		diamondConduit = new BlockDiamondConduit(1630);
 		
 	}
 	
@@ -282,6 +288,8 @@ public class BlockHandler {
 		GameRegistry.registerBlock(aluminumConduit, "aluminumConduit");
 		GameRegistry.registerBlock(silverConduit, "silverConduit");
 		GameRegistry.registerBlock(goldenConduit, "goldenConduit");
+		GameRegistry.registerBlock(electrumConduit, "electrumConduit");
+		GameRegistry.registerBlock(diamondConduit, "diamondConduit");
 		
 	}
 	
@@ -371,6 +379,8 @@ public class BlockHandler {
 		LanguageRegistry.addName(aluminumConduit, (String)this.languageHandler.getString(aluminumConduit));
 		LanguageRegistry.addName(silverConduit, (String)this.languageHandler.getString(silverConduit));
 		LanguageRegistry.addName(goldenConduit, (String)this.languageHandler.getString(goldenConduit));
+		LanguageRegistry.addName(electrumConduit, (String)this.languageHandler.getString(electrumConduit));
+		LanguageRegistry.addName(diamondConduit, (String)this.languageHandler.getString(diamondConduit));
 		
 	}
 	

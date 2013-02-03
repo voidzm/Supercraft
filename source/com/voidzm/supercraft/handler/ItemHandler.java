@@ -193,6 +193,7 @@ public class ItemHandler {
 		OreDictionary.registerOre("ingotAluminum", aluminumIngot);
 		OreDictionary.registerOre("ingotCopper", copperIngot);
 		OreDictionary.registerOre("ingotSilver", silverIngot);
+		OreDictionary.registerOre("ingotElectrum", electrumIngot);
 		
 	}
 	

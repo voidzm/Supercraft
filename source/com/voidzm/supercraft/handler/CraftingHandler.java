@@ -214,6 +214,8 @@ public class CraftingHandler {
 		CraftingManager.getInstance().getRecipeList().add(new ShapedOreRecipe(new ItemStack(BlockHandler.aluminumConduit, 8), new Object[]{"aba", "ccc", "aba", Character.valueOf('a'), "ingotAluminum", Character.valueOf('b'), Block.glass, Character.valueOf('c'), ItemHandler.elinvarDust}));
 		CraftingManager.getInstance().getRecipeList().add(new ShapedOreRecipe(new ItemStack(BlockHandler.silverConduit, 8), new Object[]{"aba", "ccc", "aba", Character.valueOf('a'), "ingotSilver", Character.valueOf('b'), Block.glass, Character.valueOf('c'), ItemHandler.elinvarDust}));
 		CraftingManager.getInstance().getRecipeList().add(new ShapedOreRecipe(new ItemStack(BlockHandler.goldenConduit, 8), new Object[]{"aba", "ccc", "aba", Character.valueOf('a'), Item.ingotGold, Character.valueOf('b'), Block.glass, Character.valueOf('c'), ItemHandler.elinvarDust}));
+		CraftingManager.getInstance().getRecipeList().add(new ShapedOreRecipe(new ItemStack(BlockHandler.electrumConduit, 8), new Object[]{"aba", "ccc", "aba", Character.valueOf('a'), "ingotElectrum", Character.valueOf('b'), Block.glass, Character.valueOf('c'), ItemHandler.elinvarDust}));
+		CraftingManager.getInstance().getRecipeList().add(new ShapedOreRecipe(new ItemStack(BlockHandler.diamondConduit, 8), new Object[]{"aba", "ccc", "aba", Character.valueOf('a'), Item.diamond, Character.valueOf('b'), Block.glass, Character.valueOf('c'), ItemHandler.elinvarDust}));
 	}
 	
 }
