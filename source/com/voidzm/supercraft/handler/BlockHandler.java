@@ -59,6 +59,9 @@ public class BlockHandler {
 	public static Block silverOre;
 	public static Block silverBlock;
 	
+	public static Block electrumOre;
+	public static Block electrumBlock;
+	
 	public static Block woodenConduit;
 	public static Block stoneConduit;
 	public static Block ironConduit;
@@ -128,6 +131,11 @@ public class BlockHandler {
 		languageHandler.add(silverOre, "Silver Ore");
 		languageHandler.add(silverBlock, "Block of Silver");
 		
+		// Electrum Material
+		
+		languageHandler.add(electrumOre, "Electrum Ore");
+		languageHandler.add(electrumBlock, "Block of Electrum");
+		
 		// Elinvar Material
 		
 		languageHandler.add(elinvarOre, "Elinvar Ore");
@@ -186,6 +194,11 @@ public class BlockHandler {
 		
 		silverOre = new BlockSilverOre(1623);
 		silverBlock = new BlockSilver(1624);
+		
+		// Electrum Material
+		
+		electrumOre = new BlockElectrumOre(1627);
+		electrumBlock = new BlockElectrum(1628);
 		
 		// Elinvar Material
 		
@@ -249,6 +262,11 @@ public class BlockHandler {
 		
 		GameRegistry.registerBlock(silverOre, "silverOre");
 		GameRegistry.registerBlock(silverBlock, "silverBlock");
+		
+		// Electrum Material
+		
+		GameRegistry.registerBlock(electrumOre, "electrumOre");
+		GameRegistry.registerBlock(electrumBlock, "electrumBlock");
 		
 		// Elinvar Material
 		
@@ -333,6 +351,11 @@ public class BlockHandler {
 		
 		LanguageRegistry.addName(silverOre, (String)this.languageHandler.getString(silverOre));
 		LanguageRegistry.addName(silverBlock, (String)this.languageHandler.getString(silverBlock));
+		
+		// Electrum Material
+		
+		LanguageRegistry.addName(electrumOre, (String)this.languageHandler.getString(electrumOre));
+		LanguageRegistry.addName(electrumBlock, (String)this.languageHandler.getString(electrumBlock));
 		
 		// Elinvar Material
 		

@@ -41,6 +41,9 @@ public class CraftingHandler {
 	private static ItemStack copperBlock;
 	private static ItemStack silver;
 	private static ItemStack silverBlock;
+	private static ItemStack electrumBit;
+	private static ItemStack electrum;
+	private static ItemStack electrumBlock;
 	private static ItemStack elinvarDust;
 	private static ItemStack elinvarBlock;
 	
@@ -73,6 +76,9 @@ public class CraftingHandler {
 		copperBlock = new ItemStack(BlockHandler.copperBlock);
 		silver = new ItemStack(ItemHandler.silverIngot);
 		silverBlock = new ItemStack(BlockHandler.silverBlock);
+		electrumBit = new ItemStack(ItemHandler.electrumBit);
+		electrum = new ItemStack(ItemHandler.electrumIngot);
+		electrumBlock = new ItemStack(BlockHandler.electrumBlock);
 		elinvarDust = new ItemStack(ItemHandler.elinvarDust);
 		elinvarBlock = new ItemStack(BlockHandler.elinvarBlock);
 	}
@@ -125,6 +131,11 @@ public class CraftingHandler {
 		
 		GameRegistry.addRecipe(new ItemStack(BlockHandler.silverBlock), "aaa", "aaa", "aaa", 'a', silver);
 		
+		// Electrum Material
+		
+		GameRegistry.addRecipe(new ItemStack(ItemHandler.electrumIngot), "aaa", "aaa", "aaa", 'a', electrumBit);
+		GameRegistry.addRecipe(new ItemStack(BlockHandler.electrumBlock), "aaa", "aaa", "aaa", 'a', electrum);
+		
 		// Elinvar Material
 		
 		GameRegistry.addRecipe(new ItemStack(BlockHandler.elinvarBlock), "aaa", "aaa", "aaa", 'a', elinvarDust);
@@ -160,6 +171,11 @@ public class CraftingHandler {
 		
 		GameRegistry.addShapelessRecipe(new ItemStack(ItemHandler.silverIngot, 9), silverBlock);
 		
+		// Electrum Material
+		
+		GameRegistry.addShapelessRecipe(new ItemStack(ItemHandler.electrumBit, 9), electrum);
+		GameRegistry.addShapelessRecipe(new ItemStack(ItemHandler.electrumIngot, 9), electrumBlock);
+		
 		// Elinvar Material
 		
 		GameRegistry.addShapelessRecipe(new ItemStack(ItemHandler.elinvarDust, 9), elinvarBlock);
@@ -179,6 +195,10 @@ public class CraftingHandler {
 		// Silver Material
 		
 		GameRegistry.addSmelting(BlockHandler.silverOre.blockID, new ItemStack(ItemHandler.silverIngot, 1), 0.5F);
+		
+		// Electrum Material
+		
+		GameRegistry.addSmelting(BlockHandler.electrumOre.blockID, new ItemStack(ItemHandler.electrumIngot, 1), 0.6F);
 		
 		// Tantalum Material -- TEMPORARY until Crystalline Extracter
 		

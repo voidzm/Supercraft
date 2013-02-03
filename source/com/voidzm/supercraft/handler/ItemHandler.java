@@ -42,6 +42,9 @@ public class ItemHandler {
 	
 	public static Item silverIngot;
 	
+	public static Item electrumIngot;
+	public static Item electrumBit;
+	
 	public static Item elinvarDust;
 	
 	public void populateAllAndInitialize() {
@@ -86,6 +89,11 @@ public class ItemHandler {
 		
 		languageHandler.add(silverIngot, "Silver Ingot");
 		
+		// Electrum Material
+		
+		languageHandler.add(electrumIngot, "Electrum Ingot");
+		languageHandler.add(electrumBit, "Electrum Bit");
+		
 		// Elinvar Material
 		
 		languageHandler.add(elinvarDust, "Elinvar Dust");
@@ -126,6 +134,11 @@ public class ItemHandler {
 		
 		silverIngot = new ItemSilverIngot(23017);
 		
+		// Electrum Material
+		
+		electrumIngot = new ItemElectrumIngot(23018);
+		electrumBit = new ItemElectrumBit(23019);
+		
 		// Elinvar Material
 		
 		elinvarDust = new ItemElinvarDust(23009);
@@ -165,6 +178,11 @@ public class ItemHandler {
 		// Silver Material
 		
 		GameRegistry.registerItem(silverIngot, "silverIngot");
+		
+		// Electrum Material
+		
+		GameRegistry.registerItem(electrumIngot, "electrumIngot");
+		GameRegistry.registerItem(electrumBit, "electrumBit");
 		
 		// Elinvar Material
 		
@@ -211,6 +229,11 @@ public class ItemHandler {
 		// Silver Material
 		
 		LanguageRegistry.addName(silverIngot, (String)this.languageHandler.getString(silverIngot));
+		
+		// Electrum Material
+		
+		LanguageRegistry.addName(electrumIngot, (String)this.languageHandler.getString(electrumIngot));
+		LanguageRegistry.addName(electrumBit, (String)this.languageHandler.getString(electrumBit));
 		
 		// Elinvar Material
 		
