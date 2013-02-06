@@ -6,7 +6,7 @@
 
 package com.voidzm.supercraft.handler;
 
-import com.voidzm.container.ContainerRefinedWorkbench;
+import com.voidzm.supercraft.container.ContainerRefinedWorkbench;
 import com.voidzm.supercraft.gui.SCGuiCrafting;
 
 import net.minecraft.client.gui.inventory.GuiCrafting;

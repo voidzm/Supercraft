@@ -4,7 +4,7 @@
 //*        (c) voidzm 2013         *//
 //////////////////////////////////////
 
-package com.voidzm.container;
+package com.voidzm.supercraft.container;
 
 import com.voidzm.supercraft.handler.BlockHandler;
 
@@ -27,13 +27,11 @@ public class ContainerRefinedWorkbench extends ContainerWorkbench {
 		this.xPos = par3;
 		this.yPos = par4;
 		this.zPos = par5;
-		System.out.println("Created container.");
 	}
 	
 	@Override
 	public boolean canInteractWith(EntityPlayer par1EntityPlayer) {
 		boolean test = this.world.getBlockId(this.xPos, this.yPos, this.zPos) != BlockHandler.refinedCraftingTable.blockID ? false : par1EntityPlayer.getDistanceSq((double)this.xPos + 0.5D, (double)this.yPos + 0.5D, (double)this.zPos + 0.5D) <= 64.0D;
-		System.out.println("Checking interaction: "+test);
 		return test;
 	}
 

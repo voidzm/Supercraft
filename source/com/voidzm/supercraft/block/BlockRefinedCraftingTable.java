@@ -43,18 +43,30 @@ public class BlockRefinedCraftingTable extends Block {
 	}
 	
 	public int getBlockTextureFromSideAndMetadata(int par1, int par2) {
-		if(par1 == 0) return 62;
 		if(par2 == 0) {
+			if(par1 == 0) return 62;
 			if(par1 == 1) return 56;
 			else return 57;
 		}
 		else if(par2 == 1) {
+			if(par1 == 0) return 62;
 			if(par1 == 1) return 58;
 			else return 59;
 		}
 		else if(par2 == 2) {
+			if(par1 == 0) return 62;
 			if(par1 == 1) return 60;
 			else return 61;
+		}
+		else if(par2 == 3) {
+			if(par1 == 0) return 65;
+			if(par1 == 1) return 63;
+			else return 64;
+		}
+		else if(par2 == 4) {
+			if(par1 == 0) return 68;
+			if(par1 == 1) return 66;
+			else return 67;
 		}
 		else return 255;
 	}
@@ -68,6 +80,8 @@ public class BlockRefinedCraftingTable extends Block {
 		par3List.add(new ItemStack(par1, 1, 0));
 		par3List.add(new ItemStack(par1, 1, 1));
 		par3List.add(new ItemStack(par1, 1, 2));
+		par3List.add(new ItemStack(par1, 1, 3));
+		par3List.add(new ItemStack(par1, 1, 4));
 	}
 	
 	public boolean onBlockActivated(World par1World, int par2, int par3, int par4, EntityPlayer par5EntityPlayer, int par6, float par7, float par8, float par9) {

@@ -8,7 +8,7 @@ package com.voidzm.supercraft.gui;
 
 import org.lwjgl.opengl.GL11;
 
-import com.voidzm.container.ContainerRefinedWorkbench;
+import com.voidzm.supercraft.container.ContainerRefinedWorkbench;
 
 import net.minecraft.client.gui.inventory.GuiContainer;
 import net.minecraft.client.gui.inventory.GuiCrafting;

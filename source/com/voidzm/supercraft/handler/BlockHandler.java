@@ -164,6 +164,8 @@ public class BlockHandler {
 		refinedCraftingTableList.add("Stone Crafting Table");
 		refinedCraftingTableList.add("Stone Crafting Table");
 		refinedCraftingTableList.add("Stone Crafting Table");
+		refinedCraftingTableList.add("Nether Crafting Table");
+		refinedCraftingTableList.add("End Crafting Table");
 		languageHandler.add(refinedCraftingTable, refinedCraftingTableList);
 		
 	}

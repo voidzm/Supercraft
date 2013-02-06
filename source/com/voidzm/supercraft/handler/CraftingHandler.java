@@ -32,8 +32,11 @@ public class CraftingHandler {
 	private static ItemStack blueWool;
 	private static ItemStack greenWool;
 	private static ItemStack redWool;
+	private static ItemStack purpleWool;
 	private static ItemStack stone;
 	private static ItemStack craftingTable;
+	private static ItemStack endStone;
+	private static ItemStack netherBrick;
 	
 	// Supercraft
 	
@@ -74,8 +77,11 @@ public class CraftingHandler {
 		blueWool = new ItemStack(Block.cloth, 1, 11);
 		greenWool = new ItemStack(Block.cloth, 1, 13);
 		redWool = new ItemStack(Block.cloth, 1, 14);
+		purpleWool = new ItemStack(Block.cloth, 1, 10);
 		stone = new ItemStack(Block.stone);
 		craftingTable = new ItemStack(Block.workbench);
+		endStone = new ItemStack(Block.whiteStone);
+		netherBrick = new ItemStack(Block.netherBrick);
 		
 		oliveWood = new ItemStack(BlockHandler.supercraftLog, 1, 0);
 		olivePlanks = new ItemStack(BlockHandler.supercraftPlanks, 1, 0);
@@ -159,6 +165,8 @@ public class CraftingHandler {
 		GameRegistry.addRecipe(new ItemStack(BlockHandler.refinedCraftingTable, 1, 0), " a ", "bcb", " b ", 'a', blueWool, 'b', stone, 'c', craftingTable);
 		GameRegistry.addRecipe(new ItemStack(BlockHandler.refinedCraftingTable, 1, 1), " a ", "bcb", " b ", 'a', greenWool, 'b', stone, 'c', craftingTable);
 		GameRegistry.addRecipe(new ItemStack(BlockHandler.refinedCraftingTable, 1, 2), " a ", "bcb", " b ", 'a', redWool, 'b', stone, 'c', craftingTable);
+		GameRegistry.addRecipe(new ItemStack(BlockHandler.refinedCraftingTable, 1, 3), " a ", "bcb", " b ", 'a', redWool, 'b', netherBrick, 'c', craftingTable);
+		GameRegistry.addRecipe(new ItemStack(BlockHandler.refinedCraftingTable, 1, 4), " a ", "bcb", " b ", 'a', purpleWool, 'b', endStone, 'c', craftingTable);
 		
 	}
 	

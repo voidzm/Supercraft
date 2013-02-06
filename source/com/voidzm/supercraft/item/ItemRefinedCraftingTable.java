@@ -11,7 +11,7 @@ import net.minecraft.item.ItemStack;
 
 public class ItemRefinedCraftingTable extends ItemBlock {
 
-	private final static String[] names = {"stoneTable", "stoneTable", "stoneTable"};
+	private final static String[] names = {"stoneTable", "stoneTable", "stoneTable", "netherTable", "endTable"};
 	
 	public ItemRefinedCraftingTable(int par1) {
 		super(par1);
