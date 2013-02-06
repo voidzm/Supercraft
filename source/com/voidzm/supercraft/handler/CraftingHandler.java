@@ -29,6 +29,11 @@ public class CraftingHandler {
 	private static ItemStack diamondShard;
 	private static ItemStack obsidian;
 	private static ItemStack stick;
+	private static ItemStack blueWool;
+	private static ItemStack greenWool;
+	private static ItemStack redWool;
+	private static ItemStack stone;
+	private static ItemStack craftingTable;
 	
 	// Supercraft
 	
@@ -66,6 +71,11 @@ public class CraftingHandler {
 		diamondShard = new ItemStack(ItemHandler.diamondShard);
 		obsidian = new ItemStack(Block.obsidian);
 		stick = new ItemStack(Item.stick);
+		blueWool = new ItemStack(Block.cloth, 1, 11);
+		greenWool = new ItemStack(Block.cloth, 1, 13);
+		redWool = new ItemStack(Block.cloth, 1, 14);
+		stone = new ItemStack(Block.stone);
+		craftingTable = new ItemStack(Block.workbench);
 		
 		oliveWood = new ItemStack(BlockHandler.supercraftLog, 1, 0);
 		olivePlanks = new ItemStack(BlockHandler.supercraftPlanks, 1, 0);
@@ -143,6 +153,12 @@ public class CraftingHandler {
 		// Elinvar Conduits
 		
 		this.addConduitRecipes();
+		
+		// Refined Crafting Tables
+		
+		GameRegistry.addRecipe(new ItemStack(BlockHandler.refinedCraftingTable, 1, 0), " a ", "bcb", " b ", 'a', blueWool, 'b', stone, 'c', craftingTable);
+		GameRegistry.addRecipe(new ItemStack(BlockHandler.refinedCraftingTable, 1, 1), " a ", "bcb", " b ", 'a', greenWool, 'b', stone, 'c', craftingTable);
+		GameRegistry.addRecipe(new ItemStack(BlockHandler.refinedCraftingTable, 1, 2), " a ", "bcb", " b ", 'a', redWool, 'b', stone, 'c', craftingTable);
 		
 	}
 	

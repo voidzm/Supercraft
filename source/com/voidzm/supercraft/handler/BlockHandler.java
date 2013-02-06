@@ -12,6 +12,7 @@ import java.util.ArrayList;
 
 import com.voidzm.supercraft.block.*;
 import com.voidzm.supercraft.client.ClientProxy;
+import com.voidzm.supercraft.item.ItemRefinedCraftingTable;
 import com.voidzm.supercraft.item.ItemSupercraftLeaves;
 import com.voidzm.supercraft.item.ItemSupercraftLog;
 import com.voidzm.supercraft.item.ItemSupercraftPlanks;
@@ -71,6 +72,8 @@ public class BlockHandler {
 	public static Block goldenConduit;
 	public static Block electrumConduit;
 	public static Block diamondConduit;
+	
+	public static Block refinedCraftingTable;
 	
 	public void populateAllAndInitialize() {
 		this.createBlocks();
@@ -155,6 +158,14 @@ public class BlockHandler {
 		languageHandler.add(electrumConduit, "Electrum Conduit");
 		languageHandler.add(diamondConduit, "Diamond Conduit");
 		
+		// Refined Crafting Tables
+		
+		ArrayList<String> refinedCraftingTableList = new ArrayList<String>();
+		refinedCraftingTableList.add("Stone Crafting Table");
+		refinedCraftingTableList.add("Stone Crafting Table");
+		refinedCraftingTableList.add("Stone Crafting Table");
+		languageHandler.add(refinedCraftingTable, refinedCraftingTableList);
+		
 	}
 	
 	private void createBlocks() {
@@ -220,6 +231,10 @@ public class BlockHandler {
 		goldenConduit = new BlockGoldenConduit(1626);
 		electrumConduit = new BlockElectrumConduit(1629);
 		diamondConduit = new BlockDiamondConduit(1630);
+		
+		// Refined Crafting Tables
+		
+		refinedCraftingTable = new BlockRefinedCraftingTable(1631);
 		
 	}
 	
@@ -290,6 +305,10 @@ public class BlockHandler {
 		GameRegistry.registerBlock(goldenConduit, "goldenConduit");
 		GameRegistry.registerBlock(electrumConduit, "electrumConduit");
 		GameRegistry.registerBlock(diamondConduit, "diamondConduit");
+		
+		// Refined Crafting Tables
+		
+		GameRegistry.registerBlock(refinedCraftingTable, ItemRefinedCraftingTable.class, "refinedCraftingTable");
 		
 	}
 	
@@ -381,6 +400,15 @@ public class BlockHandler {
 		LanguageRegistry.addName(goldenConduit, (String)this.languageHandler.getString(goldenConduit));
 		LanguageRegistry.addName(electrumConduit, (String)this.languageHandler.getString(electrumConduit));
 		LanguageRegistry.addName(diamondConduit, (String)this.languageHandler.getString(diamondConduit));
+		
+		// Refined Crafting Tables
+		
+		i = 0;
+		for(String string : (ArrayList<String>)languageHandler.getString(refinedCraftingTable))  {
+			ItemStack stack = new ItemStack(refinedCraftingTable, 1, i);
+			LanguageRegistry.addName(stack, string);
+			i++;
+		}
 		
 	}
 	

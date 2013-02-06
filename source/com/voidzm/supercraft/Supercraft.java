@@ -14,6 +14,7 @@ import com.voidzm.supercraft.handler.BiomeHandler;
 import com.voidzm.supercraft.handler.BlockHandler;
 import com.voidzm.supercraft.handler.CraftingHandler;
 import com.voidzm.supercraft.handler.FuelHandler;
+import com.voidzm.supercraft.handler.GuiHandler;
 import com.voidzm.supercraft.handler.ItemHandler;
 import com.voidzm.supercraft.handler.PacketHandler;
 import com.voidzm.supercraft.handler.SCTickHandler;
@@ -33,6 +34,7 @@ import net.minecraft.world.biome.BiomeGenBase;
 import net.minecraftforge.common.EnumHelper;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.oredict.OreDictionary;
+import cpw.mods.fml.client.registry.ClientRegistry;
 import cpw.mods.fml.common.Mod;
 import cpw.mods.fml.common.Mod.Init;
 import cpw.mods.fml.common.Mod.Instance;
@@ -43,6 +45,7 @@ import cpw.mods.fml.common.event.FMLInitializationEvent;
 import cpw.mods.fml.common.event.FMLPostInitializationEvent;
 import cpw.mods.fml.common.event.FMLPreInitializationEvent;
 import cpw.mods.fml.common.network.NetworkMod;
+import cpw.mods.fml.common.network.NetworkRegistry;
 import cpw.mods.fml.common.registry.GameRegistry;
 import cpw.mods.fml.common.registry.LanguageRegistry;
 import cpw.mods.fml.common.registry.TickRegistry;
@@ -52,7 +55,7 @@ import cpw.mods.fml.relauncher.Side;
 @NetworkMod(clientSideRequired=true, serverSideRequired=false, channels={"SCElinvar"}, packetHandler=PacketHandler.class)
 public class Supercraft {
 
-	@Instance
+	@Instance("Supercraft")
 	public static Supercraft instance;
 	
 	@SidedProxy(clientSide="com.voidzm.supercraft.client.ClientProxy", serverSide="com.voidzm.supercraft.CommonProxy")
@@ -63,6 +66,7 @@ public class Supercraft {
 	public static final CraftingHandler craftingHandler = new CraftingHandler();
 	public static final BiomeHandler biomeHandler = new BiomeHandler();
 	public static final FuelHandler fuelHandler = new FuelHandler();
+	public static final GuiHandler guiHandler = new GuiHandler();
 	
 	public static EnumToolMaterial aluminumTool = EnumHelper.addToolMaterial("aluminum", 1, 2343, 4.0F, 1, 1);
 	public static EnumToolMaterial copperTool = EnumHelper.addToolMaterial("copper", 2, 593, 9.0F, 2, 10);
@@ -87,6 +91,7 @@ public class Supercraft {
 		MinecraftForge.EVENT_BUS.register(new EventBonemeal());
 		GameRegistry.registerWorldGenerator(new WorldGenOre());
 		GameRegistry.registerTileEntity(TileEntityConduit.class, "tileEntityConduit");
+		NetworkRegistry.instance().registerGuiHandler(instance, guiHandler);
 		System.out.println("[Supercraft] Loaded.");
 	}
 	
