@@ -75,6 +75,8 @@ public class BlockHandler {
 	
 	public static Block refinedCraftingTable;
 	
+	public static Block redstoneGenerator;
+	
 	public void populateAllAndInitialize() {
 		this.createBlocks();
 		this.populateLanguage();
@@ -168,6 +170,10 @@ public class BlockHandler {
 		refinedCraftingTableList.add("End Crafting Table");
 		languageHandler.add(refinedCraftingTable, refinedCraftingTableList);
 		
+		// Elinvar Generators
+		
+		languageHandler.add(redstoneGenerator, "Redstone Conversion Generator");
+		
 	}
 	
 	private void createBlocks() {
@@ -237,6 +243,10 @@ public class BlockHandler {
 		// Refined Crafting Tables
 		
 		refinedCraftingTable = new BlockRefinedCraftingTable(1631);
+		
+		// Elinvar Generators
+		
+		redstoneGenerator = new BlockRedstoneGenerator(1632);
 		
 	}
 	
@@ -311,6 +321,10 @@ public class BlockHandler {
 		// Refined Crafting Tables
 		
 		GameRegistry.registerBlock(refinedCraftingTable, ItemRefinedCraftingTable.class, "refinedCraftingTable");
+		
+		// Elinvar Generators
+		
+		GameRegistry.registerBlock(redstoneGenerator, "redstoneGenerator");
 		
 	}
 	
@@ -411,6 +425,10 @@ public class BlockHandler {
 			LanguageRegistry.addName(stack, string);
 			i++;
 		}
+		
+		// Elinvar Generators
+		
+		LanguageRegistry.addName(redstoneGenerator, (String)this.languageHandler.getString(redstoneGenerator));
 		
 	}
 	

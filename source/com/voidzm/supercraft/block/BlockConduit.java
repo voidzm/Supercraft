@@ -16,6 +16,7 @@ import com.voidzm.supercraft.client.ClientProxy;
 import com.voidzm.supercraft.entity.TileEntityConduit;
 import com.voidzm.supercraft.entity.TileEntityConduit.PACKET_ELINVAR;
 import com.voidzm.supercraft.handler.BlockHandler;
+import com.voidzm.supercraft.protocol.IGenerator;
 
 import cpw.mods.fml.client.FMLClientHandler;
 import cpw.mods.fml.common.FMLCommonHandler;
@@ -134,12 +135,21 @@ public class BlockConduit extends BlockContainer {
 					maxPowerFound = nTE.powerLevel() - 1;
 				}
 			}
-			else if(this.isGenerator(neighbor)) {
+			else if(Block.blocksList[neighbor] instanceof IGenerator) {
+				IGenerator gen = (IGenerator)Block.blocksList[neighbor];
+				int output = gen.powerOutputAt(par1World, par2 + (i == 0 ? 1 : (i == 1 ? -1 : 0)), par3 + (i == 4 ? 1 : (i == 5 ? -1 : 0)), par4 + (i == 2 ? 1 : (i == 3 ? -1 : 0)));
+				if(gen.doesOutputPowerAt(par1World, par2 + (i == 0 ? 1 : (i == 1 ? -1 : 0)), par3 + (i == 4 ? 1 : (i == 5 ? -1 : 0)), par4 + (i == 2 ? 1 : (i == 3 ? -1 : 0)))) {
+					if(output >= currentPower && output > maxPowerFound) {
+						maxPowerFound = output;
+					}
+				}
+			}
+			/*else if(this.isGenerator(neighbor)) {
 				int output = 16;
 				if(output >= currentPower && output > maxPowerFound) {
 					maxPowerFound = output;
 				}
-			}
+			}*/
 			i++;
 		}	
 		if(maxPowerFound > currentPower) {
@@ -243,7 +253,7 @@ public class BlockConduit extends BlockContainer {
 	}
 	
 	public static boolean isGenerator(int blockID) {
-		if(blockID == BlockHandler.elinvarBlock.blockID) return true;
+		if(Block.blocksList[blockID] instanceof IGenerator) return true;
 		else return false;
 	}
 	

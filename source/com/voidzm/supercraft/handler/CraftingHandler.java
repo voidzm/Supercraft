@@ -37,6 +37,8 @@ public class CraftingHandler {
 	private static ItemStack craftingTable;
 	private static ItemStack endStone;
 	private static ItemStack netherBrick;
+	private static ItemStack redstoneTorch;
+	private static ItemStack stoneBrick;
 	
 	// Supercraft
 	
@@ -82,6 +84,8 @@ public class CraftingHandler {
 		craftingTable = new ItemStack(Block.workbench);
 		endStone = new ItemStack(Block.whiteStone);
 		netherBrick = new ItemStack(Block.netherBrick);
+		redstoneTorch = new ItemStack(Block.torchRedstoneActive);
+		stoneBrick = new ItemStack(Block.stoneBrick);
 		
 		oliveWood = new ItemStack(BlockHandler.supercraftLog, 1, 0);
 		olivePlanks = new ItemStack(BlockHandler.supercraftPlanks, 1, 0);
@@ -167,6 +171,10 @@ public class CraftingHandler {
 		GameRegistry.addRecipe(new ItemStack(BlockHandler.refinedCraftingTable, 1, 2), " a ", "bcb", " b ", 'a', redWool, 'b', stone, 'c', craftingTable);
 		GameRegistry.addRecipe(new ItemStack(BlockHandler.refinedCraftingTable, 1, 3), " a ", "bcb", " b ", 'a', redWool, 'b', netherBrick, 'c', craftingTable);
 		GameRegistry.addRecipe(new ItemStack(BlockHandler.refinedCraftingTable, 1, 4), " a ", "bcb", " b ", 'a', purpleWool, 'b', endStone, 'c', craftingTable);
+		
+		// Elinvar Generators
+		
+		GameRegistry.addRecipe(new ItemStack(BlockHandler.redstoneGenerator), "aaa", "bcb", "ddd", 'a', stoneBrick, 'b', obsidian, 'c', redstoneTorch, 'd', aluminumBlock);
 		
 	}
 	
