@@ -1,5 +1,5 @@
 //////////////////////////////////////
-//*     ItemSupercraftLog.java     *//
+//*    ItemSupercraftLeaves1.java  *//
 //*           Supercraft           *//
 //*        (c) voidzm 2013         *//
 //////////////////////////////////////
@@ -9,14 +9,14 @@ package com.voidzm.supercraft.item;
 import net.minecraft.item.ItemBlock;
 import net.minecraft.item.ItemStack;
 
-public class ItemSupercraftLog extends ItemBlock {
+public class ItemSupercraftLeaves1 extends ItemBlock {
 
-	private final static String[] names = {"oliveLog", "goldenwoodLog"};
+	private final static String[] names = {"oliveLeaves"};
 	
-	public ItemSupercraftLog(int par1) {
+	public ItemSupercraftLeaves1(int par1) {
 		super(par1);
 		setHasSubtypes(true);
-		setItemName("supercraftLog");
+		setItemName("supercraftLeaves1");
 	}
 
 	@Override

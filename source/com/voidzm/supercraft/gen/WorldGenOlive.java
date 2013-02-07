@@ -18,7 +18,7 @@ import net.minecraft.world.gen.feature.WorldGenerator;
 public class WorldGenOlive extends WorldGenerator {
 
 	private int oliveLogID = BlockHandler.supercraftLog.blockID;
-	private int oliveLeavesID = BlockHandler.supercraftLeaves.blockID;
+	private int oliveLeavesID = BlockHandler.supercraftLeaves1.blockID;
 	
 	@Override
 	public boolean generate(World var1, Random var2, int xloc, int yloc, int zloc) {

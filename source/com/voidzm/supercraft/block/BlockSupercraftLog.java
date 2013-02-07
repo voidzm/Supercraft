@@ -20,7 +20,7 @@ import net.minecraft.world.World;
 
 public class BlockSupercraftLog extends Block {
 	
-	 public static final String[] woodType = new String[] {"olive"};
+	 public static final String[] woodType = new String[] {"olive", "goldenwood"};
 	 
 	 public BlockSupercraftLog(int par1) {
 	        super(par1, Material.wood);
@@ -83,83 +83,87 @@ public class BlockSupercraftLog extends Block {
 	 public int getBlockTextureFromSideAndMetadata(int side, int meta) {
 		 int logCode = meta & 3;
 		 int rotationCode = meta & 12;
-		 if(logCode == 0) { // Olive
-			 int logSide = 5;
-			 int logEnd = 6;
-			 if(rotationCode == 0) {
-				 int val = 255;
-				 switch(side) {
-				 case 0:
-				 case 1:
-					 val = logEnd;
-					 break;
-				 case 2:
-				 case 3:
-					 val = logSide;
-					 break;
-				 case 4:
-				 case 5:
-					 val = logSide;
-					 break;
-				 }
-				 return val;
-			 }
-			 else if(rotationCode == 4) {
-				 int val = 255;
-				 switch(side) {
-				 case 0:
-				 case 1:
-					 val = logSide;
-					 break;
-				 case 2:
-				 case 3:
-					 val = logSide;
-					 break;
-				 case 4:
-				 case 5:
-					 val = logEnd;
-					 break;
-				 }
-				 return val;
-			 }
-			 else if(rotationCode == 8) {
-				 int val = 255;
-				 switch(side) {
-				 case 0:
-				 case 1:
-					 val = logSide;
-					 break;
-				 case 2:
-				 case 3:
-					 val = logEnd;
-					 break;
-				 case 4:
-				 case 5:
-					 val = logSide;
-					 break;
-				 }
-				 return val;
-			 }
-			 else {
-				 int val = 255;
-				 switch(side) {
-				 case 0:
-				 case 1:
-					 val = logSide;
-					 break;
-				 case 2:
-				 case 3:
-					 val = logSide;
-					 break;
-				 case 4:
-				 case 5:
-					 val = logSide;
-					 break;
-				 }
-				 return val;
-			 }
+		 int logSide = 255, logEnd = 255;
+		 if(logCode == 0) {
+			 logSide = 5;
+			 logEnd = 6;
 		 }
-		 else return 255;
+		 else if(logCode == 1) {
+			 logSide = 72;
+			 logEnd = 73;
+		 }
+		 if(rotationCode == 0) {
+			 int val = 255;
+			 switch(side) {
+			 case 0:
+			 case 1:
+				 val = logEnd;
+				 break;
+			 case 2:
+			 case 3:
+				 val = logSide;
+				 break;
+			 case 4:
+			 case 5:
+				 val = logSide;
+				 break;
+			 }
+			 return val;
+		 }
+		 else if(rotationCode == 4) {
+			 int val = 255;
+			 switch(side) {
+			 case 0:
+			 case 1:
+				 val = logSide;
+				 break;
+			 case 2:
+			 case 3:
+				 val = logSide;
+				 break;
+			 case 4:
+			 case 5:
+				 val = logEnd;
+				 break;
+			 }
+			 return val;
+		 }
+		 else if(rotationCode == 8) {
+			 int val = 255;
+			 switch(side) {
+			 case 0:
+			 case 1:
+				 val = logSide;
+				 break;
+			 case 2:
+			 case 3:
+				 val = logEnd;
+				 break;
+			 case 4:
+			 case 5:
+				 val = logSide;
+				 break;
+			 }
+			 return val;
+		 }
+		 else {
+			 int val = 255;
+			 switch(side) {
+			 case 0:
+			 case 1:
+				 val = logSide;
+				 break;
+			 case 2:
+			 case 3:
+				 val = logSide;
+				 break;
+			 case 4:
+			 case 5:
+				 val = logSide;
+				 break;
+			 }
+			 return val;
+		 }
 	 }
 
 	 public int damageDropped(int par1) {
@@ -172,6 +176,7 @@ public class BlockSupercraftLog extends Block {
 	 
 	 public void getSubBlocks(int par1, CreativeTabs par2CreativeTabs, List par3List) {
 		 par3List.add(new ItemStack(par1, 1, 0));
+		 par3List.add(new ItemStack(par1, 1, 1));
 	 }
 	 
 	 protected ItemStack createStackedBlock(int par1) {
