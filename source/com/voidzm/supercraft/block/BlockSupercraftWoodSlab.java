@@ -23,7 +23,7 @@ import net.minecraft.item.ItemStack;
 
 public class BlockSupercraftWoodSlab extends BlockHalfSlab {
 
-	public static final String[] woodTypes = new String[] {"beech"};
+	public static final String[] woodTypes = new String[] {"olive", "goldenwood"};
 	
 	public BlockSupercraftWoodSlab(int par1) {
 		super(par1, false, Material.wood);
@@ -40,6 +40,8 @@ public class BlockSupercraftWoodSlab extends BlockHalfSlab {
         switch(par2 & 7) {
         case 0:
         	return 7;
+        case 1:
+        	return 74;
         default:
         	return 255;
         }
@@ -68,6 +70,7 @@ public class BlockSupercraftWoodSlab extends BlockHalfSlab {
     public void getSubBlocks(int par1, CreativeTabs par2CreativeTabs, List par3List) {
         if(par1 == BlockHandler.supercraftWoodSlab.blockID) {
         	par3List.add(new ItemStack(par1, 1, 0));
+        	par3List.add(new ItemStack(par1, 1, 1));
         }
     }
 	

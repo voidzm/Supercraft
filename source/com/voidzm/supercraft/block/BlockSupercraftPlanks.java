@@ -20,7 +20,7 @@ import net.minecraft.item.ItemStack;
 
 public class BlockSupercraftPlanks extends Block {
 	
-	public static final String[] woodType = new String[] {"olive"};
+	public static final String[] woodType = new String[] {"olive", "goldenwood"};
 
 	public BlockSupercraftPlanks(int par1) {
 		super(par1, 7, Material.wood);
@@ -36,6 +36,8 @@ public class BlockSupercraftPlanks extends Block {
 		switch(par2) {
 		case 0:
 			return 7;
+		case 1:
+			return 74;
 		default:
 			return 7;
 		}
@@ -48,6 +50,7 @@ public class BlockSupercraftPlanks extends Block {
 	@SideOnly(Side.CLIENT)
 	public void getSubBlocks(int par1, CreativeTabs par2CreativeTabs, List par3List) {
 		par3List.add(new ItemStack(par1, 1, 0));
+		par3List.add(new ItemStack(par1, 1, 1));
 	}
 	
 	@Override

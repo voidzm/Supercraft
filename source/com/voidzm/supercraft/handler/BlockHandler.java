@@ -47,6 +47,7 @@ public class BlockHandler {
 	public static Block supercraftWoodSlab;
 	
 	public static Block oliveStairs;
+	public static Block goldenwoodStairs;
 	
 	public static Block aluminumOre;
 	public static Block aluminumBlock;
@@ -115,15 +116,18 @@ public class BlockHandler {
 		languageHandler.add(supercraftLeaves2, supercraftLeaves2List);
 		ArrayList<String> supercraftPlanksList = new ArrayList<String>();
 		supercraftPlanksList.add("Olive Wood Planks");
+		supercraftPlanksList.add("Goldenwood Wood Planks");
 		languageHandler.add(supercraftPlanks, supercraftPlanksList);
 		ArrayList<String> supercraftSaplingList = new ArrayList<String>();
 		supercraftSaplingList.add("Olive Sapling");
 		languageHandler.add(supercraftSapling, supercraftSaplingList);
 		ArrayList<String> supercraftWoodSlabList = new ArrayList<String>();
 		supercraftWoodSlabList.add("Olive Wood Slab");
+		supercraftWoodSlabList.add("Goldenwood Wood Slab");
 		languageHandler.add(supercraftWoodSlab, supercraftWoodSlabList);
 		
 		languageHandler.add(oliveStairs, "Olive Wood Stairs");
+		languageHandler.add(goldenwoodStairs, "Goldenwood Wood Stairs");
 		
 		// Aluminum Material
 		
@@ -205,6 +209,7 @@ public class BlockHandler {
 		supercraftWoodSlab = new BlockSupercraftWoodSlab(1609);
 		
 		oliveStairs = new BlockSupercraftStairs(1610, supercraftPlanks, 0).setBlockName("oliveStairs");
+		goldenwoodStairs = new BlockSupercraftStairs(1634, supercraftPlanks, 1).setBlockName("goldenwoodStairs");
 		
 		// Aluminum Material
 		
@@ -280,6 +285,7 @@ public class BlockHandler {
 		GameRegistry.registerBlock(supercraftWoodSlab, ItemSupercraftWoodSlab.class, "supercraftWoodSlab");
 		
 		GameRegistry.registerBlock(oliveStairs, "oliveStairs");
+		GameRegistry.registerBlock(goldenwoodStairs, "goldenwoodStairs");
 		
 		// Ore Dictionary references
 		
@@ -389,6 +395,7 @@ public class BlockHandler {
 		}
 		
 		LanguageRegistry.addName(oliveStairs, (String)this.languageHandler.getString(oliveStairs));
+		LanguageRegistry.addName(goldenwoodStairs, (String)this.languageHandler.getString(goldenwoodStairs));
 		
 		// Aluminum Material
 		

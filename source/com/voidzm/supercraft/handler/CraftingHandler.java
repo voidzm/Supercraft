@@ -56,6 +56,8 @@ public class CraftingHandler {
 	private static ItemStack electrumBlock;
 	private static ItemStack elinvarDust;
 	private static ItemStack elinvarBlock;
+	private static ItemStack goldenwoodWood;
+	private static ItemStack goldenwoodPlanks;
 	
 	public void populateAllAndInitialize() {
 		this.initializeCraftingRefs();
@@ -101,6 +103,8 @@ public class CraftingHandler {
 		electrumBlock = new ItemStack(BlockHandler.electrumBlock);
 		elinvarDust = new ItemStack(ItemHandler.elinvarDust);
 		elinvarBlock = new ItemStack(BlockHandler.elinvarBlock);
+		goldenwoodWood = new ItemStack(BlockHandler.supercraftLog, 1, 1);
+		goldenwoodPlanks = new ItemStack(BlockHandler.supercraftPlanks, 1, 1);
 	}
 	
 	private void addRecipes() {
@@ -123,6 +127,10 @@ public class CraftingHandler {
 		GameRegistry.addRecipe(new ItemStack(BlockHandler.supercraftWoodSlab, 6, 0), "aaa", 'a', olivePlanks);
 		GameRegistry.addRecipe(new ItemStack(BlockHandler.oliveStairs, 4), "a  ", "aa ", "aaa", 'a', olivePlanks);
 		GameRegistry.addRecipe(new ItemStack(BlockHandler.oliveStairs, 4), "  a", " aa", "aaa", 'a', olivePlanks);
+		
+		GameRegistry.addRecipe(new ItemStack(BlockHandler.supercraftWoodSlab, 6, 1), "aaa", 'a', goldenwoodPlanks);
+		GameRegistry.addRecipe(new ItemStack(BlockHandler.goldenwoodStairs, 4), "a  ", "aa ", "aaa", 'a', goldenwoodPlanks);
+		GameRegistry.addRecipe(new ItemStack(BlockHandler.goldenwoodStairs, 4), "  a", " aa", "aaa", 'a', goldenwoodPlanks);
 		
 		// Aluminum Material
 		
@@ -189,6 +197,7 @@ public class CraftingHandler {
 		// Supercraft Trees
 		
 		GameRegistry.addShapelessRecipe(new ItemStack(BlockHandler.supercraftPlanks, 4, 0), oliveWood);
+		GameRegistry.addShapelessRecipe(new ItemStack(BlockHandler.supercraftPlanks, 4, 1), goldenwoodWood);
 		
 		// Aluminum Material
 		
