@@ -1,5 +1,5 @@
 //////////////////////////////////////
-//*   ItemSupercraftSapling.java   *//
+//*   ItemSupercraftSapling1.java  *//
 //*           Supercraft           *//
 //*        (c) voidzm 2013         *//
 //////////////////////////////////////
@@ -9,14 +9,14 @@ package com.voidzm.supercraft.item;
 import net.minecraft.item.ItemBlock;
 import net.minecraft.item.ItemStack;
 
-public class ItemSupercraftSapling extends ItemBlock {
+public class ItemSupercraftSapling1 extends ItemBlock {
 
 	private final static String[] names = {"oliveSapling"};
 	
-	public ItemSupercraftSapling(int par1) {
+	public ItemSupercraftSapling1(int par1) {
 		super(par1);
 		setHasSubtypes(true);
-		setItemName("supercraftSapling");
+		setItemName("supercraftSapling1");
 	}
 
 	@Override

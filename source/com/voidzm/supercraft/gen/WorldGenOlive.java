@@ -20,12 +20,15 @@ public class WorldGenOlive extends WorldGenerator {
 	private int oliveLogID = BlockHandler.supercraftLog.blockID;
 	private int oliveLeavesID = BlockHandler.supercraftLeaves1.blockID;
 	
-	@Override
 	public boolean generate(World var1, Random var2, int xloc, int yloc, int zloc) {
+		return this.generate(var1, var2, xloc, yloc, zloc, true);
+	}
+	
+	public boolean generate(World var1, Random var2, int xloc, int yloc, int zloc, boolean biomeCheck) {
 		int wx = xloc, wy = yloc, wz = zloc;
 		int t1 = var1.getBlockId(wx, wy-1, wz);
 		Block b1 = Block.blocksList[t1];
-		if((b1 == null || (t1 != Block.grass.blockID && t1 != Block.dirt.blockID)) || !(var1.getBiomeGenForCoords(xloc, zloc).biomeName.equalsIgnoreCase("Savanna"))) {
+		if((b1 == null || (t1 != Block.grass.blockID && t1 != Block.dirt.blockID)) || (!(var1.getBiomeGenForCoords(xloc, zloc).biomeName.equalsIgnoreCase("Savanna")) && biomeCheck)) {
 			return false;
 		}
 		int t2 = var2.nextInt(3) + 1;
