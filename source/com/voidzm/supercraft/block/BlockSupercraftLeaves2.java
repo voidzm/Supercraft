@@ -25,7 +25,7 @@ public class BlockSupercraftLeaves2 extends BlockSupercraftLeavesBase {
 	}
 	
 	public int idDropped(int par1, Random par2Random, int par3) {
-		return BlockHandler.supercraftSapling1.blockID;
+		return BlockHandler.supercraftSapling2.blockID;
 	}
 
 }

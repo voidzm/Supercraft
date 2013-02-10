@@ -18,6 +18,7 @@ import com.voidzm.supercraft.item.ItemSupercraftLeaves2;
 import com.voidzm.supercraft.item.ItemSupercraftLog;
 import com.voidzm.supercraft.item.ItemSupercraftPlanks;
 import com.voidzm.supercraft.item.ItemSupercraftSapling1;
+import com.voidzm.supercraft.item.ItemSupercraftSapling2;
 import com.voidzm.supercraft.item.ItemSupercraftWoodSlab;
 
 import cpw.mods.fml.common.registry.GameRegistry;
@@ -44,6 +45,7 @@ public class BlockHandler {
 	public static Block supercraftLeaves2;
 	public static Block supercraftPlanks;
 	public static Block supercraftSapling1;
+	public static Block supercraftSapling2;
 	public static Block supercraftWoodSlab;
 	
 	public static Block oliveStairs;
@@ -108,19 +110,28 @@ public class BlockHandler {
 		supercraftLogList.add("Olive Wood");
 		supercraftLogList.add("Goldenwood Wood");
 		languageHandler.add(supercraftLog, supercraftLogList);
+		
 		ArrayList<String> supercraftLeaves1List = new ArrayList<String>();
 		supercraftLeaves1List.add("Olive Leaves");
 		languageHandler.add(supercraftLeaves1, supercraftLeaves1List);
+		
 		ArrayList<String> supercraftLeaves2List = new ArrayList<String>();
 		supercraftLeaves2List.add("Goldenwood Leaves");
 		languageHandler.add(supercraftLeaves2, supercraftLeaves2List);
+		
 		ArrayList<String> supercraftPlanksList = new ArrayList<String>();
 		supercraftPlanksList.add("Olive Wood Planks");
 		supercraftPlanksList.add("Goldenwood Wood Planks");
 		languageHandler.add(supercraftPlanks, supercraftPlanksList);
+		
 		ArrayList<String> supercraftSapling1List = new ArrayList<String>();
 		supercraftSapling1List.add("Olive Sapling");
 		languageHandler.add(supercraftSapling1, supercraftSapling1List);
+		
+		ArrayList<String> supercraftSapling2List = new ArrayList<String>();
+		supercraftSapling2List.add("Goldenwood Sapling");
+		languageHandler.add(supercraftSapling2, supercraftSapling2List);
+		
 		ArrayList<String> supercraftWoodSlabList = new ArrayList<String>();
 		supercraftWoodSlabList.add("Olive Wood Slab");
 		supercraftWoodSlabList.add("Goldenwood Wood Slab");
@@ -206,6 +217,7 @@ public class BlockHandler {
 		supercraftLeaves2 = new BlockSupercraftLeaves2(1633);
 		supercraftPlanks = new BlockSupercraftPlanks(1607);
 		supercraftSapling1 = new BlockSupercraftSapling1(1608);
+		supercraftSapling2 = new BlockSupercraftSapling2(1635);
 		supercraftWoodSlab = new BlockSupercraftWoodSlab(1609);
 		
 		oliveStairs = new BlockSupercraftStairs(1610, supercraftPlanks, 0).setBlockName("oliveStairs");
@@ -282,6 +294,7 @@ public class BlockHandler {
 		GameRegistry.registerBlock(supercraftLeaves2, ItemSupercraftLeaves2.class, "supercraftLeaves2");
 		GameRegistry.registerBlock(supercraftPlanks, ItemSupercraftPlanks.class, "supercraftPlanks");
 		GameRegistry.registerBlock(supercraftSapling1, ItemSupercraftSapling1.class, "supercraftSapling1");
+		GameRegistry.registerBlock(supercraftSapling2, ItemSupercraftSapling2.class, "supercraftSapling2");
 		GameRegistry.registerBlock(supercraftWoodSlab, ItemSupercraftWoodSlab.class, "supercraftWoodSlab");
 		
 		GameRegistry.registerBlock(oliveStairs, "oliveStairs");
@@ -384,6 +397,12 @@ public class BlockHandler {
 		i = 0;
 		for(String string : (ArrayList<String>)languageHandler.getString(supercraftSapling1))  {
 			ItemStack stack = new ItemStack(supercraftSapling1, 1, i);
+			LanguageRegistry.addName(stack, string);
+			i++;
+		}
+		i = 0;
+		for(String string : (ArrayList<String>)languageHandler.getString(supercraftSapling2))  {
+			ItemStack stack = new ItemStack(supercraftSapling2, 1, i);
 			LanguageRegistry.addName(stack, string);
 			i++;
 		}
