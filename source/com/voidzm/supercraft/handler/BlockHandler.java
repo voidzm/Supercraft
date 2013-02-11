@@ -82,6 +82,9 @@ public class BlockHandler {
 	
 	public static Block redstoneGenerator;
 	
+	public static Block bluebells;
+	public static Block daisies;
+	
 	public void populateAllAndInitialize() {
 		this.createBlocks();
 		this.populateLanguage();
@@ -195,6 +198,11 @@ public class BlockHandler {
 		
 		languageHandler.add(redstoneGenerator, "Redstone Conversion Generator");
 		
+		// Supercraft Flowers
+		
+		languageHandler.add(bluebells, "Bluebells");
+		languageHandler.add(daisies, "Daisies");
+		
 	}
 	
 	private void createBlocks() {
@@ -271,6 +279,11 @@ public class BlockHandler {
 		// Elinvar Generators
 		
 		redstoneGenerator = new BlockRedstoneGenerator(1632);
+		
+		// Supercraft Flowers
+		
+		bluebells = new BlockSupercraftFlower(1636, 76).setBlockName("bluebells");
+		daisies = new BlockSupercraftFlower(1637, 77).setBlockName("daisies");
 		
 	}
 	
@@ -352,6 +365,11 @@ public class BlockHandler {
 		// Elinvar Generators
 		
 		GameRegistry.registerBlock(redstoneGenerator, "redstoneGenerator");
+		
+		// Supercraft Flowers
+		
+		GameRegistry.registerBlock(bluebells, "bluebells");
+		GameRegistry.registerBlock(daisies, "daisies");
 		
 	}
 	
@@ -469,6 +487,11 @@ public class BlockHandler {
 		// Elinvar Generators
 		
 		LanguageRegistry.addName(redstoneGenerator, (String)this.languageHandler.getString(redstoneGenerator));
+		
+		// Supercraft Flowers
+		
+		LanguageRegistry.addName(bluebells, (String)this.languageHandler.getString(bluebells));
+		LanguageRegistry.addName(daisies, (String)this.languageHandler.getString(daisies));
 		
 	}
 	

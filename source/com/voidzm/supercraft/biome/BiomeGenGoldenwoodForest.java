@@ -4,10 +4,12 @@ import java.util.Random;
 
 import com.voidzm.supercraft.gen.WorldGenGoldenwood;
 import com.voidzm.supercraft.gen.WorldGenOlive;
+import com.voidzm.supercraft.gen.WorldGenScatteredFlowers;
 import com.voidzm.supercraft.handler.BlockHandler;
 
 import net.minecraft.world.World;
 import net.minecraft.world.biome.BiomeGenBase;
+import net.minecraft.world.gen.feature.WorldGenFlowers;
 import net.minecraft.world.gen.feature.WorldGenMinable;
 
 public class BiomeGenGoldenwoodForest extends BiomeGenBase {
@@ -20,12 +22,13 @@ public class BiomeGenGoldenwoodForest extends BiomeGenBase {
 		super(par1);
 		this.theBiomeDecorator.treesPerChunk = -999;
 		this.theBiomeDecorator.grassPerChunk = 2;
-		this.theBiomeDecorator.flowersPerChunk = 5;
+		this.theBiomeDecorator.flowersPerChunk = -999;
 		this.theBiomeDecorator.reedsPerChunk = 8;
 		this.goldenwoodAttemptsPerChunk = 5;
 		this.setBiomeName("Goldenwood Forest");
-		this.setMinMaxHeight(0.3F, 1.0F);
+		this.setMinMaxHeight(0.4F, 0.7F);
 		this.setTemperatureRainfall(0.5F, 0.5F);
+		this.setColor(0xEAEDD8);
 	}
 	
 	@Override
@@ -50,6 +53,14 @@ public class BiomeGenGoldenwoodForest extends BiomeGenBase {
 			int xloc = par3 + par2Random.nextInt(16);
 			int zloc = par4 + par2Random.nextInt(16);
 			this.goldenwoodGenerator.generate(par1World, par2Random, xloc, par1World.getHeightValue(xloc, zloc), zloc);
+		}
+		for(int i = 0; i < 1; i++) {
+			WorldGenScatteredFlowers gen = new WorldGenScatteredFlowers(BlockHandler.bluebells.blockID);
+			gen.generate(par1World, par2Random, par3, (par1World.getHeightValue(par3, par4) - 2) + par2Random.nextInt(4), par4);
+		}
+		for(int i = 0; i < 1; i++) {
+			WorldGenScatteredFlowers gen = new WorldGenScatteredFlowers(BlockHandler.daisies.blockID);
+			gen.generate(par1World, par2Random, par3, (par1World.getHeightValue(par3, par4) - 2) + par2Random.nextInt(4), par4);
 		}
 	}
 	
