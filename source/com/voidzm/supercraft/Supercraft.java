@@ -31,6 +31,7 @@ import net.minecraft.item.EnumToolMaterial;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.world.biome.BiomeGenBase;
+import net.minecraftforge.common.DimensionManager;
 import net.minecraftforge.common.EnumHelper;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.oredict.OreDictionary;
@@ -84,7 +85,7 @@ public class Supercraft {
 		itemHandler.populateAllAndInitialize();
 		craftingHandler.populateAllAndInitialize();
 		biomeHandler.populateAllAndInitialize();
-		
+
 		biomeHandler.removeVanillaBiomes(); // For biome testing only.
 		
 		GameRegistry.registerFuelHandler(fuelHandler);

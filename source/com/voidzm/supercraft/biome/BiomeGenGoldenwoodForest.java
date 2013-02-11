@@ -7,6 +7,7 @@ import com.voidzm.supercraft.gen.WorldGenOlive;
 import com.voidzm.supercraft.gen.WorldGenScatteredFlowers;
 import com.voidzm.supercraft.handler.BlockHandler;
 
+import net.minecraft.block.Block;
 import net.minecraft.world.World;
 import net.minecraft.world.biome.BiomeGenBase;
 import net.minecraft.world.gen.feature.WorldGenFlowers;
@@ -61,6 +62,13 @@ public class BiomeGenGoldenwoodForest extends BiomeGenBase {
 		for(int i = 0; i < 1; i++) {
 			WorldGenScatteredFlowers gen = new WorldGenScatteredFlowers(BlockHandler.daisies.blockID);
 			gen.generate(par1World, par2Random, par3, (par1World.getHeightValue(par3, par4) - 2) + par2Random.nextInt(4), par4);
+		}
+		for(int i = 0; i < 6; i++) {
+			WorldGenMinable palestoneGen = new WorldGenMinable(BlockHandler.palestone.blockID, 24);
+			int x = par3 + par2Random.nextInt(16);
+			int y = par2Random.nextInt(128);
+			int z = par4 + par2Random.nextInt(16);
+			palestoneGen.generate(par1World, par2Random, x, y, z);
 		}
 	}
 	

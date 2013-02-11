@@ -85,6 +85,8 @@ public class BlockHandler {
 	public static Block bluebells;
 	public static Block daisies;
 	
+	public static Block palestone;
+	
 	public void populateAllAndInitialize() {
 		this.createBlocks();
 		this.populateLanguage();
@@ -203,6 +205,10 @@ public class BlockHandler {
 		languageHandler.add(bluebells, "Bluebells");
 		languageHandler.add(daisies, "Daisies");
 		
+		// Palestone
+		
+		languageHandler.add(palestone, "Palestone");
+		
 	}
 	
 	private void createBlocks() {
@@ -284,6 +290,10 @@ public class BlockHandler {
 		
 		bluebells = new BlockSupercraftFlower(1636, 76).setBlockName("bluebells");
 		daisies = new BlockSupercraftFlower(1637, 77).setBlockName("daisies");
+		
+		// Palestone
+		
+		palestone = new BlockPalestone(1638);
 		
 	}
 	
@@ -370,6 +380,10 @@ public class BlockHandler {
 		
 		GameRegistry.registerBlock(bluebells, "bluebells");
 		GameRegistry.registerBlock(daisies, "daisies");
+		
+		// Palestone
+		
+		GameRegistry.registerBlock(palestone, "palestone");
 		
 	}
 	
@@ -492,6 +506,10 @@ public class BlockHandler {
 		
 		LanguageRegistry.addName(bluebells, (String)this.languageHandler.getString(bluebells));
 		LanguageRegistry.addName(daisies, (String)this.languageHandler.getString(daisies));
+		
+		// Palestone
+		
+		LanguageRegistry.addName(palestone, (String)this.languageHandler.getString(palestone));
 		
 	}
 	

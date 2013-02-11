@@ -58,6 +58,8 @@ public class CraftingHandler {
 	private static ItemStack elinvarBlock;
 	private static ItemStack goldenwoodWood;
 	private static ItemStack goldenwoodPlanks;
+	private static ItemStack bluebells;
+	private static ItemStack daisies;
 	
 	public void populateAllAndInitialize() {
 		this.initializeCraftingRefs();
@@ -105,6 +107,8 @@ public class CraftingHandler {
 		elinvarBlock = new ItemStack(BlockHandler.elinvarBlock);
 		goldenwoodWood = new ItemStack(BlockHandler.supercraftLog, 1, 1);
 		goldenwoodPlanks = new ItemStack(BlockHandler.supercraftPlanks, 1, 1);
+		bluebells = new ItemStack(BlockHandler.bluebells);
+		daisies = new ItemStack(BlockHandler.daisies);
 	}
 	
 	private void addRecipes() {
@@ -220,6 +224,11 @@ public class CraftingHandler {
 		// Elinvar Material
 		
 		GameRegistry.addShapelessRecipe(new ItemStack(ItemHandler.elinvarDust, 9), elinvarBlock);
+		
+		// Supercraft Flowers
+		
+		GameRegistry.addShapelessRecipe(new ItemStack(Item.dyePowder, 2, 12), bluebells);
+		GameRegistry.addShapelessRecipe(new ItemStack(Item.dyePowder, 2, 7), daisies);
 		
 	}
 	
