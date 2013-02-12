@@ -19,7 +19,8 @@ import com.voidzm.supercraft.item.ItemSupercraftLog;
 import com.voidzm.supercraft.item.ItemSupercraftPlanks;
 import com.voidzm.supercraft.item.ItemSupercraftSapling1;
 import com.voidzm.supercraft.item.ItemSupercraftSapling2;
-import com.voidzm.supercraft.item.ItemSupercraftWoodSlab;
+import com.voidzm.supercraft.item.ItemSupercraftSlab1;
+import com.voidzm.supercraft.item.ItemSupercraftSlab2;
 
 import cpw.mods.fml.common.registry.GameRegistry;
 import cpw.mods.fml.common.registry.LanguageRegistry;
@@ -46,7 +47,8 @@ public class BlockHandler {
 	public static Block supercraftPlanks;
 	public static Block supercraftSapling1;
 	public static Block supercraftSapling2;
-	public static Block supercraftWoodSlab;
+	public static Block supercraftSlab1;
+	public static Block supercraftSlab2;
 	
 	public static Block oliveStairs;
 	public static Block goldenwoodStairs;
@@ -86,6 +88,8 @@ public class BlockHandler {
 	public static Block daisies;
 	
 	public static Block palestone;
+	public static Block palestoneBricks;
+	public static Block palestoneStairs;
 	
 	public void populateAllAndInitialize() {
 		this.createBlocks();
@@ -137,10 +141,14 @@ public class BlockHandler {
 		supercraftSapling2List.add("Goldenwood Sapling");
 		languageHandler.add(supercraftSapling2, supercraftSapling2List);
 		
-		ArrayList<String> supercraftWoodSlabList = new ArrayList<String>();
-		supercraftWoodSlabList.add("Olive Wood Slab");
-		supercraftWoodSlabList.add("Goldenwood Wood Slab");
-		languageHandler.add(supercraftWoodSlab, supercraftWoodSlabList);
+		ArrayList<String> supercraftSlab1List = new ArrayList<String>();
+		supercraftSlab1List.add("Olive Wood Slab");
+		supercraftSlab1List.add("Goldenwood Wood Slab");
+		languageHandler.add(supercraftSlab1, supercraftSlab1List);
+		
+		ArrayList<String> supercraftSlab2List = new ArrayList<String>();
+		supercraftSlab2List.add("Palestone Bricks Slab");
+		languageHandler.add(supercraftSlab2, supercraftSlab2List);
 		
 		languageHandler.add(oliveStairs, "Olive Wood Stairs");
 		languageHandler.add(goldenwoodStairs, "Goldenwood Wood Stairs");
@@ -208,6 +216,8 @@ public class BlockHandler {
 		// Palestone
 		
 		languageHandler.add(palestone, "Palestone");
+		languageHandler.add(palestoneBricks, "Palestone Bricks");
+		languageHandler.add(palestoneStairs, "Palestone Brick Stairs");
 		
 	}
 	
@@ -232,7 +242,8 @@ public class BlockHandler {
 		supercraftPlanks = new BlockSupercraftPlanks(1607);
 		supercraftSapling1 = new BlockSupercraftSapling1(1608);
 		supercraftSapling2 = new BlockSupercraftSapling2(1635);
-		supercraftWoodSlab = new BlockSupercraftWoodSlab(1609);
+		supercraftSlab1 = new BlockSupercraftSlab1(1609);
+		supercraftSlab2 = new BlockSupercraftSlab2(1640);
 		
 		oliveStairs = new BlockSupercraftStairs(1610, supercraftPlanks, 0).setBlockName("oliveStairs");
 		goldenwoodStairs = new BlockSupercraftStairs(1634, supercraftPlanks, 1).setBlockName("goldenwoodStairs");
@@ -294,6 +305,8 @@ public class BlockHandler {
 		// Palestone
 		
 		palestone = new BlockPalestone(1638);
+		palestoneBricks = new BlockPalestoneBricks(1639);
+		palestoneStairs = new BlockSupercraftStairs(1641, palestoneBricks, 0).setBlockName("palestoneStairs");
 		
 	}
 	
@@ -318,7 +331,8 @@ public class BlockHandler {
 		GameRegistry.registerBlock(supercraftPlanks, ItemSupercraftPlanks.class, "supercraftPlanks");
 		GameRegistry.registerBlock(supercraftSapling1, ItemSupercraftSapling1.class, "supercraftSapling1");
 		GameRegistry.registerBlock(supercraftSapling2, ItemSupercraftSapling2.class, "supercraftSapling2");
-		GameRegistry.registerBlock(supercraftWoodSlab, ItemSupercraftWoodSlab.class, "supercraftWoodSlab");
+		GameRegistry.registerBlock(supercraftSlab1, ItemSupercraftSlab1.class, "supercraftSlab1");
+		GameRegistry.registerBlock(supercraftSlab2, ItemSupercraftSlab2.class, "supercraftSlab2");
 		
 		GameRegistry.registerBlock(oliveStairs, "oliveStairs");
 		GameRegistry.registerBlock(goldenwoodStairs, "goldenwoodStairs");
@@ -384,6 +398,8 @@ public class BlockHandler {
 		// Palestone
 		
 		GameRegistry.registerBlock(palestone, "palestone");
+		GameRegistry.registerBlock(palestoneBricks, "palestoneBricks");
+		GameRegistry.registerBlock(palestoneStairs, "palestoneStairs");
 		
 	}
 	
@@ -439,8 +455,14 @@ public class BlockHandler {
 			i++;
 		}
 		i = 0;
-		for(String string : (ArrayList<String>)languageHandler.getString(supercraftWoodSlab))  {
-			ItemStack stack = new ItemStack(supercraftWoodSlab, 1, i);
+		for(String string : (ArrayList<String>)languageHandler.getString(supercraftSlab1))  {
+			ItemStack stack = new ItemStack(supercraftSlab1, 1, i);
+			LanguageRegistry.addName(stack, string);
+			i++;
+		}
+		i = 0;
+		for(String string : (ArrayList<String>)languageHandler.getString(supercraftSlab2))  {
+			ItemStack stack = new ItemStack(supercraftSlab2, 1, i);
 			LanguageRegistry.addName(stack, string);
 			i++;
 		}
@@ -510,6 +532,8 @@ public class BlockHandler {
 		// Palestone
 		
 		LanguageRegistry.addName(palestone, (String)this.languageHandler.getString(palestone));
+		LanguageRegistry.addName(palestoneBricks, (String)this.languageHandler.getString(palestoneBricks));
+		LanguageRegistry.addName(palestoneStairs, (String)this.languageHandler.getString(palestoneStairs));
 		
 	}
 	

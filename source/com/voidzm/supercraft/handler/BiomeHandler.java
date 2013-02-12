@@ -51,14 +51,14 @@ public class BiomeHandler {
 	}
 	
 	private void registerBiomes() {
-		/*GameRegistry.addBiome(extremeForest);
+		GameRegistry.addBiome(extremeForest);
 		GameRegistry.addBiome(insaneHills);
 		GameRegistry.addBiome(grassySummits);
 		GameRegistry.addBiome(winterForest);
 		GameRegistry.addBiome(alpha);
 		GameRegistry.addBiome(savanna);
 		GameRegistry.addBiome(sandyPeaks);
-		GameRegistry.addBiome(icyRidges);*/
+		GameRegistry.addBiome(icyRidges);
 		GameRegistry.addBiome(goldenwoodForest);
 	}
 	

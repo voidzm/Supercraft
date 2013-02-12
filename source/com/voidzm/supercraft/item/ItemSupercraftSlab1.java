@@ -1,5 +1,5 @@
 //////////////////////////////////////
-//*   ItemSupercraftWoodSlab.java  *//
+//*    ItemSupercraftSlab1.java    *//
 //*           Supercraft           *//
 //*        (c) voidzm 2013         *//
 //////////////////////////////////////
@@ -9,14 +9,14 @@ package com.voidzm.supercraft.item;
 import net.minecraft.item.ItemBlock;
 import net.minecraft.item.ItemStack;
 
-public class ItemSupercraftWoodSlab extends ItemBlock {
+public class ItemSupercraftSlab1 extends ItemBlock {
 
 	private final static String[] names = {"oliveWoodSlab", "goldenwoodWoodSlab"};
 	
-	public ItemSupercraftWoodSlab(int par1) {
+	public ItemSupercraftSlab1(int par1) {
 		super(par1);
 		setHasSubtypes(true);
-		setItemName("supercraftWoodSlab");
+		setItemName("supercraftSlab1");
 	}
 
 	@Override

@@ -60,6 +60,8 @@ public class CraftingHandler {
 	private static ItemStack goldenwoodPlanks;
 	private static ItemStack bluebells;
 	private static ItemStack daisies;
+	private static ItemStack palestone;
+	private static ItemStack palestoneBricks;
 	
 	public void populateAllAndInitialize() {
 		this.initializeCraftingRefs();
@@ -109,6 +111,8 @@ public class CraftingHandler {
 		goldenwoodPlanks = new ItemStack(BlockHandler.supercraftPlanks, 1, 1);
 		bluebells = new ItemStack(BlockHandler.bluebells);
 		daisies = new ItemStack(BlockHandler.daisies);
+		palestone = new ItemStack(BlockHandler.palestone);
+		palestoneBricks = new ItemStack(BlockHandler.palestoneBricks);
 	}
 	
 	private void addRecipes() {
@@ -128,11 +132,11 @@ public class CraftingHandler {
 		
 		// Supercraft Trees
 		
-		GameRegistry.addRecipe(new ItemStack(BlockHandler.supercraftWoodSlab, 6, 0), "aaa", 'a', olivePlanks);
+		GameRegistry.addRecipe(new ItemStack(BlockHandler.supercraftSlab1, 6, 0), "aaa", 'a', olivePlanks);
 		GameRegistry.addRecipe(new ItemStack(BlockHandler.oliveStairs, 4), "a  ", "aa ", "aaa", 'a', olivePlanks);
 		GameRegistry.addRecipe(new ItemStack(BlockHandler.oliveStairs, 4), "  a", " aa", "aaa", 'a', olivePlanks);
 		
-		GameRegistry.addRecipe(new ItemStack(BlockHandler.supercraftWoodSlab, 6, 1), "aaa", 'a', goldenwoodPlanks);
+		GameRegistry.addRecipe(new ItemStack(BlockHandler.supercraftSlab1, 6, 1), "aaa", 'a', goldenwoodPlanks);
 		GameRegistry.addRecipe(new ItemStack(BlockHandler.goldenwoodStairs, 4), "a  ", "aa ", "aaa", 'a', goldenwoodPlanks);
 		GameRegistry.addRecipe(new ItemStack(BlockHandler.goldenwoodStairs, 4), "  a", " aa", "aaa", 'a', goldenwoodPlanks);
 		
@@ -187,6 +191,13 @@ public class CraftingHandler {
 		// Elinvar Generators
 		
 		GameRegistry.addRecipe(new ItemStack(BlockHandler.redstoneGenerator), "aaa", "bcb", "ddd", 'a', stoneBrick, 'b', obsidian, 'c', redstoneTorch, 'd', aluminumBlock);
+		
+		// Palestone
+		
+		GameRegistry.addRecipe(new ItemStack(BlockHandler.palestoneBricks, 4), "aa", "aa", 'a', palestone);
+		GameRegistry.addRecipe(new ItemStack(BlockHandler.supercraftSlab2, 6, 0), "aaa", 'a', palestoneBricks);
+		GameRegistry.addRecipe(new ItemStack(BlockHandler.palestoneStairs, 4), "a  ", "aa ", "aaa", 'a', palestoneBricks);
+		GameRegistry.addRecipe(new ItemStack(BlockHandler.palestoneStairs, 4), "  a", " aa", "aaa", 'a', palestoneBricks);
 		
 	}
 	
