@@ -62,6 +62,7 @@ public class CraftingHandler {
 	private static ItemStack daisies;
 	private static ItemStack palestone;
 	private static ItemStack palestoneBricks;
+	private static ItemStack palestoneBrickSlab;
 	
 	public void populateAllAndInitialize() {
 		this.initializeCraftingRefs();
@@ -113,6 +114,7 @@ public class CraftingHandler {
 		daisies = new ItemStack(BlockHandler.daisies);
 		palestone = new ItemStack(BlockHandler.palestone);
 		palestoneBricks = new ItemStack(BlockHandler.palestoneBricks);
+		palestoneBrickSlab = new ItemStack(BlockHandler.supercraftSlab2, 1, 0);
 	}
 	
 	private void addRecipes() {
@@ -198,6 +200,7 @@ public class CraftingHandler {
 		GameRegistry.addRecipe(new ItemStack(BlockHandler.supercraftSlab2, 6, 0), "aaa", 'a', palestoneBricks);
 		GameRegistry.addRecipe(new ItemStack(BlockHandler.palestoneStairs, 4), "a  ", "aa ", "aaa", 'a', palestoneBricks);
 		GameRegistry.addRecipe(new ItemStack(BlockHandler.palestoneStairs, 4), "  a", " aa", "aaa", 'a', palestoneBricks);
+		GameRegistry.addRecipe(new ItemStack(BlockHandler.inscribedPalestone), "a", "a", 'a', palestoneBrickSlab);
 		
 	}
 	

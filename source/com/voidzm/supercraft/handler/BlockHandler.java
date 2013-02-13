@@ -90,6 +90,10 @@ public class BlockHandler {
 	public static Block palestone;
 	public static Block palestoneBricks;
 	public static Block palestoneStairs;
+	public static Block inscribedPalestone;
+	public static Block blockOfGoldenwood;
+	public static Block overgrownPalestone;
+	public static Block burnedPalestone;
 	
 	public void populateAllAndInitialize() {
 		this.createBlocks();
@@ -218,6 +222,10 @@ public class BlockHandler {
 		languageHandler.add(palestone, "Palestone");
 		languageHandler.add(palestoneBricks, "Palestone Bricks");
 		languageHandler.add(palestoneStairs, "Palestone Brick Stairs");
+		languageHandler.add(inscribedPalestone, "Inscribed Palestone");
+		languageHandler.add(blockOfGoldenwood, "Block of the Goldenwood");
+		languageHandler.add(overgrownPalestone, "Overgrown Palestone Bricks");
+		languageHandler.add(burnedPalestone, "Burned Palestone Bricks");
 		
 	}
 	
@@ -307,6 +315,10 @@ public class BlockHandler {
 		palestone = new BlockPalestone(1638);
 		palestoneBricks = new BlockPalestoneBricks(1639);
 		palestoneStairs = new BlockSupercraftStairs(1641, palestoneBricks, 0).setBlockName("palestoneStairs");
+		inscribedPalestone = new BlockInscribedPalestone(1642);
+		blockOfGoldenwood = new BlockGoldenwood(1643);
+		overgrownPalestone = new BlockOvergrownPalestone(1644);
+		burnedPalestone = new BlockBurnedPalestone(1645);
 		
 	}
 	
@@ -400,6 +412,10 @@ public class BlockHandler {
 		GameRegistry.registerBlock(palestone, "palestone");
 		GameRegistry.registerBlock(palestoneBricks, "palestoneBricks");
 		GameRegistry.registerBlock(palestoneStairs, "palestoneStairs");
+		GameRegistry.registerBlock(inscribedPalestone, "inscribedPalestone");
+		GameRegistry.registerBlock(blockOfGoldenwood, "blockOfGoldenwood");
+		GameRegistry.registerBlock(overgrownPalestone, "overgrownPalestone");
+		GameRegistry.registerBlock(burnedPalestone, "burnedPalestone");
 		
 	}
 	
@@ -534,6 +550,10 @@ public class BlockHandler {
 		LanguageRegistry.addName(palestone, (String)this.languageHandler.getString(palestone));
 		LanguageRegistry.addName(palestoneBricks, (String)this.languageHandler.getString(palestoneBricks));
 		LanguageRegistry.addName(palestoneStairs, (String)this.languageHandler.getString(palestoneStairs));
+		LanguageRegistry.addName(inscribedPalestone, (String)this.languageHandler.getString(inscribedPalestone));
+		LanguageRegistry.addName(blockOfGoldenwood, (String)this.languageHandler.getString(blockOfGoldenwood));
+		LanguageRegistry.addName(overgrownPalestone, (String)this.languageHandler.getString(overgrownPalestone));
+		LanguageRegistry.addName(burnedPalestone, (String)this.languageHandler.getString(burnedPalestone));
 		
 	}
 	
