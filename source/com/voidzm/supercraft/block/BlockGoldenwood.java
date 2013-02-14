@@ -12,7 +12,7 @@ public class BlockGoldenwood extends Block {
 		super(par1, 98, Material.rock);
 		this.setHardness(4.0F);
 		this.setResistance(15.0F);
-		this.setLightValue(1.0F);
+		this.setLightValue(0.8F);
 		this.setStepSound(soundStoneFootstep);
 		this.setBlockName("blockOfGoldenwood");
 		this.setCreativeTab(CreativeTabs.tabBlock);

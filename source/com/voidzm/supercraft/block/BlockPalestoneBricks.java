@@ -29,13 +29,12 @@ public class BlockPalestoneBricks extends Block {
 	
 	public void updateTick(World par1World, int par2, int par3, int par4, Random par5Random) {
 		if(par2 < 255 && (par1World.getBlockId(par2, par3+1, par4) == Block.waterStill.blockID || par1World.getBlockId(par2, par3+1, par4) == Block.waterMoving.blockID)) {
-			if(par5Random.nextInt(5) == 0) {
+			if(par5Random.nextInt(10) == 0) {
 				par1World.setBlockWithNotify(par2, par3, par4, BlockHandler.overgrownPalestone.blockID);
 				return;
 			}
 		}
-		else if(par5Random.nextInt(20) == 0) {
-			boolean shouldGrow = false;
+		else if(par5Random.nextInt(40) == 0) {
 			if(par1World.getBlockId(par2+1, par3, par4) == Block.waterStill.blockID || par1World.getBlockId(par2+1, par3, par4) == Block.waterMoving.blockID) {
 				par1World.setBlockWithNotify(par2, par3, par4, BlockHandler.overgrownPalestone.blockID);
 				return;

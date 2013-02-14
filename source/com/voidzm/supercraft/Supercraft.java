@@ -86,7 +86,7 @@ public class Supercraft {
 		craftingHandler.populateAllAndInitialize();
 		biomeHandler.populateAllAndInitialize();
 
-		//biomeHandler.removeVanillaBiomes(); // For biome testing only.
+		biomeHandler.removeVanillaBiomes(); // For biome testing only.
 		
 		GameRegistry.registerFuelHandler(fuelHandler);
 		MinecraftForge.EVENT_BUS.register(new EventBonemeal());

@@ -57,14 +57,6 @@ public class BiomeGenSavanna extends BiomeGenBase {
 			int zloc = par4 + par2Random.nextInt(16);
 			this.oliveGenerator.generate(par1World, par2Random, xloc, par1World.getHeightValue(xloc, zloc), zloc);
 		}
-		int ky = 0; // Electrum
-		if(par2Random.nextInt(9) != 0) return; // Because this exits this.decorate 89% of the time, KEEP THIS GENERATOR LAST.
-		for(int i = 0; i < 1; i++) {
-			int rx = par3 + par2Random.nextInt(16);
-			int ry = ky + par2Random.nextInt(64);
-			int rz = par4 + par2Random.nextInt(16);
-			new WorldGenMinable(BlockHandler.electrumOre.blockID, 16).generate(par1World, par2Random, rx, ry, rz);
-		}
 	}
 	
 }
