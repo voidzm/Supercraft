@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.Random;
 
 import com.voidzm.supercraft.gen.WorldGenGoldenwood;
+import com.voidzm.supercraft.gen.WorldGenGoldenwoodShrine;
 
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
@@ -36,8 +37,8 @@ public class BlockSupercraftSapling2 extends BlockSupercraftSaplingBase {
         WorldGenerator treeGenerator = null;
         int metadata = par1World.getBlockMetadata(par2, par3, par4) & 3;
         if(metadata == 0) {
-        	treeGenerator = new WorldGenGoldenwood();
-        	((WorldGenGoldenwood)treeGenerator).generate(par1World, par5Random, par2, par3, par4, false);
+        	treeGenerator = new WorldGenGoldenwoodShrine();
+        	((WorldGenGoldenwoodShrine)treeGenerator).generate(par1World, par5Random, par2, par3, par4/*, false*/);
         }
     }
 	

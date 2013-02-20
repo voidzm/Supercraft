@@ -52,7 +52,7 @@ import cpw.mods.fml.common.registry.LanguageRegistry;
 import cpw.mods.fml.common.registry.TickRegistry;
 import cpw.mods.fml.relauncher.Side;
 
-@Mod(modid="Supercraft", name="Supercraft", version="0.2.0")
+@Mod(modid="Supercraft", name="Supercraft", version="0.3.0")
 @NetworkMod(clientSideRequired=true, serverSideRequired=false, channels={"SCElinvar"}, packetHandler=PacketHandler.class)
 public class Supercraft {
 
@@ -86,7 +86,7 @@ public class Supercraft {
 		craftingHandler.populateAllAndInitialize();
 		biomeHandler.populateAllAndInitialize();
 
-		biomeHandler.removeVanillaBiomes(); // For biome testing only.
+		//biomeHandler.removeVanillaBiomes(); // For biome testing only.
 		
 		GameRegistry.registerFuelHandler(fuelHandler);
 		MinecraftForge.EVENT_BUS.register(new EventBonemeal());

@@ -16,9 +16,13 @@ import com.voidzm.supercraft.biome.BiomeGenSandyPeaks;
 import com.voidzm.supercraft.biome.BiomeGenSavanna;
 import com.voidzm.supercraft.biome.BiomeGenWinterForest;
 
+import cpw.mods.fml.common.network.NetworkRegistry;
 import cpw.mods.fml.common.registry.GameRegistry;
+import cpw.mods.fml.server.FMLServerHandler;
 
 import net.minecraft.world.biome.BiomeGenBase;
+import net.minecraft.world.biome.WorldChunkManager;
+import net.minecraftforge.common.BiomeManager;
 
 public class BiomeHandler {
 
@@ -51,32 +55,40 @@ public class BiomeHandler {
 	}
 	
 	private void registerBiomes() {
-		/*GameRegistry.addBiome(extremeForest);
-		GameRegistry.addBiome(insaneHills);
-		GameRegistry.addBiome(grassySummits);
-		GameRegistry.addBiome(winterForest);
-		GameRegistry.addBiome(alpha);
-		GameRegistry.addBiome(savanna);
-		GameRegistry.addBiome(sandyPeaks);
-		GameRegistry.addBiome(icyRidges);*/
-		GameRegistry.addBiome(goldenwoodForest);
+		this.addStandardBiome(extremeForest);
+		this.addStandardBiome(insaneHills);
+		this.addStandardBiome(grassySummits);
+		this.addStandardBiome(winterForest);
+		this.addStandardBiome(alpha);
+		this.addVillageBiome(savanna);
+		this.addStandardBiome(sandyPeaks);
+		this.addStandardBiome(icyRidges);
+		this.addStandardBiome(goldenwoodForest);
 	}
 	
 	public void removeVanillaBiomes() {
 		GameRegistry.removeBiome(BiomeGenBase.forest);
-		GameRegistry.removeBiome(BiomeGenBase.forestHills);
 		GameRegistry.removeBiome(BiomeGenBase.extremeHills);
-		GameRegistry.removeBiome(BiomeGenBase.extremeHillsEdge);
 		GameRegistry.removeBiome(BiomeGenBase.desert);
-		GameRegistry.removeBiome(BiomeGenBase.desertHills);
 		GameRegistry.removeBiome(BiomeGenBase.icePlains);
-		GameRegistry.removeBiome(BiomeGenBase.iceMountains);
 		GameRegistry.removeBiome(BiomeGenBase.jungle);
-		GameRegistry.removeBiome(BiomeGenBase.jungleHills);
 		GameRegistry.removeBiome(BiomeGenBase.plains);
 		GameRegistry.removeBiome(BiomeGenBase.swampland);
 		GameRegistry.removeBiome(BiomeGenBase.taiga);
-		GameRegistry.removeBiome(BiomeGenBase.taigaHills);
+		GameRegistry.removeBiome(BiomeGenBase.mushroomIsland);
+	}
+	
+	private void addStandardBiome(BiomeGenBase biome) {
+		GameRegistry.addBiome(biome);
+		BiomeManager.addSpawnBiome(biome);
+		BiomeManager.addStrongholdBiome(biome);
+	}
+	
+	private void addVillageBiome(BiomeGenBase biome) {
+		GameRegistry.addBiome(biome);
+		BiomeManager.addSpawnBiome(biome);
+		BiomeManager.addVillageBiome(biome, true);
+		BiomeManager.addStrongholdBiome(biome);
 	}
 	
 }

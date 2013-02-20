@@ -2,12 +2,17 @@ package com.voidzm.supercraft.gen;
 
 import java.util.Random;
 
+import com.voidzm.supercraft.biome.BiomeGenGoldenwoodForest;
 import com.voidzm.supercraft.handler.BlockHandler;
 import com.voidzm.supercraft.handler.ItemHandler;
 
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
+import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
+import net.minecraft.nbt.NBTTagCompound;
+import net.minecraft.nbt.NBTTagList;
+import net.minecraft.nbt.NBTTagString;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.tileentity.TileEntityChest;
 import net.minecraft.world.World;
@@ -16,7 +21,7 @@ import net.minecraft.world.gen.feature.WorldGenerator;
 public class WorldGenGoldenwoodShrine extends WorldGenerator {
 
 	public boolean generate(World var1, Random var2, int var3, int var4, int var5) {
-		if(!var1.getBiomeGenForCoords(var3, var5).biomeName.equalsIgnoreCase("Goldenwood Forest")) return false;
+		if(!(var1.provider.getBiomeGenForCoords(var3, var5) instanceof BiomeGenGoldenwoodForest)) return false;
 		if(var1.getBlockMaterial(var3, var4-1, var5) == Material.water) return false;
 		int[] groundHeights = new int[25];
 		int i = 0;
@@ -118,25 +123,7 @@ public class WorldGenGoldenwoodShrine extends WorldGenerator {
 		for(int j = 0; j < height; j++) {
 			var1.setBlock(var3-2, var4+j, var5+2, (j == height-1 ? BlockHandler.overgrownPalestone.blockID : BlockHandler.palestoneBricks.blockID));
 		}
-		int chestMeta;
-		switch(openSide) {
-		case 0:
-			chestMeta = 5;
-			break;
-		case 1:
-			chestMeta = 4;
-			break;
-		case 2:
-			chestMeta = 2;
-			break;
-		case 3:
-			chestMeta = 3;
-			break;
-		default:
-			chestMeta = 0;
-			break;
-		}
-		var1.setBlockAndMetadata(var3, var4, var5, Block.chest.blockID, chestMeta);
+		var1.setBlock(var3, var4, var5, Block.chest.blockID);
 		TileEntityChest chestTE = (TileEntityChest)var1.getBlockTileEntity(var3, var4, var5);
 		int lootTableLength = var2.nextInt(4) + 4;
 		ItemStack[] loot = new ItemStack[lootTableLength];
@@ -146,6 +133,8 @@ public class WorldGenGoldenwoodShrine extends WorldGenerator {
 		for(ItemStack stack : loot) {
 			chestTE.setInventorySlotContents(var2.nextInt(chestTE.getSizeInventory()), stack);
 		}
+		if(var2.nextInt(2) == 0) chestTE.setInventorySlotContents(var2.nextInt(chestTE.getSizeInventory()), this.getOvergrowthBook());
+		else chestTE.setInventorySlotContents(var2.nextInt(chestTE.getSizeInventory()), this.getGoldenwoodBook());
 		return true;
 	}
 	
@@ -178,6 +167,34 @@ public class WorldGenGoldenwoodShrine extends WorldGenerator {
 		else {
 			return new ItemStack(BlockHandler.supercraftLog, rand.nextInt(4)+1, 1);
 		}
+	}
+	
+	private ItemStack getOvergrowthBook() {
+		ItemStack book = new ItemStack(Item.writtenBook, 1);
+		NBTTagCompound tag = new NBTTagCompound();
+		tag.setString("author", "unknown");
+		tag.setString("title", "Tome of Overgrowth");
+		NBTTagList pages = new NBTTagList();
+		NBTTagString page = new NBTTagString("page");
+		page.data = "These bricks made from the pale stone seem to have aquired a faint moss. Perhaps this water has something to do with it.";
+		pages.appendTag(page);
+		tag.setTag("pages", pages);
+		book.stackTagCompound = tag;
+		return book;
+	}
+	
+	private ItemStack getGoldenwoodBook() {
+		ItemStack book = new ItemStack(Item.writtenBook, 1);
+		NBTTagCompound tag = new NBTTagCompound();
+		tag.setString("author", "unknown");
+		tag.setString("title", "Book of Goldenwood");
+		NBTTagList pages = new NBTTagList();
+		NBTTagString page = new NBTTagString("page");
+		page.data = "When the mossy stones surround the four sides of the inscribed stone, and the wood of the golden trees finishes the square, the tiniest bit of the silvery gold will complete the matrix.";
+		pages.appendTag(page);
+		tag.setTag("pages", pages);
+		book.stackTagCompound = tag;
+		return book;
 	}
 	
 }
