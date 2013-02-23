@@ -38,6 +38,8 @@ public class BlockSupercraftPlanks extends Block {
 			return 7;
 		case 1:
 			return 74;
+		case 2:
+			return 103;
 		default:
 			return 7;
 		}
@@ -51,6 +53,7 @@ public class BlockSupercraftPlanks extends Block {
 	public void getSubBlocks(int par1, CreativeTabs par2CreativeTabs, List par3List) {
 		par3List.add(new ItemStack(par1, 1, 0));
 		par3List.add(new ItemStack(par1, 1, 1));
+		par3List.add(new ItemStack(par1, 1, 2));
 	}
 	
 	@Override

@@ -12,7 +12,7 @@ import cpw.mods.fml.relauncher.SideOnly;
 
 public class BlockSupercraftLeaves2 extends BlockSupercraftLeavesBase {
 
-	public static final String[] leavesType = new String[] {"goldenwood"};
+	public static final String[] leavesType = new String[] {"goldenwood", "tenebria"};
 	
 	public BlockSupercraftLeaves2(int par1) {
 		super(par1, 80);
@@ -22,6 +22,7 @@ public class BlockSupercraftLeaves2 extends BlockSupercraftLeavesBase {
 	@SideOnly(Side.CLIENT)
 	public void getSubBlocks(int par1, CreativeTabs par2CreativeTabs, List par3List) {
 		par3List.add(new ItemStack(par1, 1, 0));
+		par3List.add(new ItemStack(par1, 1, 1));
 	}
 	
 	public int idDropped(int par1, Random par2Random, int par3) {

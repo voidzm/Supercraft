@@ -5,6 +5,7 @@ import java.util.Random;
 
 import com.voidzm.supercraft.gen.WorldGenGoldenwood;
 import com.voidzm.supercraft.gen.WorldGenGoldenwoodShrine;
+import com.voidzm.supercraft.gen.WorldGenTenebria;
 
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
@@ -26,6 +27,8 @@ public class BlockSupercraftSapling2 extends BlockSupercraftSaplingBase {
 		switch(par3) {
 		case 0:
 			return 75;
+		case 1:
+			return 104;
 		default:
 			return this.blockIndexInTexture;
 		}
@@ -37,14 +40,19 @@ public class BlockSupercraftSapling2 extends BlockSupercraftSaplingBase {
         WorldGenerator treeGenerator = null;
         int metadata = par1World.getBlockMetadata(par2, par3, par4) & 3;
         if(metadata == 0) {
-        	treeGenerator = new WorldGenGoldenwoodShrine();
-        	((WorldGenGoldenwoodShrine)treeGenerator).generate(par1World, par5Random, par2, par3, par4/*, false*/);
+        	treeGenerator = new WorldGenGoldenwood();
+        	((WorldGenGoldenwood)treeGenerator).generate(par1World, par5Random, par2, par3, par4, false);
+        }
+        else if(metadata == 1) {
+        	treeGenerator = new WorldGenTenebria();
+        	((WorldGenTenebria)treeGenerator).generate(par1World, par5Random, par2, par3, par4, false);
         }
     }
 	
     @SideOnly(Side.CLIENT)
     public void getSubBlocks(int par1, CreativeTabs par2CreativeTabs, List par3List) {
         par3List.add(new ItemStack(par1, 1, 0));
+        par3List.add(new ItemStack(par1, 1, 1));
     }
 
 }

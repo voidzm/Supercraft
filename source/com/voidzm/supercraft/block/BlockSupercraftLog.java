@@ -20,7 +20,7 @@ import net.minecraft.world.World;
 
 public class BlockSupercraftLog extends Block {
 	
-	 public static final String[] woodType = new String[] {"olive", "goldenwood"};
+	 public static final String[] woodType = new String[] {"olive", "goldenwood", "tenebria", "tenebriaCrystal"};
 	 
 	 public BlockSupercraftLog(int par1) {
 	        super(par1, Material.wood);
@@ -91,6 +91,14 @@ public class BlockSupercraftLog extends Block {
 		 else if(logCode == 1) {
 			 logSide = 72;
 			 logEnd = 73;
+		 }
+		 else if(logCode == 2) {
+			 logSide = 100;
+			 logEnd = 102;
+		 }
+		 else if(logCode == 3) {
+			 logSide = 100;
+			 logEnd = 101;
 		 }
 		 if(rotationCode == 0) {
 			 int val = 255;
@@ -177,6 +185,8 @@ public class BlockSupercraftLog extends Block {
 	 public void getSubBlocks(int par1, CreativeTabs par2CreativeTabs, List par3List) {
 		 par3List.add(new ItemStack(par1, 1, 0));
 		 par3List.add(new ItemStack(par1, 1, 1));
+		 par3List.add(new ItemStack(par1, 1, 2));
+		 par3List.add(new ItemStack(par1, 1, 3));
 	 }
 	 
 	 protected ItemStack createStackedBlock(int par1) {

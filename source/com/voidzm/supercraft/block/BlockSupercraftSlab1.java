@@ -23,7 +23,7 @@ import net.minecraft.item.ItemStack;
 
 public class BlockSupercraftSlab1 extends BlockSupercraftSlabBase {
 
-	private final String[] types = new String[] {"olive", "goldenwood"};
+	private final String[] types = new String[] {"olive", "goldenwood", "tenebria"};
 	
 	public BlockSupercraftSlab1(int par1) {
 		super(par1, Material.wood);
@@ -37,6 +37,8 @@ public class BlockSupercraftSlab1 extends BlockSupercraftSlabBase {
         	return 7;
         case 1:
         	return 74;
+        case 2:
+        	return 103;
         default:
         	return 255;
         }
@@ -54,6 +56,7 @@ public class BlockSupercraftSlab1 extends BlockSupercraftSlabBase {
         if(par1 == BlockHandler.supercraftSlab1.blockID) {
         	par3List.add(new ItemStack(par1, 1, 0));
         	par3List.add(new ItemStack(par1, 1, 1));
+        	par3List.add(new ItemStack(par1, 1, 2));
         }
     }
 	

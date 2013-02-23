@@ -13,62 +13,66 @@ import net.minecraft.block.Block;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.crafting.CraftingManager;
+import net.minecraftforge.oredict.OreDictionary;
 import net.minecraftforge.oredict.ShapedOreRecipe;
 
 public class CraftingHandler {
 
 	// Official vanilla Minecraft
 	
-	private static ItemStack glass;
-	private static ItemStack coal;
-	private static ItemStack coalBlock;
-	private static ItemStack ironScrap;
-	private static ItemStack ironIngot;
-	private static ItemStack goldNugget;
-	private static ItemStack diamond;
-	private static ItemStack diamondShard;
-	private static ItemStack obsidian;
-	private static ItemStack stick;
-	private static ItemStack blueWool;
-	private static ItemStack greenWool;
-	private static ItemStack redWool;
-	private static ItemStack purpleWool;
-	private static ItemStack stone;
-	private static ItemStack craftingTable;
-	private static ItemStack endStone;
-	private static ItemStack netherBrick;
-	private static ItemStack redstoneTorch;
-	private static ItemStack stoneBrick;
+	private ItemStack glass;
+	private ItemStack coal;
+	private ItemStack coalBlock;
+	private ItemStack ironScrap;
+	private ItemStack ironIngot;
+	private ItemStack goldNugget;
+	private ItemStack diamond;
+	private ItemStack diamondShard;
+	private ItemStack obsidian;
+	private ItemStack stick;
+	private ItemStack blueWool;
+	private ItemStack greenWool;
+	private ItemStack redWool;
+	private ItemStack purpleWool;
+	private ItemStack stone;
+	private ItemStack craftingTable;
+	private ItemStack endStone;
+	private ItemStack netherBrick;
+	private ItemStack redstoneTorch;
+	private ItemStack stoneBrick;
 	
 	// Supercraft
 	
-	private static ItemStack oliveWood;
-	private static ItemStack olivePlanks;
-	private static ItemStack aluminum;
-	private static ItemStack aluminumBlock;
-	private static ItemStack copperChunk;
-	private static ItemStack copper;
-	private static ItemStack copperBlock;
-	private static ItemStack silver;
-	private static ItemStack silverBlock;
-	private static ItemStack electrumBit;
-	private static ItemStack electrum;
-	private static ItemStack electrumBlock;
-	private static ItemStack elinvarDust;
-	private static ItemStack elinvarBlock;
-	private static ItemStack goldenwoodWood;
-	private static ItemStack goldenwoodPlanks;
-	private static ItemStack bluebells;
-	private static ItemStack daisies;
-	private static ItemStack palestone;
-	private static ItemStack palestoneBricks;
-	private static ItemStack palestoneBrickSlab;
+	private ItemStack oliveWood;
+	private ItemStack olivePlanks;
+	private ItemStack aluminum;
+	private ItemStack aluminumBlock;
+	private ItemStack copperChunk;
+	private ItemStack copper;
+	private ItemStack copperBlock;
+	private ItemStack silver;
+	private ItemStack silverBlock;
+	private ItemStack electrumBit;
+	private ItemStack electrum;
+	private ItemStack electrumBlock;
+	private ItemStack elinvarDust;
+	private ItemStack elinvarBlock;
+	private ItemStack goldenwoodWood;
+	private ItemStack goldenwoodPlanks;
+	private ItemStack bluebells;
+	private ItemStack daisies;
+	private ItemStack palestone;
+	private ItemStack palestoneBricks;
+	private ItemStack palestoneBrickSlab;
+	private ItemStack tenebriaWood;
+	private ItemStack tenebriaPlanks;
 	
 	public void populateAllAndInitialize() {
 		this.initializeCraftingRefs();
 		this.addRecipes();
 		this.addShapelessRecipes();
 		this.addSmelting();
+		this.initOreDictionary();
 		System.out.println("[Supercraft] Recipes added.");
 	}
 	
@@ -115,6 +119,8 @@ public class CraftingHandler {
 		palestone = new ItemStack(BlockHandler.palestone);
 		palestoneBricks = new ItemStack(BlockHandler.palestoneBricks);
 		palestoneBrickSlab = new ItemStack(BlockHandler.supercraftSlab2, 1, 0);
+		tenebriaWood = new ItemStack(BlockHandler.supercraftLog, 1, 2);
+		tenebriaPlanks = new ItemStack(BlockHandler.supercraftPlanks, 1, 2);
 	}
 	
 	private void addRecipes() {
@@ -141,6 +147,10 @@ public class CraftingHandler {
 		GameRegistry.addRecipe(new ItemStack(BlockHandler.supercraftSlab1, 6, 1), "aaa", 'a', goldenwoodPlanks);
 		GameRegistry.addRecipe(new ItemStack(BlockHandler.goldenwoodStairs, 4), "a  ", "aa ", "aaa", 'a', goldenwoodPlanks);
 		GameRegistry.addRecipe(new ItemStack(BlockHandler.goldenwoodStairs, 4), "  a", " aa", "aaa", 'a', goldenwoodPlanks);
+		
+		GameRegistry.addRecipe(new ItemStack(BlockHandler.supercraftSlab1, 6, 2), "aaa", 'a', tenebriaPlanks);
+		GameRegistry.addRecipe(new ItemStack(BlockHandler.tenebriaStairs, 4), "a  ", "aa ", "aaa", 'a', tenebriaPlanks);
+		GameRegistry.addRecipe(new ItemStack(BlockHandler.tenebriaStairs, 4), "  a", " aa", "aaa", 'a', tenebriaPlanks);
 		
 		// Aluminum Material
 		
@@ -216,6 +226,7 @@ public class CraftingHandler {
 		
 		GameRegistry.addShapelessRecipe(new ItemStack(BlockHandler.supercraftPlanks, 4, 0), oliveWood);
 		GameRegistry.addShapelessRecipe(new ItemStack(BlockHandler.supercraftPlanks, 4, 1), goldenwoodWood);
+		GameRegistry.addShapelessRecipe(new ItemStack(BlockHandler.supercraftPlanks, 4, 2), tenebriaWood);
 		
 		// Aluminum Material
 		
@@ -280,6 +291,37 @@ public class CraftingHandler {
 		CraftingManager.getInstance().getRecipeList().add(new ShapedOreRecipe(new ItemStack(BlockHandler.goldenConduit, 8), new Object[]{"aba", "ccc", "aba", Character.valueOf('a'), Item.ingotGold, Character.valueOf('b'), Block.glass, Character.valueOf('c'), ItemHandler.elinvarDust}));
 		CraftingManager.getInstance().getRecipeList().add(new ShapedOreRecipe(new ItemStack(BlockHandler.electrumConduit, 8), new Object[]{"aba", "ccc", "aba", Character.valueOf('a'), "ingotElectrum", Character.valueOf('b'), Block.glass, Character.valueOf('c'), ItemHandler.elinvarDust}));
 		CraftingManager.getInstance().getRecipeList().add(new ShapedOreRecipe(new ItemStack(BlockHandler.diamondConduit, 8), new Object[]{"aba", "ccc", "aba", Character.valueOf('a'), Item.diamond, Character.valueOf('b'), Block.glass, Character.valueOf('c'), ItemHandler.elinvarDust}));
+	}
+	
+	private void initOreDictionary() {
+		OreDictionary.registerOre("logWood", new ItemStack(BlockHandler.supercraftLog, 1, 0));
+		OreDictionary.registerOre("logWood", new ItemStack(BlockHandler.supercraftLog, 1, 1));
+		OreDictionary.registerOre("logWood", new ItemStack(BlockHandler.supercraftLog, 1, 2));
+		
+		OreDictionary.registerOre("plankWood", new ItemStack(BlockHandler.supercraftPlanks, 1, 0));
+		OreDictionary.registerOre("plankWood", new ItemStack(BlockHandler.supercraftPlanks, 1, 1));
+		OreDictionary.registerOre("plankWood", new ItemStack(BlockHandler.supercraftPlanks, 1, 2));
+		
+		OreDictionary.registerOre("slabWood", new ItemStack(BlockHandler.supercraftSlab1, 1, 0));
+		OreDictionary.registerOre("slabWood", new ItemStack(BlockHandler.supercraftSlab1, 1, 1));
+		OreDictionary.registerOre("slabWood", new ItemStack(BlockHandler.supercraftSlab1, 1, 2));
+		
+		OreDictionary.registerOre("stairWood", new ItemStack(BlockHandler.oliveStairs));
+		OreDictionary.registerOre("stairWood", new ItemStack(BlockHandler.goldenwoodStairs));
+		OreDictionary.registerOre("stairWood", new ItemStack(BlockHandler.tenebriaStairs));
+		
+		OreDictionary.registerOre("treeSapling", new ItemStack(BlockHandler.supercraftSapling1, 1, 0));
+		OreDictionary.registerOre("treeSapling", new ItemStack(BlockHandler.supercraftSapling2, 1, 0));
+		OreDictionary.registerOre("treeSapling", new ItemStack(BlockHandler.supercraftSapling2, 1, 1));
+		
+		OreDictionary.registerOre("treeLeaves", new ItemStack(BlockHandler.supercraftLeaves1, 1, 0));
+		OreDictionary.registerOre("treeLeaves", new ItemStack(BlockHandler.supercraftLeaves2, 1, 0));
+		OreDictionary.registerOre("treeLeaves", new ItemStack(BlockHandler.supercraftLeaves2, 1, 1));
+		
+		OreDictionary.registerOre("ingotAluminum", new ItemStack(ItemHandler.aluminumIngot));
+		OreDictionary.registerOre("ingotCopper", new ItemStack(ItemHandler.copperIngot));
+		OreDictionary.registerOre("ingotSilver", new ItemStack(ItemHandler.silverIngot));
+		OreDictionary.registerOre("ingotElectrum", new ItemStack(ItemHandler.electrumIngot));
 	}
 	
 }

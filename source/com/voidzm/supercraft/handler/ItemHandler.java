@@ -187,14 +187,7 @@ public class ItemHandler {
 		// Elinvar Material
 		
 		GameRegistry.registerItem(elinvarDust, "elinvarDust");
-		
-		// Ore Dictionary references
-		
-		OreDictionary.registerOre("ingotAluminum", aluminumIngot);
-		OreDictionary.registerOre("ingotCopper", copperIngot);
-		OreDictionary.registerOre("ingotSilver", silverIngot);
-		OreDictionary.registerOre("ingotElectrum", electrumIngot);
-		
+				
 	}
 	
 	private void initializeLanguage() {

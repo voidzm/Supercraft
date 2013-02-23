@@ -231,4 +231,9 @@ public class BlockSupercraftLeavesBase extends BlockLeavesBase implements IShear
 		this.setGraphicsLevel(true);
 	}
 	
+	public int onBlockPlaced(World par1World, int par2, int par3, int par4, int par5, float par6, float par7, float par8, int par9) {
+		// Fix for placed leaves in creative sometimes decaying
+		return par9 | 4;
+	}
+	
 }

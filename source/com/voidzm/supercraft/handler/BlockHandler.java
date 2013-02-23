@@ -28,7 +28,6 @@ import cpw.mods.fml.common.registry.LanguageRegistry;
 import net.minecraft.block.Block;
 import net.minecraft.item.ItemBlock;
 import net.minecraft.item.ItemStack;
-import net.minecraftforge.oredict.OreDictionary;
 
 public class BlockHandler {
 
@@ -52,6 +51,7 @@ public class BlockHandler {
 	
 	public static Block oliveStairs;
 	public static Block goldenwoodStairs;
+	public static Block tenebriaStairs;
 	
 	public static Block aluminumOre;
 	public static Block aluminumBlock;
@@ -122,6 +122,8 @@ public class BlockHandler {
 		ArrayList<String> supercraftLogList = new ArrayList<String>();
 		supercraftLogList.add("Olive Wood");
 		supercraftLogList.add("Goldenwood Wood");
+		supercraftLogList.add("Tenebria Wood");
+		supercraftLogList.add("Crystalline Tenebria Wood");
 		languageHandler.add(supercraftLog, supercraftLogList);
 		
 		ArrayList<String> supercraftLeaves1List = new ArrayList<String>();
@@ -130,11 +132,13 @@ public class BlockHandler {
 		
 		ArrayList<String> supercraftLeaves2List = new ArrayList<String>();
 		supercraftLeaves2List.add("Goldenwood Leaves");
+		supercraftLeaves2List.add("Tenebria Leaves");
 		languageHandler.add(supercraftLeaves2, supercraftLeaves2List);
 		
 		ArrayList<String> supercraftPlanksList = new ArrayList<String>();
 		supercraftPlanksList.add("Olive Wood Planks");
 		supercraftPlanksList.add("Goldenwood Wood Planks");
+		supercraftPlanksList.add("Tenebria Wood Planks");
 		languageHandler.add(supercraftPlanks, supercraftPlanksList);
 		
 		ArrayList<String> supercraftSapling1List = new ArrayList<String>();
@@ -143,11 +147,13 @@ public class BlockHandler {
 		
 		ArrayList<String> supercraftSapling2List = new ArrayList<String>();
 		supercraftSapling2List.add("Goldenwood Sapling");
+		supercraftSapling2List.add("Tenebria Sapling");
 		languageHandler.add(supercraftSapling2, supercraftSapling2List);
 		
 		ArrayList<String> supercraftSlab1List = new ArrayList<String>();
 		supercraftSlab1List.add("Olive Wood Slab");
 		supercraftSlab1List.add("Goldenwood Wood Slab");
+		supercraftSlab1List.add("Tenebria Wood Slab");
 		languageHandler.add(supercraftSlab1, supercraftSlab1List);
 		
 		ArrayList<String> supercraftSlab2List = new ArrayList<String>();
@@ -156,6 +162,7 @@ public class BlockHandler {
 		
 		languageHandler.add(oliveStairs, "Olive Wood Stairs");
 		languageHandler.add(goldenwoodStairs, "Goldenwood Wood Stairs");
+		languageHandler.add(tenebriaStairs, "Tenebria Wood Stairs");
 		
 		// Aluminum Material
 		
@@ -255,6 +262,7 @@ public class BlockHandler {
 		
 		oliveStairs = new BlockSupercraftStairs(1610, supercraftPlanks, 0).setBlockName("oliveStairs");
 		goldenwoodStairs = new BlockSupercraftStairs(1634, supercraftPlanks, 1).setBlockName("goldenwoodStairs");
+		tenebriaStairs = new BlockSupercraftStairs(1646, supercraftPlanks, 2).setBlockName("tenebriaStairs");
 		
 		// Aluminum Material
 		
@@ -348,10 +356,7 @@ public class BlockHandler {
 		
 		GameRegistry.registerBlock(oliveStairs, "oliveStairs");
 		GameRegistry.registerBlock(goldenwoodStairs, "goldenwoodStairs");
-		
-		// Ore Dictionary references
-		
-		OreDictionary.registerOre("plankWood", supercraftPlanks);
+		GameRegistry.registerBlock(tenebriaStairs, "tenebriaStairs");
 		
 		// Aluminum Material
 		
@@ -485,6 +490,7 @@ public class BlockHandler {
 		
 		LanguageRegistry.addName(oliveStairs, (String)this.languageHandler.getString(oliveStairs));
 		LanguageRegistry.addName(goldenwoodStairs, (String)this.languageHandler.getString(goldenwoodStairs));
+		LanguageRegistry.addName(tenebriaStairs, (String)this.languageHandler.getString(tenebriaStairs));
 		
 		// Aluminum Material
 		
