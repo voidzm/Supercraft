@@ -1,6 +1,6 @@
 @echo off
 echo ---------------- Building ----------------
-echo ------------ Supercraft 0.1.0 ------------
+echo ------------ Supercraft 0.3.0 ------------
 XCOPY ..\forge\mcp\src ..\forge\mcp\src-backup /E /I /Q
 echo Finished backing up forge sources.
 XCOPY source ..\forge\mcp\src\minecraft /E /I /Q
