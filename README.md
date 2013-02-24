@@ -1,4 +1,4 @@
-[[/resources/com/voidzm/supercraft/img/supercraft_large.png]]
+!(Supercraft)[https://raw.github.com/voidzm/Supercraft/master/resources/com/voidzm/supercraft/img/supercraft_large.png]
 
 Supercraft is an in-development mod for Minecraft. You can get some more information about it on the [wiki](https://www.github.com/voidzm/Supercraft/wiki).
 
