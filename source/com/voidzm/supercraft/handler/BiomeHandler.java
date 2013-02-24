@@ -14,6 +14,7 @@ import com.voidzm.supercraft.biome.BiomeGenIcyRidges;
 import com.voidzm.supercraft.biome.BiomeGenInsaneHills;
 import com.voidzm.supercraft.biome.BiomeGenSandyPeaks;
 import com.voidzm.supercraft.biome.BiomeGenSavanna;
+import com.voidzm.supercraft.biome.BiomeGenTenebralWoods;
 import com.voidzm.supercraft.biome.BiomeGenWinterForest;
 
 import cpw.mods.fml.common.network.NetworkRegistry;
@@ -35,11 +36,12 @@ public class BiomeHandler {
 	public static BiomeGenBase sandyPeaks;
 	public static BiomeGenBase icyRidges;
 	public static BiomeGenBase goldenwoodForest;
+	public static BiomeGenBase tenebralWoods;
 	
 	public void populateAllAndInitialize() {
 		this.createBiomes();
 		this.registerBiomes();
-		System.out.println("[Supercraft] 9 biomes added.");
+		System.out.println("[Supercraft] 10 biomes added.");
 	}
 	
 	private void createBiomes() {
@@ -52,10 +54,11 @@ public class BiomeHandler {
 		sandyPeaks = new BiomeGenSandyPeaks(29);
 		icyRidges = new BiomeGenIcyRidges(30);
 		goldenwoodForest = new BiomeGenGoldenwoodForest(31);
+		tenebralWoods = new BiomeGenTenebralWoods(32);
 	}
 	
 	private void registerBiomes() {
-		this.addStandardBiome(extremeForest);
+		/*this.addStandardBiome(extremeForest);
 		this.addStandardBiome(insaneHills);
 		this.addStandardBiome(grassySummits);
 		this.addStandardBiome(winterForest);
@@ -63,7 +66,8 @@ public class BiomeHandler {
 		this.addVillageBiome(savanna);
 		this.addStandardBiome(sandyPeaks);
 		this.addStandardBiome(icyRidges);
-		this.addStandardBiome(goldenwoodForest);
+		this.addStandardBiome(goldenwoodForest);*/
+		this.addStandardBiome(tenebralWoods);
 	}
 	
 	public void removeVanillaBiomes() {

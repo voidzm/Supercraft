@@ -6,14 +6,21 @@
 
 package com.voidzm.supercraft.handler;
 
+import java.nio.FloatBuffer;
 import java.util.EnumSet;
 
+import org.lwjgl.opengl.GL11;
+
 import com.voidzm.supercraft.Supercraft;
+import com.voidzm.supercraft.biome.BiomeGenTenebralWoods;
 import com.voidzm.supercraft.client.ClientProxy;
 
 import net.minecraft.client.Minecraft;
+import net.minecraft.client.entity.EntityClientPlayerMP;
 import net.minecraft.client.gui.GuiMainMenu;
+import net.minecraft.client.renderer.GLAllocation;
 
+import cpw.mods.fml.client.FMLClientHandler;
 import cpw.mods.fml.common.ITickHandler;
 import cpw.mods.fml.common.TickType;
 
@@ -25,6 +32,7 @@ public class SCTickHandler implements ITickHandler {
 		if(mcRef.currentScreen instanceof GuiMainMenu) {
 			mcRef.displayGuiScreen(ClientProxy.mainMenu);
 		}
+		EntityClientPlayerMP player = FMLClientHandler.instance().getClient().thePlayer;
 	}
 
 	@Override

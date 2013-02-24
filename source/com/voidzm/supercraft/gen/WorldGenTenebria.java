@@ -25,7 +25,7 @@ public class WorldGenTenebria extends WorldGenerator {
 		int effectiveLogData = rand.nextInt(200) == 1 ? specialLogData : logData;
 		int groundBlockID = world.getBlockId(x, y-1, z);
 		Block groundBlock = Block.blocksList[groundBlockID];
-		if((groundBlock == null || (groundBlockID != Block.grass.blockID && groundBlockID != Block.dirt.blockID)) || (!(world.getBiomeGenForCoords(x, z).biomeName.equalsIgnoreCase("Tenebrial Woods")) && biomeCheck)) {
+		if((groundBlock == null || (groundBlockID != Block.grass.blockID && groundBlockID != Block.dirt.blockID)) || (!(world.getBiomeGenForCoords(x, z).biomeName.equalsIgnoreCase("Tenebral Woods")) && biomeCheck)) {
 			return false;
 		}
 		boolean canGenerate = true;
