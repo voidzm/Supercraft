@@ -64,13 +64,13 @@ public class BiomeGenTenebralWoods extends BiomeGenBase {
 			int zloc = par4 + par2Random.nextInt(16) + 8;
 			this.tenebriaGenerator.generate(par1World, par2Random, xloc, par1World.getHeightValue(xloc, zloc), zloc);
 		}
-		/*for(int i = 0; i < 6; i++) {
-			WorldGenMinable palestoneGen = new WorldGenMinable(BlockHandler.palestone.blockID, 24);
+		for(int i = 0; i < 6; i++) {
+			WorldGenMinable nightrockGen = new WorldGenMinable(BlockHandler.nightrock.blockID, 24);
 			int x = par3 + par2Random.nextInt(16);
 			int y = par2Random.nextInt(128);
 			int z = par4 + par2Random.nextInt(16);
-			palestoneGen.generate(par1World, par2Random, x, y, z);
-		}*/
+			nightrockGen.generate(par1World, par2Random, x, y, z);
+		}
 	}
 
 }

@@ -66,6 +66,9 @@ public class CraftingHandler {
 	private ItemStack palestoneBrickSlab;
 	private ItemStack tenebriaWood;
 	private ItemStack tenebriaPlanks;
+	private ItemStack nightrock;
+	private ItemStack nightrockBricks;
+	private ItemStack nightrockBrickSlab;
 	
 	public void populateAllAndInitialize() {
 		this.initializeCraftingRefs();
@@ -121,6 +124,9 @@ public class CraftingHandler {
 		palestoneBrickSlab = new ItemStack(BlockHandler.supercraftSlab2, 1, 0);
 		tenebriaWood = new ItemStack(BlockHandler.supercraftLog, 1, 2);
 		tenebriaPlanks = new ItemStack(BlockHandler.supercraftPlanks, 1, 2);
+		nightrock = new ItemStack(BlockHandler.nightrock);
+		nightrockBricks = new ItemStack(BlockHandler.nightrockBricks);
+		nightrockBrickSlab = new ItemStack(BlockHandler.supercraftSlab2, 1, 1);
 	}
 	
 	private void addRecipes() {
@@ -212,6 +218,14 @@ public class CraftingHandler {
 		GameRegistry.addRecipe(new ItemStack(BlockHandler.palestoneStairs, 4), "  a", " aa", "aaa", 'a', palestoneBricks);
 		GameRegistry.addRecipe(new ItemStack(BlockHandler.inscribedPalestone), "a", "a", 'a', palestoneBrickSlab);
 		
+		// Nightrock
+		
+		GameRegistry.addRecipe(new ItemStack(BlockHandler.nightrockBricks, 4), "aa", "aa", 'a', nightrock);
+		GameRegistry.addRecipe(new ItemStack(BlockHandler.supercraftSlab2, 6, 1), "aaa", 'a', nightrockBricks);
+		GameRegistry.addRecipe(new ItemStack(BlockHandler.nightrockStairs, 4), "a  ", "aa ", "aaa", 'a', nightrockBricks);
+		GameRegistry.addRecipe(new ItemStack(BlockHandler.nightrockStairs, 4), "  a", " aa", "aaa", 'a', nightrockBricks);
+		GameRegistry.addRecipe(new ItemStack(BlockHandler.inscribedNightrock), "a", "a", 'a', nightrockBrickSlab);
+		
 	}
 	
 	private void addShapelessRecipes() {
@@ -254,6 +268,10 @@ public class CraftingHandler {
 		
 		GameRegistry.addShapelessRecipe(new ItemStack(Item.dyePowder, 2, 12), bluebells);
 		GameRegistry.addShapelessRecipe(new ItemStack(Item.dyePowder, 2, 7), daisies);
+		
+		// TEMPORARY - CRYSTALLINE EXTRACTOR
+		
+		GameRegistry.addShapelessRecipe(new ItemStack(ItemHandler.bloodAmber), new ItemStack(BlockHandler.supercraftLog, 1, 3));
 		
 	}
 	

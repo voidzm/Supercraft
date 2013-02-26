@@ -95,6 +95,13 @@ public class BlockHandler {
 	public static Block overgrownPalestone;
 	public static Block burnedPalestone;
 	
+	public static Block nightrock;
+	public static Block nightrockBricks;
+	public static Block nightrockStairs;
+	public static Block inscribedNightrock;
+	public static Block blockOfTenebral;
+	public static Block burnedNightrock;
+	
 	public void populateAllAndInitialize() {
 		this.createBlocks();
 		this.populateLanguage();
@@ -158,6 +165,7 @@ public class BlockHandler {
 		
 		ArrayList<String> supercraftSlab2List = new ArrayList<String>();
 		supercraftSlab2List.add("Palestone Bricks Slab");
+		supercraftSlab2List.add("Nightrock Bricks Slab");
 		languageHandler.add(supercraftSlab2, supercraftSlab2List);
 		
 		languageHandler.add(oliveStairs, "Olive Wood Stairs");
@@ -233,6 +241,15 @@ public class BlockHandler {
 		languageHandler.add(blockOfGoldenwood, "Block of the Goldenwood");
 		languageHandler.add(overgrownPalestone, "Overgrown Palestone Bricks");
 		languageHandler.add(burnedPalestone, "Burned Palestone Bricks");
+		
+		// Nightrock
+		
+		languageHandler.add(nightrock, "Nightrock");
+		languageHandler.add(nightrockBricks, "Nightrock Bricks");
+		languageHandler.add(nightrockStairs, "Nightrock Brick Stairs");
+		languageHandler.add(inscribedNightrock, "Inscribed Nightrock");
+		languageHandler.add(blockOfTenebral, "Block of the Tenebral");
+		languageHandler.add(burnedNightrock, "Burned Nightrock");
 		
 	}
 	
@@ -328,6 +345,15 @@ public class BlockHandler {
 		overgrownPalestone = new BlockOvergrownPalestone(1644);
 		burnedPalestone = new BlockBurnedPalestone(1645);
 		
+		// Nightrock
+		
+		nightrock = new BlockNightrock(1647);
+		nightrockBricks = new BlockNightrockBricks(1648);
+		nightrockStairs = new BlockSupercraftStairs(1649, nightrockBricks, 0).setBlockName("nightrockStairs");
+		inscribedNightrock = new BlockInscribedNightrock(1650);
+		blockOfTenebral = new BlockTenebral(1651);
+		burnedNightrock = new BlockBurnedNightrock(1652);
+		
 	}
 	
 	private void registerBlocks() {
@@ -421,6 +447,15 @@ public class BlockHandler {
 		GameRegistry.registerBlock(blockOfGoldenwood, "blockOfGoldenwood");
 		GameRegistry.registerBlock(overgrownPalestone, "overgrownPalestone");
 		GameRegistry.registerBlock(burnedPalestone, "burnedPalestone");
+		
+		// Nightrock
+
+		GameRegistry.registerBlock(nightrock, "nightrock");
+		GameRegistry.registerBlock(nightrockBricks, "nightrockBricks");
+		GameRegistry.registerBlock(nightrockStairs, "nightrockStairs");
+		GameRegistry.registerBlock(inscribedNightrock, "inscribedNightrock");
+		GameRegistry.registerBlock(blockOfTenebral, "blockOfTenebral");
+		GameRegistry.registerBlock(burnedNightrock, "burnedNightrock");
 		
 	}
 	
@@ -560,6 +595,15 @@ public class BlockHandler {
 		LanguageRegistry.addName(blockOfGoldenwood, (String)this.languageHandler.getString(blockOfGoldenwood));
 		LanguageRegistry.addName(overgrownPalestone, (String)this.languageHandler.getString(overgrownPalestone));
 		LanguageRegistry.addName(burnedPalestone, (String)this.languageHandler.getString(burnedPalestone));
+		
+		// Nightrock
+		
+		LanguageRegistry.addName(nightrock, (String)this.languageHandler.getString(nightrock));
+		LanguageRegistry.addName(nightrockBricks, (String)this.languageHandler.getString(nightrockBricks));
+		LanguageRegistry.addName(nightrockStairs, (String)this.languageHandler.getString(nightrockStairs));
+		LanguageRegistry.addName(inscribedNightrock, (String)this.languageHandler.getString(inscribedNightrock));
+		LanguageRegistry.addName(blockOfTenebral, (String)this.languageHandler.getString(blockOfTenebral));
+		LanguageRegistry.addName(burnedNightrock, (String)this.languageHandler.getString(burnedNightrock));
 		
 	}
 	

@@ -47,6 +47,8 @@ public class ItemHandler {
 	
 	public static Item elinvarDust;
 	
+	public static Item bloodAmber;
+	
 	public void populateAllAndInitialize() {
 		this.createItems();
 		this.populateLanguage();
@@ -98,6 +100,10 @@ public class ItemHandler {
 		
 		languageHandler.add(elinvarDust, "Elinvar Dust");
 		
+		// Tenebral Woods
+		
+		languageHandler.add(bloodAmber, "Blood Amber");
+		
 	}
 	
 	private void createItems() {
@@ -143,6 +149,10 @@ public class ItemHandler {
 		
 		elinvarDust = new ItemElinvarDust(23009);
 		
+		// Tenebral Woods
+		
+		bloodAmber = new ItemBloodAmber(23020);
+		
 	}
 	
 	private void registerItems() {
@@ -187,6 +197,10 @@ public class ItemHandler {
 		// Elinvar Material
 		
 		GameRegistry.registerItem(elinvarDust, "elinvarDust");
+		
+		// Tenebral Woods
+		
+		GameRegistry.registerItem(bloodAmber, "bloodAmber");
 				
 	}
 	
@@ -232,6 +246,10 @@ public class ItemHandler {
 		// Elinvar Material
 		
 		LanguageRegistry.addName(elinvarDust, (String)this.languageHandler.getString(elinvarDust));
+		
+		// Tenebral Woods
+		
+		LanguageRegistry.addName(bloodAmber, (String)this.languageHandler.getString(bloodAmber));
 		
 	}
 	
