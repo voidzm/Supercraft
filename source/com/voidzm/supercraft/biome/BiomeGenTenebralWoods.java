@@ -5,6 +5,7 @@ import java.util.Random;
 import com.voidzm.supercraft.gen.WorldGenGoldenwood;
 import com.voidzm.supercraft.gen.WorldGenGoldenwoodShrine;
 import com.voidzm.supercraft.gen.WorldGenScatteredFlowers;
+import com.voidzm.supercraft.gen.WorldGenTenebralPitfall;
 import com.voidzm.supercraft.gen.WorldGenTenebria;
 import com.voidzm.supercraft.handler.BlockHandler;
 
@@ -59,6 +60,12 @@ public class BiomeGenTenebralWoods extends BiomeGenBase {
 	@Override
 	public void decorate(World par1World, Random par2Random, int par3, int par4) {
 		super.decorate(par1World, par2Random, par3, par4);
+		if(par2Random.nextInt(128) == 0) {
+			int xloc = par3 + par2Random.nextInt(16) + 8;
+			int zloc = par4 + par2Random.nextInt(16) + 8;
+			WorldGenTenebralPitfall gen = new WorldGenTenebralPitfall();
+			gen.generate(par1World, par2Random, xloc, par1World.getHeightValue(xloc, zloc), zloc);
+		}
 		for(int i = 0; i < tenebriaAttemptsPerChunk; i++) {
 			int xloc = par3 + par2Random.nextInt(16) + 8;
 			int zloc = par4 + par2Random.nextInt(16) + 8;

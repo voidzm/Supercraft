@@ -34,6 +34,8 @@ public class CraftingHandler {
 	private ItemStack greenWool;
 	private ItemStack redWool;
 	private ItemStack purpleWool;
+	private ItemStack darkGrayWool;
+	private ItemStack lightGrayWool;
 	private ItemStack stone;
 	private ItemStack craftingTable;
 	private ItemStack endStone;
@@ -94,6 +96,8 @@ public class CraftingHandler {
 		greenWool = new ItemStack(Block.cloth, 1, 13);
 		redWool = new ItemStack(Block.cloth, 1, 14);
 		purpleWool = new ItemStack(Block.cloth, 1, 10);
+		darkGrayWool = new ItemStack(Block.cloth, 1, 7);
+		lightGrayWool = new ItemStack(Block.cloth, 1, 8);
 		stone = new ItemStack(Block.stone);
 		craftingTable = new ItemStack(Block.workbench);
 		endStone = new ItemStack(Block.whiteStone);
@@ -205,6 +209,8 @@ public class CraftingHandler {
 		GameRegistry.addRecipe(new ItemStack(BlockHandler.refinedCraftingTable, 1, 2), " a ", "bcb", " b ", 'a', redWool, 'b', stone, 'c', craftingTable);
 		GameRegistry.addRecipe(new ItemStack(BlockHandler.refinedCraftingTable, 1, 3), " a ", "bcb", " b ", 'a', redWool, 'b', netherBrick, 'c', craftingTable);
 		GameRegistry.addRecipe(new ItemStack(BlockHandler.refinedCraftingTable, 1, 4), " a ", "bcb", " b ", 'a', purpleWool, 'b', endStone, 'c', craftingTable);
+		GameRegistry.addRecipe(new ItemStack(BlockHandler.refinedCraftingTable, 1, 5), " a ", "bcb", " b ", 'a', darkGrayWool, 'b', palestone, 'c', craftingTable);
+		GameRegistry.addRecipe(new ItemStack(BlockHandler.refinedCraftingTable, 1, 6), " a ", "bcb", " b ", 'a', lightGrayWool, 'b', nightrock, 'c', craftingTable);
 		
 		// Elinvar Generators
 		

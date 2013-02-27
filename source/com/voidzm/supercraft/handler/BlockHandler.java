@@ -221,6 +221,8 @@ public class BlockHandler {
 		refinedCraftingTableList.add("Stone Crafting Table");
 		refinedCraftingTableList.add("Nether Crafting Table");
 		refinedCraftingTableList.add("End Crafting Table");
+		refinedCraftingTableList.add("Palestone Crafting Table");
+		refinedCraftingTableList.add("Nightrock Crafting Table");
 		languageHandler.add(refinedCraftingTable, refinedCraftingTableList);
 		
 		// Elinvar Generators
@@ -249,7 +251,7 @@ public class BlockHandler {
 		languageHandler.add(nightrockStairs, "Nightrock Brick Stairs");
 		languageHandler.add(inscribedNightrock, "Inscribed Nightrock");
 		languageHandler.add(blockOfTenebral, "Block of the Tenebral");
-		languageHandler.add(burnedNightrock, "Burned Nightrock");
+		languageHandler.add(burnedNightrock, "Burned Nightrock Bricks");
 		
 	}
 	

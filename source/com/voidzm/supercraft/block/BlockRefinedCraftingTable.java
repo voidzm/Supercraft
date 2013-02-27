@@ -68,6 +68,16 @@ public class BlockRefinedCraftingTable extends Block {
 			if(par1 == 1) return 66;
 			else return 67;
 		}
+		else if(par2 == 5) {
+			if(par1 == 0) return 112;
+			if(par1 == 1) return 110;
+			else return 111;
+		}
+		else if(par2 == 6) {
+			if(par1 == 0) return 115;
+			if(par1 == 1) return 113;
+			else return 114;
+		}
 		else return 255;
 	}
 	
@@ -82,6 +92,8 @@ public class BlockRefinedCraftingTable extends Block {
 		par3List.add(new ItemStack(par1, 1, 2));
 		par3List.add(new ItemStack(par1, 1, 3));
 		par3List.add(new ItemStack(par1, 1, 4));
+		par3List.add(new ItemStack(par1, 1, 5));
+		par3List.add(new ItemStack(par1, 1, 6));
 	}
 	
 	public boolean onBlockActivated(World par1World, int par2, int par3, int par4, EntityPlayer par5EntityPlayer, int par6, float par7, float par8, float par9) {
