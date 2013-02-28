@@ -101,10 +101,13 @@ public class WorldGenTenebralPitfall extends WorldGenerator {
 	private ItemStack selectWeightedChestLoot(Random rand) {
 		int selector = rand.nextInt(100);
 		if(selector < 10) {
+			return new ItemStack(ItemHandler.nisilIngot, rand.nextInt(3)+1);
+		}
+		else if(selector < 20) {
 			return new ItemStack(ItemHandler.bloodAmber, rand.nextInt(3)+1);
 		}
 		else if(selector < 40) {
-			return new ItemStack(Item.coal, rand.nextInt(8)+1);
+			return new ItemStack(ItemHandler.nisilShard, rand.nextInt(8)+1);
 		}
 		else if(selector < 70) {
 			return new ItemStack(BlockHandler.nightrockBricks, rand.nextInt(4)+1);

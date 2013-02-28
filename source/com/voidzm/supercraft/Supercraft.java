@@ -87,12 +87,12 @@ public class Supercraft {
 		craftingHandler.populateAllAndInitialize();
 		biomeHandler.populateAllAndInitialize();
 
-		biomeHandler.removeVanillaBiomes(); // For biome testing only.
+		// biomeHandler.removeVanillaBiomes(); // For biome testing only.
 		
 		GameRegistry.registerFuelHandler(fuelHandler);
 		DimensionManager.unregisterDimension(0);
-		DimensionManager.registerProviderType(15, WorldProviderSurfaceAlternate.class, true);
-		DimensionManager.registerDimension(0, 15);
+		DimensionManager.registerProviderType(16, WorldProviderSurfaceAlternate.class, true);
+		DimensionManager.registerDimension(0, 16);
 		MinecraftForge.EVENT_BUS.register(new EventBonemeal());
 		GameRegistry.registerWorldGenerator(new WorldGenOre());
 		GameRegistry.registerTileEntity(TileEntityConduit.class, "tileEntityConduit");

@@ -86,6 +86,7 @@ public class BlockHandler {
 	
 	public static Block bluebells;
 	public static Block daisies;
+	public static Block snapdragon;
 	
 	public static Block palestone;
 	public static Block palestoneBricks;
@@ -101,6 +102,9 @@ public class BlockHandler {
 	public static Block inscribedNightrock;
 	public static Block blockOfTenebral;
 	public static Block burnedNightrock;
+	
+	public static Block nisilOre;
+	public static Block nisilBlock;
 	
 	public void populateAllAndInitialize() {
 		this.createBlocks();
@@ -233,6 +237,7 @@ public class BlockHandler {
 		
 		languageHandler.add(bluebells, "Bluebells");
 		languageHandler.add(daisies, "Daisies");
+		languageHandler.add(snapdragon, "Snapdragon");
 		
 		// Palestone
 		
@@ -252,6 +257,11 @@ public class BlockHandler {
 		languageHandler.add(inscribedNightrock, "Inscribed Nightrock");
 		languageHandler.add(blockOfTenebral, "Block of the Tenebral");
 		languageHandler.add(burnedNightrock, "Burned Nightrock Bricks");
+		
+		// Nisil
+		
+		languageHandler.add(nisilOre, "Nisil Ore");
+		languageHandler.add(nisilBlock, "Block of Nisil");
 		
 	}
 	
@@ -336,6 +346,7 @@ public class BlockHandler {
 		
 		bluebells = new BlockSupercraftFlower(1636, 76).setBlockName("bluebells");
 		daisies = new BlockSupercraftFlower(1637, 77).setBlockName("daisies");
+		snapdragon = new BlockSupercraftFlower(1653, 116).setBlockName("snapdragon");
 		
 		// Palestone
 		
@@ -355,6 +366,11 @@ public class BlockHandler {
 		inscribedNightrock = new BlockInscribedNightrock(1650);
 		blockOfTenebral = new BlockTenebral(1651);
 		burnedNightrock = new BlockBurnedNightrock(1652);
+		
+		// Nisil
+		
+		nisilOre = new BlockNisilOre(1654);
+		nisilBlock = new BlockNisil(1655);
 		
 	}
 	
@@ -439,6 +455,7 @@ public class BlockHandler {
 		
 		GameRegistry.registerBlock(bluebells, "bluebells");
 		GameRegistry.registerBlock(daisies, "daisies");
+		GameRegistry.registerBlock(snapdragon, "snapdragon");
 		
 		// Palestone
 		
@@ -458,6 +475,11 @@ public class BlockHandler {
 		GameRegistry.registerBlock(inscribedNightrock, "inscribedNightrock");
 		GameRegistry.registerBlock(blockOfTenebral, "blockOfTenebral");
 		GameRegistry.registerBlock(burnedNightrock, "burnedNightrock");
+		
+		// Nisil
+		
+		GameRegistry.registerBlock(nisilOre, "nisilOre");
+		GameRegistry.registerBlock(nisilBlock, "nisilBlock");
 		
 	}
 	
@@ -587,6 +609,7 @@ public class BlockHandler {
 		
 		LanguageRegistry.addName(bluebells, (String)this.languageHandler.getString(bluebells));
 		LanguageRegistry.addName(daisies, (String)this.languageHandler.getString(daisies));
+		LanguageRegistry.addName(snapdragon, (String)this.languageHandler.getString(snapdragon));
 		
 		// Palestone
 		
@@ -606,6 +629,11 @@ public class BlockHandler {
 		LanguageRegistry.addName(inscribedNightrock, (String)this.languageHandler.getString(inscribedNightrock));
 		LanguageRegistry.addName(blockOfTenebral, (String)this.languageHandler.getString(blockOfTenebral));
 		LanguageRegistry.addName(burnedNightrock, (String)this.languageHandler.getString(burnedNightrock));
+		
+		// Nisil
+		
+		LanguageRegistry.addName(nisilOre, (String)this.languageHandler.getString(nisilOre));
+		LanguageRegistry.addName(nisilBlock, (String)this.languageHandler.getString(nisilBlock));
 		
 	}
 	

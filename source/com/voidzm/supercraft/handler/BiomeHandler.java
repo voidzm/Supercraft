@@ -58,7 +58,7 @@ public class BiomeHandler {
 	}
 	
 	private void registerBiomes() {
-		/*this.addStandardBiome(extremeForest);
+		this.addStandardBiome(extremeForest);
 		this.addStandardBiome(insaneHills);
 		this.addStandardBiome(grassySummits);
 		this.addStandardBiome(winterForest);
@@ -66,7 +66,7 @@ public class BiomeHandler {
 		this.addVillageBiome(savanna);
 		this.addStandardBiome(sandyPeaks);
 		this.addStandardBiome(icyRidges);
-		this.addStandardBiome(goldenwoodForest);*/
+		this.addStandardBiome(goldenwoodForest);
 		this.addStandardBiome(tenebralWoods);
 	}
 	

@@ -49,6 +49,9 @@ public class ItemHandler {
 	
 	public static Item bloodAmber;
 	
+	public static Item nisilIngot;
+	public static Item nisilShard;
+	
 	public void populateAllAndInitialize() {
 		this.createItems();
 		this.populateLanguage();
@@ -104,6 +107,11 @@ public class ItemHandler {
 		
 		languageHandler.add(bloodAmber, "Blood Amber");
 		
+		// Nisil
+		
+		languageHandler.add(nisilIngot, "Nisil Ingot");
+		languageHandler.add(nisilShard, "Nisil Shard");
+		
 	}
 	
 	private void createItems() {
@@ -153,6 +161,11 @@ public class ItemHandler {
 		
 		bloodAmber = new ItemBloodAmber(23020);
 		
+		// Nisil
+		
+		nisilIngot = new ItemNisilIngot(23021);
+		nisilShard = new ItemNisilShard(23022);
+		
 	}
 	
 	private void registerItems() {
@@ -201,6 +214,11 @@ public class ItemHandler {
 		// Tenebral Woods
 		
 		GameRegistry.registerItem(bloodAmber, "bloodAmber");
+		
+		// Nisil
+		
+		GameRegistry.registerItem(nisilIngot, "nisilIngot");
+		GameRegistry.registerItem(nisilShard, "nisilShard");
 				
 	}
 	
@@ -250,6 +268,11 @@ public class ItemHandler {
 		// Tenebral Woods
 		
 		LanguageRegistry.addName(bloodAmber, (String)this.languageHandler.getString(bloodAmber));
+		
+		// Nisil 
+	
+		LanguageRegistry.addName(nisilIngot, (String)this.languageHandler.getString(nisilIngot));
+		LanguageRegistry.addName(nisilShard, (String)this.languageHandler.getString(nisilShard));
 		
 	}
 	

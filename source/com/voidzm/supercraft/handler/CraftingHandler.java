@@ -71,6 +71,10 @@ public class CraftingHandler {
 	private ItemStack nightrock;
 	private ItemStack nightrockBricks;
 	private ItemStack nightrockBrickSlab;
+	private ItemStack nisil;
+	private ItemStack nisilShard;
+	private ItemStack nisilBlock;
+	private ItemStack snapdragon;
 	
 	public void populateAllAndInitialize() {
 		this.initializeCraftingRefs();
@@ -131,6 +135,10 @@ public class CraftingHandler {
 		nightrock = new ItemStack(BlockHandler.nightrock);
 		nightrockBricks = new ItemStack(BlockHandler.nightrockBricks);
 		nightrockBrickSlab = new ItemStack(BlockHandler.supercraftSlab2, 1, 1);
+		nisil = new ItemStack(ItemHandler.nisilIngot);
+		nisilShard = new ItemStack(ItemHandler.nisilShard);
+		nisilBlock = new ItemStack(BlockHandler.nisilBlock);
+		snapdragon = new ItemStack(BlockHandler.snapdragon);
 	}
 	
 	private void addRecipes() {
@@ -232,6 +240,11 @@ public class CraftingHandler {
 		GameRegistry.addRecipe(new ItemStack(BlockHandler.nightrockStairs, 4), "  a", " aa", "aaa", 'a', nightrockBricks);
 		GameRegistry.addRecipe(new ItemStack(BlockHandler.inscribedNightrock), "a", "a", 'a', nightrockBrickSlab);
 		
+		// Nisil
+		
+		GameRegistry.addRecipe(new ItemStack(ItemHandler.nisilIngot), "aaa", "aaa", "aaa", 'a', nisilShard);
+		GameRegistry.addRecipe(new ItemStack(BlockHandler.nisilBlock), "aaa", "aaa", "aaa", 'a', nisil);
+		
 	}
 	
 	private void addShapelessRecipes() {
@@ -274,10 +287,16 @@ public class CraftingHandler {
 		
 		GameRegistry.addShapelessRecipe(new ItemStack(Item.dyePowder, 2, 12), bluebells);
 		GameRegistry.addShapelessRecipe(new ItemStack(Item.dyePowder, 2, 7), daisies);
+		GameRegistry.addShapelessRecipe(new ItemStack(Item.dyePowder, 2, 14), snapdragon);
 		
 		// TEMPORARY - CRYSTALLINE EXTRACTOR
 		
 		GameRegistry.addShapelessRecipe(new ItemStack(ItemHandler.bloodAmber), new ItemStack(BlockHandler.supercraftLog, 1, 3));
+		
+		// Nisil
+		
+		GameRegistry.addShapelessRecipe(new ItemStack(ItemHandler.nisilShard, 9), nisil);
+		GameRegistry.addShapelessRecipe(new ItemStack(ItemHandler.nisilIngot, 9), nisilBlock);
 		
 	}
 	
@@ -302,6 +321,10 @@ public class CraftingHandler {
 		// Tantalum Material -- TEMPORARY until Crystalline Extracter
 		
 		GameRegistry.addSmelting(BlockHandler.tantalumOre.blockID, new ItemStack(ItemHandler.tantalumCrystal, 1), 1.0F); // Temporary until Elinvar machines.
+		
+		// Nisil
+		
+		GameRegistry.addSmelting(BlockHandler.nisilOre.blockID, new ItemStack(ItemHandler.nisilIngot, 1), 0.4F);
 		
 	}
 	

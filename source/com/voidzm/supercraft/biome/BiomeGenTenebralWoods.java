@@ -58,6 +58,11 @@ public class BiomeGenTenebralWoods extends BiomeGenBase {
 	}
 	
 	@Override
+	public int getWaterColorMultiplier() {
+		return 0xDDAA44;
+	}
+	
+	@Override
 	public void decorate(World par1World, Random par2Random, int par3, int par4) {
 		super.decorate(par1World, par2Random, par3, par4);
 		if(par2Random.nextInt(128) == 0) {
@@ -71,12 +76,25 @@ public class BiomeGenTenebralWoods extends BiomeGenBase {
 			int zloc = par4 + par2Random.nextInt(16) + 8;
 			this.tenebriaGenerator.generate(par1World, par2Random, xloc, par1World.getHeightValue(xloc, zloc), zloc);
 		}
+		for(int i = 0; i < 12; i++) {
+			WorldGenScatteredFlowers gen = new WorldGenScatteredFlowers(BlockHandler.snapdragon.blockID);
+			int xloc = par3 + par2Random.nextInt(16) + 8;
+			int yloc = par2Random.nextInt(128);
+			int zloc = par4 + par2Random.nextInt(16) + 8;
+			gen.generate(par1World, par2Random, xloc, yloc, zloc);
+		}
 		for(int i = 0; i < 6; i++) {
 			WorldGenMinable nightrockGen = new WorldGenMinable(BlockHandler.nightrock.blockID, 24);
 			int x = par3 + par2Random.nextInt(16);
 			int y = par2Random.nextInt(128);
 			int z = par4 + par2Random.nextInt(16);
 			nightrockGen.generate(par1World, par2Random, x, y, z);
+		}
+		for(int i = 0; i < 10; i++) {
+			int rx = par3 + par2Random.nextInt(16);
+			int ry = par2Random.nextInt(64);
+			int rz = par4 + par2Random.nextInt(16);
+			new WorldGenMinable(BlockHandler.nisilOre.blockID, 8).generate(par1World, par2Random, rx, ry, rz);
 		}
 	}
 
