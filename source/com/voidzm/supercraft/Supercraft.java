@@ -19,6 +19,7 @@ import com.voidzm.supercraft.handler.GuiHandler;
 import com.voidzm.supercraft.handler.ItemHandler;
 import com.voidzm.supercraft.handler.PacketHandler;
 import com.voidzm.supercraft.handler.SCTickHandler;
+import com.voidzm.supercraft.misc.CreativeTabElinvar;
 
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockHalfSlab;
@@ -73,6 +74,8 @@ public class Supercraft {
 	public static EnumToolMaterial aluminumTool = EnumHelper.addToolMaterial("aluminum", 1, 2343, 4.0F, 1, 1);
 	public static EnumToolMaterial copperTool = EnumHelper.addToolMaterial("copper", 2, 593, 9.0F, 2, 10);
 	
+	public static CreativeTabs elinvarTab = new CreativeTabElinvar("elinvarTab");
+	
 	@PreInit
 	public void preInit(FMLPreInitializationEvent event) {
 		// Nothing here yet.
@@ -97,6 +100,7 @@ public class Supercraft {
 		GameRegistry.registerWorldGenerator(new WorldGenOre());
 		GameRegistry.registerTileEntity(TileEntityConduit.class, "tileEntityConduit");
 		NetworkRegistry.instance().registerGuiHandler(instance, guiHandler);
+		LanguageRegistry.instance().addStringLocalization("itemGroup.elinvarTab", "Elinvar");
 		System.out.println("[Supercraft] Loaded.");
 	}
 	

@@ -7,6 +7,7 @@
 package com.voidzm.supercraft.block;
 
 import com.voidzm.supercraft.CommonProxy;
+import com.voidzm.supercraft.Supercraft;
 
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
@@ -21,7 +22,7 @@ public class BlockGenerator extends Block {
 		this.setResistance(5.0F);
 		this.setStepSound(Block.soundMetalFootstep);
 		this.setBlockName("generator");
-		this.setCreativeTab(CreativeTabs.tabRedstone);
+		this.setCreativeTab(Supercraft.elinvarTab);
 	}
 	
 	@Override

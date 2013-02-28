@@ -40,7 +40,7 @@ public class CraftingHandler {
 	private ItemStack craftingTable;
 	private ItemStack endStone;
 	private ItemStack netherBrick;
-	private ItemStack redstoneTorch;
+	private ItemStack redstone;
 	private ItemStack stoneBrick;
 	
 	// Supercraft
@@ -75,6 +75,7 @@ public class CraftingHandler {
 	private ItemStack nisilShard;
 	private ItemStack nisilBlock;
 	private ItemStack snapdragon;
+	private ItemStack ironboundStone;
 	
 	public void populateAllAndInitialize() {
 		this.initializeCraftingRefs();
@@ -106,7 +107,7 @@ public class CraftingHandler {
 		craftingTable = new ItemStack(Block.workbench);
 		endStone = new ItemStack(Block.whiteStone);
 		netherBrick = new ItemStack(Block.netherBrick);
-		redstoneTorch = new ItemStack(Block.torchRedstoneActive);
+		redstone = new ItemStack(Item.redstone);
 		stoneBrick = new ItemStack(Block.stoneBrick);
 		
 		oliveWood = new ItemStack(BlockHandler.supercraftLog, 1, 0);
@@ -139,6 +140,7 @@ public class CraftingHandler {
 		nisilShard = new ItemStack(ItemHandler.nisilShard);
 		nisilBlock = new ItemStack(BlockHandler.nisilBlock);
 		snapdragon = new ItemStack(BlockHandler.snapdragon);
+		ironboundStone = new ItemStack(BlockHandler.ironboundStone);
 	}
 	
 	private void addRecipes() {
@@ -222,7 +224,7 @@ public class CraftingHandler {
 		
 		// Elinvar Generators
 		
-		GameRegistry.addRecipe(new ItemStack(BlockHandler.redstoneGenerator), "aaa", "bcb", "ddd", 'a', stoneBrick, 'b', obsidian, 'c', redstoneTorch, 'd', aluminumBlock);
+		GameRegistry.addRecipe(new ItemStack(BlockHandler.redstoneGenerator), "aba", "cac", "ddd", 'a', ironboundStone, 'b', redstone, 'c', obsidian, 'd', aluminum);
 		
 		// Palestone
 		
@@ -244,6 +246,10 @@ public class CraftingHandler {
 		
 		GameRegistry.addRecipe(new ItemStack(ItemHandler.nisilIngot), "aaa", "aaa", "aaa", 'a', nisilShard);
 		GameRegistry.addRecipe(new ItemStack(BlockHandler.nisilBlock), "aaa", "aaa", "aaa", 'a', nisil);
+		
+		// Machines
+		
+		GameRegistry.addRecipe(new ItemStack(BlockHandler.ironboundStone), "a a", " b ", "a a", 'a', ironScrap, 'b', stone);
 		
 	}
 	

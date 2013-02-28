@@ -106,6 +106,8 @@ public class BlockHandler {
 	public static Block nisilOre;
 	public static Block nisilBlock;
 	
+	public static Block ironboundStone;
+	
 	public void populateAllAndInitialize() {
 		this.createBlocks();
 		this.populateLanguage();
@@ -263,6 +265,10 @@ public class BlockHandler {
 		languageHandler.add(nisilOre, "Nisil Ore");
 		languageHandler.add(nisilBlock, "Block of Nisil");
 		
+		// Machines
+		
+		languageHandler.add(ironboundStone, "Ironbound Stone");
+		
 	}
 	
 	private void createBlocks() {
@@ -372,6 +378,10 @@ public class BlockHandler {
 		nisilOre = new BlockNisilOre(1654);
 		nisilBlock = new BlockNisil(1655);
 		
+		// Machines
+		
+		ironboundStone = new BlockIronboundStone(1656);
+		
 	}
 	
 	private void registerBlocks() {
@@ -480,6 +490,10 @@ public class BlockHandler {
 		
 		GameRegistry.registerBlock(nisilOre, "nisilOre");
 		GameRegistry.registerBlock(nisilBlock, "nisilBlock");
+		
+		// Machines
+		
+		GameRegistry.registerBlock(ironboundStone, "ironboundStone");
 		
 	}
 	
@@ -634,6 +648,10 @@ public class BlockHandler {
 		
 		LanguageRegistry.addName(nisilOre, (String)this.languageHandler.getString(nisilOre));
 		LanguageRegistry.addName(nisilBlock, (String)this.languageHandler.getString(nisilBlock));
+		
+		// Machines
+		
+		LanguageRegistry.addName(ironboundStone, (String)this.languageHandler.getString(ironboundStone));
 		
 	}
 	

@@ -58,4 +58,10 @@ public class BlockRedstoneGenerator extends BlockGenerator implements IGenerator
 		}
 	}
 
+	@Override
+	public boolean shouldConnectAtSide(GeneratorSide side) {
+		if(side != GeneratorSide.BOTTOM && side != GeneratorSide.TOP) return true;
+		else return false;
+	}
+
 }

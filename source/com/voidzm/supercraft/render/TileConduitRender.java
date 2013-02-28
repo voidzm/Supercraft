@@ -12,6 +12,8 @@ import com.voidzm.supercraft.block.BlockConduit;
 import com.voidzm.supercraft.entity.TileEntityConduit;
 import com.voidzm.supercraft.client.ClientProxy;
 import com.voidzm.supercraft.handler.BlockHandler;
+import com.voidzm.supercraft.protocol.IGenerator;
+import com.voidzm.supercraft.protocol.IGenerator.GeneratorSide;
 
 import cpw.mods.fml.common.registry.GameRegistry;
 
@@ -55,22 +57,22 @@ public class TileConduitRender extends TileEntitySpecialRenderer {
 			World world = var1.worldObj;
 			Block targetBlock = Block.blocksList[world.getBlockId(ix, iy, iz)];
 			if(targetBlock == null) return;
-			if(this.isConduitConnectable(world.getBlockId(ix+1, iy, iz))) {
+			if(this.isConduitConnectable(world.getBlockId(ix+1, iy, iz), GeneratorSide.EAST)) {
 				maxX = 1.0F;
 			}
-			if(this.isConduitConnectable(world.getBlockId(ix-1, iy, iz))) {
+			if(this.isConduitConnectable(world.getBlockId(ix-1, iy, iz), GeneratorSide.WEST)) {
 				minX = 0.0F;
 			}
-			if(this.isConduitConnectable(world.getBlockId(ix, iy+1, iz))) {
+			if(this.isConduitConnectable(world.getBlockId(ix, iy+1, iz), GeneratorSide.TOP)) {
 				maxY = 1.0F;
 			}
-			if(this.isConduitConnectable(world.getBlockId(ix, iy-1, iz))) {
+			if(this.isConduitConnectable(world.getBlockId(ix, iy-1, iz), GeneratorSide.BOTTOM)) {
 				minY = 0.0F;
 			}
-			if(this.isConduitConnectable(world.getBlockId(ix, iy, iz+1))) {
+			if(this.isConduitConnectable(world.getBlockId(ix, iy, iz+1), GeneratorSide.SOUTH)) {
 				maxZ = 1.0F;
 			}
-			if(this.isConduitConnectable(world.getBlockId(ix, iy, iz-1))) {
+			if(this.isConduitConnectable(world.getBlockId(ix, iy, iz-1), GeneratorSide.NORTH)) {
 				minZ = 0.0F;
 			}
 			Tessellator tes = Tessellator.instance;
@@ -111,7 +113,7 @@ public class TileConduitRender extends TileEntitySpecialRenderer {
 	        double yEnd = (double)(((float)(pixY + 4.0F) + 7.99F) / 256.0F);
 	        double xHalfEnd = (double)(((float)(pixX + 4.0F) + 3.99F) / 256.0F);
 	        double yHalfEnd = (double)(((float)(pixY + 4.0F) + 3.99F) / 256.0F);
-			if(!this.isConduitConnectable(world.getBlockId(ix-1, iy, iz))) {
+			if(!this.isConduitConnectable(world.getBlockId(ix-1, iy, iz), GeneratorSide.WEST)) {
 				tes.addVertexWithUV(x+0.25, y+0.75, z+0.25, xStart, yStart);
 				tes.addVertexWithUV(x+0.25, y+0.25, z+0.25, xStart, yEnd);
 				tes.addVertexWithUV(x+0.25, y+0.25, z+0.75, xEnd, yEnd);
@@ -138,7 +140,7 @@ public class TileConduitRender extends TileEntitySpecialRenderer {
 				tes.addVertexWithUV(x+0.25, y+0.25, z+0.75, xEnd, yEnd);
 				tes.addVertexWithUV(x+0.25, y+0.75, z+0.75, xEnd, yStart);
 			}
-			if(!this.isConduitConnectable(world.getBlockId(ix+1, iy, iz))) {
+			if(!this.isConduitConnectable(world.getBlockId(ix+1, iy, iz), GeneratorSide.EAST)) {
 				tes.addVertexWithUV(x+0.75, y+0.75, z+0.75, xStart, yStart);
 				tes.addVertexWithUV(x+0.75, y+0.25, z+0.75, xStart, yEnd);
 				tes.addVertexWithUV(x+0.75, y+0.25, z+0.25, xEnd, yEnd);
@@ -165,7 +167,7 @@ public class TileConduitRender extends TileEntitySpecialRenderer {
 				tes.addVertexWithUV(x+1.0, y+0.25, z+0.75, xHalfEnd, yEnd);
 				tes.addVertexWithUV(x+1.0, y+0.75, z+0.75, xHalfEnd, yStart);
 			}
-			if(!this.isConduitConnectable(world.getBlockId(ix, iy, iz-1))) {
+			if(!this.isConduitConnectable(world.getBlockId(ix, iy, iz-1), GeneratorSide.NORTH)) {
 				tes.addVertexWithUV(x+0.75, y+0.75, z+0.25, xStart, yStart);
 				tes.addVertexWithUV(x+0.75, y+0.25, z+0.25, xStart, yEnd);
 				tes.addVertexWithUV(x+0.25, y+0.25, z+0.25, xEnd, yEnd);
@@ -192,7 +194,7 @@ public class TileConduitRender extends TileEntitySpecialRenderer {
 				tes.addVertexWithUV(x+0.75, y+0.25, z, xHalfEnd, yEnd);
 				tes.addVertexWithUV(x+0.75, y+0.75, z, xHalfEnd, yStart);
 			}
-			if(!this.isConduitConnectable(world.getBlockId(ix, iy, iz+1))) {
+			if(!this.isConduitConnectable(world.getBlockId(ix, iy, iz+1), GeneratorSide.SOUTH)) {
 				tes.addVertexWithUV(x+0.25, y+0.75, z+0.75, xStart, yStart);
 				tes.addVertexWithUV(x+0.25, y+0.25, z+0.75, xStart, yEnd);
 				tes.addVertexWithUV(x+0.75, y+0.25, z+0.75, xEnd, yEnd);
@@ -219,7 +221,7 @@ public class TileConduitRender extends TileEntitySpecialRenderer {
 				tes.addVertexWithUV(x+0.75, y+0.25, z+0.75, xEnd, yEnd);
 				tes.addVertexWithUV(x+0.75, y+0.75, z+0.75, xEnd, yStart);
 			}
-			if(!this.isConduitConnectable(world.getBlockId(ix, iy-1, iz))) {
+			if(!this.isConduitConnectable(world.getBlockId(ix, iy-1, iz), GeneratorSide.BOTTOM)) {
 				tes.addVertexWithUV(x+0.25, y+0.25, z+0.75, xStart, yStart);
 				tes.addVertexWithUV(x+0.25, y+0.25, z+0.25, xStart, yEnd);
 				tes.addVertexWithUV(x+0.75, y+0.25, z+0.25, xEnd, yEnd);
@@ -246,7 +248,7 @@ public class TileConduitRender extends TileEntitySpecialRenderer {
 				tes.addVertexWithUV(x+0.75, y, z+0.25, xEnd, yHalfEnd);
 				tes.addVertexWithUV(x+0.75, y+0.25, z+0.25, xEnd, yStart);
 			}
-			if(!this.isConduitConnectable(world.getBlockId(ix, iy+1, iz))) {
+			if(!this.isConduitConnectable(world.getBlockId(ix, iy+1, iz), GeneratorSide.TOP)) {
 				tes.addVertexWithUV(x+0.75, y+0.75, z+0.75, xStart, yStart);
 				tes.addVertexWithUV(x+0.75, y+0.75, z+0.25, xStart, yEnd);
 				tes.addVertexWithUV(x+0.25, y+0.75, z+0.25, xEnd, yEnd);
@@ -280,9 +282,14 @@ public class TileConduitRender extends TileEntitySpecialRenderer {
 		}
 	}
 	
-	private boolean isConduitConnectable(int blockID) {
+	private boolean isConduitConnectable(int blockID, GeneratorSide side) {
 		if(BlockConduit.isConduit(blockID)) return true;
-		else if(BlockConduit.isGenerator(blockID)) return true;
+		else if(BlockConduit.isGenerator(blockID)) {
+			IGenerator block = (IGenerator)Block.blocksList[blockID];
+			if(block == null) return false;
+			if(block.shouldConnectAtSide(side)) return true;
+			else return false;
+		}
 		else return false;
 	}
 	

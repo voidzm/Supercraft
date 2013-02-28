@@ -12,11 +12,13 @@ import java.util.Iterator;
 import java.util.Random;
 
 import com.voidzm.supercraft.CommonProxy;
+import com.voidzm.supercraft.Supercraft;
 import com.voidzm.supercraft.client.ClientProxy;
 import com.voidzm.supercraft.entity.TileEntityConduit;
 import com.voidzm.supercraft.entity.TileEntityConduit.PACKET_ELINVAR;
 import com.voidzm.supercraft.handler.BlockHandler;
 import com.voidzm.supercraft.protocol.IGenerator;
+import com.voidzm.supercraft.protocol.IGenerator.GeneratorSide;
 
 import cpw.mods.fml.client.FMLClientHandler;
 import cpw.mods.fml.common.FMLCommonHandler;
@@ -45,7 +47,7 @@ public class BlockConduit extends BlockContainer {
 		this.setHardness(1.0F);
 		this.setStepSound(Block.soundStoneFootstep);
 		this.setBlockName("conduit");
-		this.setCreativeTab(CreativeTabs.tabBlock);
+		this.setCreativeTab(Supercraft.elinvarTab);
 		this.setLightOpacity(0);
 		this.useNeighborBrightness[par1] = true;
 		this.setTickRandomly(true);
@@ -80,22 +82,22 @@ public class BlockConduit extends BlockContainer {
 		float highX = 0.75F;
 		float highY = 0.75F;
 		float highZ = 0.75F;
-		if(this.isConduitConnectable(world.getBlockId(x+1, y, z))) {
+		if(this.isConduitConnectable(world.getBlockId(x+1, y, z), GeneratorSide.EAST)) {
 			highX = 1.0F;
 		}
-		if(this.isConduitConnectable(world.getBlockId(x-1, y, z))) {
+		if(this.isConduitConnectable(world.getBlockId(x-1, y, z), GeneratorSide.WEST)) {
 			lowX = 0.0F;
 		}
-		if(this.isConduitConnectable(world.getBlockId(x, y+1, z))) {
+		if(this.isConduitConnectable(world.getBlockId(x, y+1, z), GeneratorSide.TOP)) {
 			highY = 1.0F;
 		}
-		if(this.isConduitConnectable(world.getBlockId(x, y-1, z))) {
+		if(this.isConduitConnectable(world.getBlockId(x, y-1, z), GeneratorSide.BOTTOM)) {
 			lowY = 0.0F;
 		}
-		if(this.isConduitConnectable(world.getBlockId(x, y, z+1))) {
+		if(this.isConduitConnectable(world.getBlockId(x, y, z+1), GeneratorSide.SOUTH)) {
 			highZ = 1.0F;
 		}
-		if(this.isConduitConnectable(world.getBlockId(x, y, z-1))) {
+		if(this.isConduitConnectable(world.getBlockId(x, y, z-1), GeneratorSide.NORTH)) {
 			lowZ = 0.0F;
 		}
 		this.setBlockBounds(lowX, lowY, lowZ, highX, highY, highZ);
@@ -138,7 +140,28 @@ public class BlockConduit extends BlockContainer {
 			else if(Block.blocksList[neighbor] instanceof IGenerator) {
 				IGenerator gen = (IGenerator)Block.blocksList[neighbor];
 				int output = gen.powerOutputAt(par1World, par2 + (i == 0 ? 1 : (i == 1 ? -1 : 0)), par3 + (i == 4 ? 1 : (i == 5 ? -1 : 0)), par4 + (i == 2 ? 1 : (i == 3 ? -1 : 0)));
-				if(gen.doesOutputPowerAt(par1World, par2 + (i == 0 ? 1 : (i == 1 ? -1 : 0)), par3 + (i == 4 ? 1 : (i == 5 ? -1 : 0)), par4 + (i == 2 ? 1 : (i == 3 ? -1 : 0)))) {
+				boolean doPowerConnect = false;
+				switch(i) {
+				case 0:
+					if(gen.shouldConnectAtSide(GeneratorSide.EAST)) doPowerConnect = true;
+					break;
+				case 1:
+					if(gen.shouldConnectAtSide(GeneratorSide.WEST)) doPowerConnect = true;
+					break;
+				case 2:
+					if(gen.shouldConnectAtSide(GeneratorSide.SOUTH)) doPowerConnect = true;
+					break;
+				case 3:
+					if(gen.shouldConnectAtSide(GeneratorSide.NORTH)) doPowerConnect = true;
+					break;
+				case 4:
+					if(gen.shouldConnectAtSide(GeneratorSide.TOP)) doPowerConnect = true;
+					break;
+				case 5:
+					if(gen.shouldConnectAtSide(GeneratorSide.BOTTOM)) doPowerConnect = true;
+					break;
+				}
+				if(gen.doesOutputPowerAt(par1World, par2 + (i == 0 ? 1 : (i == 1 ? -1 : 0)), par3 + (i == 4 ? 1 : (i == 5 ? -1 : 0)), par4 + (i == 2 ? 1 : (i == 3 ? -1 : 0))) && doPowerConnect) {
 					if(output >= currentPower && output > maxPowerFound) {
 						maxPowerFound = output;
 					}
@@ -270,9 +293,14 @@ public class BlockConduit extends BlockContainer {
 		else return false;
 	}
 	
-	public static boolean isConduitConnectable(int blockID) {
-		if(isConduit(blockID)) return true;
-		else if (isGenerator(blockID)) return true;
+	public static boolean isConduitConnectable(int blockID, GeneratorSide side) {
+		if(BlockConduit.isConduit(blockID)) return true;
+		else if(BlockConduit.isGenerator(blockID)) {
+			IGenerator block = (IGenerator)Block.blocksList[blockID];
+			if(block == null) return false;
+			if(block.shouldConnectAtSide(side)) return true;
+			else return false;
+		}
 		else return false;
 	}
 	
