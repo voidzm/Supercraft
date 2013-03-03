@@ -8,12 +8,15 @@
 
 package com.voidzm.supercraft.handler;
 
+import java.util.ArrayList;
+
 import com.voidzm.supercraft.item.*;
 
 import cpw.mods.fml.common.registry.GameRegistry;
 import cpw.mods.fml.common.registry.LanguageRegistry;
 
 import net.minecraft.item.Item;
+import net.minecraft.item.ItemStack;
 import net.minecraftforge.oredict.OreDictionary;
 
 public class ItemHandler {
@@ -51,6 +54,8 @@ public class ItemHandler {
 	
 	public static Item nisilIngot;
 	public static Item nisilShard;
+	
+	public static Item essence;
 	
 	public void populateAllAndInitialize() {
 		this.createItems();
@@ -112,6 +117,22 @@ public class ItemHandler {
 		languageHandler.add(nisilIngot, "Nisil Ingot");
 		languageHandler.add(nisilShard, "Nisil Shard");
 		
+		// Essence
+
+		ArrayList<String> essenceList = new ArrayList<String>();
+		essenceList.add("Terrean Essence");
+		essenceList.add("Aeronic Essence");
+		essenceList.add("Infernal Essence");
+		essenceList.add("Aquaeous Essence");
+		essenceList.add("Verdeal Essence");
+		essenceList.add("Nethereal Essence");
+		essenceList.add("Draconic Essence");
+		essenceList.add("Ferric Essence");
+		essenceList.add("Radantis Essence");
+		essenceList.add("Vidalis Essence");
+		essenceList.add("Mortalic Essence");
+		languageHandler.add(essence, essenceList);
+		
 	}
 	
 	private void createItems() {
@@ -166,6 +187,10 @@ public class ItemHandler {
 		nisilIngot = new ItemNisilIngot(23021);
 		nisilShard = new ItemNisilShard(23022);
 		
+		// Essence
+		
+		essence = new ItemEssence(23023);
+		
 	}
 	
 	private void registerItems() {
@@ -219,6 +244,10 @@ public class ItemHandler {
 		
 		GameRegistry.registerItem(nisilIngot, "nisilIngot");
 		GameRegistry.registerItem(nisilShard, "nisilShard");
+		
+		// Essence
+		
+		GameRegistry.registerItem(essence, "essence");
 				
 	}
 	
@@ -273,6 +302,15 @@ public class ItemHandler {
 	
 		LanguageRegistry.addName(nisilIngot, (String)this.languageHandler.getString(nisilIngot));
 		LanguageRegistry.addName(nisilShard, (String)this.languageHandler.getString(nisilShard));
+		
+		// Essence
+		
+		int i = 0;
+		for(String string : (ArrayList<String>)languageHandler.getString(essence))  {
+			ItemStack stack = new ItemStack(essence, 1, i);
+			LanguageRegistry.addName(stack, string);
+			i++;
+		}
 		
 	}
 	
