@@ -9,6 +9,7 @@ package com.voidzm.supercraft.item;
 import com.voidzm.supercraft.CommonProxy;
 
 import net.minecraft.creativetab.CreativeTabs;
+import net.minecraft.item.EnumRarity;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 

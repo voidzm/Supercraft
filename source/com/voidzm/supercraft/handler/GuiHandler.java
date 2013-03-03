@@ -6,7 +6,10 @@
 
 package com.voidzm.supercraft.handler;
 
+import com.voidzm.supercraft.container.ContainerEssentialReducer;
 import com.voidzm.supercraft.container.ContainerRefinedWorkbench;
+import com.voidzm.supercraft.entity.TileEntityEssentialReducer;
+import com.voidzm.supercraft.gui.GuiEssentialReducer;
 import com.voidzm.supercraft.gui.SCGuiCrafting;
 
 import net.minecraft.client.gui.inventory.GuiCrafting;
@@ -23,6 +26,9 @@ public class GuiHandler implements IGuiHandler {
 		switch(ID) {
 		case 0:
 			return new ContainerRefinedWorkbench(player.inventory, world, x, y, z);
+		case 1:
+			TileEntityEssentialReducer te = (TileEntityEssentialReducer)world.getBlockTileEntity(x, y, z);
+			return new ContainerEssentialReducer(player.inventory, te);
 		default:
 			return null;
 		}
@@ -33,6 +39,9 @@ public class GuiHandler implements IGuiHandler {
 		switch(ID) {
 		case 0:
 			return new SCGuiCrafting(player.inventory, world, x, y, z);
+		case 1:
+			TileEntityEssentialReducer te = (TileEntityEssentialReducer)world.getBlockTileEntity(x, y, z);
+			return new GuiEssentialReducer(player.inventory, te);
 		default:
 			return null;
 		}

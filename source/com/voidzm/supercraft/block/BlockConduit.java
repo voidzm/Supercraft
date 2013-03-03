@@ -293,6 +293,11 @@ public class BlockConduit extends BlockContainer {
 		else return false;
 	}
 	
+	public static boolean isMachine(int blockID) {
+		if(blockID == BlockHandler.essentialReducer.blockID) return true;
+		else return false;
+	}
+	
 	public static boolean isConduitConnectable(int blockID, GeneratorSide side) {
 		if(BlockConduit.isConduit(blockID)) return true;
 		else if(BlockConduit.isGenerator(blockID)) {
@@ -301,6 +306,7 @@ public class BlockConduit extends BlockContainer {
 			if(block.shouldConnectAtSide(side)) return true;
 			else return false;
 		}
+		else if(BlockConduit.isMachine(blockID)) return true;
 		else return false;
 	}
 	

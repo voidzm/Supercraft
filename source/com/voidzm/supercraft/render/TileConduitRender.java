@@ -290,6 +290,7 @@ public class TileConduitRender extends TileEntitySpecialRenderer {
 			if(block.shouldConnectAtSide(side)) return true;
 			else return false;
 		}
+		else if(BlockConduit.isMachine(blockID)) return true;
 		else return false;
 	}
 	

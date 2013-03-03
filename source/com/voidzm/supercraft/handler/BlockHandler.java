@@ -107,6 +107,7 @@ public class BlockHandler {
 	public static Block nisilBlock;
 	
 	public static Block ironboundStone;
+	public static Block essentialReducer;
 	
 	public void populateAllAndInitialize() {
 		this.createBlocks();
@@ -268,6 +269,7 @@ public class BlockHandler {
 		// Machines
 		
 		languageHandler.add(ironboundStone, "Ironbound Stone");
+		languageHandler.add(essentialReducer, "Essential Reducer");
 		
 	}
 	
@@ -381,6 +383,7 @@ public class BlockHandler {
 		// Machines
 		
 		ironboundStone = new BlockIronboundStone(1656);
+		essentialReducer = new BlockEssentialReducer(1657);
 		
 	}
 	
@@ -494,6 +497,7 @@ public class BlockHandler {
 		// Machines
 		
 		GameRegistry.registerBlock(ironboundStone, "ironboundStone");
+		GameRegistry.registerBlock(essentialReducer, "essentialReducer");
 		
 	}
 	
@@ -652,6 +656,7 @@ public class BlockHandler {
 		// Machines
 		
 		LanguageRegistry.addName(ironboundStone, (String)this.languageHandler.getString(ironboundStone));
+		LanguageRegistry.addName(essentialReducer, (String)this.languageHandler.getString(essentialReducer));
 		
 	}
 	

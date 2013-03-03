@@ -8,6 +8,7 @@ package com.voidzm.supercraft;
 
 import com.voidzm.supercraft.dimension.WorldProviderSurfaceAlternate;
 import com.voidzm.supercraft.entity.TileEntityConduit;
+import com.voidzm.supercraft.entity.TileEntityEssentialReducer;
 import com.voidzm.supercraft.event.EventBonemeal;
 import com.voidzm.supercraft.gen.WorldGenOre;
 import com.voidzm.supercraft.gui.SCMainMenu;
@@ -55,7 +56,7 @@ import cpw.mods.fml.common.registry.TickRegistry;
 import cpw.mods.fml.relauncher.Side;
 
 @Mod(modid="Supercraft", name="Supercraft", version="0.3.0")
-@NetworkMod(clientSideRequired=true, serverSideRequired=false, channels={"SCElinvar"}, packetHandler=PacketHandler.class)
+@NetworkMod(clientSideRequired=true, serverSideRequired=false, channels={"SCElinvar", "SCMachineUpdates"}, packetHandler=PacketHandler.class)
 public class Supercraft {
 
 	@Instance("Supercraft")
@@ -99,6 +100,7 @@ public class Supercraft {
 		MinecraftForge.EVENT_BUS.register(new EventBonemeal());
 		GameRegistry.registerWorldGenerator(new WorldGenOre());
 		GameRegistry.registerTileEntity(TileEntityConduit.class, "tileEntityConduit");
+		GameRegistry.registerTileEntity(TileEntityEssentialReducer.class, "tileEntityEssentialReducer");
 		NetworkRegistry.instance().registerGuiHandler(instance, guiHandler);
 		LanguageRegistry.instance().addStringLocalization("itemGroup.elinvarTab", "Elinvar");
 		System.out.println("[Supercraft] Loaded.");

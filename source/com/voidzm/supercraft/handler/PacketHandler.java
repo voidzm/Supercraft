@@ -10,6 +10,7 @@ import java.io.ByteArrayInputStream;
 import java.io.DataInputStream;
 
 import com.voidzm.supercraft.entity.TileEntityConduit;
+import com.voidzm.supercraft.entity.TileEntityEssentialReducer;
 import com.voidzm.supercraft.entity.TileEntityConduit.CONDUIT_TYPE;
 import com.voidzm.supercraft.entity.TileEntityConduit.PACKET_ELINVAR;
 
@@ -67,6 +68,25 @@ public class PacketHandler implements IPacketHandler {
 				}
 			}
 		}
+		else if(packet.channel.equals("SCMachineUpdates")) {
+			if(FMLCommonHandler.instance().getEffectiveSide() == Side.CLIENT) {
+				DataInputStream inputStream = new DataInputStream(new ByteArrayInputStream(packet.data));
+				int x, y, z, time;
+				boolean reducing, powered;
+				try {
+					x = inputStream.readInt();
+					y = inputStream.readInt();
+					z = inputStream.readInt();
+					reducing = inputStream.readBoolean();
+					powered = inputStream.readBoolean();
+					time = inputStream.readInt();
+				} catch (Exception e) {
+					e.printStackTrace();
+					return;
+				}
+				this.handleEssentialReducerUpdate((EntityPlayer)player, x, y, z, reducing, powered, time);
+			}
+		}
 	}
 	
 	private void handleElinvarPropagationUpdate(EntityPlayer player, int x, int y, int z, int newVal) {
@@ -89,6 +109,16 @@ public class PacketHandler implements IPacketHandler {
 		}
 		te.setPower(correctVal);
 		te.setConduitType(CONDUIT_TYPE.values()[correctType]);
+	}
+	
+	private void handleEssentialReducerUpdate(EntityPlayer player, int x, int y, int z, boolean reducing, boolean powered, int timeLeft) {
+		TileEntityEssentialReducer te = (TileEntityEssentialReducer)player.worldObj.getBlockTileEntity(x, y, z);
+		if(te == null) {
+			return;
+		}
+		te.setReducing(reducing);
+		te.powered = powered;
+		te.timeUntilReduction = timeLeft;
 	}
 
 }
