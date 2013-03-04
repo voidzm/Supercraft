@@ -2,6 +2,7 @@ package com.voidzm.supercraft.container;
 
 import com.voidzm.supercraft.entity.TileEntityEssentialReducer;
 import com.voidzm.supercraft.misc.SlotOutputOnly;
+import com.voidzm.supercraft.util.EssentialReducerRecipes;
 
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.InventoryPlayer;
@@ -52,12 +53,12 @@ public class ContainerEssentialReducer extends Container {
 				}
 			}
 			else {
-				if(TileEntityEssentialReducer.reducable.contains(new Integer(stackInSlot.itemID))) {
+				if(EssentialReducerRecipes.isStackReducable(stackInSlot)) {
 					if(!this.mergeItemStack(stackInSlot, 0, 1, false)) {
 						return null;
 					}
 				}
-				else if(TileEntityEssentialReducer.getCatalystType(stackInSlot.itemID) != null) {
+				else if(EssentialReducerRecipes.isStackCatalytic(stackInSlot)) {
 					if(!this.mergeItemStack(stackInSlot, 1, 2, false)) {
 						return null;
 					}

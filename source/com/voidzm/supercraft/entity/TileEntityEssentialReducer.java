@@ -10,6 +10,9 @@ import com.google.common.collect.ArrayListMultimap;
 import com.voidzm.supercraft.block.BlockConduit;
 import com.voidzm.supercraft.handler.BlockHandler;
 import com.voidzm.supercraft.handler.ItemHandler;
+import com.voidzm.supercraft.util.EssentialReducerCatalystMap;
+import com.voidzm.supercraft.util.EssentialReducerInputMap;
+import com.voidzm.supercraft.util.EssentialReducerRecipes;
 
 import cpw.mods.fml.common.FMLCommonHandler;
 import cpw.mods.fml.common.network.PacketDispatcher;
@@ -35,12 +38,6 @@ public class TileEntityEssentialReducer extends TileEntity implements IInventory
 
 	public static int t = 20;
 	
-	public enum CatalystType {
-		EARTH, AIR, FIRE, WATER, SURFACE, NETHER, END, METAL, GEM, LIFE, DEATH, UNKNOWN
-	}
-	
-	public static ArrayList<Integer> reducable = new ArrayList<Integer>();
-	
 	private ItemStack[] inventory;
 	private boolean reducing;
 	public int timeUntilReduction;
@@ -50,7 +47,6 @@ public class TileEntityEssentialReducer extends TileEntity implements IInventory
 	
 	public TileEntityEssentialReducer() {
 		inventory = new ItemStack[3];
-		this.populateReducable();
 		this.setReducing(false);
 		this.timeUntilReduction = t;
 		this.powered = false;
@@ -255,14 +251,14 @@ public class TileEntityEssentialReducer extends TileEntity implements IInventory
 	private void doConversion() {
 		if(this.worldObj.isRemote) return;
 		ItemStack toReduce = inventory[0];
-		if(toReduce == null || !this.reducable.contains(new Integer(toReduce.itemID))) {
+		if(toReduce == null || !EssentialReducerRecipes.isStackReducable(toReduce)) {
 			return;
 		}
 		ItemStack toCatalyze = inventory[1];
-		if(toCatalyze == null || this.getCatalystType(toCatalyze.itemID) == null) {
+		if(toCatalyze == null || !EssentialReducerRecipes.isStackCatalytic(toCatalyze)) {
 			return;
 		}
-		ItemStack targetOutput = this.resultForInputAndCatalyst(toReduce, toCatalyze);
+		ItemStack targetOutput = EssentialReducerRecipes.outputForInputAndCatalyst(toReduce, toCatalyze);
 		if(targetOutput == null) {
 			return;
 		}
@@ -315,9 +311,9 @@ public class TileEntityEssentialReducer extends TileEntity implements IInventory
 			}
 			return;
 		}
-		if(this.reducable.contains(new Integer(toBeReduced.itemID))) {
-			if(this.getCatalystType(toBeCatalyzed.itemID) != null) {
-				ItemStack result = this.resultForInputAndCatalyst(toBeReduced, toBeCatalyzed);
+		if(EssentialReducerRecipes.isStackReducable(toBeReduced)) {
+			if(EssentialReducerRecipes.isStackCatalytic(toBeCatalyzed)) {
+				ItemStack result = EssentialReducerRecipes.outputForInputAndCatalyst(toBeReduced, toBeCatalyzed);
 				if(result == null) return;
 				ItemStack output = inventory[2];
 				if(output != null && !output.isItemEqual(result)) {
@@ -360,419 +356,6 @@ public class TileEntityEssentialReducer extends TileEntity implements IInventory
 			}
 			return;
 		}
-	}
-
-	private void populateReducable() {
-		reducable.add(new Integer(Item.coal.itemID));
-		reducable.add(new Integer(Item.diamond.itemID));
-		reducable.add(new Integer(Item.ingotIron.itemID));
-		reducable.add(new Integer(Item.ingotGold.itemID));
-		reducable.add(new Integer(Item.silk.itemID));
-		reducable.add(new Integer(Item.feather.itemID));
-		reducable.add(new Integer(Item.gunpowder.itemID));
-		reducable.add(new Integer(Item.seeds.itemID));
-		reducable.add(new Integer(Item.wheat.itemID));
-		reducable.add(new Integer(Item.flint.itemID));
-		reducable.add(new Integer(Item.leather.itemID));
-		reducable.add(new Integer(Item.brick.itemID));
-		reducable.add(new Integer(Item.clay.itemID));
-		reducable.add(new Integer(Item.reed.itemID));
-		reducable.add(new Integer(Item.egg.itemID));
-		reducable.add(new Integer(Item.lightStoneDust.itemID));
-		reducable.add(new Integer(Item.sugar.itemID));
-		reducable.add(new Integer(Item.pumpkinSeeds.itemID));
-		reducable.add(new Integer(Item.melonSeeds.itemID));
-		reducable.add(new Integer(Item.blazeRod.itemID));
-		reducable.add(new Integer(Item.goldNugget.itemID));
-		reducable.add(new Integer(Item.netherStalkSeeds.itemID));
-		reducable.add(new Integer(Item.emerald.itemID));
-		reducable.add(new Integer(Item.netherStar.itemID));
-		reducable.add(new Integer(ItemHandler.ironScrap.itemID));
-		reducable.add(new Integer(ItemHandler.diamondShard.itemID));
-		reducable.add(new Integer(ItemHandler.aluminumIngot.itemID));
-		reducable.add(new Integer(ItemHandler.tantalumCrystal.itemID));
-		reducable.add(new Integer(ItemHandler.copperIngot.itemID));
-		reducable.add(new Integer(ItemHandler.copperChunk.itemID));
-		reducable.add(new Integer(ItemHandler.silverIngot.itemID));
-		reducable.add(new Integer(ItemHandler.electrumIngot.itemID));
-		reducable.add(new Integer(ItemHandler.electrumBit.itemID));
-		reducable.add(new Integer(ItemHandler.bloodAmber.itemID));
-		reducable.add(new Integer(ItemHandler.nisilIngot.itemID));
-		reducable.add(new Integer(ItemHandler.nisilShard.itemID));
-		reducable.add(new Integer(Item.redstone.itemID));
-		reducable.add(new Integer(Item.snowball.itemID));
-		reducable.add(new Integer(Item.paper.itemID));
-		reducable.add(new Integer(Item.book.itemID));
-		reducable.add(new Integer(Item.slimeBall.itemID));
-		reducable.add(new Integer(Item.bone.itemID));
-		reducable.add(new Integer(Item.enderPearl.itemID));
-		reducable.add(new Integer(Item.eyeOfEnder.itemID));
-		reducable.add(new Integer(Item.fireballCharge.itemID));
-		reducable.add(new Integer(ItemHandler.elinvarDust.itemID));
-		reducable.add(new Integer(Block.waterlily.blockID));
-		reducable.add(new Integer(Item.glassBottle.itemID));
-	}
-	
-	public static CatalystType getCatalystType(int id) {
-		CatalystType type = null;
-		if(isBlock(id)) {
-			if(id == Block.dirt.blockID) {
-				type = CatalystType.EARTH;
-			}
-			else if(id == Block.stone.blockID) {
-				type = CatalystType.EARTH;
-			}
-			else if(id == Block.gravel.blockID) {
-				type = CatalystType.EARTH;
-			}
-			else if(id == BlockHandler.palestone.blockID) {
-				type = CatalystType.EARTH;
-			}
-			else if(id == BlockHandler.nightrock.blockID) {
-				type = CatalystType.EARTH;
-			}
-			else if(id == Block.grass.blockID) {
-				type = CatalystType.SURFACE;
-			}
-			else if(id == Block.cobblestone.blockID) {
-				type = CatalystType.EARTH;
-			}
-			else if(id == Block.planks.blockID) {
-				type = CatalystType.SURFACE;
-			}
-			else if(id == Block.sand.blockID) {
-				type = CatalystType.EARTH;
-			}
-			else if(id == Block.oreGold.blockID) {
-				type = CatalystType.METAL;
-			}
-			else if(id == Block.oreIron.blockID) {
-				type = CatalystType.METAL;
-			}
-			else if(id == Block.oreCoal.blockID) {
-				type = CatalystType.EARTH;
-			}
-			else if(id == Block.wood.blockID) {
-				type = CatalystType.SURFACE;
-			}
-			else if(id == Block.glass.blockID) {
-				type = CatalystType.AIR;
-			}
-			else if(id == Block.oreLapis.blockID) {
-				type = CatalystType.GEM;
-			}
-			else if(id == Block.blockLapis.blockID) {
-				type = CatalystType.GEM;
-			}
-			else if(id == Block.sandStone.blockID) {
-				type = CatalystType.EARTH;
-			}
-			else if(id == Block.cloth.blockID) {
-				type = CatalystType.SURFACE;
-			}
-			else if(id == Block.blockGold.blockID) {
-				type = CatalystType.METAL;
-			}
-			else if(id == Block.blockSteel.blockID) {
-				type = CatalystType.METAL;
-			}
-		}
-		return type;
-	}
-	
-	private ItemStack resultForInputAndCatalyst(ItemStack in, ItemStack cat) {
-		CatalystType type = null;
-		type = this.getCatalystType(cat.itemID);
-		if(type == null) return null;
-		if(in.isItemEqual(new ItemStack(Item.coal))) {
-			if(type == CatalystType.FIRE || type == CatalystType.NETHER) {
-				return new ItemStack(ItemHandler.essence, 1, 2);
-			}
-			else return new ItemStack(ItemHandler.essence, 1, 0);
-		}
-		else if(in.isItemEqual(new ItemStack(Item.diamond))) {
-			if(type == CatalystType.EARTH) {
-				return new ItemStack(ItemHandler.essence, 1, 0);
-			}
-			else return new ItemStack(ItemHandler.essence, 1, 8);
-		}
-		else if(in.isItemEqual(new ItemStack(Item.ingotIron))) {
-			if(type == CatalystType.EARTH) {
-				return new ItemStack(ItemHandler.essence, 1, 0);
-			}
-			else return new ItemStack(ItemHandler.essence, 1, 7);
-		}
-		else if(in.isItemEqual(new ItemStack(Item.ingotGold))) {
-			if(type == CatalystType.EARTH) {
-				return new ItemStack(ItemHandler.essence, 1, 0);
-			}
-			else return new ItemStack(ItemHandler.essence, 1, 7);
-		}
-		else if(in.isItemEqual(new ItemStack(Item.silk))) {
-			if(type == CatalystType.DEATH) {
-				return new ItemStack(ItemHandler.essence, 1, 10);
-			}
-			else return new ItemStack(ItemHandler.essence, 1, 9);
-		}
-		else if(in.isItemEqual(new ItemStack(Item.feather))) {
-			if(type == CatalystType.LIFE) {
-				return new ItemStack(ItemHandler.essence, 1, 9);
-			}
-			else return new ItemStack(ItemHandler.essence, 1, 4);
-		}
-		else if(in.isItemEqual(new ItemStack(Item.gunpowder))) {
-			if(type == CatalystType.EARTH) {
-				return new ItemStack(ItemHandler.essence, 1, 0);
-			}
-			else return new ItemStack(ItemHandler.essence, 1, 10);
-		}
-		else if(in.isItemEqual(new ItemStack(Item.seeds))) {
-			if(type == CatalystType.SURFACE) {
-				return new ItemStack(ItemHandler.essence, 1, 4);
-			}
-			else return new ItemStack(ItemHandler.essence, 1, 9);
-		}
-		else if(in.isItemEqual(new ItemStack(Item.wheat))) {
-			if(type == CatalystType.SURFACE) {
-				return new ItemStack(ItemHandler.essence, 1, 4);
-			}
-			else return new ItemStack(ItemHandler.essence, 1, 9);
-		}
-		else if(in.isItemEqual(new ItemStack(Item.flint))) {
-			if(type == CatalystType.FIRE) {
-				return new ItemStack(ItemHandler.essence, 1, 2);
-			}
-			else return new ItemStack(ItemHandler.essence, 1, 0);
-		}
-		else if(in.isItemEqual(new ItemStack(Item.leather))) {
-			if(type == CatalystType.LIFE) {
-				return new ItemStack(ItemHandler.essence, 1, 9);
-			}
-			else return new ItemStack(ItemHandler.essence, 1, 4);
-		}
-		else if(in.isItemEqual(new ItemStack(Item.brick))) {
-			if(type == CatalystType.SURFACE) {
-				return new ItemStack(ItemHandler.essence, 1, 4);
-			}
-			else return new ItemStack(ItemHandler.essence, 1, 0);
-		}
-		else if(in.isItemEqual(new ItemStack(Item.clay))) {
-			if(type == CatalystType.SURFACE) {
-				return new ItemStack(ItemHandler.essence, 1, 4);
-			}
-			else return new ItemStack(ItemHandler.essence, 1, 0);
-		}
-		else if(in.isItemEqual(new ItemStack(Item.reed))) {
-			if(type == CatalystType.SURFACE) {
-				return new ItemStack(ItemHandler.essence, 1, 4);
-			}
-			else return new ItemStack(ItemHandler.essence, 1, 9);
-		}
-		else if(in.isItemEqual(new ItemStack(Item.egg))) {
-			if(type == CatalystType.LIFE) {
-				return new ItemStack(ItemHandler.essence, 1, 9);
-			}
-			else return new ItemStack(ItemHandler.essence, 1, 4);
-		}
-		else if(in.isItemEqual(new ItemStack(Item.lightStoneDust))) {
-			if(type == CatalystType.GEM) {
-				return new ItemStack(ItemHandler.essence, 1, 8);
-			}
-			else return new ItemStack(ItemHandler.essence, 1, 5);
-		}
-		else if(in.isItemEqual(new ItemStack(Item.sugar))) {
-			if(type == CatalystType.LIFE) {
-				return new ItemStack(ItemHandler.essence, 1, 9);
-			}
-			else return new ItemStack(ItemHandler.essence, 1, 4);
-		}
-		else if(in.isItemEqual(new ItemStack(Item.pumpkinSeeds))) {
-			if(type == CatalystType.SURFACE) {
-				return new ItemStack(ItemHandler.essence, 1, 4);
-			}
-			else return new ItemStack(ItemHandler.essence, 1, 9);
-		}
-		else if(in.isItemEqual(new ItemStack(Item.melonSeeds))) {
-			if(type == CatalystType.SURFACE) {
-				return new ItemStack(ItemHandler.essence, 1, 4);
-			}
-			else return new ItemStack(ItemHandler.essence, 1, 9);
-		}
-		else if(in.isItemEqual(new ItemStack(Item.blazeRod))) {
-			if(type == CatalystType.FIRE) {
-				return new ItemStack(ItemHandler.essence, 1, 2);
-			}
-			else return new ItemStack(ItemHandler.essence, 1, 5);
-		}
-		else if(in.isItemEqual(new ItemStack(Item.goldNugget))) {
-			if(type == CatalystType.EARTH) {
-				return new ItemStack(ItemHandler.essence, 1, 0);
-			}
-			else return new ItemStack(ItemHandler.essence, 1, 7);
-		}
-		else if(in.isItemEqual(new ItemStack(Item.netherStalkSeeds))) {
-			if(type == CatalystType.LIFE) {
-				return new ItemStack(ItemHandler.essence, 1, 9);
-			}
-			else return new ItemStack(ItemHandler.essence, 1, 5);
-		}
-		else if(in.isItemEqual(new ItemStack(Item.emerald))) {
-			if(type == CatalystType.EARTH) {
-				return new ItemStack(ItemHandler.essence, 1, 0);
-			}
-			else return new ItemStack(ItemHandler.essence, 1, 8);
-		}
-		else if(in.isItemEqual(new ItemStack(Item.netherStar))) {
-			if(type == CatalystType.GEM) {
-				return new ItemStack(ItemHandler.essence, 1, 8);
-			}
-			else return new ItemStack(ItemHandler.essence, 1, 5);
-		}
-		else if(in.isItemEqual(new ItemStack(ItemHandler.ironScrap))) {
-			if(type == CatalystType.EARTH) {
-				return new ItemStack(ItemHandler.essence, 1, 0);
-			}
-			else return new ItemStack(ItemHandler.essence, 1, 7);
-		}
-		else if(in.isItemEqual(new ItemStack(ItemHandler.diamondShard))) {
-			if(type == CatalystType.EARTH) {
-				return new ItemStack(ItemHandler.essence, 1, 0);
-			}
-			else return new ItemStack(ItemHandler.essence, 1, 8);
-		}
-		else if(in.isItemEqual(new ItemStack(ItemHandler.aluminumIngot))) {
-			if(type == CatalystType.EARTH) {
-				return new ItemStack(ItemHandler.essence, 1, 0);
-			}
-			else return new ItemStack(ItemHandler.essence, 1, 7);
-		}
-		else if(in.isItemEqual(new ItemStack(ItemHandler.tantalumCrystal))) {
-			if(type == CatalystType.EARTH) {
-				return new ItemStack(ItemHandler.essence, 1, 0);
-			}
-			else return new ItemStack(ItemHandler.essence, 1, 8);
-		}
-		else if(in.isItemEqual(new ItemStack(ItemHandler.copperIngot))) {
-			if(type == CatalystType.EARTH) {
-				return new ItemStack(ItemHandler.essence, 1, 0);
-			}
-			else return new ItemStack(ItemHandler.essence, 1, 7);
-		}
-		else if(in.isItemEqual(new ItemStack(ItemHandler.copperChunk))) {
-			if(type == CatalystType.EARTH) {
-				return new ItemStack(ItemHandler.essence, 1, 0);
-			}
-			else return new ItemStack(ItemHandler.essence, 1, 7);
-		}
-		else if(in.isItemEqual(new ItemStack(ItemHandler.silverIngot))) {
-			if(type == CatalystType.METAL) {
-				return new ItemStack(ItemHandler.essence, 1, 7);
-			}
-			else return new ItemStack(ItemHandler.essence, 1, 1);
-		}
-		else if(in.isItemEqual(new ItemStack(ItemHandler.electrumIngot))) {
-			if(type == CatalystType.EARTH) {
-				return new ItemStack(ItemHandler.essence, 1, 0);
-			}
-			else return new ItemStack(ItemHandler.essence, 1, 7);
-		}
-		else if(in.isItemEqual(new ItemStack(ItemHandler.electrumBit))) {
-			if(type == CatalystType.EARTH) {
-				return new ItemStack(ItemHandler.essence, 1, 0);
-			}
-			else return new ItemStack(ItemHandler.essence, 1, 7);
-		}
-		else if(in.isItemEqual(new ItemStack(ItemHandler.bloodAmber))) {
-			if(type == CatalystType.SURFACE) {
-				return new ItemStack(ItemHandler.essence, 1, 4);
-			}
-			else return new ItemStack(ItemHandler.essence, 1, 10);
-		}
-		else if(in.isItemEqual(new ItemStack(ItemHandler.nisilIngot))) {
-			if(type == CatalystType.EARTH) {
-				return new ItemStack(ItemHandler.essence, 1, 0);
-			}
-			else return new ItemStack(ItemHandler.essence, 1, 10);
-		}
-		else if(in.isItemEqual(new ItemStack(ItemHandler.nisilShard))) {
-			if(type == CatalystType.EARTH) {
-				return new ItemStack(ItemHandler.essence, 1, 0);
-			}
-			else return new ItemStack(ItemHandler.essence, 1, 10);
-		}
-		else if(in.isItemEqual(new ItemStack(Item.redstone))) {
-			if(type == CatalystType.EARTH) {
-				return new ItemStack(ItemHandler.essence, 1, 0);
-			}
-			else return new ItemStack(ItemHandler.essence, 1, 8);
-		}
-		else if(in.isItemEqual(new ItemStack(Item.snowball))) {
-			if(type == CatalystType.AIR) {
-				return new ItemStack(ItemHandler.essence, 1, 1);
-			}
-			else return new ItemStack(ItemHandler.essence, 1, 4);
-		}
-		else if(in.isItemEqual(new ItemStack(Item.paper))) {
-			if(type == CatalystType.AIR) {
-				return new ItemStack(ItemHandler.essence, 1, 1);
-			}
-			else return new ItemStack(ItemHandler.essence, 1, 4);
-		}
-		else if(in.isItemEqual(new ItemStack(Item.book))) {
-			if(type == CatalystType.AIR) {
-				return new ItemStack(ItemHandler.essence, 1, 1);
-			}
-			else return new ItemStack(ItemHandler.essence, 1, 4);
-		}
-		else if(in.isItemEqual(new ItemStack(Item.slimeBall))) {
-			if(type == CatalystType.DEATH) {
-				return new ItemStack(ItemHandler.essence, 1, 10);
-			}
-			else return new ItemStack(ItemHandler.essence, 1, 4);
-		}
-		else if(in.isItemEqual(new ItemStack(Item.bone))) {
-			if(type == CatalystType.EARTH) {
-				return new ItemStack(ItemHandler.essence, 1, 0);
-			}
-			else return new ItemStack(ItemHandler.essence, 1, 10);
-		}
-		else if(in.isItemEqual(new ItemStack(Item.enderPearl))) {
-			if(type == CatalystType.AIR) {
-				return new ItemStack(ItemHandler.essence, 1, 1);
-			}
-			else return new ItemStack(ItemHandler.essence, 1, 6);
-		}
-		else if(in.isItemEqual(new ItemStack(Item.eyeOfEnder))) {
-			if(type == CatalystType.AIR) {
-				return new ItemStack(ItemHandler.essence, 1, 1);
-			}
-			else return new ItemStack(ItemHandler.essence, 1, 6);
-		}
-		else if(in.isItemEqual(new ItemStack(Item.fireballCharge))) {
-			if(type == CatalystType.NETHER) {
-				return new ItemStack(ItemHandler.essence, 1, 5);
-			}
-			else return new ItemStack(ItemHandler.essence, 1, 2);
-		}
-		else if(in.isItemEqual(new ItemStack(ItemHandler.elinvarDust))) {
-			if(type == CatalystType.GEM) {
-				return new ItemStack(ItemHandler.essence, 1, 8);
-			}
-			else return new ItemStack(ItemHandler.essence, 1, 5);
-		}
-		else if(in.isItemEqual(new ItemStack(Block.waterlily))) {
-			if(type == CatalystType.SURFACE) {
-				return new ItemStack(ItemHandler.essence, 1, 4);
-			}
-			else return new ItemStack(ItemHandler.essence, 1, 3);
-		}
-		else if(in.isItemEqual(new ItemStack(Item.glassBottle))) {
-			if(type == CatalystType.AIR) {
-				return new ItemStack(ItemHandler.essence, 1, 1);
-			}
-			else return new ItemStack(ItemHandler.essence, 1, 3);
-		}
-		else return null;
 	}
 	
 	public int progressScaled(int par1) {
