@@ -51,7 +51,7 @@ public class ItemEssence extends Item {
 	
 	@Override
 	public boolean hasEffect(ItemStack par1) {
-		return true;
+		return false;
 	}
 	
 	@Override
