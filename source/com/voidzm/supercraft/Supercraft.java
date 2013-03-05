@@ -9,6 +9,7 @@ package com.voidzm.supercraft;
 import com.voidzm.supercraft.dimension.WorldProviderSurfaceAlternate;
 import com.voidzm.supercraft.entity.TileEntityConduit;
 import com.voidzm.supercraft.entity.TileEntityEssentialReducer;
+import com.voidzm.supercraft.entity.TileEntityRadiantSolarGenerator;
 import com.voidzm.supercraft.event.EventBonemeal;
 import com.voidzm.supercraft.gen.WorldGenOre;
 import com.voidzm.supercraft.gui.SCMainMenu;
@@ -101,6 +102,7 @@ public class Supercraft {
 		GameRegistry.registerWorldGenerator(new WorldGenOre());
 		GameRegistry.registerTileEntity(TileEntityConduit.class, "tileEntityConduit");
 		GameRegistry.registerTileEntity(TileEntityEssentialReducer.class, "tileEntityEssentialReducer");
+		GameRegistry.registerTileEntity(TileEntityRadiantSolarGenerator.class, "tileEntityRadiantSolarGenerator");
 		NetworkRegistry.instance().registerGuiHandler(instance, guiHandler);
 		LanguageRegistry.instance().addStringLocalization("itemGroup.elinvarTab", "Elinvar");
 		System.out.println("[Supercraft] Loaded.");

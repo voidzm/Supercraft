@@ -94,4 +94,10 @@ public class BlockEssentialReducer extends BlockContainer {
 		te.doUpdateCheck = true;
 	}
 	
+	public int getBlockTextureFromSideAndMetadata(int side, int meta) {
+		if(side == 0) return 122;
+		else if(side == 1) return 120;
+		else return 121;
+	}
+	
 }

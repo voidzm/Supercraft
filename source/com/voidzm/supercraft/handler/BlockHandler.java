@@ -108,6 +108,8 @@ public class BlockHandler {
 	
 	public static Block ironboundStone;
 	public static Block essentialReducer;
+	public static Block copperboundStone;
+	public static Block radiantSolarGenerator;
 	
 	public void populateAllAndInitialize() {
 		this.createBlocks();
@@ -270,6 +272,8 @@ public class BlockHandler {
 		
 		languageHandler.add(ironboundStone, "Ironbound Stone");
 		languageHandler.add(essentialReducer, "Essential Reducer");
+		languageHandler.add(copperboundStone, "Copperbound Stone");
+		languageHandler.add(radiantSolarGenerator, "Radiant Solar Generator");
 		
 	}
 	
@@ -384,6 +388,8 @@ public class BlockHandler {
 		
 		ironboundStone = new BlockIronboundStone(1656);
 		essentialReducer = new BlockEssentialReducer(1657);
+		copperboundStone = new BlockCopperboundStone(1658);
+		radiantSolarGenerator = new BlockRadiantSolarGenerator(1659);
 		
 	}
 	
@@ -498,6 +504,8 @@ public class BlockHandler {
 		
 		GameRegistry.registerBlock(ironboundStone, "ironboundStone");
 		GameRegistry.registerBlock(essentialReducer, "essentialReducer");
+		GameRegistry.registerBlock(copperboundStone, "copperboundStone");
+		GameRegistry.registerBlock(radiantSolarGenerator, "radiantSolarGenerator");
 		
 	}
 	
@@ -657,6 +665,8 @@ public class BlockHandler {
 		
 		LanguageRegistry.addName(ironboundStone, (String)this.languageHandler.getString(ironboundStone));
 		LanguageRegistry.addName(essentialReducer, (String)this.languageHandler.getString(essentialReducer));
+		LanguageRegistry.addName(copperboundStone, (String)this.languageHandler.getString(copperboundStone));
+		LanguageRegistry.addName(radiantSolarGenerator, (String)this.languageHandler.getString(radiantSolarGenerator));
 		
 	}
 	

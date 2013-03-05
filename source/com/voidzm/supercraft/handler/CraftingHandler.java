@@ -8,6 +8,8 @@
 
 package com.voidzm.supercraft.handler;
 
+import com.voidzm.supercraft.util.EssentialReducerRecipes.EssentialAspect;
+
 import cpw.mods.fml.common.registry.GameRegistry;
 import net.minecraft.block.Block;
 import net.minecraft.item.Item;
@@ -42,6 +44,7 @@ public class CraftingHandler {
 	private ItemStack netherBrick;
 	private ItemStack redstone;
 	private ItemStack stoneBrick;
+	private ItemStack flint;
 	
 	// Supercraft
 	
@@ -76,6 +79,9 @@ public class CraftingHandler {
 	private ItemStack nisilBlock;
 	private ItemStack snapdragon;
 	private ItemStack ironboundStone;
+	private ItemStack copperboundStone;
+	private ItemStack aeronicEssence;
+	private ItemStack radantisEssence;
 	
 	public void populateAllAndInitialize() {
 		this.initializeCraftingRefs();
@@ -109,6 +115,7 @@ public class CraftingHandler {
 		netherBrick = new ItemStack(Block.netherBrick);
 		redstone = new ItemStack(Item.redstone);
 		stoneBrick = new ItemStack(Block.stoneBrick);
+		flint = new ItemStack(Item.flint);
 		
 		oliveWood = new ItemStack(BlockHandler.supercraftLog, 1, 0);
 		olivePlanks = new ItemStack(BlockHandler.supercraftPlanks, 1, 0);
@@ -141,6 +148,9 @@ public class CraftingHandler {
 		nisilBlock = new ItemStack(BlockHandler.nisilBlock);
 		snapdragon = new ItemStack(BlockHandler.snapdragon);
 		ironboundStone = new ItemStack(BlockHandler.ironboundStone);
+		copperboundStone = new ItemStack(BlockHandler.copperboundStone);
+		aeronicEssence = new ItemStack(ItemHandler.essence, 1, EssentialAspect.AERONIC.index);
+		radantisEssence = new ItemStack(ItemHandler.essence, 1, EssentialAspect.RADANTIS.index);
 	}
 	
 	private void addRecipes() {
@@ -250,6 +260,9 @@ public class CraftingHandler {
 		// Machines
 		
 		GameRegistry.addRecipe(new ItemStack(BlockHandler.ironboundStone), "a a", " b ", "a a", 'a', ironScrap, 'b', stone);
+		GameRegistry.addRecipe(new ItemStack(BlockHandler.essentialReducer), "aba", "cdc", "aaa", 'a', ironboundStone, 'b', flint, 'c', elinvarDust, 'd', diamond);
+		GameRegistry.addRecipe(new ItemStack(BlockHandler.copperboundStone), "a a", " b ", "a a", 'a', copperChunk, 'b', stone);
+		GameRegistry.addRecipe(new ItemStack(BlockHandler.radiantSolarGenerator), "aba", "cdc", "eee", 'a', aeronicEssence, 'b', radantisEssence, 'c', obsidian, 'd', copper, 'e', copperboundStone);
 		
 	}
 	
