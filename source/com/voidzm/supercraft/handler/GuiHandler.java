@@ -6,9 +6,12 @@
 
 package com.voidzm.supercraft.handler;
 
+import com.voidzm.supercraft.container.ContainerAlloyInductor;
 import com.voidzm.supercraft.container.ContainerEssentialReducer;
 import com.voidzm.supercraft.container.ContainerRefinedWorkbench;
+import com.voidzm.supercraft.entity.TileEntityAlloyInductor;
 import com.voidzm.supercraft.entity.TileEntityEssentialReducer;
+import com.voidzm.supercraft.gui.GuiAlloyInductor;
 import com.voidzm.supercraft.gui.GuiEssentialReducer;
 import com.voidzm.supercraft.gui.SCGuiCrafting;
 
@@ -27,8 +30,11 @@ public class GuiHandler implements IGuiHandler {
 		case 0:
 			return new ContainerRefinedWorkbench(player.inventory, world, x, y, z);
 		case 1:
-			TileEntityEssentialReducer te = (TileEntityEssentialReducer)world.getBlockTileEntity(x, y, z);
-			return new ContainerEssentialReducer(player.inventory, te);
+			TileEntityEssentialReducer teEssentialReducer = (TileEntityEssentialReducer)world.getBlockTileEntity(x, y, z);
+			return new ContainerEssentialReducer(player.inventory, teEssentialReducer);
+		case 2:
+			TileEntityAlloyInductor teAlloyInductor = (TileEntityAlloyInductor)world.getBlockTileEntity(x, y, z);
+			return new ContainerAlloyInductor(player.inventory, teAlloyInductor);
 		default:
 			return null;
 		}
@@ -40,8 +46,11 @@ public class GuiHandler implements IGuiHandler {
 		case 0:
 			return new SCGuiCrafting(player.inventory, world, x, y, z);
 		case 1:
-			TileEntityEssentialReducer te = (TileEntityEssentialReducer)world.getBlockTileEntity(x, y, z);
-			return new GuiEssentialReducer(player.inventory, te);
+			TileEntityEssentialReducer teEssentialReducer = (TileEntityEssentialReducer)world.getBlockTileEntity(x, y, z);
+			return new GuiEssentialReducer(player.inventory, teEssentialReducer);
+		case 2:
+			TileEntityAlloyInductor teAlloyInductor = (TileEntityAlloyInductor)world.getBlockTileEntity(x, y, z);
+			return new GuiAlloyInductor(player.inventory, teAlloyInductor);
 		default:
 			return null;
 		}

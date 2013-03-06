@@ -57,22 +57,22 @@ public class TileConduitRender extends TileEntitySpecialRenderer {
 			World world = var1.worldObj;
 			Block targetBlock = Block.blocksList[world.getBlockId(ix, iy, iz)];
 			if(targetBlock == null) return;
-			if(this.isConduitConnectable(world.getBlockId(ix+1, iy, iz), GeneratorSide.EAST)) {
+			if(BlockConduit.isConduitConnectable(world.getBlockId(ix+1, iy, iz), GeneratorSide.EAST)) {
 				maxX = 1.0F;
 			}
-			if(this.isConduitConnectable(world.getBlockId(ix-1, iy, iz), GeneratorSide.WEST)) {
+			if(BlockConduit.isConduitConnectable(world.getBlockId(ix-1, iy, iz), GeneratorSide.WEST)) {
 				minX = 0.0F;
 			}
-			if(this.isConduitConnectable(world.getBlockId(ix, iy+1, iz), GeneratorSide.TOP)) {
+			if(BlockConduit.isConduitConnectable(world.getBlockId(ix, iy+1, iz), GeneratorSide.TOP)) {
 				maxY = 1.0F;
 			}
-			if(this.isConduitConnectable(world.getBlockId(ix, iy-1, iz), GeneratorSide.BOTTOM)) {
+			if(BlockConduit.isConduitConnectable(world.getBlockId(ix, iy-1, iz), GeneratorSide.BOTTOM)) {
 				minY = 0.0F;
 			}
-			if(this.isConduitConnectable(world.getBlockId(ix, iy, iz+1), GeneratorSide.SOUTH)) {
+			if(BlockConduit.isConduitConnectable(world.getBlockId(ix, iy, iz+1), GeneratorSide.SOUTH)) {
 				maxZ = 1.0F;
 			}
-			if(this.isConduitConnectable(world.getBlockId(ix, iy, iz-1), GeneratorSide.NORTH)) {
+			if(BlockConduit.isConduitConnectable(world.getBlockId(ix, iy, iz-1), GeneratorSide.NORTH)) {
 				minZ = 0.0F;
 			}
 			Tessellator tes = Tessellator.instance;

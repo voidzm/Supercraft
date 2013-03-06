@@ -2,71 +2,66 @@ package com.voidzm.supercraft.entity;
 
 import java.io.ByteArrayOutputStream;
 import java.io.DataOutputStream;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.HashMap;
 
-import com.google.common.collect.ArrayListMultimap;
 import com.voidzm.supercraft.block.BlockConduit;
-import com.voidzm.supercraft.handler.BlockHandler;
 import com.voidzm.supercraft.handler.ItemHandler;
 import com.voidzm.supercraft.handler.PacketHandler.SCMachinePacketType;
-import com.voidzm.supercraft.util.EssentialReducerCatalystMap;
-import com.voidzm.supercraft.util.EssentialReducerInputMap;
+import com.voidzm.supercraft.util.AlloyInductorComboMap;
+import com.voidzm.supercraft.util.AlloyInductorRecipes;
 import com.voidzm.supercraft.util.EssentialReducerRecipes;
+import com.voidzm.supercraft.util.EssentialReducerRecipes.EssentialAspect;
 
-import cpw.mods.fml.common.FMLCommonHandler;
 import cpw.mods.fml.common.network.PacketDispatcher;
-import cpw.mods.fml.relauncher.Side;
-
-import net.minecraft.block.Block;
-import net.minecraft.block.BlockOre;
-import net.minecraft.block.material.Material;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.inventory.IInventory;
-import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.nbt.NBTTagList;
 import net.minecraft.network.INetworkManager;
-import net.minecraft.network.packet.NetHandler;
 import net.minecraft.network.packet.Packet;
 import net.minecraft.network.packet.Packet132TileEntityData;
 import net.minecraft.network.packet.Packet250CustomPayload;
 import net.minecraft.tileentity.TileEntity;
 
-public class TileEntityEssentialReducer extends TileEntity implements IInventory {
+public class TileEntityAlloyInductor extends TileEntity implements IInventory {
 
 	public static int t = 20;
+	public static final int e = 4;
+	private static ItemStack targetEssence = new ItemStack(ItemHandler.essence, 1, EssentialAspect.FERRIC.index);
 	
 	private ItemStack[] inventory;
-	private boolean reducing;
-	public int timeUntilReduction;
+	private boolean inducting;
+	public int timeUntilInduction;
+	public int essenceRemaining;
 	
 	public boolean doUpdateCheck;
 	public boolean powered;
+	public boolean needsEssenceDecrement;
 	
-	public TileEntityEssentialReducer() {
-		inventory = new ItemStack[3];
-		this.setReducing(false);
-		this.timeUntilReduction = t;
+	public TileEntityAlloyInductor() {
+		inventory = new ItemStack[4];
+		this.setInducting(false);
+		this.timeUntilInduction = t;
+		this.essenceRemaining = 0;
 		this.powered = false;
 		this.doUpdateCheck = true;
+		this.needsEssenceDecrement = false;
 	}
 	
 	public void updateClients() {
 		if(this.worldObj == null) return;
 		if(this.worldObj.isRemote) return;
-		ByteArrayOutputStream byteArray = new ByteArrayOutputStream(22);
+		ByteArrayOutputStream byteArray = new ByteArrayOutputStream(26);
 		DataOutputStream dataStream = new DataOutputStream(byteArray);
 		try {
-			dataStream.writeInt(SCMachinePacketType.ESSENTIALREDUCER.index);
+			dataStream.writeInt(SCMachinePacketType.ALLOYINDUCTOR.index);
 			dataStream.writeInt(this.xCoord);
 			dataStream.writeInt(this.yCoord);
 			dataStream.writeInt(this.zCoord);
-			dataStream.writeBoolean(this.reducing);
+			dataStream.writeBoolean(this.inducting);
 			dataStream.writeBoolean(this.powered);
-			dataStream.writeInt(this.timeUntilReduction);
+			dataStream.writeInt(this.timeUntilInduction);
+			dataStream.writeInt(this.essenceRemaining);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -76,6 +71,14 @@ public class TileEntityEssentialReducer extends TileEntity implements IInventory
 		packet.length = byteArray.size();
 		packet.isChunkDataPacket = true;
 		PacketDispatcher.sendPacketToAllInDimension(packet, this.worldObj.provider.dimensionId);
+	}
+	
+	public boolean isInducting() {
+		return this.inducting;
+	}
+	
+	public void setInducting(boolean val) {
+		this.inducting = val;
 	}
 	
 	public Packet getDescriptionPacket() {
@@ -88,16 +91,8 @@ public class TileEntityEssentialReducer extends TileEntity implements IInventory
 		this.readFromNBT(pkt.customParam1);
 	}
 	
-	public boolean isReducing() {
-		return this.reducing;
-	}
-	
-	public void setReducing(boolean val) {
-		this.reducing = val;
-	}
-	
 	public int getTimeLeft() {
-		return this.timeUntilReduction;
+		return this.timeUntilInduction;
 	}
 	
 	@Override
@@ -109,7 +104,7 @@ public class TileEntityEssentialReducer extends TileEntity implements IInventory
 	public ItemStack getStackInSlot(int var1) {
 		return inventory[var1];
 	}
-
+	
 	@Override
 	public ItemStack decrStackSize(int var1, int var2) {
 		ItemStack cont = this.getStackInSlot(var1);
@@ -136,7 +131,7 @@ public class TileEntityEssentialReducer extends TileEntity implements IInventory
 		}
 		return cont;
 	}
-
+	
 	@Override
 	public void setInventorySlotContents(int var1, ItemStack var2) {
 		inventory[var1] = var2;
@@ -145,10 +140,10 @@ public class TileEntityEssentialReducer extends TileEntity implements IInventory
 		}
 		this.checkForStateChange();
 	}
-
+	
 	@Override
 	public String getInvName() {
-		return "supercraft.essentialreducer";
+		return "supercraft.alloyinductor";
 	}
 
 	@Override
@@ -178,8 +173,9 @@ public class TileEntityEssentialReducer extends TileEntity implements IInventory
 				inventory[slot] = ItemStack.loadItemStackFromNBT(tag);
 			}
 		}
-		this.setReducing(tagCompound.getBoolean("Reducing"));
-		this.timeUntilReduction = tagCompound.getInteger("TimeLeft");
+		this.setInducting(tagCompound.getBoolean("Inducting"));
+		this.timeUntilInduction = tagCompound.getInteger("TimeLeft");
+		this.essenceRemaining = tagCompound.getInteger("EssenceLeft");
 		this.powered = tagCompound.getBoolean("Powered");
 	}
 	
@@ -197,8 +193,9 @@ public class TileEntityEssentialReducer extends TileEntity implements IInventory
 			}
 		}
 		tagCompound.setTag("Inventory", tagList);
-		tagCompound.setBoolean("Reducing", this.reducing);
-		tagCompound.setInteger("TimeLeft", this.timeUntilReduction);
+		tagCompound.setBoolean("Inducting", this.inducting);
+		tagCompound.setInteger("TimeLeft", this.timeUntilInduction);
+		tagCompound.setInteger("EssenceLeft", this.essenceRemaining);
 		tagCompound.setBoolean("Powered", this.powered);
 	}
 	
@@ -220,7 +217,7 @@ public class TileEntityEssentialReducer extends TileEntity implements IInventory
 				}
 				i++;
 			}
-			if(highestFound >= 1) {
+			if(highestFound >= 8) {
 				if(!this.powered) {
 					this.powered = true;
 					this.updateClients();
@@ -234,15 +231,24 @@ public class TileEntityEssentialReducer extends TileEntity implements IInventory
 			}
 			doUpdateCheck = false;
 		}
-		if(this.reducing) {
-			if(this.timeUntilReduction > 1) {
-				this.timeUntilReduction--;
+		if(this.needsEssenceDecrement) {
+			ItemStack essence = inventory[2];
+			--essence.stackSize;
+			if(essence.stackSize <= 0) inventory[2] = null;
+			this.needsEssenceDecrement = false;
+		}
+		if(this.essenceRemaining > 0) {
+			this.essenceRemaining--;
+		}
+		if(this.inducting) {
+			if(this.timeUntilInduction > 1) {
+				this.timeUntilInduction--;
 			}
 			else {
-				this.timeUntilReduction = 0;
+				this.timeUntilInduction = 0;
 				if(!this.worldObj.isRemote) {
 					doConversion();
-					this.timeUntilReduction = t;
+					this.timeUntilInduction = t;
 					checkForStateChange(false);
 					this.updateClients();
 				}
@@ -250,33 +256,49 @@ public class TileEntityEssentialReducer extends TileEntity implements IInventory
 		}
 	}
 	
+	private void tryShutdown(boolean packet) {
+		if(this.inducting == true) {
+			this.setInducting(false);
+			this.timeUntilInduction = t;
+			if(packet) this.updateClients();
+		}
+	}
+	
+	private void tryStartup(boolean packet) {
+		this.setInducting(true);
+		this.timeUntilInduction = t;
+		if(packet) this.updateClients();
+	}
+	
+	private boolean canProvideEssence() {
+		if(inventory[2] != null && inventory[2].isItemEqual(targetEssence)) return true;
+		else return false;
+	}
+	
 	private void doConversion() {
 		if(this.worldObj.isRemote) return;
-		ItemStack toReduce = inventory[0];
-		if(toReduce == null || !EssentialReducerRecipes.isStackReducable(toReduce)) {
+		ItemStack metal1 = inventory[0];
+		if(metal1 == null || !AlloyInductorRecipes.isValidAlloyInput(metal1)) {
 			return;
 		}
-		ItemStack toCatalyze = inventory[1];
-		if(toCatalyze == null || !EssentialReducerRecipes.isStackCatalytic(toCatalyze)) {
+		ItemStack metal2 = inventory[1];
+		if(metal2 == null || !AlloyInductorRecipes.isValidInputForOther(metal2, metal1)) {
 			return;
 		}
-		ItemStack targetOutput = EssentialReducerRecipes.outputForInputAndCatalyst(toReduce, toCatalyze);
+		ItemStack targetOutput = AlloyInductorRecipes.outputForMetals(metal1, metal2);
 		if(targetOutput == null) {
 			return;
 		}
-		--toReduce.stackSize;
-		if(toReduce.stackSize <= 0) inventory[0] = null;
-		--toCatalyze.stackSize;
-		if(toCatalyze.stackSize <= 0) inventory[1] = null;
-		if(inventory[2] == null) {
-			inventory[2] = targetOutput;
+		--metal1.stackSize;
+		if(metal1.stackSize <= 0) inventory[0] = null;
+		--metal2.stackSize;
+		if(metal2.stackSize <= 0) inventory[1] = null;
+		if(inventory[3] == null) {
+			inventory[3] = targetOutput.copy();
 		}
 		else {
-			if(inventory[2].isItemEqual(targetOutput) && inventory[2].stackSize < 64) {
-				inventory[2].stackSize++;
-			}
-			else {
-				return;
+			if(inventory[3].isItemEqual(targetOutput) && inventory[3].stackSize < 64) {
+				inventory[3].stackSize += targetOutput.stackSize;
 			}
 		}
 	}
@@ -288,87 +310,67 @@ public class TileEntityEssentialReducer extends TileEntity implements IInventory
 	private void checkForStateChange(boolean doPackets) {
 		if(this.worldObj.isRemote) return;
 		if(!this.powered) {
-			if(this.reducing == true) {
-				this.setReducing(false);
-				this.timeUntilReduction = t;
-				if(doPackets) this.updateClients();
-			}
+			tryShutdown(doPackets);
 			return;
 		}
-		ItemStack toBeReduced = inventory[0];
-		if(toBeReduced == null) {
-			if(this.reducing == true) {
-				this.setReducing(false);
-				this.timeUntilReduction = t;
-				if(doPackets) this.updateClients();
-			}
+		ItemStack metal1 = inventory[0];
+		if(metal1 == null) {
+			tryShutdown(doPackets);
 			return;
 		}
-		ItemStack toBeCatalyzed = inventory[1];
-		if(toBeCatalyzed == null) {
-			if(this.reducing == true) {
-				this.setReducing(false);
-				this.timeUntilReduction = t;
-				if(doPackets) this.updateClients();
-			}
+		ItemStack metal2 = inventory[1];
+		if(metal2 == null) {
+			tryShutdown(doPackets);
 			return;
 		}
-		if(EssentialReducerRecipes.isStackReducable(toBeReduced)) {
-			if(EssentialReducerRecipes.isStackCatalytic(toBeCatalyzed)) {
-				ItemStack result = EssentialReducerRecipes.outputForInputAndCatalyst(toBeReduced, toBeCatalyzed);
-				if(result == null) return;
-				ItemStack output = inventory[2];
-				if(output != null && !output.isItemEqual(result)) {
-					if(this.reducing == true) {
-						this.setReducing(false);
-						this.timeUntilReduction = t;
-						if(doPackets) this.updateClients();
+		if(AlloyInductorRecipes.isValidAlloyInput(metal1)) {
+			if(AlloyInductorRecipes.isValidInputForOther(metal2, metal1)) {
+				ItemStack result = AlloyInductorRecipes.outputForMetals(metal1, metal2);
+				if(result == null) {
+					tryShutdown(doPackets);
+					return;
+				}
+				if(this.essenceRemaining <= 0) {
+					if(canProvideEssence()) {
+						this.essenceRemaining = t*e;
+						this.needsEssenceDecrement = true;
+						this.updateClients();
 					}
+					else { 
+						tryShutdown(doPackets);
+						return;
+					}
+				}
+				ItemStack output = inventory[3];
+				if(output != null && !output.isItemEqual(result)) {
+					tryShutdown(doPackets);
 					return;
 				}
 				if(output != null && output.stackSize >= 64) {
-					if(this.reducing == true) {
-						this.setReducing(false);
-						this.timeUntilReduction = t;
-						if(doPackets) this.updateClients();
-					}
+					tryShutdown(doPackets);
 					return;
 				}
-				else if(this.reducing == false) {
-					this.setReducing(true);
-					this.timeUntilReduction = t;
-					if(doPackets) this.updateClients();
+				if(this.inducting == false) {
+					tryStartup(doPackets);
 				}
 			}
 			else {
-				if(this.reducing == true) {
-					this.setReducing(false);
-					this.timeUntilReduction = t;
-					if(doPackets) this.updateClients();
-				}
+				tryShutdown(doPackets);
 				return;
 			}
 		}
 		else {
-			if(this.reducing == true) {
-				this.setReducing(false);
-				this.timeUntilReduction = t;
-				if(doPackets) this.updateClients();
-			}
+			tryShutdown(doPackets);
 			return;
 		}
 	}
 	
-	public int progressScaled(int par1) {
-		return par1 - ((this.timeUntilReduction * par1) / t);
+	public int progressInductionScaled(int par1) {
+		return par1 - ((this.timeUntilInduction * par1) / t);
 	}
 	
-	public static boolean isBlock(int id) {
-		if(id > 4095) return false;
-		if(Block.blocksList[id] == null) {
-			return false;
-		}
-		return true;
+	public int progressEssenceScaled(int par1) {
+		return par1 - ((this.essenceRemaining * par1) / (t*e));
 	}
 	
 }

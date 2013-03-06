@@ -9,6 +9,7 @@ package com.voidzm.supercraft.handler;
 import java.io.ByteArrayInputStream;
 import java.io.DataInputStream;
 
+import com.voidzm.supercraft.entity.TileEntityAlloyInductor;
 import com.voidzm.supercraft.entity.TileEntityConduit;
 import com.voidzm.supercraft.entity.TileEntityEssentialReducer;
 import com.voidzm.supercraft.entity.TileEntityConduit.CONDUIT_TYPE;
@@ -27,6 +28,14 @@ import cpw.mods.fml.relauncher.Side;
 
 public class PacketHandler implements IPacketHandler {
 
+	public enum SCMachinePacketType {
+		ESSENTIALREDUCER(0), ALLOYINDUCTOR(1);
+		public int index;
+		private SCMachinePacketType(int val) {
+			this.index = val;
+		}
+	}
+	
 	@Override
 	public void onPacketData(INetworkManager manager, Packet250CustomPayload packet, Player player) {
 		if(packet.channel.equals("SCElinvar")) {
@@ -71,20 +80,46 @@ public class PacketHandler implements IPacketHandler {
 		else if(packet.channel.equals("SCMachineUpdates")) {
 			if(FMLCommonHandler.instance().getEffectiveSide() == Side.CLIENT) {
 				DataInputStream inputStream = new DataInputStream(new ByteArrayInputStream(packet.data));
-				int x, y, z, time;
-				boolean reducing, powered;
+				SCMachinePacketType packetType = null;
 				try {
-					x = inputStream.readInt();
-					y = inputStream.readInt();
-					z = inputStream.readInt();
-					reducing = inputStream.readBoolean();
-					powered = inputStream.readBoolean();
-					time = inputStream.readInt();
-				} catch (Exception e) {
+					packetType = SCMachinePacketType.values()[inputStream.readInt()];
+				} catch(Exception e) {
 					e.printStackTrace();
 					return;
 				}
-				this.handleEssentialReducerUpdate((EntityPlayer)player, x, y, z, reducing, powered, time);
+				if(packetType == SCMachinePacketType.ESSENTIALREDUCER) {
+					int x, y, z, time;
+					boolean reducing, powered;
+					try {
+						x = inputStream.readInt();
+						y = inputStream.readInt();
+						z = inputStream.readInt();
+						reducing = inputStream.readBoolean();
+						powered = inputStream.readBoolean();
+						time = inputStream.readInt();
+					} catch (Exception e) {
+						e.printStackTrace();
+						return;
+					}
+					this.handleEssentialReducerUpdate((EntityPlayer)player, x, y, z, reducing, powered, time);
+				}
+				else if(packetType == SCMachinePacketType.ALLOYINDUCTOR) {
+					int x, y, z, time, essence;
+					boolean inducting, powered;
+					try {
+						x = inputStream.readInt();
+						y = inputStream.readInt();
+						z = inputStream.readInt();
+						inducting = inputStream.readBoolean();
+						powered = inputStream.readBoolean();
+						time = inputStream.readInt();
+						essence = inputStream.readInt();
+					} catch (Exception e) {
+						e.printStackTrace();
+						return;
+					}
+					this.handleAlloyInductorUpdate((EntityPlayer)player, x, y, z, inducting, powered, time, essence);
+				}
 			}
 		}
 	}
@@ -119,6 +154,17 @@ public class PacketHandler implements IPacketHandler {
 		te.setReducing(reducing);
 		te.powered = powered;
 		te.timeUntilReduction = timeLeft;
+	}
+	
+	private void handleAlloyInductorUpdate(EntityPlayer player, int x, int y, int z, boolean inducting, boolean powered, int timeLeft, int essenceLeft) {
+		TileEntityAlloyInductor te = (TileEntityAlloyInductor)player.worldObj.getBlockTileEntity(x, y, z);
+		if(te == null) {
+			return;
+		}
+		te.setInducting(inducting);
+		te.powered = powered;
+		te.timeUntilInduction = timeLeft;
+		te.essenceRemaining = essenceLeft;
 	}
 
 }
