@@ -7,9 +7,11 @@
 package com.voidzm.supercraft.gui;
 
 import java.awt.Color;
+import java.awt.geom.QuadCurve2D;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.util.ArrayList;
+import java.util.Random;
 
 import javax.imageio.ImageIO;
 
@@ -30,6 +32,11 @@ public class SCMainMenu extends GuiScreen {
 	private BufferedImage background;
 	private ArrayList<SCGuiButton> buttons;
 	
+	private int imageCycleTick = 0;
+	
+	private static final int imageTime = 200;
+	private static final int transitionTime = 100;
+	
 	public SCMainMenu() {
 		buttons = new ArrayList<SCGuiButton>();
 		try {
@@ -44,11 +51,12 @@ public class SCMainMenu extends GuiScreen {
 		createButton("Mods");
 		createButton(translator.translateKey("menu.mods"));
 		createButton(translator.translateKey("menu.quit"));
+		imageCycleTick = new Random().nextInt(4)*imageTime;
 	}
 	
 	private void createButton(String text) {
-		if(buttons.size() != 5) buttons.add(new SCGuiButton(this, 22, 44 + (buttons.size() * 22), 106, 16, buttons.size(), text));
-		else buttons.add(new SCGuiButton(this, 22, 60 + (buttons.size() * 22), 106, 16, buttons.size(), text));
+		if(buttons.size() != 5) buttons.add(new SCGuiButton(this, 22, 48 + (buttons.size() * 22), 106, 16, buttons.size(), text));
+		else buttons.add(new SCGuiButton(this, 22, 64 + (buttons.size() * 22), 106, 16, buttons.size(), text));
 	} 
 	
 	public void buttonEvent(int id) {
@@ -87,11 +95,36 @@ public class SCMainMenu extends GuiScreen {
 		}
 	}
 	
+	@Override
+	public void updateScreen() {
+		imageCycleTick++;
+	}
+	
 	public void drawScreen(int mouseX, int mouseY, float tick) {
-		GL11.glBindTexture(GL11.GL_TEXTURE_2D, this.mc.renderEngine.getTexture("/com/voidzm/supercraft/img/bg.png"));
+		if(imageCycleTick >= imageTime*4) imageCycleTick = 0;
+		float basef = imageCycleTick / imageTime;
+		int base = (int)Math.floor(basef);
+		int prog = (int)imageCycleTick % imageTime;
+		if(base == 0) GL11.glBindTexture(GL11.GL_TEXTURE_2D, this.mc.renderEngine.getTexture("/com/voidzm/supercraft/img/bg.png"));
+		else if(base == 1) GL11.glBindTexture(GL11.GL_TEXTURE_2D, this.mc.renderEngine.getTexture("/com/voidzm/supercraft/img/bg2.png"));
+		else if(base == 2) GL11.glBindTexture(GL11.GL_TEXTURE_2D, this.mc.renderEngine.getTexture("/com/voidzm/supercraft/img/bg3.png"));
+		else if(base == 3) GL11.glBindTexture(GL11.GL_TEXTURE_2D, this.mc.renderEngine.getTexture("/com/voidzm/supercraft/img/bg4.png"));
 		GL11.glColor4f(1.0F, 1.0F, 1.0F, 1.0F);
 		int[] locs = this.calcPositions();
 		this.drawTexture(locs[0], locs[1], locs[2], locs[3]);
+		if(prog >= (imageTime-transitionTime)) {
+			GL11.glPushMatrix();
+			int alpha = (prog-(imageTime-transitionTime))*2;
+			if(base == 0) GL11.glBindTexture(GL11.GL_TEXTURE_2D, this.mc.renderEngine.getTexture("/com/voidzm/supercraft/img/bg2.png"));
+			else if(base == 1) GL11.glBindTexture(GL11.GL_TEXTURE_2D, this.mc.renderEngine.getTexture("/com/voidzm/supercraft/img/bg3.png"));
+			else if(base == 2) GL11.glBindTexture(GL11.GL_TEXTURE_2D, this.mc.renderEngine.getTexture("/com/voidzm/supercraft/img/bg4.png"));
+			else if(base == 3) GL11.glBindTexture(GL11.GL_TEXTURE_2D, this.mc.renderEngine.getTexture("/com/voidzm/supercraft/img/bg.png"));
+			GL11.glEnable(GL11.GL_BLEND);
+			GL11.glBlendFunc(GL11.GL_SRC_ALPHA, GL11.GL_ONE_MINUS_SRC_ALPHA);
+			GL11.glColor4f(1.0F, 1.0F, 1.0F, ((float)alpha)/100);
+			this.drawTexture(locs[0], locs[1], locs[2], locs[3]);
+			GL11.glPopMatrix();
+		}
 		this.drawRect(0, 0, 150, height, 0x88000000);
 		this.drawRect(150, 0, 151, height, 0xAA000000);
 		GL11.glBindTexture(GL11.GL_TEXTURE_2D, this.mc.renderEngine.getTexture("/com/voidzm/supercraft/img/minecraft.png"));
