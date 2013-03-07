@@ -112,6 +112,9 @@ public class BlockHandler {
 	public static Block radiantSolarGenerator;
 	public static Block alloyInductor;
 	
+	public static Block cobaltOre;
+	public static Block cobaltTorch;
+	
 	public void populateAllAndInitialize() {
 		this.createBlocks();
 		this.populateLanguage();
@@ -277,6 +280,11 @@ public class BlockHandler {
 		languageHandler.add(radiantSolarGenerator, "Radiant Solar Generator");
 		languageHandler.add(alloyInductor, "Alloy Inductor");
 		
+		// Cobalt
+		
+		languageHandler.add(cobaltOre, "Cobalt Ore");
+		languageHandler.add(cobaltTorch, "Cobalt Torch");
+		
 	}
 	
 	private void createBlocks() {
@@ -394,6 +402,11 @@ public class BlockHandler {
 		radiantSolarGenerator = new BlockRadiantSolarGenerator(1659);
 		alloyInductor = new BlockAlloyInductor(1660);
 		
+		// Cobalt
+		
+		cobaltOre = new BlockCobaltOre(1661);
+		cobaltTorch = new BlockCobaltTorch(1662);
+		
 	}
 	
 	private void registerBlocks() {
@@ -510,6 +523,11 @@ public class BlockHandler {
 		GameRegistry.registerBlock(copperboundStone, "copperboundStone");
 		GameRegistry.registerBlock(radiantSolarGenerator, "radiantSolarGenerator");
 		GameRegistry.registerBlock(alloyInductor, "alloyInductor");
+		
+		// Cobalt
+		
+		GameRegistry.registerBlock(cobaltOre, "cobaltOre");
+		GameRegistry.registerBlock(cobaltTorch, "cobaltTorch");
 		
 	}
 	
@@ -672,6 +690,11 @@ public class BlockHandler {
 		LanguageRegistry.addName(copperboundStone, (String)this.languageHandler.getString(copperboundStone));
 		LanguageRegistry.addName(radiantSolarGenerator, (String)this.languageHandler.getString(radiantSolarGenerator));
 		LanguageRegistry.addName(alloyInductor, (String)this.languageHandler.getString(alloyInductor));
+		
+		// Cobalt
+		
+		LanguageRegistry.addName(cobaltOre, (String)this.languageHandler.getString(cobaltOre));
+		LanguageRegistry.addName(cobaltTorch, (String)this.languageHandler.getString(cobaltTorch));
 		
 	}
 	

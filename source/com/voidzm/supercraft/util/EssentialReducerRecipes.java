@@ -12,7 +12,7 @@ import com.voidzm.supercraft.handler.ItemHandler;
 public class EssentialReducerRecipes {
 
 	public enum EssentialAspect {
-		TERRAEN(0), AERONIC(1), INFERNAL(2), AQUAEOUS(3), VERDEAL(4), NETHEREAL(5), DRACONIC(6), FERRIC(7), RADANTIS(8), VIDALIS(9), MORTALIC(10);
+		TERRAEN(0), AERONIC(1), INFERNAL(2), AQUAEOUS(3), VERDEAL(4), NETHEREAL(5), DRACONIC(6), FERRIC(7), RADANTIS(8), VIDALIS(9), MORTALIC(10), LUXORUM(11), TENEBRA(12);
 		public int index;
 		private EssentialAspect(int var1) {
 			this.index = var1;
@@ -43,7 +43,7 @@ public class EssentialReducerRecipes {
 		inputMappings.add(new EssentialReducerInputMap(new ItemStack(Item.clay), EssentialAspect.TERRAEN, EssentialAspect.VERDEAL));
 		inputMappings.add(new EssentialReducerInputMap(new ItemStack(Item.reed), EssentialAspect.VIDALIS, EssentialAspect.VERDEAL));
 		inputMappings.add(new EssentialReducerInputMap(new ItemStack(Item.egg), EssentialAspect.VERDEAL, EssentialAspect.VIDALIS));
-		inputMappings.add(new EssentialReducerInputMap(new ItemStack(Item.lightStoneDust), EssentialAspect.NETHEREAL, EssentialAspect.RADANTIS));
+		inputMappings.add(new EssentialReducerInputMap(new ItemStack(Item.lightStoneDust), EssentialAspect.LUXORUM, EssentialAspect.NETHEREAL));
 		inputMappings.add(new EssentialReducerInputMap(new ItemStack(Item.sugar), EssentialAspect.VERDEAL, EssentialAspect.VIDALIS));
 		inputMappings.add(new EssentialReducerInputMap(new ItemStack(Item.pumpkinSeeds), EssentialAspect.VIDALIS, EssentialAspect.VERDEAL));
 		inputMappings.add(new EssentialReducerInputMap(new ItemStack(Item.melonSeeds), EssentialAspect.VIDALIS, EssentialAspect.VERDEAL));
@@ -62,8 +62,8 @@ public class EssentialReducerRecipes {
 		inputMappings.add(new EssentialReducerInputMap(new ItemStack(ItemHandler.electrumIngot), EssentialAspect.FERRIC, EssentialAspect.TERRAEN));
 		inputMappings.add(new EssentialReducerInputMap(new ItemStack(ItemHandler.electrumBit), EssentialAspect.FERRIC, EssentialAspect.TERRAEN));
 		inputMappings.add(new EssentialReducerInputMap(new ItemStack(ItemHandler.bloodAmber), EssentialAspect.MORTALIC, EssentialAspect.VERDEAL));
-		inputMappings.add(new EssentialReducerInputMap(new ItemStack(ItemHandler.nisilIngot), EssentialAspect.MORTALIC, EssentialAspect.TERRAEN));
-		inputMappings.add(new EssentialReducerInputMap(new ItemStack(ItemHandler.nisilShard), EssentialAspect.MORTALIC, EssentialAspect.TERRAEN));
+		inputMappings.add(new EssentialReducerInputMap(new ItemStack(ItemHandler.nisilIngot), EssentialAspect.TENEBRA, EssentialAspect.TERRAEN));
+		inputMappings.add(new EssentialReducerInputMap(new ItemStack(ItemHandler.nisilShard), EssentialAspect.TENEBRA, EssentialAspect.TERRAEN));
 		inputMappings.add(new EssentialReducerInputMap(new ItemStack(Item.redstone), EssentialAspect.RADANTIS, EssentialAspect.TERRAEN));
 		inputMappings.add(new EssentialReducerInputMap(new ItemStack(Item.snowball), EssentialAspect.VERDEAL, EssentialAspect.AERONIC));
 		inputMappings.add(new EssentialReducerInputMap(new ItemStack(Item.paper), EssentialAspect.VERDEAL, EssentialAspect.AERONIC));

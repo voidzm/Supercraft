@@ -24,7 +24,7 @@ public class BlockAlloyInductor extends BlockContainer {
 		this.setHardness(3.0F);
 		this.setResistance(15.0F);
 		this.setStepSound(soundStoneFootstep);
-		this.setBlockName("essentialReducer");
+		this.setBlockName("alloyInductor");
 		this.setCreativeTab(Supercraft.elinvarTab);
 	}
 	
@@ -96,9 +96,9 @@ public class BlockAlloyInductor extends BlockContainer {
 	}
 	
 	public int getBlockTextureFromSideAndMetadata(int side, int meta) {
-		if(side == 0) return 122;
-		else if(side == 1) return 120;
-		else return 121;
+		if(side == 0) return 129;
+		else if(side == 1) return 127;
+		else return 128;
 	}
 	
 }

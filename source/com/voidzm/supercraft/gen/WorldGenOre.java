@@ -34,12 +34,19 @@ public class WorldGenOre implements IWorldGenerator {
 	}
 
 	private void generateNether(World world, Random rand, int cx, int cz) {
-		int ky = 104;
+		int ky = 104; // Elinvar
 		for(int i = 0; i < 2; i++) {
 			int rx = (cx * 16) + rand.nextInt(16);
 			int ry = ky + rand.nextInt(24);
 			int rz = (cz * 16) + rand.nextInt(16);
 			new SCWorldGenMinable(BlockHandler.elinvarOre.blockID, 16).generate(world, rand, rx, ry, rz);
+		}
+		ky = 0; // Cobalt
+		for(int i = 0; i < 8; i++) {
+			int rx = (cx * 16) + rand.nextInt(16);
+			int ry = ky + rand.nextInt(24);
+			int rz = (cz * 16) + rand.nextInt(16);
+			new SCWorldGenMinable(BlockHandler.cobaltOre.blockID, 4).generate(world, rand, rx, ry, rz);
 		}
 	}
 	

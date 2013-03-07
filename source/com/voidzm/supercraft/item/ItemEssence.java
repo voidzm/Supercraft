@@ -14,7 +14,7 @@ import net.minecraft.item.ItemStack;
 
 public class ItemEssence extends Item {
 
-	private final static String[] names = {"terraen", "aeronic", "infernal", "aquaeous", "verdeal", "nethereal", "draconic", "ferric", "radantis", "vidalis", "mortalic"};
+	private final static String[] names = {"terraen", "aeronic", "infernal", "aquaeous", "verdeal", "nethereal", "draconic", "ferric", "radantis", "vidalis", "mortalic", "luxorum", "tenebra"};
 	
 	public ItemEssence(int par1) {
 		super(par1);

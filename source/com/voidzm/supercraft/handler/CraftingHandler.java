@@ -82,6 +82,7 @@ public class CraftingHandler {
 	private ItemStack copperboundStone;
 	private ItemStack aeronicEssence;
 	private ItemStack radantisEssence;
+	private ItemStack cobaltDust;
 	
 	public void populateAllAndInitialize() {
 		this.initializeCraftingRefs();
@@ -151,6 +152,7 @@ public class CraftingHandler {
 		copperboundStone = new ItemStack(BlockHandler.copperboundStone);
 		aeronicEssence = new ItemStack(ItemHandler.essence, 1, EssentialAspect.AERONIC.index);
 		radantisEssence = new ItemStack(ItemHandler.essence, 1, EssentialAspect.RADANTIS.index);
+		cobaltDust = new ItemStack(ItemHandler.cobaltDust);
 	}
 	
 	private void addRecipes() {
@@ -263,6 +265,10 @@ public class CraftingHandler {
 		GameRegistry.addRecipe(new ItemStack(BlockHandler.essentialReducer), "aba", "cdc", "aaa", 'a', ironboundStone, 'b', flint, 'c', elinvarDust, 'd', diamond);
 		GameRegistry.addRecipe(new ItemStack(BlockHandler.copperboundStone), "a a", " b ", "a a", 'a', copperChunk, 'b', stone);
 		GameRegistry.addRecipe(new ItemStack(BlockHandler.radiantSolarGenerator), "aba", "cdc", "eee", 'a', aeronicEssence, 'b', radantisEssence, 'c', obsidian, 'd', copper, 'e', copperboundStone);
+		
+		// Cobalt
+		
+		GameRegistry.addRecipe(new ItemStack(BlockHandler.cobaltTorch, 4), "a", "b", 'a', cobaltDust, 'b', stick);
 		
 	}
 	
