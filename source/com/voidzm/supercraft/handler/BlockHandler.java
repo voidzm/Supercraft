@@ -79,6 +79,7 @@ public class BlockHandler {
 	public static Block goldenConduit;
 	public static Block electrumConduit;
 	public static Block diamondConduit;
+	public static Block cobaltConduit;
 	
 	public static Block refinedCraftingTable;
 	
@@ -114,6 +115,8 @@ public class BlockHandler {
 	
 	public static Block cobaltOre;
 	public static Block cobaltTorch;
+	public static Block cobaltBlock;
+	public static Block cobaltBlockOff;
 	
 	public void populateAllAndInitialize() {
 		this.createBlocks();
@@ -225,6 +228,7 @@ public class BlockHandler {
 		languageHandler.add(goldenConduit, "Golden Conduit");
 		languageHandler.add(electrumConduit, "Electrum Conduit");
 		languageHandler.add(diamondConduit, "Diamond Conduit");
+		languageHandler.add(cobaltConduit, "Cobalt Conduit");
 		
 		// Refined Crafting Tables
 		
@@ -284,6 +288,8 @@ public class BlockHandler {
 		
 		languageHandler.add(cobaltOre, "Cobalt Ore");
 		languageHandler.add(cobaltTorch, "Cobalt Torch");
+		languageHandler.add(cobaltBlock, "Block of Cobalt");
+		languageHandler.add(cobaltBlockOff, "Block of Cobalt");
 		
 	}
 	
@@ -355,6 +361,7 @@ public class BlockHandler {
 		goldenConduit = new BlockGoldenConduit(1626);
 		electrumConduit = new BlockElectrumConduit(1629);
 		diamondConduit = new BlockDiamondConduit(1630);
+		cobaltConduit = new BlockCobaltConduit(1665);
 		
 		// Refined Crafting Tables
 		
@@ -406,6 +413,8 @@ public class BlockHandler {
 		
 		cobaltOre = new BlockCobaltOre(1661);
 		cobaltTorch = new BlockCobaltTorch(1662);
+		cobaltBlock = new BlockCobalt(1663, true);
+		cobaltBlockOff = new BlockCobalt(1664, false);
 		
 	}
 	
@@ -477,6 +486,7 @@ public class BlockHandler {
 		GameRegistry.registerBlock(goldenConduit, "goldenConduit");
 		GameRegistry.registerBlock(electrumConduit, "electrumConduit");
 		GameRegistry.registerBlock(diamondConduit, "diamondConduit");
+		GameRegistry.registerBlock(cobaltConduit, "cobaltConduit");
 		
 		// Refined Crafting Tables
 		
@@ -528,6 +538,8 @@ public class BlockHandler {
 		
 		GameRegistry.registerBlock(cobaltOre, "cobaltOre");
 		GameRegistry.registerBlock(cobaltTorch, "cobaltTorch");
+		GameRegistry.registerBlock(cobaltBlock, "cobaltBlock");
+		GameRegistry.registerBlock(cobaltBlockOff, "cobaltBlockOff");
 		
 	}
 	
@@ -639,6 +651,7 @@ public class BlockHandler {
 		LanguageRegistry.addName(goldenConduit, (String)this.languageHandler.getString(goldenConduit));
 		LanguageRegistry.addName(electrumConduit, (String)this.languageHandler.getString(electrumConduit));
 		LanguageRegistry.addName(diamondConduit, (String)this.languageHandler.getString(diamondConduit));
+		LanguageRegistry.addName(cobaltConduit, (String)this.languageHandler.getString(cobaltConduit));
 		
 		// Refined Crafting Tables
 		
@@ -695,6 +708,8 @@ public class BlockHandler {
 		
 		LanguageRegistry.addName(cobaltOre, (String)this.languageHandler.getString(cobaltOre));
 		LanguageRegistry.addName(cobaltTorch, (String)this.languageHandler.getString(cobaltTorch));
+		LanguageRegistry.addName(cobaltBlock, (String)this.languageHandler.getString(cobaltBlock));
+		LanguageRegistry.addName(cobaltBlockOff, (String)this.languageHandler.getString(cobaltBlockOff));
 		
 	}
 	

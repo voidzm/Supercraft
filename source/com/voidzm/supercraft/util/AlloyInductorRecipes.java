@@ -17,6 +17,9 @@ public class AlloyInductorRecipes {
 	
 	private static void populateCombos() {
 		comboMappings.add(new AlloyInductorComboMap(new ItemStack(ItemHandler.silverIngot), new ItemStack(Item.ingotGold), new ItemStack(ItemHandler.electrumIngot)));
+		comboMappings.add(new AlloyInductorComboMap(new ItemStack(ItemHandler.cobaltDust), new ItemStack(Item.ingotIron), new ItemStack(ItemHandler.metallicCobaltIngot)));
+		comboMappings.add(new AlloyInductorComboMap(new ItemStack(ItemHandler.cobaltDust), new ItemStack(ItemHandler.aluminumIngot), new ItemStack(ItemHandler.metallicCobaltIngot)));
+		comboMappings.add(new AlloyInductorComboMap(new ItemStack(ItemHandler.cobaltDust), new ItemStack(ItemHandler.silverIngot), new ItemStack(ItemHandler.metallicCobaltIngot)));
 	}
 	
 	public static boolean isValidAlloyInput(ItemStack stack) {
@@ -27,21 +30,17 @@ public class AlloyInductorRecipes {
 	}
 	
 	public static boolean isValidInputForOther(ItemStack stack, ItemStack other) {
-		boolean isFirstMap = false;
-		for(AlloyInductorComboMap map : comboMappings) {
-			if(map.getID1() == other.itemID) {
-				isFirstMap = true;
-				break;
+		ArrayList<AlloyInductorComboMap> secondaryDepthList = new ArrayList<AlloyInductorComboMap>();
+		for(AlloyInductorComboMap map : comboMappings) { 
+			if(map.getID1() == stack.itemID || map.getID2() == stack.itemID) {
+				secondaryDepthList.add(map);
 			}
-			else if(map.getID2() == other.itemID) {
-				isFirstMap = false;
-				break;
-			}
-			else return false;
 		}
-		for(AlloyInductorComboMap map : comboMappings) {
-			if(isFirstMap && map.getID2() == stack.itemID) return true;
-			else if(!isFirstMap && map.getID1() == stack.itemID) return true;
+		if(secondaryDepthList.size() == 0) return false;
+		for(AlloyInductorComboMap map : secondaryDepthList) {
+			if(map.getID1() == other.itemID || map.getID2() == other.itemID) {
+				return true;
+			}
 		}
 		return false;
 	}

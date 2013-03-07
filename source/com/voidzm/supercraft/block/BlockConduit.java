@@ -281,15 +281,9 @@ public class BlockConduit extends BlockContainer {
 	}
 	
 	public static boolean isConduit(int blockID) {
-		if(blockID == BlockHandler.woodenConduit.blockID) return true;
-		else if(blockID == BlockHandler.stoneConduit.blockID) return true;
-		else if(blockID == BlockHandler.ironConduit.blockID) return true;
-		else if(blockID == BlockHandler.copperConduit.blockID) return true;
-		else if(blockID == BlockHandler.aluminumConduit.blockID) return true;
-		else if(blockID == BlockHandler.silverConduit.blockID) return true;
-		else if(blockID == BlockHandler.goldenConduit.blockID) return true;
-		else if(blockID == BlockHandler.electrumConduit.blockID) return true;
-		else if(blockID == BlockHandler.diamondConduit.blockID) return true;
+		Block blockType = Block.blocksList[blockID];
+		if(blockType == null) return false;
+		if(blockType instanceof BlockConduit) return true;
 		else return false;
 	}
 	

@@ -58,6 +58,7 @@ public class ItemHandler {
 	public static Item essence;
 	
 	public static Item cobaltDust;
+	public static Item metallicCobaltIngot;
 	
 	public void populateAllAndInitialize() {
 		this.createItems();
@@ -138,6 +139,7 @@ public class ItemHandler {
 		languageHandler.add(essence, essenceList);
 		
 		languageHandler.add(cobaltDust, "Cobalt Dust");
+		languageHandler.add(metallicCobaltIngot, "Metallic Cobalt Ingot");
 		
 	}
 	
@@ -200,6 +202,7 @@ public class ItemHandler {
 		// Cobalt
 		
 		cobaltDust = new ItemCobaltDust(23024);
+		metallicCobaltIngot = new ItemMetallicCobaltIngot(23025);
 		
 	}
 	
@@ -262,6 +265,7 @@ public class ItemHandler {
 		// Cobalt
 		
 		GameRegistry.registerItem(cobaltDust, "cobaltDust");
+		GameRegistry.registerItem(metallicCobaltIngot, "metallicCobaltIngot");
 				
 	}
 	
@@ -329,6 +333,7 @@ public class ItemHandler {
 		// Cobalt
 		
 		LanguageRegistry.addName(cobaltDust, (String)this.languageHandler.getString(cobaltDust));
+		LanguageRegistry.addName(metallicCobaltIngot, (String)this.languageHandler.getString(metallicCobaltIngot));
 		
 	}
 	

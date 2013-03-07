@@ -83,6 +83,8 @@ public class CraftingHandler {
 	private ItemStack aeronicEssence;
 	private ItemStack radantisEssence;
 	private ItemStack cobaltDust;
+	private ItemStack cobaltBlock;
+	private ItemStack metallicCobalt;
 	
 	public void populateAllAndInitialize() {
 		this.initializeCraftingRefs();
@@ -153,6 +155,8 @@ public class CraftingHandler {
 		aeronicEssence = new ItemStack(ItemHandler.essence, 1, EssentialAspect.AERONIC.index);
 		radantisEssence = new ItemStack(ItemHandler.essence, 1, EssentialAspect.RADANTIS.index);
 		cobaltDust = new ItemStack(ItemHandler.cobaltDust);
+		cobaltBlock = new ItemStack(BlockHandler.cobaltBlock);
+		metallicCobalt = new ItemStack(ItemHandler.metallicCobaltIngot);
 	}
 	
 	private void addRecipes() {
@@ -269,6 +273,7 @@ public class CraftingHandler {
 		// Cobalt
 		
 		GameRegistry.addRecipe(new ItemStack(BlockHandler.cobaltTorch, 4), "a", "b", 'a', cobaltDust, 'b', stick);
+		GameRegistry.addRecipe(new ItemStack(BlockHandler.cobaltBlock), "aaa", "aaa", "aaa", 'a', cobaltDust);
 		
 	}
 	
@@ -323,6 +328,10 @@ public class CraftingHandler {
 		GameRegistry.addShapelessRecipe(new ItemStack(ItemHandler.nisilShard, 9), nisil);
 		GameRegistry.addShapelessRecipe(new ItemStack(ItemHandler.nisilIngot, 9), nisilBlock);
 		
+		// Cobalt
+		
+		GameRegistry.addShapelessRecipe(new ItemStack(ItemHandler.cobaltDust, 9), cobaltBlock);
+		
 	}
 	
 	private void addSmelting() {
@@ -363,6 +372,7 @@ public class CraftingHandler {
 		CraftingManager.getInstance().getRecipeList().add(new ShapedOreRecipe(new ItemStack(BlockHandler.goldenConduit, 8), new Object[]{"aba", "ccc", "aba", Character.valueOf('a'), Item.ingotGold, Character.valueOf('b'), Block.glass, Character.valueOf('c'), ItemHandler.elinvarDust}));
 		CraftingManager.getInstance().getRecipeList().add(new ShapedOreRecipe(new ItemStack(BlockHandler.electrumConduit, 8), new Object[]{"aba", "ccc", "aba", Character.valueOf('a'), "ingotElectrum", Character.valueOf('b'), Block.glass, Character.valueOf('c'), ItemHandler.elinvarDust}));
 		CraftingManager.getInstance().getRecipeList().add(new ShapedOreRecipe(new ItemStack(BlockHandler.diamondConduit, 8), new Object[]{"aba", "ccc", "aba", Character.valueOf('a'), Item.diamond, Character.valueOf('b'), Block.glass, Character.valueOf('c'), ItemHandler.elinvarDust}));
+		CraftingManager.getInstance().getRecipeList().add(new ShapedOreRecipe(new ItemStack(BlockHandler.cobaltConduit, 8), new Object[]{"aba", "ccc", "aba", Character.valueOf('a'), ItemHandler.metallicCobaltIngot, Character.valueOf('b'), Block.glass, Character.valueOf('c'), ItemHandler.elinvarDust}));
 	}
 	
 	private void initOreDictionary() {
