@@ -93,7 +93,7 @@ public class Supercraft {
 		craftingHandler.populateAllAndInitialize();
 		biomeHandler.populateAllAndInitialize();
 
-		biomeHandler.removeVanillaBiomes(); // For biome testing only.
+		// biomeHandler.removeVanillaBiomes(); // For biome testing only.
 		
 		GameRegistry.registerFuelHandler(fuelHandler);
 		DimensionManager.unregisterDimension(0);

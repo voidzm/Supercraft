@@ -60,6 +60,9 @@ public class ItemHandler {
 	public static Item cobaltDust;
 	public static Item metallicCobaltIngot;
 	
+	public static Item platinumIngot;
+	public static Item lithiumIngot;
+	
 	public void populateAllAndInitialize() {
 		this.createItems();
 		this.populateLanguage();
@@ -138,8 +141,18 @@ public class ItemHandler {
 		essenceList.add("Tenebra Essence");
 		languageHandler.add(essence, essenceList);
 		
+		// Cobalt
+		
 		languageHandler.add(cobaltDust, "Cobalt Dust");
 		languageHandler.add(metallicCobaltIngot, "Metallic Cobalt Ingot");
+		
+		// Platinum
+		
+		languageHandler.add(platinumIngot, "Platinum Ingot");
+		
+		// Lithium
+		
+		languageHandler.add(lithiumIngot, "Lithium Ingot");
 		
 	}
 	
@@ -204,6 +217,14 @@ public class ItemHandler {
 		cobaltDust = new ItemCobaltDust(23024);
 		metallicCobaltIngot = new ItemMetallicCobaltIngot(23025);
 		
+		// Platinum
+		
+		platinumIngot = new ItemPlatinumIngot(23026);
+		
+		// Lithium
+		
+		lithiumIngot = new ItemLithiumIngot(23027);
+		
 	}
 	
 	private void registerItems() {
@@ -266,6 +287,14 @@ public class ItemHandler {
 		
 		GameRegistry.registerItem(cobaltDust, "cobaltDust");
 		GameRegistry.registerItem(metallicCobaltIngot, "metallicCobaltIngot");
+		
+		// Platinum
+		
+		GameRegistry.registerItem(platinumIngot, "platinumIngot");
+		
+		// Lithium
+		
+		GameRegistry.registerItem(lithiumIngot, "lithiumIngot");
 				
 	}
 	
@@ -334,6 +363,14 @@ public class ItemHandler {
 		
 		LanguageRegistry.addName(cobaltDust, (String)this.languageHandler.getString(cobaltDust));
 		LanguageRegistry.addName(metallicCobaltIngot, (String)this.languageHandler.getString(metallicCobaltIngot));
+		
+		// Platinum
+		
+		LanguageRegistry.addName(platinumIngot, (String)this.languageHandler.getString(platinumIngot));
+		
+		// Lithium
+		
+		LanguageRegistry.addName(lithiumIngot, (String)this.languageHandler.getString(lithiumIngot));
 		
 	}
 	

@@ -85,6 +85,12 @@ public class CraftingHandler {
 	private ItemStack cobaltDust;
 	private ItemStack cobaltBlock;
 	private ItemStack metallicCobalt;
+	private ItemStack tantalum;
+	private ItemStack tantalumBlock;
+	private ItemStack platinum;
+	private ItemStack platinumBlock;
+	private ItemStack lithium;
+	private ItemStack lithiumBlock;
 	
 	public void populateAllAndInitialize() {
 		this.initializeCraftingRefs();
@@ -157,6 +163,12 @@ public class CraftingHandler {
 		cobaltDust = new ItemStack(ItemHandler.cobaltDust);
 		cobaltBlock = new ItemStack(BlockHandler.cobaltBlock);
 		metallicCobalt = new ItemStack(ItemHandler.metallicCobaltIngot);
+		tantalum = new ItemStack(ItemHandler.tantalumCrystal);
+		tantalumBlock = new ItemStack(BlockHandler.tantalumBlock);
+		platinum = new ItemStack(ItemHandler.platinumIngot);
+		platinumBlock = new ItemStack(BlockHandler.platinumBlock);
+		lithium = new ItemStack(ItemHandler.lithiumIngot);
+		lithiumBlock = new ItemStack(BlockHandler.lithiumBlock);
 	}
 	
 	private void addRecipes() {
@@ -275,6 +287,18 @@ public class CraftingHandler {
 		GameRegistry.addRecipe(new ItemStack(BlockHandler.cobaltTorch, 4), "a", "b", 'a', cobaltDust, 'b', stick);
 		GameRegistry.addRecipe(new ItemStack(BlockHandler.cobaltBlock), "aaa", "aaa", "aaa", 'a', cobaltDust);
 		
+		// Tantalum
+		
+		GameRegistry.addRecipe(new ItemStack(BlockHandler.tantalumBlock), "aaa", "aaa", "aaa", 'a', tantalum);
+		
+		// Platinum
+		
+		GameRegistry.addRecipe(new ItemStack(BlockHandler.platinumBlock), "aaa", "aaa", "aaa", 'a', platinum);
+		
+		// Lithium
+		
+		GameRegistry.addRecipe(new ItemStack(BlockHandler.lithiumBlock), "aaa", "aaa", "aaa", 'a', lithium);
+		
 	}
 	
 	private void addShapelessRecipes() {
@@ -332,6 +356,18 @@ public class CraftingHandler {
 		
 		GameRegistry.addShapelessRecipe(new ItemStack(ItemHandler.cobaltDust, 9), cobaltBlock);
 		
+		// Tantalum
+		
+		GameRegistry.addShapelessRecipe(new ItemStack(ItemHandler.tantalumCrystal, 9), tantalumBlock);
+		
+		// Platinum
+		
+		GameRegistry.addShapelessRecipe(new ItemStack(ItemHandler.platinumIngot, 9), platinumBlock);
+				
+		// Lithium
+				
+		GameRegistry.addShapelessRecipe(new ItemStack(ItemHandler.lithiumIngot, 9), lithiumBlock);
+		
 	}
 	
 	private void addSmelting() {
@@ -359,6 +395,14 @@ public class CraftingHandler {
 		// Nisil
 		
 		GameRegistry.addSmelting(BlockHandler.nisilOre.blockID, new ItemStack(ItemHandler.nisilIngot, 1), 0.4F);
+		
+		// Platinum
+		
+		GameRegistry.addSmelting(BlockHandler.platinumOre.blockID, new ItemStack(ItemHandler.platinumIngot, 1), 0.8F);
+				
+		// Lithium
+				
+		GameRegistry.addSmelting(BlockHandler.lithiumOre.blockID, new ItemStack(ItemHandler.lithiumIngot, 1), 2.0F);
 		
 	}
 	

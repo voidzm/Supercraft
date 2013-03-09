@@ -79,6 +79,20 @@ public class WorldGenOre implements IWorldGenerator {
 			int rz = (cz * 16) + rand.nextInt(16);
 			new WorldGenMinable(BlockHandler.silverOre.blockID, 6).generate(world, rand, rx, ry, rz);
 		}
+		ky = 0; // Platinum
+		for(int i = 0; i < 8; i++) {
+			int rx = (cx * 16) + rand.nextInt(16);
+			int ry = ky + rand.nextInt(32);
+			int rz = (cz * 16) + rand.nextInt(16);
+			new WorldGenMinable(BlockHandler.platinumOre.blockID, 1).generate(world, rand, rx, ry, rz);
+		}
+		ky = 0; // Lithium
+		if(rand.nextInt(4) == 0) {
+			int rx = (cx * 16) + rand.nextInt(16);
+			int ry = ky + rand.nextInt(16);
+			int rz = (cz * 16) + rand.nextInt(16);
+			new WorldGenMinable(BlockHandler.lithiumOre.blockID, 4).generate(world, rand, rx, ry, rz);
+		}
 	}
 	
 	private void generateEnd() {

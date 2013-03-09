@@ -57,6 +57,7 @@ public class BlockHandler {
 	public static Block aluminumBlock;
 	
 	public static Block tantalumOre;
+	public static Block tantalumBlock;
 	
 	public static Block copperOre;
 	public static Block copperBlock;
@@ -117,6 +118,12 @@ public class BlockHandler {
 	public static Block cobaltTorch;
 	public static Block cobaltBlock;
 	public static Block cobaltBlockOff;
+	
+	public static Block platinumOre;
+	public static Block platinumBlock;
+	
+	public static Block lithiumOre;
+	public static Block lithiumBlock;
 	
 	public void populateAllAndInitialize() {
 		this.createBlocks();
@@ -188,31 +195,32 @@ public class BlockHandler {
 		languageHandler.add(goldenwoodStairs, "Goldenwood Wood Stairs");
 		languageHandler.add(tenebriaStairs, "Tenebria Wood Stairs");
 		
-		// Aluminum Material
+		// Aluminum
 		
 		languageHandler.add(aluminumOre, "Aluminum Ore");
 		languageHandler.add(aluminumBlock, "Block of Aluminum");
 		
-		// Tantalum Material
+		// Tantalum
 		
 		languageHandler.add(tantalumOre, "Tantalum Ore");
+		languageHandler.add(tantalumBlock, "Block of Tantalum");
 		
-		// Copper Material
+		// Copper
 		
 		languageHandler.add(copperOre, "Copper Ore");
 		languageHandler.add(copperBlock, "Block of Copper");
 		
-		// Silver Material
+		// Silver
 		
 		languageHandler.add(silverOre, "Silver Ore");
 		languageHandler.add(silverBlock, "Block of Silver");
 		
-		// Electrum Material
+		// Electrum
 		
 		languageHandler.add(electrumOre, "Electrum Ore");
 		languageHandler.add(electrumBlock, "Block of Electrum");
 		
-		// Elinvar Material
+		// Elinvar
 		
 		languageHandler.add(elinvarOre, "Elinvar Ore");
 		languageHandler.add(elinvarBlock, "Block of Elinvar");
@@ -291,6 +299,16 @@ public class BlockHandler {
 		languageHandler.add(cobaltBlock, "Block of Cobalt");
 		languageHandler.add(cobaltBlockOff, "Block of Cobalt");
 		
+		// Platinum
+		
+		languageHandler.add(platinumOre, "Platinum Ore");
+		languageHandler.add(platinumBlock, "Block of Platinum");
+		
+		// Lithium
+		
+		languageHandler.add(lithiumOre, "Lithium Ore");
+		languageHandler.add(lithiumBlock, "Block of Lithium");
+		
 	}
 	
 	private void createBlocks() {
@@ -329,6 +347,7 @@ public class BlockHandler {
 		// Tantalum Material
 		
 		tantalumOre = new BlockTantalumOre(1613);
+		tantalumBlock = new BlockTantalum(1666);
 		
 		// Copper Material
 		
@@ -416,6 +435,16 @@ public class BlockHandler {
 		cobaltBlock = new BlockCobalt(1663, true);
 		cobaltBlockOff = new BlockCobalt(1664, false);
 		
+		// Platinum
+		
+		platinumOre = new BlockPlatinumOre(1667);
+		platinumBlock = new BlockPlatinum(1668);
+		
+		// Lithium
+		
+		lithiumOre = new BlockLithiumOre(1669);
+		lithiumBlock = new BlockLithium(1670);
+		
 	}
 	
 	private void registerBlocks() {
@@ -446,31 +475,32 @@ public class BlockHandler {
 		GameRegistry.registerBlock(goldenwoodStairs, "goldenwoodStairs");
 		GameRegistry.registerBlock(tenebriaStairs, "tenebriaStairs");
 		
-		// Aluminum Material
+		// Aluminum
 		
 		GameRegistry.registerBlock(aluminumOre, "aluminumOre");
 		GameRegistry.registerBlock(aluminumBlock, "aluminumBlock");
 		
-		// Tantalum Material
+		// Tantalum
 		
 		GameRegistry.registerBlock(tantalumOre, "tantalumOre");
+		GameRegistry.registerBlock(tantalumBlock, "tantalumBlock");
 		
-		// Copper Material
+		// Copper
 		
 		GameRegistry.registerBlock(copperOre, "copperOre");
 		GameRegistry.registerBlock(copperBlock, "copperBlock");
 		
-		// Silver Material
+		// Silver
 		
 		GameRegistry.registerBlock(silverOre, "silverOre");
 		GameRegistry.registerBlock(silverBlock, "silverBlock");
 		
-		// Electrum Material
+		// Electrum
 		
 		GameRegistry.registerBlock(electrumOre, "electrumOre");
 		GameRegistry.registerBlock(electrumBlock, "electrumBlock");
 		
-		// Elinvar Material
+		// Elinvar
 		
 		GameRegistry.registerBlock(elinvarOre, "elinvarOre");
 		GameRegistry.registerBlock(elinvarBlock, "elinvarBlock");
@@ -540,6 +570,16 @@ public class BlockHandler {
 		GameRegistry.registerBlock(cobaltTorch, "cobaltTorch");
 		GameRegistry.registerBlock(cobaltBlock, "cobaltBlock");
 		GameRegistry.registerBlock(cobaltBlockOff, "cobaltBlockOff");
+		
+		// Platinum
+		
+		GameRegistry.registerBlock(platinumOre, "platinumOre");
+		GameRegistry.registerBlock(platinumBlock, "platinumBlock");
+		
+		// Lithium
+		
+		GameRegistry.registerBlock(lithiumOre, "lithiumOre");
+		GameRegistry.registerBlock(lithiumBlock, "lithiumBlock");
 		
 	}
 	
@@ -611,31 +651,32 @@ public class BlockHandler {
 		LanguageRegistry.addName(goldenwoodStairs, (String)this.languageHandler.getString(goldenwoodStairs));
 		LanguageRegistry.addName(tenebriaStairs, (String)this.languageHandler.getString(tenebriaStairs));
 		
-		// Aluminum Material
+		// Aluminum
 		
 		LanguageRegistry.addName(aluminumOre, (String)this.languageHandler.getString(aluminumOre));
 		LanguageRegistry.addName(aluminumBlock, (String)this.languageHandler.getString(aluminumBlock));
 		
-		// Tantalum Material
+		// Tantalum
 		
 		LanguageRegistry.addName(tantalumOre, (String)this.languageHandler.getString(tantalumOre));
+		LanguageRegistry.addName(tantalumBlock, (String)this.languageHandler.getString(tantalumBlock));
 		
-		// Copper Material
+		// Copper
 		
 		LanguageRegistry.addName(copperOre, (String)this.languageHandler.getString(copperOre));
 		LanguageRegistry.addName(copperBlock, (String)this.languageHandler.getString(copperBlock));
 		
-		// Silver Material
+		// Silver
 		
 		LanguageRegistry.addName(silverOre, (String)this.languageHandler.getString(silverOre));
 		LanguageRegistry.addName(silverBlock, (String)this.languageHandler.getString(silverBlock));
 		
-		// Electrum Material
+		// Electrum
 		
 		LanguageRegistry.addName(electrumOre, (String)this.languageHandler.getString(electrumOre));
 		LanguageRegistry.addName(electrumBlock, (String)this.languageHandler.getString(electrumBlock));
 		
-		// Elinvar Material
+		// Elinvar
 		
 		LanguageRegistry.addName(elinvarOre, (String)this.languageHandler.getString(elinvarOre));
 		LanguageRegistry.addName(elinvarBlock, (String)this.languageHandler.getString(elinvarBlock));
@@ -710,6 +751,16 @@ public class BlockHandler {
 		LanguageRegistry.addName(cobaltTorch, (String)this.languageHandler.getString(cobaltTorch));
 		LanguageRegistry.addName(cobaltBlock, (String)this.languageHandler.getString(cobaltBlock));
 		LanguageRegistry.addName(cobaltBlockOff, (String)this.languageHandler.getString(cobaltBlockOff));
+		
+		// Platinum
+		
+		LanguageRegistry.addName(platinumOre, (String)this.languageHandler.getString(platinumOre));
+		LanguageRegistry.addName(platinumBlock, (String)this.languageHandler.getString(platinumBlock));
+		
+		// Lithium
+		
+		LanguageRegistry.addName(lithiumOre, (String)this.languageHandler.getString(lithiumOre));
+		LanguageRegistry.addName(lithiumBlock, (String)this.languageHandler.getString(lithiumBlock));
 		
 	}
 	
