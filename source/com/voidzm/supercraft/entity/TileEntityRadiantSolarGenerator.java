@@ -45,11 +45,11 @@ public class TileEntityRadiantSolarGenerator extends TileEntity {
 	
 	public void updateEntity() {
 		if(this.worldObj == null) return;
-		if(internalCounter < 20) {
+		if(internalCounter < 10) {
 			internalCounter++;
 			return;
 		}
-		if(this.worldObj.canBlockSeeTheSky(this.xCoord, this.yCoord+1, this.zCoord)) {
+		if(this.shouldBePowered()) {
 			if(this.activated == false) {
 				this.activated = true;
 				this.worldObj.notifyBlocksOfNeighborChange(this.xCoord, this.yCoord, this.zCoord, BlockHandler.radiantSolarGenerator.blockID);
@@ -60,6 +60,11 @@ public class TileEntityRadiantSolarGenerator extends TileEntity {
 			this.worldObj.notifyBlocksOfNeighborChange(this.xCoord, this.yCoord, this.zCoord, BlockHandler.radiantSolarGenerator.blockID);
 		}
 		internalCounter = 0;
+	}
+	
+	private boolean shouldBePowered() {
+		if(this.worldObj.canBlockSeeTheSky(this.xCoord, this.yCoord+1, this.zCoord) && (this.worldObj.getCelestialAngle(0.0F) < 0.125F || this.worldObj.getCelestialAngle(0.0F) > 0.875F)) return true;
+		else return false;
 	}
 	
 }

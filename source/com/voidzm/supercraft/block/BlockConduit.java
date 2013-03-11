@@ -9,12 +9,14 @@ package com.voidzm.supercraft.block;
 import java.io.ByteArrayOutputStream;
 import java.io.DataOutputStream;
 import java.util.Iterator;
+import java.util.List;
 import java.util.Random;
 
 import com.voidzm.supercraft.CommonProxy;
 import com.voidzm.supercraft.Supercraft;
 import com.voidzm.supercraft.client.ClientProxy;
 import com.voidzm.supercraft.entity.TileEntityConduit;
+import com.voidzm.supercraft.entity.TileEntityConduit.CONDUIT_TYPE;
 import com.voidzm.supercraft.entity.TileEntityConduit.PACKET_ELINVAR;
 import com.voidzm.supercraft.handler.BlockHandler;
 import com.voidzm.supercraft.protocol.IGenerator;
@@ -24,6 +26,7 @@ import cpw.mods.fml.client.FMLClientHandler;
 import cpw.mods.fml.common.FMLCommonHandler;
 import cpw.mods.fml.common.network.PacketDispatcher;
 import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
 
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockContainer;
@@ -33,6 +36,7 @@ import net.minecraft.entity.Entity;
 import net.minecraft.entity.item.EntityItem;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.inventory.IInventory;
+import net.minecraft.item.ItemStack;
 import net.minecraft.network.packet.Packet250CustomPayload;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.AxisAlignedBB;
@@ -42,20 +46,25 @@ import net.minecraft.world.World;
 
 public class BlockConduit extends BlockContainer {
 	
-	public BlockConduit(int par1, int par2, Material par3Material) {
-		super(par1, par2, par3Material);
+	public BlockConduit(int par1) {
+		super(par1, 32, Material.iron);
 		this.setHardness(1.0F);
 		this.setStepSound(Block.soundStoneFootstep);
 		this.setBlockName("conduit");
 		this.setCreativeTab(Supercraft.elinvarTab);
 		this.setLightOpacity(0);
 		this.useNeighborBrightness[par1] = true;
+		this.setRequiresSelfNotify();
 		this.setTickRandomly(true);
 	}
 	
 	@Override
 	public String getTextureFile() {
 		return CommonProxy.BLOCKS_PNG;
+	}
+	
+	public int getBlockTextureFromSideAndMetadata(int par1, int par2) {
+		return this.blockIndexInTexture+par2;
 	}
 	
 	public void updateTick(World par1World, int par2, int par3, int par4, Random par5Random) {
@@ -256,13 +265,45 @@ public class BlockConduit extends BlockContainer {
 		return true;
 	}
 	
-	public TileEntity createNewTileEntity(World par1World) {
-		try {
-			return new TileEntityConduit();
-		} catch (Exception e) {
-			e.printStackTrace();
-			return null;
+
+	@Override
+	public TileEntity createNewTileEntity(World var1) {
+		System.out.println("You called the wrong create function, Minecraft.");
+		return null;
+	}
+	
+	public TileEntity createNewTileEntity(World world, int metadata) {
+		switch(metadata) {
+		case 0:
+			return new TileEntityConduit(CONDUIT_TYPE.WOOD);
+		case 1:
+			return new TileEntityConduit(CONDUIT_TYPE.STONE);
+		case 2:
+			return new TileEntityConduit(CONDUIT_TYPE.IRON);
+		case 3:
+			return new TileEntityConduit(CONDUIT_TYPE.COPPER);
+		case 4:
+			return new TileEntityConduit(CONDUIT_TYPE.ALUMINUM);
+		case 5:
+			return new TileEntityConduit(CONDUIT_TYPE.SILVER);
+		case 6:
+			return new TileEntityConduit(CONDUIT_TYPE.GOLD);
+		case 7:
+			return new TileEntityConduit(CONDUIT_TYPE.ELECTRUM);
+		case 8:
+			return new TileEntityConduit(CONDUIT_TYPE.DIAMOND);
+		case 9:
+			return new TileEntityConduit(CONDUIT_TYPE.COBALT);
+		case 10:
+			return new TileEntityConduit(CONDUIT_TYPE.PLATINUM);
+		case 11:
+			return new TileEntityConduit(CONDUIT_TYPE.TANTALUM);
+		case 12:
+			return new TileEntityConduit(CONDUIT_TYPE.LITHIUM);
+		default:
+			break;
 		}
+		return null;
 	}
 	
 	public void breakBlock(World par1World, int par2, int par3, int par4, int par5, int par6) {
@@ -325,6 +366,27 @@ public class BlockConduit extends BlockContainer {
 		if(side == Side.SERVER) {
 			PacketDispatcher.sendPacketToAllInDimension(packet, world.provider.dimensionId);
 		}
+	}
+
+	public int damageDropped(int par1) {
+		return par1;
+	}
+	
+	@SideOnly(Side.CLIENT)
+	public void getSubBlocks(int par1, CreativeTabs par2CreativeTabs, List par3List) {
+		par3List.add(new ItemStack(par1, 1, 0));
+		par3List.add(new ItemStack(par1, 1, 1));
+		par3List.add(new ItemStack(par1, 1, 2));
+		par3List.add(new ItemStack(par1, 1, 3));
+		par3List.add(new ItemStack(par1, 1, 4));
+		par3List.add(new ItemStack(par1, 1, 5));
+		par3List.add(new ItemStack(par1, 1, 6));
+		par3List.add(new ItemStack(par1, 1, 7));
+		par3List.add(new ItemStack(par1, 1, 8));
+		par3List.add(new ItemStack(par1, 1, 9));
+		par3List.add(new ItemStack(par1, 1, 10));
+		par3List.add(new ItemStack(par1, 1, 11));
+		par3List.add(new ItemStack(par1, 1, 12));
 	}
 
 }

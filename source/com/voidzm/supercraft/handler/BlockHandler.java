@@ -12,6 +12,7 @@ import java.util.ArrayList;
 
 import com.voidzm.supercraft.block.*;
 import com.voidzm.supercraft.client.ClientProxy;
+import com.voidzm.supercraft.item.ItemConduit;
 import com.voidzm.supercraft.item.ItemRefinedCraftingTable;
 import com.voidzm.supercraft.item.ItemSupercraftLeaves1;
 import com.voidzm.supercraft.item.ItemSupercraftLeaves2;
@@ -31,6 +32,9 @@ import net.minecraft.item.ItemStack;
 
 public class BlockHandler {
 
+	public final static int BLOCKID_START = 1600;
+	private int id_i = BLOCKID_START;
+	
 	protected LanguageHandler languageHandler = new LanguageHandler();
 	
 	public static Block reinforcedGlass;
@@ -71,16 +75,7 @@ public class BlockHandler {
 	public static Block electrumOre;
 	public static Block electrumBlock;
 	
-	public static Block woodenConduit;
-	public static Block stoneConduit;
-	public static Block ironConduit;
-	public static Block copperConduit;
-	public static Block aluminumConduit;
-	public static Block silverConduit;
-	public static Block goldenConduit;
-	public static Block electrumConduit;
-	public static Block diamondConduit;
-	public static Block cobaltConduit;
+	public static Block conduit;
 	
 	public static Block refinedCraftingTable;
 	
@@ -225,18 +220,23 @@ public class BlockHandler {
 		languageHandler.add(elinvarOre, "Elinvar Ore");
 		languageHandler.add(elinvarBlock, "Block of Elinvar");
 		
-		// Elinvar Conduits
+		// Conduits
 		
-		languageHandler.add(woodenConduit, "Wooden Conduit");
-		languageHandler.add(stoneConduit, "Stone Conduit");
-		languageHandler.add(ironConduit, "Iron Conduit");
-		languageHandler.add(copperConduit, "Copper Conduit");
-		languageHandler.add(aluminumConduit, "Aluminum Conduit");
-		languageHandler.add(silverConduit, "Silver Conduit");
-		languageHandler.add(goldenConduit, "Golden Conduit");
-		languageHandler.add(electrumConduit, "Electrum Conduit");
-		languageHandler.add(diamondConduit, "Diamond Conduit");
-		languageHandler.add(cobaltConduit, "Cobalt Conduit");
+		ArrayList<String> conduitList = new ArrayList<String>();
+		conduitList.add("Wooden Conduit");
+		conduitList.add("Stone Conduit");
+		conduitList.add("Iron Conduit");
+		conduitList.add("Copper Conduit");
+		conduitList.add("Aluminum Conduit");
+		conduitList.add("Silver Conduit");
+		conduitList.add("Golden Conduit");
+		conduitList.add("Electrum Conduit");
+		conduitList.add("Diamond Conduit");
+		conduitList.add("Cobalt Conduit");
+		conduitList.add("Platinum Conduit");
+		conduitList.add("Tantalum Conduit");
+		conduitList.add("Lithium Conduit");
+		languageHandler.add(conduit, conduitList);
 		
 		// Refined Crafting Tables
 		
@@ -315,135 +315,126 @@ public class BlockHandler {
 		
 		// Advanced Glass
 		
-		reinforcedGlass = new BlockReinforcedGlass(1600);
-		temperedGlass = new BlockTemperedGlass(1601);
-		ornateGlass = new BlockOrnateGlass(1602);
-		impactGlass = new BlockImpactGlass(1603);
+		reinforcedGlass = new BlockReinforcedGlass(this.nextBlockID());
+		temperedGlass = new BlockTemperedGlass(this.nextBlockID());
+		ornateGlass = new BlockOrnateGlass(this.nextBlockID());
+		impactGlass = new BlockImpactGlass(this.nextBlockID());
 		
 		// Material Extensions
 		
-		coalBlock = new BlockCoal(1604);
+		coalBlock = new BlockCoal(this.nextBlockID());
 		
 		// Supercraft Trees
 		
-		supercraftLog = new BlockSupercraftLog(1605);
-		supercraftLeaves1 = new BlockSupercraftLeaves1(1606);
-		supercraftLeaves2 = new BlockSupercraftLeaves2(1633);
-		supercraftPlanks = new BlockSupercraftPlanks(1607);
-		supercraftSapling1 = new BlockSupercraftSapling1(1608);
-		supercraftSapling2 = new BlockSupercraftSapling2(1635);
-		supercraftSlab1 = new BlockSupercraftSlab1(1609);
-		supercraftSlab2 = new BlockSupercraftSlab2(1640);
+		supercraftLog = new BlockSupercraftLog(this.nextBlockID());
+		supercraftLeaves1 = new BlockSupercraftLeaves1(this.nextBlockID());
+		supercraftLeaves2 = new BlockSupercraftLeaves2(this.nextBlockID());
+		supercraftPlanks = new BlockSupercraftPlanks(this.nextBlockID());
+		supercraftSapling1 = new BlockSupercraftSapling1(this.nextBlockID());
+		supercraftSapling2 = new BlockSupercraftSapling2(this.nextBlockID());
+		supercraftSlab1 = new BlockSupercraftSlab1(this.nextBlockID());
+		supercraftSlab2 = new BlockSupercraftSlab2(this.nextBlockID());
 		
-		oliveStairs = new BlockSupercraftStairs(1610, supercraftPlanks, 0).setBlockName("oliveStairs");
-		goldenwoodStairs = new BlockSupercraftStairs(1634, supercraftPlanks, 1).setBlockName("goldenwoodStairs");
-		tenebriaStairs = new BlockSupercraftStairs(1646, supercraftPlanks, 2).setBlockName("tenebriaStairs");
+		oliveStairs = new BlockSupercraftStairs(this.nextBlockID(), supercraftPlanks, 0).setBlockName("oliveStairs");
+		goldenwoodStairs = new BlockSupercraftStairs(this.nextBlockID(), supercraftPlanks, 1).setBlockName("goldenwoodStairs");
+		tenebriaStairs = new BlockSupercraftStairs(this.nextBlockID(), supercraftPlanks, 2).setBlockName("tenebriaStairs");
 		
 		// Aluminum Material
 		
-		aluminumOre = new BlockAluminumOre(1611);
-		aluminumBlock = new BlockAluminum(1612);
+		aluminumOre = new BlockAluminumOre(this.nextBlockID());
+		aluminumBlock = new BlockAluminum(this.nextBlockID());
 		
 		// Tantalum Material
 		
-		tantalumOre = new BlockTantalumOre(1613);
-		tantalumBlock = new BlockTantalum(1666);
+		tantalumOre = new BlockTantalumOre(this.nextBlockID());
+		tantalumBlock = new BlockTantalum(this.nextBlockID());
 		
 		// Copper Material
 		
-		copperOre = new BlockCopperOre(1619);
-		copperBlock = new BlockCopper(1620);
+		copperOre = new BlockCopperOre(this.nextBlockID());
+		copperBlock = new BlockCopper(this.nextBlockID());
 		
 		// Silver Material
 		
-		silverOre = new BlockSilverOre(1623);
-		silverBlock = new BlockSilver(1624);
+		silverOre = new BlockSilverOre(this.nextBlockID());
+		silverBlock = new BlockSilver(this.nextBlockID());
 		
 		// Electrum Material
 		
-		electrumOre = new BlockElectrumOre(1627);
-		electrumBlock = new BlockElectrum(1628);
+		electrumOre = new BlockElectrumOre(this.nextBlockID());
+		electrumBlock = new BlockElectrum(this.nextBlockID());
 		
 		// Elinvar Material
 		
-		elinvarOre = new BlockElinvarOre(1614);
-		elinvarBlock = new BlockElinvar(1615);
+		elinvarOre = new BlockElinvarOre(this.nextBlockID());
+		elinvarBlock = new BlockElinvar(this.nextBlockID());
 		
 		// Elinvar Conduits
 		
-		woodenConduit = new BlockWoodenConduit(1616);
-		stoneConduit = new BlockStoneConduit(1617);
-		ironConduit = new BlockIronConduit(1618);
-		copperConduit = new BlockCopperConduit(1621);
-		aluminumConduit = new BlockAluminumConduit(1622);
-		silverConduit = new BlockSilverConduit(1625);
-		goldenConduit = new BlockGoldenConduit(1626);
-		electrumConduit = new BlockElectrumConduit(1629);
-		diamondConduit = new BlockDiamondConduit(1630);
-		cobaltConduit = new BlockCobaltConduit(1665);
+		conduit = new BlockConduit(this.nextBlockID());
 		
 		// Refined Crafting Tables
 		
-		refinedCraftingTable = new BlockRefinedCraftingTable(1631);
+		refinedCraftingTable = new BlockRefinedCraftingTable(this.nextBlockID());
 		
 		// Elinvar Generators
 		
-		redstoneGenerator = new BlockRedstoneGenerator(1632);
+		redstoneGenerator = new BlockRedstoneGenerator(this.nextBlockID());
 		
 		// Supercraft Flowers
 		
-		bluebells = new BlockSupercraftFlower(1636, 76).setBlockName("bluebells");
-		daisies = new BlockSupercraftFlower(1637, 77).setBlockName("daisies");
-		snapdragon = new BlockSupercraftFlower(1653, 116).setBlockName("snapdragon");
+		bluebells = new BlockSupercraftFlower(this.nextBlockID(), 76).setBlockName("bluebells");
+		daisies = new BlockSupercraftFlower(this.nextBlockID(), 77).setBlockName("daisies");
+		snapdragon = new BlockSupercraftFlower(this.nextBlockID(), 116).setBlockName("snapdragon");
 		
 		// Palestone
 		
-		palestone = new BlockPalestone(1638);
-		palestoneBricks = new BlockPalestoneBricks(1639);
-		palestoneStairs = new BlockSupercraftStairs(1641, palestoneBricks, 0).setBlockName("palestoneStairs");
-		inscribedPalestone = new BlockInscribedPalestone(1642);
-		blockOfGoldenwood = new BlockGoldenwood(1643);
-		overgrownPalestone = new BlockOvergrownPalestone(1644);
-		burnedPalestone = new BlockBurnedPalestone(1645);
+		palestone = new BlockPalestone(this.nextBlockID());
+		palestoneBricks = new BlockPalestoneBricks(this.nextBlockID());
+		palestoneStairs = new BlockSupercraftStairs(this.nextBlockID(), palestoneBricks, 0).setBlockName("palestoneStairs");
+		inscribedPalestone = new BlockInscribedPalestone(this.nextBlockID());
+		blockOfGoldenwood = new BlockGoldenwood(this.nextBlockID());
+		overgrownPalestone = new BlockOvergrownPalestone(this.nextBlockID());
+		burnedPalestone = new BlockBurnedPalestone(this.nextBlockID());
 		
 		// Nightrock
 		
-		nightrock = new BlockNightrock(1647);
-		nightrockBricks = new BlockNightrockBricks(1648);
-		nightrockStairs = new BlockSupercraftStairs(1649, nightrockBricks, 0).setBlockName("nightrockStairs");
-		inscribedNightrock = new BlockInscribedNightrock(1650);
-		blockOfTenebral = new BlockTenebral(1651);
-		burnedNightrock = new BlockBurnedNightrock(1652);
+		nightrock = new BlockNightrock(this.nextBlockID());
+		nightrockBricks = new BlockNightrockBricks(this.nextBlockID());
+		nightrockStairs = new BlockSupercraftStairs(this.nextBlockID(), nightrockBricks, 0).setBlockName("nightrockStairs");
+		inscribedNightrock = new BlockInscribedNightrock(this.nextBlockID());
+		blockOfTenebral = new BlockTenebral(this.nextBlockID());
+		burnedNightrock = new BlockBurnedNightrock(this.nextBlockID());
 		
 		// Nisil
 		
-		nisilOre = new BlockNisilOre(1654);
-		nisilBlock = new BlockNisil(1655);
+		nisilOre = new BlockNisilOre(this.nextBlockID());
+		nisilBlock = new BlockNisil(this.nextBlockID());
 		
 		// Machines
 		
-		ironboundStone = new BlockIronboundStone(1656);
-		essentialReducer = new BlockEssentialReducer(1657);
-		copperboundStone = new BlockCopperboundStone(1658);
-		radiantSolarGenerator = new BlockRadiantSolarGenerator(1659);
-		alloyInductor = new BlockAlloyInductor(1660);
+		ironboundStone = new BlockIronboundStone(this.nextBlockID());
+		essentialReducer = new BlockEssentialReducer(this.nextBlockID());
+		copperboundStone = new BlockCopperboundStone(this.nextBlockID());
+		radiantSolarGenerator = new BlockRadiantSolarGenerator(this.nextBlockID());
+		alloyInductor = new BlockAlloyInductor(this.nextBlockID());
 		
 		// Cobalt
 		
-		cobaltOre = new BlockCobaltOre(1661);
-		cobaltTorch = new BlockCobaltTorch(1662);
-		cobaltBlock = new BlockCobalt(1663, true);
-		cobaltBlockOff = new BlockCobalt(1664, false);
+		cobaltOre = new BlockCobaltOre(this.nextBlockID());
+		cobaltTorch = new BlockCobaltTorch(this.nextBlockID());
+		cobaltBlock = new BlockCobalt(this.nextBlockID(), true);
+		cobaltBlockOff = new BlockCobalt(this.nextBlockID(), false);
 		
 		// Platinum
 		
-		platinumOre = new BlockPlatinumOre(1667);
-		platinumBlock = new BlockPlatinum(1668);
+		platinumOre = new BlockPlatinumOre(this.nextBlockID());
+		platinumBlock = new BlockPlatinum(this.nextBlockID());
 		
 		// Lithium
 		
-		lithiumOre = new BlockLithiumOre(1669);
-		lithiumBlock = new BlockLithium(1670);
+		lithiumOre = new BlockLithiumOre(this.nextBlockID());
+		lithiumBlock = new BlockLithium(this.nextBlockID());
 		
 	}
 	
@@ -507,16 +498,7 @@ public class BlockHandler {
 		
 		// Elinvar Conduits
 		
-		GameRegistry.registerBlock(woodenConduit, "woodenConduit");
-		GameRegistry.registerBlock(stoneConduit, "stoneConduit");
-		GameRegistry.registerBlock(ironConduit, "ironConduit");
-		GameRegistry.registerBlock(copperConduit, "copperConduit");
-		GameRegistry.registerBlock(aluminumConduit, "aluminumConduit");
-		GameRegistry.registerBlock(silverConduit, "silverConduit");
-		GameRegistry.registerBlock(goldenConduit, "goldenConduit");
-		GameRegistry.registerBlock(electrumConduit, "electrumConduit");
-		GameRegistry.registerBlock(diamondConduit, "diamondConduit");
-		GameRegistry.registerBlock(cobaltConduit, "cobaltConduit");
+		GameRegistry.registerBlock(conduit, ItemConduit.class, "conduit");
 		
 		// Refined Crafting Tables
 		
@@ -683,16 +665,12 @@ public class BlockHandler {
 		
 		// Elinvar Conduits
 		
-		LanguageRegistry.addName(woodenConduit, (String)this.languageHandler.getString(woodenConduit));
-		LanguageRegistry.addName(stoneConduit, (String)this.languageHandler.getString(stoneConduit));
-		LanguageRegistry.addName(ironConduit, (String)this.languageHandler.getString(ironConduit));
-		LanguageRegistry.addName(copperConduit, (String)this.languageHandler.getString(copperConduit));
-		LanguageRegistry.addName(aluminumConduit, (String)this.languageHandler.getString(aluminumConduit));
-		LanguageRegistry.addName(silverConduit, (String)this.languageHandler.getString(silverConduit));
-		LanguageRegistry.addName(goldenConduit, (String)this.languageHandler.getString(goldenConduit));
-		LanguageRegistry.addName(electrumConduit, (String)this.languageHandler.getString(electrumConduit));
-		LanguageRegistry.addName(diamondConduit, (String)this.languageHandler.getString(diamondConduit));
-		LanguageRegistry.addName(cobaltConduit, (String)this.languageHandler.getString(cobaltConduit));
+		i = 0;
+		for(String string : (ArrayList<String>)languageHandler.getString(conduit))  {
+			ItemStack stack = new ItemStack(conduit, 1, i);
+			LanguageRegistry.addName(stack, string);
+			i++;
+		}
 		
 		// Refined Crafting Tables
 		
@@ -769,6 +747,10 @@ public class BlockHandler {
 		Block.blockGold.blockIndexInTexture = 52;
 		Block.blockDiamond.setTextureFile(ClientProxy.BLOCKS_PNG);
 		Block.blockDiamond.blockIndexInTexture = 53;
+	}
+	
+	private int nextBlockID() {
+		return id_i++;
 	}
 	
 }

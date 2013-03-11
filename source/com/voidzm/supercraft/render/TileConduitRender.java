@@ -56,6 +56,7 @@ public class TileConduitRender extends TileEntitySpecialRenderer {
 			int iz = var1.zCoord;
 			World world = var1.worldObj;
 			Block targetBlock = Block.blocksList[world.getBlockId(ix, iy, iz)];
+			int targetMetadata = world.getBlockMetadata(ix, iy, iz);
 			if(targetBlock == null) return;
 			if(BlockConduit.isConduitConnectable(world.getBlockId(ix+1, iy, iz), GeneratorSide.EAST)) {
 				maxX = 1.0F;
@@ -104,7 +105,7 @@ public class TileConduitRender extends TileEntitySpecialRenderer {
 				}
 			}
 			
-			int texI = targetBlock.blockIndexInTexture;
+			int texI = targetBlock.blockIndexInTexture + targetMetadata;
 			int pixX = (texI & 15) << 4;
 	        int pixY = texI & 240;
 	        double xStart = (double)((float)(pixX + 4.0F) / 256.0F);
