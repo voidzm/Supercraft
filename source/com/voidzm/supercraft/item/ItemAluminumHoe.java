@@ -12,6 +12,7 @@ import com.voidzm.supercraft.entity.TileEntityConduit;
 import com.voidzm.supercraft.entity.TileEntityEssentialReducer;
 
 import net.minecraft.block.Block;
+import net.minecraft.client.renderer.texture.IconRegister;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.enchantment.Enchantment;
 import net.minecraft.enchantment.EnchantmentHelper;
@@ -27,24 +28,12 @@ public class ItemAluminumHoe extends ItemHoe {
 
 	public ItemAluminumHoe(int par1) {
 		super(par1, Supercraft.aluminumTool);
-		this.setIconIndex(20);
-		this.setItemName("aluminumHoe");
+		this.setUnlocalizedName("aluminumHoe");
 		this.setCreativeTab(CreativeTabs.tabTools);
 	}
 
-	@Override
-	public String getTextureFile() {
-		return CommonProxy.ITEMS_PNG;
+	public void func_94581_a(IconRegister par1IconRegister) {
+		this.iconIndex = par1IconRegister.func_94245_a("supercraft:hoealuminum");
 	}
-	
-	
-	public boolean onItemUse(ItemStack par1ItemStack, EntityPlayer par2EntityPlayer, World par3World, int par4, int par5, int par6, int par7, float par8, float par9, float par10) {
-		TileEntity te = par3World.getBlockTileEntity(par4, par5, par6);
-		if(te instanceof TileEntityEssentialReducer) {
-			System.out.println("TE: " + ((TileEntityEssentialReducer)te).powered);
-		}
-		return super.onItemUse(par1ItemStack, par2EntityPlayer, par3World, par4, par5, par6, par7, par8, par9, par10);
-	}
-	
 	
 }

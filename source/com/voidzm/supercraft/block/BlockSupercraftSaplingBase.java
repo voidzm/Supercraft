@@ -18,16 +18,15 @@ import net.minecraftforge.event.terraingen.TerrainGen;
 
 public class BlockSupercraftSaplingBase extends BlockFlower {
 
-    public BlockSupercraftSaplingBase(int par1, int texture) {
-        super(par1, texture);
+    public BlockSupercraftSaplingBase(int par1) {
+        super(par1);
         float var3 = 0.4F;
         this.setTickRandomly(true);
         this.setBlockBounds(0.5F - var3, 0.0F, 0.5F - var3, 0.5F + var3, var3 * 2.0F, 0.5F + var3);
         this.setCreativeTab(CreativeTabs.tabDecorations);
         this.setHardness(0.0F);
         this.setStepSound(Block.soundGrassFootstep);
-        this.setBlockName("supercraftSapling");
-        this.setRequiresSelfNotify();
+        this.setUnlocalizedName("supercraftSapling");
     }
 	
     public void updateTick(World par1World, int par2, int par3, int par4, Random par5Random) {
@@ -36,17 +35,13 @@ public class BlockSupercraftSaplingBase extends BlockFlower {
             if(par1World.getBlockLightValue(par2, par3 + 1, par4) >= 9 && par5Random.nextInt(7) == 0) {
                 int var6 = par1World.getBlockMetadata(par2, par3, par4);
                 if((var6 & 8) == 0) {
-                    par1World.setBlockMetadataWithNotify(par2, par3, par4, var6 | 8);
+                    par1World.setBlockMetadataWithNotify(par2, par3, par4, var6 | 8, 3);
                 }
                 else {
                     this.growTree(par1World, par2, par3, par4, par5Random);
                 }
             }
         }
-    }
-    
-    public int getBlockTextureFromSideAndMetadata(int par1, int par2) {
-    	return this.blockIndexInTexture;
     }
     
     public void growTree(World par1World, int par2, int par3, int par4, Random par5Random) {
@@ -60,10 +55,5 @@ public class BlockSupercraftSaplingBase extends BlockFlower {
     public int damageDropped(int par1) {
         return par1 & 3;
     }
-    
-    @Override
-    public String getTextureFile() {
-    	return CommonProxy.BLOCKS_PNG;
-	}
 	
 }

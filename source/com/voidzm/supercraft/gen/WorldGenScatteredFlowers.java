@@ -20,7 +20,7 @@ public class WorldGenScatteredFlowers extends WorldGenerator {
 			int y = par4 + par2Random.nextInt(4) - par2Random.nextInt(4);
 			int z = par5 + par2Random.nextInt(8) - par2Random.nextInt(8);
 			if(par1World.isAirBlock(x, y, z) && Block.blocksList[this.flowerID].canBlockStay(par1World, x, y, z)) {
-				par1World.setBlock(x, y, z, flowerID);
+				this.setBlock(par1World, x, y, z, flowerID);
 			}
 		}
 		return true;

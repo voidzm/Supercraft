@@ -21,9 +21,8 @@ public class GuiEssentialReducer extends GuiContainer {
 
 	@Override
 	protected void drawGuiContainerBackgroundLayer(float var1, int var2, int var3) {
-		int tex = mc.renderEngine.getTexture("/com/voidzm/supercraft/img/essentialreducer.png");
 		GL11.glColor4f(1.0F, 1.0F, 1.0F, 1.0F);
-		this.mc.renderEngine.bindTexture(tex);
+		this.mc.renderEngine.func_98187_b("/mods/textures/gui/essentialreducer.png");
 		int x = (width - xSize) / 2;
 		int y = (height - ySize) / 2;
 		this.drawTexturedModalRect(x, y, 0, 0, xSize, ySize);

@@ -16,7 +16,7 @@ public class ItemRefinedCraftingTable extends ItemBlock {
 	public ItemRefinedCraftingTable(int par1) {
 		super(par1);
 		setHasSubtypes(true);
-		setItemName("refinedCraftingTable");
+		setUnlocalizedName("refinedCraftingTable");
 	}
 
 	@Override
@@ -25,8 +25,8 @@ public class ItemRefinedCraftingTable extends ItemBlock {
 	} 
 	
 	@Override
-	public String getItemNameIS(ItemStack itemstack) {
-		return getItemName() + "." + names[itemstack.getItemDamage()];
+	public String getUnlocalizedName(ItemStack itemstack) {
+		return this.getUnlocalizedName() + "." + names[itemstack.getItemDamage()];
 	}
 	
 }

@@ -19,17 +19,12 @@ import net.minecraft.world.IBlockAccess;
 public class BlockReinforcedGlass extends BlockBreakable {
 
 	public BlockReinforcedGlass(int id) {
-		super(id, 0, Material.glass, false);
+		super(id, "supercraft:reinforcedglass", Material.glass, false);
 		this.setHardness(1.0F);
 		this.setResistance(10.0F);
 		this.setStepSound(Block.soundGlassFootstep);
-		this.setBlockName("reinforcedGlass");
+		this.setUnlocalizedName("reinforcedGlass");
 		this.setCreativeTab(CreativeTabs.tabBlock);
-	}
-	
-	@Override
-	public String getTextureFile() {
-		return CommonProxy.BLOCKS_PNG;
 	}
 	
 	public int quantityDropped(Random random) {

@@ -15,34 +15,32 @@ import cpw.mods.fml.relauncher.SideOnly;
 
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
+import net.minecraft.client.renderer.texture.IconRegister;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.ItemStack;
+import net.minecraft.util.Icon;
 
 public class BlockSupercraftPlanks extends Block {
-	
-	public static final String[] woodType = new String[] {"olive", "goldenwood"};
 
+	protected Icon[] textures = new Icon[16];
+	
 	public BlockSupercraftPlanks(int par1) {
-		super(par1, 7, Material.wood);
+		super(par1, Material.wood);
 		this.setCreativeTab(CreativeTabs.tabBlock);
 		this.setHardness(2.0F);
 		this.setResistance(5.0F);
 		this.setStepSound(Block.soundWoodFootstep);
-		this.setBlockName("supercraftPlanks");
-		this.setRequiresSelfNotify();
+		this.setUnlocalizedName("supercraftPlanks");
 	}
 	
-	public int getBlockTextureFromSideAndMetadata(int par1, int par2) {
-		switch(par2) {
-		case 0:
-			return 7;
-		case 1:
-			return 74;
-		case 2:
-			return 103;
-		default:
-			return 7;
-		}
+	public void func_94332_a(IconRegister par1IconRegister) {
+		textures[0] = par1IconRegister.func_94245_a("supercraft:planksolive");
+		textures[1] = par1IconRegister.func_94245_a("supercraft:planksgoldenwood");
+		textures[2] = par1IconRegister.func_94245_a("supercraft:plankstenebria");
+	}
+	
+	public Icon getBlockTextureFromSideAndMetadata(int side, int meta) {
+		return textures[meta];
 	}
 	
 	public int damageDropped(int par1) {
@@ -54,11 +52,6 @@ public class BlockSupercraftPlanks extends Block {
 		par3List.add(new ItemStack(par1, 1, 0));
 		par3List.add(new ItemStack(par1, 1, 1));
 		par3List.add(new ItemStack(par1, 1, 2));
-	}
-	
-	@Override
-	public String getTextureFile() {
-		return CommonProxy.BLOCKS_PNG;
 	}
 	
 }

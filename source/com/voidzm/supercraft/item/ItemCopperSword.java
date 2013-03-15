@@ -7,6 +7,7 @@
 package com.voidzm.supercraft.item;
 
 import net.minecraft.block.Block;
+import net.minecraft.client.renderer.texture.IconRegister;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.enchantment.Enchantment;
 import net.minecraft.enchantment.EnchantmentHelper;
@@ -24,14 +25,12 @@ public class ItemCopperSword extends ItemSword {
 
 	public ItemCopperSword(int par1) {
 		super(par1, Supercraft.copperTool);
-		this.setIconIndex(22);
-		this.setItemName("copperSword");
+		this.setUnlocalizedName("copperSword");
 		this.setCreativeTab(CreativeTabs.tabCombat);
 	}
 
-	@Override
-	public String getTextureFile() {
-		return CommonProxy.ITEMS_PNG;
+	public void func_94581_a(IconRegister par1IconRegister) {
+		this.iconIndex = par1IconRegister.func_94245_a("supercraft:swordcopper");
 	}
 	
 }

@@ -40,7 +40,7 @@ public class SCMainMenu extends GuiScreen {
 	public SCMainMenu() {
 		buttons = new ArrayList<SCGuiButton>();
 		try {
-			background = ImageIO.read(this.getClass().getResourceAsStream("/com/voidzm/supercraft/img/bg.png"));
+			background = ImageIO.read(this.getClass().getResourceAsStream("/mods/supercraft/textures/gui/bg.png"));
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -49,13 +49,12 @@ public class SCMainMenu extends GuiScreen {
 		createButton(translator.translateKey("menu.multiplayer"));
 		createButton(translator.translateKey("menu.options"));
 		createButton("Mods");
-		createButton(translator.translateKey("menu.mods"));
 		createButton(translator.translateKey("menu.quit"));
 		imageCycleTick = new Random().nextInt(4)*imageTime;
 	}
 	
 	private void createButton(String text) {
-		if(buttons.size() != 5) buttons.add(new SCGuiButton(this, 22, 48 + (buttons.size() * 22), 106, 16, buttons.size(), text));
+		if(buttons.size() != 4) buttons.add(new SCGuiButton(this, 22, 48 + (buttons.size() * 22), 106, 16, buttons.size(), text));
 		else buttons.add(new SCGuiButton(this, 22, 64 + (buttons.size() * 22), 106, 16, buttons.size(), text));
 	} 
 	
@@ -78,10 +77,6 @@ public class SCMainMenu extends GuiScreen {
 			this.mc.sndManager.playSoundFX("random.click", 1.0F, 1.0F);
 			break;
 		case 4:
-			mc.displayGuiScreen(new GuiTexturePacks(this));
-			this.mc.sndManager.playSoundFX("random.click", 1.0F, 1.0F);
-			break;
-		case 5:
 			mc.shutdown();
 			this.mc.sndManager.playSoundFX("random.click", 1.0F, 1.0F);
 			break;
@@ -105,20 +100,20 @@ public class SCMainMenu extends GuiScreen {
 		float basef = imageCycleTick / imageTime;
 		int base = (int)Math.floor(basef);
 		int prog = (int)imageCycleTick % imageTime;
-		if(base == 0) GL11.glBindTexture(GL11.GL_TEXTURE_2D, this.mc.renderEngine.getTexture("/com/voidzm/supercraft/img/bg.png"));
-		else if(base == 1) GL11.glBindTexture(GL11.GL_TEXTURE_2D, this.mc.renderEngine.getTexture("/com/voidzm/supercraft/img/bg2.png"));
-		else if(base == 2) GL11.glBindTexture(GL11.GL_TEXTURE_2D, this.mc.renderEngine.getTexture("/com/voidzm/supercraft/img/bg3.png"));
-		else if(base == 3) GL11.glBindTexture(GL11.GL_TEXTURE_2D, this.mc.renderEngine.getTexture("/com/voidzm/supercraft/img/bg4.png"));
+		if(base == 0) GL11.glBindTexture(GL11.GL_TEXTURE_2D, this.mc.renderEngine.getTexture("/mods/supercraft/textures/gui/bg.png"));
+		else if(base == 1) GL11.glBindTexture(GL11.GL_TEXTURE_2D, this.mc.renderEngine.getTexture("/mods/supercraft/textures/gui/bg2.png"));
+		else if(base == 2) GL11.glBindTexture(GL11.GL_TEXTURE_2D, this.mc.renderEngine.getTexture("/mods/supercraft/textures/gui/bg3.png"));
+		else if(base == 3) GL11.glBindTexture(GL11.GL_TEXTURE_2D, this.mc.renderEngine.getTexture("/mods/supercraft/textures/gui/bg4.png"));
 		GL11.glColor4f(1.0F, 1.0F, 1.0F, 1.0F);
 		int[] locs = this.calcPositions();
 		this.drawTexture(locs[0], locs[1], locs[2], locs[3]);
 		if(prog >= (imageTime-transitionTime)) {
 			GL11.glPushMatrix();
 			int alpha = (prog-(imageTime-transitionTime))*2;
-			if(base == 0) GL11.glBindTexture(GL11.GL_TEXTURE_2D, this.mc.renderEngine.getTexture("/com/voidzm/supercraft/img/bg2.png"));
-			else if(base == 1) GL11.glBindTexture(GL11.GL_TEXTURE_2D, this.mc.renderEngine.getTexture("/com/voidzm/supercraft/img/bg3.png"));
-			else if(base == 2) GL11.glBindTexture(GL11.GL_TEXTURE_2D, this.mc.renderEngine.getTexture("/com/voidzm/supercraft/img/bg4.png"));
-			else if(base == 3) GL11.glBindTexture(GL11.GL_TEXTURE_2D, this.mc.renderEngine.getTexture("/com/voidzm/supercraft/img/bg.png"));
+			if(base == 0) GL11.glBindTexture(GL11.GL_TEXTURE_2D, this.mc.renderEngine.getTexture("/mods/supercraft/textures/gui/bg2.png"));
+			else if(base == 1) GL11.glBindTexture(GL11.GL_TEXTURE_2D, this.mc.renderEngine.getTexture("/mods/supercraft/textures/gui/bg3.png"));
+			else if(base == 2) GL11.glBindTexture(GL11.GL_TEXTURE_2D, this.mc.renderEngine.getTexture("/mods/supercraft/textures/gui/bg4.png"));
+			else if(base == 3) GL11.glBindTexture(GL11.GL_TEXTURE_2D, this.mc.renderEngine.getTexture("/mods/supercraft/textures/gui/bg.png"));
 			GL11.glEnable(GL11.GL_BLEND);
 			GL11.glBlendFunc(GL11.GL_SRC_ALPHA, GL11.GL_ONE_MINUS_SRC_ALPHA);
 			GL11.glColor4f(1.0F, 1.0F, 1.0F, ((float)alpha)/100);
@@ -127,13 +122,13 @@ public class SCMainMenu extends GuiScreen {
 		}
 		this.drawRect(0, 0, 150, height, 0x88000000);
 		this.drawRect(150, 0, 151, height, 0xAA000000);
-		GL11.glBindTexture(GL11.GL_TEXTURE_2D, this.mc.renderEngine.getTexture("/com/voidzm/supercraft/img/minecraft.png"));
+		GL11.glBindTexture(GL11.GL_TEXTURE_2D, this.mc.renderEngine.getTexture("/mods/supercraft/textures/gui/minecraft.png"));
 		GL11.glColor4f(1.0F, 1.0F, 1.0F, 1.0F);
 		this.drawTexture(22, 22, 106, 16);
 		for(SCGuiButton iterated : buttons) {
 			iterated.draw(mouseX, mouseY);
 		}
-		this.drawCenteredString(mc.fontRenderer, "Minecraft 1.4.7", 75, height - 22, Color.GRAY.getRGB());
+		this.drawCenteredString(mc.fontRenderer, "Minecraft 1.5", 75, height - 22, Color.GRAY.getRGB());
 	}
 	
 	private int[] calcPositions() {

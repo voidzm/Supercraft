@@ -7,6 +7,7 @@
 package com.voidzm.supercraft.item;
 
 import net.minecraft.block.Block;
+import net.minecraft.client.renderer.texture.IconRegister;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.enchantment.Enchantment;
 import net.minecraft.enchantment.EnchantmentHelper;
@@ -25,15 +26,13 @@ public class ItemAluminumShovel extends ItemSpade {
 
 	public ItemAluminumShovel(int par1) {
 		super(par1, Supercraft.aluminumTool);
-		this.setIconIndex(18);
-		this.setItemName("aluminumShovel");
+		this.setUnlocalizedName("aluminumShovel");
 		this.setCreativeTab(CreativeTabs.tabTools);
 		MinecraftForge.setToolClass(this, "shovel", 1);
 	}
 
-	@Override
-	public String getTextureFile() {
-		return CommonProxy.ITEMS_PNG;
+	public void func_94581_a(IconRegister par1IconRegister) {
+		this.iconIndex = par1IconRegister.func_94245_a("supercraft:shovelaluminum");
 	}
 	
 	public boolean onBlockDestroyed(ItemStack par1ItemStack, World par2World, int par3, int par4, int par5, int par6, EntityLiving par7EntityLiving) {

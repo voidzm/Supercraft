@@ -10,6 +10,7 @@ import com.voidzm.supercraft.CommonProxy;
 import com.voidzm.supercraft.handler.BlockHandler;
 
 import net.minecraft.block.Block;
+import net.minecraft.client.renderer.texture.IconRegister;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.effect.EntityLightningBolt;
 import net.minecraft.entity.player.EntityPlayer;
@@ -22,14 +23,12 @@ public class ItemBloodAmber extends Item {
 	public ItemBloodAmber(int id) {
 		super(id);
 		this.setMaxStackSize(64);
-		this.setIconIndex(10);
-		this.setItemName("bloodAmber");
+		this.setUnlocalizedName("bloodAmber");
 		this.setCreativeTab(CreativeTabs.tabMaterials);
 	}
 	
-	@Override
-	public String getTextureFile() {
-		return CommonProxy.ITEMS_PNG;
+	public void func_94581_a(IconRegister par1IconRegister) {
+		this.iconIndex = par1IconRegister.func_94245_a("supercraft:bloodamber");
 	}
 	
 	public boolean onItemUse(ItemStack par1ItemStack, EntityPlayer par2EntityPlayer, World par3World, int par4, int par5, int par6, int par7, float par8, float par9, float par10) {
@@ -60,15 +59,15 @@ public class ItemBloodAmber extends Item {
 				return false;
 			}
 			if(!par2EntityPlayer.capabilities.isCreativeMode) par1ItemStack.stackSize--;
-			par3World.setBlockWithNotify(par4, par5, par6, BlockHandler.blockOfTenebral.blockID);
-			par3World.setBlockWithNotify(par4+1, par5, par6, BlockHandler.burnedNightrock.blockID);
-			par3World.setBlockWithNotify(par4-1, par5, par6, BlockHandler.burnedNightrock.blockID);
-			par3World.setBlockWithNotify(par4, par5, par6+1, BlockHandler.burnedNightrock.blockID);
-			par3World.setBlockWithNotify(par4, par5, par6-1, BlockHandler.burnedNightrock.blockID);
-			par3World.setBlockWithNotify(par4+1, par5, par6+1, Block.cobblestone.blockID);
-			par3World.setBlockWithNotify(par4-1, par5, par6+1, Block.cobblestone.blockID);
-			par3World.setBlockWithNotify(par4+1, par5, par6-1, Block.cobblestone.blockID);
-			par3World.setBlockWithNotify(par4-1, par5, par6-1, Block.cobblestone.blockID);
+			par3World.func_94575_c(par4, par5, par6, BlockHandler.blockOfTenebral.blockID);
+			par3World.func_94575_c(par4+1, par5, par6, BlockHandler.burnedNightrock.blockID);
+			par3World.func_94575_c(par4-1, par5, par6, BlockHandler.burnedNightrock.blockID);
+			par3World.func_94575_c(par4, par5, par6+1, BlockHandler.burnedNightrock.blockID);
+			par3World.func_94575_c(par4, par5, par6-1, BlockHandler.burnedNightrock.blockID);
+			par3World.func_94575_c(par4+1, par5, par6+1, Block.cobblestone.blockID);
+			par3World.func_94575_c(par4-1, par5, par6+1, Block.cobblestone.blockID);
+			par3World.func_94575_c(par4+1, par5, par6-1, Block.cobblestone.blockID);
+			par3World.func_94575_c(par4-1, par5, par6-1, Block.cobblestone.blockID);
 			par3World.spawnEntityInWorld(new EntityLightningBolt(par3World, par4, par5, par6));
 			return true;
 		}

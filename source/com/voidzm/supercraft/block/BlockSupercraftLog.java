@@ -14,22 +14,24 @@ import com.voidzm.supercraft.handler.BlockHandler;
 
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
+import net.minecraft.client.renderer.texture.IconRegister;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.ItemStack;
+import net.minecraft.util.Icon;
 import net.minecraft.world.World;
 
 public class BlockSupercraftLog extends Block {
 	
 	 public static final String[] woodType = new String[] {"olive", "goldenwood", "tenebria", "tenebriaCrystal"};
 	 
+	 protected Icon[][] textures = new Icon[4][2];
+	 
 	 public BlockSupercraftLog(int par1) {
 	        super(par1, Material.wood);
-	        this.blockIndexInTexture = 5;
 	        this.setCreativeTab(CreativeTabs.tabBlock);
 	        this.setHardness(2.0F);
 	        this.setStepSound(Block.soundWoodFootstep);
-	        this.setBlockName("supercraftlog");
-	        this.setRequiresSelfNotify();
+	        this.setUnlocalizedName("supercraftlog");
 	 }
 	 
 	 public int getRenderType() {
@@ -80,28 +82,28 @@ public class BlockSupercraftLog extends Block {
 	        return var10 | var11;
 	 }
 	 
-	 public int getBlockTextureFromSideAndMetadata(int side, int meta) {
+	 public void func_94332_a(IconRegister par1IconRegister) {
+		textures[0][0] = par1IconRegister.func_94245_a("supercraft:woodolive_side");
+		textures[0][1] = par1IconRegister.func_94245_a("supercraft:woodolive_end");
+			
+		textures[1][0] = par1IconRegister.func_94245_a("supercraft:woodgoldenwood_side");
+		textures[1][1] = par1IconRegister.func_94245_a("supercraft:woodgoldenwood_end");
+		
+		textures[2][0] = par1IconRegister.func_94245_a("supercraft:woodtenebria_side");
+		textures[2][1] = par1IconRegister.func_94245_a("supercraft:woodtenebria_end");
+		
+		textures[3][0] = par1IconRegister.func_94245_a("supercraft:woodtenebria_side");
+		textures[3][1] = par1IconRegister.func_94245_a("supercraft:woodtenebria_endcrystalline");
+	}
+	 
+	 public Icon getBlockTextureFromSideAndMetadata(int side, int meta) {
 		 int logCode = meta & 3;
 		 int rotationCode = meta & 12;
-		 int logSide = 255, logEnd = 255;
-		 if(logCode == 0) {
-			 logSide = 5;
-			 logEnd = 6;
-		 }
-		 else if(logCode == 1) {
-			 logSide = 72;
-			 logEnd = 73;
-		 }
-		 else if(logCode == 2) {
-			 logSide = 100;
-			 logEnd = 102;
-		 }
-		 else if(logCode == 3) {
-			 logSide = 100;
-			 logEnd = 101;
-		 }
+		 Icon logSide, logEnd;
+		 logSide = textures[logCode][0];
+		 logEnd = textures[logCode][1];
 		 if(rotationCode == 0) {
-			 int val = 255;
+			 Icon val = null;
 			 switch(side) {
 			 case 0:
 			 case 1:
@@ -119,7 +121,7 @@ public class BlockSupercraftLog extends Block {
 			 return val;
 		 }
 		 else if(rotationCode == 4) {
-			 int val = 255;
+			 Icon val = null;
 			 switch(side) {
 			 case 0:
 			 case 1:
@@ -137,7 +139,7 @@ public class BlockSupercraftLog extends Block {
 			 return val;
 		 }
 		 else if(rotationCode == 8) {
-			 int val = 255;
+			 Icon val = null;
 			 switch(side) {
 			 case 0:
 			 case 1:
@@ -155,7 +157,7 @@ public class BlockSupercraftLog extends Block {
 			 return val;
 		 }
 		 else {
-			 int val = 255;
+			 Icon val = null;
 			 switch(side) {
 			 case 0:
 			 case 1:
@@ -201,11 +203,6 @@ public class BlockSupercraftLog extends Block {
 	 @Override
 	 public boolean isWood(World world, int x, int y, int z) {
 		 return true;
-	 }
-	 
-	 @Override
-	 public String getTextureFile() {
-			return CommonProxy.BLOCKS_PNG;
 	 }
 
 }

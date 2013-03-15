@@ -18,35 +18,36 @@ import cpw.mods.fml.relauncher.SideOnly;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockHalfSlab;
 import net.minecraft.block.material.Material;
+import net.minecraft.client.renderer.texture.IconRegister;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.ItemStack;
+import net.minecraft.util.Icon;
 
 public class BlockSupercraftSlab2 extends BlockSupercraftSlabBase {
 
 	private final String[] types = new String[] {"palestone", "nightrock"};
 	
+	protected Icon[] textures = new Icon[8];
+	
 	public BlockSupercraftSlab2(int par1) {
 		super(par1, Material.rock);
-		this.setBlockName("supercraftSlab2");
-		this.setRequiresSelfNotify();
+		this.setUnlocalizedName("supercraftSlab2");
 	}
 	
-	public int getBlockTextureFromSideAndMetadata(int par1, int par2) {
-        switch(par2 & 7) {
-        case 0:
-        	return 79;
-        case 1:
-        	return 106;
-        default:
-        	return 255;
-        }
-    }
+	public void func_94332_a(IconRegister par1IconRegister) {
+		textures[0] = par1IconRegister.func_94245_a("supercraft:palestone");
+		textures[1] = par1IconRegister.func_94245_a("supercraft:nightrock");
+	}
+	
+	public Icon getBlockTextureFromSideAndMetadata(int side, int meta) {
+		return textures[meta];
+	}
 	
 	public String getFullSlabName(int par1) {
 		if(par1 < 0 || par1 >= types.length) {
 			par1 = 0;
 		}
-		return super.getBlockName() + "." + types[par1];
+		return super.getUnlocalizedName() + "." + types[par1];
 	}
 	
 	@SideOnly(Side.CLIENT)

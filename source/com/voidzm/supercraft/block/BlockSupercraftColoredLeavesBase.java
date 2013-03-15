@@ -7,8 +7,8 @@ import cpw.mods.fml.relauncher.SideOnly;
 
 public class BlockSupercraftColoredLeavesBase extends BlockSupercraftLeavesBase {
 
-	public BlockSupercraftColoredLeavesBase(int par1, int texture) {
-		super(par1, texture);
+	public BlockSupercraftColoredLeavesBase(int par1) {
+		super(par1);
 	}
 	
 	@SideOnly(Side.CLIENT)

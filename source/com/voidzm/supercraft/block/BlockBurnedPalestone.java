@@ -6,16 +6,17 @@ import com.voidzm.supercraft.CommonProxy;
 
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
+import net.minecraft.client.renderer.texture.IconRegister;
 import net.minecraft.creativetab.CreativeTabs;
 
 public class BlockBurnedPalestone extends Block {
 
 	public BlockBurnedPalestone(int par1) {
-		super(par1, 99, Material.rock);
+		super(par1, Material.rock);
 		this.setHardness(1.0F);
 		this.setResistance(5.0F);
 		this.setStepSound(soundStoneFootstep);
-		this.setBlockName("burnedPalestone");
+		this.setUnlocalizedName("burnedPalestone");
 		this.setCreativeTab(CreativeTabs.tabBlock);
 	}
 	
@@ -29,9 +30,8 @@ public class BlockBurnedPalestone extends Block {
 		return true;
 	}
 	
-	@Override
-	public String getTextureFile() {
-		return CommonProxy.BLOCKS_PNG;
+	public void func_94332_a(IconRegister par1IconRegister) {
+		field_94336_cN = par1IconRegister.func_94245_a("supercraft:burnedpalestonebricks");
 	}
 
 }

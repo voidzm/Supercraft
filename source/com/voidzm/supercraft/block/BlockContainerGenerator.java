@@ -18,18 +18,13 @@ import net.minecraft.world.World;
 
 public class BlockContainerGenerator extends BlockContainer {
 
-	public BlockContainerGenerator(int id, int tex) {
-		super(id, tex, Material.iron);
+	public BlockContainerGenerator(int id) {
+		super(id, Material.iron);
 		this.setHardness(3.0F);
 		this.setResistance(5.0F);
 		this.setStepSound(Block.soundMetalFootstep);
-		this.setBlockName("generator");
+		this.setUnlocalizedName("generator");
 		this.setCreativeTab(Supercraft.elinvarTab);
-	}
-	
-	@Override
-	public String getTextureFile() {
-		return CommonProxy.BLOCKS_PNG;
 	}
 	
 	public void onBlockAdded(World par1World, int par2, int par3, int par4) {

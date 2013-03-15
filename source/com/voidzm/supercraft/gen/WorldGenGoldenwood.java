@@ -40,30 +40,30 @@ public class WorldGenGoldenwood extends WorldGenerator {
 		}
 		if(!canGenerate) return false;
 		for(int i = 0; i < exposedTrunk; i++) {
-			world.setBlockAndMetadata(x, y+i, z, logID, logData);
+			this.setBlockAndMetadata(world, x, y+i, z, logID, logData);
 		}
 		for(int ix = -1; ix < 2; ix++) {
 			for(int iz = -1; iz < 2; iz++) {
-				if(ix == 0 && iz == 0) world.setBlockAndMetadata(x, y+exposedTrunk, z, logID, logData);
-				else if(Math.abs(ix) == Math.abs(iz) && rand.nextInt(4) != 0) world.setBlockAndMetadata(x+ix, y+exposedTrunk, z+iz, leavesID, leavesData);
-				else if(Math.abs(ix) != Math.abs(iz)) world.setBlockAndMetadata(x+ix, y+exposedTrunk, z+iz, leavesID, leavesData);
+				if(ix == 0 && iz == 0) this.setBlockAndMetadata(world, x, y+exposedTrunk, z, logID, logData);
+				else if(Math.abs(ix) == Math.abs(iz) && rand.nextInt(4) != 0) this.setBlockAndMetadata(world, x+ix, y+exposedTrunk, z+iz, leavesID, leavesData);
+				else if(Math.abs(ix) != Math.abs(iz)) this.setBlockAndMetadata(world, x+ix, y+exposedTrunk, z+iz, leavesID, leavesData);
 			}
 		}
 		for(int ix = -1; ix < 2; ix++) {
 			for(int iz = -1; iz < 2; iz++) {
 				for(int iy = exposedTrunk+1; iy < exposedTrunk+3; iy++) {
-					if(ix == 0 && iz == 0) world.setBlockAndMetadata(x, y+iy, z, logID, logData);
-					else world.setBlockAndMetadata(x+ix, y+iy, z+iz, leavesID, leavesData);
+					if(ix == 0 && iz == 0) this.setBlockAndMetadata(world, x, y+iy, z, logID, logData);
+					else this.setBlockAndMetadata(world, x+ix, y+iy, z+iz, leavesID, leavesData);
 				}
 			}
 		}
 		for(int ix = -1; ix < 2; ix++) {
 			for(int iz = -1; iz < 2; iz++) {
-				if(ix == 0 && iz == 0) world.setBlockAndMetadata(x, y+exposedTrunk+3, z, logID, logData);
-				else if(Math.abs(ix) != Math.abs(iz)) world.setBlockAndMetadata(x+ix, y+exposedTrunk+3, z+iz, leavesID, leavesData);
+				if(ix == 0 && iz == 0) this.setBlockAndMetadata(world, x, y+exposedTrunk+3, z, logID, logData);
+				else if(Math.abs(ix) != Math.abs(iz)) this.setBlockAndMetadata(world, x+ix, y+exposedTrunk+3, z+iz, leavesID, leavesData);
 			}
 		}
-		world.setBlockAndMetadata(x, y+exposedTrunk+4, z, leavesID, leavesData);
+		this.setBlockAndMetadata(world, x, y+exposedTrunk+4, z, leavesID, leavesData);
 		return true;
 	}
 	

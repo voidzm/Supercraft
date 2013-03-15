@@ -16,7 +16,7 @@ public class ItemSupercraftSapling1 extends ItemBlock {
 	public ItemSupercraftSapling1(int par1) {
 		super(par1);
 		setHasSubtypes(true);
-		setItemName("supercraftSapling1");
+		setUnlocalizedName("supercraftSapling1");
 	}
 
 	@Override
@@ -25,8 +25,8 @@ public class ItemSupercraftSapling1 extends ItemBlock {
 	} 
 	
 	@Override
-	public String getItemNameIS(ItemStack itemstack) {
-		return getItemName() + "." + names[itemstack.getItemDamage()];
+	public String getUnlocalizedName(ItemStack itemstack) {
+		return this.getUnlocalizedName() + "." + names[itemstack.getItemDamage()];
 	}
 	
 }

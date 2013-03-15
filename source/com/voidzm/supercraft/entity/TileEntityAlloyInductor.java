@@ -372,5 +372,15 @@ public class TileEntityAlloyInductor extends TileEntity implements IInventory {
 	public int progressEssenceScaled(int par1) {
 		return par1 - ((this.essenceRemaining * par1) / (t*e));
 	}
+
+	@Override
+	public boolean func_94042_c() {
+		return false;
+	}
+
+	@Override
+	public boolean func_94041_b(int i, ItemStack itemstack) {
+		return false;
+	}
 	
 }

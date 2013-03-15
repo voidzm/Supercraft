@@ -6,6 +6,7 @@
 
 package com.voidzm.supercraft.item;
 
+import net.minecraft.client.renderer.texture.IconRegister;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
@@ -19,13 +20,11 @@ public class ItemElinvarDust extends Item {
 		super(id);
 		this.setMaxStackSize(64);
 		this.setCreativeTab(Supercraft.elinvarTab);
-		this.setIconIndex(4);
-		this.setItemName("elinvarDust");
+		this.setUnlocalizedName("elinvarDust");
 	}
 	
-	@Override
-	public String getTextureFile() {
-		return CommonProxy.ITEMS_PNG;
+	public void func_94581_a(IconRegister par1IconRegister) {
+		this.iconIndex = par1IconRegister.func_94245_a("supercraft:elinvardust");
 	}
 	
 }

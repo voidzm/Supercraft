@@ -7,6 +7,7 @@
 package com.voidzm.supercraft.item;
 
 import net.minecraft.block.Block;
+import net.minecraft.client.renderer.texture.IconRegister;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.enchantment.Enchantment;
 import net.minecraft.enchantment.EnchantmentHelper;
@@ -24,14 +25,12 @@ public class ItemAluminumSaber extends ItemSword {
 
 	public ItemAluminumSaber(int par1) {
 		super(par1, Supercraft.aluminumTool);
-		this.setIconIndex(17);
-		this.setItemName("aluminumSaber");
+		this.setUnlocalizedName("aluminumSaber");
 		this.setCreativeTab(CreativeTabs.tabCombat);
 	}
 
-	@Override
-	public String getTextureFile() {
-		return CommonProxy.ITEMS_PNG;
+	public void func_94581_a(IconRegister par1IconRegister) {
+		this.iconIndex = par1IconRegister.func_94245_a("supercraft:swordaluminum");
 	}
 	
 	public int getDamageVsEntity(Entity par1Entity) {

@@ -370,5 +370,15 @@ public class TileEntityEssentialReducer extends TileEntity implements IInventory
 		}
 		return true;
 	}
+
+	@Override
+	public boolean func_94042_c() {
+		return false;
+	}
+
+	@Override
+	public boolean func_94041_b(int i, ItemStack itemstack) {
+		return false;
+	}
 	
 }

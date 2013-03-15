@@ -17,13 +17,7 @@ public class BlockSupercraftStairs extends BlockStairs {
 		super(par1, par2Block, par3);
 		this.useNeighborBrightness[par1] = true;
 		this.setStepSound(Block.soundWoodFootstep);
-		this.setBlockName("supercraftStairs");
-		this.setRequiresSelfNotify();
-	}
-
-	@Override
-	public String getTextureFile() {
-		return CommonProxy.BLOCKS_PNG;
+		this.setUnlocalizedName("supercraftStairs");
 	}
 	
 }

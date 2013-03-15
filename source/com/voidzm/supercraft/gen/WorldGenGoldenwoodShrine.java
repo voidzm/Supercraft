@@ -42,88 +42,88 @@ public class WorldGenGoldenwoodShrine extends WorldGenerator {
 		for(int ix = -2; ix < 3; ix++) {
 			for(int iz = -2; iz < 3; iz++) {
 				if(Math.abs(ix) == Math.abs(iz) && Math.abs(ix) == 2) continue;
-				var1.setBlock(var3+ix, var4-1, var5+iz, this.randomlySelectIndefiniteBlock(var2));
+				this.setBlock(var1, var3+ix, var4-1, var5+iz, this.randomlySelectIndefiniteBlock(var2));
 			}
 		}
 		for(int ix = -1; ix < 2; ix++) {
 			for(int iz = -1; iz < 2; iz++) {
 				if(Math.abs(ix) == Math.abs(iz) && Math.abs(ix) == 1) continue;
-				var1.setBlock(var3+ix, var4-1, var5+iz, this.randomlySelectDefiniteBlock(var2));
+				this.setBlock(var1, var3+ix, var4-1, var5+iz, this.randomlySelectDefiniteBlock(var2));
 			}
 		}
 		for(int ix = -2; ix < 3; ix++) {
 			for(int iz = -2; iz < 3; iz++) {
 				if(Math.abs(ix) == Math.abs(iz) && Math.abs(ix) == 2) continue;
-				var1.setBlock(var3+ix, var4-2, var5+iz, (var1.getBlockId(var3+ix, var4-1, var5+iz) == Block.grass.blockID ? Block.dirt.blockID : BlockHandler.palestone.blockID));
+				this.setBlock(var1, var3+ix, var4-2, var5+iz, (var1.getBlockId(var3+ix, var4-1, var5+iz) == Block.grass.blockID ? Block.dirt.blockID : BlockHandler.palestone.blockID));
 			}
 		}
-		var1.setBlock(var3, var4-1, var5, BlockHandler.inscribedPalestone.blockID);
+		this.setBlock(var1, var3, var4-1, var5, BlockHandler.inscribedPalestone.blockID);
 		int openSide = var2.nextInt(4);
 		if(openSide != 0) {
 			int height = var2.nextInt(3) + 1;
 			for(int j = 1; j < 4; j++) {
-				var1.setBlock(var3+3, var4-j, var5, BlockHandler.palestoneBricks.blockID);
+				this.setBlock(var1, var3+3, var4-j, var5, BlockHandler.palestoneBricks.blockID);
 			}
 			for(int j = 0; j < height; j++) {
-				var1.setBlock(var3+3, var4+j, var5, (j == height-1 ? BlockHandler.overgrownPalestone.blockID : BlockHandler.palestoneBricks.blockID));
+				this.setBlock(var1, var3+3, var4+j, var5, (j == height-1 ? BlockHandler.overgrownPalestone.blockID : BlockHandler.palestoneBricks.blockID));
 			}
 		}
 		if(openSide != 1) {
 			int height = var2.nextInt(3) + 1;
 			for(int j = 1; j < 4; j++) {
-				var1.setBlock(var3-3, var4-j, var5, BlockHandler.palestoneBricks.blockID);
+				this.setBlock(var1, var3-3, var4-j, var5, BlockHandler.palestoneBricks.blockID);
 			}
 			for(int j = 0; j < height; j++) {
-				var1.setBlock(var3-3, var4+j, var5, (j == height-1 ? BlockHandler.overgrownPalestone.blockID : BlockHandler.palestoneBricks.blockID));
+				this.setBlock(var1, var3-3, var4+j, var5, (j == height-1 ? BlockHandler.overgrownPalestone.blockID : BlockHandler.palestoneBricks.blockID));
 			}
 		}
 		if(openSide != 2) {
 			int height = var2.nextInt(3) + 1;
 			for(int j = 1; j < 4; j++) {
-				var1.setBlock(var3, var4-j, var5+3, BlockHandler.palestoneBricks.blockID);
+				this.setBlock(var1, var3, var4-j, var5+3, BlockHandler.palestoneBricks.blockID);
 			}
 			for(int j = 0; j < height; j++) {
-				var1.setBlock(var3, var4+j, var5+3, (j == height-1 ? BlockHandler.overgrownPalestone.blockID : BlockHandler.palestoneBricks.blockID));
+				this.setBlock(var1, var3, var4+j, var5+3, (j == height-1 ? BlockHandler.overgrownPalestone.blockID : BlockHandler.palestoneBricks.blockID));
 			}
 		}
 		if(openSide != 3) {
 			int height = var2.nextInt(3) + 1;
 			for(int j = 1; j < 4; j++) {
-				var1.setBlock(var3, var4-j, var5-3, BlockHandler.palestoneBricks.blockID);
+				this.setBlock(var1, var3, var4-j, var5-3, BlockHandler.palestoneBricks.blockID);
 			}
 			for(int j = 0; j < height; j++) {
-				var1.setBlock(var3, var4+j, var5-3, (j == height-1 ? BlockHandler.overgrownPalestone.blockID : BlockHandler.palestoneBricks.blockID));
+				this.setBlock(var1, var3, var4+j, var5-3, (j == height-1 ? BlockHandler.overgrownPalestone.blockID : BlockHandler.palestoneBricks.blockID));
 			}
 		}
 		int height = var2.nextInt(3) + 1;
 		for(int j = 1; j < 4; j++) {
-			var1.setBlock(var3+2, var4-j, var5+2, BlockHandler.palestoneBricks.blockID);
+			this.setBlock(var1, var3+2, var4-j, var5+2, BlockHandler.palestoneBricks.blockID);
 		}
 		for(int j = 0; j < height; j++) {
-			var1.setBlock(var3+2, var4+j, var5+2, (j == height-1 ? BlockHandler.overgrownPalestone.blockID : BlockHandler.palestoneBricks.blockID));
+			this.setBlock(var1, var3+2, var4+j, var5+2, (j == height-1 ? BlockHandler.overgrownPalestone.blockID : BlockHandler.palestoneBricks.blockID));
 		}
 		height = var2.nextInt(3) + 1;
 		for(int j = 1; j < 4; j++) {
-			var1.setBlock(var3-2, var4-j, var5-2, BlockHandler.palestoneBricks.blockID);
+			this.setBlock(var1, var3-2, var4-j, var5-2, BlockHandler.palestoneBricks.blockID);
 		}
 		for(int j = 0; j < height; j++) {
-			var1.setBlock(var3-2, var4+j, var5-2, (j == height-1 ? BlockHandler.overgrownPalestone.blockID : BlockHandler.palestoneBricks.blockID));
+			this.setBlock(var1, var3-2, var4+j, var5-2, (j == height-1 ? BlockHandler.overgrownPalestone.blockID : BlockHandler.palestoneBricks.blockID));
 		}
 		height = var2.nextInt(3) + 1;
 		for(int j = 1; j < 4; j++) {
-			var1.setBlock(var3+2, var4-j, var5-2, BlockHandler.palestoneBricks.blockID);
+			this.setBlock(var1, var3+2, var4-j, var5-2, BlockHandler.palestoneBricks.blockID);
 		}
 		for(int j = 0; j < height; j++) {
-			var1.setBlock(var3+2, var4+j, var5-2, (j == height-1 ? BlockHandler.overgrownPalestone.blockID : BlockHandler.palestoneBricks.blockID));
+			this.setBlock(var1, var3+2, var4+j, var5-2, (j == height-1 ? BlockHandler.overgrownPalestone.blockID : BlockHandler.palestoneBricks.blockID));
 		}
 		height = var2.nextInt(3) + 1;
 		for(int j = 1; j < 4; j++) {
-			var1.setBlock(var3-2, var4-j, var5+2, BlockHandler.palestoneBricks.blockID);
+			this.setBlock(var1, var3-2, var4-j, var5+2, BlockHandler.palestoneBricks.blockID);
 		}
 		for(int j = 0; j < height; j++) {
-			var1.setBlock(var3-2, var4+j, var5+2, (j == height-1 ? BlockHandler.overgrownPalestone.blockID : BlockHandler.palestoneBricks.blockID));
+			this.setBlock(var1, var3-2, var4+j, var5+2, (j == height-1 ? BlockHandler.overgrownPalestone.blockID : BlockHandler.palestoneBricks.blockID));
 		}
-		var1.setBlock(var3, var4, var5, Block.chest.blockID);
+		this.setBlock(var1, var3, var4, var5, Block.chest.blockID);
 		TileEntityChest chestTE = (TileEntityChest)var1.getBlockTileEntity(var3, var4, var5);
 		int lootTableLength = var2.nextInt(4) + 4;
 		ItemStack[] loot = new ItemStack[lootTableLength];

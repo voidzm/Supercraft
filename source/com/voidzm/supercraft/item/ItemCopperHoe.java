@@ -11,6 +11,7 @@ import com.voidzm.supercraft.Supercraft;
 import com.voidzm.supercraft.entity.TileEntityConduit;
 
 import net.minecraft.block.Block;
+import net.minecraft.client.renderer.texture.IconRegister;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.enchantment.Enchantment;
 import net.minecraft.enchantment.EnchantmentHelper;
@@ -26,14 +27,12 @@ public class ItemCopperHoe extends ItemHoe {
 
 	public ItemCopperHoe(int par1) {
 		super(par1, Supercraft.copperTool);
-		this.setIconIndex(25);
-		this.setItemName("copperHoe");
+		this.setUnlocalizedName("copperHoe");
 		this.setCreativeTab(CreativeTabs.tabTools);
 	}
 
-	@Override
-	public String getTextureFile() {
-		return CommonProxy.ITEMS_PNG;
+	public void func_94581_a(IconRegister par1IconRegister) {
+		this.iconIndex = par1IconRegister.func_94245_a("supercraft:hoecopper");
 	}
 	
 }

@@ -10,6 +10,7 @@ import java.util.Random;
 
 import com.voidzm.supercraft.handler.BlockHandler;
 
+import net.minecraft.block.Block;
 import net.minecraft.world.World;
 import net.minecraft.world.chunk.IChunkProvider;
 import net.minecraft.world.gen.feature.WorldGenMinable;
@@ -39,14 +40,14 @@ public class WorldGenOre implements IWorldGenerator {
 			int rx = (cx * 16) + rand.nextInt(16);
 			int ry = ky + rand.nextInt(24);
 			int rz = (cz * 16) + rand.nextInt(16);
-			new SCWorldGenMinable(BlockHandler.elinvarOre.blockID, 16).generate(world, rand, rx, ry, rz);
+			new WorldGenMinable(BlockHandler.elinvarOre.blockID, 16, Block.netherrack.blockID).generate(world, rand, rx, ry, rz);
 		}
 		ky = 0; // Cobalt
 		for(int i = 0; i < 8; i++) {
 			int rx = (cx * 16) + rand.nextInt(16);
 			int ry = ky + rand.nextInt(24);
 			int rz = (cz * 16) + rand.nextInt(16);
-			new SCWorldGenMinable(BlockHandler.cobaltOre.blockID, 4).generate(world, rand, rx, ry, rz);
+			new WorldGenMinable(BlockHandler.cobaltOre.blockID, 4, Block.netherrack.blockID).generate(world, rand, rx, ry, rz);
 		}
 	}
 	

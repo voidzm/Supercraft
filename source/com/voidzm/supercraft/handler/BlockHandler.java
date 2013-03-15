@@ -125,7 +125,6 @@ public class BlockHandler {
 		this.populateLanguage();
 		this.registerBlocks();
 		this.initializeLanguage();
-		this.overrideDefaultTextures();
 		System.out.println("[Supercraft] " + languageHandler.count() + " blocks added.");
 	}
 	
@@ -335,9 +334,9 @@ public class BlockHandler {
 		supercraftSlab1 = new BlockSupercraftSlab1(this.nextBlockID());
 		supercraftSlab2 = new BlockSupercraftSlab2(this.nextBlockID());
 		
-		oliveStairs = new BlockSupercraftStairs(this.nextBlockID(), supercraftPlanks, 0).setBlockName("oliveStairs");
-		goldenwoodStairs = new BlockSupercraftStairs(this.nextBlockID(), supercraftPlanks, 1).setBlockName("goldenwoodStairs");
-		tenebriaStairs = new BlockSupercraftStairs(this.nextBlockID(), supercraftPlanks, 2).setBlockName("tenebriaStairs");
+		oliveStairs = new BlockSupercraftStairs(this.nextBlockID(), supercraftPlanks, 0).setUnlocalizedName("oliveStairs");
+		goldenwoodStairs = new BlockSupercraftStairs(this.nextBlockID(), supercraftPlanks, 1).setUnlocalizedName("goldenwoodStairs");
+		tenebriaStairs = new BlockSupercraftStairs(this.nextBlockID(), supercraftPlanks, 2).setUnlocalizedName("tenebriaStairs");
 		
 		// Aluminum Material
 		
@@ -383,15 +382,15 @@ public class BlockHandler {
 		
 		// Supercraft Flowers
 		
-		bluebells = new BlockSupercraftFlower(this.nextBlockID(), 76).setBlockName("bluebells");
-		daisies = new BlockSupercraftFlower(this.nextBlockID(), 77).setBlockName("daisies");
-		snapdragon = new BlockSupercraftFlower(this.nextBlockID(), 116).setBlockName("snapdragon");
+		bluebells = new BlockSupercraftFlower(this.nextBlockID(), "supercraft:bluebells").setUnlocalizedName("bluebells");
+		daisies = new BlockSupercraftFlower(this.nextBlockID(), "supercraft:daisies").setUnlocalizedName("daisies");
+		snapdragon = new BlockSupercraftFlower(this.nextBlockID(), "supercraft:snapdragon").setUnlocalizedName("snapdragon");
 		
 		// Palestone
 		
 		palestone = new BlockPalestone(this.nextBlockID());
 		palestoneBricks = new BlockPalestoneBricks(this.nextBlockID());
-		palestoneStairs = new BlockSupercraftStairs(this.nextBlockID(), palestoneBricks, 0).setBlockName("palestoneStairs");
+		palestoneStairs = new BlockSupercraftStairs(this.nextBlockID(), palestoneBricks, 0).setUnlocalizedName("palestoneStairs");
 		inscribedPalestone = new BlockInscribedPalestone(this.nextBlockID());
 		blockOfGoldenwood = new BlockGoldenwood(this.nextBlockID());
 		overgrownPalestone = new BlockOvergrownPalestone(this.nextBlockID());
@@ -401,7 +400,7 @@ public class BlockHandler {
 		
 		nightrock = new BlockNightrock(this.nextBlockID());
 		nightrockBricks = new BlockNightrockBricks(this.nextBlockID());
-		nightrockStairs = new BlockSupercraftStairs(this.nextBlockID(), nightrockBricks, 0).setBlockName("nightrockStairs");
+		nightrockStairs = new BlockSupercraftStairs(this.nextBlockID(), nightrockBricks, 0).setUnlocalizedName("nightrockStairs");
 		inscribedNightrock = new BlockInscribedNightrock(this.nextBlockID());
 		blockOfTenebral = new BlockTenebral(this.nextBlockID());
 		burnedNightrock = new BlockBurnedNightrock(this.nextBlockID());
@@ -740,13 +739,6 @@ public class BlockHandler {
 		LanguageRegistry.addName(lithiumOre, (String)this.languageHandler.getString(lithiumOre));
 		LanguageRegistry.addName(lithiumBlock, (String)this.languageHandler.getString(lithiumBlock));
 		
-	}
-	
-	private void overrideDefaultTextures() {
-		Block.blockGold.setTextureFile(ClientProxy.BLOCKS_PNG);
-		Block.blockGold.blockIndexInTexture = 52;
-		Block.blockDiamond.setTextureFile(ClientProxy.BLOCKS_PNG);
-		Block.blockDiamond.blockIndexInTexture = 53;
 	}
 	
 	private int nextBlockID() {

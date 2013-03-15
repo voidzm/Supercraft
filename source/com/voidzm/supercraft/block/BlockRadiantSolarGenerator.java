@@ -1,6 +1,8 @@
 package com.voidzm.supercraft.block;
 
+import net.minecraft.client.renderer.texture.IconRegister;
 import net.minecraft.tileentity.TileEntity;
+import net.minecraft.util.Icon;
 import net.minecraft.world.World;
 
 import com.voidzm.supercraft.entity.TileEntityConduit;
@@ -10,15 +12,23 @@ import com.voidzm.supercraft.protocol.IGenerator.GeneratorSide;
 
 public class BlockRadiantSolarGenerator extends BlockContainerGenerator implements IGenerator {
 
+	protected Icon textureTop, textureSide, textureBottom;
+	
 	public BlockRadiantSolarGenerator(int id) {
-		super(id, 124);
-		this.setBlockName("radiantSolarGenerator");
+		super(id);
+		this.setUnlocalizedName("radiantSolarGenerator");
 	}
 
-	public int getBlockTextureFromSideAndMetadata(int side, int meta) {
-		if(side == 0) return 126;
-		else if(side == 1) return 124;
-		else return 125;
+	public void func_94332_a(IconRegister par1IconRegister) {
+		textureTop = par1IconRegister.func_94245_a("supercraft:radiantsolargenerator_top");
+		textureSide = par1IconRegister.func_94245_a("supercraft:radiantsolargenerator_side");
+		textureBottom = par1IconRegister.func_94245_a("supercraft:copperboundstone_beveled");
+	}
+	
+	public Icon getBlockTextureFromSideAndMetadata(int side, int meta) {
+		if(side == 0) return textureBottom;
+		else if(side == 1) return textureTop;
+		else return textureSide;
 	}
 	
 	@Override

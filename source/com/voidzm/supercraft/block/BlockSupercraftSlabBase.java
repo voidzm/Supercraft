@@ -31,13 +31,8 @@ public class BlockSupercraftSlabBase extends BlockHalfSlab {
 		this.setResistance(5.0F);
 		if(par2 == Material.wood) this.setStepSound(Block.soundWoodFootstep);
 		else this.setStepSound(Block.soundStoneFootstep);
-		this.setBlockName("supercraftSlab");
-		this.setRequiresSelfNotify();
+		this.setUnlocalizedName("supercraftSlab");
 	}
-	
-	public int getBlockTextureFromSide(int par1) {
-        return this.getBlockTextureFromSideAndMetadata(par1, 0);
-    }
 	
 	protected ItemStack createStackedBlock(int par1) {
         return new ItemStack(this.blockID, 2, par1 & 7);
@@ -46,19 +41,6 @@ public class BlockSupercraftSlabBase extends BlockHalfSlab {
 	public String getFullSlabName(int par1) {
 		return null;
     }
-	
-	/*@SideOnly(Side.CLIENT)
-    public void getSubBlocks(int par1, CreativeTabs par2CreativeTabs, List par3List) {
-        if(par1 == BlockHandler.supercraftWoodSlab.blockID) {
-        	par3List.add(new ItemStack(par1, 1, 0));
-        	par3List.add(new ItemStack(par1, 1, 1));
-        }
-    }*/
-	
-	@Override
-	public String getTextureFile() {
-		return CommonProxy.BLOCKS_PNG;
-	}
-	
+
 }
 

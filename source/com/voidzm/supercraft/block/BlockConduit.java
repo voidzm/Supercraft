@@ -31,6 +31,7 @@ import cpw.mods.fml.relauncher.SideOnly;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockContainer;
 import net.minecraft.block.material.Material;
+import net.minecraft.client.renderer.texture.IconRegister;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.item.EntityItem;
@@ -40,31 +41,48 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.network.packet.Packet250CustomPayload;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.AxisAlignedBB;
+import net.minecraft.util.Icon;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.IWorldAccess;
 import net.minecraft.world.World;
 
-public class BlockConduit extends BlockContainer {
+public class BlockConduit extends Block {
+	
+	public Icon[] textures = new Icon[13];
+	
+	public static String[] texturePaths = new String[] {"conduitwood.png", "conduitstone.png", "conduitiron.png", "conduitcopper.png", "conduitaluminum.png",
+		"conduitsilver.png", "conduitgold.png", "conduitelectrum.png", "conduitdiamond.png",
+		"conduitcobalt.png", "conduitplatinum.png", "conduittantalum.png", "conduitlithium.png"};
 	
 	public BlockConduit(int par1) {
-		super(par1, 32, Material.iron);
+		super(par1, Material.iron);
 		this.setHardness(1.0F);
 		this.setStepSound(Block.soundStoneFootstep);
-		this.setBlockName("conduit");
+		this.setUnlocalizedName("conduit");
 		this.setCreativeTab(Supercraft.elinvarTab);
 		this.setLightOpacity(0);
 		this.useNeighborBrightness[par1] = true;
-		this.setRequiresSelfNotify();
 		this.setTickRandomly(true);
 	}
 	
-	@Override
-	public String getTextureFile() {
-		return CommonProxy.BLOCKS_PNG;
+	public void func_94332_a(IconRegister par1IconRegister) {
+		textures[0] = par1IconRegister.func_94245_a("supercraft:conduitwood");
+		textures[1] = par1IconRegister.func_94245_a("supercraft:conduitstone");
+		textures[2] = par1IconRegister.func_94245_a("supercraft:conduitiron");
+		textures[3] = par1IconRegister.func_94245_a("supercraft:conduitcopper");
+		textures[4] = par1IconRegister.func_94245_a("supercraft:conduitaluminum");
+		textures[5] = par1IconRegister.func_94245_a("supercraft:conduitsilver");
+		textures[6] = par1IconRegister.func_94245_a("supercraft:conduitgold");
+		textures[7] = par1IconRegister.func_94245_a("supercraft:conduitelectrum");
+		textures[8] = par1IconRegister.func_94245_a("supercraft:conduitdiamond");
+		textures[9] = par1IconRegister.func_94245_a("supercraft:conduitcobalt");
+		textures[10] = par1IconRegister.func_94245_a("supercraft:conduitplatinum");
+		textures[11] = par1IconRegister.func_94245_a("supercraft:conduittantalum");
+		textures[12] = par1IconRegister.func_94245_a("supercraft:conduitlithium");
 	}
 	
-	public int getBlockTextureFromSideAndMetadata(int par1, int par2) {
-		return this.blockIndexInTexture+par2;
+	public Icon getBlockTextureFromSideAndMetadata(int par1, int par2) {
+		return this.textures[par2];
 	}
 	
 	public void updateTick(World par1World, int par2, int par3, int par4, Random par5Random) {
@@ -74,7 +92,7 @@ public class BlockConduit extends BlockContainer {
 			if(te == null) return;
 			if(te.powerLevel() > te.limitForType(te.conduitType())) {
 				par1World.removeBlockTileEntity(par2, par3, par4);
-				par1World.setBlockWithNotify(par2, par3, par4, 0);
+				par1World.func_94575_c(par2, par3, par4, 0);
 				par1World.createExplosion(new EntityItem(par1World), (double)par2, (double)par3, (double)par4, 1.0F, true);
 			}
 		}
@@ -136,6 +154,9 @@ public class BlockConduit extends BlockContainer {
 		// net of conduits, but always recovers itself within 1-2 secs.
 		
 		TileEntityConduit te = (TileEntityConduit)par1World.getBlockTileEntity(par2, par3, par4);
+		if(te == null) {
+			return;
+		}
 		int i = 0;
 		int currentPower = te.powerLevel();
 		int maxPowerFound = 0;
@@ -261,18 +282,13 @@ public class BlockConduit extends BlockContainer {
 		return false;
 	}
 	
+	@Override
 	public boolean hasTileEntity(int meta) {
 		return true;
 	}
 	
-
 	@Override
-	public TileEntity createNewTileEntity(World var1) {
-		System.out.println("You called the wrong create function, Minecraft.");
-		return null;
-	}
-	
-	public TileEntity createNewTileEntity(World world, int metadata) {
+	public TileEntity createTileEntity(World world, int metadata) {
 		switch(metadata) {
 		case 0:
 			return new TileEntityConduit(CONDUIT_TYPE.WOOD);

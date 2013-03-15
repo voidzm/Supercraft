@@ -8,22 +8,26 @@ import com.voidzm.supercraft.entity.TileEntityEssentialReducer;
 
 import net.minecraft.block.BlockContainer;
 import net.minecraft.block.material.Material;
+import net.minecraft.client.renderer.texture.IconRegister;
 import net.minecraft.entity.item.EntityItem;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.inventory.IInventory;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.tileentity.TileEntity;
+import net.minecraft.util.Icon;
 import net.minecraft.world.World;
 
 public class BlockEssentialReducer extends BlockContainer {
 
+	protected Icon textureTop, textureSide, textureBottom;
+	
 	public BlockEssentialReducer(int id) {
-		super(id, 119, Material.rock);
+		super(id, Material.rock);
 		this.setHardness(3.0F);
 		this.setResistance(15.0F);
 		this.setStepSound(soundStoneFootstep);
-		this.setBlockName("essentialReducer");
+		this.setUnlocalizedName("essentialReducer");
 		this.setCreativeTab(Supercraft.elinvarTab);
 	}
 	
@@ -58,7 +62,7 @@ public class BlockEssentialReducer extends BlockContainer {
 				float rz = rand.nextFloat() * 0.8F + 0.1F;
 				EntityItem entityItem = new EntityItem(world, x+rx, y+ry, z+rz, new ItemStack(stack.itemID, stack.stackSize, stack.getItemDamage()));
 				if(stack.hasTagCompound()) {
-					entityItem.func_92014_d().setTagCompound((NBTTagCompound)stack.getTagCompound().copy());
+					entityItem.getEntityItem().setTagCompound((NBTTagCompound)stack.getTagCompound().copy());
 				}
 				float factor = 0.05F;
 				entityItem.motionX = rand.nextGaussian() * factor;
@@ -75,11 +79,6 @@ public class BlockEssentialReducer extends BlockContainer {
 		return new TileEntityEssentialReducer();
 	}
 	
-	@Override
-	public String getTextureFile() {
-		return CommonProxy.BLOCKS_PNG;
-	}
-	
 	public void onBlockAdded(World par1World, int par2, int par3, int par4) {
 		this.doChecks(par1World, par2, par3, par4);
 	}
@@ -94,10 +93,16 @@ public class BlockEssentialReducer extends BlockContainer {
 		te.doUpdateCheck = true;
 	}
 	
-	public int getBlockTextureFromSideAndMetadata(int side, int meta) {
-		if(side == 0) return 122;
-		else if(side == 1) return 120;
-		else return 121;
+	public void func_94332_a(IconRegister par1IconRegister) {
+		textureTop = par1IconRegister.func_94245_a("supercraft:essentialreducer_top");
+		textureSide = par1IconRegister.func_94245_a("supercraft:essentialreducer_side");
+		textureBottom = par1IconRegister.func_94245_a("supercraft:ironboundstone_beveled");
+	}
+	
+	public Icon getBlockTextureFromSideAndMetadata(int side, int meta) {
+		if(side == 0) return textureBottom;
+		else if(side == 1) return textureTop;
+		else return textureSide;
 	}
 	
 }

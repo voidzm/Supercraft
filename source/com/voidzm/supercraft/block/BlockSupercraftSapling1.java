@@ -8,26 +8,28 @@ import com.voidzm.supercraft.gen.WorldGenOlive;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
+import net.minecraft.client.renderer.texture.IconRegister;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.ItemStack;
+import net.minecraft.util.Icon;
 import net.minecraft.world.World;
 import net.minecraft.world.gen.feature.WorldGenerator;
 import net.minecraftforge.event.terraingen.TerrainGen;
 
 public class BlockSupercraftSapling1 extends BlockSupercraftSaplingBase {
 
+	protected Icon[] textures = new Icon[4];
+	
 	public BlockSupercraftSapling1(int par1) {
-		super(par1, 8);
+		super(par1);
 	}
 	
-	public int getBlockTextureFromSideAndMetadata(int par1, int par2) {
-		int par3 = par2 & 3;
-		switch(par3) {
-		case 0:
-			return 8;
-		default:
-			return this.blockIndexInTexture;
-		}
+	public void func_94332_a(IconRegister par1IconRegister) {
+		textures[0] = par1IconRegister.func_94245_a("supercraft:saplingolive");
+	}
+	
+	public Icon getBlockTextureFromSideAndMetadata(int side, int meta) {
+		return textures[meta];
 	}
 	
 	@Override

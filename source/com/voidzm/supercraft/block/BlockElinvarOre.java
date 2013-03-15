@@ -12,23 +12,23 @@ import com.voidzm.supercraft.CommonProxy;
 import com.voidzm.supercraft.handler.ItemHandler;
 
 import net.minecraft.block.BlockOre;
+import net.minecraft.client.renderer.texture.IconRegister;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.ItemStack;
 
 public class BlockElinvarOre extends BlockOre {
 
 	public BlockElinvarOre(int par1) {
-		super(par1, 12);
+		super(par1);
 		this.setHardness(1.0F);
 		this.setResistance(3.0F);
 		this.setStepSound(soundStoneFootstep);
 		this.setCreativeTab(CreativeTabs.tabBlock);
-		this.setBlockName("elinvarOre");
+		this.setUnlocalizedName("elinvarOre");
 	}
 	
-	@Override
-	public String getTextureFile() {
-		return CommonProxy.BLOCKS_PNG;
+	public void func_94332_a(IconRegister par1IconRegister) {
+		field_94336_cN = par1IconRegister.func_94245_a("supercraft:oreelinvar");
 	}
 	
 	@Override

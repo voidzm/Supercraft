@@ -6,6 +6,7 @@
 
 package com.voidzm.supercraft.item;
 
+import net.minecraft.block.Block;
 import net.minecraft.item.ItemBlock;
 import net.minecraft.item.ItemStack;
 
@@ -16,7 +17,7 @@ public class ItemConduit extends ItemBlock {
 	public ItemConduit(int par1) {
 		super(par1);
 		setHasSubtypes(true);
-		setItemName("conduit");
+		setUnlocalizedName("conduit");
 	}
 
 	@Override
@@ -25,8 +26,8 @@ public class ItemConduit extends ItemBlock {
 	} 
 	
 	@Override
-	public String getItemNameIS(ItemStack itemstack) {
-		return getItemName() + "." + names[itemstack.getItemDamage()];
+	public String getUnlocalizedName(ItemStack itemstack) {
+		return this.getUnlocalizedName() + "." + names[itemstack.getItemDamage()];
 	}
 	
 }

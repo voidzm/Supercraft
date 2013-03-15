@@ -19,17 +19,12 @@ import net.minecraft.world.IBlockAccess;
 public class BlockOrnateGlass extends BlockBreakable {
 
 	public BlockOrnateGlass(int id) {
-		super(id, 2, Material.glass, false);
+		super(id, "supercraft:ornateglass", Material.glass, false);
 		this.setHardness(10.0F);
 		this.setResistance(1.0F);
 		this.setStepSound(Block.soundGlassFootstep);
-		this.setBlockName("ornateGlass");
+		this.setUnlocalizedName("ornateGlass");
 		this.setCreativeTab(CreativeTabs.tabBlock);
-	}
-	
-	@Override
-	public String getTextureFile() {
-		return CommonProxy.BLOCKS_PNG;
 	}
 	
 	public int quantityDropped(Random random) {

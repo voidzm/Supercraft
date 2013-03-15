@@ -8,23 +8,23 @@ import com.voidzm.supercraft.handler.BlockHandler;
 
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
+import net.minecraft.client.renderer.texture.IconRegister;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.world.World;
 
 public class BlockIronboundStone extends Block {
 
 	public BlockIronboundStone(int par1) {
-		super(par1, 119, Material.rock);
+		super(par1, Material.rock);
 		this.setHardness(3.0F);
 		this.setResistance(15.0F);
 		this.setStepSound(soundStoneFootstep);
-		this.setBlockName("ironboundStone");
+		this.setUnlocalizedName("ironboundStone");
 		this.setCreativeTab(Supercraft.elinvarTab);
 	}
 	
-	@Override
-	public String getTextureFile() {
-		return CommonProxy.BLOCKS_PNG;
+	public void func_94332_a(IconRegister par1IconRegister) {
+		field_94336_cN = par1IconRegister.func_94245_a("supercraft:ironboundstone");
 	}
 
 }

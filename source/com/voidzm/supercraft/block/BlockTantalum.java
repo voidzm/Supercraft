@@ -10,22 +10,22 @@ import com.voidzm.supercraft.CommonProxy;
 
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
+import net.minecraft.client.renderer.texture.IconRegister;
 import net.minecraft.creativetab.CreativeTabs;
 
 public class BlockTantalum extends Block {
 
 	public BlockTantalum(int id) {
-		super(id, 138, Material.rock);
+		super(id, Material.rock);
 		this.setHardness(3.0F);
 		this.setResistance(5.0F);
 		this.setStepSound(Block.soundStoneFootstep);
-		this.setBlockName("tantalumBlock");
+		this.setUnlocalizedName("tantalumBlock");
 		this.setCreativeTab(CreativeTabs.tabBlock);
 	}
 	
-	@Override
-	public String getTextureFile() {
-		return CommonProxy.BLOCKS_PNG;
+	public void func_94332_a(IconRegister par1IconRegister) {
+		field_94336_cN = par1IconRegister.func_94245_a("supercraft:blocktantalum");
 	}
 	
 }

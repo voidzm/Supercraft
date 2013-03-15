@@ -13,6 +13,7 @@ import cpw.mods.fml.relauncher.SideOnly;
 import net.minecraft.block.Block;
 import net.minecraft.item.ItemBlock;
 import net.minecraft.item.ItemStack;
+import net.minecraft.util.Icon;
 
 public class ItemSupercraftSapling2 extends ItemBlock {
 
@@ -21,7 +22,7 @@ public class ItemSupercraftSapling2 extends ItemBlock {
 	public ItemSupercraftSapling2(int par1) {
 		super(par1);
 		setHasSubtypes(true);
-		setItemName("supercraftSapling2");
+		setUnlocalizedName("supercraftSapling2");
 	}
 
 	@Override
@@ -30,13 +31,13 @@ public class ItemSupercraftSapling2 extends ItemBlock {
 	} 
 	
 	@Override
-	public String getItemNameIS(ItemStack itemstack) {
-		return getItemName() + "." + names[itemstack.getItemDamage()];
+	public String getUnlocalizedName(ItemStack itemstack) {
+		return this.getUnlocalizedName() + "." + names[itemstack.getItemDamage()];
 	}
 	
 	@Override
 	@SideOnly(Side.CLIENT)
-	public int getIconFromDamage(int par1) {
+	public Icon getIconFromDamage(int par1) {
 		return BlockHandler.supercraftSapling2.getBlockTextureFromSideAndMetadata(0, par1);
 	}
 	

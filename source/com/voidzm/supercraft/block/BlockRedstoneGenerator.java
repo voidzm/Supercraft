@@ -8,7 +8,9 @@ package com.voidzm.supercraft.block;
 
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
+import net.minecraft.client.renderer.texture.IconRegister;
 import net.minecraft.creativetab.CreativeTabs;
+import net.minecraft.util.Icon;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 
@@ -17,15 +19,23 @@ import com.voidzm.supercraft.protocol.IGenerator;
 
 public class BlockRedstoneGenerator extends BlockGenerator implements IGenerator {
 
+	protected Icon textureTop, textureSide, textureBottom;
+	
 	public BlockRedstoneGenerator(int id) {
-		super(id, 69);
-		this.setBlockName("redstoneGenerator");
+		super(id);
+		this.setUnlocalizedName("redstoneGenerator");
 	}
 	
-	public int getBlockTextureFromSideAndMetadata(int side, int meta) {
-		if(side == 0) return 70;
-		else if(side == 1) return 71;
-		else return 69;
+	public void func_94332_a(IconRegister par1IconRegister) {
+		textureTop = par1IconRegister.func_94245_a("supercraft:ironboundstone_beveled");
+		textureSide = par1IconRegister.func_94245_a("supercraft:redstoneconversiongenerator_side");
+		textureBottom = par1IconRegister.func_94245_a("supercraft:stone_beveled");
+	}
+	
+	public Icon getBlockTextureFromSideAndMetadata(int side, int meta) {
+		if(side == 0) return textureBottom;
+		else if(side == 1) return textureTop;
+		else return textureSide;
 	}
 
 	@Override
@@ -34,7 +44,7 @@ public class BlockRedstoneGenerator extends BlockGenerator implements IGenerator
 	}
 	
 	private boolean shouldOutputPowerAt(World world, int x, int y, int z) {
-		if(world.isBlockIndirectlyGettingPowered(x, y, z) || world.isBlockGettingPowered(x, y, z)) {
+		if(world.isBlockIndirectlyGettingPowered(x, y, z)) {
 			return true;
 		}
 		else return false;
@@ -50,11 +60,11 @@ public class BlockRedstoneGenerator extends BlockGenerator implements IGenerator
 	public void updateState(World par1World, int par2, int par3, int par4) {
 		if(this.shouldOutputPowerAt(par1World, par2, par3, par4)) {
 			if(par1World.getBlockMetadata(par2, par3, par4) == 0) {
-				par1World.setBlockMetadataWithNotify(par2, par3, par4, 1);
+				par1World.setBlockMetadataWithNotify(par2, par3, par4, 1, 3);
 			}
 		}
 		else if(par1World.getBlockMetadata(par2, par3, par4) == 1) {
-			par1World.setBlockMetadataWithNotify(par2, par3, par4, 0);
+			par1World.setBlockMetadataWithNotify(par2, par3, par4, 0, 3);
 		}
 	}
 

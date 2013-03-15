@@ -10,28 +10,29 @@ import com.voidzm.supercraft.gen.WorldGenTenebria;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
+import net.minecraft.client.renderer.texture.IconRegister;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.ItemStack;
+import net.minecraft.util.Icon;
 import net.minecraft.world.World;
 import net.minecraft.world.gen.feature.WorldGenerator;
 import net.minecraftforge.event.terraingen.TerrainGen;
 
 public class BlockSupercraftSapling2 extends BlockSupercraftSaplingBase {
 
+	protected Icon[] textures = new Icon[4];
+	
 	public BlockSupercraftSapling2(int par1) {
-		super(par1, 75);
+		super(par1);
 	}
 	
-	public int getBlockTextureFromSideAndMetadata(int par1, int par2) {
-		int par3 = par2 & 3;
-		switch(par3) {
-		case 0:
-			return 75;
-		case 1:
-			return 104;
-		default:
-			return this.blockIndexInTexture;
-		}
+	public void func_94332_a(IconRegister par1IconRegister) {
+		textures[0] = par1IconRegister.func_94245_a("supercraft:saplinggoldenwood");
+		textures[1] = par1IconRegister.func_94245_a("supercraft:saplingtenebria");
+	}
+	
+	public Icon getBlockTextureFromSideAndMetadata(int side, int meta) {
+		return textures[meta];
 	}
 	
 	@Override

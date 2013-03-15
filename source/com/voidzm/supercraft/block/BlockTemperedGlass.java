@@ -13,23 +13,19 @@ import com.voidzm.supercraft.CommonProxy;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockBreakable;
 import net.minecraft.block.material.Material;
+import net.minecraft.client.renderer.texture.IconRegister;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.world.IBlockAccess;
 
 public class BlockTemperedGlass extends BlockBreakable {
 
 	public BlockTemperedGlass(int id) {
-		super(id, 1, Material.glass, false);
+		super(id, "supercraft:temperedglass", Material.glass, false);
 		this.setHardness(0.1F);
 		this.setResistance(30.0F);
 		this.setStepSound(Block.soundGlassFootstep);
-		this.setBlockName("temperedGlass");
+		this.setUnlocalizedName("temperedGlass");
 		this.setCreativeTab(CreativeTabs.tabBlock);
-	}
-	
-	@Override
-	public String getTextureFile() {
-		return CommonProxy.BLOCKS_PNG;
 	}
 	
 	public int quantityDropped(Random random) {

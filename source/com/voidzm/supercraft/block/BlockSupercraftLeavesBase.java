@@ -14,6 +14,7 @@ import net.minecraft.block.BlockLeavesBase;
 import net.minecraft.block.material.Material;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.ItemStack;
+import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 import net.minecraftforge.common.IShearable;
 
@@ -22,19 +23,14 @@ public class BlockSupercraftLeavesBase extends BlockLeavesBase implements IShear
 	protected int textureIndex;
 	int[] adjacentTreeBlocks;
 	
-	public BlockSupercraftLeavesBase(int par1, int texture) {
-		super(par1, texture, Material.leaves, false);
-		textureIndex = texture;
-		this.blockIndexInTexture = texture;
+	public BlockSupercraftLeavesBase(int par1) {
+		super(par1, Material.leaves, false);
 		this.setTickRandomly(true);
 		this.setCreativeTab(CreativeTabs.tabDecorations);
-		if(FMLCommonHandler.instance().getEffectiveSide() == Side.CLIENT) this.setGraphics();
 		this.setHardness(0.2F);
 		this.setLightOpacity(1);
 		this.setStepSound(Block.soundGrassFootstep);
-		this.setBlockName("supercraftLeavesBase");
-		this.setRequiresSelfNotify();
-	
+		this.setUnlocalizedName("supercraftLeavesBase");
 	}
 
 	@Override
@@ -50,18 +46,13 @@ public class BlockSupercraftLeavesBase extends BlockLeavesBase implements IShear
 	}
 	
 	@Override
-	public String getTextureFile() {
-		return CommonProxy.BLOCKS_PNG;
-	}
-	
-	@Override
 	public boolean isLeaves(World world, int x, int y, int z) {
 		return true;
 	}
 	
 	@Override
 	public void beginLeavesDecay(World world, int x, int y, int z) {
-		world.setBlockMetadata(x, y, z, world.getBlockMetadata(x, y, z) | 8);
+		world.setBlockMetadataWithNotify(x, y, z, world.getBlockMetadata(x, y, z) | 8, 3);
 	}
 	
 	@Override
@@ -69,31 +60,8 @@ public class BlockSupercraftLeavesBase extends BlockLeavesBase implements IShear
 		return new ItemStack(this.blockID, 1, par1 & 3);
 	}
 	
-	@SideOnly(Side.CLIENT)
-	public void setGraphicsLevel(boolean par1) {
-		this.graphicsLevel = par1;
-		this.blockIndexInTexture = this.textureIndex + (par1 ? 0 : 1);
-	}
-	
-	public int getBlockTextureFromSideAndMetadata(int par1, int par2) {
-		int leavesCode = par2 & 3;
-		if(leavesCode == 0) {
-			return this.blockIndexInTexture;
-		}
-		else if(leavesCode == 1) {
-			return this.blockIndexInTexture+2;
-		}
-		else if(leavesCode == 2) {
-			return this.blockIndexInTexture+4;
-		}
-		else if(leavesCode == 3) {
-			return this.blockIndexInTexture+6;
-		}
-		else return 255;
-	}
-	
 	public boolean isOpaqueCube() {
-		return !this.graphicsLevel;
+		return false;
 	}
 	
 	public int damageDropped(int par1) {
@@ -116,7 +84,7 @@ public class BlockSupercraftLeavesBase extends BlockLeavesBase implements IShear
 	
 	private void removeLeaves(World par1World, int par2, int par3, int par4) {
 		this.dropBlockAsItem(par1World, par2, par3, par4, par1World.getBlockMetadata(par2, par3, par4), 0);
-		par1World.setBlockWithNotify(par2, par3, par4, 0);
+		par1World.func_94575_c(par2, par3, par4, 0);
 	}
 	
 	@SideOnly(Side.CLIENT)
@@ -200,7 +168,7 @@ public class BlockSupercraftLeavesBase extends BlockLeavesBase implements IShear
 				}
 				var12 = this.adjacentTreeBlocks[var11 * var10 + var11 * var9 + var11];
 				if(var12 >= 0) {
-					par1World.setBlockMetadata(par2, par3, par4, var6 & -9);
+					par1World.setBlockMetadataWithNotify(par2, par3, par4, var6 & -9, 3);
 				}
 				else {
 					this.removeLeaves(par1World, par2, par3, par4);
@@ -226,14 +194,14 @@ public class BlockSupercraftLeavesBase extends BlockLeavesBase implements IShear
 		}
 	}
 	
-	@SideOnly(Side.CLIENT)
-	private void setGraphics() {
-		this.setGraphicsLevel(true);
-	}
-	
 	public int onBlockPlaced(World par1World, int par2, int par3, int par4, int par5, float par6, float par7, float par8, int par9) {
 		// Fix for placed leaves in creative sometimes decaying
 		return par9 | 4;
+	}
+	
+	@Override
+	public boolean shouldSideBeRendered(IBlockAccess par1IBlockAccess, int par2, int par3, int par4, int par5) {
+		return true;
 	}
 	
 }

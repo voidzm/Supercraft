@@ -4,12 +4,14 @@ import java.util.Random;
 
 import net.minecraft.block.BlockContainer;
 import net.minecraft.block.material.Material;
+import net.minecraft.client.renderer.texture.IconRegister;
 import net.minecraft.entity.item.EntityItem;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.inventory.IInventory;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.tileentity.TileEntity;
+import net.minecraft.util.Icon;
 import net.minecraft.world.World;
 
 import com.voidzm.supercraft.CommonProxy;
@@ -17,14 +19,19 @@ import com.voidzm.supercraft.Supercraft;
 import com.voidzm.supercraft.entity.TileEntityAlloyInductor;
 import com.voidzm.supercraft.entity.TileEntityEssentialReducer;
 
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
+
 public class BlockAlloyInductor extends BlockContainer {
 
+	protected Icon textureTop, textureSide, textureBottom;
+	
 	public BlockAlloyInductor(int id) {
-		super(id, 119, Material.rock);
+		super(id, Material.rock);
 		this.setHardness(3.0F);
 		this.setResistance(15.0F);
 		this.setStepSound(soundStoneFootstep);
-		this.setBlockName("alloyInductor");
+		this.setUnlocalizedName("alloyInductor");
 		this.setCreativeTab(Supercraft.elinvarTab);
 	}
 	
@@ -59,7 +66,7 @@ public class BlockAlloyInductor extends BlockContainer {
 				float rz = rand.nextFloat() * 0.8F + 0.1F;
 				EntityItem entityItem = new EntityItem(world, x+rx, y+ry, z+rz, new ItemStack(stack.itemID, stack.stackSize, stack.getItemDamage()));
 				if(stack.hasTagCompound()) {
-					entityItem.func_92014_d().setTagCompound((NBTTagCompound)stack.getTagCompound().copy());
+					entityItem.getEntityItem().setTagCompound((NBTTagCompound)stack.getTagCompound().copy());
 				}
 				float factor = 0.05F;
 				entityItem.motionX = rand.nextGaussian() * factor;
@@ -75,12 +82,7 @@ public class BlockAlloyInductor extends BlockContainer {
 	public TileEntity createNewTileEntity(World var1) {
 		return new TileEntityAlloyInductor();
 	}
-	
-	@Override
-	public String getTextureFile() {
-		return CommonProxy.BLOCKS_PNG;
-	}
-	
+
 	public void onBlockAdded(World par1World, int par2, int par3, int par4) {
 		this.doChecks(par1World, par2, par3, par4);
 	}
@@ -95,10 +97,16 @@ public class BlockAlloyInductor extends BlockContainer {
 		te.doUpdateCheck = true;
 	}
 	
-	public int getBlockTextureFromSideAndMetadata(int side, int meta) {
-		if(side == 0) return 129;
-		else if(side == 1) return 127;
-		else return 128;
+	public void func_94332_a(IconRegister par1IconRegister) {
+		textureTop = par1IconRegister.func_94245_a("supercraft:alloyinductor_top");
+		textureSide = par1IconRegister.func_94245_a("supercraft:alloyinductor_side");
+		textureBottom = par1IconRegister.func_94245_a("supercraft:ironboundstone_beveled");
+	}
+	
+	public Icon getBlockTextureFromSideAndMetadata(int side, int meta) {
+		if(side == 0) return textureBottom;
+		else if(side == 1) return textureTop;
+		else return textureSide;
 	}
 	
 }

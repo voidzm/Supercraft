@@ -51,22 +51,22 @@ public class WorldGenOlive extends WorldGenerator {
 		wz = zloc;
 		int i;
 		for(i = 0; i < t2; i++) {
-			var1.setBlockAndMetadata(wx, wy, wz, oliveLogID, 0);
+			this.setBlockAndMetadata(var1, wx, wy, wz, oliveLogID, 0);
 			wy++;
 		}
-		var1.setBlockAndMetadata(wx, wy, wz, oliveLogID, 0);
+		this.setBlockAndMetadata(var1, wx, wy, wz, oliveLogID, 0);
 		wx++;
-		var1.setBlockAndMetadata(wx, wy, wz, oliveLeavesID, 0);
+		this.setBlockAndMetadata(var1, wx, wy, wz, oliveLeavesID, 0);
 		wx -= 2;
-		var1.setBlockAndMetadata(wx, wy, wz, oliveLeavesID, 0);
+		this.setBlockAndMetadata(var1, wx, wy, wz, oliveLeavesID, 0);
 		wx++;
 		wz++;
-		var1.setBlockAndMetadata(wx, wy, wz, oliveLeavesID, 0);
+		this.setBlockAndMetadata(var1, wx, wy, wz, oliveLeavesID, 0);
 		wz -= 2;
-		var1.setBlockAndMetadata(wx, wy, wz, oliveLeavesID, 0);
+		this.setBlockAndMetadata(var1, wx, wy, wz, oliveLeavesID, 0);
 		wz++;
 		wy++;
-		var1.setBlockAndMetadata(wx, wy, wz, oliveLogID, 0);
+		this.setBlockAndMetadata(var1, wx, wy, wz, oliveLogID, 0);
 		int j, k, px, pz;
 		for(j = -2; j < 3; j++) {
 			for(k = -2; k < 3; k++) {
@@ -75,23 +75,23 @@ public class WorldGenOlive extends WorldGenerator {
 				 if((j==0 && k==0) || (Math.abs(j) == 2 && Math.abs(j) == Math.abs(k))) {
 					 continue;
 				 }
-				 else var1.setBlockAndMetadata(px, wy, pz, oliveLeavesID, 0);
+				 else this.setBlockAndMetadata(var1, px, wy, pz, oliveLeavesID, 0);
 			}
 		}
 		wy++;
-		var1.setBlockAndMetadata(wx, wy, wz, oliveLogID, 0);
+		this.setBlockAndMetadata(var1, wx, wy, wz, oliveLogID, 0);
 		wx++;
-		var1.setBlockAndMetadata(wx, wy, wz, oliveLeavesID, 0);
+		this.setBlockAndMetadata(var1, wx, wy, wz, oliveLeavesID, 0);
 		wx -= 2;
-		var1.setBlockAndMetadata(wx, wy, wz, oliveLeavesID, 0);
+		this.setBlockAndMetadata(var1, wx, wy, wz, oliveLeavesID, 0);
 		wx++;
 		wz++;
-		var1.setBlockAndMetadata(wx, wy, wz, oliveLeavesID, 0);
+		this.setBlockAndMetadata(var1, wx, wy, wz, oliveLeavesID, 0);
 		wz -= 2;
-		var1.setBlockAndMetadata(wx, wy, wz, oliveLeavesID, 0);
+		this.setBlockAndMetadata(var1, wx, wy, wz, oliveLeavesID, 0);
 		wz++;
 		wy++;
-		var1.setBlockAndMetadata(wx, wy, wz, oliveLeavesID, 0);
+		this.setBlockAndMetadata(var1, wx, wy, wz, oliveLeavesID, 0);
 		return true;
 	}
 	

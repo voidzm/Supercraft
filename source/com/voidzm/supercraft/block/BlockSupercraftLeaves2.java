@@ -5,8 +5,10 @@ import java.util.Random;
 
 import com.voidzm.supercraft.handler.BlockHandler;
 
+import net.minecraft.client.renderer.texture.IconRegister;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.ItemStack;
+import net.minecraft.util.Icon;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
@@ -14,9 +16,21 @@ public class BlockSupercraftLeaves2 extends BlockSupercraftLeavesBase {
 
 	public static final String[] leavesType = new String[] {"goldenwood", "tenebria"};
 	
+	protected Icon[] textures = new Icon[4];
+	
 	public BlockSupercraftLeaves2(int par1) {
-		super(par1, 80);
-		this.setBlockName("supercraftLeaves2");
+		super(par1);
+		this.setUnlocalizedName("supercraftLeaves2");
+	}
+	
+	public void func_94332_a(IconRegister par1IconRegister) {
+		textures[0] = par1IconRegister.func_94245_a("supercraft:leavesgoldenwood_fancy");
+		textures[1] = par1IconRegister.func_94245_a("supercraft:leavestenebria_fancy");
+	}
+	
+	public Icon getBlockTextureFromSideAndMetadata(int par1, int par2) {
+		int leavesCode = par2 & 3;
+		return textures[leavesCode];
 	}
 	
 	@SideOnly(Side.CLIENT)

@@ -8,6 +8,7 @@ package com.voidzm.supercraft.item;
 
 import com.voidzm.supercraft.CommonProxy;
 
+import net.minecraft.client.renderer.texture.IconRegister;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.Item;
 
@@ -16,14 +17,12 @@ public class ItemCopperChunk extends Item {
 	public ItemCopperChunk(int id) {
 		super(id);
 		this.setMaxStackSize(64);
-		this.setIconIndex(7);
-		this.setItemName("copperChunk");
+		this.setUnlocalizedName("copperChunk");
 		this.setCreativeTab(CreativeTabs.tabMaterials);
 	}
 	
-	@Override
-	public String getTextureFile() {
-		return CommonProxy.ITEMS_PNG;
+	public void func_94581_a(IconRegister par1IconRegister) {
+		this.iconIndex = par1IconRegister.func_94245_a("supercraft:copperchunk");
 	}
 	
 }

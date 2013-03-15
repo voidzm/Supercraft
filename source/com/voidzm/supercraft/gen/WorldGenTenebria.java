@@ -41,36 +41,36 @@ public class WorldGenTenebria extends WorldGenerator {
 		}
 		if(!canGenerate) return false;
 		for(int i = 0; i < exposedTrunk; i++) {
-			world.setBlockAndMetadata(x, y+i, z, logID, effectiveLogData);
+			this.setBlockAndMetadata(world, x, y+i, z, logID, effectiveLogData);
 		}
 		for(int ix = -2; ix < 3; ix++) {
 			for(int iz = -2; iz < 3; iz++) {
-				if(ix == 0 && iz == 0) world.setBlockAndMetadata(x, y+exposedTrunk, z, logID, effectiveLogData);
-				else if(Math.abs(ix) < 2 && Math.abs(iz) < 2) world.setBlockAndMetadata(x+ix, y+exposedTrunk, z+iz, leavesID, leavesData);
-				else if((Math.abs(ix) == 2 && iz == 0) || (ix == 0 && Math.abs(iz) == 2)) world.setBlockAndMetadata(x+ix, y+exposedTrunk, z+iz, leavesID, leavesData);
+				if(ix == 0 && iz == 0) this.setBlockAndMetadata(world, x, y+exposedTrunk, z, logID, effectiveLogData);
+				else if(Math.abs(ix) < 2 && Math.abs(iz) < 2) this.setBlockAndMetadata(world, x+ix, y+exposedTrunk, z+iz, leavesID, leavesData);
+				else if((Math.abs(ix) == 2 && iz == 0) || (ix == 0 && Math.abs(iz) == 2)) this.setBlockAndMetadata(world, x+ix, y+exposedTrunk, z+iz, leavesID, leavesData);
 			}
 		}
 		for(int ix = -2; ix < 3; ix++) {
 			for(int iz = -2; iz < 3; iz++) {
 				for(int iy = exposedTrunk+1; iy < exposedTrunk+5; iy++) {
 					if((iy-exposedTrunk) % 2 == 1) {
-						if(ix == 0 && iz == 0) world.setBlockAndMetadata(x, y+iy, z, logID, effectiveLogData);
-						else if((Math.abs(ix) == 1 && iz == 0) || (ix == 0 && Math.abs(iz) == 1)) world.setBlockAndMetadata(x+ix, y+iy, z+iz, leavesID, leavesData);
+						if(ix == 0 && iz == 0) this.setBlockAndMetadata(world, x, y+iy, z, logID, effectiveLogData);
+						else if((Math.abs(ix) == 1 && iz == 0) || (ix == 0 && Math.abs(iz) == 1)) this.setBlockAndMetadata(world, x+ix, y+iy, z+iz, leavesID, leavesData);
 					}
 					else {
-						if(ix == 0 && iz == 0) world.setBlockAndMetadata(x, y+iy, z, logID, effectiveLogData);
-						else if(Math.abs(ix) < 2 && Math.abs(iz) < 2) world.setBlockAndMetadata(x+ix, y+iy, z+iz, leavesID, leavesData);
+						if(ix == 0 && iz == 0) this.setBlockAndMetadata(world, x, y+iy, z, logID, effectiveLogData);
+						else if(Math.abs(ix) < 2 && Math.abs(iz) < 2) this.setBlockAndMetadata(world, x+ix, y+iy, z+iz, leavesID, leavesData);
 					}
 				}
 			}
 		}
 		for(int ix = -1; ix < 2; ix++) {
 			for(int iz = -1; iz < 2; iz++) {
-				if(ix == 0 && iz == 0) world.setBlockAndMetadata(x, y+exposedTrunk+5, z, logID, effectiveLogData);
-				else if(Math.abs(ix) != Math.abs(iz)) world.setBlockAndMetadata(x+ix, y+exposedTrunk+5, z+iz, leavesID, leavesData);
+				if(ix == 0 && iz == 0) this.setBlockAndMetadata(world, x, y+exposedTrunk+5, z, logID, effectiveLogData);
+				else if(Math.abs(ix) != Math.abs(iz)) this.setBlockAndMetadata(world, x+ix, y+exposedTrunk+5, z+iz, leavesID, leavesData);
 			}
 		}
-		world.setBlockAndMetadata(x, y+exposedTrunk+6, z, leavesID, leavesData);
+		this.setBlockAndMetadata(world, x, y+exposedTrunk+6, z, leavesID, leavesData);
 		return true;
 	}
 	
