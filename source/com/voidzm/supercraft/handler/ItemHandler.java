@@ -44,6 +44,7 @@ public class ItemHandler {
 	public static Item copperHoe;
 	
 	public static Item silverIngot;
+	public static Item silverFragment;
 	
 	public static Item electrumIngot;
 	public static Item electrumBit;
@@ -104,6 +105,7 @@ public class ItemHandler {
 		// Silver Material
 		
 		languageHandler.add(silverIngot, "Silver Ingot");
+		languageHandler.add(silverFragment, "Silver Fragment");
 		
 		// Electrum Material
 		
@@ -189,6 +191,7 @@ public class ItemHandler {
 		// Silver Material
 		
 		silverIngot = new ItemSilverIngot(23017);
+		silverFragment = new ItemSilverFragment(23028);
 		
 		// Electrum Material
 		
@@ -260,6 +263,7 @@ public class ItemHandler {
 		// Silver Material
 		
 		GameRegistry.registerItem(silverIngot, "silverIngot");
+		GameRegistry.registerItem(silverFragment, "silverFragment");
 		
 		// Electrum Material
 		
@@ -331,6 +335,7 @@ public class ItemHandler {
 		// Silver Material
 		
 		LanguageRegistry.addName(silverIngot, (String)this.languageHandler.getString(silverIngot));
+		LanguageRegistry.addName(silverFragment, (String)this.languageHandler.getString(silverFragment));
 		
 		// Electrum Material
 		

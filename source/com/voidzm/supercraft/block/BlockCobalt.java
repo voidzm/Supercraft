@@ -38,10 +38,10 @@ public class BlockCobalt extends Block {
 	public void onBlockAdded(World par1World, int par2, int par3, int par4) {
 		if(!par1World.isRemote) {
 			if(this.isGlowing && par1World.isBlockIndirectlyGettingPowered(par2, par3, par4)) {
-				par1World.scheduleBlockUpdate(par2, par3, par4, this.blockID, 4);
+				par1World.func_94575_c(par2, par3, par4, BlockHandler.cobaltBlockOff.blockID);
 			}
 			else if(!this.isGlowing && !par1World.isBlockIndirectlyGettingPowered(par2, par3, par4)) {
-				par1World.func_94575_c(par2, par3, par4, BlockHandler.cobaltBlock.blockID);
+				par1World.scheduleBlockUpdate(par2, par3, par4, this.blockID, 4);
 			}
 		}
 	}
@@ -49,17 +49,17 @@ public class BlockCobalt extends Block {
 	public void onNeighborBlockChange(World par1World, int par2, int par3, int par4, int par5) {
 		if(!par1World.isRemote) {
 			if(this.isGlowing && par1World.isBlockIndirectlyGettingPowered(par2, par3, par4)) {
-				par1World.scheduleBlockUpdate(par2, par3, par4, this.blockID, 4);
+				par1World.func_94575_c(par2, par3, par4, BlockHandler.cobaltBlockOff.blockID);
 			}
 			else if(!this.isGlowing && !par1World.isBlockIndirectlyGettingPowered(par2, par3, par4)) {
-				par1World.func_94575_c(par2, par3, par4, BlockHandler.cobaltBlock.blockID);
+				par1World.scheduleBlockUpdate(par2, par3, par4, this.blockID, 4);
 			}
 		}
 	}
 	
 	public void updateTick(World par1World, int par2, int par3, int par4, Random par5Random) {
-		if(!par1World.isRemote && this.isGlowing && par1World.isBlockIndirectlyGettingPowered(par2, par3, par4)) {
-			par1World.func_94575_c(par2, par3, par4, BlockHandler.cobaltBlockOff.blockID);
+		if(!par1World.isRemote && !this.isGlowing && !par1World.isBlockIndirectlyGettingPowered(par2, par3, par4)) {
+			par1World.func_94575_c(par2, par3, par4, BlockHandler.cobaltBlock.blockID);
 		}
 	}
 	

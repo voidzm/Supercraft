@@ -55,6 +55,7 @@ public class CraftingHandler {
 	private ItemStack copperChunk;
 	private ItemStack copper;
 	private ItemStack copperBlock;
+	private ItemStack silverFragment;
 	private ItemStack silver;
 	private ItemStack silverBlock;
 	private ItemStack electrumBit;
@@ -91,6 +92,8 @@ public class CraftingHandler {
 	private ItemStack platinumBlock;
 	private ItemStack lithium;
 	private ItemStack lithiumBlock;
+	private ItemStack silverboundStone;
+	private ItemStack ferricEssence;
 	
 	public void populateAllAndInitialize() {
 		this.initializeCraftingRefs();
@@ -133,6 +136,7 @@ public class CraftingHandler {
 		copperChunk = new ItemStack(ItemHandler.copperChunk);
 		copper = new ItemStack(ItemHandler.copperIngot);
 		copperBlock = new ItemStack(BlockHandler.copperBlock);
+		silverFragment = new ItemStack(ItemHandler.silverFragment);
 		silver = new ItemStack(ItemHandler.silverIngot);
 		silverBlock = new ItemStack(BlockHandler.silverBlock);
 		electrumBit = new ItemStack(ItemHandler.electrumBit);
@@ -169,6 +173,8 @@ public class CraftingHandler {
 		platinumBlock = new ItemStack(BlockHandler.platinumBlock);
 		lithium = new ItemStack(ItemHandler.lithiumIngot);
 		lithiumBlock = new ItemStack(BlockHandler.lithiumBlock);
+		silverboundStone = new ItemStack(BlockHandler.silverboundStone);
+		ferricEssence = new ItemStack(ItemHandler.essence, 1, EssentialAspect.FERRIC.index);
 	}
 	
 	private void addRecipes() {
@@ -223,8 +229,9 @@ public class CraftingHandler {
 		GameRegistry.addRecipe(new ItemStack(ItemHandler.copperHoe), "aa", " b", " b", 'a', copper, 'b', stick);
 		GameRegistry.addRecipe(new ItemStack(ItemHandler.copperHoe), "aa", "b ", "b ", 'a', copper, 'b', stick);
 		
-		// Aluminum Material
+		// Silver
 		
+		GameRegistry.addRecipe(new ItemStack(ItemHandler.silverIngot), "aaa", "aaa", "aaa", 'a', silverFragment);
 		GameRegistry.addRecipe(new ItemStack(BlockHandler.silverBlock), "aaa", "aaa", "aaa", 'a', silver);
 		
 		// Electrum Material
@@ -281,6 +288,8 @@ public class CraftingHandler {
 		GameRegistry.addRecipe(new ItemStack(BlockHandler.essentialReducer), "aba", "cdc", "aaa", 'a', ironboundStone, 'b', flint, 'c', elinvarDust, 'd', diamond);
 		GameRegistry.addRecipe(new ItemStack(BlockHandler.copperboundStone), "a a", " b ", "a a", 'a', copperChunk, 'b', stone);
 		GameRegistry.addRecipe(new ItemStack(BlockHandler.radiantSolarGenerator), "aba", "cdc", "eee", 'a', aeronicEssence, 'b', radantisEssence, 'c', obsidian, 'd', copper, 'e', copperboundStone);
+		GameRegistry.addRecipe(new ItemStack(BlockHandler.silverboundStone), "a a", " b ", "a a", 'a', silverFragment, 'b', stone);
+		GameRegistry.addRecipe(new ItemStack(BlockHandler.waveringLunarGenerator), "aba", "cdc", "eee", 'a', aeronicEssence, 'b', ferricEssence, 'c', obsidian, 'd', silver, 'e', silverboundStone);
 		
 		// Cobalt
 		
@@ -326,6 +335,7 @@ public class CraftingHandler {
 		
 		// Silver Material
 		
+		GameRegistry.addShapelessRecipe(new ItemStack(ItemHandler.silverFragment, 9), silver);
 		GameRegistry.addShapelessRecipe(new ItemStack(ItemHandler.silverIngot, 9), silverBlock);
 		
 		// Electrum Material

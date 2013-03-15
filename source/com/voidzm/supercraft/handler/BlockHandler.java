@@ -108,6 +108,8 @@ public class BlockHandler {
 	public static Block copperboundStone;
 	public static Block radiantSolarGenerator;
 	public static Block alloyInductor;
+	public static Block silverboundStone;
+	public static Block waveringLunarGenerator;
 	
 	public static Block cobaltOre;
 	public static Block cobaltTorch;
@@ -290,6 +292,8 @@ public class BlockHandler {
 		languageHandler.add(copperboundStone, "Copperbound Stone");
 		languageHandler.add(radiantSolarGenerator, "Radiant Solar Generator");
 		languageHandler.add(alloyInductor, "Alloy Inductor");
+		languageHandler.add(silverboundStone, "Silverbound Stone");
+		languageHandler.add(waveringLunarGenerator, "Wavering Lunar Generator");
 		
 		// Cobalt
 		
@@ -417,6 +421,8 @@ public class BlockHandler {
 		copperboundStone = new BlockCopperboundStone(this.nextBlockID());
 		radiantSolarGenerator = new BlockRadiantSolarGenerator(this.nextBlockID());
 		alloyInductor = new BlockAlloyInductor(this.nextBlockID());
+		silverboundStone = new BlockSilverboundStone(this.nextBlockID());
+		waveringLunarGenerator = new BlockWaveringLunarGenerator(this.nextBlockID());
 		
 		// Cobalt
 		
@@ -544,6 +550,8 @@ public class BlockHandler {
 		GameRegistry.registerBlock(copperboundStone, "copperboundStone");
 		GameRegistry.registerBlock(radiantSolarGenerator, "radiantSolarGenerator");
 		GameRegistry.registerBlock(alloyInductor, "alloyInductor");
+		GameRegistry.registerBlock(silverboundStone, "silverboundStone");
+		GameRegistry.registerBlock(waveringLunarGenerator, "waveringLunarGenerator");
 		
 		// Cobalt
 		
@@ -721,6 +729,8 @@ public class BlockHandler {
 		LanguageRegistry.addName(copperboundStone, (String)this.languageHandler.getString(copperboundStone));
 		LanguageRegistry.addName(radiantSolarGenerator, (String)this.languageHandler.getString(radiantSolarGenerator));
 		LanguageRegistry.addName(alloyInductor, (String)this.languageHandler.getString(alloyInductor));
+		LanguageRegistry.addName(silverboundStone, (String)this.languageHandler.getString(silverboundStone));
+		LanguageRegistry.addName(waveringLunarGenerator, (String)this.languageHandler.getString(waveringLunarGenerator));
 		
 		// Cobalt
 		

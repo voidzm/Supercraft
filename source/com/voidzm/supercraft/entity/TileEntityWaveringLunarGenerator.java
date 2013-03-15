@@ -10,12 +10,12 @@ import net.minecraft.network.packet.Packet;
 import net.minecraft.network.packet.Packet132TileEntityData;
 import net.minecraft.tileentity.TileEntity;
 
-public class TileEntityRadiantSolarGenerator extends TileEntity {
+public class TileEntityWaveringLunarGenerator extends TileEntity {
 
 	public boolean activated;
 	private int internalCounter;
 	
-	public TileEntityRadiantSolarGenerator() {
+	public TileEntityWaveringLunarGenerator() {
 		activated = false;
 		internalCounter = 0;
 	}
@@ -62,7 +62,7 @@ public class TileEntityRadiantSolarGenerator extends TileEntity {
 	}
 	
 	private boolean shouldBePowered() {
-		if(this.worldObj.canBlockSeeTheSky(this.xCoord, this.yCoord+1, this.zCoord) && (this.worldObj.getCelestialAngle(0.0F) < 0.125F || this.worldObj.getCelestialAngle(0.0F) > 0.875F)) return true;
+		if(this.worldObj.canBlockSeeTheSky(this.xCoord, this.yCoord+1, this.zCoord) && (this.worldObj.getCelestialAngle(0.0F) > 0.375F && this.worldObj.getCelestialAngle(0.0F) < 0.625F)) return true;
 		else return false;
 	}
 	

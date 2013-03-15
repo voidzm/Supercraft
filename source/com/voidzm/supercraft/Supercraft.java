@@ -11,6 +11,7 @@ import com.voidzm.supercraft.entity.TileEntityAlloyInductor;
 import com.voidzm.supercraft.entity.TileEntityConduit;
 import com.voidzm.supercraft.entity.TileEntityEssentialReducer;
 import com.voidzm.supercraft.entity.TileEntityRadiantSolarGenerator;
+import com.voidzm.supercraft.entity.TileEntityWaveringLunarGenerator;
 import com.voidzm.supercraft.event.EventBonemeal;
 import com.voidzm.supercraft.gen.WorldGenOre;
 import com.voidzm.supercraft.gui.SCMainMenu;
@@ -104,6 +105,7 @@ public class Supercraft {
 		GameRegistry.registerTileEntity(TileEntityConduit.class, "tileEntityConduit");
 		GameRegistry.registerTileEntity(TileEntityEssentialReducer.class, "tileEntityEssentialReducer");
 		GameRegistry.registerTileEntity(TileEntityRadiantSolarGenerator.class, "tileEntityRadiantSolarGenerator");
+		GameRegistry.registerTileEntity(TileEntityWaveringLunarGenerator.class, "tileEntityWaveringLunarGenerator");
 		GameRegistry.registerTileEntity(TileEntityAlloyInductor.class, "tileEntityAlloyInductor");
 		NetworkRegistry.instance().registerGuiHandler(instance, guiHandler);
 		LanguageRegistry.instance().addStringLocalization("itemGroup.elinvarTab", "Elinvar");
