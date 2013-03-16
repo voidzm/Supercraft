@@ -22,6 +22,7 @@ import com.voidzm.supercraft.item.ItemSupercraftSapling1;
 import com.voidzm.supercraft.item.ItemSupercraftSapling2;
 import com.voidzm.supercraft.item.ItemSupercraftSlab1;
 import com.voidzm.supercraft.item.ItemSupercraftSlab2;
+import com.voidzm.supercraft.util.SupercraftConfiguration;
 
 import cpw.mods.fml.common.registry.GameRegistry;
 import cpw.mods.fml.common.registry.LanguageRegistry;
@@ -31,11 +32,9 @@ import net.minecraft.item.ItemBlock;
 import net.minecraft.item.ItemStack;
 
 public class BlockHandler {
-
-	public final static int BLOCKID_START = 1600;
-	private int id_i = BLOCKID_START;
 	
 	protected LanguageHandler languageHandler = new LanguageHandler();
+	protected SupercraftConfiguration config;
 	
 	public static Block reinforcedGlass;
 	public static Block temperedGlass;
@@ -122,7 +121,14 @@ public class BlockHandler {
 	public static Block lithiumOre;
 	public static Block lithiumBlock;
 	
-	public void populateAllAndInitialize() {
+	public void populateAllAndInitialize(SupercraftConfiguration configObject) {
+		if(this.config != null) {
+			throw new RuntimeException("Block handler already loaded with configuration, cannot initialize again!"); 
+		}
+		if(configObject == null) {
+			throw new RuntimeException("Configuration required for block handler initialization!");
+		}
+		this.config = configObject;
 		this.createBlocks();
 		this.populateLanguage();
 		this.registerBlocks();
@@ -315,132 +321,85 @@ public class BlockHandler {
 	}
 	
 	private void createBlocks() {
+		reinforcedGlass = new BlockReinforcedGlass(this.config.reinforcedglassID);
+		temperedGlass = new BlockTemperedGlass(this.config.temperedglassID);
+		ornateGlass = new BlockOrnateGlass(this.config.ornateglassID);
+		impactGlass = new BlockImpactGlass(this.config.impactglassID);
 		
-		// Advanced Glass
+		coalBlock = new BlockCoal(this.config.blockcoalID);
+
+		supercraftLog = new BlockSupercraftLog(this.config.woodsupercraft1ID);
+		supercraftLeaves1 = new BlockSupercraftLeaves1(this.config.leavessupercraft1ID);
+		supercraftLeaves2 = new BlockSupercraftLeaves2(this.config.leavessupercraft2ID);
+		supercraftPlanks = new BlockSupercraftPlanks(this.config.plankssupercraft1ID);
+		supercraftSapling1 = new BlockSupercraftSapling1(this.config.saplingsupercraft1ID);
+		supercraftSapling2 = new BlockSupercraftSapling2(this.config.saplingsupercraft2ID);
+		supercraftSlab1 = new BlockSupercraftSlab1(this.config.slabsupercraft1ID);
+		supercraftSlab2 = new BlockSupercraftSlab2(this.config.slabsupercraft2ID);
+		oliveStairs = new BlockSupercraftStairs(this.config.stairsoliveID, supercraftPlanks, 0).setUnlocalizedName("oliveStairs");
+		goldenwoodStairs = new BlockSupercraftStairs(this.config.stairsgoldenwoodID, supercraftPlanks, 1).setUnlocalizedName("goldenwoodStairs");
+		tenebriaStairs = new BlockSupercraftStairs(this.config.stairstenebriaID, supercraftPlanks, 2).setUnlocalizedName("tenebriaStairs");
 		
-		reinforcedGlass = new BlockReinforcedGlass(this.nextBlockID());
-		temperedGlass = new BlockTemperedGlass(this.nextBlockID());
-		ornateGlass = new BlockOrnateGlass(this.nextBlockID());
-		impactGlass = new BlockImpactGlass(this.nextBlockID());
+		aluminumOre = new BlockAluminumOre(this.config.orealuminumID);
+		aluminumBlock = new BlockAluminum(this.config.blockaluminumID);
+		tantalumOre = new BlockTantalumOre(this.config.oretantalumID);
+		tantalumBlock = new BlockTantalum(this.config.blocktantalumID);
+		copperOre = new BlockCopperOre(this.config.orecopperID);
+		copperBlock = new BlockCopper(this.config.blockcopperID);
+		silverOre = new BlockSilverOre(this.config.oresilverID);
+		silverBlock = new BlockSilver(this.config.blocksilverID);
+		electrumOre = new BlockElectrumOre(this.config.oreelectrumID);
+		electrumBlock = new BlockElectrum(this.config.blockelectrumID);
+		elinvarOre = new BlockElinvarOre(this.config.oreelinvarID);
+		elinvarBlock = new BlockElinvar(this.config.blockelinvarID);
 		
-		// Material Extensions
+		conduit = new BlockConduit(this.config.conduitID);
 		
-		coalBlock = new BlockCoal(this.nextBlockID());
+		refinedCraftingTable = new BlockRefinedCraftingTable(this.config.refinedcraftingtableID);
+
+		redstoneGenerator = new BlockRedstoneGenerator(this.config.redstoneconversiongeneratorID);
+		radiantSolarGenerator = new BlockRadiantSolarGenerator(this.config.radiantsolargeneratorID);
+		waveringLunarGenerator = new BlockWaveringLunarGenerator(this.config.waveringlunargeneratorID);
 		
-		// Supercraft Trees
+		bluebells = new BlockSupercraftFlower(this.config.bluebellsID, "supercraft:bluebells").setUnlocalizedName("bluebells");
+		daisies = new BlockSupercraftFlower(this.config.daisiesID, "supercraft:daisies").setUnlocalizedName("daisies");
+		snapdragon = new BlockSupercraftFlower(this.config.snapdragonID, "supercraft:snapdragon").setUnlocalizedName("snapdragon");
+
+		palestone = new BlockPalestone(this.config.palestoneID);
+		palestoneBricks = new BlockPalestoneBricks(this.config.palestonebricksID);
+		palestoneStairs = new BlockSupercraftStairs(this.config.stairspalestoneID, palestoneBricks, 0).setUnlocalizedName("palestoneStairs");
+		inscribedPalestone = new BlockInscribedPalestone(this.config.inscribedpalestoneID);
+		blockOfGoldenwood = new BlockGoldenwood(this.config.blockgoldenwoodID);
+		overgrownPalestone = new BlockOvergrownPalestone(this.config.overgrownpalestonebricksID);
+		burnedPalestone = new BlockBurnedPalestone(this.config.burnedpalestonebricksID);
+
+		nightrock = new BlockNightrock(this.config.nightrockID);
+		nightrockBricks = new BlockNightrockBricks(this.config.nightrockbricksID);
+		nightrockStairs = new BlockSupercraftStairs(this.config.stairsnightrockID, nightrockBricks, 0).setUnlocalizedName("nightrockStairs");
+		inscribedNightrock = new BlockInscribedNightrock(this.config.inscribednightrockID);
+		blockOfTenebral = new BlockTenebral(this.config.blocktenebralID);
+		burnedNightrock = new BlockBurnedNightrock(this.config.burnednightrockbricksID);
+
+		nisilOre = new BlockNisilOre(this.config.orenisilID);
+		nisilBlock = new BlockNisil(this.config.blocknisilID);
+
+		essentialReducer = new BlockEssentialReducer(this.config.essentialreducerID);
+		alloyInductor = new BlockAlloyInductor(this.config.alloyinductorID);
 		
-		supercraftLog = new BlockSupercraftLog(this.nextBlockID());
-		supercraftLeaves1 = new BlockSupercraftLeaves1(this.nextBlockID());
-		supercraftLeaves2 = new BlockSupercraftLeaves2(this.nextBlockID());
-		supercraftPlanks = new BlockSupercraftPlanks(this.nextBlockID());
-		supercraftSapling1 = new BlockSupercraftSapling1(this.nextBlockID());
-		supercraftSapling2 = new BlockSupercraftSapling2(this.nextBlockID());
-		supercraftSlab1 = new BlockSupercraftSlab1(this.nextBlockID());
-		supercraftSlab2 = new BlockSupercraftSlab2(this.nextBlockID());
-		
-		oliveStairs = new BlockSupercraftStairs(this.nextBlockID(), supercraftPlanks, 0).setUnlocalizedName("oliveStairs");
-		goldenwoodStairs = new BlockSupercraftStairs(this.nextBlockID(), supercraftPlanks, 1).setUnlocalizedName("goldenwoodStairs");
-		tenebriaStairs = new BlockSupercraftStairs(this.nextBlockID(), supercraftPlanks, 2).setUnlocalizedName("tenebriaStairs");
-		
-		// Aluminum Material
-		
-		aluminumOre = new BlockAluminumOre(this.nextBlockID());
-		aluminumBlock = new BlockAluminum(this.nextBlockID());
-		
-		// Tantalum Material
-		
-		tantalumOre = new BlockTantalumOre(this.nextBlockID());
-		tantalumBlock = new BlockTantalum(this.nextBlockID());
-		
-		// Copper Material
-		
-		copperOre = new BlockCopperOre(this.nextBlockID());
-		copperBlock = new BlockCopper(this.nextBlockID());
-		
-		// Silver Material
-		
-		silverOre = new BlockSilverOre(this.nextBlockID());
-		silverBlock = new BlockSilver(this.nextBlockID());
-		
-		// Electrum Material
-		
-		electrumOre = new BlockElectrumOre(this.nextBlockID());
-		electrumBlock = new BlockElectrum(this.nextBlockID());
-		
-		// Elinvar Material
-		
-		elinvarOre = new BlockElinvarOre(this.nextBlockID());
-		elinvarBlock = new BlockElinvar(this.nextBlockID());
-		
-		// Elinvar Conduits
-		
-		conduit = new BlockConduit(this.nextBlockID());
-		
-		// Refined Crafting Tables
-		
-		refinedCraftingTable = new BlockRefinedCraftingTable(this.nextBlockID());
-		
-		// Elinvar Generators
-		
-		redstoneGenerator = new BlockRedstoneGenerator(this.nextBlockID());
-		
-		// Supercraft Flowers
-		
-		bluebells = new BlockSupercraftFlower(this.nextBlockID(), "supercraft:bluebells").setUnlocalizedName("bluebells");
-		daisies = new BlockSupercraftFlower(this.nextBlockID(), "supercraft:daisies").setUnlocalizedName("daisies");
-		snapdragon = new BlockSupercraftFlower(this.nextBlockID(), "supercraft:snapdragon").setUnlocalizedName("snapdragon");
-		
-		// Palestone
-		
-		palestone = new BlockPalestone(this.nextBlockID());
-		palestoneBricks = new BlockPalestoneBricks(this.nextBlockID());
-		palestoneStairs = new BlockSupercraftStairs(this.nextBlockID(), palestoneBricks, 0).setUnlocalizedName("palestoneStairs");
-		inscribedPalestone = new BlockInscribedPalestone(this.nextBlockID());
-		blockOfGoldenwood = new BlockGoldenwood(this.nextBlockID());
-		overgrownPalestone = new BlockOvergrownPalestone(this.nextBlockID());
-		burnedPalestone = new BlockBurnedPalestone(this.nextBlockID());
-		
-		// Nightrock
-		
-		nightrock = new BlockNightrock(this.nextBlockID());
-		nightrockBricks = new BlockNightrockBricks(this.nextBlockID());
-		nightrockStairs = new BlockSupercraftStairs(this.nextBlockID(), nightrockBricks, 0).setUnlocalizedName("nightrockStairs");
-		inscribedNightrock = new BlockInscribedNightrock(this.nextBlockID());
-		blockOfTenebral = new BlockTenebral(this.nextBlockID());
-		burnedNightrock = new BlockBurnedNightrock(this.nextBlockID());
-		
-		// Nisil
-		
-		nisilOre = new BlockNisilOre(this.nextBlockID());
-		nisilBlock = new BlockNisil(this.nextBlockID());
-		
-		// Machines
-		
-		ironboundStone = new BlockIronboundStone(this.nextBlockID());
-		essentialReducer = new BlockEssentialReducer(this.nextBlockID());
-		copperboundStone = new BlockCopperboundStone(this.nextBlockID());
-		radiantSolarGenerator = new BlockRadiantSolarGenerator(this.nextBlockID());
-		alloyInductor = new BlockAlloyInductor(this.nextBlockID());
-		silverboundStone = new BlockSilverboundStone(this.nextBlockID());
-		waveringLunarGenerator = new BlockWaveringLunarGenerator(this.nextBlockID());
-		
-		// Cobalt
-		
-		cobaltOre = new BlockCobaltOre(this.nextBlockID());
-		cobaltTorch = new BlockCobaltTorch(this.nextBlockID());
-		cobaltBlock = new BlockCobalt(this.nextBlockID(), true);
-		cobaltBlockOff = new BlockCobalt(this.nextBlockID(), false);
-		
-		// Platinum
-		
-		platinumOre = new BlockPlatinumOre(this.nextBlockID());
-		platinumBlock = new BlockPlatinum(this.nextBlockID());
-		
-		// Lithium
-		
-		lithiumOre = new BlockLithiumOre(this.nextBlockID());
-		lithiumBlock = new BlockLithium(this.nextBlockID());
-		
+		ironboundStone = new BlockIronboundStone(this.config.ironboundstoneID);
+		copperboundStone = new BlockCopperboundStone(this.config.copperboundstoneID);
+		silverboundStone = new BlockSilverboundStone(this.config.silverboundstoneID);
+
+		cobaltOre = new BlockCobaltOre(this.config.orecobaltID);
+		cobaltTorch = new BlockCobaltTorch(this.config.torchcobaltID);
+		cobaltBlock = new BlockCobalt(this.config.blockcobaltID, true);
+		cobaltBlockOff = new BlockCobalt(this.config.blockcobaltoffID, false);
+
+		platinumOre = new BlockPlatinumOre(this.config.oreplatinumID);
+		platinumBlock = new BlockPlatinum(this.config.blockplatinumID);
+
+		lithiumOre = new BlockLithiumOre(this.config.orelithiumID);
+		lithiumBlock = new BlockLithium(this.config.blocklithiumID);
 	}
 	
 	private void registerBlocks() {
@@ -750,9 +709,5 @@ public class BlockHandler {
 		LanguageRegistry.addName(lithiumBlock, (String)this.languageHandler.getString(lithiumBlock));
 		
 	}
-	
-	private int nextBlockID() {
-		return id_i++;
-	}
-	
+
 }

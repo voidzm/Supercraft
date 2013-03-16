@@ -24,6 +24,7 @@ import com.voidzm.supercraft.handler.ItemHandler;
 import com.voidzm.supercraft.handler.PacketHandler;
 import com.voidzm.supercraft.handler.SCTickHandler;
 import com.voidzm.supercraft.misc.CreativeTabElinvar;
+import com.voidzm.supercraft.util.SupercraftConfiguration;
 
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockHalfSlab;
@@ -75,6 +76,8 @@ public class Supercraft {
 	public static final FuelHandler fuelHandler = new FuelHandler();
 	public static final GuiHandler guiHandler = new GuiHandler();
 	
+	public static SupercraftConfiguration configuration;
+	
 	public static EnumToolMaterial aluminumTool = EnumHelper.addToolMaterial("aluminum", 1, 2343, 4.0F, 1, 1);
 	public static EnumToolMaterial copperTool = EnumHelper.addToolMaterial("copper", 2, 593, 9.0F, 2, 10);
 	
@@ -82,12 +85,12 @@ public class Supercraft {
 	
 	@PreInit
 	public void preInit(FMLPreInitializationEvent event) {
-		// Nothing here yet.
+		configuration = new SupercraftConfiguration(event.getSuggestedConfigurationFile());
 	}
 	
 	@Init
 	public void load(FMLInitializationEvent event) {
-		blockHandler.populateAllAndInitialize();
+		blockHandler.populateAllAndInitialize(configuration);
 		proxy.registerRenderers();
 		proxy.initializeGui();
 		itemHandler.populateAllAndInitialize();
