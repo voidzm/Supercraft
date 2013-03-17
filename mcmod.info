@@ -5,7 +5,7 @@
 	"description": "A Minecraft mod that extends many areas of the game with new mid and end-game content that fits with vanilla!",
 	"version": "0.3.0",
 	"credits": "Designed and coded by voidzm",
-	"mcversion": "1.4.7",
+	"mcversion": "1.5",
 	"authors": ["voidzm"],
 	"dependencies": ["mod_MinecraftForge"]
 }

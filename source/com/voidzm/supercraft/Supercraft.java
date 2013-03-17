@@ -93,7 +93,7 @@ public class Supercraft {
 		blockHandler.populateAllAndInitialize(configuration);
 		proxy.registerRenderers();
 		proxy.initializeGui();
-		itemHandler.populateAllAndInitialize();
+		itemHandler.populateAllAndInitialize(configuration);
 		craftingHandler.populateAllAndInitialize();
 		biomeHandler.populateAllAndInitialize();
 

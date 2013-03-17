@@ -11,6 +11,7 @@ package com.voidzm.supercraft.handler;
 import java.util.ArrayList;
 
 import com.voidzm.supercraft.item.*;
+import com.voidzm.supercraft.util.SupercraftConfiguration;
 
 import cpw.mods.fml.common.registry.GameRegistry;
 import cpw.mods.fml.common.registry.LanguageRegistry;
@@ -22,6 +23,7 @@ import net.minecraftforge.oredict.OreDictionary;
 public class ItemHandler {
 
 	protected LanguageHandler languageHandler = new LanguageHandler();
+	protected SupercraftConfiguration config;
 	
 	public static Item ironScrap;
 	public static Item diamondShard;
@@ -64,7 +66,14 @@ public class ItemHandler {
 	public static Item platinumIngot;
 	public static Item lithiumIngot;
 	
-	public void populateAllAndInitialize() {
+	public void populateAllAndInitialize(SupercraftConfiguration configObject) {
+		if(this.config != null) {
+			throw new RuntimeException("Itme handler already loaded with configuration, cannot initialize again!"); 
+		}
+		if(configObject == null) {
+			throw new RuntimeException("Configuration required for item handler initialization!");
+		}
+		this.config = configObject;
 		this.createItems();
 		this.populateLanguage();
 		this.registerItems();
@@ -159,75 +168,39 @@ public class ItemHandler {
 	}
 	
 	private void createItems() {
+		ironScrap = new ItemIronScrap(this.config.ironscrapID);
+		diamondShard = new ItemDiamondShard(this.config.diamondshardID);
+
+		aluminumIngot = new ItemAluminumIngot(this.config.ingotaluminumID);
+		tantalumCrystal = new ItemTantalumCrystal(this.config.tantalumcrystalID);
+		copperIngot = new ItemCopperIngot(this.config.ingotcopperID);
+		copperChunk = new ItemCopperChunk(this.config.copperchunkID);
+		silverIngot = new ItemSilverIngot(this.config.ingotsilverID);
+		silverFragment = new ItemSilverFragment(this.config.silverfragmentID);
+		electrumIngot = new ItemElectrumIngot(this.config.ingotelectrumID);
+		electrumBit = new ItemElectrumBit(this.config.electrumbitID);
+		nisilIngot = new ItemNisilIngot(this.config.ingotnisilID);
+		nisilShard = new ItemNisilShard(this.config.nisilshardID);
+		platinumIngot = new ItemPlatinumIngot(this.config.ingotplatinumID);
+		lithiumIngot = new ItemLithiumIngot(this.config.ingotlithiumID);
+		metallicCobaltIngot = new ItemMetallicCobaltIngot(this.config.ingotcobaltID);
+		elinvarDust = new ItemElinvarDust(this.config.elinvardustID);
+		cobaltDust = new ItemCobaltDust(this.config.cobaltdustID);
 		
-		// Material Extensions
+		bloodAmber = new ItemBloodAmber(this.config.bloodamberID);
+		essence = new ItemEssence(this.config.essenceID);
 		
-		ironScrap = new ItemIronScrap(23000);
-		diamondShard = new ItemDiamondShard(23001);
-		
-		// Aluminum Material
-		
-		aluminumIngot = new ItemAluminumIngot(23002);
-		aluminumPickaxe = new ItemAluminumPickaxe(23003);
-		aluminumSaber = new ItemAluminumSaber(23004);
-		aluminumShovel = new ItemAluminumShovel(23005);
-		aluminumAxe = new ItemAluminumAxe(23006);
-		aluminumHoe = new ItemAluminumHoe(23007);
-		
-		// Tantalum Material
-		
-		tantalumCrystal = new ItemTantalumCrystal(23008);
-		
-		// Copper Material
-		
-		copperIngot = new ItemCopperIngot(23010);
-		copperChunk = new ItemCopperChunk(23011);
-		copperPickaxe = new ItemCopperPickaxe(23012);
-		copperSword = new ItemCopperSword(23013);
-		copperShovel = new ItemCopperShovel(23014);
-		copperAxe = new ItemCopperAxe(23015);
-		copperHoe = new ItemCopperHoe(23016);
-		
-		// Silver Material
-		
-		silverIngot = new ItemSilverIngot(23017);
-		silverFragment = new ItemSilverFragment(23028);
-		
-		// Electrum Material
-		
-		electrumIngot = new ItemElectrumIngot(23018);
-		electrumBit = new ItemElectrumBit(23019);
-		
-		// Elinvar Material
-		
-		elinvarDust = new ItemElinvarDust(23009);
-		
-		// Tenebral Woods
-		
-		bloodAmber = new ItemBloodAmber(23020);
-		
-		// Nisil
-		
-		nisilIngot = new ItemNisilIngot(23021);
-		nisilShard = new ItemNisilShard(23022);
-		
-		// Essence
-		
-		essence = new ItemEssence(23023);
-		
-		// Cobalt
-		
-		cobaltDust = new ItemCobaltDust(23024);
-		metallicCobaltIngot = new ItemMetallicCobaltIngot(23025);
-		
-		// Platinum
-		
-		platinumIngot = new ItemPlatinumIngot(23026);
-		
-		// Lithium
-		
-		lithiumIngot = new ItemLithiumIngot(23027);
-		
+		aluminumPickaxe = new ItemAluminumPickaxe(this.config.pickaxealuminumID);
+		aluminumSaber = new ItemAluminumSaber(this.config.swordaluminumID);
+		aluminumShovel = new ItemAluminumShovel(this.config.shovelaluminumID);
+		aluminumAxe = new ItemAluminumAxe(this.config.axealuminumID);
+		aluminumHoe = new ItemAluminumHoe(this.config.hoealuminumID);
+
+		copperPickaxe = new ItemCopperPickaxe(this.config.pickaxecopperID);
+		copperSword = new ItemCopperSword(this.config.swordcopperID);
+		copperShovel = new ItemCopperShovel(this.config.shovelcopperID);
+		copperAxe = new ItemCopperAxe(this.config.axecopperID);
+		copperHoe = new ItemCopperHoe(this.config.hoecopperID);
 	}
 	
 	private void registerItems() {

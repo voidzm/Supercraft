@@ -16,39 +16,13 @@ import net.minecraft.block.material.Material;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.world.IBlockAccess;
 
-public class BlockImpactGlass extends BlockBreakable {
+public class BlockImpactGlass extends BlockSupercraftGlass {
 
 	public BlockImpactGlass(int id) {
-		super(id, "supercraft:impactglass", Material.glass, false);
+		super(id, "supercraft:impactglass");
 		this.setHardness(3.0F);
 		this.setResistance(18.0F);
-		this.setStepSound(Block.soundGlassFootstep);
 		this.setUnlocalizedName("impactGlass");
-		this.setCreativeTab(CreativeTabs.tabBlock);
-	}
-	
-	public int quantityDropped(Random random) {
-		return 0;
-	}
-	
-	public int getRenderBlockPass() {
-		return 0;
-	}
-	
-	public boolean isOpaqueCube() {
-		return false;
-	}
-	
-	public boolean renderAsNormalBlock() {
-		return false;
-	}
-	
-	public boolean canSilkHarvest() {
-		return true;
-	}
-	
-	public boolean shouldSideBeRendered(IBlockAccess par1IBlockAccess, int par2, int par3, int par4, int par5) {
-		return super.shouldSideBeRendered(par1IBlockAccess, par2, par3, par4, par5);
 	}
 
 }

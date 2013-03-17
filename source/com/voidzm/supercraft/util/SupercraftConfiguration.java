@@ -90,11 +90,48 @@ public class SupercraftConfiguration {
 	public int blockcobaltoffID;
 	public int torchcobaltID;
 	
+	///*** ITEMS ***///
+	
+	public int ironscrapID;
+	public int diamondshardID;
+	
+	public int ingotaluminumID;
+	public int tantalumcrystalID;
+	public int ingotcopperID;
+	public int copperchunkID;
+	public int ingotsilverID;
+	public int silverfragmentID;
+	public int ingotelectrumID;
+	public int electrumbitID;
+	public int ingotnisilID;
+	public int nisilshardID;
+	public int ingotplatinumID;
+	public int ingotlithiumID;
+	public int ingotcobaltID;
+	public int elinvardustID;
+	public int cobaltdustID;
+	
+	public int bloodamberID;
+	public int essenceID;
+	
+	public int pickaxealuminumID;
+	public int swordaluminumID;
+	public int shovelaluminumID;
+	public int axealuminumID;
+	public int hoealuminumID;
+	
+	public int pickaxecopperID;
+	public int swordcopperID;
+	public int shovelcopperID;
+	public int axecopperID;
+	public int hoecopperID;
+	
 	public SupercraftConfiguration(File file) {
 		internalCfg = new Configuration(file);
 		internalCfg.save();
 		internalCfg.load();
 		this.loadBlocksConfig();
+		this.loadItemsConfig();
 		internalCfg.save();
 		System.out.println("[Supercraft] Configuration loaded from disk.");
 	}
@@ -180,6 +217,45 @@ public class SupercraftConfiguration {
 		torchcobaltID = internalCfg.get(Configuration.CATEGORY_BLOCK, "torchcobaltID", "1663").getInt();
 	
 		// NEXT ID: 1666
+		
+	}
+	
+	private void loadItemsConfig() {
+		ironscrapID = internalCfg.get(Configuration.CATEGORY_ITEM, "ironscrapID", "23000").getInt();
+		diamondshardID = internalCfg.get(Configuration.CATEGORY_ITEM, "diamondshardID", "23001").getInt();
+		
+		ingotaluminumID = internalCfg.get(Configuration.CATEGORY_ITEM, "ingotaluminumID", "23002").getInt();
+		tantalumcrystalID = internalCfg.get(Configuration.CATEGORY_ITEM, "tantalumcrystalID", "23003").getInt();
+		ingotcopperID = internalCfg.get(Configuration.CATEGORY_ITEM, "ingotcopperID", "23004").getInt();
+		copperchunkID = internalCfg.get(Configuration.CATEGORY_ITEM, "copperchunkID", "23005").getInt();
+		ingotsilverID = internalCfg.get(Configuration.CATEGORY_ITEM, "ingotsilverID", "23006").getInt();
+		silverfragmentID = internalCfg.get(Configuration.CATEGORY_ITEM, "silverfragmentID", "23007").getInt();
+		ingotelectrumID = internalCfg.get(Configuration.CATEGORY_ITEM, "ingotelectrumID", "23008").getInt();
+		electrumbitID = internalCfg.get(Configuration.CATEGORY_ITEM, "electrumbitID", "23009").getInt();
+		ingotnisilID = internalCfg.get(Configuration.CATEGORY_ITEM, "ingotnisilID", "23010").getInt();
+		nisilshardID = internalCfg.get(Configuration.CATEGORY_ITEM, "nisilshardID", "23011").getInt();
+		ingotplatinumID = internalCfg.get(Configuration.CATEGORY_ITEM, "ingotplatinumID", "23012").getInt();
+		ingotlithiumID = internalCfg.get(Configuration.CATEGORY_ITEM, "ingotlithiumID", "23013").getInt();
+		ingotcobaltID = internalCfg.get(Configuration.CATEGORY_ITEM, "ingotcobaltID", "23014").getInt();
+		elinvardustID = internalCfg.get(Configuration.CATEGORY_ITEM, "elinvardustID", "23015").getInt();
+		cobaltdustID = internalCfg.get(Configuration.CATEGORY_ITEM, "cobaltdustID", "23016").getInt();
+		
+		bloodamberID = internalCfg.get(Configuration.CATEGORY_ITEM, "bloodamberID", "23017").getInt();
+		essenceID = internalCfg.get(Configuration.CATEGORY_ITEM, "essenceID", "23018").getInt();
+		
+		pickaxealuminumID = internalCfg.get(Configuration.CATEGORY_ITEM, "pickaxealuminumID", "23019").getInt();
+		swordaluminumID = internalCfg.get(Configuration.CATEGORY_ITEM, "swordaluminumID", "23020").getInt();
+		shovelaluminumID = internalCfg.get(Configuration.CATEGORY_ITEM, "shovelaluminumID", "23021").getInt();
+		axealuminumID = internalCfg.get(Configuration.CATEGORY_ITEM, "axealuminumID", "23022").getInt();
+		hoealuminumID = internalCfg.get(Configuration.CATEGORY_ITEM, "hoealuminumID", "23023").getInt();
+		
+		pickaxecopperID = internalCfg.get(Configuration.CATEGORY_ITEM, "pickaxecopperID", "23024").getInt();
+		swordcopperID = internalCfg.get(Configuration.CATEGORY_ITEM, "swordcopperID", "23025").getInt();
+		shovelcopperID = internalCfg.get(Configuration.CATEGORY_ITEM, "shovelcopperID", "23026").getInt();
+		axecopperID = internalCfg.get(Configuration.CATEGORY_ITEM, "axecopperID", "23027").getInt();
+		hoecopperID = internalCfg.get(Configuration.CATEGORY_ITEM, "hoecopperID", "23028").getInt();
+		
+		// NEXT ID: 23029
 		
 	}
 	
