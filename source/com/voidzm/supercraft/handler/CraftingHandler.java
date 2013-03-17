@@ -8,6 +8,7 @@
 
 package com.voidzm.supercraft.handler;
 
+import com.voidzm.supercraft.util.SupercraftConfiguration;
 import com.voidzm.supercraft.util.EssentialReducerRecipes.EssentialAspect;
 
 import cpw.mods.fml.common.registry.GameRegistry;
@@ -20,6 +21,8 @@ import net.minecraftforge.oredict.ShapedOreRecipe;
 
 public class CraftingHandler {
 
+	protected SupercraftConfiguration config;
+	
 	// Official vanilla Minecraft
 	
 	private ItemStack glass;
@@ -95,7 +98,14 @@ public class CraftingHandler {
 	private ItemStack silverboundStone;
 	private ItemStack ferricEssence;
 	
-	public void populateAllAndInitialize() {
+	public void populateAllAndInitialize(SupercraftConfiguration configObject) {
+		if(this.config != null) {
+			throw new RuntimeException("Crafting handler already loaded with configuration, cannot initialize again!"); 
+		}
+		if(configObject == null) {
+			throw new RuntimeException("Configuration required for crafting handler initialization!");
+		}
+		this.config = configObject;
 		this.initializeCraftingRefs();
 		this.addRecipes();
 		this.addShapelessRecipes();
@@ -178,36 +188,25 @@ public class CraftingHandler {
 	}
 	
 	private void addRecipes() {
-		
-		// Advanced Glass
-		
 		GameRegistry.addRecipe(new ItemStack(BlockHandler.reinforcedGlass), "a a", " b ", "a a", 'a', ironScrap, 'b', glass);
 		GameRegistry.addRecipe(new ItemStack(BlockHandler.temperedGlass), "a a", " b ", "a a", 'a', goldNugget, 'b', glass);
 		GameRegistry.addRecipe(new ItemStack(BlockHandler.ornateGlass), "a a", " b ", "a a", 'a', diamondShard, 'b', glass);
 		GameRegistry.addRecipe(new ItemStack(BlockHandler.impactGlass), "a a", " b ", "a a", 'a', obsidian, 'b', glass);
 		
-		// Material Extensions
-		
-		GameRegistry.addRecipe(new ItemStack(BlockHandler.coalBlock), "aaa", "aaa", "aaa", 'a', coal);
+		if(this.config.docoalblockrecipe) GameRegistry.addRecipe(new ItemStack(BlockHandler.coalBlock), "aaa", "aaa", "aaa", 'a', coal);
 		GameRegistry.addRecipe(new ItemStack(Item.ingotIron), "aaa", "aaa", "aaa", 'a', ironScrap);
 		GameRegistry.addRecipe(new ItemStack(Item.diamond), "aaa", "aaa", "aaa", 'a', diamondShard);
-		
-		// Supercraft Trees
-		
+
 		GameRegistry.addRecipe(new ItemStack(BlockHandler.supercraftSlab1, 6, 0), "aaa", 'a', olivePlanks);
 		GameRegistry.addRecipe(new ItemStack(BlockHandler.oliveStairs, 4), "a  ", "aa ", "aaa", 'a', olivePlanks);
 		GameRegistry.addRecipe(new ItemStack(BlockHandler.oliveStairs, 4), "  a", " aa", "aaa", 'a', olivePlanks);
-		
 		GameRegistry.addRecipe(new ItemStack(BlockHandler.supercraftSlab1, 6, 1), "aaa", 'a', goldenwoodPlanks);
 		GameRegistry.addRecipe(new ItemStack(BlockHandler.goldenwoodStairs, 4), "a  ", "aa ", "aaa", 'a', goldenwoodPlanks);
 		GameRegistry.addRecipe(new ItemStack(BlockHandler.goldenwoodStairs, 4), "  a", " aa", "aaa", 'a', goldenwoodPlanks);
-		
 		GameRegistry.addRecipe(new ItemStack(BlockHandler.supercraftSlab1, 6, 2), "aaa", 'a', tenebriaPlanks);
 		GameRegistry.addRecipe(new ItemStack(BlockHandler.tenebriaStairs, 4), "a  ", "aa ", "aaa", 'a', tenebriaPlanks);
 		GameRegistry.addRecipe(new ItemStack(BlockHandler.tenebriaStairs, 4), "  a", " aa", "aaa", 'a', tenebriaPlanks);
-		
-		// Aluminum Material
-		
+
 		GameRegistry.addRecipe(new ItemStack(BlockHandler.aluminumBlock), "aaa", "aaa", "aaa", 'a', aluminum);
 		GameRegistry.addRecipe(new ItemStack(ItemHandler.aluminumPickaxe), "aaa", " b ", " b ", 'a', aluminum, 'b', stick);
 		GameRegistry.addRecipe(new ItemStack(ItemHandler.aluminumSaber), "a", "a", "b", 'a', aluminum, 'b', stick);
@@ -216,9 +215,7 @@ public class CraftingHandler {
 		GameRegistry.addRecipe(new ItemStack(ItemHandler.aluminumAxe), "aa", "ba", "b ", 'a', aluminum, 'b', stick);
 		GameRegistry.addRecipe(new ItemStack(ItemHandler.aluminumHoe), "aa", " b", " b", 'a', aluminum, 'b', stick);
 		GameRegistry.addRecipe(new ItemStack(ItemHandler.aluminumHoe), "aa", "b ", "b ", 'a', aluminum, 'b', stick);
-		
-		// Copper Material
-		
+
 		GameRegistry.addRecipe(new ItemStack(ItemHandler.copperIngot), "aaa", "aaa", "aaa", 'a', copperChunk);
 		GameRegistry.addRecipe(new ItemStack(BlockHandler.copperBlock), "aaa", "aaa", "aaa", 'a', copper);
 		GameRegistry.addRecipe(new ItemStack(ItemHandler.copperPickaxe), "aaa", " b ", " b ", 'a', copper, 'b', stick);
@@ -228,27 +225,17 @@ public class CraftingHandler {
 		GameRegistry.addRecipe(new ItemStack(ItemHandler.copperAxe), "aa", "ba", "b ", 'a', copper, 'b', stick);
 		GameRegistry.addRecipe(new ItemStack(ItemHandler.copperHoe), "aa", " b", " b", 'a', copper, 'b', stick);
 		GameRegistry.addRecipe(new ItemStack(ItemHandler.copperHoe), "aa", "b ", "b ", 'a', copper, 'b', stick);
-		
-		// Silver
-		
+
 		GameRegistry.addRecipe(new ItemStack(ItemHandler.silverIngot), "aaa", "aaa", "aaa", 'a', silverFragment);
 		GameRegistry.addRecipe(new ItemStack(BlockHandler.silverBlock), "aaa", "aaa", "aaa", 'a', silver);
-		
-		// Electrum Material
-		
+
 		GameRegistry.addRecipe(new ItemStack(ItemHandler.electrumIngot), "aaa", "aaa", "aaa", 'a', electrumBit);
 		GameRegistry.addRecipe(new ItemStack(BlockHandler.electrumBlock), "aaa", "aaa", "aaa", 'a', electrum);
-		
-		// Elinvar Material
-		
+
 		GameRegistry.addRecipe(new ItemStack(BlockHandler.elinvarBlock), "aaa", "aaa", "aaa", 'a', elinvarDust);
-		
-		// Elinvar Conduits
-		
+
 		this.addConduitRecipes();
-		
-		// Refined Crafting Tables
-		
+
 		GameRegistry.addRecipe(new ItemStack(BlockHandler.refinedCraftingTable, 1, 0), " a ", "bcb", " b ", 'a', blueWool, 'b', stone, 'c', craftingTable);
 		GameRegistry.addRecipe(new ItemStack(BlockHandler.refinedCraftingTable, 1, 1), " a ", "bcb", " b ", 'a', greenWool, 'b', stone, 'c', craftingTable);
 		GameRegistry.addRecipe(new ItemStack(BlockHandler.refinedCraftingTable, 1, 2), " a ", "bcb", " b ", 'a', redWool, 'b', stone, 'c', craftingTable);
@@ -256,98 +243,62 @@ public class CraftingHandler {
 		GameRegistry.addRecipe(new ItemStack(BlockHandler.refinedCraftingTable, 1, 4), " a ", "bcb", " b ", 'a', purpleWool, 'b', endStone, 'c', craftingTable);
 		GameRegistry.addRecipe(new ItemStack(BlockHandler.refinedCraftingTable, 1, 5), " a ", "bcb", " b ", 'a', darkGrayWool, 'b', palestone, 'c', craftingTable);
 		GameRegistry.addRecipe(new ItemStack(BlockHandler.refinedCraftingTable, 1, 6), " a ", "bcb", " b ", 'a', lightGrayWool, 'b', nightrock, 'c', craftingTable);
-		
-		// Elinvar Generators
-		
+
 		GameRegistry.addRecipe(new ItemStack(BlockHandler.redstoneGenerator), "aba", "cac", "ddd", 'a', ironboundStone, 'b', redstone, 'c', obsidian, 'd', aluminum);
-		
-		// Palestone
-		
+
 		GameRegistry.addRecipe(new ItemStack(BlockHandler.palestoneBricks, 4), "aa", "aa", 'a', palestone);
 		GameRegistry.addRecipe(new ItemStack(BlockHandler.supercraftSlab2, 6, 0), "aaa", 'a', palestoneBricks);
 		GameRegistry.addRecipe(new ItemStack(BlockHandler.palestoneStairs, 4), "a  ", "aa ", "aaa", 'a', palestoneBricks);
 		GameRegistry.addRecipe(new ItemStack(BlockHandler.palestoneStairs, 4), "  a", " aa", "aaa", 'a', palestoneBricks);
 		GameRegistry.addRecipe(new ItemStack(BlockHandler.inscribedPalestone), "a", "a", 'a', palestoneBrickSlab);
-		
-		// Nightrock
-		
+
 		GameRegistry.addRecipe(new ItemStack(BlockHandler.nightrockBricks, 4), "aa", "aa", 'a', nightrock);
 		GameRegistry.addRecipe(new ItemStack(BlockHandler.supercraftSlab2, 6, 1), "aaa", 'a', nightrockBricks);
 		GameRegistry.addRecipe(new ItemStack(BlockHandler.nightrockStairs, 4), "a  ", "aa ", "aaa", 'a', nightrockBricks);
 		GameRegistry.addRecipe(new ItemStack(BlockHandler.nightrockStairs, 4), "  a", " aa", "aaa", 'a', nightrockBricks);
 		GameRegistry.addRecipe(new ItemStack(BlockHandler.inscribedNightrock), "a", "a", 'a', nightrockBrickSlab);
-		
-		// Nisil
-		
+
 		GameRegistry.addRecipe(new ItemStack(ItemHandler.nisilIngot), "aaa", "aaa", "aaa", 'a', nisilShard);
 		GameRegistry.addRecipe(new ItemStack(BlockHandler.nisilBlock), "aaa", "aaa", "aaa", 'a', nisil);
-		
-		// Machines
-		
+
 		GameRegistry.addRecipe(new ItemStack(BlockHandler.ironboundStone), "a a", " b ", "a a", 'a', ironScrap, 'b', stone);
 		GameRegistry.addRecipe(new ItemStack(BlockHandler.essentialReducer), "aba", "cdc", "aaa", 'a', ironboundStone, 'b', flint, 'c', elinvarDust, 'd', diamond);
 		GameRegistry.addRecipe(new ItemStack(BlockHandler.copperboundStone), "a a", " b ", "a a", 'a', copperChunk, 'b', stone);
 		GameRegistry.addRecipe(new ItemStack(BlockHandler.radiantSolarGenerator), "aba", "cdc", "eee", 'a', aeronicEssence, 'b', radantisEssence, 'c', obsidian, 'd', copper, 'e', copperboundStone);
 		GameRegistry.addRecipe(new ItemStack(BlockHandler.silverboundStone), "a a", " b ", "a a", 'a', silverFragment, 'b', stone);
 		GameRegistry.addRecipe(new ItemStack(BlockHandler.waveringLunarGenerator), "aba", "cdc", "eee", 'a', aeronicEssence, 'b', ferricEssence, 'c', obsidian, 'd', silver, 'e', silverboundStone);
-		
-		// Cobalt
-		
+
 		GameRegistry.addRecipe(new ItemStack(BlockHandler.cobaltTorch, 4), "a", "b", 'a', cobaltDust, 'b', stick);
 		GameRegistry.addRecipe(new ItemStack(BlockHandler.cobaltBlock), "aaa", "aaa", "aaa", 'a', cobaltDust);
-		
-		// Tantalum
-		
+
 		GameRegistry.addRecipe(new ItemStack(BlockHandler.tantalumBlock), "aaa", "aaa", "aaa", 'a', tantalum);
-		
-		// Platinum
-		
+
 		GameRegistry.addRecipe(new ItemStack(BlockHandler.platinumBlock), "aaa", "aaa", "aaa", 'a', platinum);
-		
-		// Lithium
-		
+
 		GameRegistry.addRecipe(new ItemStack(BlockHandler.lithiumBlock), "aaa", "aaa", "aaa", 'a', lithium);
-		
 	}
 	
 	private void addShapelessRecipes() {
-		
-		// Material Extensions
-		
 		GameRegistry.addShapelessRecipe(new ItemStack(Item.coal, 9), coalBlock);
-		GameRegistry.addShapelessRecipe(new ItemStack(ItemHandler.ironScrap, 9), ironIngot);
-		GameRegistry.addShapelessRecipe(new ItemStack(ItemHandler.diamondShard, 9), diamond);
-		
-		// Supercraft Trees
-		
+		if(this.config.doironscraprecipe) GameRegistry.addShapelessRecipe(new ItemStack(ItemHandler.ironScrap, 9), ironIngot);
+		if(this.config.dodiamondshardrecipe) GameRegistry.addShapelessRecipe(new ItemStack(ItemHandler.diamondShard, 9), diamond);
+
 		GameRegistry.addShapelessRecipe(new ItemStack(BlockHandler.supercraftPlanks, 4, 0), oliveWood);
 		GameRegistry.addShapelessRecipe(new ItemStack(BlockHandler.supercraftPlanks, 4, 1), goldenwoodWood);
 		GameRegistry.addShapelessRecipe(new ItemStack(BlockHandler.supercraftPlanks, 4, 2), tenebriaWood);
-		
-		// Aluminum Material
-		
+
 		GameRegistry.addShapelessRecipe(new ItemStack(ItemHandler.aluminumIngot, 9), aluminumBlock);
-		
-		// Copper Material
-		
+
 		GameRegistry.addShapelessRecipe(new ItemStack(ItemHandler.copperChunk, 9), copper);
 		GameRegistry.addShapelessRecipe(new ItemStack(ItemHandler.copperIngot, 9), copperBlock);
-		
-		// Silver Material
-		
+
 		GameRegistry.addShapelessRecipe(new ItemStack(ItemHandler.silverFragment, 9), silver);
 		GameRegistry.addShapelessRecipe(new ItemStack(ItemHandler.silverIngot, 9), silverBlock);
-		
-		// Electrum Material
-		
+
 		GameRegistry.addShapelessRecipe(new ItemStack(ItemHandler.electrumBit, 9), electrum);
 		GameRegistry.addShapelessRecipe(new ItemStack(ItemHandler.electrumIngot, 9), electrumBlock);
-		
-		// Elinvar Material
-		
+
 		GameRegistry.addShapelessRecipe(new ItemStack(ItemHandler.elinvarDust, 9), elinvarBlock);
-		
-		// Supercraft Flowers
 		
 		GameRegistry.addShapelessRecipe(new ItemStack(Item.dyePowder, 2, 12), bluebells);
 		GameRegistry.addShapelessRecipe(new ItemStack(Item.dyePowder, 2, 7), daisies);
@@ -356,64 +307,29 @@ public class CraftingHandler {
 		// TEMPORARY - CRYSTALLINE EXTRACTOR
 		
 		GameRegistry.addShapelessRecipe(new ItemStack(ItemHandler.bloodAmber), new ItemStack(BlockHandler.supercraftLog, 1, 3));
-		
-		// Nisil
-		
+
 		GameRegistry.addShapelessRecipe(new ItemStack(ItemHandler.nisilShard, 9), nisil);
 		GameRegistry.addShapelessRecipe(new ItemStack(ItemHandler.nisilIngot, 9), nisilBlock);
-		
-		// Cobalt
-		
+
 		GameRegistry.addShapelessRecipe(new ItemStack(ItemHandler.cobaltDust, 9), cobaltBlock);
-		
-		// Tantalum
-		
+
 		GameRegistry.addShapelessRecipe(new ItemStack(ItemHandler.tantalumCrystal, 9), tantalumBlock);
-		
-		// Platinum
-		
-		GameRegistry.addShapelessRecipe(new ItemStack(ItemHandler.platinumIngot, 9), platinumBlock);
-				
-		// Lithium
-				
+	
 		GameRegistry.addShapelessRecipe(new ItemStack(ItemHandler.lithiumIngot, 9), lithiumBlock);
-		
 	}
 	
 	private void addSmelting() {
-		
-		// Aluminum Material
-		
 		GameRegistry.addSmelting(BlockHandler.aluminumOre.blockID, new ItemStack(ItemHandler.aluminumIngot, 1), 0.4F);
-		
-		// Copper Material
-		
 		GameRegistry.addSmelting(BlockHandler.copperOre.blockID, new ItemStack(ItemHandler.copperIngot, 1), 0.4F);
-		
-		// Silver Material
-		
 		GameRegistry.addSmelting(BlockHandler.silverOre.blockID, new ItemStack(ItemHandler.silverIngot, 1), 0.5F);
-		
-		// Electrum Material
-		
 		GameRegistry.addSmelting(BlockHandler.electrumOre.blockID, new ItemStack(ItemHandler.electrumIngot, 1), 0.6F);
 		
-		// Tantalum Material -- TEMPORARY until Crystalline Extracter
-		
+		// Tantalum -- TEMPORARY until Crystalline Extracter	
 		GameRegistry.addSmelting(BlockHandler.tantalumOre.blockID, new ItemStack(ItemHandler.tantalumCrystal, 1), 1.0F); // Temporary until Elinvar machines.
-		
-		// Nisil
-		
+
 		GameRegistry.addSmelting(BlockHandler.nisilOre.blockID, new ItemStack(ItemHandler.nisilIngot, 1), 0.4F);
-		
-		// Platinum
-		
 		GameRegistry.addSmelting(BlockHandler.platinumOre.blockID, new ItemStack(ItemHandler.platinumIngot, 1), 0.8F);
-				
-		// Lithium
-				
 		GameRegistry.addSmelting(BlockHandler.lithiumOre.blockID, new ItemStack(ItemHandler.lithiumIngot, 1), 2.0F);
-		
 	}
 	
 	private void addConduitRecipes() {

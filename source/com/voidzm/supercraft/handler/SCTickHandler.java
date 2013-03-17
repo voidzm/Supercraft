@@ -32,7 +32,6 @@ public class SCTickHandler implements ITickHandler {
 		if(mcRef.currentScreen instanceof GuiMainMenu) {
 			mcRef.displayGuiScreen(ClientProxy.mainMenu);
 		}
-		EntityClientPlayerMP player = FMLClientHandler.instance().getClient().thePlayer;
 	}
 
 	@Override

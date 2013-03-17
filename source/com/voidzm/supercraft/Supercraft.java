@@ -91,11 +91,11 @@ public class Supercraft {
 	@Init
 	public void load(FMLInitializationEvent event) {
 		blockHandler.populateAllAndInitialize(configuration);
+		itemHandler.populateAllAndInitialize(configuration);
+		craftingHandler.populateAllAndInitialize(configuration);
+		biomeHandler.populateAllAndInitialize(configuration);
 		proxy.registerRenderers();
 		proxy.initializeGui();
-		itemHandler.populateAllAndInitialize(configuration);
-		craftingHandler.populateAllAndInitialize();
-		biomeHandler.populateAllAndInitialize();
 
 		// biomeHandler.removeVanillaBiomes(); // For biome testing only.
 		

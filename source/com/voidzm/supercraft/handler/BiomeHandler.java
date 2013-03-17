@@ -16,6 +16,7 @@ import com.voidzm.supercraft.biome.BiomeGenSandyPeaks;
 import com.voidzm.supercraft.biome.BiomeGenSavanna;
 import com.voidzm.supercraft.biome.BiomeGenTenebralWoods;
 import com.voidzm.supercraft.biome.BiomeGenWinterForest;
+import com.voidzm.supercraft.util.SupercraftConfiguration;
 
 import cpw.mods.fml.common.network.NetworkRegistry;
 import cpw.mods.fml.common.registry.GameRegistry;
@@ -27,6 +28,8 @@ import net.minecraftforge.common.BiomeManager;
 
 public class BiomeHandler {
 
+	protected SupercraftConfiguration config;
+	
 	public static BiomeGenBase extremeForest;
 	public static BiomeGenBase insaneHills;
 	public static BiomeGenBase grassySummits;
@@ -38,23 +41,30 @@ public class BiomeHandler {
 	public static BiomeGenBase goldenwoodForest;
 	public static BiomeGenBase tenebralWoods;
 	
-	public void populateAllAndInitialize() {
+	public void populateAllAndInitialize(SupercraftConfiguration configObject) {
+		if(this.config != null) {
+			throw new RuntimeException("Biome handler already loaded with configuration, cannot initialize again!"); 
+		}
+		if(configObject == null) {
+			throw new RuntimeException("Configuration required for biome handler initialization!");
+		}
+		this.config = configObject;
 		this.createBiomes();
 		this.registerBiomes();
 		System.out.println("[Supercraft] 10 biomes added.");
 	}
 	
 	private void createBiomes() {
-		extremeForest = new BiomeGenExtremeForest(23);
-		insaneHills = new BiomeGenInsaneHills(24);
-		grassySummits = new BiomeGenGrassySummits(25);
-		winterForest = new BiomeGenWinterForest(26);
-		alpha = new BiomeGenAlpha(27);
-		savanna = new BiomeGenSavanna(28);
-		sandyPeaks = new BiomeGenSandyPeaks(29);
-		icyRidges = new BiomeGenIcyRidges(30);
-		goldenwoodForest = new BiomeGenGoldenwoodForest(31);
-		tenebralWoods = new BiomeGenTenebralWoods(32);
+		extremeForest = new BiomeGenExtremeForest(this.config.extremeforestID);
+		insaneHills = new BiomeGenInsaneHills(this.config.insanehillsID);
+		grassySummits = new BiomeGenGrassySummits(this.config.grassysummitsID);
+		winterForest = new BiomeGenWinterForest(this.config.winterforestID);
+		alpha = new BiomeGenAlpha(this.config.alphaID);
+		savanna = new BiomeGenSavanna(this.config.savannaID);
+		sandyPeaks = new BiomeGenSandyPeaks(this.config.sandypeaksID);
+		icyRidges = new BiomeGenIcyRidges(this.config.icyridgesID);
+		goldenwoodForest = new BiomeGenGoldenwoodForest(this.config.goldenwoodforestID);
+		tenebralWoods = new BiomeGenTenebralWoods(this.config.tenebralwoodsID);
 	}
 	
 	private void registerBiomes() {

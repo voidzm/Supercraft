@@ -7,6 +7,8 @@ import net.minecraftforge.common.Configuration;
 
 public class SupercraftConfiguration {
 
+	public static final String CATEGORY_BIOME = "biome";
+	
 	private Configuration internalCfg;
 	
 	///*** BLOCKS ***///
@@ -126,12 +128,33 @@ public class SupercraftConfiguration {
 	public int axecopperID;
 	public int hoecopperID;
 	
+	///*** RECIPES ***///
+	
+	public boolean docoalblockrecipe;
+	public boolean doironscraprecipe;
+	public boolean dodiamondshardrecipe;
+	
+	///*** BIOMES ***///
+	
+	public int extremeforestID;
+	public int insanehillsID;
+	public int grassysummitsID;
+	public int winterforestID;
+	public int alphaID;
+	public int savannaID;
+	public int sandypeaksID;
+	public int icyridgesID;
+	public int goldenwoodforestID;
+	public int tenebralwoodsID;;
+	
 	public SupercraftConfiguration(File file) {
 		internalCfg = new Configuration(file);
 		internalCfg.save();
 		internalCfg.load();
 		this.loadBlocksConfig();
 		this.loadItemsConfig();
+		this.loadGeneralConfig();
+		this.loadBiomesConfig();
 		internalCfg.save();
 		System.out.println("[Supercraft] Configuration loaded from disk.");
 	}
@@ -257,6 +280,25 @@ public class SupercraftConfiguration {
 		
 		// NEXT ID: 23029
 		
+	}
+	
+	private void loadGeneralConfig() {
+		docoalblockrecipe = internalCfg.get(Configuration.CATEGORY_GENERAL, "docoalblockrecipe", "true").getBoolean(true);
+		doironscraprecipe = internalCfg.get(Configuration.CATEGORY_GENERAL, "doironscraprecipe", "true").getBoolean(true);
+		dodiamondshardrecipe = internalCfg.get(Configuration.CATEGORY_GENERAL, "dodiamondshardrecipe", "true").getBoolean(true);
+	}
+	
+	private void loadBiomesConfig() {
+		extremeforestID = internalCfg.get(this.CATEGORY_BIOME, "extremeforestID", "23").getInt();
+		insanehillsID = internalCfg.get(this.CATEGORY_BIOME, "insanehillsID", "24").getInt();
+		grassysummitsID = internalCfg.get(this.CATEGORY_BIOME, "grassysummitsID", "25").getInt();
+		winterforestID = internalCfg.get(this.CATEGORY_BIOME, "winterforestID", "26").getInt();
+		alphaID = internalCfg.get(this.CATEGORY_BIOME, "alphaID", "23000").getInt();
+		savannaID = internalCfg.get(this.CATEGORY_BIOME, "savannaID", "27").getInt();
+		sandypeaksID = internalCfg.get(this.CATEGORY_BIOME, "sandypeaksID", "28").getInt();
+		icyridgesID = internalCfg.get(this.CATEGORY_BIOME, "icyridgesID", "29").getInt();
+		goldenwoodforestID = internalCfg.get(this.CATEGORY_BIOME, "goldenwoodforestID", "30").getInt();
+		tenebralwoodsID = internalCfg.get(this.CATEGORY_BIOME, "tenebralwoodsID", "31").getInt();
 	}
 	
 }
