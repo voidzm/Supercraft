@@ -1,0 +1,63 @@
+//////////////////////////////////////
+//*       BiomeGenDepths.java      *//
+//*           Supercraft           *//
+//*        (c) voidzm 2013         *//
+//////////////////////////////////////
+
+package com.voidzm.supercraft.biome;
+
+import java.util.Random;
+
+import com.voidzm.supercraft.handler.BlockHandler;
+
+import net.minecraft.block.Block;
+import net.minecraft.entity.monster.EntityCreeper;
+import net.minecraft.entity.monster.EntityEnderman;
+import net.minecraft.entity.monster.EntitySkeleton;
+import net.minecraft.entity.monster.EntitySpider;
+import net.minecraft.entity.passive.EntityWolf;
+import net.minecraft.world.World;
+import net.minecraft.world.biome.BiomeGenBase;
+import net.minecraft.world.biome.SpawnListEntry;
+import net.minecraft.world.gen.feature.WorldGenerator;
+
+public class BiomeGenDepths extends BiomeGenBase {
+
+	public BiomeGenDepths(int par1) {
+		super(par1);
+		this.setBiomeName("Depths");
+	}
+	
+	@Override
+	public int getSkyColorByTemp(float par1) {
+		return 0x000000;
+	}
+	
+	@Override
+	public void decorate(World par1World, Random par2Random, int par3, int par4) {
+		if(par2Random.nextInt(8) == 0) {
+			int xPos = par3 + par2Random.nextInt(16) + 8;
+			int zPos = par4 + par2Random.nextInt(16) + 8;
+			for(int iy = 126; iy > 64; iy--) {
+				int bID = par1World.getBlockId(xPos, iy, zPos);
+				if(bID == 0) {
+					if(par1World.getBlockId(xPos, iy+1, zPos) == Block.stone.blockID) {
+						par1World.setBlockAndMetadataWithNotify(xPos, iy+1, zPos, BlockHandler.ghostlyVaporFlowing.blockID, 0, 2);
+						par1World.scheduledUpdatesAreImmediate = true;
+		                BlockHandler.ghostlyVaporFlowing.updateTick(par1World, xPos, iy+1, zPos, par2Random);
+		                par1World.scheduledUpdatesAreImmediate = false;
+		                break;
+					}
+					else if(par1World.getBlockId(xPos, iy+1, zPos) == Block.bedrock.blockID) {
+						par1World.setBlockAndMetadataWithNotify(xPos, iy, zPos, BlockHandler.ghostlyVaporFlowing.blockID, 0, 2);
+						par1World.scheduledUpdatesAreImmediate = true;
+		                BlockHandler.ghostlyVaporFlowing.updateTick(par1World, xPos, iy, zPos, par2Random);
+		                par1World.scheduledUpdatesAreImmediate = false;
+		                break;
+					}
+				}
+			}
+		}
+	}
+	
+}

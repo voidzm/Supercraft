@@ -28,6 +28,7 @@ import cpw.mods.fml.common.registry.GameRegistry;
 import cpw.mods.fml.common.registry.LanguageRegistry;
 
 import net.minecraft.block.Block;
+import net.minecraft.block.material.Material;
 import net.minecraft.item.ItemBlock;
 import net.minecraft.item.ItemStack;
 
@@ -120,6 +121,9 @@ public class BlockHandler {
 	
 	public static Block lithiumOre;
 	public static Block lithiumBlock;
+	
+	public static Block ghostlyVaporFlowing;
+	public static Block ghostlyVaporStill;
 	
 	public void populateAllAndInitialize(SupercraftConfiguration configObject) {
 		if(this.config != null) {
@@ -318,6 +322,11 @@ public class BlockHandler {
 		languageHandler.add(lithiumOre, "Lithium Ore");
 		languageHandler.add(lithiumBlock, "Block of Lithium");
 		
+		// The Deep
+		
+		languageHandler.add(ghostlyVaporFlowing, "Ghostly Vapor");
+		languageHandler.add(ghostlyVaporStill, "Ghostly Vapor");
+		
 	}
 	
 	private void createBlocks() {
@@ -400,6 +409,9 @@ public class BlockHandler {
 
 		lithiumOre = new BlockLithiumOre(this.config.orelithiumID);
 		lithiumBlock = new BlockLithium(this.config.blocklithiumID);
+		
+		ghostlyVaporFlowing = new BlockGhostlyVaporFlowing(this.config.ghostlyvaporflowingID);
+		ghostlyVaporStill = new BlockGhostlyVaporStill(this.config.ghostlyvaporstillID);
 	}
 	
 	private void registerBlocks() {
@@ -528,6 +540,9 @@ public class BlockHandler {
 		
 		GameRegistry.registerBlock(lithiumOre, "lithiumOre");
 		GameRegistry.registerBlock(lithiumBlock, "lithiumBlock");
+		
+		GameRegistry.registerBlock(ghostlyVaporFlowing, "ghostlyVaporFlowing");
+		GameRegistry.registerBlock(ghostlyVaporStill, "ghostlyVaporStill");
 		
 	}
 	
@@ -707,6 +722,9 @@ public class BlockHandler {
 		
 		LanguageRegistry.addName(lithiumOre, (String)this.languageHandler.getString(lithiumOre));
 		LanguageRegistry.addName(lithiumBlock, (String)this.languageHandler.getString(lithiumBlock));
+		
+		LanguageRegistry.addName(ghostlyVaporFlowing, (String)this.languageHandler.getString(ghostlyVaporFlowing));
+		LanguageRegistry.addName(ghostlyVaporStill, (String)this.languageHandler.getString(ghostlyVaporStill));
 		
 	}
 

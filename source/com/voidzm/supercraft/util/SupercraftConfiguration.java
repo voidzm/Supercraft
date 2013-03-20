@@ -92,6 +92,9 @@ public class SupercraftConfiguration {
 	public int blockcobaltoffID;
 	public int torchcobaltID;
 	
+	public int ghostlyvaporflowingID;
+	public int ghostlyvaporstillID;
+	
 	///*** ITEMS ***///
 	
 	public int ironscrapID;
@@ -145,7 +148,8 @@ public class SupercraftConfiguration {
 	public int sandypeaksID;
 	public int icyridgesID;
 	public int goldenwoodforestID;
-	public int tenebralwoodsID;;
+	public int tenebralwoodsID;
+	public int depthsID;
 	
 	public SupercraftConfiguration(File file) {
 		internalCfg = new Configuration(file);
@@ -239,7 +243,10 @@ public class SupercraftConfiguration {
 		blockcobaltoffID = internalCfg.get(Configuration.CATEGORY_BLOCK, "blockcobaltoffID", "1662").getInt();
 		torchcobaltID = internalCfg.get(Configuration.CATEGORY_BLOCK, "torchcobaltID", "1663").getInt();
 	
-		// NEXT ID: 1666
+		ghostlyvaporflowingID = internalCfg.get(Configuration.CATEGORY_BLOCK, "ghostlyvaporflowingID", "1666").getInt();
+		ghostlyvaporstillID = internalCfg.get(Configuration.CATEGORY_BLOCK, "ghostlyvaporstillID", "1667").getInt();
+		
+		// NEXT ID: 1668
 		
 	}
 	
@@ -293,12 +300,13 @@ public class SupercraftConfiguration {
 		insanehillsID = internalCfg.get(this.CATEGORY_BIOME, "insanehillsID", "24").getInt();
 		grassysummitsID = internalCfg.get(this.CATEGORY_BIOME, "grassysummitsID", "25").getInt();
 		winterforestID = internalCfg.get(this.CATEGORY_BIOME, "winterforestID", "26").getInt();
-		alphaID = internalCfg.get(this.CATEGORY_BIOME, "alphaID", "23000").getInt();
-		savannaID = internalCfg.get(this.CATEGORY_BIOME, "savannaID", "27").getInt();
-		sandypeaksID = internalCfg.get(this.CATEGORY_BIOME, "sandypeaksID", "28").getInt();
-		icyridgesID = internalCfg.get(this.CATEGORY_BIOME, "icyridgesID", "29").getInt();
-		goldenwoodforestID = internalCfg.get(this.CATEGORY_BIOME, "goldenwoodforestID", "30").getInt();
-		tenebralwoodsID = internalCfg.get(this.CATEGORY_BIOME, "tenebralwoodsID", "31").getInt();
+		alphaID = internalCfg.get(this.CATEGORY_BIOME, "alphaID", "27").getInt();
+		savannaID = internalCfg.get(this.CATEGORY_BIOME, "savannaID", "28").getInt();
+		sandypeaksID = internalCfg.get(this.CATEGORY_BIOME, "sandypeaksID", "29").getInt();
+		icyridgesID = internalCfg.get(this.CATEGORY_BIOME, "icyridgesID", "30").getInt();
+		goldenwoodforestID = internalCfg.get(this.CATEGORY_BIOME, "goldenwoodforestID", "31").getInt();
+		tenebralwoodsID = internalCfg.get(this.CATEGORY_BIOME, "tenebralwoodsID", "32").getInt();
+		depthsID = internalCfg.get(this.CATEGORY_BIOME, "depthsID", "33").getInt();
 	}
 	
 }

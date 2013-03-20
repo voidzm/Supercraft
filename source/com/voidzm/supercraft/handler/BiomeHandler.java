@@ -6,16 +6,7 @@
 
 package com.voidzm.supercraft.handler;
 
-import com.voidzm.supercraft.biome.BiomeGenAlpha;
-import com.voidzm.supercraft.biome.BiomeGenExtremeForest;
-import com.voidzm.supercraft.biome.BiomeGenGoldenwoodForest;
-import com.voidzm.supercraft.biome.BiomeGenGrassySummits;
-import com.voidzm.supercraft.biome.BiomeGenIcyRidges;
-import com.voidzm.supercraft.biome.BiomeGenInsaneHills;
-import com.voidzm.supercraft.biome.BiomeGenSandyPeaks;
-import com.voidzm.supercraft.biome.BiomeGenSavanna;
-import com.voidzm.supercraft.biome.BiomeGenTenebralWoods;
-import com.voidzm.supercraft.biome.BiomeGenWinterForest;
+import com.voidzm.supercraft.biome.*;
 import com.voidzm.supercraft.util.SupercraftConfiguration;
 
 import cpw.mods.fml.common.network.NetworkRegistry;
@@ -40,6 +31,7 @@ public class BiomeHandler {
 	public static BiomeGenBase icyRidges;
 	public static BiomeGenBase goldenwoodForest;
 	public static BiomeGenBase tenebralWoods;
+	public static BiomeGenBase depths;
 	
 	public void populateAllAndInitialize(SupercraftConfiguration configObject) {
 		if(this.config != null) {
@@ -51,7 +43,7 @@ public class BiomeHandler {
 		this.config = configObject;
 		this.createBiomes();
 		this.registerBiomes();
-		System.out.println("[Supercraft] 10 biomes added.");
+		System.out.println("[Supercraft] 11 biomes added.");
 	}
 	
 	private void createBiomes() {
@@ -65,6 +57,7 @@ public class BiomeHandler {
 		icyRidges = new BiomeGenIcyRidges(this.config.icyridgesID);
 		goldenwoodForest = new BiomeGenGoldenwoodForest(this.config.goldenwoodforestID);
 		tenebralWoods = new BiomeGenTenebralWoods(this.config.tenebralwoodsID);
+		depths = new BiomeGenDepths(this.config.depthsID);
 	}
 	
 	private void registerBiomes() {

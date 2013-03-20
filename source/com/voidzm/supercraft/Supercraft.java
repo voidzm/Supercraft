@@ -6,6 +6,7 @@
 
 package com.voidzm.supercraft;
 
+import com.voidzm.supercraft.dimension.WorldProviderDeep;
 import com.voidzm.supercraft.dimension.WorldProviderSurfaceAlternate;
 import com.voidzm.supercraft.entity.TileEntityAlloyInductor;
 import com.voidzm.supercraft.entity.TileEntityConduit;
@@ -41,6 +42,9 @@ import net.minecraft.world.biome.BiomeGenBase;
 import net.minecraftforge.common.DimensionManager;
 import net.minecraftforge.common.EnumHelper;
 import net.minecraftforge.common.MinecraftForge;
+import net.minecraftforge.liquids.LiquidContainerRegistry;
+import net.minecraftforge.liquids.LiquidDictionary;
+import net.minecraftforge.liquids.LiquidStack;
 import net.minecraftforge.oredict.OreDictionary;
 import cpw.mods.fml.client.registry.ClientRegistry;
 import cpw.mods.fml.common.Mod;
@@ -103,6 +107,13 @@ public class Supercraft {
 		DimensionManager.unregisterDimension(0);
 		DimensionManager.registerProviderType(16, WorldProviderSurfaceAlternate.class, true);
 		DimensionManager.registerDimension(0, 16);
+		
+		DimensionManager.registerProviderType(10, WorldProviderDeep.class, true);
+		DimensionManager.registerDimension(-2, 10);
+		
+		
+		LiquidDictionary.getOrCreateLiquid("Ghostly Vapor", new LiquidStack(BlockHandler.ghostlyVaporStill, LiquidContainerRegistry.BUCKET_VOLUME));
+		
 		MinecraftForge.EVENT_BUS.register(new EventBonemeal());
 		GameRegistry.registerWorldGenerator(new WorldGenOre());
 		GameRegistry.registerTileEntity(TileEntityConduit.class, "tileEntityConduit");
