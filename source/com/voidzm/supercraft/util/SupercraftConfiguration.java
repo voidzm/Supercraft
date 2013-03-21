@@ -131,6 +131,9 @@ public class SupercraftConfiguration {
 	public int axecopperID;
 	public int hoecopperID;
 	
+	public int arcanebucketID;
+	public int bucketghostlyvaporID;
+	
 	///*** RECIPES ***///
 	
 	public boolean docoalblockrecipe;
@@ -285,7 +288,10 @@ public class SupercraftConfiguration {
 		axecopperID = internalCfg.get(Configuration.CATEGORY_ITEM, "axecopperID", "23027").getInt();
 		hoecopperID = internalCfg.get(Configuration.CATEGORY_ITEM, "hoecopperID", "23028").getInt();
 		
-		// NEXT ID: 23029
+		arcanebucketID = internalCfg.get(Configuration.CATEGORY_ITEM, "arcanebucketID", "23029").getInt();
+		bucketghostlyvaporID = internalCfg.get(Configuration.CATEGORY_ITEM, "bucketghostlyvaporID", "23030").getInt();
+		
+		// NEXT ID: 23031
 		
 	}
 	

@@ -66,6 +66,9 @@ public class ItemHandler {
 	public static Item platinumIngot;
 	public static Item lithiumIngot;
 	
+	public static Item arcaneBucket;
+	public static Item bucketGhostlyVapor;
+	
 	public void populateAllAndInitialize(SupercraftConfiguration configObject) {
 		if(this.config != null) {
 			throw new RuntimeException("Itme handler already loaded with configuration, cannot initialize again!"); 
@@ -165,6 +168,9 @@ public class ItemHandler {
 		
 		languageHandler.add(lithiumIngot, "Lithium Ingot");
 		
+		languageHandler.add(arcaneBucket, "Arcane Bucket");
+		languageHandler.add(bucketGhostlyVapor, "Ghostly Vapor Bucket");
+		
 	}
 	
 	private void createItems() {
@@ -201,6 +207,9 @@ public class ItemHandler {
 		copperShovel = new ItemCopperShovel(this.config.shovelcopperID);
 		copperAxe = new ItemCopperAxe(this.config.axecopperID);
 		copperHoe = new ItemCopperHoe(this.config.hoecopperID);
+		
+		arcaneBucket = new ItemArcaneBucket(this.config.arcanebucketID, 0, "supercraft:arcanebucket");
+		bucketGhostlyVapor = new ItemArcaneBucket(this.config.bucketghostlyvaporID, BlockHandler.ghostlyVaporFlowing.blockID, "supercraft:bucketghostlyvapor");
 	}
 	
 	private void registerItems() {
@@ -272,6 +281,9 @@ public class ItemHandler {
 		// Lithium
 		
 		GameRegistry.registerItem(lithiumIngot, "lithiumIngot");
+		
+		GameRegistry.registerItem(arcaneBucket, "arcaneBucket");
+		GameRegistry.registerItem(bucketGhostlyVapor, "bucketGhostlyVapor");
 				
 	}
 	
@@ -349,6 +361,9 @@ public class ItemHandler {
 		// Lithium
 		
 		LanguageRegistry.addName(lithiumIngot, (String)this.languageHandler.getString(lithiumIngot));
+		
+		LanguageRegistry.addName(arcaneBucket, (String)this.languageHandler.getString(arcaneBucket));
+		LanguageRegistry.addName(bucketGhostlyVapor, (String)this.languageHandler.getString(bucketGhostlyVapor));
 		
 	}
 	

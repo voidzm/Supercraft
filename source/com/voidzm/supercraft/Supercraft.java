@@ -14,6 +14,7 @@ import com.voidzm.supercraft.entity.TileEntityEssentialReducer;
 import com.voidzm.supercraft.entity.TileEntityRadiantSolarGenerator;
 import com.voidzm.supercraft.entity.TileEntityWaveringLunarGenerator;
 import com.voidzm.supercraft.event.EventBonemeal;
+import com.voidzm.supercraft.event.EventDepths;
 import com.voidzm.supercraft.gen.WorldGenOre;
 import com.voidzm.supercraft.gui.SCMainMenu;
 import com.voidzm.supercraft.handler.BiomeHandler;
@@ -110,11 +111,10 @@ public class Supercraft {
 		
 		DimensionManager.registerProviderType(10, WorldProviderDeep.class, true);
 		DimensionManager.registerDimension(-2, 10);
-		
-		
 		LiquidDictionary.getOrCreateLiquid("Ghostly Vapor", new LiquidStack(BlockHandler.ghostlyVaporStill, LiquidContainerRegistry.BUCKET_VOLUME));
 		
 		MinecraftForge.EVENT_BUS.register(new EventBonemeal());
+		MinecraftForge.EVENT_BUS.register(new EventDepths());
 		GameRegistry.registerWorldGenerator(new WorldGenOre());
 		GameRegistry.registerTileEntity(TileEntityConduit.class, "tileEntityConduit");
 		GameRegistry.registerTileEntity(TileEntityEssentialReducer.class, "tileEntityEssentialReducer");
