@@ -24,8 +24,8 @@ public class BlockSupercraftSapling1 extends BlockSupercraftSaplingBase {
 		super(par1);
 	}
 	
-	public void func_94332_a(IconRegister par1IconRegister) {
-		textures[0] = par1IconRegister.func_94245_a("supercraft:saplingolive");
+	public void registerIcons(IconRegister par1IconRegister) {
+		textures[0] = par1IconRegister.registerIcon("supercraft:saplingolive");
 	}
 	
 	public Icon getBlockTextureFromSideAndMetadata(int side, int meta) {

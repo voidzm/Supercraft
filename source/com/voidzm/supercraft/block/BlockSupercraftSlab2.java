@@ -34,9 +34,9 @@ public class BlockSupercraftSlab2 extends BlockSupercraftSlabBase {
 		this.setUnlocalizedName("supercraftSlab2");
 	}
 	
-	public void func_94332_a(IconRegister par1IconRegister) {
-		textures[0] = par1IconRegister.func_94245_a("supercraft:palestone");
-		textures[1] = par1IconRegister.func_94245_a("supercraft:nightrock");
+	public void registerIcons(IconRegister par1IconRegister) {
+		textures[0] = par1IconRegister.registerIcon("supercraft:palestone");
+		textures[1] = par1IconRegister.registerIcon("supercraft:nightrock");
 	}
 	
 	public Icon getBlockTextureFromSideAndMetadata(int side, int meta) {

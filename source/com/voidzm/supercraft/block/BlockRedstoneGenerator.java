@@ -26,10 +26,10 @@ public class BlockRedstoneGenerator extends BlockGenerator implements IGenerator
 		this.setUnlocalizedName("redstoneGenerator");
 	}
 	
-	public void func_94332_a(IconRegister par1IconRegister) {
-		textureTop = par1IconRegister.func_94245_a("supercraft:ironboundstone_beveled");
-		textureSide = par1IconRegister.func_94245_a("supercraft:redstoneconversiongenerator_side");
-		textureBottom = par1IconRegister.func_94245_a("supercraft:stone_beveled");
+	public void registerIcons(IconRegister par1IconRegister) {
+		textureTop = par1IconRegister.registerIcon("supercraft:ironboundstone_beveled");
+		textureSide = par1IconRegister.registerIcon("supercraft:redstoneconversiongenerator_side");
+		textureBottom = par1IconRegister.registerIcon("supercraft:stone_beveled");
 	}
 	
 	public Icon getBlockTextureFromSideAndMetadata(int side, int meta) {

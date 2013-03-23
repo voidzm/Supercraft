@@ -23,32 +23,32 @@ public class BlockPalestoneBricks extends Block {
 		this.setCreativeTab(CreativeTabs.tabBlock);
 	}
 	
-	public void func_94332_a(IconRegister par1IconRegister) {
-		field_94336_cN = par1IconRegister.func_94245_a("supercraft:palestonebricks");
+	public void registerIcons(IconRegister par1IconRegister) {
+		this.blockIcon = par1IconRegister.registerIcon("supercraft:palestonebricks");
 	}
 	
 	public void updateTick(World par1World, int par2, int par3, int par4, Random par5Random) {
 		if(par2 < 255 && (par1World.getBlockId(par2, par3+1, par4) == Block.waterStill.blockID || par1World.getBlockId(par2, par3+1, par4) == Block.waterMoving.blockID)) {
 			if(par5Random.nextInt(10) == 0) {
-				par1World.func_94575_c(par2, par3, par4, BlockHandler.overgrownPalestone.blockID);
+				par1World.setBlock(par2, par3, par4, BlockHandler.overgrownPalestone.blockID);
 				return;
 			}
 		}
 		else if(par5Random.nextInt(40) == 0) {
 			if(par1World.getBlockId(par2+1, par3, par4) == Block.waterStill.blockID || par1World.getBlockId(par2+1, par3, par4) == Block.waterMoving.blockID) {
-				par1World.func_94575_c(par2, par3, par4, BlockHandler.overgrownPalestone.blockID);
+				par1World.setBlock(par2, par3, par4, BlockHandler.overgrownPalestone.blockID);
 				return;
 			}
 			if(par1World.getBlockId(par2-1, par3, par4) == Block.waterStill.blockID || par1World.getBlockId(par2-1, par3, par4) == Block.waterMoving.blockID) {
-				par1World.func_94575_c(par2, par3, par4, BlockHandler.overgrownPalestone.blockID);
+				par1World.setBlock(par2, par3, par4, BlockHandler.overgrownPalestone.blockID);
 				return;
 			}
 			if(par1World.getBlockId(par2, par3, par4+1) == Block.waterStill.blockID || par1World.getBlockId(par2, par3, par4+1) == Block.waterMoving.blockID) {
-				par1World.func_94575_c(par2, par3, par4, BlockHandler.overgrownPalestone.blockID);
+				par1World.setBlock(par2, par3, par4, BlockHandler.overgrownPalestone.blockID);
 				return;
 			}
 			if(par1World.getBlockId(par2, par3, par4-1) == Block.waterStill.blockID || par1World.getBlockId(par2, par3, par4-1) == Block.waterMoving.blockID) {
-				par1World.func_94575_c(par2, par3, par4, BlockHandler.overgrownPalestone.blockID);
+				par1World.setBlock(par2, par3, par4, BlockHandler.overgrownPalestone.blockID);
 				return;
 			}
 		}

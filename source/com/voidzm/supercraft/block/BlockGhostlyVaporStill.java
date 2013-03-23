@@ -7,6 +7,9 @@ import net.minecraft.block.material.Material;
 import net.minecraft.client.renderer.texture.IconRegister;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.util.Icon;
+import net.minecraftforge.liquids.LiquidContainerRegistry;
+import net.minecraftforge.liquids.LiquidDictionary;
+import net.minecraftforge.liquids.LiquidStack;
 
 public class BlockGhostlyVaporStill extends BlockStationary {
 
@@ -19,12 +22,12 @@ public class BlockGhostlyVaporStill extends BlockStationary {
 		this.setLightValue(0.375F);
 		this.setUnlocalizedName("ghostlyVapor");
 		this.disableStats();
-		this.setCreativeTab(CreativeTabs.tabBlock);
+		LiquidDictionary.getOrCreateLiquid("Ghostly Vapor", new LiquidStack(this, LiquidContainerRegistry.BUCKET_VOLUME));
 	}
 	
-	public void func_94332_a(IconRegister par1IconRegister) {
-		stillVapor = par1IconRegister.func_94245_a("supercraft:ghostlyvapor");
-		flowingVapor = par1IconRegister.func_94245_a("supercraft:ghostlyvapor_flow");
+	public void registerIcons(IconRegister par1IconRegister) {
+		stillVapor = par1IconRegister.registerIcon("supercraft:ghostlyvapor");
+		flowingVapor = par1IconRegister.registerIcon("supercraft:ghostlyvapor_flow");
 	}
 	
 	public static Icon func_94424_b(String par0Str) {

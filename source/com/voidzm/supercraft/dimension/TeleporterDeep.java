@@ -35,11 +35,11 @@ public class TeleporterDeep extends Teleporter {
 			for(int iy = -1; iy < 5; iy++) {
 				for(int iz = -2; iz < 3; iz++) {
 					if(iy == -1) {
-						if(ix == 0 && iz == 0) this.serverWorld.func_94575_c(portalLoc.x+ix, portalLoc.y+iy, portalLoc.z+iz, BlockHandler.cobaltBlock.blockID);
-						else this.serverWorld.func_94575_c(portalLoc.x+ix, portalLoc.y+iy, portalLoc.z+iz, BlockHandler.palestone.blockID);
+						if(ix == 0 && iz == 0) this.serverWorld.setBlock(portalLoc.x+ix, portalLoc.y+iy, portalLoc.z+iz, BlockHandler.cobaltBlock.blockID);
+						else this.serverWorld.setBlock(portalLoc.x+ix, portalLoc.y+iy, portalLoc.z+iz, BlockHandler.palestone.blockID);
 					}
 					else {
-						this.serverWorld.func_94575_c(portalLoc.x+ix, portalLoc.y+iy, portalLoc.z+iz, 0);
+						this.serverWorld.setBlock(portalLoc.x+ix, portalLoc.y+iy, portalLoc.z+iz, 0);
 					}
 				}
 			}

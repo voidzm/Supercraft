@@ -82,18 +82,18 @@ public class BlockSupercraftLog extends Block {
 	        return var10 | var11;
 	 }
 	 
-	 public void func_94332_a(IconRegister par1IconRegister) {
-		textures[0][0] = par1IconRegister.func_94245_a("supercraft:woodolive_side");
-		textures[0][1] = par1IconRegister.func_94245_a("supercraft:woodolive_end");
+	 public void registerIcons(IconRegister par1IconRegister) {
+		textures[0][0] = par1IconRegister.registerIcon("supercraft:woodolive_side");
+		textures[0][1] = par1IconRegister.registerIcon("supercraft:woodolive_end");
 			
-		textures[1][0] = par1IconRegister.func_94245_a("supercraft:woodgoldenwood_side");
-		textures[1][1] = par1IconRegister.func_94245_a("supercraft:woodgoldenwood_end");
+		textures[1][0] = par1IconRegister.registerIcon("supercraft:woodgoldenwood_side");
+		textures[1][1] = par1IconRegister.registerIcon("supercraft:woodgoldenwood_end");
 		
-		textures[2][0] = par1IconRegister.func_94245_a("supercraft:woodtenebria_side");
-		textures[2][1] = par1IconRegister.func_94245_a("supercraft:woodtenebria_end");
+		textures[2][0] = par1IconRegister.registerIcon("supercraft:woodtenebria_side");
+		textures[2][1] = par1IconRegister.registerIcon("supercraft:woodtenebria_end");
 		
-		textures[3][0] = par1IconRegister.func_94245_a("supercraft:woodtenebria_side");
-		textures[3][1] = par1IconRegister.func_94245_a("supercraft:woodtenebria_endcrystalline");
+		textures[3][0] = par1IconRegister.registerIcon("supercraft:woodtenebria_side");
+		textures[3][1] = par1IconRegister.registerIcon("supercraft:woodtenebria_endcrystalline");
 	}
 	 
 	 public Icon getBlockTextureFromSideAndMetadata(int side, int meta) {

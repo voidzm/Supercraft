@@ -33,10 +33,10 @@ public class BlockSupercraftPlanks extends Block {
 		this.setUnlocalizedName("supercraftPlanks");
 	}
 	
-	public void func_94332_a(IconRegister par1IconRegister) {
-		textures[0] = par1IconRegister.func_94245_a("supercraft:planksolive");
-		textures[1] = par1IconRegister.func_94245_a("supercraft:planksgoldenwood");
-		textures[2] = par1IconRegister.func_94245_a("supercraft:plankstenebria");
+	public void registerIcons(IconRegister par1IconRegister) {
+		textures[0] = par1IconRegister.registerIcon("supercraft:planksolive");
+		textures[1] = par1IconRegister.registerIcon("supercraft:planksgoldenwood");
+		textures[2] = par1IconRegister.registerIcon("supercraft:plankstenebria");
 	}
 	
 	public Icon getBlockTextureFromSideAndMetadata(int side, int meta) {

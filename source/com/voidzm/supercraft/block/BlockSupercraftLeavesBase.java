@@ -84,7 +84,7 @@ public class BlockSupercraftLeavesBase extends BlockLeavesBase implements IShear
 	
 	private void removeLeaves(World par1World, int par2, int par3, int par4) {
 		this.dropBlockAsItem(par1World, par2, par3, par4, par1World.getBlockMetadata(par2, par3, par4), 0);
-		par1World.func_94575_c(par2, par3, par4, 0);
+		par1World.setBlockToAir(par2, par3, par4);
 	}
 	
 	@SideOnly(Side.CLIENT)

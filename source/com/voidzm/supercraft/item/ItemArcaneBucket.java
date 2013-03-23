@@ -28,8 +28,9 @@ public class ItemArcaneBucket extends Item {
 		if(par2 == 0) this.setContainerItem(ItemHandler.arcaneBucket);
 	}
 	
-	public void func_94581_a(IconRegister par1IconRegister) {
-		this.iconIndex = par1IconRegister.func_94245_a(this.icon);
+	@Override
+	public void updateIcons(IconRegister par1IconRegister) {
+		this.iconIndex = par1IconRegister.registerIcon(this.icon);
 	}
 	
 	public ItemStack onItemRightClick(ItemStack par1ItemStack, World par2World, EntityPlayer par3EntityPlayer) {
@@ -51,7 +52,7 @@ public class ItemArcaneBucket extends Item {
 					if(!par3EntityPlayer.canPlayerEdit(bx, by, bz, objPos.sideHit, par1ItemStack)) return par1ItemStack;
 					int targetedID = par2World.getBlockId(bx, by, bz);
 					if((targetedID == BlockHandler.ghostlyVaporStill.blockID || targetedID == BlockHandler.ghostlyVaporFlowing.blockID) && par2World.getBlockMetadata(bx, by, bz) == 0) {
-						par2World.func_94571_i(bx, by, bz);
+						par2World.setBlockToAir(bx, by, bz);
 						if(par3EntityPlayer.capabilities.isCreativeMode) return par1ItemStack;
 						if(--par1ItemStack.stackSize <= 0) return new ItemStack(ItemHandler.bucketGhostlyVapor);
 						if(!par3EntityPlayer.inventory.addItemStackToInventory(new ItemStack(ItemHandler.bucketGhostlyVapor))) par3EntityPlayer.dropPlayerItem(new ItemStack(ItemHandler.bucketGhostlyVapor.itemID, 1, 0));
@@ -93,7 +94,7 @@ public class ItemArcaneBucket extends Item {
 	public boolean tryPlaceContainedLiquid(World par1World, double par2, double par4, double par6, int par8, int par9, int par10) {
 		if(this.liquidID <= 0) return false;
 		else if(!par1World.isAirBlock(par8, par9, par10) && par1World.getBlockMaterial(par8, par9, par10).isSolid()) return false;
-		else par1World.setBlockAndMetadataWithNotify(par8, par9, par10, this.liquidID, 0, 3);
+		else par1World.setBlock(par8, par9, par10, this.liquidID, 0, 3);
 		return true;
 	}
 	

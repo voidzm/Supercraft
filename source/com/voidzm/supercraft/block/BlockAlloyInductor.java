@@ -83,10 +83,12 @@ public class BlockAlloyInductor extends BlockContainer {
 		return new TileEntityAlloyInductor();
 	}
 
+	@Override
 	public void onBlockAdded(World par1World, int par2, int par3, int par4) {
 		this.doChecks(par1World, par2, par3, par4);
 	}
 	
+	@Override
 	public void onNeighborBlockChange(World par1World, int par2, int par3, int par4, int par5) {
 		this.doChecks(par1World, par2, par3, par4);
 	}
@@ -97,12 +99,14 @@ public class BlockAlloyInductor extends BlockContainer {
 		te.doUpdateCheck = true;
 	}
 	
-	public void func_94332_a(IconRegister par1IconRegister) {
-		textureTop = par1IconRegister.func_94245_a("supercraft:alloyinductor_top");
-		textureSide = par1IconRegister.func_94245_a("supercraft:alloyinductor_side");
-		textureBottom = par1IconRegister.func_94245_a("supercraft:ironboundstone_beveled");
+	@Override
+	public void registerIcons(IconRegister par1IconRegister) {
+		textureTop = par1IconRegister.registerIcon("supercraft:alloyinductor_top");
+		textureSide = par1IconRegister.registerIcon("supercraft:alloyinductor_side");
+		textureBottom = par1IconRegister.registerIcon("supercraft:ironboundstone_beveled");
 	}
 	
+	@Override
 	public Icon getBlockTextureFromSideAndMetadata(int side, int meta) {
 		if(side == 0) return textureBottom;
 		else if(side == 1) return textureTop;

@@ -35,18 +35,18 @@ public class BiomeGenDepths extends BiomeGenBase {
 	
 	@Override
 	public void decorate(World par1World, Random par2Random, int par3, int par4) {
-		if(par2Random.nextInt(6) == 0) {
+		if(par2Random.nextInt(4) == 0) {
 			int xPos = par3 + par2Random.nextInt(16) + 8;
 			int zPos = par4 + par2Random.nextInt(16) + 8;
 			for(int iy = 126; iy > 64; iy--) {
 				int bID = par1World.getBlockId(xPos, iy, zPos);
 				if(bID == 0) {
 					if(iy >= 125) {
-						par1World.func_94575_c(xPos+1, iy, zPos, Block.bedrock.blockID);
-						par1World.func_94575_c(xPos-1, iy, zPos, Block.bedrock.blockID);
-						par1World.func_94575_c(xPos, iy, zPos+1, Block.bedrock.blockID);
-						par1World.func_94575_c(xPos, iy, zPos-1, Block.bedrock.blockID);
-						par1World.setBlockAndMetadataWithNotify(xPos, iy, zPos, BlockHandler.ghostlyVaporFlowing.blockID, 0, 2);
+						par1World.setBlock(xPos+1, iy, zPos, Block.bedrock.blockID);
+						par1World.setBlock(xPos-1, iy, zPos, Block.bedrock.blockID);
+						par1World.setBlock(xPos, iy, zPos+1, Block.bedrock.blockID);
+						par1World.setBlock(xPos, iy, zPos-1, Block.bedrock.blockID);
+						par1World.setBlock(xPos, iy, zPos, BlockHandler.ghostlyVaporFlowing.blockID, 0, 2);
 						par1World.scheduledUpdatesAreImmediate = true;
 		                BlockHandler.ghostlyVaporFlowing.updateTick(par1World, xPos, iy, zPos, par2Random);
 		                par1World.scheduledUpdatesAreImmediate = false;
@@ -54,7 +54,7 @@ public class BiomeGenDepths extends BiomeGenBase {
 					}
 					if(par1World.getBlockId(xPos, iy+1, zPos) == Block.stone.blockID) {
 						if((par1World.getBlockId(xPos+1, iy+1, zPos) == Block.stone.blockID && par1World.getBlockId(xPos-1, iy+1, zPos) == Block.stone.blockID) && (par1World.getBlockId(xPos, iy+1, zPos+1) == Block.stone.blockID && par1World.getBlockId(xPos, iy+1, zPos-1) == Block.stone.blockID)) {
-							par1World.setBlockAndMetadataWithNotify(xPos, iy+1, zPos, BlockHandler.ghostlyVaporFlowing.blockID, 0, 2);
+							par1World.setBlock(xPos, iy+1, zPos, BlockHandler.ghostlyVaporFlowing.blockID, 0, 2);
 							par1World.scheduledUpdatesAreImmediate = true;
 			                BlockHandler.ghostlyVaporFlowing.updateTick(par1World, xPos, iy+1, zPos, par2Random);
 			                par1World.scheduledUpdatesAreImmediate = false;

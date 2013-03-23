@@ -17,12 +17,11 @@ public class BlockGhostlyVaporFlowing extends BlockFlowing {
 		this.setLightValue(0.375F);
 		this.setUnlocalizedName("ghostlyVapor");
 		this.disableStats();
-		this.setCreativeTab(CreativeTabs.tabBlock);
 	}
 	
-	public void func_94332_a(IconRegister par1IconRegister) {
-		stillVapor = par1IconRegister.func_94245_a("supercraft:ghostlyvapor");
-		flowingVapor = par1IconRegister.func_94245_a("supercraft:ghostlyvapor_flow");
+	public void registerIcons(IconRegister par1IconRegister) {
+		stillVapor = par1IconRegister.registerIcon("supercraft:ghostlyvapor");
+		flowingVapor = par1IconRegister.registerIcon("supercraft:ghostlyvapor_flow");
 	}
 	
 	public static Icon func_94424_b(String par0Str) {

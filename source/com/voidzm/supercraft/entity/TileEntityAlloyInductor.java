@@ -374,12 +374,22 @@ public class TileEntityAlloyInductor extends TileEntity implements IInventory {
 	}
 
 	@Override
-	public boolean func_94042_c() {
+	public boolean isInvNameLocalized() {
 		return false;
 	}
 
 	@Override
-	public boolean func_94041_b(int i, ItemStack itemstack) {
+	public boolean isStackValidForSlot(int i, ItemStack itemstack) {
+		switch(i) {
+		case 0:
+			return AlloyInductorRecipes.isValidAlloyInput(itemstack);
+		case 1:
+			return AlloyInductorRecipes.isValidAlloyInput(itemstack);
+		case 2:
+			return targetEssence.isItemEqual(itemstack);
+		case 3:
+			return false;
+		}
 		return false;
 	}
 	

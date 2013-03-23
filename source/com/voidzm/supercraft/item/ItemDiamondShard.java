@@ -21,8 +21,8 @@ public class ItemDiamondShard extends Item {
 		this.setCreativeTab(CreativeTabs.tabMaterials);
 	}
 	
-	public void func_94581_a(IconRegister par1IconRegister) {
-		this.iconIndex = par1IconRegister.func_94245_a("supercraft:diamondshard");
+	public void updateIcons(IconRegister par1IconRegister) {
+		this.iconIndex = par1IconRegister.registerIcon("supercraft:diamondshard");
 	}
 	
 }

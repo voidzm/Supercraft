@@ -23,8 +23,8 @@ public class BlockLithiumOre extends BlockOre {
 		this.setUnlocalizedName("lithiumOre");
 	}
 	
-	public void func_94332_a(IconRegister par1IconRegister) {
-		field_94336_cN = par1IconRegister.func_94245_a("supercraft:orelithium");
+	public void registerIcons(IconRegister par1IconRegister) {
+		this.blockIcon = par1IconRegister.registerIcon("supercraft:orelithium");
 	}
 	
 }

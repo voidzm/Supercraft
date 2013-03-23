@@ -19,10 +19,10 @@ public class BlockRadiantSolarGenerator extends BlockContainerGenerator implemen
 		this.setUnlocalizedName("radiantSolarGenerator");
 	}
 
-	public void func_94332_a(IconRegister par1IconRegister) {
-		textureTop = par1IconRegister.func_94245_a("supercraft:radiantsolargenerator_top");
-		textureSide = par1IconRegister.func_94245_a("supercraft:radiantsolargenerator_side");
-		textureBottom = par1IconRegister.func_94245_a("supercraft:copperboundstone_beveled");
+	public void registerIcons(IconRegister par1IconRegister) {
+		textureTop = par1IconRegister.registerIcon("supercraft:radiantsolargenerator_top");
+		textureSide = par1IconRegister.registerIcon("supercraft:radiantsolargenerator_side");
+		textureBottom = par1IconRegister.registerIcon("supercraft:copperboundstone_beveled");
 	}
 	
 	public Icon getBlockTextureFromSideAndMetadata(int side, int meta) {

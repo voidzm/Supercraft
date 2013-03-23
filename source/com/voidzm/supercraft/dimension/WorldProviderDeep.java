@@ -1,5 +1,6 @@
 package com.voidzm.supercraft.dimension;
 
+import com.voidzm.supercraft.Supercraft;
 import com.voidzm.supercraft.handler.BiomeHandler;
 
 import net.minecraft.util.Vec3;
@@ -16,7 +17,7 @@ public class WorldProviderDeep extends WorldProvider {
 		this.worldChunkMgr = new WorldChunkManagerHell(BiomeHandler.depths, 0.5F, 0.5F);
 		this.isHellWorld = false;
 		this.hasNoSky = true;
-		this.dimensionId = -2;
+		this.dimensionId = Supercraft.configuration.thedeepID;
 	}
 	
 	public IChunkProvider createChunkGenerator() {

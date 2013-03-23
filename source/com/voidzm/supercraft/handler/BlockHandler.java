@@ -12,16 +12,7 @@ import java.util.ArrayList;
 
 import com.voidzm.supercraft.block.*;
 import com.voidzm.supercraft.client.ClientProxy;
-import com.voidzm.supercraft.item.ItemConduit;
-import com.voidzm.supercraft.item.ItemRefinedCraftingTable;
-import com.voidzm.supercraft.item.ItemSupercraftLeaves1;
-import com.voidzm.supercraft.item.ItemSupercraftLeaves2;
-import com.voidzm.supercraft.item.ItemSupercraftLog;
-import com.voidzm.supercraft.item.ItemSupercraftPlanks;
-import com.voidzm.supercraft.item.ItemSupercraftSapling1;
-import com.voidzm.supercraft.item.ItemSupercraftSapling2;
-import com.voidzm.supercraft.item.ItemSupercraftSlab1;
-import com.voidzm.supercraft.item.ItemSupercraftSlab2;
+import com.voidzm.supercraft.item.*;
 import com.voidzm.supercraft.util.SupercraftConfiguration;
 
 import cpw.mods.fml.common.registry.GameRegistry;
@@ -124,6 +115,11 @@ public class BlockHandler {
 	
 	public static Block ghostlyVaporFlowing;
 	public static Block ghostlyVaporStill;
+	
+	public static Block monolithDemission;
+	public static Block monolithDemissionActivated;
+	
+	public static Block gravenStone;
 	
 	public void populateAllAndInitialize(SupercraftConfiguration configObject) {
 		if(this.config != null) {
@@ -327,6 +323,16 @@ public class BlockHandler {
 		languageHandler.add(ghostlyVaporFlowing, "Ghostly Vapor");
 		languageHandler.add(ghostlyVaporStill, "Ghostly Vapor");
 		
+		languageHandler.add(monolithDemission, "Monolith of Demission");
+		languageHandler.add(monolithDemissionActivated, "Monolith of Demission");
+		
+		ArrayList<String> gravenStoneList = new ArrayList<String>();
+		gravenStoneList.add("Graven Stone of Darkness");
+		gravenStoneList.add("Graven Stone of Shadow");
+		gravenStoneList.add("Graven Stone of Gleaming");
+		gravenStoneList.add("Graven Stone of Brilliance");
+		languageHandler.add(gravenStone, gravenStoneList);
+		
 	}
 	
 	private void createBlocks() {
@@ -412,6 +418,11 @@ public class BlockHandler {
 		
 		ghostlyVaporFlowing = new BlockGhostlyVaporFlowing(this.config.ghostlyvaporflowingID);
 		ghostlyVaporStill = new BlockGhostlyVaporStill(this.config.ghostlyvaporstillID);
+		
+		monolithDemission = new BlockMonolithDemission(this.config.monolithdemissionID, false);
+		monolithDemissionActivated = new BlockMonolithDemission(this.config.monolithdemissiononID, true);
+		
+		gravenStone = new BlockGravenStone(this.config.gravenStoneID);
 	}
 	
 	private void registerBlocks() {
@@ -544,6 +555,10 @@ public class BlockHandler {
 		GameRegistry.registerBlock(ghostlyVaporFlowing, "ghostlyVaporFlowing");
 		GameRegistry.registerBlock(ghostlyVaporStill, "ghostlyVaporStill");
 		
+		GameRegistry.registerBlock(monolithDemission, "monolithDemission");
+		GameRegistry.registerBlock(monolithDemissionActivated, "monolithDemissionActivated");
+		
+		GameRegistry.registerBlock(gravenStone, ItemGravenStone.class, "gravenStone");
 	}
 	
 	private void initializeLanguage() {
@@ -726,6 +741,15 @@ public class BlockHandler {
 		LanguageRegistry.addName(ghostlyVaporFlowing, (String)this.languageHandler.getString(ghostlyVaporFlowing));
 		LanguageRegistry.addName(ghostlyVaporStill, (String)this.languageHandler.getString(ghostlyVaporStill));
 		
+		LanguageRegistry.addName(monolithDemission, (String)this.languageHandler.getString(monolithDemission));
+		LanguageRegistry.addName(monolithDemissionActivated, (String)this.languageHandler.getString(monolithDemissionActivated));
+	
+		i = 0;
+		for(String string : (ArrayList<String>)languageHandler.getString(gravenStone))  {
+			ItemStack stack = new ItemStack(gravenStone, 1, i);
+			LanguageRegistry.addName(stack, string);
+			i++;
+		}
 	}
 
 }

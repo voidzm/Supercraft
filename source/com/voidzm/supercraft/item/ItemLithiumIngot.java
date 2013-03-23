@@ -21,8 +21,8 @@ public class ItemLithiumIngot extends Item {
 		this.setUnlocalizedName("lithiumIngot");
 	}
 	
-	public void func_94581_a(IconRegister par1IconRegister) {
-		this.iconIndex = par1IconRegister.func_94245_a("supercraft:ingotlithium");
+	public void updateIcons(IconRegister par1IconRegister) {
+		this.iconIndex = par1IconRegister.registerIcon("supercraft:ingotlithium");
 	}
 	
 }

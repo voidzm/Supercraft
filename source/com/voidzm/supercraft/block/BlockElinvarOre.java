@@ -27,8 +27,8 @@ public class BlockElinvarOre extends BlockOre {
 		this.setUnlocalizedName("elinvarOre");
 	}
 	
-	public void func_94332_a(IconRegister par1IconRegister) {
-		field_94336_cN = par1IconRegister.func_94245_a("supercraft:oreelinvar");
+	public void registerIcons(IconRegister par1IconRegister) {
+		this.blockIcon = par1IconRegister.registerIcon("supercraft:oreelinvar");
 	}
 	
 	@Override

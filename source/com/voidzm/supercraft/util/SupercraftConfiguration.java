@@ -8,6 +8,7 @@ import net.minecraftforge.common.Configuration;
 public class SupercraftConfiguration {
 
 	public static final String CATEGORY_BIOME = "biome";
+	public static final String CATEGORY_DIMENSION = "dimension";
 	
 	private Configuration internalCfg;
 	
@@ -95,6 +96,11 @@ public class SupercraftConfiguration {
 	public int ghostlyvaporflowingID;
 	public int ghostlyvaporstillID;
 	
+	public int monolithdemissionID;
+	public int monolithdemissiononID;
+	
+	public int gravenStoneID;
+	
 	///*** ITEMS ***///
 	
 	public int ironscrapID;
@@ -154,6 +160,13 @@ public class SupercraftConfiguration {
 	public int tenebralwoodsID;
 	public int depthsID;
 	
+	///*** PROVIDERS ***///
+	
+	public boolean doalternatesurface;
+	public int alternatesurfaceproviderID;
+	public int thedeepproviderID;
+	public int thedeepID;
+	
 	public SupercraftConfiguration(File file) {
 		internalCfg = new Configuration(file);
 		internalCfg.save();
@@ -162,6 +175,7 @@ public class SupercraftConfiguration {
 		this.loadItemsConfig();
 		this.loadGeneralConfig();
 		this.loadBiomesConfig();
+		this.loadDimensionConfig();
 		internalCfg.save();
 		System.out.println("[Supercraft] Configuration loaded from disk.");
 	}
@@ -249,7 +263,12 @@ public class SupercraftConfiguration {
 		ghostlyvaporflowingID = internalCfg.get(Configuration.CATEGORY_BLOCK, "ghostlyvaporflowingID", "1666").getInt();
 		ghostlyvaporstillID = internalCfg.get(Configuration.CATEGORY_BLOCK, "ghostlyvaporstillID", "1667").getInt();
 		
-		// NEXT ID: 1668
+		monolithdemissionID = internalCfg.get(Configuration.CATEGORY_BLOCK, "monolithdemissionID", "1668").getInt();
+		monolithdemissiononID = internalCfg.get(Configuration.CATEGORY_BLOCK, "monolithdemissiononID", "1669").getInt();
+		
+		gravenStoneID = internalCfg.get(Configuration.CATEGORY_BLOCK, "gravenStoneID", "1670").getInt();
+		
+		// NEXT ID: 1670
 		
 	}
 	
@@ -313,6 +332,13 @@ public class SupercraftConfiguration {
 		goldenwoodforestID = internalCfg.get(this.CATEGORY_BIOME, "goldenwoodforestID", "31").getInt();
 		tenebralwoodsID = internalCfg.get(this.CATEGORY_BIOME, "tenebralwoodsID", "32").getInt();
 		depthsID = internalCfg.get(this.CATEGORY_BIOME, "depthsID", "33").getInt();
+	}
+	
+	private void loadDimensionConfig() {
+		doalternatesurface = internalCfg.get(this.CATEGORY_DIMENSION, "doalternatesurface", "true").getBoolean(true);
+		alternatesurfaceproviderID = internalCfg.get(this.CATEGORY_DIMENSION, "alternatesurfaceID", "16").getInt();
+		thedeepproviderID = internalCfg.get(this.CATEGORY_DIMENSION, "thedeepID", "-2").getInt();
+		thedeepID = internalCfg.get(this.CATEGORY_DIMENSION, "thedeepID", "-2").getInt();
 	}
 	
 }

@@ -23,9 +23,9 @@ public class BlockSupercraftLeaves2 extends BlockSupercraftLeavesBase {
 		this.setUnlocalizedName("supercraftLeaves2");
 	}
 	
-	public void func_94332_a(IconRegister par1IconRegister) {
-		textures[0] = par1IconRegister.func_94245_a("supercraft:leavesgoldenwood_fancy");
-		textures[1] = par1IconRegister.func_94245_a("supercraft:leavestenebria_fancy");
+	public void registerIcons(IconRegister par1IconRegister) {
+		textures[0] = par1IconRegister.registerIcon("supercraft:leavesgoldenwood_fancy");
+		textures[1] = par1IconRegister.registerIcon("supercraft:leavestenebria_fancy");
 	}
 	
 	public Icon getBlockTextureFromSideAndMetadata(int par1, int par2) {

@@ -21,8 +21,8 @@ public class ItemCopperIngot extends Item {
 		this.setUnlocalizedName("copperIngot");
 	}
 	
-	public void func_94581_a(IconRegister par1IconRegister) {
-		this.iconIndex = par1IconRegister.func_94245_a("supercraft:ingotcopper");
+	public void updateIcons(IconRegister par1IconRegister) {
+		this.iconIndex = par1IconRegister.registerIcon("supercraft:ingotcopper");
 	}
 	
 }

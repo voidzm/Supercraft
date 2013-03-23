@@ -21,8 +21,8 @@ public class ItemSilverIngot extends Item {
 		this.setUnlocalizedName("silverIngot");
 	}
 	
-	public void func_94581_a(IconRegister par1IconRegister) {
-		this.iconIndex = par1IconRegister.func_94245_a("supercraft:ingotsilver");
+	public void updateIcons(IconRegister par1IconRegister) {
+		this.iconIndex = par1IconRegister.registerIcon("supercraft:ingotsilver");
 	}
 	
 }

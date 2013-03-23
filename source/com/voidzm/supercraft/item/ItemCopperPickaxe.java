@@ -29,8 +29,8 @@ public class ItemCopperPickaxe extends ItemPickaxe {
 		MinecraftForge.setToolClass(this, "pickaxe", 2);
 	}
 
-	public void func_94581_a(IconRegister par1IconRegister) {
-		this.iconIndex = par1IconRegister.func_94245_a("supercraft:pickaxecopper");
+	public void updateIcons(IconRegister par1IconRegister) {
+		this.iconIndex = par1IconRegister.registerIcon("supercraft:pickaxecopper");
 	}
 	
 }

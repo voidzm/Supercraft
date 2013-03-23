@@ -27,8 +27,8 @@ public class ItemElectrumBit extends Item {
 		this.setCreativeTab(CreativeTabs.tabMaterials);
 	}
 	
-	public void func_94581_a(IconRegister par1IconRegister) {
-		this.iconIndex = par1IconRegister.func_94245_a("supercraft:electrumbit");
+	public void updateIcons(IconRegister par1IconRegister) {
+		this.iconIndex = par1IconRegister.registerIcon("supercraft:electrumbit");
 	}
 	
 	public boolean onItemUse(ItemStack par1ItemStack, EntityPlayer par2EntityPlayer, World par3World, int par4, int par5, int par6, int par7, float par8, float par9, float par10) {
@@ -59,15 +59,15 @@ public class ItemElectrumBit extends Item {
 				return false;
 			}
 			if(!par2EntityPlayer.capabilities.isCreativeMode) par1ItemStack.stackSize--;
-			par3World.func_94575_c(par4, par5, par6, BlockHandler.blockOfGoldenwood.blockID);
-			par3World.func_94575_c(par4+1, par5, par6, BlockHandler.burnedPalestone.blockID);
-			par3World.func_94575_c(par4-1, par5, par6, BlockHandler.burnedPalestone.blockID);
-			par3World.func_94575_c(par4, par5, par6+1, BlockHandler.burnedPalestone.blockID);
-			par3World.func_94575_c(par4, par5, par6-1, BlockHandler.burnedPalestone.blockID);
-			par3World.func_94575_c(par4+1, par5, par6+1, Block.cobblestone.blockID);
-			par3World.func_94575_c(par4-1, par5, par6+1, Block.cobblestone.blockID);
-			par3World.func_94575_c(par4+1, par5, par6-1, Block.cobblestone.blockID);
-			par3World.func_94575_c(par4-1, par5, par6-1, Block.cobblestone.blockID);
+			par3World.setBlock(par4, par5, par6, BlockHandler.blockOfGoldenwood.blockID);
+			par3World.setBlock(par4+1, par5, par6, BlockHandler.burnedPalestone.blockID);
+			par3World.setBlock(par4-1, par5, par6, BlockHandler.burnedPalestone.blockID);
+			par3World.setBlock(par4, par5, par6+1, BlockHandler.burnedPalestone.blockID);
+			par3World.setBlock(par4, par5, par6-1, BlockHandler.burnedPalestone.blockID);
+			par3World.setBlock(par4+1, par5, par6+1, Block.cobblestone.blockID);
+			par3World.setBlock(par4-1, par5, par6+1, Block.cobblestone.blockID);
+			par3World.setBlock(par4+1, par5, par6-1, Block.cobblestone.blockID);
+			par3World.setBlock(par4-1, par5, par6-1, Block.cobblestone.blockID);
 			par3World.spawnEntityInWorld(new EntityLightningBolt(par3World, par4, par5, par6));
 			return true;
 		}

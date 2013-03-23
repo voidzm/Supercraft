@@ -31,8 +31,8 @@ public class ItemCopperShovel extends ItemSpade {
 		MinecraftForge.setToolClass(this, "shovel", 2);
 	}
 
-	public void func_94581_a(IconRegister par1IconRegister) {
-		this.iconIndex = par1IconRegister.func_94245_a("supercraft:shovelcopper");
+	public void updateIcons(IconRegister par1IconRegister) {
+		this.iconIndex = par1IconRegister.registerIcon("supercraft:shovelcopper");
 	}
 	
 }

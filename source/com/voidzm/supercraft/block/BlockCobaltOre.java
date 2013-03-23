@@ -27,8 +27,9 @@ public class BlockCobaltOre extends BlockOre {
 		this.setUnlocalizedName("cobaltOre");
 	}
 	
-	public void func_94332_a(IconRegister par1IconRegister) {
-		field_94336_cN = par1IconRegister.func_94245_a("supercraft:orecobalt");
+	@Override
+	public void registerIcons(IconRegister par1IconRegister) {
+		this.blockIcon = par1IconRegister.registerIcon("supercraft:orecobalt");
 	}
 	
 	@Override
@@ -36,10 +37,12 @@ public class BlockCobaltOre extends BlockOre {
 		return ItemHandler.cobaltDust.itemID;
 	}
 	
+	@Override
 	public int quantityDropped(Random par1Random) {
 		return par1Random.nextInt(4)+1;
 	}
 	
+	@Override
 	public int quantityDroppedWithBonus(int par1, Random par2Random) {
 		return this.quantityDropped(par2Random) + par2Random.nextInt(par1+1);
 	}

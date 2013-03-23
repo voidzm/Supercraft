@@ -29,20 +29,20 @@ public class ItemEssence extends Item {
 		this.setMaxDamage(0);
 	}
 	
-	public void func_94581_a(IconRegister par1IconRegister) {
-		textures[0] = par1IconRegister.func_94245_a("supercraft:essenceterraen");
-		textures[1] = par1IconRegister.func_94245_a("supercraft:essenceaeronic");
-		textures[2] = par1IconRegister.func_94245_a("supercraft:essenceinfernal");
-		textures[3] = par1IconRegister.func_94245_a("supercraft:essenceaquaeous");
-		textures[4] = par1IconRegister.func_94245_a("supercraft:essenceverdeal");
-		textures[5] = par1IconRegister.func_94245_a("supercraft:essencenethereal");
-		textures[6] = par1IconRegister.func_94245_a("supercraft:essencedraconic");
-		textures[7] = par1IconRegister.func_94245_a("supercraft:essenceferric");
-		textures[8] = par1IconRegister.func_94245_a("supercraft:essenceradantis");
-		textures[9] = par1IconRegister.func_94245_a("supercraft:essencevidalis");
-		textures[10] = par1IconRegister.func_94245_a("supercraft:essencemortalic");
-		textures[11] = par1IconRegister.func_94245_a("supercraft:essenceluxorum");
-		textures[12] = par1IconRegister.func_94245_a("supercraft:essencetenebra");
+	public void updateIcons(IconRegister par1IconRegister) {
+		textures[0] = par1IconRegister.registerIcon("supercraft:essenceterraen");
+		textures[1] = par1IconRegister.registerIcon("supercraft:essenceaeronic");
+		textures[2] = par1IconRegister.registerIcon("supercraft:essenceinfernal");
+		textures[3] = par1IconRegister.registerIcon("supercraft:essenceaquaeous");
+		textures[4] = par1IconRegister.registerIcon("supercraft:essenceverdeal");
+		textures[5] = par1IconRegister.registerIcon("supercraft:essencenethereal");
+		textures[6] = par1IconRegister.registerIcon("supercraft:essencedraconic");
+		textures[7] = par1IconRegister.registerIcon("supercraft:essenceferric");
+		textures[8] = par1IconRegister.registerIcon("supercraft:essenceradantis");
+		textures[9] = par1IconRegister.registerIcon("supercraft:essencevidalis");
+		textures[10] = par1IconRegister.registerIcon("supercraft:essencemortalic");
+		textures[11] = par1IconRegister.registerIcon("supercraft:essenceluxorum");
+		textures[12] = par1IconRegister.registerIcon("supercraft:essencetenebra");
 	}
 	
 	@Override

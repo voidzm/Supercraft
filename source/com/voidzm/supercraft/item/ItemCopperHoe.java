@@ -31,8 +31,8 @@ public class ItemCopperHoe extends ItemHoe {
 		this.setCreativeTab(CreativeTabs.tabTools);
 	}
 
-	public void func_94581_a(IconRegister par1IconRegister) {
-		this.iconIndex = par1IconRegister.func_94245_a("supercraft:hoecopper");
+	public void updateIcons(IconRegister par1IconRegister) {
+		this.iconIndex = par1IconRegister.registerIcon("supercraft:hoecopper");
 	}
 	
 }

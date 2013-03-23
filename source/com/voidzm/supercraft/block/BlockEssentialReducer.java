@@ -93,10 +93,10 @@ public class BlockEssentialReducer extends BlockContainer {
 		te.doUpdateCheck = true;
 	}
 	
-	public void func_94332_a(IconRegister par1IconRegister) {
-		textureTop = par1IconRegister.func_94245_a("supercraft:essentialreducer_top");
-		textureSide = par1IconRegister.func_94245_a("supercraft:essentialreducer_side");
-		textureBottom = par1IconRegister.func_94245_a("supercraft:ironboundstone_beveled");
+	public void registerIcons(IconRegister par1IconRegister) {
+		textureTop = par1IconRegister.registerIcon("supercraft:essentialreducer_top");
+		textureSide = par1IconRegister.registerIcon("supercraft:essentialreducer_side");
+		textureBottom = par1IconRegister.registerIcon("supercraft:ironboundstone_beveled");
 	}
 	
 	public Icon getBlockTextureFromSideAndMetadata(int side, int meta) {

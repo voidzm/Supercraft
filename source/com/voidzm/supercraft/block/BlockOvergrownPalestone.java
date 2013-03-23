@@ -18,8 +18,8 @@ public class BlockOvergrownPalestone extends Block {
 		this.setCreativeTab(CreativeTabs.tabBlock);
 	}
 	
-	public void func_94332_a(IconRegister par1IconRegister) {
-		field_94336_cN = par1IconRegister.func_94245_a("supercraft:overgrownpalestonebricks");
+	public void registerIcons(IconRegister par1IconRegister) {
+		this.blockIcon = par1IconRegister.registerIcon("supercraft:overgrownpalestonebricks");
 	}
 
 }

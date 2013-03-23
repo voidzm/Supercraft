@@ -11,6 +11,7 @@ import com.voidzm.supercraft.dimension.WorldProviderSurfaceAlternate;
 import com.voidzm.supercraft.entity.TileEntityAlloyInductor;
 import com.voidzm.supercraft.entity.TileEntityConduit;
 import com.voidzm.supercraft.entity.TileEntityEssentialReducer;
+import com.voidzm.supercraft.entity.TileEntityMonolithDemission;
 import com.voidzm.supercraft.entity.TileEntityRadiantSolarGenerator;
 import com.voidzm.supercraft.entity.TileEntityWaveringLunarGenerator;
 import com.voidzm.supercraft.event.EventBonemeal;
@@ -20,6 +21,7 @@ import com.voidzm.supercraft.gui.SCMainMenu;
 import com.voidzm.supercraft.handler.BiomeHandler;
 import com.voidzm.supercraft.handler.BlockHandler;
 import com.voidzm.supercraft.handler.CraftingHandler;
+import com.voidzm.supercraft.handler.DimensionHandler;
 import com.voidzm.supercraft.handler.FuelHandler;
 import com.voidzm.supercraft.handler.GuiHandler;
 import com.voidzm.supercraft.handler.ItemHandler;
@@ -80,6 +82,7 @@ public class Supercraft {
 	public static final BiomeHandler biomeHandler = new BiomeHandler();
 	public static final FuelHandler fuelHandler = new FuelHandler();
 	public static final GuiHandler guiHandler = new GuiHandler();
+	public static final DimensionHandler dimensionHandler = new DimensionHandler();
 	
 	public static SupercraftConfiguration configuration;
 	
@@ -99,28 +102,22 @@ public class Supercraft {
 		itemHandler.populateAllAndInitialize(configuration);
 		craftingHandler.populateAllAndInitialize(configuration);
 		biomeHandler.populateAllAndInitialize(configuration);
+		dimensionHandler.populateAllAndInitialize(configuration);
 		proxy.registerRenderers();
 		proxy.initializeGui();
 
 		// biomeHandler.removeVanillaBiomes(); // For biome testing only.
 		
-		GameRegistry.registerFuelHandler(fuelHandler);
-		DimensionManager.unregisterDimension(0);
-		DimensionManager.registerProviderType(16, WorldProviderSurfaceAlternate.class, true);
-		DimensionManager.registerDimension(0, 16);
-		
-		DimensionManager.registerProviderType(10, WorldProviderDeep.class, true);
-		DimensionManager.registerDimension(-2, 10);
-		LiquidDictionary.getOrCreateLiquid("Ghostly Vapor", new LiquidStack(BlockHandler.ghostlyVaporStill, LiquidContainerRegistry.BUCKET_VOLUME));
-		
 		MinecraftForge.EVENT_BUS.register(new EventBonemeal());
 		MinecraftForge.EVENT_BUS.register(new EventDepths());
 		GameRegistry.registerWorldGenerator(new WorldGenOre());
+		GameRegistry.registerFuelHandler(fuelHandler);
 		GameRegistry.registerTileEntity(TileEntityConduit.class, "tileEntityConduit");
 		GameRegistry.registerTileEntity(TileEntityEssentialReducer.class, "tileEntityEssentialReducer");
 		GameRegistry.registerTileEntity(TileEntityRadiantSolarGenerator.class, "tileEntityRadiantSolarGenerator");
 		GameRegistry.registerTileEntity(TileEntityWaveringLunarGenerator.class, "tileEntityWaveringLunarGenerator");
 		GameRegistry.registerTileEntity(TileEntityAlloyInductor.class, "tileEntityAlloyInductor");
+		GameRegistry.registerTileEntity(TileEntityMonolithDemission.class, "tileEntityMonolithDemission");
 		NetworkRegistry.instance().registerGuiHandler(instance, guiHandler);
 		LanguageRegistry.instance().addStringLocalization("itemGroup.elinvarTab", "Elinvar");
 		System.out.println("[Supercraft] Loaded.");

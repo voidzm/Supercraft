@@ -29,8 +29,8 @@ public class ItemAluminumAxe extends ItemAxe {
 		MinecraftForge.setToolClass(this, "axe", 1);
 	}
 
-	public void func_94581_a(IconRegister par1IconRegister) {
-		this.iconIndex = par1IconRegister.func_94245_a("supercraft:axealuminum");
+	public void updateIcons(IconRegister par1IconRegister) {
+		this.iconIndex = par1IconRegister.registerIcon("supercraft:axealuminum");
 	}
 
 	public boolean onBlockDestroyed(ItemStack par1ItemStack, World par2World, int par3, int par4, int par5, int par6, EntityLiving par7EntityLiving) {

@@ -29,8 +29,8 @@ public class ItemAluminumSaber extends ItemSword {
 		this.setCreativeTab(CreativeTabs.tabCombat);
 	}
 
-	public void func_94581_a(IconRegister par1IconRegister) {
-		this.iconIndex = par1IconRegister.func_94245_a("supercraft:swordaluminum");
+	public void updateIcons(IconRegister par1IconRegister) {
+		this.iconIndex = par1IconRegister.registerIcon("supercraft:swordaluminum");
 	}
 	
 	public int getDamageVsEntity(Entity par1Entity) {

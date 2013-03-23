@@ -19,10 +19,10 @@ public class BlockWaveringLunarGenerator extends BlockContainerGenerator impleme
 		this.setUnlocalizedName("waveringLunarGenerator");
 	}
 
-	public void func_94332_a(IconRegister par1IconRegister) {
-		textureTop = par1IconRegister.func_94245_a("supercraft:waveringlunargenerator_top");
-		textureSide = par1IconRegister.func_94245_a("supercraft:waveringlunargenerator_side");
-		textureBottom = par1IconRegister.func_94245_a("supercraft:silverboundstone_beveled");
+	public void registerIcons(IconRegister par1IconRegister) {
+		textureTop = par1IconRegister.registerIcon("supercraft:waveringlunargenerator_top");
+		textureSide = par1IconRegister.registerIcon("supercraft:waveringlunargenerator_side");
+		textureBottom = par1IconRegister.registerIcon("supercraft:silverboundstone_beveled");
 	}
 	
 	public Icon getBlockTextureFromSideAndMetadata(int side, int meta) {

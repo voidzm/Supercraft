@@ -23,8 +23,8 @@ public class ItemTantalumCrystal extends Item {
 		this.setUnlocalizedName("tantalumCrystal");
 	}
 	
-	public void func_94581_a(IconRegister par1IconRegister) {
-		this.iconIndex = par1IconRegister.func_94245_a("supercraft:tantalumcrystal");
+	public void updateIcons(IconRegister par1IconRegister) {
+		this.iconIndex = par1IconRegister.registerIcon("supercraft:tantalumcrystal");
 	}
 	
 	public boolean hasEffect(ItemStack par1) {

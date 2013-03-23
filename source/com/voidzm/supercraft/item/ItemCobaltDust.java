@@ -23,8 +23,8 @@ public class ItemCobaltDust extends Item {
 		this.setUnlocalizedName("cobaltDust");
 	}
 	
-	public void func_94581_a(IconRegister par1IconRegister) {
-		this.iconIndex = par1IconRegister.func_94245_a("supercraft:cobaltdust");
+	public void updateIcons(IconRegister par1IconRegister) {
+		this.iconIndex = par1IconRegister.registerIcon("supercraft:cobaltdust");
 	}
 	
 }

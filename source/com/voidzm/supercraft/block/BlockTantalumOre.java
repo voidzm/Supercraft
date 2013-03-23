@@ -23,8 +23,8 @@ public class BlockTantalumOre extends BlockOre {
 		this.setUnlocalizedName("tantalumOre");
 	}
 	
-	public void func_94332_a(IconRegister par1IconRegister) {
-		field_94336_cN = par1IconRegister.func_94245_a("supercraft:oretantalum");
+	public void registerIcons(IconRegister par1IconRegister) {
+		this.blockIcon = par1IconRegister.registerIcon("supercraft:oretantalum");
 	}
 	
 }

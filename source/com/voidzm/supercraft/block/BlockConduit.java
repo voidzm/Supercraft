@@ -65,22 +65,24 @@ public class BlockConduit extends Block {
 		this.setTickRandomly(true);
 	}
 	
-	public void func_94332_a(IconRegister par1IconRegister) {
-		textures[0] = par1IconRegister.func_94245_a("supercraft:conduitwood");
-		textures[1] = par1IconRegister.func_94245_a("supercraft:conduitstone");
-		textures[2] = par1IconRegister.func_94245_a("supercraft:conduitiron");
-		textures[3] = par1IconRegister.func_94245_a("supercraft:conduitcopper");
-		textures[4] = par1IconRegister.func_94245_a("supercraft:conduitaluminum");
-		textures[5] = par1IconRegister.func_94245_a("supercraft:conduitsilver");
-		textures[6] = par1IconRegister.func_94245_a("supercraft:conduitgold");
-		textures[7] = par1IconRegister.func_94245_a("supercraft:conduitelectrum");
-		textures[8] = par1IconRegister.func_94245_a("supercraft:conduitdiamond");
-		textures[9] = par1IconRegister.func_94245_a("supercraft:conduitcobalt");
-		textures[10] = par1IconRegister.func_94245_a("supercraft:conduitplatinum");
-		textures[11] = par1IconRegister.func_94245_a("supercraft:conduittantalum");
-		textures[12] = par1IconRegister.func_94245_a("supercraft:conduitlithium");
+	@Override
+	public void registerIcons(IconRegister par1IconRegister) {
+		textures[0] = par1IconRegister.registerIcon("supercraft:conduitwood");
+		textures[1] = par1IconRegister.registerIcon("supercraft:conduitstone");
+		textures[2] = par1IconRegister.registerIcon("supercraft:conduitiron");
+		textures[3] = par1IconRegister.registerIcon("supercraft:conduitcopper");
+		textures[4] = par1IconRegister.registerIcon("supercraft:conduitaluminum");
+		textures[5] = par1IconRegister.registerIcon("supercraft:conduitsilver");
+		textures[6] = par1IconRegister.registerIcon("supercraft:conduitgold");
+		textures[7] = par1IconRegister.registerIcon("supercraft:conduitelectrum");
+		textures[8] = par1IconRegister.registerIcon("supercraft:conduitdiamond");
+		textures[9] = par1IconRegister.registerIcon("supercraft:conduitcobalt");
+		textures[10] = par1IconRegister.registerIcon("supercraft:conduitplatinum");
+		textures[11] = par1IconRegister.registerIcon("supercraft:conduittantalum");
+		textures[12] = par1IconRegister.registerIcon("supercraft:conduitlithium");
 	}
 	
+	@Override
 	public Icon getBlockTextureFromSideAndMetadata(int par1, int par2) {
 		return this.textures[par2];
 	}
@@ -92,7 +94,7 @@ public class BlockConduit extends Block {
 			if(te == null) return;
 			if(te.powerLevel() > te.limitForType(te.conduitType())) {
 				par1World.removeBlockTileEntity(par2, par3, par4);
-				par1World.func_94575_c(par2, par3, par4, 0);
+				par1World.setBlockToAir(par2, par3, par4);
 				par1World.createExplosion(new EntityItem(par1World), (double)par2, (double)par3, (double)par4, 1.0F, true);
 			}
 		}

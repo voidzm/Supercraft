@@ -28,16 +28,8 @@ public class ItemNisilShard extends Item {
 		this.setUnlocalizedName("nisilShard");
 	}
 	
-	public void func_94581_a(IconRegister par1IconRegister) {
-		this.iconIndex = par1IconRegister.func_94245_a("supercraft:nisilshard");
-	}
-	
-	
-	public boolean onItemUse(ItemStack par1ItemStack, EntityPlayer par2EntityPlayer, World par3World, int par4, int par5, int par6, int par7, float par8, float par9, float par10) {
-		if(par2EntityPlayer instanceof EntityPlayerMP) {
-			((EntityPlayerMP)par2EntityPlayer).mcServer.getConfigurationManager().transferPlayerToDimension((EntityPlayerMP)par2EntityPlayer, -2, new TeleporterDeep(DimensionManager.getWorld(-2)));
-		}
-		return true;
+	public void updateIcons(IconRegister par1IconRegister) {
+		this.iconIndex = par1IconRegister.registerIcon("supercraft:nisilshard");
 	}
 	
 }

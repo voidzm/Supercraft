@@ -372,13 +372,21 @@ public class TileEntityEssentialReducer extends TileEntity implements IInventory
 	}
 
 	@Override
-	public boolean func_94042_c() {
+	public boolean isInvNameLocalized() {
 		return false;
 	}
 
 	@Override
-	public boolean func_94041_b(int i, ItemStack itemstack) {
+	public boolean isStackValidForSlot(int i, ItemStack itemstack) {
+		switch(i) {
+		case 0:
+			return EssentialReducerRecipes.isStackReducable(itemstack);
+		case 1:
+			return EssentialReducerRecipes.isStackCatalytic(itemstack);
+		case 2:
+			return false;
+		}
 		return false;
 	}
-	
+
 }

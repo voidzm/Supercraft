@@ -21,8 +21,8 @@ public class ItemMetallicCobaltIngot extends Item {
 		this.setUnlocalizedName("metallicCobaltIngot");
 	}
 	
-	public void func_94581_a(IconRegister par1IconRegister) {
-		this.iconIndex = par1IconRegister.func_94245_a("supercraft:ingotcobalt");
+	public void updateIcons(IconRegister par1IconRegister) {
+		this.iconIndex = par1IconRegister.registerIcon("supercraft:ingotcobalt");
 	}
 	
 }
