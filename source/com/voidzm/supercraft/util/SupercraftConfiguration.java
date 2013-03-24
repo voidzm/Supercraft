@@ -101,6 +101,9 @@ public class SupercraftConfiguration {
 	
 	public int gravenStoneID;
 	
+	public int monolithinceptionID;
+	public int monolithinceptiononID;
+	
 	///*** ITEMS ***///
 	
 	public int ironscrapID;
@@ -268,7 +271,10 @@ public class SupercraftConfiguration {
 		
 		gravenStoneID = internalCfg.get(Configuration.CATEGORY_BLOCK, "gravenStoneID", "1670").getInt();
 		
-		// NEXT ID: 1670
+		monolithinceptionID = internalCfg.get(Configuration.CATEGORY_BLOCK, "monolithinceptionID", "1671").getInt();
+		monolithinceptiononID = internalCfg.get(Configuration.CATEGORY_BLOCK, "monolithinceptiononID", "1672").getInt();
+		
+		// NEXT ID: 1673
 		
 	}
 	

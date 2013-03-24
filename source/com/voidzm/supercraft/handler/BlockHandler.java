@@ -121,6 +121,9 @@ public class BlockHandler {
 	
 	public static Block gravenStone;
 	
+	public static Block monolithInception;
+	public static Block monolithInceptionActivated;
+	
 	public void populateAllAndInitialize(SupercraftConfiguration configObject) {
 		if(this.config != null) {
 			throw new RuntimeException("Block handler already loaded with configuration, cannot initialize again!"); 
@@ -333,6 +336,9 @@ public class BlockHandler {
 		gravenStoneList.add("Graven Stone of Brilliance");
 		languageHandler.add(gravenStone, gravenStoneList);
 		
+		languageHandler.add(monolithInception, "Monolith of Inception");
+		languageHandler.add(monolithInceptionActivated, "Monolith of Inception");
+		
 	}
 	
 	private void createBlocks() {
@@ -423,6 +429,9 @@ public class BlockHandler {
 		monolithDemissionActivated = new BlockMonolithDemission(this.config.monolithdemissiononID, true);
 		
 		gravenStone = new BlockGravenStone(this.config.gravenStoneID);
+		
+		monolithInception = new BlockMonolithInception(this.config.monolithinceptionID, false);
+		monolithInceptionActivated = new BlockMonolithInception(this.config.monolithinceptiononID, true);
 	}
 	
 	private void registerBlocks() {
@@ -559,6 +568,9 @@ public class BlockHandler {
 		GameRegistry.registerBlock(monolithDemissionActivated, "monolithDemissionActivated");
 		
 		GameRegistry.registerBlock(gravenStone, ItemGravenStone.class, "gravenStone");
+		
+		GameRegistry.registerBlock(monolithInception, "monolithInception");
+		GameRegistry.registerBlock(monolithInceptionActivated, "monolithInceptionActivated");
 	}
 	
 	private void initializeLanguage() {
@@ -750,6 +762,9 @@ public class BlockHandler {
 			LanguageRegistry.addName(stack, string);
 			i++;
 		}
+		
+		LanguageRegistry.addName(monolithInception, (String)this.languageHandler.getString(monolithInception));
+		LanguageRegistry.addName(monolithInceptionActivated, (String)this.languageHandler.getString(monolithInceptionActivated));
 	}
 
 }

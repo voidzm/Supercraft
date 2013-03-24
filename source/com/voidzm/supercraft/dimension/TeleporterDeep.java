@@ -31,12 +31,15 @@ public class TeleporterDeep extends Teleporter {
 			return;
 		}
 		portalLoc = this.findNewSpawnLocation(ex, ey);
-		for(int ix = -2; ix < 3; ix++) {
+		for(int ix = -3; ix < 4; ix++) {
 			for(int iy = -1; iy < 5; iy++) {
-				for(int iz = -2; iz < 3; iz++) {
+				for(int iz = -3; iz < 4; iz++) {
+					if(Math.abs(ix) == 3 && Math.abs(iz) > 0) continue;
+					if(Math.abs(ix) == 2 && Math.abs(iz) > 1) continue;
+					if(Math.abs(ix) == 1 && Math.abs(iz) > 2) continue;
 					if(iy == -1) {
-						if(ix == 0 && iz == 0) this.serverWorld.setBlock(portalLoc.x+ix, portalLoc.y+iy, portalLoc.z+iz, BlockHandler.cobaltBlock.blockID);
-						else this.serverWorld.setBlock(portalLoc.x+ix, portalLoc.y+iy, portalLoc.z+iz, BlockHandler.palestone.blockID);
+						if(ix == 0 && iz == 0) this.serverWorld.setBlock(portalLoc.x+ix, portalLoc.y+iy, portalLoc.z+iz, BlockHandler.monolithInceptionActivated.blockID);
+						else this.serverWorld.setBlock(portalLoc.x+ix, portalLoc.y+iy, portalLoc.z+iz, BlockHandler.gravenStone.blockID, 1, 0);
 					}
 					else {
 						this.serverWorld.setBlock(portalLoc.x+ix, portalLoc.y+iy, portalLoc.z+iz, 0);
@@ -52,7 +55,7 @@ public class TeleporterDeep extends Teleporter {
 		for(int ix = -radius; ix < radius; ix++) {
 			for(int iz = -radius; iz < radius; iz++) {
 				for(int iy = 0; iy < 120; iy++) {
-					if(this.serverWorld.getBlockId(xPos+ix, iy, zPos+iz) == BlockHandler.cobaltBlock.blockID) {
+					if(this.serverWorld.getBlockId(xPos+ix, iy, zPos+iz) == BlockHandler.monolithInceptionActivated.blockID) {
 						return new DeepPortalLocation(xPos+ix, iy, zPos+iz);
 					}
 				}
