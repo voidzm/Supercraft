@@ -21,6 +21,7 @@ public class ChunkProviderDeep implements IChunkProvider {
 	public World worldObj;
 	
 	private MapGenBase caveGenerator = new MapGenDeepCaves();
+	private MapGenBase fissureGenerator = new MapGenDeepFissures();
 	
 	public ChunkProviderDeep(World par1World, long par2Long) {
 		this.worldObj = par1World;
@@ -38,6 +39,7 @@ public class ChunkProviderDeep implements IChunkProvider {
 		byte[] cdata = new byte[32768];
 		this.genDeepTerrain(cdata, i, j);
 		this.caveGenerator.generate(this, this.worldObj, i, j, cdata);
+		this.fissureGenerator.generate(this, this.worldObj, i, j, cdata);
 		Chunk chunk = new Chunk(this.worldObj, cdata, i, j);
 		BiomeGenBase[] biomearray = this.worldObj.getWorldChunkManager().loadBlockGeneratorData((BiomeGenBase[])null, i*16, j*16, 16, 16);
 		byte[] bdata = chunk.getBiomeArray();
