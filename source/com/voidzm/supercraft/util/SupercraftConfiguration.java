@@ -275,10 +275,8 @@ public class SupercraftConfiguration {
 		
 		monolithinceptionID = internalCfg.get(Configuration.CATEGORY_BLOCK, "monolithinceptionID", "1671").getInt();
 		monolithinceptiononID = internalCfg.get(Configuration.CATEGORY_BLOCK, "monolithinceptiononID", "1672").getInt();
-		
-		luminousrockID = internalCfg.get(Configuration.CATEGORY_BLOCK, "luminousrockID", "1673").getInt();
-		
-		// NEXT ID: 1674
+
+		// NEXT ID: 1673
 		
 	}
 	

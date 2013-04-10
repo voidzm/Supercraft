@@ -126,7 +126,7 @@ public class BlockHandler {
 	
 	public static Block luminousRock;
 	
-	public void populateAllAndInitialize(SupercraftConfiguration configObject) {
+	public void init(SupercraftConfiguration configObject) {
 		if(this.config != null) {
 			throw new RuntimeException("Block handler already loaded with configuration, cannot initialize again!"); 
 		}
@@ -436,8 +436,6 @@ public class BlockHandler {
 		
 		monolithInception = new BlockMonolithInception(this.config.monolithinceptionID, false);
 		monolithInceptionActivated = new BlockMonolithInception(this.config.monolithinceptiononID, true);
-		
-		luminousRock = new BlockLuminousRock(this.config.luminousrockID);
 	}
 	
 	private void registerBlocks() {

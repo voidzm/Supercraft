@@ -65,26 +65,19 @@ public class BiomeGenDepths extends BiomeGenBase {
 				}
 			}
 		}
-		for(int i = 0; i < 2; i++) {
-			WorldGenMinable palestoneGen = new WorldGenMinable(BlockHandler.palestone.blockID, 18);
+		for(int i = 0; i < 1; i++) {
+			WorldGenMinable palestoneGen = new WorldGenMinable(BlockHandler.palestone.blockID, 12);
 			int x = par3 + par2Random.nextInt(16);
 			int y = par2Random.nextInt(128);
 			int z = par4 + par2Random.nextInt(16);
 			palestoneGen.generate(par1World, par2Random, x, y, z);
 		}
-		for(int i = 0; i < 2; i++) {
-			WorldGenMinable nightrockGen = new WorldGenMinable(BlockHandler.nightrock.blockID, 18);
+		for(int i = 0; i < 1; i++) {
+			WorldGenMinable nightrockGen = new WorldGenMinable(BlockHandler.nightrock.blockID, 12);
 			int x = par3 + par2Random.nextInt(16);
 			int y = par2Random.nextInt(128);
 			int z = par4 + par2Random.nextInt(16);
 			nightrockGen.generate(par1World, par2Random, x, y, z);
-		}
-		for(int i = 0; i < 2; i++) {
-			WorldGenMinable luminousrockGen = new WorldGenMinable(BlockHandler.luminousRock.blockID, 18);
-			int x = par3 + par2Random.nextInt(16);
-			int y = par2Random.nextInt(128);
-			int z = par4 + par2Random.nextInt(16);
-			luminousrockGen.generate(par1World, par2Random, x, y, z);
 		}
 		for(int i = 0; i < 4; i++) {
 			WorldGenMinable gravelGen = new WorldGenMinable(Block.gravel.blockID, 32);

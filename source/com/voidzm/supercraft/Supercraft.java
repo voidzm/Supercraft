@@ -27,6 +27,7 @@ import com.voidzm.supercraft.handler.GuiHandler;
 import com.voidzm.supercraft.handler.ItemHandler;
 import com.voidzm.supercraft.handler.PacketHandler;
 import com.voidzm.supercraft.handler.SCTickHandler;
+import com.voidzm.supercraft.handler.TileEntityHandler;
 import com.voidzm.supercraft.misc.CreativeTabElinvar;
 import com.voidzm.supercraft.util.SupercraftConfiguration;
 
@@ -83,6 +84,7 @@ public class Supercraft {
 	public static final FuelHandler fuelHandler = new FuelHandler();
 	public static final GuiHandler guiHandler = new GuiHandler();
 	public static final DimensionHandler dimensionHandler = new DimensionHandler();
+	public static final TileEntityHandler tileEntityHandler = new TileEntityHandler();
 	
 	public static SupercraftConfiguration configuration;
 	
@@ -98,11 +100,12 @@ public class Supercraft {
 	
 	@Init
 	public void load(FMLInitializationEvent event) {
-		blockHandler.populateAllAndInitialize(configuration);
-		itemHandler.populateAllAndInitialize(configuration);
-		craftingHandler.populateAllAndInitialize(configuration);
-		biomeHandler.populateAllAndInitialize(configuration);
-		dimensionHandler.populateAllAndInitialize(configuration);
+		blockHandler.init(configuration);
+		itemHandler.init(configuration);
+		craftingHandler.init(configuration);
+		biomeHandler.init(configuration);
+		dimensionHandler.init(configuration);
+		tileEntityHandler.init();
 		proxy.registerRenderers();
 		proxy.initializeGui();
 
@@ -112,12 +115,6 @@ public class Supercraft {
 		MinecraftForge.EVENT_BUS.register(new EventDepths());
 		GameRegistry.registerWorldGenerator(new WorldGenOre());
 		GameRegistry.registerFuelHandler(fuelHandler);
-		GameRegistry.registerTileEntity(TileEntityConduit.class, "tileEntityConduit");
-		GameRegistry.registerTileEntity(TileEntityEssentialReducer.class, "tileEntityEssentialReducer");
-		GameRegistry.registerTileEntity(TileEntityRadiantSolarGenerator.class, "tileEntityRadiantSolarGenerator");
-		GameRegistry.registerTileEntity(TileEntityWaveringLunarGenerator.class, "tileEntityWaveringLunarGenerator");
-		GameRegistry.registerTileEntity(TileEntityAlloyInductor.class, "tileEntityAlloyInductor");
-		GameRegistry.registerTileEntity(TileEntityMonolithDemission.class, "tileEntityMonolithDemission");
 		NetworkRegistry.instance().registerGuiHandler(instance, guiHandler);
 		LanguageRegistry.instance().addStringLocalization("itemGroup.elinvarTab", "Elinvar");
 		System.out.println("[Supercraft] Loaded.");

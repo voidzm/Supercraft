@@ -10,7 +10,7 @@ public class DimensionHandler {
 
 	protected SupercraftConfiguration config;
 	
-	public void populateAllAndInitialize(SupercraftConfiguration configObject) {
+	public void init(SupercraftConfiguration configObject) {
 		if(this.config != null) {
 			throw new RuntimeException("Dimension handler already loaded with configuration, cannot initialize again!"); 
 		}
