@@ -61,6 +61,11 @@ public class ItemHandler {
 	public static Item arcaneBucket;
 	public static Item bucketGhostlyVapor;
 	
+	public static Item incendiumDust;
+	public static Item luxificenDust;
+	public static Item jadeCrystal;
+	public static Item voltasniaRod;
+	
 	public void init(SupercraftConfiguration configObject) {
 		if(this.config != null) {
 			throw new RuntimeException("Itme handler already loaded with configuration, cannot initialize again!"); 
@@ -127,6 +132,11 @@ public class ItemHandler {
 		
 		languageHandler.add(arcaneBucket, "Arcane Bucket");
 		languageHandler.add(bucketGhostlyVapor, "Ghostly Vapor Bucket");
+		
+		languageHandler.add(incendiumDust, "Incendium Dust");
+		languageHandler.add(luxificenDust, "Luxificen Dust");
+		languageHandler.add(jadeCrystal, "Jade Crystal");
+		languageHandler.add(voltasniaRod, "Voltasnia Rod");
 	}
 	
 	private void createItems() {
@@ -166,6 +176,11 @@ public class ItemHandler {
 		
 		arcaneBucket = new ItemArcaneBucket(this.config.arcanebucketID, 0, "supercraft:arcanebucket");
 		bucketGhostlyVapor = new ItemArcaneBucket(this.config.bucketghostlyvaporID, BlockHandler.ghostlyVaporFlowing.blockID, "supercraft:bucketghostlyvapor");
+	
+		incendiumDust = new ItemSupercraft(this.config.incendiumdustID, "incendiumDust", "supercraft:incendiumdust");
+		luxificenDust = new ItemSupercraft(this.config.luxificendustID, "luxificenDust", "supercraft:luxificendust");
+		jadeCrystal = new ItemSupercraft(this.config.jadecrystalID, "jadeCrystal", "supercraft:jadecrystal");
+		voltasniaRod = new ItemSupercraft(this.config.voltasniarodID, "voltasniaRod", "supercraft:voltasniarod");
 	}
 	
 	private void registerItems() {
@@ -205,6 +220,11 @@ public class ItemHandler {
 
 		GameRegistry.registerItem(arcaneBucket, "arcaneBucket");
 		GameRegistry.registerItem(bucketGhostlyVapor, "bucketGhostlyVapor");
+		
+		GameRegistry.registerItem(incendiumDust, "incendiumDust");
+		GameRegistry.registerItem(luxificenDust, "luxificenDust");
+		GameRegistry.registerItem(jadeCrystal, "jadeCrystal");
+		GameRegistry.registerItem(voltasniaRod, "voltasniaRod");
 	}
 	
 	private void initializeLanguage() {
@@ -249,6 +269,11 @@ public class ItemHandler {
 		
 		LanguageRegistry.addName(arcaneBucket, (String)this.languageHandler.getString(arcaneBucket));
 		LanguageRegistry.addName(bucketGhostlyVapor, (String)this.languageHandler.getString(bucketGhostlyVapor));
+		
+		LanguageRegistry.addName(incendiumDust, (String)this.languageHandler.getString(incendiumDust));
+		LanguageRegistry.addName(luxificenDust, (String)this.languageHandler.getString(luxificenDust));
+		LanguageRegistry.addName(jadeCrystal, (String)this.languageHandler.getString(jadeCrystal));
+		LanguageRegistry.addName(voltasniaRod, (String)this.languageHandler.getString(voltasniaRod));
 	}
 	
 }

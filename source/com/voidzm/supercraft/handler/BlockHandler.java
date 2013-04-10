@@ -11,6 +11,7 @@ package com.voidzm.supercraft.handler;
 import java.util.ArrayList;
 
 import com.voidzm.supercraft.block.*;
+import com.voidzm.supercraft.block.BlockStorage.StorageType;
 import com.voidzm.supercraft.client.ClientProxy;
 import com.voidzm.supercraft.item.*;
 import com.voidzm.supercraft.util.SupercraftConfiguration;
@@ -123,9 +124,7 @@ public class BlockHandler {
 	
 	public static Block monolithInception;
 	public static Block monolithInceptionActivated;
-	
-	public static Block luminousRock;
-	
+
 	public void init(SupercraftConfiguration configObject) {
 		if(this.config != null) {
 			throw new RuntimeException("Block handler already loaded with configuration, cannot initialize again!"); 
@@ -340,9 +339,6 @@ public class BlockHandler {
 		
 		languageHandler.add(monolithInception, "Monolith of Inception");
 		languageHandler.add(monolithInceptionActivated, "Monolith of Inception");
-		
-		languageHandler.add(luminousRock, "Luminous Rock");
-		
 	}
 	
 	private void createBlocks() {
@@ -351,7 +347,7 @@ public class BlockHandler {
 		ornateGlass = new BlockOrnateGlass(this.config.ornateglassID);
 		impactGlass = new BlockImpactGlass(this.config.impactglassID);
 		
-		coalBlock = new BlockCoal(this.config.blockcoalID);
+		coalBlock = new BlockStorage(this.config.blockcoalID, "coalBlock", "supercraft:blockcoal", StorageType.DUST);
 
 		supercraftLog = new BlockSupercraftLog(this.config.woodsupercraft1ID);
 		supercraftLeaves1 = new BlockSupercraftLeaves1(this.config.leavessupercraft1ID);
@@ -365,18 +361,26 @@ public class BlockHandler {
 		goldenwoodStairs = new BlockSupercraftStairs(this.config.stairsgoldenwoodID, supercraftPlanks, 1).setUnlocalizedName("goldenwoodStairs");
 		tenebriaStairs = new BlockSupercraftStairs(this.config.stairstenebriaID, supercraftPlanks, 2).setUnlocalizedName("tenebriaStairs");
 		
-		aluminumOre = new BlockAluminumOre(this.config.orealuminumID);
-		aluminumBlock = new BlockAluminum(this.config.blockaluminumID);
-		tantalumOre = new BlockTantalumOre(this.config.oretantalumID);
-		tantalumBlock = new BlockTantalum(this.config.blocktantalumID);
-		copperOre = new BlockCopperOre(this.config.orecopperID);
-		copperBlock = new BlockCopper(this.config.blockcopperID);
-		silverOre = new BlockSilverOre(this.config.oresilverID);
-		silverBlock = new BlockSilver(this.config.blocksilverID);
-		electrumOre = new BlockElectrumOre(this.config.oreelectrumID);
-		electrumBlock = new BlockElectrum(this.config.blockelectrumID);
-		elinvarOre = new BlockElinvarOre(this.config.oreelinvarID);
-		elinvarBlock = new BlockElinvar(this.config.blockelinvarID);
+		aluminumOre = new BlockStoneOre(this.config.orealuminumID, "aluminumOre", "supercraft:orealuminum");
+		tantalumOre = new BlockStoneOre(this.config.oretantalumID, "tantalumOre", "supercraft:oretantalum");
+		copperOre = new BlockStoneOre(this.config.orecopperID, "copperOre", "supercraft:orecopper");
+		silverOre = new BlockStoneOre(this.config.oresilverID, "silverOre", "supercraft:oresilver");
+		electrumOre = new BlockStoneOre(this.config.oreelectrumID, "electrumOre", "supercraft:oreelectrum");
+		nisilOre = new BlockStoneOre(this.config.orenisilID, "nisilOre", "supercraft:orenisil");
+		platinumOre = new BlockStoneOre(this.config.oreplatinumID, "platinumOre", "supercraft:oreplatinum");
+		lithiumOre = new BlockStoneOre(this.config.orelithiumID, "lithiumOre", "supercraft:orelithium");
+		elinvarOre = new BlockNetherrackOre(this.config.oreelinvarID, "elinvarOre", "supercraft:oreelinvar", this.config.elinvardustID);
+		cobaltOre = new BlockNetherrackOre(this.config.orecobaltID, "cobaltOre", "supercraft:orecobalt", this.config.cobaltdustID).setExtraDrop(3);
+		
+		aluminumBlock = new BlockStorage(this.config.blockaluminumID, "aluminumBlock", "supercraft:blockaluminum");
+		tantalumBlock = new BlockStorage(this.config.blocktantalumID, "tantalumBlock", "supercraft:blocktantalum", StorageType.CRYSTAL);
+		copperBlock = new BlockStorage(this.config.blockcopperID, "copperBlock", "supercraft:blockcopper");
+		silverBlock = new BlockStorage(this.config.blocksilverID, "silverBlock", "supercraft:blocksilver");
+		electrumBlock = new BlockStorage(this.config.blockelectrumID, "electrumBlock", "supercraft:blockelectrum");
+		nisilBlock = new BlockStorage(this.config.blocknisilID, "nisilBlock", "supercraft:blocknisil");
+		platinumBlock = new BlockStorage(this.config.blockplatinumID, "platinumBlock", "supercraft:blockplatinum");
+		lithiumBlock = new BlockStorage(this.config.blocklithiumID, "lithiumBlock", "supercraft:blocklithium");
+		elinvarBlock = new BlockStorage(this.config.blockelinvarID, "elinvarBlock", "supercraft:blockelinvar", StorageType.DUST);
 		
 		conduit = new BlockConduit(this.config.conduitID);
 		
@@ -405,9 +409,6 @@ public class BlockHandler {
 		blockOfTenebral = new BlockTenebral(this.config.blocktenebralID);
 		burnedNightrock = new BlockBurnedNightrock(this.config.burnednightrockbricksID);
 
-		nisilOre = new BlockNisilOre(this.config.orenisilID);
-		nisilBlock = new BlockNisil(this.config.blocknisilID);
-
 		essentialReducer = new BlockEssentialReducer(this.config.essentialreducerID);
 		alloyInductor = new BlockAlloyInductor(this.config.alloyinductorID);
 		
@@ -415,16 +416,9 @@ public class BlockHandler {
 		copperboundStone = new BlockCopperboundStone(this.config.copperboundstoneID);
 		silverboundStone = new BlockSilverboundStone(this.config.silverboundstoneID);
 
-		cobaltOre = new BlockCobaltOre(this.config.orecobaltID);
 		cobaltTorch = new BlockCobaltTorch(this.config.torchcobaltID);
 		cobaltBlock = new BlockCobalt(this.config.blockcobaltID, true);
 		cobaltBlockOff = new BlockCobalt(this.config.blockcobaltoffID, false);
-
-		platinumOre = new BlockPlatinumOre(this.config.oreplatinumID);
-		platinumBlock = new BlockPlatinum(this.config.blockplatinumID);
-
-		lithiumOre = new BlockLithiumOre(this.config.orelithiumID);
-		lithiumBlock = new BlockLithium(this.config.blocklithiumID);
 		
 		ghostlyVaporFlowing = new BlockGhostlyVaporFlowing(this.config.ghostlyvaporflowingID);
 		ghostlyVaporStill = new BlockGhostlyVaporStill(this.config.ghostlyvaporstillID);
@@ -575,8 +569,6 @@ public class BlockHandler {
 		
 		GameRegistry.registerBlock(monolithInception, "monolithInception");
 		GameRegistry.registerBlock(monolithInceptionActivated, "monolithInceptionActivated");
-		
-		GameRegistry.registerBlock(luminousRock, "luminousRock");
 	}
 	
 	private void initializeLanguage() {
@@ -771,8 +763,6 @@ public class BlockHandler {
 		
 		LanguageRegistry.addName(monolithInception, (String)this.languageHandler.getString(monolithInception));
 		LanguageRegistry.addName(monolithInceptionActivated, (String)this.languageHandler.getString(monolithInceptionActivated));
-		
-		LanguageRegistry.addName(luminousRock, (String)this.languageHandler.getString(luminousRock));
 	}
 
 }

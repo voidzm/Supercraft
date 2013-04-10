@@ -145,6 +145,11 @@ public class SupercraftConfiguration {
 	public int arcanebucketID;
 	public int bucketghostlyvaporID;
 	
+	public int incendiumdustID;
+	public int luxificendustID;
+	public int jadecrystalID;
+	public int voltasniarodID;
+	
 	///*** RECIPES ***///
 	
 	public boolean docoalblockrecipe;
@@ -318,7 +323,12 @@ public class SupercraftConfiguration {
 		arcanebucketID = internalCfg.get(Configuration.CATEGORY_ITEM, "arcanebucketID", "23029").getInt();
 		bucketghostlyvaporID = internalCfg.get(Configuration.CATEGORY_ITEM, "bucketghostlyvaporID", "23030").getInt();
 		
-		// NEXT ID: 23031
+		incendiumdustID = internalCfg.get(Configuration.CATEGORY_ITEM, "incendiumdustID", "23031").getInt();
+		luxificendustID = internalCfg.get(Configuration.CATEGORY_ITEM, "luxificendustID", "23032").getInt();
+		jadecrystalID = internalCfg.get(Configuration.CATEGORY_ITEM, "jadecrystalID", "23033").getInt();
+		voltasniarodID = internalCfg.get(Configuration.CATEGORY_ITEM, "voltasniarodID", "23034").getInt();
+		
+		// NEXT ID: 23035
 		
 	}
 	
