@@ -24,7 +24,6 @@ public class BlockNetherrackOre extends BlockOre {
 		this.setUnlocalizedName(unlocalized);
 		this.iconString = icon;
 		this.itemDropID = dropItem+256;
-		System.out.println("Init nether ore with " +dropItem);
 	}
 	
 	public BlockNetherrackOre(int par1, String unlocalized, String icon) { 

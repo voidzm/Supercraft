@@ -20,7 +20,7 @@ public class BlockStoneOre extends BlockOre {
 		this.setCreativeTab(CreativeTabs.tabBlock);
 		this.setUnlocalizedName(unlocalized);
 		this.iconString = icon;
-		this.itemDropID = dropItem;
+		this.itemDropID = dropItem+256;
 	}
 	
 	public BlockStoneOre(int par1, String unlocalized, String icon) {

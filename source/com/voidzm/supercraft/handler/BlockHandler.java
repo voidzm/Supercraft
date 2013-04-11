@@ -124,6 +124,11 @@ public class BlockHandler {
 	
 	public static Block monolithInception;
 	public static Block monolithInceptionActivated;
+	
+	public static Block incendiumOre;
+	public static Block luxificenOre;
+	public static Block jadeOre;
+	public static Block voltasniaOre;
 
 	public void init(SupercraftConfiguration configObject) {
 		if(this.config != null) {
@@ -339,6 +344,11 @@ public class BlockHandler {
 		
 		languageHandler.add(monolithInception, "Monolith of Inception");
 		languageHandler.add(monolithInceptionActivated, "Monolith of Inception");
+		
+		languageHandler.add(incendiumOre, "Incendium Ore");
+		languageHandler.add(luxificenOre, "Luxificen Ore");
+		languageHandler.add(jadeOre, "Jade Ore");
+		languageHandler.add(voltasniaOre, "Voltasnia Ore");
 	}
 	
 	private void createBlocks() {
@@ -430,6 +440,11 @@ public class BlockHandler {
 		
 		monolithInception = new BlockMonolithInception(this.config.monolithinceptionID, false);
 		monolithInceptionActivated = new BlockMonolithInception(this.config.monolithinceptiononID, true);
+		
+		incendiumOre = new BlockStoneOre(this.config.oreincendiumID, "incendiumOre", "supercraft:oreincendium", this.config.incendiumdustID).setExtraDrop(2);
+		luxificenOre = new BlockStoneOre(this.config.oreluxificenID, "luxificenOre", "supercraft:oreluxificen", this.config.luxificendustID).setExtraDrop(3);
+		jadeOre = new BlockStoneOre(this.config.orejadeID, "jadeOre", "supercraft:orejade");
+		voltasniaOre = new BlockStoneOre(this.config.orevoltasniaID, "voltasniaOre", "supercraft:orevoltasnia", this.config.voltasniarodID);
 	}
 	
 	private void registerBlocks() {
@@ -569,6 +584,11 @@ public class BlockHandler {
 		
 		GameRegistry.registerBlock(monolithInception, "monolithInception");
 		GameRegistry.registerBlock(monolithInceptionActivated, "monolithInceptionActivated");
+		
+		GameRegistry.registerBlock(incendiumOre, "incendiumOre");
+		GameRegistry.registerBlock(luxificenOre, "luxificenOre");
+		GameRegistry.registerBlock(jadeOre, "jadeOre");
+		GameRegistry.registerBlock(voltasniaOre, "voltasniaOre");
 	}
 	
 	private void initializeLanguage() {
@@ -763,6 +783,11 @@ public class BlockHandler {
 		
 		LanguageRegistry.addName(monolithInception, (String)this.languageHandler.getString(monolithInception));
 		LanguageRegistry.addName(monolithInceptionActivated, (String)this.languageHandler.getString(monolithInceptionActivated));
+	
+		LanguageRegistry.addName(incendiumOre, (String)this.languageHandler.getString(incendiumOre));
+		LanguageRegistry.addName(luxificenOre, (String)this.languageHandler.getString(luxificenOre));
+		LanguageRegistry.addName(jadeOre, (String)this.languageHandler.getString(jadeOre));
+		LanguageRegistry.addName(voltasniaOre, (String)this.languageHandler.getString(voltasniaOre));
 	}
 
 }

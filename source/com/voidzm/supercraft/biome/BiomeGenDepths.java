@@ -86,6 +86,34 @@ public class BiomeGenDepths extends BiomeGenBase {
 			int z = par4 + par2Random.nextInt(16);
 			gravelGen.generate(par1World, par2Random, x, y, z);
 		}
+		for(int i = 0; i < 4; i++) {
+			WorldGenMinable jadeGen = new WorldGenMinable(BlockHandler.jadeOre.blockID, 3);
+			int x = par3 + par2Random.nextInt(16);
+			int y = 104 + par2Random.nextInt(24);
+			int z = par4 + par2Random.nextInt(16);
+			jadeGen.generate(par1World, par2Random, x, y, z);
+		}
+		for(int i = 0; i < 6; i++) {
+			WorldGenMinable incendiumGen = new WorldGenMinable(BlockHandler.incendiumOre.blockID, 8);
+			int x = par3 + par2Random.nextInt(16);
+			int y = par2Random.nextInt(128);
+			int z = par4 + par2Random.nextInt(16);
+			incendiumGen.generate(par1World, par2Random, x, y, z);
+		}
+		for(int i = 0; i < 6; i++) {
+			WorldGenMinable luxificenGen = new WorldGenMinable(BlockHandler.luxificenOre.blockID, 8);
+			int x = par3 + par2Random.nextInt(16);
+			int y = par2Random.nextInt(128);
+			int z = par4 + par2Random.nextInt(16);
+			luxificenGen.generate(par1World, par2Random, x, y, z);
+		}
+		for(int i = 0; i < 3; i++) {
+			WorldGenMinable voltasniaGen = new WorldGenMinable(BlockHandler.voltasniaOre.blockID, 4);
+			int x = par3 + par2Random.nextInt(16);
+			int y = par2Random.nextInt(24);
+			int z = par4 + par2Random.nextInt(16);
+			voltasniaGen.generate(par1World, par2Random, x, y, z);
+		}
 	}
 	
 }

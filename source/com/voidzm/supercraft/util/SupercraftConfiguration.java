@@ -104,7 +104,10 @@ public class SupercraftConfiguration {
 	public int monolithinceptionID;
 	public int monolithinceptiononID;
 	
-	public int luminousrockID;
+	public int oreincendiumID;
+	public int oreluxificenID;
+	public int orejadeID;
+	public int orevoltasniaID;
 	
 	///*** ITEMS ***///
 	
@@ -281,7 +284,12 @@ public class SupercraftConfiguration {
 		monolithinceptionID = internalCfg.get(Configuration.CATEGORY_BLOCK, "monolithinceptionID", "1671").getInt();
 		monolithinceptiononID = internalCfg.get(Configuration.CATEGORY_BLOCK, "monolithinceptiononID", "1672").getInt();
 
-		// NEXT ID: 1673
+		oreincendiumID = internalCfg.get(Configuration.CATEGORY_BLOCK, "oreincendiumID", "1673").getInt();
+		oreluxificenID = internalCfg.get(Configuration.CATEGORY_BLOCK, "oreluxificenID", "1674").getInt();
+		orejadeID = internalCfg.get(Configuration.CATEGORY_BLOCK, "orejadeID", "1675").getInt();
+		orevoltasniaID = internalCfg.get(Configuration.CATEGORY_BLOCK, "orevoltasniaID", "1676").getInt();
+		
+		// NEXT ID: 1677
 		
 	}
 	
