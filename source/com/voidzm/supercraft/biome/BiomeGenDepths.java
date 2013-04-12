@@ -8,6 +8,7 @@ package com.voidzm.supercraft.biome;
 
 import java.util.Random;
 
+import com.voidzm.supercraft.gen.WorldGenScatteredFlowers;
 import com.voidzm.supercraft.handler.BlockHandler;
 
 import net.minecraft.block.Block;
@@ -86,6 +87,13 @@ public class BiomeGenDepths extends BiomeGenBase {
 			int z = par4 + par2Random.nextInt(16);
 			gravelGen.generate(par1World, par2Random, x, y, z);
 		}
+		for(int i = 0; i < 12; i++) {
+			WorldGenMinable coalGen = new WorldGenMinable(Block.oreCoal.blockID, 12);
+			int x = par3 + par2Random.nextInt(16);
+			int y = par2Random.nextInt(128);
+			int z = par4 + par2Random.nextInt(16);
+			coalGen.generate(par1World, par2Random, x, y, z);
+		}
 		for(int i = 0; i < 4; i++) {
 			WorldGenMinable jadeGen = new WorldGenMinable(BlockHandler.jadeOre.blockID, 3);
 			int x = par3 + par2Random.nextInt(16);
@@ -107,12 +115,33 @@ public class BiomeGenDepths extends BiomeGenBase {
 			int z = par4 + par2Random.nextInt(16);
 			luxificenGen.generate(par1World, par2Random, x, y, z);
 		}
-		for(int i = 0; i < 3; i++) {
+		for(int i = 0; i < 2; i++) {
 			WorldGenMinable voltasniaGen = new WorldGenMinable(BlockHandler.voltasniaOre.blockID, 4);
 			int x = par3 + par2Random.nextInt(16);
 			int y = par2Random.nextInt(24);
 			int z = par4 + par2Random.nextInt(16);
 			voltasniaGen.generate(par1World, par2Random, x, y, z);
+		}
+		for(int i = 0; i < 8; i++) {
+			WorldGenScatteredFlowers gen = new WorldGenScatteredFlowers(BlockHandler.inisiaMushroom.blockID);
+			int xloc = par3 + par2Random.nextInt(16) + 8;
+			int yloc = par2Random.nextInt(128);
+			int zloc = par4 + par2Random.nextInt(16) + 8;
+			gen.generate(par1World, par2Random, xloc, yloc, zloc);
+		}
+		for(int i = 0; i < 8; i++) {
+			WorldGenScatteredFlowers gen = new WorldGenScatteredFlowers(BlockHandler.valensienMushroom.blockID);
+			int xloc = par3 + par2Random.nextInt(16) + 8;
+			int yloc = par2Random.nextInt(128);
+			int zloc = par4 + par2Random.nextInt(16) + 8;
+			gen.generate(par1World, par2Random, xloc, yloc, zloc);
+		}
+		for(int i = 0; i < 8; i++) {
+			WorldGenScatteredFlowers gen = new WorldGenScatteredFlowers(BlockHandler.mortaliaMushroom.blockID);
+			int xloc = par3 + par2Random.nextInt(16) + 8;
+			int yloc = par2Random.nextInt(128);
+			int zloc = par4 + par2Random.nextInt(16) + 8;
+			gen.generate(par1World, par2Random, xloc, yloc, zloc);
 		}
 	}
 	

@@ -23,6 +23,7 @@ import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 import net.minecraft.item.ItemBlock;
 import net.minecraft.item.ItemStack;
+import net.minecraftforge.common.EnumPlantType;
 
 public class BlockHandler {
 	
@@ -129,6 +130,10 @@ public class BlockHandler {
 	public static Block luxificenOre;
 	public static Block jadeOre;
 	public static Block voltasniaOre;
+	
+	public static Block inisiaMushroom;
+	public static Block valensienMushroom;
+	public static Block mortaliaMushroom;
 
 	public void init(SupercraftConfiguration configObject) {
 		if(this.config != null) {
@@ -349,6 +354,10 @@ public class BlockHandler {
 		languageHandler.add(luxificenOre, "Luxificen Ore");
 		languageHandler.add(jadeOre, "Jade Ore");
 		languageHandler.add(voltasniaOre, "Voltasnia Ore");
+		
+		languageHandler.add(inisiaMushroom, "Inisia Mushroom");
+		languageHandler.add(valensienMushroom, "Valensien Mushroom");
+		languageHandler.add(mortaliaMushroom, "Mortalia Mushroom");
 	}
 	
 	private void createBlocks() {
@@ -400,9 +409,9 @@ public class BlockHandler {
 		radiantSolarGenerator = new BlockRadiantSolarGenerator(this.config.radiantsolargeneratorID);
 		waveringLunarGenerator = new BlockWaveringLunarGenerator(this.config.waveringlunargeneratorID);
 		
-		bluebells = new BlockSupercraftFlower(this.config.bluebellsID, "supercraft:bluebells").setUnlocalizedName("bluebells");
-		daisies = new BlockSupercraftFlower(this.config.daisiesID, "supercraft:daisies").setUnlocalizedName("daisies");
-		snapdragon = new BlockSupercraftFlower(this.config.snapdragonID, "supercraft:snapdragon").setUnlocalizedName("snapdragon");
+		bluebells = new BlockSupercraftFlower(this.config.bluebellsID, "supercraft:bluebells", EnumPlantType.Plains).setUnlocalizedName("bluebells");
+		daisies = new BlockSupercraftFlower(this.config.daisiesID, "supercraft:daisies", EnumPlantType.Plains).setUnlocalizedName("daisies");
+		snapdragon = new BlockSupercraftFlower(this.config.snapdragonID, "supercraft:snapdragon", EnumPlantType.Plains).setUnlocalizedName("snapdragon");
 
 		palestone = new BlockPalestone(this.config.palestoneID);
 		palestoneBricks = new BlockPalestoneBricks(this.config.palestonebricksID);
@@ -445,6 +454,10 @@ public class BlockHandler {
 		luxificenOre = new BlockStoneOre(this.config.oreluxificenID, "luxificenOre", "supercraft:oreluxificen", this.config.luxificendustID).setExtraDrop(3);
 		jadeOre = new BlockStoneOre(this.config.orejadeID, "jadeOre", "supercraft:orejade");
 		voltasniaOre = new BlockStoneOre(this.config.orevoltasniaID, "voltasniaOre", "supercraft:orevoltasnia", this.config.voltasniarodID);
+	
+		inisiaMushroom = new BlockSupercraftMushroom(this.config.mushroominisiaID, "supercraft:mushroominisia", EnumPlantType.Cave).setUnlocalizedName("inisiaMushroom");
+		valensienMushroom = new BlockSupercraftMushroom(this.config.mushroomvalensienID, "supercraft:mushroomvalensien", EnumPlantType.Cave).setUnlocalizedName("valensienMushroom");
+		mortaliaMushroom = new BlockSupercraftMushroom(this.config.mushroommortaliaID, "supercraft:mushroommortalia", EnumPlantType.Cave).setUnlocalizedName("mortaliaMushroom");
 	}
 	
 	private void registerBlocks() {
@@ -589,6 +602,10 @@ public class BlockHandler {
 		GameRegistry.registerBlock(luxificenOre, "luxificenOre");
 		GameRegistry.registerBlock(jadeOre, "jadeOre");
 		GameRegistry.registerBlock(voltasniaOre, "voltasniaOre");
+		
+		GameRegistry.registerBlock(inisiaMushroom, "inisiaMushroom");
+		GameRegistry.registerBlock(valensienMushroom, "valensienMushroom");
+		GameRegistry.registerBlock(mortaliaMushroom, "mortaliaMushroom");
 	}
 	
 	private void initializeLanguage() {
@@ -788,6 +805,10 @@ public class BlockHandler {
 		LanguageRegistry.addName(luxificenOre, (String)this.languageHandler.getString(luxificenOre));
 		LanguageRegistry.addName(jadeOre, (String)this.languageHandler.getString(jadeOre));
 		LanguageRegistry.addName(voltasniaOre, (String)this.languageHandler.getString(voltasniaOre));
+		
+		LanguageRegistry.addName(inisiaMushroom, (String)this.languageHandler.getString(inisiaMushroom));
+		LanguageRegistry.addName(valensienMushroom, (String)this.languageHandler.getString(valensienMushroom));
+		LanguageRegistry.addName(mortaliaMushroom, (String)this.languageHandler.getString(mortaliaMushroom));
 	}
 
 }
