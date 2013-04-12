@@ -134,6 +134,9 @@ public class BlockHandler {
 	public static Block inisiaMushroom;
 	public static Block valensienMushroom;
 	public static Block mortaliaMushroom;
+	
+	public static Block monolithAscension;
+	public static Block monolithAscensionActivated;
 
 	public void init(SupercraftConfiguration configObject) {
 		if(this.config != null) {
@@ -358,6 +361,9 @@ public class BlockHandler {
 		languageHandler.add(inisiaMushroom, "Inisia Mushroom");
 		languageHandler.add(valensienMushroom, "Valensien Mushroom");
 		languageHandler.add(mortaliaMushroom, "Mortalia Mushroom");
+		
+		languageHandler.add(monolithAscension, "Monolith of Ascension");
+		languageHandler.add(monolithAscensionActivated, "Monolith of Ascension");
 	}
 	
 	private void createBlocks() {
@@ -458,6 +464,9 @@ public class BlockHandler {
 		inisiaMushroom = new BlockSupercraftMushroom(this.config.mushroominisiaID, "supercraft:mushroominisia", EnumPlantType.Cave).setUnlocalizedName("inisiaMushroom");
 		valensienMushroom = new BlockSupercraftMushroom(this.config.mushroomvalensienID, "supercraft:mushroomvalensien", EnumPlantType.Cave).setUnlocalizedName("valensienMushroom");
 		mortaliaMushroom = new BlockSupercraftMushroom(this.config.mushroommortaliaID, "supercraft:mushroommortalia", EnumPlantType.Cave).setUnlocalizedName("mortaliaMushroom");
+	
+		monolithAscension = new BlockMonolithAscension(this.config.monolithascensionID, false);
+		monolithAscensionActivated = new BlockMonolithAscension(this.config.monolithascensiononID, true);
 	}
 	
 	private void registerBlocks() {
@@ -606,6 +615,9 @@ public class BlockHandler {
 		GameRegistry.registerBlock(inisiaMushroom, "inisiaMushroom");
 		GameRegistry.registerBlock(valensienMushroom, "valensienMushroom");
 		GameRegistry.registerBlock(mortaliaMushroom, "mortaliaMushroom");
+		
+		GameRegistry.registerBlock(monolithAscension, "monolithAscension");
+		GameRegistry.registerBlock(monolithAscensionActivated, "monolithAscensionActivated");
 	}
 	
 	private void initializeLanguage() {
@@ -809,6 +821,9 @@ public class BlockHandler {
 		LanguageRegistry.addName(inisiaMushroom, (String)this.languageHandler.getString(inisiaMushroom));
 		LanguageRegistry.addName(valensienMushroom, (String)this.languageHandler.getString(valensienMushroom));
 		LanguageRegistry.addName(mortaliaMushroom, (String)this.languageHandler.getString(mortaliaMushroom));
+		
+		LanguageRegistry.addName(monolithAscension, (String)this.languageHandler.getString(monolithAscension));
+		LanguageRegistry.addName(monolithAscensionActivated, (String)this.languageHandler.getString(monolithAscensionActivated));
 	}
 
 }

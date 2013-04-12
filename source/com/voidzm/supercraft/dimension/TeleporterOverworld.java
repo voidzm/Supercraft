@@ -12,21 +12,22 @@ import net.minecraft.world.Teleporter;
 import net.minecraft.world.World;
 import net.minecraft.world.WorldServer;
 
-public class TeleporterDeep extends Teleporter {
+public class TeleporterOverworld extends Teleporter {
 
 	private WorldServer serverWorld;
 	
-	public TeleporterDeep(WorldServer par1WorldServer) {
+	public TeleporterOverworld(WorldServer par1WorldServer) {
 		super(par1WorldServer);
 		this.serverWorld = par1WorldServer;
 	}
 	
 	public void placeInPortal(Entity par1Entity, double par2, double par4, double par6, float par8) {
+		System.out.println("Attempting to place in portal at ("+par2+", "+par4+", "+par6+").");
 		int ex = MathHelper.floor_double(par2);
 		int ey = MathHelper.floor_double(par4);
 		int ez = MathHelper.floor_double(par6);
 		
-		DeepPortalLocation portalLoc = this.locateExistingDeepSpawn(ex, ez);
+		DeepPortalLocation portalLoc = this.locateExistingOverworldSpawn(ex, ez);
 		if(portalLoc != null) {
 			par1Entity.setLocationAndAngles((double)(portalLoc.x)+0.5, (double)(portalLoc.y)+1.0, (double)(portalLoc.z)+0.5, par1Entity.rotationYaw, 0.0F);
 			return;
@@ -51,7 +52,7 @@ public class TeleporterDeep extends Teleporter {
 		par1Entity.setLocationAndAngles((double)(portalLoc.x)+0.5, (double)(portalLoc.y)+1.0, (double)(portalLoc.z)+0.5, par1Entity.rotationYaw, 0.0F);
 	}
 	
-	public DeepPortalLocation locateExistingDeepSpawn(int xPos, int zPos) {
+	public DeepPortalLocation locateExistingOverworldSpawn(int xPos, int zPos) {
 		int radius = 50;
 		for(int ix = -radius; ix < radius; ix++) {
 			for(int iz = -radius; iz < radius; iz++) {
@@ -70,7 +71,7 @@ public class TeleporterDeep extends Teleporter {
 		boolean didFindSpawn = false;
 		DeepPortalLocation location = null;
 		while(!didFindSpawn) {
-			for(int iy = 0; iy < 120; iy++) {
+			for(int iy = 120; iy > 0; iy--) {
 				if(this.serverWorld.getBlockId(xPos, iy, zPos) == 0) {
 					if(this.serverWorld.getBlockId(xPos, iy-1, zPos) == Block.stone.blockID) {
 						didFindSpawn = true;

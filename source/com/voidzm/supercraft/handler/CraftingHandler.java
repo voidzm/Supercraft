@@ -98,6 +98,9 @@ public class CraftingHandler {
 	private ItemStack silverboundStone;
 	private ItemStack ferricEssence;
 	private ItemStack gravenStoneDarkness;
+	private ItemStack gravenStoneGleaming;
+	private ItemStack jade;
+	private ItemStack voltasnia;
 	
 	public void init(SupercraftConfiguration configObject) {
 		if(this.config != null) {
@@ -187,6 +190,9 @@ public class CraftingHandler {
 		silverboundStone = new ItemStack(BlockHandler.silverboundStone);
 		ferricEssence = new ItemStack(ItemHandler.essence, 1, EssentialAspect.FERRIC.index);
 		gravenStoneDarkness = new ItemStack(BlockHandler.gravenStone, 1, 0);
+		gravenStoneGleaming = new ItemStack(BlockHandler.gravenStone, 1, 2);
+		jade = new ItemStack(ItemHandler.jadeCrystal);
+		voltasnia = new ItemStack(ItemHandler.voltasniaRod);
 	}
 	
 	private void addRecipes() {
@@ -285,6 +291,7 @@ public class CraftingHandler {
 		GameRegistry.addRecipe(new ItemStack(BlockHandler.gravenStone, 1, 3), " a ", "aaa", " a ", 'a', palestone);
 	
 		GameRegistry.addRecipe(new ItemStack(BlockHandler.monolithDemission), "aaa", "bcb", "aaa", 'a', gravenStoneDarkness, 'b', silver, 'c', cobaltBlock);
+		GameRegistry.addRecipe(new ItemStack(BlockHandler.monolithAscension), "aaa", "bcb", "aaa", 'a', gravenStoneGleaming, 'b', voltasnia, 'c', jade);
 	}
 	
 	private void addShapelessRecipes() {

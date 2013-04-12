@@ -113,6 +113,9 @@ public class SupercraftConfiguration {
 	public int mushroomvalensienID;
 	public int mushroommortaliaID;
 	
+	public int monolithascensionID;
+	public int monolithascensiononID;
+	
 	///*** ITEMS ***///
 	
 	public int ironscrapID;
@@ -297,7 +300,10 @@ public class SupercraftConfiguration {
 		mushroomvalensienID = internalCfg.get(Configuration.CATEGORY_BLOCK, "mushroomvalensienID", "1678").getInt();
 		mushroommortaliaID = internalCfg.get(Configuration.CATEGORY_BLOCK, "mushroommortaliaID", "1679").getInt();
 		
-		// NEXT ID: 1680
+		monolithascensionID = internalCfg.get(Configuration.CATEGORY_BLOCK, "monolithascensionID", "1680").getInt();
+		monolithascensiononID = internalCfg.get(Configuration.CATEGORY_BLOCK, "monolithascensiononID", "1681").getInt();
+		
+		// NEXT ID: 1682
 		
 	}
 	

@@ -2,6 +2,8 @@ package com.voidzm.supercraft.block;
 
 import com.voidzm.supercraft.Supercraft;
 import com.voidzm.supercraft.dimension.TeleporterDeep;
+import com.voidzm.supercraft.dimension.TeleporterOverworld;
+import com.voidzm.supercraft.entity.TileEntityMonolithAscension;
 import com.voidzm.supercraft.entity.TileEntityMonolithDemission;
 
 import net.minecraft.block.Block;
@@ -18,40 +20,40 @@ import net.minecraft.world.World;
 import net.minecraft.world.WorldServer;
 import net.minecraftforge.common.DimensionManager;
 
-public class BlockMonolithDemission extends Block {
+public class BlockMonolithAscension extends Block {
 
 	private final boolean isActivated;
 	
-	public BlockMonolithDemission(int par1, boolean par2) {
+	public BlockMonolithAscension(int par1, boolean par2) {
 		super(par1, Material.rock);
 		this.setHardness(4.0F);
 		this.setResistance(20.0F);
 		this.isActivated = par2;
 		this.setStepSound(soundStoneFootstep);
-		this.setUnlocalizedName("monolithDemission");
+		this.setUnlocalizedName("monolithAscension");
 		if(!par2) this.setCreativeTab(CreativeTabs.tabBlock);
 		if(par2) {
-			this.setUnlocalizedName("monolithDemissionActivated");
+			this.setUnlocalizedName("monolithAscensionActivated");
 			this.setLightValue(0.5F);
 		}
 	}
 	
 	public void registerIcons(IconRegister par1IconRegister) {
-		if(isActivated) this.blockIcon = par1IconRegister.registerIcon("supercraft:monolithdemission_on");
-		else this.blockIcon = par1IconRegister.registerIcon("supercraft:monolithdemission");
+		if(isActivated) this.blockIcon = par1IconRegister.registerIcon("supercraft:monolithascension_on");
+		else this.blockIcon = par1IconRegister.registerIcon("supercraft:monolithascension");
 	}
 	
 	public void onEntityWalking(World par1World, int par2, int par3, int par4, Entity par5Entity) {
 		if(par1World.isRemote || !this.isActivated) return;
 		int theDeepID = Supercraft.configuration.thedeepID;
-		if(par1World.provider.dimensionId != 0) {
+		if(par1World.provider.dimensionId != theDeepID) {
 			this.detonate(par1World, par2, par3, par4);
 			return;
 		}
 		MinecraftServer server = MinecraftServer.getServer();
-		WorldServer targetWorld = server.worldServerForDimension(theDeepID);
+		WorldServer targetWorld = server.worldServerForDimension(0);
 		if(par5Entity instanceof EntityPlayerMP) {
-			server.getConfigurationManager().transferPlayerToDimension((EntityPlayerMP)par5Entity, theDeepID, new TeleporterDeep(targetWorld));
+			server.getConfigurationManager().transferPlayerToDimension((EntityPlayerMP)par5Entity, 0, new TeleporterOverworld(targetWorld));
 			return;
 		}
 	}
@@ -67,7 +69,7 @@ public class BlockMonolithDemission extends Block {
 	}
 	
 	public TileEntity createTileEntity(World world, int metadata) {
-		return new TileEntityMonolithDemission();
+		return new TileEntityMonolithAscension();
 	}
 	
 }
