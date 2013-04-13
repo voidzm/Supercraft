@@ -25,7 +25,7 @@ import net.minecraft.util.Icon;
 
 public class BlockSupercraftSlab1 extends BlockSupercraftSlabBase {
 
-	private final String[] types = new String[] {"olive", "goldenwood", "tenebria"};
+	private final String[] types = new String[] {"olive", "goldenwood", "tenebria", "inisia", "valensien", "mortalia"};
 	
 	protected Icon[] textures = new Icon[8];
 	
@@ -38,10 +38,13 @@ public class BlockSupercraftSlab1 extends BlockSupercraftSlabBase {
 		textures[0] = par1IconRegister.registerIcon("supercraft:planksolive");
 		textures[1] = par1IconRegister.registerIcon("supercraft:planksgoldenwood");
 		textures[2] = par1IconRegister.registerIcon("supercraft:plankstenebria");
+		textures[3] = par1IconRegister.registerIcon("supercraft:planksinisia");
+		textures[4] = par1IconRegister.registerIcon("supercraft:planksvalensien");
+		textures[5] = par1IconRegister.registerIcon("supercraft:planksmortalia");
 	}
 	
 	public Icon getBlockTextureFromSideAndMetadata(int side, int meta) {
-		return textures[meta];
+		return textures[meta & 7];
 	}
 	
 	public String getFullSlabName(int par1) {
@@ -57,6 +60,9 @@ public class BlockSupercraftSlab1 extends BlockSupercraftSlabBase {
         	par3List.add(new ItemStack(par1, 1, 0));
         	par3List.add(new ItemStack(par1, 1, 1));
         	par3List.add(new ItemStack(par1, 1, 2));
+        	par3List.add(new ItemStack(par1, 1, 3));
+        	par3List.add(new ItemStack(par1, 1, 4));
+        	par3List.add(new ItemStack(par1, 1, 5));
         }
     }
 	

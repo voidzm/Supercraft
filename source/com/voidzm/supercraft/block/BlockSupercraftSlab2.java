@@ -35,12 +35,12 @@ public class BlockSupercraftSlab2 extends BlockSupercraftSlabBase {
 	}
 	
 	public void registerIcons(IconRegister par1IconRegister) {
-		textures[0] = par1IconRegister.registerIcon("supercraft:palestone");
-		textures[1] = par1IconRegister.registerIcon("supercraft:nightrock");
+		textures[0] = par1IconRegister.registerIcon("supercraft:palestonebricks");
+		textures[1] = par1IconRegister.registerIcon("supercraft:nightrockbricks");
 	}
 	
 	public Icon getBlockTextureFromSideAndMetadata(int side, int meta) {
-		return textures[meta];
+		return textures[meta & 7];
 	}
 	
 	public String getFullSlabName(int par1) {

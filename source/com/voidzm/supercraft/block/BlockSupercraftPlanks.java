@@ -37,6 +37,9 @@ public class BlockSupercraftPlanks extends Block {
 		textures[0] = par1IconRegister.registerIcon("supercraft:planksolive");
 		textures[1] = par1IconRegister.registerIcon("supercraft:planksgoldenwood");
 		textures[2] = par1IconRegister.registerIcon("supercraft:plankstenebria");
+		textures[3] = par1IconRegister.registerIcon("supercraft:planksinisia");
+		textures[4] = par1IconRegister.registerIcon("supercraft:planksvalensien");
+		textures[5] = par1IconRegister.registerIcon("supercraft:planksmortalia");
 	}
 	
 	public Icon getBlockTextureFromSideAndMetadata(int side, int meta) {
@@ -52,6 +55,9 @@ public class BlockSupercraftPlanks extends Block {
 		par3List.add(new ItemStack(par1, 1, 0));
 		par3List.add(new ItemStack(par1, 1, 1));
 		par3List.add(new ItemStack(par1, 1, 2));
+		par3List.add(new ItemStack(par1, 1, 3));
+		par3List.add(new ItemStack(par1, 1, 4));
+		par3List.add(new ItemStack(par1, 1, 5));
 	}
 	
 }

@@ -11,7 +11,7 @@ import net.minecraft.item.ItemStack;
 
 public class ItemSupercraftPlanks extends ItemBlock {
 
-	private final static String[] names = {"olivePlanks", "goldenwoodPlanks", "tenebriaPlanks"};
+	private final static String[] names = {"olivePlanks", "goldenwoodPlanks", "tenebriaPlanks", "inisiaPlanks", "valensienPlanks", "mortaliaPlanks"};
 	
 	public ItemSupercraftPlanks(int par1) {
 		super(par1);

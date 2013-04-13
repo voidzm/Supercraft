@@ -10,7 +10,7 @@ import net.minecraft.world.gen.feature.WorldGenerator;
 
 public class WorldGenTenebria extends WorldGenerator {
 
-	private int logID = BlockHandler.supercraftLog.blockID;
+	private int logID = BlockHandler.supercraftLog1.blockID;
 	private int leavesID = BlockHandler.supercraftLeaves2.blockID;
 	private int logData = 2;
 	private int specialLogData = 3;

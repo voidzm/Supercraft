@@ -116,6 +116,10 @@ public class SupercraftConfiguration {
 	public int monolithascensionID;
 	public int monolithascensiononID;
 	
+	public int stairsinisiaID;
+	public int stairsvalensienID;
+	public int stairsmortaliaID;
+	
 	///*** ITEMS ***///
 	
 	public int ironscrapID;
@@ -303,7 +307,11 @@ public class SupercraftConfiguration {
 		monolithascensionID = internalCfg.get(Configuration.CATEGORY_BLOCK, "monolithascensionID", "1680").getInt();
 		monolithascensiononID = internalCfg.get(Configuration.CATEGORY_BLOCK, "monolithascensiononID", "1681").getInt();
 		
-		// NEXT ID: 1682
+		stairsinisiaID = internalCfg.get(Configuration.CATEGORY_BLOCK, "stairsinisiaID", "1682").getInt();
+		stairsvalensienID = internalCfg.get(Configuration.CATEGORY_BLOCK, "stairsvalensienID", "1683").getInt();
+		stairsmortaliaID = internalCfg.get(Configuration.CATEGORY_BLOCK, "stairsmortaliaID", "1684").getInt();
+		
+		// NEXT ID: 1685
 		
 	}
 	

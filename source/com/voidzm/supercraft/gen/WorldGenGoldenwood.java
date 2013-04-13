@@ -11,7 +11,7 @@ import net.minecraft.world.gen.feature.WorldGenerator;
 
 public class WorldGenGoldenwood extends WorldGenerator {
 
-	private int logID = BlockHandler.supercraftLog.blockID;
+	private int logID = BlockHandler.supercraftLog1.blockID;
 	private int leavesID = BlockHandler.supercraftLeaves2.blockID;
 	private int logData = 1;
 	private int leavesData = 0;

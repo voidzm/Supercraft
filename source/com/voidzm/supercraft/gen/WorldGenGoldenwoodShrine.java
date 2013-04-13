@@ -165,7 +165,7 @@ public class WorldGenGoldenwoodShrine extends WorldGenerator {
 			return new ItemStack(BlockHandler.palestoneBricks, rand.nextInt(4)+1);
 		}
 		else {
-			return new ItemStack(BlockHandler.supercraftLog, rand.nextInt(4)+1, 1);
+			return new ItemStack(BlockHandler.supercraftLog1, rand.nextInt(4)+1, 1);
 		}
 	}
 	

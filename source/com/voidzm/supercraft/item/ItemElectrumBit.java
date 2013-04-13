@@ -46,16 +46,16 @@ public class ItemElectrumBit extends Item {
 			if(par3World.getBlockId(par4, par5, par6-1) != BlockHandler.overgrownPalestone.blockID) {
 				return false;
 			}
-			if(par3World.getBlockId(par4+1, par5, par6+1) != BlockHandler.supercraftLog.blockID || par3World.getBlockMetadata(par4+1, par5, par6+1) != 1) {
+			if(par3World.getBlockId(par4+1, par5, par6+1) != BlockHandler.supercraftLog1.blockID || par3World.getBlockMetadata(par4+1, par5, par6+1) != 1) {
 				return false;
 			}
-			if(par3World.getBlockId(par4-1, par5, par6+1) != BlockHandler.supercraftLog.blockID || par3World.getBlockMetadata(par4-1, par5, par6+1) != 1) {
+			if(par3World.getBlockId(par4-1, par5, par6+1) != BlockHandler.supercraftLog1.blockID || par3World.getBlockMetadata(par4-1, par5, par6+1) != 1) {
 				return false;
 			}
-			if(par3World.getBlockId(par4+1, par5, par6-1) != BlockHandler.supercraftLog.blockID || par3World.getBlockMetadata(par4+1, par5, par6-1) != 1) {
+			if(par3World.getBlockId(par4+1, par5, par6-1) != BlockHandler.supercraftLog1.blockID || par3World.getBlockMetadata(par4+1, par5, par6-1) != 1) {
 				return false;
 			}
-			if(par3World.getBlockId(par4-1, par5, par6-1) != BlockHandler.supercraftLog.blockID || par3World.getBlockMetadata(par4-1, par5, par6-1) != 1) {
+			if(par3World.getBlockId(par4-1, par5, par6-1) != BlockHandler.supercraftLog1.blockID || par3World.getBlockMetadata(par4-1, par5, par6-1) != 1) {
 				return false;
 			}
 			if(!par2EntityPlayer.capabilities.isCreativeMode) par1ItemStack.stackSize--;
