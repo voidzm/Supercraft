@@ -78,6 +78,7 @@ public class BlockSupercraftLeavesBase extends BlockLeavesBase implements IShear
 		}
 	}
 	
+	@Override
 	public int quantityDropped(Random par1Random) {
 		return par1Random.nextInt(20) == 0 ? 1 : 0;
 	}

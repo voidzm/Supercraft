@@ -39,6 +39,7 @@ public class BlockGhostlyVaporFlowing extends BlockFlowing {
 	public void onEntityCollidedWithBlock(World par1World, int par2, int par3, int par4, Entity par5Entity) {
 		if(par5Entity instanceof EntityPlayer) {
 			EntityPlayer player = (EntityPlayer)par5Entity;
+			if(player.capabilities.isCreativeMode) return;
 			player.addPotionEffect(new PotionEffect(14, 100, 0));
 			player.addPotionEffect(new PotionEffect(15, 100, 0));
 		}

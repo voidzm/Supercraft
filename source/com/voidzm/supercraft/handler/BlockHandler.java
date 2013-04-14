@@ -141,6 +141,8 @@ public class BlockHandler {
 	
 	public static Block monolithAscension;
 	public static Block monolithAscensionActivated;
+	
+	public static Block radiantLeaves;
 
 	public void init(SupercraftConfiguration configObject) {
 		if(this.config != null) {
@@ -383,6 +385,8 @@ public class BlockHandler {
 		
 		languageHandler.add(monolithAscension, "Monolith of Ascension");
 		languageHandler.add(monolithAscensionActivated, "Monolith of Ascension");
+		
+		languageHandler.add(radiantLeaves, "Radiant Leaves");
 	}
 	
 	private void createBlocks() {
@@ -491,6 +495,8 @@ public class BlockHandler {
 	
 		monolithAscension = new BlockMonolithAscension(this.config.monolithascensionID, false);
 		monolithAscensionActivated = new BlockMonolithAscension(this.config.monolithascensiononID, true);
+	
+		radiantLeaves = new BlockLeavesRadiant(this.config.radiantleavesID);
 	}
 	
 	private void registerBlocks() {
@@ -646,6 +652,8 @@ public class BlockHandler {
 		
 		GameRegistry.registerBlock(monolithAscension, "monolithAscension");
 		GameRegistry.registerBlock(monolithAscensionActivated, "monolithAscensionActivated");
+		
+		GameRegistry.registerBlock(radiantLeaves, "radiantLeaves");
 	}
 	
 	private void initializeLanguage() {
@@ -861,6 +869,8 @@ public class BlockHandler {
 		
 		LanguageRegistry.addName(monolithAscension, (String)this.languageHandler.getString(monolithAscension));
 		LanguageRegistry.addName(monolithAscensionActivated, (String)this.languageHandler.getString(monolithAscensionActivated));
+		
+		LanguageRegistry.addName(radiantLeaves, (String)this.languageHandler.getString(radiantLeaves));
 	}
 
 }

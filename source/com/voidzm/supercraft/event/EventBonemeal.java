@@ -6,6 +6,7 @@
 
 package com.voidzm.supercraft.event;
 
+import com.voidzm.supercraft.block.BlockSupercraftMushroom;
 import com.voidzm.supercraft.block.BlockSupercraftSapling1;
 import com.voidzm.supercraft.block.BlockSupercraftSapling2;
 import com.voidzm.supercraft.block.BlockSupercraftSaplingBase;
@@ -18,15 +19,15 @@ public class EventBonemeal {
 
 	@ForgeSubscribe
 	public void onUseBonemeal(BonemealEvent event) {
+		if(event.world.isRemote) return;
 		if(event.ID == BlockHandler.supercraftSapling1.blockID) {
-			if(!event.world.isRemote) {
-				((BlockSupercraftSapling1)(BlockHandler.supercraftSapling1)).growTree(event.world, event.X, event.Y, event.Z, event.world.rand);
-			}
+			((BlockSupercraftSapling1)(BlockHandler.supercraftSapling1)).growTree(event.world, event.X, event.Y, event.Z, event.world.rand);
 		}
 		else if(event.ID == BlockHandler.supercraftSapling2.blockID) {
-			if(!event.world.isRemote) {
-				((BlockSupercraftSapling2)(BlockHandler.supercraftSapling2)).growTree(event.world, event.X, event.Y, event.Z, event.world.rand);
-			}
+			((BlockSupercraftSapling2)(BlockHandler.supercraftSapling2)).growTree(event.world, event.X, event.Y, event.Z, event.world.rand);
+		}
+		else if(event.ID == BlockHandler.inisiaMushroom.blockID || event.ID == BlockHandler.valensienMushroom.blockID || event.ID == BlockHandler.mortaliaMushroom.blockID) {
+			BlockSupercraftMushroom.doGrow(event.world, event.X, event.Y, event.Z, event.world.rand);
 		}
 	}
 	

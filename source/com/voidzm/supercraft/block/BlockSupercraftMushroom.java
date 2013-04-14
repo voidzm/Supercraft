@@ -1,6 +1,10 @@
 package com.voidzm.supercraft.block;
 
+import java.util.Random;
+
 import com.voidzm.supercraft.CommonProxy;
+import com.voidzm.supercraft.gen.WorldGenDeepTree;
+import com.voidzm.supercraft.handler.BlockHandler;
 
 import net.minecraft.block.BlockFlower;
 import net.minecraft.block.BlockMushroom;
@@ -29,6 +33,67 @@ public class BlockSupercraftMushroom extends BlockMushroom {
 	
 	public void registerIcons(IconRegister par1IconRegister) {
 		this.blockIcon = par1IconRegister.registerIcon(this.iconLocation);
+	}
+	
+	public static void doGrow(World par1World, int par2, int par3, int par4, Random par5Random) {
+		WorldGenDeepTree gen = new WorldGenDeepTree();
+		int bID = par1World.getBlockId(par2, par3, par4);
+		int type = -1;
+		if(bID == BlockHandler.inisiaMushroom.blockID) {
+			type = 0;
+		}
+		else if(bID == BlockHandler.valensienMushroom.blockID) {
+			type = 1;
+		}
+		else if(bID == BlockHandler.mortaliaMushroom.blockID) {
+			type = 2;
+		}
+		if(type == -1) return;
+		gen.generate(par1World, par5Random, par2, par3, par4, type);
+	}
+	
+	public void updateTick(World par1World, int par2, int par3, int par4, Random par5Random) {
+		if(par5Random.nextInt(8) == 0) {
+			if(par5Random.nextInt(3) == 0) {
+				this.doGrow(par1World, par2, par3, par4, par5Random);
+			}
+			else {
+				byte b0 = 4;
+				int l = 16;
+				int i1;
+				int j1;
+				int k1;
+				for (i1 = par2 - b0; i1 <= par2 + b0; ++i1) {
+					for (j1 = par4 - b0; j1 <= par4 + b0; ++j1) {
+						for (k1 = par3 - 1; k1 <= par3 + 1; ++k1) {
+							if (par1World.getBlockId(i1, k1, j1) == this.blockID) {
+								--l;
+								if (l <= 0)
+									return;
+							}
+						}
+					}
+				}
+				i1 = par2 + par5Random.nextInt(3) - 1;
+				j1 = par3 + par5Random.nextInt(2) - par5Random.nextInt(2);
+				k1 = par4 + par5Random.nextInt(3) - 1;
+				for (int l1 = 0; l1 < 4; ++l1) {
+					if (par1World.isAirBlock(i1, j1, k1)
+							&& this.canBlockStay(par1World, i1, j1, k1)) {
+						par2 = i1;
+						par3 = j1;
+						par4 = k1;
+					}
+					i1 = par2 + par5Random.nextInt(3) - 1;
+					j1 = par3 + par5Random.nextInt(2) - par5Random.nextInt(2);
+					k1 = par4 + par5Random.nextInt(3) - 1;
+				}
+				if (par1World.isAirBlock(i1, j1, k1)
+						&& this.canBlockStay(par1World, i1, j1, k1)) {
+					par1World.setBlock(i1, j1, k1, this.blockID);
+				}
+			}
+		}
 	}
 
 }

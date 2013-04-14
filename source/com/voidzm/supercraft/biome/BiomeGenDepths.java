@@ -36,6 +36,16 @@ public class BiomeGenDepths extends BiomeGenBase {
 	}
 	
 	@Override
+	public int getBiomeGrassColor() {
+		return 0xB8BFBA;
+	}
+	
+	@Override
+	public int getBiomeFoliageColor() {
+		return 0xB8BFBA;
+	}
+	
+	@Override
 	public void decorate(World par1World, Random par2Random, int par3, int par4) {
 		if(par2Random.nextInt(4) == 0) {
 			int xPos = par3 + par2Random.nextInt(16) + 8;
@@ -125,21 +135,21 @@ public class BiomeGenDepths extends BiomeGenBase {
 		for(int i = 0; i < 8; i++) {
 			WorldGenScatteredFlowers gen = new WorldGenScatteredFlowers(BlockHandler.inisiaMushroom.blockID);
 			int xloc = par3 + par2Random.nextInt(16) + 8;
-			int yloc = par2Random.nextInt(128);
+			int yloc = par2Random.nextInt(120);
 			int zloc = par4 + par2Random.nextInt(16) + 8;
 			gen.generate(par1World, par2Random, xloc, yloc, zloc);
 		}
 		for(int i = 0; i < 8; i++) {
 			WorldGenScatteredFlowers gen = new WorldGenScatteredFlowers(BlockHandler.valensienMushroom.blockID);
 			int xloc = par3 + par2Random.nextInt(16) + 8;
-			int yloc = par2Random.nextInt(128);
+			int yloc = par2Random.nextInt(120);
 			int zloc = par4 + par2Random.nextInt(16) + 8;
 			gen.generate(par1World, par2Random, xloc, yloc, zloc);
 		}
 		for(int i = 0; i < 8; i++) {
 			WorldGenScatteredFlowers gen = new WorldGenScatteredFlowers(BlockHandler.mortaliaMushroom.blockID);
 			int xloc = par3 + par2Random.nextInt(16) + 8;
-			int yloc = par2Random.nextInt(128);
+			int yloc = par2Random.nextInt(120);
 			int zloc = par4 + par2Random.nextInt(16) + 8;
 			gen.generate(par1World, par2Random, xloc, yloc, zloc);
 		}

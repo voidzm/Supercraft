@@ -120,6 +120,8 @@ public class SupercraftConfiguration {
 	public int stairsvalensienID;
 	public int stairsmortaliaID;
 	
+	public int radiantleavesID;
+	
 	///*** ITEMS ***///
 	
 	public int ironscrapID;
@@ -311,7 +313,9 @@ public class SupercraftConfiguration {
 		stairsvalensienID = internalCfg.get(Configuration.CATEGORY_BLOCK, "stairsvalensienID", "1683").getInt();
 		stairsmortaliaID = internalCfg.get(Configuration.CATEGORY_BLOCK, "stairsmortaliaID", "1684").getInt();
 		
-		// NEXT ID: 1685
+		radiantleavesID = internalCfg.get(Configuration.CATEGORY_BLOCK, "radiantleavesID", "1685").getInt();
+		
+		// NEXT ID: 1686
 		
 	}
 	
