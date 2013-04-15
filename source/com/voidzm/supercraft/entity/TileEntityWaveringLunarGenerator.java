@@ -62,6 +62,7 @@ public class TileEntityWaveringLunarGenerator extends TileEntity {
 	}
 	
 	private boolean shouldBePowered() {
+		if(this.worldObj.provider.hasNoSky) return false;
 		if(this.worldObj.canBlockSeeTheSky(this.xCoord, this.yCoord+1, this.zCoord) && (this.worldObj.getCelestialAngle(0.0F) > 0.375F && this.worldObj.getCelestialAngle(0.0F) < 0.625F)) return true;
 		else return false;
 	}

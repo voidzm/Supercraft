@@ -62,6 +62,7 @@ public class TileEntityRadiantSolarGenerator extends TileEntity {
 	}
 	
 	private boolean shouldBePowered() {
+		if(this.worldObj.provider.hasNoSky) return false;
 		if(this.worldObj.canBlockSeeTheSky(this.xCoord, this.yCoord+1, this.zCoord) && (this.worldObj.getCelestialAngle(0.0F) < 0.125F || this.worldObj.getCelestialAngle(0.0F) > 0.875F)) return true;
 		else return false;
 	}

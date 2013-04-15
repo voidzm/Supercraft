@@ -8,6 +8,7 @@ package com.voidzm.supercraft.biome;
 
 import java.util.Random;
 
+import com.voidzm.supercraft.gen.WorldGenDeepVines;
 import com.voidzm.supercraft.gen.WorldGenScatteredFlowers;
 import com.voidzm.supercraft.handler.BlockHandler;
 
@@ -21,6 +22,7 @@ import net.minecraft.world.World;
 import net.minecraft.world.biome.BiomeGenBase;
 import net.minecraft.world.biome.SpawnListEntry;
 import net.minecraft.world.gen.feature.WorldGenMinable;
+import net.minecraft.world.gen.feature.WorldGenVines;
 import net.minecraft.world.gen.feature.WorldGenerator;
 
 public class BiomeGenDepths extends BiomeGenBase {
@@ -28,6 +30,7 @@ public class BiomeGenDepths extends BiomeGenBase {
 	public BiomeGenDepths(int par1) {
 		super(par1);
 		this.setBiomeName("Depths");
+		this.spawnableWaterCreatureList.clear();
 	}
 	
 	@Override
@@ -148,6 +151,13 @@ public class BiomeGenDepths extends BiomeGenBase {
 		}
 		for(int i = 0; i < 8; i++) {
 			WorldGenScatteredFlowers gen = new WorldGenScatteredFlowers(BlockHandler.mortaliaMushroom.blockID);
+			int xloc = par3 + par2Random.nextInt(16) + 8;
+			int yloc = par2Random.nextInt(120);
+			int zloc = par4 + par2Random.nextInt(16) + 8;
+			gen.generate(par1World, par2Random, xloc, yloc, zloc);
+		}
+		for(int i = 0; i < 16; i++) {
+			WorldGenDeepVines gen = new WorldGenDeepVines();
 			int xloc = par3 + par2Random.nextInt(16) + 8;
 			int yloc = par2Random.nextInt(120);
 			int zloc = par4 + par2Random.nextInt(16) + 8;
