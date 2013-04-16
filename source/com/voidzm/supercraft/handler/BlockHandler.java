@@ -143,7 +143,13 @@ public class BlockHandler {
 	public static Block monolithAscensionActivated;
 	
 	public static Block radiantLeaves;
+	
+	public static Block draconiumOre;
+	public static Block draconiumBlock;
 
+	public static Block monolithTermination;
+	public static Block monolithTerminationActivated;
+	
 	public void init(SupercraftConfiguration configObject) {
 		if(this.config != null) {
 			throw new RuntimeException("Block handler already loaded with configuration, cannot initialize again!"); 
@@ -387,6 +393,12 @@ public class BlockHandler {
 		languageHandler.add(monolithAscensionActivated, "Monolith of Ascension");
 		
 		languageHandler.add(radiantLeaves, "Radiant Leaves");
+		
+		languageHandler.add(draconiumOre, "Draconium Ore");
+		languageHandler.add(draconiumBlock, "Block of Draconium");
+		
+		languageHandler.add(monolithTermination, "Monolith of Termination");
+		languageHandler.add(monolithTerminationActivated, "Monolith of Termination");
 	}
 	
 	private void createBlocks() {
@@ -424,6 +436,7 @@ public class BlockHandler {
 		lithiumOre = new BlockStoneOre(this.config.orelithiumID, "lithiumOre", "supercraft:orelithium");
 		elinvarOre = new BlockNetherrackOre(this.config.oreelinvarID, "elinvarOre", "supercraft:oreelinvar", this.config.elinvardustID);
 		cobaltOre = new BlockNetherrackOre(this.config.orecobaltID, "cobaltOre", "supercraft:orecobalt", this.config.cobaltdustID).setExtraDrop(3);
+		draconiumOre = new BlockEndStoneOre(this.config.oredraconiumID, "draconiumOre", "supercraft:oredraconium", this.config.draconiumID);
 		
 		aluminumBlock = new BlockStorage(this.config.blockaluminumID, "aluminumBlock", "supercraft:blockaluminum");
 		tantalumBlock = new BlockStorage(this.config.blocktantalumID, "tantalumBlock", "supercraft:blocktantalum", StorageType.CRYSTAL);
@@ -434,6 +447,7 @@ public class BlockHandler {
 		platinumBlock = new BlockStorage(this.config.blockplatinumID, "platinumBlock", "supercraft:blockplatinum");
 		lithiumBlock = new BlockStorage(this.config.blocklithiumID, "lithiumBlock", "supercraft:blocklithium");
 		elinvarBlock = new BlockStorage(this.config.blockelinvarID, "elinvarBlock", "supercraft:blockelinvar", StorageType.DUST);
+		draconiumBlock = new BlockStorage(this.config.blockdraconiumID, "draconiumBlock", "supercraft:blockdraconium", StorageType.CRYSTAL);
 		
 		conduit = new BlockConduit(this.config.conduitID);
 		
@@ -497,6 +511,9 @@ public class BlockHandler {
 		monolithAscensionActivated = new BlockMonolithAscension(this.config.monolithascensiononID, true);
 	
 		radiantLeaves = new BlockLeavesRadiant(this.config.radiantleavesID);
+		
+		monolithTermination = new BlockMonolithTermination(this.config.monolithterminationID, false);
+		monolithTerminationActivated = new BlockMonolithTermination(this.config.monolithterminationonID, true);
 	}
 	
 	private void registerBlocks() {
@@ -654,6 +671,12 @@ public class BlockHandler {
 		GameRegistry.registerBlock(monolithAscensionActivated, "monolithAscensionActivated");
 		
 		GameRegistry.registerBlock(radiantLeaves, "radiantLeaves");
+		
+		GameRegistry.registerBlock(draconiumOre, "draconiumOre");
+		GameRegistry.registerBlock(draconiumBlock, "draconiumBlock");
+		
+		GameRegistry.registerBlock(monolithTermination, "monolithTermination");
+		GameRegistry.registerBlock(monolithTerminationActivated, "monolithTerminationActivated");
 	}
 	
 	private void initializeLanguage() {
@@ -871,6 +894,12 @@ public class BlockHandler {
 		LanguageRegistry.addName(monolithAscensionActivated, (String)this.languageHandler.getString(monolithAscensionActivated));
 		
 		LanguageRegistry.addName(radiantLeaves, (String)this.languageHandler.getString(radiantLeaves));
+	
+		LanguageRegistry.addName(draconiumOre, (String)this.languageHandler.getString(draconiumOre));
+		LanguageRegistry.addName(draconiumBlock, (String)this.languageHandler.getString(draconiumBlock));
+		
+		LanguageRegistry.addName(monolithTermination, (String)this.languageHandler.getString(monolithTermination));
+		LanguageRegistry.addName(monolithTerminationActivated, (String)this.languageHandler.getString(monolithTerminationActivated));
 	}
 
 }

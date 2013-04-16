@@ -122,6 +122,12 @@ public class SupercraftConfiguration {
 	
 	public int radiantleavesID;
 	
+	public int oredraconiumID;
+	public int blockdraconiumID;
+	
+	public int monolithterminationID;
+	public int monolithterminationonID;
+	
 	///*** ITEMS ***///
 	
 	public int ironscrapID;
@@ -165,6 +171,8 @@ public class SupercraftConfiguration {
 	public int luxificendustID;
 	public int jadecrystalID;
 	public int voltasniarodID;
+	
+	public int draconiumID;
 	
 	///*** RECIPES ***///
 	
@@ -315,7 +323,13 @@ public class SupercraftConfiguration {
 		
 		radiantleavesID = internalCfg.get(Configuration.CATEGORY_BLOCK, "radiantleavesID", "1685").getInt();
 		
-		// NEXT ID: 1686
+		oredraconiumID = internalCfg.get(Configuration.CATEGORY_BLOCK, "oredraconiumID", "1686").getInt();
+		blockdraconiumID = internalCfg.get(Configuration.CATEGORY_BLOCK, "blockdraconiumID", "1687").getInt();
+		
+		monolithterminationID = internalCfg.get(Configuration.CATEGORY_BLOCK, "monolithterminationID", "1688").getInt();
+		monolithterminationonID = internalCfg.get(Configuration.CATEGORY_BLOCK, "monolithterminationonID", "1689").getInt();
+		
+		// NEXT ID: 1690
 		
 	}
 	
@@ -362,7 +376,9 @@ public class SupercraftConfiguration {
 		jadecrystalID = internalCfg.get(Configuration.CATEGORY_ITEM, "jadecrystalID", "23033").getInt();
 		voltasniarodID = internalCfg.get(Configuration.CATEGORY_ITEM, "voltasniarodID", "23034").getInt();
 		
-		// NEXT ID: 23035
+		draconiumID = internalCfg.get(Configuration.CATEGORY_ITEM, "draconiumID", "23035").getInt();
+		
+		// NEXT ID: 23036
 		
 	}
 	

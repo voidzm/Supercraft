@@ -5,6 +5,7 @@ import com.voidzm.supercraft.entity.TileEntityConduit;
 import com.voidzm.supercraft.entity.TileEntityEssentialReducer;
 import com.voidzm.supercraft.entity.TileEntityMonolithAscension;
 import com.voidzm.supercraft.entity.TileEntityMonolithDemission;
+import com.voidzm.supercraft.entity.TileEntityMonolithTermination;
 import com.voidzm.supercraft.entity.TileEntityRadiantSolarGenerator;
 import com.voidzm.supercraft.entity.TileEntityWaveringLunarGenerator;
 import com.voidzm.supercraft.util.SupercraftConfiguration;
@@ -26,6 +27,7 @@ public class TileEntityHandler {
 		GameRegistry.registerTileEntity(TileEntityAlloyInductor.class, "Supercraft.AlloyInductor");
 		GameRegistry.registerTileEntity(TileEntityMonolithDemission.class, "Supercraft.MonolithDemission");
 		GameRegistry.registerTileEntity(TileEntityMonolithAscension.class, "Supercraft.MonolithAscension");
+		GameRegistry.registerTileEntity(TileEntityMonolithTermination.class, "Supercraft.MonolithTermination");
 	}
 	
 }

@@ -66,6 +66,8 @@ public class ItemHandler {
 	public static Item jadeCrystal;
 	public static Item voltasniaRod;
 	
+	public static Item draconium;
+	
 	public void init(SupercraftConfiguration configObject) {
 		if(this.config != null) {
 			throw new RuntimeException("Itme handler already loaded with configuration, cannot initialize again!"); 
@@ -137,6 +139,8 @@ public class ItemHandler {
 		languageHandler.add(luxificenDust, "Luxificen Dust");
 		languageHandler.add(jadeCrystal, "Jade Crystal");
 		languageHandler.add(voltasniaRod, "Voltasnia Rod");
+		
+		languageHandler.add(draconium, "Draconium");
 	}
 	
 	private void createItems() {
@@ -181,6 +185,8 @@ public class ItemHandler {
 		luxificenDust = new ItemSupercraft(this.config.luxificendustID, "luxificenDust", "supercraft:luxificendust");
 		jadeCrystal = new ItemSupercraft(this.config.jadecrystalID, "jadeCrystal", "supercraft:jadecrystal");
 		voltasniaRod = new ItemSupercraft(this.config.voltasniarodID, "voltasniaRod", "supercraft:voltasniarod");
+	
+		draconium = new ItemSupercraft(this.config.draconiumID, "draconium", "supercraft:draconium");
 	}
 	
 	private void registerItems() {
@@ -225,6 +231,8 @@ public class ItemHandler {
 		GameRegistry.registerItem(luxificenDust, "luxificenDust");
 		GameRegistry.registerItem(jadeCrystal, "jadeCrystal");
 		GameRegistry.registerItem(voltasniaRod, "voltasniaRod");
+		
+		GameRegistry.registerItem(draconium, "draconium");
 	}
 	
 	private void initializeLanguage() {
@@ -274,6 +282,8 @@ public class ItemHandler {
 		LanguageRegistry.addName(luxificenDust, (String)this.languageHandler.getString(luxificenDust));
 		LanguageRegistry.addName(jadeCrystal, (String)this.languageHandler.getString(jadeCrystal));
 		LanguageRegistry.addName(voltasniaRod, (String)this.languageHandler.getString(voltasniaRod));
+		
+		LanguageRegistry.addName(draconium, (String)this.languageHandler.getString(draconium));
 	}
 	
 }

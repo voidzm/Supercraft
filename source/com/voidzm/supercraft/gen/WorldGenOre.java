@@ -29,7 +29,7 @@ public class WorldGenOre implements IWorldGenerator {
 			generateOverworld(world, random, chunkX, chunkZ);
 			break;
 		case 1:
-			generateEnd();
+			generateEnd(world, random, chunkX, chunkZ);
 			break;
 		}
 	}
@@ -96,8 +96,14 @@ public class WorldGenOre implements IWorldGenerator {
 		}
 	}
 	
-	private void generateEnd() {
-		// No End ores...yet.
+	private void generateEnd(World world, Random rand, int cx, int cz) {
+		int ky = 0; // Draconium
+		for(int i = 0; i < 16; i++) {
+			int rx = (cx * 16) + rand.nextInt(16);
+			int ry = rand.nextInt(56);
+			int rz = (cz * 16) + rand.nextInt(16);
+			new WorldGenMinable(BlockHandler.draconiumOre.blockID, 8, Block.whiteStone.blockID).generate(world, rand, rx, ry, rz);
+		}
 	}
 	
 }

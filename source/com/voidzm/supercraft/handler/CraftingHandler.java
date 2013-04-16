@@ -107,6 +107,9 @@ public class CraftingHandler {
 	private ItemStack inisiaPlanks;
 	private ItemStack valensienPlanks;
 	private ItemStack mortaliaPlanks;
+	private ItemStack draconium;
+	private ItemStack draconiumBlock;
+	private ItemStack gravenStoneBrilliance;
 	
 	public void init(SupercraftConfiguration configObject) {
 		if(this.config != null) {
@@ -205,6 +208,9 @@ public class CraftingHandler {
 		inisiaPlanks = new ItemStack(BlockHandler.supercraftPlanks, 1, 3);
 		valensienPlanks = new ItemStack(BlockHandler.supercraftPlanks, 1, 4);
 		mortaliaPlanks = new ItemStack(BlockHandler.supercraftPlanks, 1, 5);
+		draconium = new ItemStack(ItemHandler.draconium);
+		draconiumBlock = new ItemStack(BlockHandler.draconiumBlock);
+		gravenStoneBrilliance = gravenStoneGleaming = new ItemStack(BlockHandler.gravenStone, 1, 3);
 	}
 	
 	private void addRecipes() {
@@ -313,6 +319,9 @@ public class CraftingHandler {
 	
 		GameRegistry.addRecipe(new ItemStack(BlockHandler.monolithDemission), "aaa", "bcb", "aaa", 'a', gravenStoneDarkness, 'b', silver, 'c', cobaltBlock);
 		GameRegistry.addRecipe(new ItemStack(BlockHandler.monolithAscension), "aaa", "bcb", "aaa", 'a', gravenStoneGleaming, 'b', voltasnia, 'c', jade);
+		GameRegistry.addRecipe(new ItemStack(BlockHandler.monolithTermination), "aaa", "bcb", "aaa", 'a', gravenStoneBrilliance, 'b', silver, 'c', draconiumBlock);
+	
+		GameRegistry.addRecipe(new ItemStack(BlockHandler.draconiumBlock), "aaa", "aaa", "aaa", 'a', draconium);
 	}
 	
 	private void addShapelessRecipes() {
@@ -356,6 +365,8 @@ public class CraftingHandler {
 		GameRegistry.addShapelessRecipe(new ItemStack(ItemHandler.tantalumCrystal, 9), tantalumBlock);
 	
 		GameRegistry.addShapelessRecipe(new ItemStack(ItemHandler.lithiumIngot, 9), lithiumBlock);
+		
+		GameRegistry.addShapelessRecipe(new ItemStack(ItemHandler.draconium, 9), draconiumBlock);
 	}
 	
 	private void addSmelting() {
