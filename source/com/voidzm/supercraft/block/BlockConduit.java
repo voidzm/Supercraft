@@ -15,12 +15,12 @@ import java.util.Random;
 import com.voidzm.supercraft.CommonProxy;
 import com.voidzm.supercraft.Supercraft;
 import com.voidzm.supercraft.client.ClientProxy;
-import com.voidzm.supercraft.entity.TileEntityConduit;
-import com.voidzm.supercraft.entity.TileEntityConduit.CONDUIT_TYPE;
-import com.voidzm.supercraft.entity.TileEntityConduit.PACKET_ELINVAR;
 import com.voidzm.supercraft.handler.BlockHandler;
 import com.voidzm.supercraft.protocol.IGenerator;
 import com.voidzm.supercraft.protocol.IGenerator.GeneratorSide;
+import com.voidzm.supercraft.tileentity.TileEntityConduit;
+import com.voidzm.supercraft.tileentity.TileEntityConduit.CONDUIT_TYPE;
+import com.voidzm.supercraft.tileentity.TileEntityConduit.PACKET_ELINVAR;
 
 import cpw.mods.fml.client.FMLClientHandler;
 import cpw.mods.fml.common.FMLCommonHandler;

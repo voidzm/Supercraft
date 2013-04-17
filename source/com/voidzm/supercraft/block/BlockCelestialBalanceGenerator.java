@@ -14,19 +14,19 @@ import com.voidzm.supercraft.tileentity.TileEntityConduit;
 import com.voidzm.supercraft.tileentity.TileEntitySolarGenerator;
 import com.voidzm.supercraft.util.Timespan;
 
-public class BlockRadiantSolarGenerator extends BlockContainerGenerator implements IGenerator {
+public class BlockCelestialBalanceGenerator extends BlockContainerGenerator implements IGenerator {
 
 	protected Icon textureTop, textureSide, textureBottom;
 	
-	public BlockRadiantSolarGenerator(int id) {
+	public BlockCelestialBalanceGenerator(int id) {
 		super(id);
-		this.setUnlocalizedName("radiantSolarGenerator");
+		this.setUnlocalizedName("celestialBalanceGenerator");
 	}
 
 	public void registerIcons(IconRegister par1IconRegister) {
-		textureTop = par1IconRegister.registerIcon("supercraft:radiantsolargenerator_top");
-		textureSide = par1IconRegister.registerIcon("supercraft:radiantsolargenerator_side");
-		textureBottom = par1IconRegister.registerIcon("supercraft:copperboundstone_beveled");
+		textureTop = par1IconRegister.registerIcon("supercraft:celestialbalancegenerator_top");
+		textureSide = par1IconRegister.registerIcon("supercraft:celestialbalancegenerator_side");
+		textureBottom = par1IconRegister.registerIcon("supercraft:ironboundstone_beveled");
 	}
 	
 	public Icon getBlockTextureFromSideAndMetadata(int side, int meta) {
@@ -56,8 +56,10 @@ public class BlockRadiantSolarGenerator extends BlockContainerGenerator implemen
 	}
 	
 	public TileEntity createNewTileEntity(World par1World) {
-		Timespan noon = new Timespan(3000, 9000);
-		ArrayList<Timespan> times = new ArrayList<Timespan>(Arrays.asList(noon));
+		Timespan sunrise1 = new Timespan(22000, 23999);
+		Timespan sunrise2 = new Timespan(0, 2000);
+		Timespan sunset = new Timespan(10000, 14000);
+		ArrayList<Timespan> times = new ArrayList<Timespan>(Arrays.asList(sunrise1, sunrise2, sunset));
 		return new TileEntitySolarGenerator(times);
 	}
 }

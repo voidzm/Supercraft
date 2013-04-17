@@ -1,7 +1,7 @@
 package com.voidzm.supercraft.container;
 
-import com.voidzm.supercraft.entity.TileEntityEssentialReducer;
 import com.voidzm.supercraft.misc.SlotOutputOnly;
+import com.voidzm.supercraft.tileentity.TileEntityEssentialReducer;
 import com.voidzm.supercraft.util.EssentialReducerRecipes;
 
 import net.minecraft.entity.player.EntityPlayer;

@@ -16,8 +16,8 @@ import net.minecraft.world.World;
 
 import com.voidzm.supercraft.CommonProxy;
 import com.voidzm.supercraft.Supercraft;
-import com.voidzm.supercraft.entity.TileEntityAlloyInductor;
-import com.voidzm.supercraft.entity.TileEntityEssentialReducer;
+import com.voidzm.supercraft.tileentity.TileEntityAlloyInductor;
+import com.voidzm.supercraft.tileentity.TileEntityEssentialReducer;
 
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;

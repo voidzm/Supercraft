@@ -9,11 +9,11 @@ package com.voidzm.supercraft.handler;
 import com.voidzm.supercraft.container.ContainerAlloyInductor;
 import com.voidzm.supercraft.container.ContainerEssentialReducer;
 import com.voidzm.supercraft.container.ContainerRefinedWorkbench;
-import com.voidzm.supercraft.entity.TileEntityAlloyInductor;
-import com.voidzm.supercraft.entity.TileEntityEssentialReducer;
 import com.voidzm.supercraft.gui.GuiAlloyInductor;
 import com.voidzm.supercraft.gui.GuiEssentialReducer;
 import com.voidzm.supercraft.gui.SCGuiCrafting;
+import com.voidzm.supercraft.tileentity.TileEntityAlloyInductor;
+import com.voidzm.supercraft.tileentity.TileEntityEssentialReducer;
 
 import net.minecraft.client.gui.inventory.GuiCrafting;
 import net.minecraft.entity.player.EntityPlayer;

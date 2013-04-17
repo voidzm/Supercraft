@@ -8,7 +8,7 @@ package com.voidzm.supercraft.item;
 
 import com.voidzm.supercraft.CommonProxy;
 import com.voidzm.supercraft.Supercraft;
-import com.voidzm.supercraft.entity.TileEntityConduit;
+import com.voidzm.supercraft.tileentity.TileEntityConduit;
 
 import net.minecraft.block.Block;
 import net.minecraft.client.renderer.texture.IconRegister;

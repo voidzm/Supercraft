@@ -150,6 +150,8 @@ public class BlockHandler {
 	public static Block monolithTermination;
 	public static Block monolithTerminationActivated;
 	
+	public static Block celestialBalanceGenerator;
+	
 	public void init(SupercraftConfiguration configObject) {
 		if(this.config != null) {
 			throw new RuntimeException("Block handler already loaded with configuration, cannot initialize again!"); 
@@ -399,6 +401,8 @@ public class BlockHandler {
 		
 		languageHandler.add(monolithTermination, "Monolith of Termination");
 		languageHandler.add(monolithTerminationActivated, "Monolith of Termination");
+		
+		languageHandler.add(celestialBalanceGenerator, "Celestial Balance Generator");
 	}
 	
 	private void createBlocks() {
@@ -456,6 +460,7 @@ public class BlockHandler {
 		redstoneGenerator = new BlockRedstoneGenerator(this.config.redstoneconversiongeneratorID);
 		radiantSolarGenerator = new BlockRadiantSolarGenerator(this.config.radiantsolargeneratorID);
 		waveringLunarGenerator = new BlockWaveringLunarGenerator(this.config.waveringlunargeneratorID);
+		celestialBalanceGenerator = new BlockCelestialBalanceGenerator(this.config.celestialbalancegeneratorID);
 		
 		bluebells = new BlockSupercraftFlower(this.config.bluebellsID, "supercraft:bluebells", EnumPlantType.Plains).setUnlocalizedName("bluebells");
 		daisies = new BlockSupercraftFlower(this.config.daisiesID, "supercraft:daisies", EnumPlantType.Plains).setUnlocalizedName("daisies");
@@ -629,6 +634,7 @@ public class BlockHandler {
 		GameRegistry.registerBlock(alloyInductor, "alloyInductor");
 		GameRegistry.registerBlock(silverboundStone, "silverboundStone");
 		GameRegistry.registerBlock(waveringLunarGenerator, "waveringLunarGenerator");
+		GameRegistry.registerBlock(celestialBalanceGenerator, "celestialBalanceGenerator");
 		
 		// Cobalt
 		
@@ -847,6 +853,7 @@ public class BlockHandler {
 		LanguageRegistry.addName(alloyInductor, (String)this.languageHandler.getString(alloyInductor));
 		LanguageRegistry.addName(silverboundStone, (String)this.languageHandler.getString(silverboundStone));
 		LanguageRegistry.addName(waveringLunarGenerator, (String)this.languageHandler.getString(waveringLunarGenerator));
+		LanguageRegistry.addName(celestialBalanceGenerator, (String)this.languageHandler.getString(celestialBalanceGenerator));
 		
 		// Cobalt
 		

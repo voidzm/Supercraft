@@ -8,12 +8,6 @@ package com.voidzm.supercraft;
 
 import com.voidzm.supercraft.dimension.WorldProviderDeep;
 import com.voidzm.supercraft.dimension.WorldProviderSurfaceAlternate;
-import com.voidzm.supercraft.entity.TileEntityAlloyInductor;
-import com.voidzm.supercraft.entity.TileEntityConduit;
-import com.voidzm.supercraft.entity.TileEntityEssentialReducer;
-import com.voidzm.supercraft.entity.TileEntityMonolithDemission;
-import com.voidzm.supercraft.entity.TileEntityRadiantSolarGenerator;
-import com.voidzm.supercraft.entity.TileEntityWaveringLunarGenerator;
 import com.voidzm.supercraft.event.EventBonemeal;
 import com.voidzm.supercraft.event.EventDepths;
 import com.voidzm.supercraft.gen.WorldGenOre;
@@ -29,6 +23,10 @@ import com.voidzm.supercraft.handler.PacketHandler;
 import com.voidzm.supercraft.handler.SCTickHandler;
 import com.voidzm.supercraft.handler.TileEntityHandler;
 import com.voidzm.supercraft.misc.CreativeTabElinvar;
+import com.voidzm.supercraft.tileentity.TileEntityAlloyInductor;
+import com.voidzm.supercraft.tileentity.TileEntityConduit;
+import com.voidzm.supercraft.tileentity.TileEntityEssentialReducer;
+import com.voidzm.supercraft.tileentity.TileEntityMonolithDemission;
 import com.voidzm.supercraft.util.SupercraftConfiguration;
 
 import net.minecraft.block.Block;

@@ -3,7 +3,7 @@ package com.voidzm.supercraft.gui;
 import org.lwjgl.opengl.GL11;
 
 import com.voidzm.supercraft.container.ContainerEssentialReducer;
-import com.voidzm.supercraft.entity.TileEntityEssentialReducer;
+import com.voidzm.supercraft.tileentity.TileEntityEssentialReducer;
 
 import net.minecraft.client.gui.inventory.GuiContainer;
 import net.minecraft.entity.player.InventoryPlayer;

@@ -4,7 +4,7 @@ import java.util.Random;
 
 import com.voidzm.supercraft.CommonProxy;
 import com.voidzm.supercraft.Supercraft;
-import com.voidzm.supercraft.entity.TileEntityEssentialReducer;
+import com.voidzm.supercraft.tileentity.TileEntityEssentialReducer;
 
 import net.minecraft.block.BlockContainer;
 import net.minecraft.block.material.Material;

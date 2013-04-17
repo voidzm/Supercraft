@@ -1,14 +1,18 @@
 package com.voidzm.supercraft.block;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+
 import net.minecraft.client.renderer.texture.IconRegister;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.Icon;
 import net.minecraft.world.World;
 
-import com.voidzm.supercraft.entity.TileEntityConduit;
-import com.voidzm.supercraft.entity.TileEntityWaveringLunarGenerator;
 import com.voidzm.supercraft.protocol.IGenerator;
 import com.voidzm.supercraft.protocol.IGenerator.GeneratorSide;
+import com.voidzm.supercraft.tileentity.TileEntityConduit;
+import com.voidzm.supercraft.tileentity.TileEntitySolarGenerator;
+import com.voidzm.supercraft.util.Timespan;
 
 public class BlockWaveringLunarGenerator extends BlockContainerGenerator implements IGenerator {
 
@@ -33,7 +37,7 @@ public class BlockWaveringLunarGenerator extends BlockContainerGenerator impleme
 	
 	@Override
 	public boolean doesOutputPowerAt(World world, int x, int y, int z) {
-		return ((TileEntityWaveringLunarGenerator)world.getBlockTileEntity(x, y, z)).activated;
+		return ((TileEntitySolarGenerator)world.getBlockTileEntity(x, y, z)).activated;
 	}
 
 	@Override
@@ -52,6 +56,8 @@ public class BlockWaveringLunarGenerator extends BlockContainerGenerator impleme
 	}
 	
 	public TileEntity createNewTileEntity(World par1World) {
-		return new TileEntityWaveringLunarGenerator();
+		Timespan midnight = new Timespan(15000, 21000);
+		ArrayList<Timespan> times = new ArrayList<Timespan>(Arrays.asList(midnight));
+		return new TileEntitySolarGenerator(times);
 	}
 }

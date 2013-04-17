@@ -9,11 +9,11 @@ package com.voidzm.supercraft.handler;
 import java.io.ByteArrayInputStream;
 import java.io.DataInputStream;
 
-import com.voidzm.supercraft.entity.TileEntityAlloyInductor;
-import com.voidzm.supercraft.entity.TileEntityConduit;
-import com.voidzm.supercraft.entity.TileEntityEssentialReducer;
-import com.voidzm.supercraft.entity.TileEntityConduit.CONDUIT_TYPE;
-import com.voidzm.supercraft.entity.TileEntityConduit.PACKET_ELINVAR;
+import com.voidzm.supercraft.tileentity.TileEntityAlloyInductor;
+import com.voidzm.supercraft.tileentity.TileEntityConduit;
+import com.voidzm.supercraft.tileentity.TileEntityEssentialReducer;
+import com.voidzm.supercraft.tileentity.TileEntityConduit.CONDUIT_TYPE;
+import com.voidzm.supercraft.tileentity.TileEntityConduit.PACKET_ELINVAR;
 
 import net.minecraft.client.Minecraft;
 import net.minecraft.entity.player.EntityPlayer;

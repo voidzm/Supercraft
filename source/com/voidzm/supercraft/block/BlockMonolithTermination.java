@@ -2,8 +2,8 @@ package com.voidzm.supercraft.block;
 
 import com.voidzm.supercraft.Supercraft;
 import com.voidzm.supercraft.dimension.TeleporterDeep;
-import com.voidzm.supercraft.entity.TileEntityMonolithDemission;
-import com.voidzm.supercraft.entity.TileEntityMonolithTermination;
+import com.voidzm.supercraft.tileentity.TileEntityMonolithDemission;
+import com.voidzm.supercraft.tileentity.TileEntityMonolithTermination;
 
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;

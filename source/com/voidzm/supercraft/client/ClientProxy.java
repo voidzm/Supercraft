@@ -9,12 +9,12 @@ package com.voidzm.supercraft.client;
 import net.minecraft.client.gui.GuiScreen;
 import net.minecraftforge.client.MinecraftForgeClient;
 import com.voidzm.supercraft.CommonProxy;
-import com.voidzm.supercraft.entity.TileEntityConduit;
 import com.voidzm.supercraft.gui.SCMainMenu;
 import com.voidzm.supercraft.handler.BlockHandler;
 import com.voidzm.supercraft.handler.SCTickHandler;
 import com.voidzm.supercraft.render.InventoryConduitRender;
 import com.voidzm.supercraft.render.TileConduitRender;
+import com.voidzm.supercraft.tileentity.TileEntityConduit;
 
 import cpw.mods.fml.client.registry.ClientRegistry;
 import cpw.mods.fml.client.registry.RenderingRegistry;

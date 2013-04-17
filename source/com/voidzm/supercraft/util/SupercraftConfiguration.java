@@ -61,6 +61,7 @@ public class SupercraftConfiguration {
 	public int redstoneconversiongeneratorID;
 	public int radiantsolargeneratorID;
 	public int waveringlunargeneratorID;
+	public int celestialbalancegeneratorID;
 	
 	public int essentialreducerID;
 	public int alloyinductorID;
@@ -262,6 +263,7 @@ public class SupercraftConfiguration {
 		redstoneconversiongeneratorID = internalCfg.get(Configuration.CATEGORY_BLOCK, "redstoneconversiongeneratorID", "1636").getInt();
 		radiantsolargeneratorID = internalCfg.get(Configuration.CATEGORY_BLOCK, "radiantsolargeneratorID", "1637").getInt();
 		waveringlunargeneratorID = internalCfg.get(Configuration.CATEGORY_BLOCK, "waveringlunargeneratorID", "1638").getInt();
+		celestialbalancegeneratorID = internalCfg.get(Configuration.CATEGORY_BLOCK, "celestialbalancegeneratorID", "1690").getInt();
 		
 		essentialreducerID = internalCfg.get(Configuration.CATEGORY_BLOCK, "essentialreducerID", "1639").getInt();
 		alloyinductorID = internalCfg.get(Configuration.CATEGORY_BLOCK, "alloyinductorID", "1640").getInt();
@@ -328,8 +330,8 @@ public class SupercraftConfiguration {
 		
 		monolithterminationID = internalCfg.get(Configuration.CATEGORY_BLOCK, "monolithterminationID", "1688").getInt();
 		monolithterminationonID = internalCfg.get(Configuration.CATEGORY_BLOCK, "monolithterminationonID", "1689").getInt();
-		
-		// NEXT ID: 1690
+	
+		// NEXT ID: 1691
 		
 	}
 	

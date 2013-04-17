@@ -1,4 +1,4 @@
-package com.voidzm.supercraft.entity;
+package com.voidzm.supercraft.tileentity;
 
 import com.voidzm.supercraft.handler.BlockHandler;
 
@@ -9,12 +9,12 @@ import net.minecraft.network.packet.Packet132TileEntityData;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.world.World;
 
-public class TileEntityMonolithTermination extends TileEntity {
+public class TileEntityMonolithDemission extends TileEntity {
 
 	public boolean activated;
 	private int internalTick;
 	
-	public TileEntityMonolithTermination() {
+	public TileEntityMonolithDemission() {
 		this.activated = false;
 		this.internalTick = 0;
 	}
@@ -51,21 +51,21 @@ public class TileEntityMonolithTermination extends TileEntity {
 		if(this.shouldBePowered()) {
 			if(this.activated == false) {
 				this.activated = true;
-				this.worldObj.setBlock(this.xCoord, this.yCoord, this.zCoord, BlockHandler.monolithTerminationActivated.blockID, 0, 3);
+				this.worldObj.setBlock(this.xCoord, this.yCoord, this.zCoord, BlockHandler.monolithDemissionActivated.blockID, 0, 3);
 			}
 		}
 		else if(this.activated == true) {
 			this.activated = false;
-			this.worldObj.setBlock(this.xCoord, this.yCoord, this.zCoord, BlockHandler.monolithTermination.blockID, 0, 3);
+			this.worldObj.setBlock(this.xCoord, this.yCoord, this.zCoord, BlockHandler.monolithDemission.blockID, 0, 3);
 		}
 		internalTick = 0;
 	}
 	
 	private boolean shouldBePowered() {
-		if(this.worldObj.getBlockId(this.xCoord+1, this.yCoord, this.zCoord) == BlockHandler.gravenStone.blockID && this.worldObj.getBlockMetadata(this.xCoord+1, this.yCoord, this.zCoord) == 3) {
-			if(this.worldObj.getBlockId(this.xCoord-1, this.yCoord, this.zCoord) == BlockHandler.gravenStone.blockID && this.worldObj.getBlockMetadata(this.xCoord-1, this.yCoord, this.zCoord) == 3) {
-				if(this.worldObj.getBlockId(this.xCoord, this.yCoord, this.zCoord+1) == BlockHandler.gravenStone.blockID && this.worldObj.getBlockMetadata(this.xCoord, this.yCoord, this.zCoord+1) == 3) {
-					if(this.worldObj.getBlockId(this.xCoord, this.yCoord, this.zCoord-1) == BlockHandler.gravenStone.blockID && this.worldObj.getBlockMetadata(this.xCoord, this.yCoord, this.zCoord-1) == 3) {
+		if(this.worldObj.getBlockId(this.xCoord+1, this.yCoord, this.zCoord) == BlockHandler.gravenStone.blockID && this.worldObj.getBlockMetadata(this.xCoord+1, this.yCoord, this.zCoord) == 0) {
+			if(this.worldObj.getBlockId(this.xCoord-1, this.yCoord, this.zCoord) == BlockHandler.gravenStone.blockID && this.worldObj.getBlockMetadata(this.xCoord-1, this.yCoord, this.zCoord) == 0) {
+				if(this.worldObj.getBlockId(this.xCoord, this.yCoord, this.zCoord+1) == BlockHandler.gravenStone.blockID && this.worldObj.getBlockMetadata(this.xCoord, this.yCoord, this.zCoord+1) == 0) {
+					if(this.worldObj.getBlockId(this.xCoord, this.yCoord, this.zCoord-1) == BlockHandler.gravenStone.blockID && this.worldObj.getBlockMetadata(this.xCoord, this.yCoord, this.zCoord-1) == 0) {
 						return true;
 					}
 				}
@@ -75,8 +75,8 @@ public class TileEntityMonolithTermination extends TileEntity {
 	}
 	
 	public boolean shouldRefresh(int oldID, int newID, int oldMeta, int newMeta, World world, int x, int y, int z) {
-		if(oldID == BlockHandler.monolithTermination.blockID || oldID == BlockHandler.monolithTerminationActivated.blockID) {
-			if(newID == BlockHandler.monolithTermination.blockID || newID == BlockHandler.monolithTerminationActivated.blockID) {
+		if(oldID == BlockHandler.monolithDemission.blockID || oldID == BlockHandler.monolithDemissionActivated.blockID) {
+			if(newID == BlockHandler.monolithDemission.blockID || newID == BlockHandler.monolithDemissionActivated.blockID) {
 				return false;
 			}
 		}

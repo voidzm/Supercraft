@@ -4,7 +4,7 @@
 //*        (c) voidzm 2013         *//
 //////////////////////////////////////
 
-package com.voidzm.supercraft.entity;
+package com.voidzm.supercraft.tileentity;
 
 import java.io.ByteArrayOutputStream;
 import java.io.DataOutputStream;

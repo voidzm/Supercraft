@@ -9,11 +9,11 @@ package com.voidzm.supercraft.render;
 import org.lwjgl.opengl.GL11;
 
 import com.voidzm.supercraft.block.BlockConduit;
-import com.voidzm.supercraft.entity.TileEntityConduit;
 import com.voidzm.supercraft.client.ClientProxy;
 import com.voidzm.supercraft.handler.BlockHandler;
 import com.voidzm.supercraft.protocol.IGenerator;
 import com.voidzm.supercraft.protocol.IGenerator.GeneratorSide;
+import com.voidzm.supercraft.tileentity.TileEntityConduit;
 
 import cpw.mods.fml.common.registry.GameRegistry;
 
