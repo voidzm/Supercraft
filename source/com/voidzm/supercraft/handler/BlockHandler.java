@@ -107,6 +107,7 @@ public class BlockHandler {
 	public static Block alloyInductor;
 	public static Block silverboundStone;
 	public static Block waveringLunarGenerator;
+	public static Block electroplationEngine;
 	
 	public static Block cobaltOre;
 	public static Block cobaltTorch;
@@ -346,6 +347,7 @@ public class BlockHandler {
 		languageHandler.add(alloyInductor, "Alloy Inductor");
 		languageHandler.add(silverboundStone, "Silverbound Stone");
 		languageHandler.add(waveringLunarGenerator, "Wavering Lunar Generator");
+		languageHandler.add(electroplationEngine, "Electroplation Engine");
 		
 		// Cobalt
 		
@@ -483,6 +485,7 @@ public class BlockHandler {
 
 		essentialReducer = new BlockEssentialReducer(this.config.essentialreducerID);
 		alloyInductor = new BlockAlloyInductor(this.config.alloyinductorID);
+		electroplationEngine = new BlockElectroplationEngine(this.config.electroplationengineID);
 		
 		ironboundStone = new BlockIronboundStone(this.config.ironboundstoneID);
 		copperboundStone = new BlockCopperboundStone(this.config.copperboundstoneID);
@@ -635,6 +638,7 @@ public class BlockHandler {
 		GameRegistry.registerBlock(silverboundStone, "silverboundStone");
 		GameRegistry.registerBlock(waveringLunarGenerator, "waveringLunarGenerator");
 		GameRegistry.registerBlock(celestialBalanceGenerator, "celestialBalanceGenerator");
+		GameRegistry.registerBlock(electroplationEngine, "electroplationEngine");
 		
 		// Cobalt
 		
@@ -854,6 +858,7 @@ public class BlockHandler {
 		LanguageRegistry.addName(silverboundStone, (String)this.languageHandler.getString(silverboundStone));
 		LanguageRegistry.addName(waveringLunarGenerator, (String)this.languageHandler.getString(waveringLunarGenerator));
 		LanguageRegistry.addName(celestialBalanceGenerator, (String)this.languageHandler.getString(celestialBalanceGenerator));
+		LanguageRegistry.addName(electroplationEngine, (String)this.languageHandler.getString(electroplationEngine));
 		
 		// Cobalt
 		

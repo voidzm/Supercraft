@@ -30,6 +30,7 @@ public class AlloyInductorRecipes {
 	}
 	
 	public static boolean isValidInputForOther(ItemStack stack, ItemStack other) {
+		if(stack.isItemEqual(other)) return false;
 		ArrayList<AlloyInductorComboMap> secondaryDepthList = new ArrayList<AlloyInductorComboMap>();
 		for(AlloyInductorComboMap map : comboMappings) { 
 			if(map.getID1() == stack.itemID || map.getID2() == stack.itemID) {
@@ -46,6 +47,7 @@ public class AlloyInductorRecipes {
 	}
 	
 	public static ItemStack outputForMetals(ItemStack metal1, ItemStack metal2) {
+		if(metal1.isItemEqual(metal2)) return null;
 		ArrayList<AlloyInductorComboMap> secondaryDepthList = new ArrayList<AlloyInductorComboMap>();
 		for(AlloyInductorComboMap map : comboMappings) { 
 			if(map.getID1() == metal1.itemID || map.getID2() == metal1.itemID) {

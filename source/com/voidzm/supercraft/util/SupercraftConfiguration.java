@@ -129,6 +129,8 @@ public class SupercraftConfiguration {
 	public int monolithterminationID;
 	public int monolithterminationonID;
 	
+	public int electroplationengineID;
+	
 	///*** ITEMS ***///
 	
 	public int ironscrapID;
@@ -331,7 +333,9 @@ public class SupercraftConfiguration {
 		monolithterminationID = internalCfg.get(Configuration.CATEGORY_BLOCK, "monolithterminationID", "1688").getInt();
 		monolithterminationonID = internalCfg.get(Configuration.CATEGORY_BLOCK, "monolithterminationonID", "1689").getInt();
 	
-		// NEXT ID: 1691
+		electroplationengineID = internalCfg.get(Configuration.CATEGORY_BLOCK, "electroplationengineID", "1691").getInt();
+		
+		// NEXT ID: 1692
 		
 	}
 	

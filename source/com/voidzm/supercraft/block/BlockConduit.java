@@ -349,6 +349,7 @@ public class BlockConduit extends Block {
 	public static boolean isMachine(int blockID) {
 		if(blockID == BlockHandler.essentialReducer.blockID) return true;
 		else if(blockID == BlockHandler.alloyInductor.blockID) return true;
+		else if(blockID == BlockHandler.electroplationEngine.blockID) return true;
 		else return false;
 	}
 	

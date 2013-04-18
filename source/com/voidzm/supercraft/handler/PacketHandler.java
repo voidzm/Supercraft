@@ -11,6 +11,7 @@ import java.io.DataInputStream;
 
 import com.voidzm.supercraft.tileentity.TileEntityAlloyInductor;
 import com.voidzm.supercraft.tileentity.TileEntityConduit;
+import com.voidzm.supercraft.tileentity.TileEntityElectroplationEngine;
 import com.voidzm.supercraft.tileentity.TileEntityEssentialReducer;
 import com.voidzm.supercraft.tileentity.TileEntityConduit.CONDUIT_TYPE;
 import com.voidzm.supercraft.tileentity.TileEntityConduit.PACKET_ELINVAR;
@@ -29,7 +30,7 @@ import cpw.mods.fml.relauncher.Side;
 public class PacketHandler implements IPacketHandler {
 
 	public enum SCMachinePacketType {
-		ESSENTIALREDUCER(0), ALLOYINDUCTOR(1);
+		ESSENTIALREDUCER(0), ALLOYINDUCTOR(1), ELECTROPLATIONENGINE(2);
 		public int index;
 		private SCMachinePacketType(int val) {
 			this.index = val;
@@ -120,6 +121,22 @@ public class PacketHandler implements IPacketHandler {
 					}
 					this.handleAlloyInductorUpdate((EntityPlayer)player, x, y, z, inducting, powered, time, essence);
 				}
+				else if(packetType == SCMachinePacketType.ELECTROPLATIONENGINE) {
+					int x, y, z, time;
+					boolean electroplating, powered;
+					try {
+						x = inputStream.readInt();
+						y = inputStream.readInt();
+						z = inputStream.readInt();
+						electroplating = inputStream.readBoolean();
+						powered = inputStream.readBoolean();
+						time = inputStream.readInt();
+					} catch (Exception e) {
+						e.printStackTrace();
+						return;
+					}
+					this.handleElectroplationEngineUpdate((EntityPlayer)player, x, y, z, electroplating, powered, time);
+				}
 			}
 		}
 	}
@@ -165,6 +182,16 @@ public class PacketHandler implements IPacketHandler {
 		te.powered = powered;
 		te.timeUntilInduction = timeLeft;
 		te.essenceRemaining = essenceLeft;
+	}
+	
+	private void handleElectroplationEngineUpdate(EntityPlayer player, int x, int y, int z, boolean electroplating, boolean powered, int timeLeft) {
+		TileEntityElectroplationEngine te = (TileEntityElectroplationEngine)player.worldObj.getBlockTileEntity(x, y, z);
+		if(te == null) {
+			return;
+		}
+		te.setElectroplating(electroplating);
+		te.powered = powered;
+		te.timeUntilElectroplation = timeLeft;
 	}
 
 }

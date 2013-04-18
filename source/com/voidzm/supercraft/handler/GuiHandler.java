@@ -7,12 +7,15 @@
 package com.voidzm.supercraft.handler;
 
 import com.voidzm.supercraft.container.ContainerAlloyInductor;
+import com.voidzm.supercraft.container.ContainerElectroplationEngine;
 import com.voidzm.supercraft.container.ContainerEssentialReducer;
 import com.voidzm.supercraft.container.ContainerRefinedWorkbench;
 import com.voidzm.supercraft.gui.GuiAlloyInductor;
+import com.voidzm.supercraft.gui.GuiElectroplationEngine;
 import com.voidzm.supercraft.gui.GuiEssentialReducer;
 import com.voidzm.supercraft.gui.SCGuiCrafting;
 import com.voidzm.supercraft.tileentity.TileEntityAlloyInductor;
+import com.voidzm.supercraft.tileentity.TileEntityElectroplationEngine;
 import com.voidzm.supercraft.tileentity.TileEntityEssentialReducer;
 
 import net.minecraft.client.gui.inventory.GuiCrafting;
@@ -35,6 +38,9 @@ public class GuiHandler implements IGuiHandler {
 		case 2:
 			TileEntityAlloyInductor teAlloyInductor = (TileEntityAlloyInductor)world.getBlockTileEntity(x, y, z);
 			return new ContainerAlloyInductor(player.inventory, teAlloyInductor);
+		case 3:
+			TileEntityElectroplationEngine teElectroplationEngine = (TileEntityElectroplationEngine)world.getBlockTileEntity(x, y, z);
+			return new ContainerElectroplationEngine(player.inventory, teElectroplationEngine);
 		default:
 			return null;
 		}
@@ -51,6 +57,9 @@ public class GuiHandler implements IGuiHandler {
 		case 2:
 			TileEntityAlloyInductor teAlloyInductor = (TileEntityAlloyInductor)world.getBlockTileEntity(x, y, z);
 			return new GuiAlloyInductor(player.inventory, teAlloyInductor);
+		case 3:
+			TileEntityElectroplationEngine teElectroplationEngine = (TileEntityElectroplationEngine)world.getBlockTileEntity(x, y, z);
+			return new GuiElectroplationEngine(player.inventory, teElectroplationEngine);
 		default:
 			return null;
 		}
