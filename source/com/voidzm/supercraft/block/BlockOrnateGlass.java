@@ -1,8 +1,7 @@
-//////////////////////////////////////
-//*      BlockOrnateGlass.java     *//
-//*           Supercraft           *//
-//*        (c) voidzm 2013         *//
-//////////////////////////////////////
+//**
+//**  BlockOrnateGlass.java
+//**  Supercraft
+//**  (c) voidzm 2013 **//
 
 package com.voidzm.supercraft.block;
 
@@ -22,7 +21,8 @@ public class BlockOrnateGlass extends BlockSupercraftGlass {
 		super(id, "supercraft:ornateglass");
 		this.setHardness(10.0F);
 		this.setResistance(1.0F);
-		this.setUnlocalizedName("ornateGlass");
+		this.setInternalName("ornateglass");
+		this.setExternalName("Ornate Glass");
 	}
 
 }

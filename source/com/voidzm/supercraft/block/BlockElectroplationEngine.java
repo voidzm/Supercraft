@@ -102,9 +102,9 @@ public class BlockElectroplationEngine extends BlockContainer {
 	
 	@Override
 	public void registerIcons(IconRegister par1IconRegister) {
-		textureTop = par1IconRegister.registerIcon("supercraft:alloyinductor_top");
-		textureSide = par1IconRegister.registerIcon("supercraft:alloyinductor_side");
-		textureBottom = par1IconRegister.registerIcon("supercraft:ironboundstone_beveled");
+		textureTop = par1IconRegister.registerIcon("supercraft:electroplationengine_top");
+		textureSide = par1IconRegister.registerIcon("supercraft:electroplationengine_side");
+		textureBottom = par1IconRegister.registerIcon("supercraft:goldboundstone_beveled");
 	}
 	
 	@Override

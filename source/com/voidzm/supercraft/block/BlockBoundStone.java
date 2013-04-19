@@ -12,19 +12,22 @@ import net.minecraft.client.renderer.texture.IconRegister;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.world.World;
 
-public class BlockSilverboundStone extends Block {
+public class BlockBoundStone extends Block {
 
-	public BlockSilverboundStone(int par1) {
+	private String iconString;
+	
+	public BlockBoundStone(int par1, String unlocalized, String icon) {
 		super(par1, Material.rock);
 		this.setHardness(3.0F);
 		this.setResistance(15.0F);
 		this.setStepSound(soundStoneFootstep);
-		this.setUnlocalizedName("silverboundStone");
+		this.setUnlocalizedName(unlocalized);
 		this.setCreativeTab(Supercraft.elinvarTab);
+		this.iconString = icon;
 	}
 	
 	public void registerIcons(IconRegister par1IconRegister) {
-		this.blockIcon = par1IconRegister.registerIcon("supercraft:silverboundstone");
+		this.blockIcon = par1IconRegister.registerIcon(this.iconString);
 	}
 
 }

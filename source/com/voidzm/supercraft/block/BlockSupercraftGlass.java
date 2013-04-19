@@ -1,8 +1,7 @@
-//////////////////////////////////////
-//*    BlockSupercraftGlass.java   *//
-//*           Supercraft           *//
-//*        (c) voidzm 2013         *//
-//////////////////////////////////////
+//**
+//**  BlockSupercraftGlass.java
+//**  Supercraft
+//**  (c) voidzm 2013 **//
 
 package com.voidzm.supercraft.block;
 
@@ -14,15 +13,19 @@ import com.voidzm.supercraft.handler.BlockHandler;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockBreakable;
 import net.minecraft.block.material.Material;
+import net.minecraft.client.renderer.texture.IconRegister;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.world.IBlockAccess;
 
-public class BlockSupercraftGlass extends BlockBreakable {
+public class BlockSupercraftGlass extends BlockSupercraft {
 
+	private String iconString;
+	
 	public BlockSupercraftGlass(int id, String icon) {
-		super(id, icon, Material.glass, false);
+		super(id, Material.glass);
 		this.setStepSound(Block.soundGlassFootstep);
 		this.setCreativeTab(CreativeTabs.tabBlock);
+		this.iconString = icon;
 	}
 	
 	public int quantityDropped(Random random) {
@@ -57,6 +60,10 @@ public class BlockSupercraftGlass extends BlockBreakable {
 		else if(id == BlockHandler.ornateGlass.blockID) return true;
 		else if(id == BlockHandler.impactGlass.blockID) return true;
 		else return false;
+	}
+	
+	public void registerIcons(IconRegister par1IconRegister) {
+		this.blockIcon = par1IconRegister.registerIcon(this.iconString);
 	}
 
 }

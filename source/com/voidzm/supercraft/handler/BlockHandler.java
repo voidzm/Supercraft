@@ -35,6 +35,26 @@ public class BlockHandler {
 	public static Block ornateGlass;
 	public static Block impactGlass;
 	
+	public static Block aluminumOre;
+	public static Block copperOre;
+	public static Block silverOre;
+	public static Block electrumOre;
+	public static Block tantalumOre;
+	public static Block nisilOre;
+	public static Block platinumOre;
+	public static Block lithiumOre;
+	
+	public static Block elinvarOre;
+	public static Block cobaltOre;
+	
+	public static Block draconiumOre;
+	
+	public static Block incendiumOre;
+	public static Block luxificenOre;
+	public static Block jadeOre;
+	public static Block voltasniaOre;
+	
+	
 	public static Block coalBlock;
 	
 	public static Block supercraftLog1;
@@ -54,22 +74,22 @@ public class BlockHandler {
 	public static Block valensienStairs;
 	public static Block mortaliaStairs;
 	
-	public static Block aluminumOre;
+
 	public static Block aluminumBlock;
 	
-	public static Block tantalumOre;
+
 	public static Block tantalumBlock;
 	
-	public static Block copperOre;
+
 	public static Block copperBlock;
 	
-	public static Block elinvarOre;
+
 	public static Block elinvarBlock;
 	
-	public static Block silverOre;
+
 	public static Block silverBlock;
 	
-	public static Block electrumOre;
+
 	public static Block electrumBlock;
 	
 	public static Block conduit;
@@ -97,7 +117,7 @@ public class BlockHandler {
 	public static Block blockOfTenebral;
 	public static Block burnedNightrock;
 	
-	public static Block nisilOre;
+
 	public static Block nisilBlock;
 	
 	public static Block ironboundStone;
@@ -108,16 +128,17 @@ public class BlockHandler {
 	public static Block silverboundStone;
 	public static Block waveringLunarGenerator;
 	public static Block electroplationEngine;
+	public static Block goldboundStone;
 	
-	public static Block cobaltOre;
+
 	public static Block cobaltTorch;
 	public static Block cobaltBlock;
 	public static Block cobaltBlockOff;
 	
-	public static Block platinumOre;
+
 	public static Block platinumBlock;
 	
-	public static Block lithiumOre;
+
 	public static Block lithiumBlock;
 	
 	public static Block ghostlyVaporFlowing;
@@ -130,11 +151,7 @@ public class BlockHandler {
 	
 	public static Block monolithInception;
 	public static Block monolithInceptionActivated;
-	
-	public static Block incendiumOre;
-	public static Block luxificenOre;
-	public static Block jadeOre;
-	public static Block voltasniaOre;
+
 	
 	public static Block inisiaMushroom;
 	public static Block valensienMushroom;
@@ -145,7 +162,7 @@ public class BlockHandler {
 	
 	public static Block radiantLeaves;
 	
-	public static Block draconiumOre;
+
 	public static Block draconiumBlock;
 
 	public static Block monolithTermination;
@@ -167,15 +184,8 @@ public class BlockHandler {
 		this.initializeLanguage();
 		System.out.println("[Supercraft] " + languageHandler.count() + " blocks added.");
 	}
-	
+
 	private void populateLanguage() {
-		
-		// Advanced Glass
-		
-		languageHandler.add(reinforcedGlass, "Reinforced Glass");
-		languageHandler.add(temperedGlass, "Tempered Glass");
-		languageHandler.add(ornateGlass, "Ornate Glass");
-		languageHandler.add(impactGlass, "Impact Glass");
 		
 		// Material Extensions
 		
@@ -243,35 +253,17 @@ public class BlockHandler {
 		languageHandler.add(inisiaStairs, "Inisia Wood Stairs");
 		languageHandler.add(valensienStairs, "Valensien Wood Stairs");
 		languageHandler.add(mortaliaStairs, "Mortalia Wood Stairs");
-		
-		// Aluminum
-		
-		languageHandler.add(aluminumOre, "Aluminum Ore");
+
 		languageHandler.add(aluminumBlock, "Block of Aluminum");
 		
-		// Tantalum
-		
-		languageHandler.add(tantalumOre, "Tantalum Ore");
 		languageHandler.add(tantalumBlock, "Block of Tantalum");
 		
-		// Copper
-		
-		languageHandler.add(copperOre, "Copper Ore");
 		languageHandler.add(copperBlock, "Block of Copper");
-		
-		// Silver
-		
-		languageHandler.add(silverOre, "Silver Ore");
+
 		languageHandler.add(silverBlock, "Block of Silver");
-		
-		// Electrum
-		
-		languageHandler.add(electrumOre, "Electrum Ore");
+
 		languageHandler.add(electrumBlock, "Block of Electrum");
-		
-		// Elinvar
-		
-		languageHandler.add(elinvarOre, "Elinvar Ore");
+
 		languageHandler.add(elinvarBlock, "Block of Elinvar");
 		
 		// Conduits
@@ -333,9 +325,7 @@ public class BlockHandler {
 		languageHandler.add(blockOfTenebral, "Block of the Tenebral");
 		languageHandler.add(burnedNightrock, "Burned Nightrock Bricks");
 		
-		// Nisil
-		
-		languageHandler.add(nisilOre, "Nisil Ore");
+
 		languageHandler.add(nisilBlock, "Block of Nisil");
 		
 		// Machines
@@ -348,22 +338,15 @@ public class BlockHandler {
 		languageHandler.add(silverboundStone, "Silverbound Stone");
 		languageHandler.add(waveringLunarGenerator, "Wavering Lunar Generator");
 		languageHandler.add(electroplationEngine, "Electroplation Engine");
+		languageHandler.add(goldboundStone, "Goldbound Stone");
 		
-		// Cobalt
-		
-		languageHandler.add(cobaltOre, "Cobalt Ore");
 		languageHandler.add(cobaltTorch, "Cobalt Torch");
 		languageHandler.add(cobaltBlock, "Block of Cobalt");
 		languageHandler.add(cobaltBlockOff, "Block of Cobalt");
 		
-		// Platinum
-		
-		languageHandler.add(platinumOre, "Platinum Ore");
+
 		languageHandler.add(platinumBlock, "Block of Platinum");
-		
-		// Lithium
-		
-		languageHandler.add(lithiumOre, "Lithium Ore");
+
 		languageHandler.add(lithiumBlock, "Block of Lithium");
 		
 		// The Deep
@@ -384,10 +367,6 @@ public class BlockHandler {
 		languageHandler.add(monolithInception, "Monolith of Inception");
 		languageHandler.add(monolithInceptionActivated, "Monolith of Inception");
 		
-		languageHandler.add(incendiumOre, "Incendium Ore");
-		languageHandler.add(luxificenOre, "Luxificen Ore");
-		languageHandler.add(jadeOre, "Jade Ore");
-		languageHandler.add(voltasniaOre, "Voltasnia Ore");
 		
 		languageHandler.add(inisiaMushroom, "Inisia Mushroom");
 		languageHandler.add(valensienMushroom, "Valensien Mushroom");
@@ -397,8 +376,7 @@ public class BlockHandler {
 		languageHandler.add(monolithAscensionActivated, "Monolith of Ascension");
 		
 		languageHandler.add(radiantLeaves, "Radiant Leaves");
-		
-		languageHandler.add(draconiumOre, "Draconium Ore");
+
 		languageHandler.add(draconiumBlock, "Block of Draconium");
 		
 		languageHandler.add(monolithTermination, "Monolith of Termination");
@@ -408,10 +386,29 @@ public class BlockHandler {
 	}
 	
 	private void createBlocks() {
-		reinforcedGlass = new BlockReinforcedGlass(this.config.reinforcedglassID);
-		temperedGlass = new BlockTemperedGlass(this.config.temperedglassID);
-		ornateGlass = new BlockOrnateGlass(this.config.ornateglassID);
-		impactGlass = new BlockImpactGlass(this.config.impactglassID);
+		reinforcedGlass = new BlockReinforcedGlass(this.config.reinforcedglassID).register();
+		temperedGlass = new BlockTemperedGlass(this.config.temperedglassID).register();
+		ornateGlass = new BlockOrnateGlass(this.config.ornateglassID).register();
+		impactGlass = new BlockImpactGlass(this.config.impactglassID).register();
+		
+		aluminumOre = new BlockStoneOre(this.config.orealuminumID, "supercraft:orealuminum").setInternalName("orealuminum").setExternalName("Aluminum Ore").register();
+		copperOre = new BlockStoneOre(this.config.orecopperID, "supercraft:orecopper").setInternalName("orecopper").setExternalName("Copper Ore").register();
+		silverOre = new BlockStoneOre(this.config.oresilverID, "supercraft:oresilver").setInternalName("oresilver").setExternalName("Silver Ore").register();
+		electrumOre = new BlockStoneOre(this.config.oreelectrumID, "supercraft:oreelectrum").setInternalName("oreelectrum").setExternalName("Electrum Ore").register();
+		tantalumOre = new BlockStoneOre(this.config.oretantalumID, "supercraft:oretantalum").setInternalName("oretantalum").setExternalName("Tantalum Ore").register();
+		nisilOre = new BlockStoneOre(this.config.orenisilID, "supercraft:orenisil").setInternalName("orenisil").setExternalName("Nisil Ore").register();
+		platinumOre = new BlockStoneOre(this.config.oreplatinumID, "supercraft:oreplatinum").setInternalName("oreplatinum").setExternalName("Platinum Ore").register();
+		lithiumOre = new BlockStoneOre(this.config.orelithiumID, "supercraft:orelithium").setInternalName("orelithium").setExternalName("Lithium Ore").register();
+
+		elinvarOre = new BlockNetherrackOre(this.config.oreelinvarID, "supercraft:oreelinvar", this.config.elinvardustID).setInternalName("oreelinvar").setExternalName("Elinvar Ore").register();
+		cobaltOre = new BlockNetherrackOre(this.config.orecobaltID, "supercraft:orecobalt", this.config.cobaltdustID).setExtraDrop(3).setInternalName("orecobalt").setExternalName("Cobalt Ore").register();
+		draconiumOre = new BlockEndStoneOre(this.config.oredraconiumID, "supercraft:oredraconium", this.config.draconiumID).setInternalName("oredraconium").setExternalName("Draconium Ore").register();
+		
+		incendiumOre = new BlockStoneOre(this.config.oreincendiumID, "supercraft:oreincendium", this.config.incendiumdustID).setExtraDrop(2).setInternalName("oreincendium").setExternalName("Incendium Ore").register();
+		luxificenOre = new BlockStoneOre(this.config.oreluxificenID, "supercraft:oreluxificen", this.config.luxificendustID).setExtraDrop(3).setInternalName("oreluxificen").setExternalName("Luxificen Ore").register();
+		jadeOre = new BlockStoneOre(this.config.orejadeID, "supercraft:orejade").setInternalName("orejade").setExternalName("Jade Ore").register();
+		voltasniaOre = new BlockStoneOre(this.config.orevoltasniaID, "supercraft:orevoltasnia", this.config.voltasniarodID).setInternalName("orevoltasnia").setExternalName("Voltasnia Ore").register();
+		
 		
 		coalBlock = new BlockStorage(this.config.blockcoalID, "coalBlock", "supercraft:blockcoal", StorageType.DUST);
 
@@ -432,17 +429,7 @@ public class BlockHandler {
 		valensienStairs = new BlockSupercraftStairs(this.config.stairsvalensienID, supercraftPlanks, 4).setUnlocalizedName("valensienStairs");
 		mortaliaStairs = new BlockSupercraftStairs(this.config.stairsmortaliaID, supercraftPlanks, 5).setUnlocalizedName("mortaliaStairs");
 		
-		aluminumOre = new BlockStoneOre(this.config.orealuminumID, "aluminumOre", "supercraft:orealuminum");
-		tantalumOre = new BlockStoneOre(this.config.oretantalumID, "tantalumOre", "supercraft:oretantalum");
-		copperOre = new BlockStoneOre(this.config.orecopperID, "copperOre", "supercraft:orecopper");
-		silverOre = new BlockStoneOre(this.config.oresilverID, "silverOre", "supercraft:oresilver");
-		electrumOre = new BlockStoneOre(this.config.oreelectrumID, "electrumOre", "supercraft:oreelectrum");
-		nisilOre = new BlockStoneOre(this.config.orenisilID, "nisilOre", "supercraft:orenisil");
-		platinumOre = new BlockStoneOre(this.config.oreplatinumID, "platinumOre", "supercraft:oreplatinum");
-		lithiumOre = new BlockStoneOre(this.config.orelithiumID, "lithiumOre", "supercraft:orelithium");
-		elinvarOre = new BlockNetherrackOre(this.config.oreelinvarID, "elinvarOre", "supercraft:oreelinvar", this.config.elinvardustID);
-		cobaltOre = new BlockNetherrackOre(this.config.orecobaltID, "cobaltOre", "supercraft:orecobalt", this.config.cobaltdustID).setExtraDrop(3);
-		draconiumOre = new BlockEndStoneOre(this.config.oredraconiumID, "draconiumOre", "supercraft:oredraconium", this.config.draconiumID);
+
 		
 		aluminumBlock = new BlockStorage(this.config.blockaluminumID, "aluminumBlock", "supercraft:blockaluminum");
 		tantalumBlock = new BlockStorage(this.config.blocktantalumID, "tantalumBlock", "supercraft:blocktantalum", StorageType.CRYSTAL);
@@ -487,9 +474,10 @@ public class BlockHandler {
 		alloyInductor = new BlockAlloyInductor(this.config.alloyinductorID);
 		electroplationEngine = new BlockElectroplationEngine(this.config.electroplationengineID);
 		
-		ironboundStone = new BlockIronboundStone(this.config.ironboundstoneID);
-		copperboundStone = new BlockCopperboundStone(this.config.copperboundstoneID);
-		silverboundStone = new BlockSilverboundStone(this.config.silverboundstoneID);
+		ironboundStone = new BlockBoundStone(this.config.ironboundstoneID, "ironboundStone", "supercraft:ironboundstone");
+		copperboundStone = new BlockBoundStone(this.config.copperboundstoneID, "copperboundStone", "supercraft:copperboundstone");
+		silverboundStone = new BlockBoundStone(this.config.silverboundstoneID, "silverboundStone", "supercraft:silverboundstone");
+		goldboundStone = new BlockBoundStone(this.config.goldboundstoneID, "goldboundStone", "supercraft:goldboundstone");
 
 		cobaltTorch = new BlockCobaltTorch(this.config.torchcobaltID);
 		cobaltBlock = new BlockCobalt(this.config.blockcobaltID, true);
@@ -505,11 +493,6 @@ public class BlockHandler {
 		
 		monolithInception = new BlockMonolithInception(this.config.monolithinceptionID, false);
 		monolithInceptionActivated = new BlockMonolithInception(this.config.monolithinceptiononID, true);
-		
-		incendiumOre = new BlockStoneOre(this.config.oreincendiumID, "incendiumOre", "supercraft:oreincendium", this.config.incendiumdustID).setExtraDrop(2);
-		luxificenOre = new BlockStoneOre(this.config.oreluxificenID, "luxificenOre", "supercraft:oreluxificen", this.config.luxificendustID).setExtraDrop(3);
-		jadeOre = new BlockStoneOre(this.config.orejadeID, "jadeOre", "supercraft:orejade");
-		voltasniaOre = new BlockStoneOre(this.config.orevoltasniaID, "voltasniaOre", "supercraft:orevoltasnia", this.config.voltasniarodID);
 	
 		inisiaMushroom = new BlockSupercraftMushroom(this.config.mushroominisiaID, "supercraft:mushroominisia", EnumPlantType.Cave).setUnlocalizedName("inisiaMushroom");
 		valensienMushroom = new BlockSupercraftMushroom(this.config.mushroomvalensienID, "supercraft:mushroomvalensien", EnumPlantType.Cave).setUnlocalizedName("valensienMushroom");
@@ -525,13 +508,6 @@ public class BlockHandler {
 	}
 	
 	private void registerBlocks() {
-		
-		// Advanced Glass
-		
-		GameRegistry.registerBlock(reinforcedGlass, "reinforcedGlass");
-		GameRegistry.registerBlock(temperedGlass, "temperedGlass");
-		GameRegistry.registerBlock(ornateGlass, "ornateGlass");
-		GameRegistry.registerBlock(impactGlass, "impactGlass");
 		
 		// Material Extensions
 		
@@ -556,34 +532,17 @@ public class BlockHandler {
 		GameRegistry.registerBlock(valensienStairs, "valensienStairs");
 		GameRegistry.registerBlock(mortaliaStairs, "mortaliaStairs");
 		
-		// Aluminum
-		
-		GameRegistry.registerBlock(aluminumOre, "aluminumOre");
+
 		GameRegistry.registerBlock(aluminumBlock, "aluminumBlock");
-		
-		// Tantalum
-		
-		GameRegistry.registerBlock(tantalumOre, "tantalumOre");
+
 		GameRegistry.registerBlock(tantalumBlock, "tantalumBlock");
-		
-		// Copper
-		
-		GameRegistry.registerBlock(copperOre, "copperOre");
+
 		GameRegistry.registerBlock(copperBlock, "copperBlock");
-		
-		// Silver
-		
-		GameRegistry.registerBlock(silverOre, "silverOre");
+
 		GameRegistry.registerBlock(silverBlock, "silverBlock");
-		
-		// Electrum
-		
-		GameRegistry.registerBlock(electrumOre, "electrumOre");
+
 		GameRegistry.registerBlock(electrumBlock, "electrumBlock");
-		
-		// Elinvar
-		
-		GameRegistry.registerBlock(elinvarOre, "elinvarOre");
+
 		GameRegistry.registerBlock(elinvarBlock, "elinvarBlock");
 		
 		// Elinvar Conduits
@@ -622,10 +581,7 @@ public class BlockHandler {
 		GameRegistry.registerBlock(inscribedNightrock, "inscribedNightrock");
 		GameRegistry.registerBlock(blockOfTenebral, "blockOfTenebral");
 		GameRegistry.registerBlock(burnedNightrock, "burnedNightrock");
-		
-		// Nisil
-		
-		GameRegistry.registerBlock(nisilOre, "nisilOre");
+
 		GameRegistry.registerBlock(nisilBlock, "nisilBlock");
 		
 		// Machines
@@ -639,22 +595,15 @@ public class BlockHandler {
 		GameRegistry.registerBlock(waveringLunarGenerator, "waveringLunarGenerator");
 		GameRegistry.registerBlock(celestialBalanceGenerator, "celestialBalanceGenerator");
 		GameRegistry.registerBlock(electroplationEngine, "electroplationEngine");
+		GameRegistry.registerBlock(goldboundStone, "goldboundStone");
 		
-		// Cobalt
-		
-		GameRegistry.registerBlock(cobaltOre, "cobaltOre");
+
 		GameRegistry.registerBlock(cobaltTorch, "cobaltTorch");
 		GameRegistry.registerBlock(cobaltBlock, "cobaltBlock");
 		GameRegistry.registerBlock(cobaltBlockOff, "cobaltBlockOff");
-		
-		// Platinum
-		
-		GameRegistry.registerBlock(platinumOre, "platinumOre");
+
 		GameRegistry.registerBlock(platinumBlock, "platinumBlock");
-		
-		// Lithium
-		
-		GameRegistry.registerBlock(lithiumOre, "lithiumOre");
+
 		GameRegistry.registerBlock(lithiumBlock, "lithiumBlock");
 		
 		GameRegistry.registerBlock(ghostlyVaporFlowing, "ghostlyVaporFlowing");
@@ -667,12 +616,7 @@ public class BlockHandler {
 		
 		GameRegistry.registerBlock(monolithInception, "monolithInception");
 		GameRegistry.registerBlock(monolithInceptionActivated, "monolithInceptionActivated");
-		
-		GameRegistry.registerBlock(incendiumOre, "incendiumOre");
-		GameRegistry.registerBlock(luxificenOre, "luxificenOre");
-		GameRegistry.registerBlock(jadeOre, "jadeOre");
-		GameRegistry.registerBlock(voltasniaOre, "voltasniaOre");
-		
+
 		GameRegistry.registerBlock(inisiaMushroom, "inisiaMushroom");
 		GameRegistry.registerBlock(valensienMushroom, "valensienMushroom");
 		GameRegistry.registerBlock(mortaliaMushroom, "mortaliaMushroom");
@@ -681,8 +625,7 @@ public class BlockHandler {
 		GameRegistry.registerBlock(monolithAscensionActivated, "monolithAscensionActivated");
 		
 		GameRegistry.registerBlock(radiantLeaves, "radiantLeaves");
-		
-		GameRegistry.registerBlock(draconiumOre, "draconiumOre");
+
 		GameRegistry.registerBlock(draconiumBlock, "draconiumBlock");
 		
 		GameRegistry.registerBlock(monolithTermination, "monolithTermination");
@@ -690,14 +633,7 @@ public class BlockHandler {
 	}
 	
 	private void initializeLanguage() {
-		
-		// Advanced Glass
-		
-		LanguageRegistry.addName(reinforcedGlass, (String)this.languageHandler.getString(reinforcedGlass));
-		LanguageRegistry.addName(temperedGlass, (String)this.languageHandler.getString(temperedGlass));
-		LanguageRegistry.addName(ornateGlass, (String)this.languageHandler.getString(ornateGlass));
-		LanguageRegistry.addName(impactGlass, (String)this.languageHandler.getString(impactGlass));
-		
+
 		// Material Extensions
 		
 		LanguageRegistry.addName(coalBlock, (String)this.languageHandler.getString(coalBlock));
@@ -765,35 +701,18 @@ public class BlockHandler {
 		LanguageRegistry.addName(inisiaStairs, (String)this.languageHandler.getString(inisiaStairs));
 		LanguageRegistry.addName(valensienStairs, (String)this.languageHandler.getString(valensienStairs));
 		LanguageRegistry.addName(mortaliaStairs, (String)this.languageHandler.getString(mortaliaStairs));
-		
-		// Aluminum
-		
-		LanguageRegistry.addName(aluminumOre, (String)this.languageHandler.getString(aluminumOre));
+
 		LanguageRegistry.addName(aluminumBlock, (String)this.languageHandler.getString(aluminumBlock));
-		
-		// Tantalum
-		
-		LanguageRegistry.addName(tantalumOre, (String)this.languageHandler.getString(tantalumOre));
+
 		LanguageRegistry.addName(tantalumBlock, (String)this.languageHandler.getString(tantalumBlock));
-		
-		// Copper
-		
-		LanguageRegistry.addName(copperOre, (String)this.languageHandler.getString(copperOre));
+
 		LanguageRegistry.addName(copperBlock, (String)this.languageHandler.getString(copperBlock));
 		
-		// Silver
-		
-		LanguageRegistry.addName(silverOre, (String)this.languageHandler.getString(silverOre));
+
 		LanguageRegistry.addName(silverBlock, (String)this.languageHandler.getString(silverBlock));
-		
-		// Electrum
-		
-		LanguageRegistry.addName(electrumOre, (String)this.languageHandler.getString(electrumOre));
+
 		LanguageRegistry.addName(electrumBlock, (String)this.languageHandler.getString(electrumBlock));
-		
-		// Elinvar
-		
-		LanguageRegistry.addName(elinvarOre, (String)this.languageHandler.getString(elinvarOre));
+
 		LanguageRegistry.addName(elinvarBlock, (String)this.languageHandler.getString(elinvarBlock));
 		
 		// Elinvar Conduits
@@ -842,10 +761,7 @@ public class BlockHandler {
 		LanguageRegistry.addName(inscribedNightrock, (String)this.languageHandler.getString(inscribedNightrock));
 		LanguageRegistry.addName(blockOfTenebral, (String)this.languageHandler.getString(blockOfTenebral));
 		LanguageRegistry.addName(burnedNightrock, (String)this.languageHandler.getString(burnedNightrock));
-		
-		// Nisil
-		
-		LanguageRegistry.addName(nisilOre, (String)this.languageHandler.getString(nisilOre));
+
 		LanguageRegistry.addName(nisilBlock, (String)this.languageHandler.getString(nisilBlock));
 		
 		// Machines
@@ -859,22 +775,16 @@ public class BlockHandler {
 		LanguageRegistry.addName(waveringLunarGenerator, (String)this.languageHandler.getString(waveringLunarGenerator));
 		LanguageRegistry.addName(celestialBalanceGenerator, (String)this.languageHandler.getString(celestialBalanceGenerator));
 		LanguageRegistry.addName(electroplationEngine, (String)this.languageHandler.getString(electroplationEngine));
-		
-		// Cobalt
-		
-		LanguageRegistry.addName(cobaltOre, (String)this.languageHandler.getString(cobaltOre));
+		LanguageRegistry.addName(goldboundStone, (String)this.languageHandler.getString(goldboundStone));
+
 		LanguageRegistry.addName(cobaltTorch, (String)this.languageHandler.getString(cobaltTorch));
 		LanguageRegistry.addName(cobaltBlock, (String)this.languageHandler.getString(cobaltBlock));
 		LanguageRegistry.addName(cobaltBlockOff, (String)this.languageHandler.getString(cobaltBlockOff));
 		
-		// Platinum
-		
-		LanguageRegistry.addName(platinumOre, (String)this.languageHandler.getString(platinumOre));
+
 		LanguageRegistry.addName(platinumBlock, (String)this.languageHandler.getString(platinumBlock));
 		
-		// Lithium
-		
-		LanguageRegistry.addName(lithiumOre, (String)this.languageHandler.getString(lithiumOre));
+
 		LanguageRegistry.addName(lithiumBlock, (String)this.languageHandler.getString(lithiumBlock));
 		
 		LanguageRegistry.addName(ghostlyVaporFlowing, (String)this.languageHandler.getString(ghostlyVaporFlowing));
@@ -892,12 +802,7 @@ public class BlockHandler {
 		
 		LanguageRegistry.addName(monolithInception, (String)this.languageHandler.getString(monolithInception));
 		LanguageRegistry.addName(monolithInceptionActivated, (String)this.languageHandler.getString(monolithInceptionActivated));
-	
-		LanguageRegistry.addName(incendiumOre, (String)this.languageHandler.getString(incendiumOre));
-		LanguageRegistry.addName(luxificenOre, (String)this.languageHandler.getString(luxificenOre));
-		LanguageRegistry.addName(jadeOre, (String)this.languageHandler.getString(jadeOre));
-		LanguageRegistry.addName(voltasniaOre, (String)this.languageHandler.getString(voltasniaOre));
-		
+
 		LanguageRegistry.addName(inisiaMushroom, (String)this.languageHandler.getString(inisiaMushroom));
 		LanguageRegistry.addName(valensienMushroom, (String)this.languageHandler.getString(valensienMushroom));
 		LanguageRegistry.addName(mortaliaMushroom, (String)this.languageHandler.getString(mortaliaMushroom));
@@ -907,7 +812,6 @@ public class BlockHandler {
 		
 		LanguageRegistry.addName(radiantLeaves, (String)this.languageHandler.getString(radiantLeaves));
 	
-		LanguageRegistry.addName(draconiumOre, (String)this.languageHandler.getString(draconiumOre));
 		LanguageRegistry.addName(draconiumBlock, (String)this.languageHandler.getString(draconiumBlock));
 		
 		LanguageRegistry.addName(monolithTermination, (String)this.languageHandler.getString(monolithTermination));

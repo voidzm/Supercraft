@@ -1,8 +1,7 @@
-//////////////////////////////////////
-//*    BlockReinforcedGlass.java   *//
-//*           Supercraft           *//
-//*        (c) voidzm 2013         *//
-//////////////////////////////////////
+//**
+//**  BlockReinforcedGlass.java
+//**  Supercraft
+//**  (c) voidzm 2013 **//
 
 package com.voidzm.supercraft.block;
 
@@ -22,7 +21,8 @@ public class BlockReinforcedGlass extends BlockSupercraftGlass {
 		super(id, "supercraft:reinforcedglass");
 		this.setHardness(1.0F);
 		this.setResistance(10.0F);
-		this.setUnlocalizedName("reinforcedGlass");
+		this.setInternalName("reinforcedglass");
+		this.setExternalName("Reinforced Glass");
 	}
 
 }

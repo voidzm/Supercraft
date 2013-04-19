@@ -1,8 +1,7 @@
-//////////////////////////////////////
-//*     BlockTemperedGlass.java    *//
-//*           Supercraft           *//
-//*        (c) voidzm 2013         *//
-//////////////////////////////////////
+//**
+//**  BlockTemperedGlass.java
+//**  Supercraft
+//**  (c) voidzm 2013 **//
 
 package com.voidzm.supercraft.block;
 
@@ -23,7 +22,8 @@ public class BlockTemperedGlass extends BlockSupercraftGlass {
 		super(id, "supercraft:temperedglass");
 		this.setHardness(0.1F);
 		this.setResistance(30.0F);
-		this.setUnlocalizedName("temperedGlass");
+		this.setInternalName("temperedglass");
+		this.setExternalName("Tempered Glass");
 	}
 
 

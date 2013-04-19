@@ -111,6 +111,7 @@ public class CraftingHandler {
 	private ItemStack draconiumBlock;
 	private ItemStack gravenStoneBrilliance;
 	private ItemStack aquaeousEssence;
+	private ItemStack goldboundStone;
 	
 	public void init(SupercraftConfiguration configObject) {
 		if(this.config != null) {
@@ -213,6 +214,7 @@ public class CraftingHandler {
 		draconiumBlock = new ItemStack(BlockHandler.draconiumBlock);
 		gravenStoneBrilliance = gravenStoneGleaming = new ItemStack(BlockHandler.gravenStone, 1, 3);
 		aquaeousEssence = new ItemStack(ItemHandler.essence, 1, EssentialAspect.AQUAEOUS.index);
+		goldboundStone = new ItemStack(BlockHandler.goldboundStone);
 	}
 	
 	private void addRecipes() {
@@ -300,12 +302,15 @@ public class CraftingHandler {
 
 		GameRegistry.addRecipe(new ItemStack(BlockHandler.ironboundStone), "a a", " b ", "a a", 'a', ironScrap, 'b', stone);
 		GameRegistry.addRecipe(new ItemStack(BlockHandler.essentialReducer), "aba", "cdc", "aaa", 'a', ironboundStone, 'b', flint, 'c', elinvarDust, 'd', diamond);
+		GameRegistry.addRecipe(new ItemStack(BlockHandler.alloyInductor), "aba", "cdc", "aaa", 'a', ironboundStone, 'b', ironIngot, 'c', elinvarDust, 'd', redstone);
+		GameRegistry.addRecipe(new ItemStack(BlockHandler.electroplationEngine), "aba", "cdc", "aaa", 'a', goldboundStone, 'b', voltasnia, 'c', elinvarDust, 'd', redstone);
 		GameRegistry.addRecipe(new ItemStack(BlockHandler.copperboundStone), "a a", " b ", "a a", 'a', copperChunk, 'b', stone);
 		GameRegistry.addRecipe(new ItemStack(BlockHandler.radiantSolarGenerator), "aba", "cdc", "eee", 'a', aeronicEssence, 'b', radantisEssence, 'c', obsidian, 'd', copper, 'e', copperboundStone);
 		GameRegistry.addRecipe(new ItemStack(BlockHandler.silverboundStone), "a a", " b ", "a a", 'a', silverFragment, 'b', stone);
 		GameRegistry.addRecipe(new ItemStack(BlockHandler.waveringLunarGenerator), "aba", "cdc", "eee", 'a', aeronicEssence, 'b', ferricEssence, 'c', obsidian, 'd', silver, 'e', silverboundStone);
 		GameRegistry.addRecipe(new ItemStack(BlockHandler.celestialBalanceGenerator), "aba", "cdc", "eee", 'a', aeronicEssence, 'b', aquaeousEssence, 'c', obsidian, 'd', ironIngot, 'e', ironboundStone);
-
+		GameRegistry.addRecipe(new ItemStack(BlockHandler.goldboundStone), "a a", " b ", "a a", 'a', goldNugget, 'b', stone);
+		
 		GameRegistry.addRecipe(new ItemStack(BlockHandler.cobaltTorch, 4), "a", "b", 'a', cobaltDust, 'b', stick);
 		GameRegistry.addRecipe(new ItemStack(BlockHandler.cobaltBlock), "aaa", "aaa", "aaa", 'a', cobaltDust);
 

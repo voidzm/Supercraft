@@ -131,6 +131,8 @@ public class SupercraftConfiguration {
 	
 	public int electroplationengineID;
 	
+	public int goldboundstoneID;
+	
 	///*** ITEMS ***///
 	
 	public int ironscrapID;
@@ -335,7 +337,9 @@ public class SupercraftConfiguration {
 	
 		electroplationengineID = internalCfg.get(Configuration.CATEGORY_BLOCK, "electroplationengineID", "1691").getInt();
 		
-		// NEXT ID: 1692
+		goldboundstoneID = internalCfg.get(Configuration.CATEGORY_BLOCK, "goldboundstoneID", "1692").getInt();
+		
+		// NEXT ID: 1693
 		
 	}
 	
