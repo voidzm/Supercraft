@@ -8,6 +8,7 @@ package com.voidzm.supercraft.block;
 
 import java.io.ByteArrayOutputStream;
 import java.io.DataOutputStream;
+import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Random;
@@ -16,6 +17,8 @@ import com.voidzm.supercraft.CommonProxy;
 import com.voidzm.supercraft.Supercraft;
 import com.voidzm.supercraft.client.ClientProxy;
 import com.voidzm.supercraft.handler.BlockHandler;
+import com.voidzm.supercraft.item.ItemBlockSupercraft;
+import com.voidzm.supercraft.item.ItemConduit;
 import com.voidzm.supercraft.protocol.IGenerator;
 import com.voidzm.supercraft.protocol.IGenerator.GeneratorSide;
 import com.voidzm.supercraft.tileentity.TileEntityConduit;
@@ -46,7 +49,7 @@ import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.IWorldAccess;
 import net.minecraft.world.World;
 
-public class BlockConduit extends Block {
+public class BlockConduit extends BlockSupercraft {
 	
 	public Icon[] textures = new Icon[13];
 	
@@ -54,15 +57,36 @@ public class BlockConduit extends Block {
 		"conduitsilver.png", "conduitgold.png", "conduitelectrum.png", "conduitdiamond.png",
 		"conduitcobalt.png", "conduitplatinum.png", "conduittantalum.png", "conduitlithium.png"};
 	
+	private ArrayList<String> names = new ArrayList<String>();
+	
 	public BlockConduit(int par1) {
 		super(par1, Material.iron);
+		this.populateNames();
 		this.setHardness(1.0F);
 		this.setStepSound(Block.soundStoneFootstep);
-		this.setUnlocalizedName("conduit");
+		this.setInternalName("conduit");
+		this.setExternalName("Conduit");
+		this.makeMultiblock(this.names, ItemBlockSupercraft.class);
 		this.setCreativeTab(Supercraft.elinvarTab);
 		this.setLightOpacity(0);
 		this.useNeighborBrightness[par1] = true;
 		this.setTickRandomly(true);
+	}
+	
+	private void populateNames() {
+		this.names.add("Wooden Conduit");
+		this.names.add("Stone Conduit");
+		this.names.add("Iron Conduit");
+		this.names.add("Copper Conduit");
+		this.names.add("Aluminum Conduit");
+		this.names.add("Silver Conduit");
+		this.names.add("Golden Conduit");
+		this.names.add("Electrum Conduit");
+		this.names.add("Diamond Conduit");
+		this.names.add("Cobalt Conduit");
+		this.names.add("Platinum Conduit");
+		this.names.add("Tantalum Conduit");
+		this.names.add("Lithium Conduit");
 	}
 	
 	@Override

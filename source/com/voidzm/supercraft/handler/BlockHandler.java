@@ -1,10 +1,7 @@
-//////////////////////////////////////
-//*        BlockHandler.java       *//
-//*           Supercraft           *//
-//*        (c) voidzm 2013         *//
-//////////////////////////////////////
-
-// Handles the registration and management of all blocks.
+//**
+//**  BlockHandler.java
+//**  Supercraft
+//**  (c) voidzm 2013 **//
 
 package com.voidzm.supercraft.handler;
 
@@ -54,8 +51,51 @@ public class BlockHandler {
 	public static Block jadeOre;
 	public static Block voltasniaOre;
 	
-	
 	public static Block coalBlock;
+	public static Block aluminumBlock;
+	public static Block copperBlock;
+	public static Block silverBlock;
+	public static Block electrumBlock;
+	public static Block tantalumBlock;
+	public static Block nisilBlock;
+	public static Block platinumBlock;
+	public static Block lithiumBlock;
+	
+	public static Block elinvarBlock;
+	public static Block cobaltBlock;
+	public static Block cobaltBlockOff;
+
+	public static Block draconiumBlock;
+	
+	public static Block conduit;
+	
+	public static Block redstoneGenerator;
+	public static Block radiantSolarGenerator;
+	public static Block waveringLunarGenerator;
+	public static Block celestialBalanceGenerator;
+	
+	public static Block ironboundStone;
+	public static Block copperboundStone;
+	public static Block silverboundStone;
+	public static Block goldboundStone;
+	
+	public static Block essentialReducer;
+	public static Block alloyInductor;
+	public static Block electroplationEngine;
+
+	public static Block gravenStone;
+	
+	public static Block monolithDemission;
+	public static Block monolithDemissionActivated;
+	public static Block monolithInception;
+	public static Block monolithInceptionActivated;
+	public static Block monolithAscension;
+	public static Block monolithAscensionActivated;
+	public static Block monolithTermination;
+	public static Block monolithTerminationActivated;
+	
+	
+	
 	
 	public static Block supercraftLog1;
 	public static Block supercraftLog2;
@@ -74,29 +114,7 @@ public class BlockHandler {
 	public static Block valensienStairs;
 	public static Block mortaliaStairs;
 	
-
-	public static Block aluminumBlock;
-	
-
-	public static Block tantalumBlock;
-	
-
-	public static Block copperBlock;
-	
-
-	public static Block elinvarBlock;
-	
-
-	public static Block silverBlock;
-	
-
-	public static Block electrumBlock;
-	
-	public static Block conduit;
-	
 	public static Block refinedCraftingTable;
-	
-	public static Block redstoneGenerator;
 	
 	public static Block bluebells;
 	public static Block daisies;
@@ -116,60 +134,18 @@ public class BlockHandler {
 	public static Block inscribedNightrock;
 	public static Block blockOfTenebral;
 	public static Block burnedNightrock;
-	
-
-	public static Block nisilBlock;
-	
-	public static Block ironboundStone;
-	public static Block essentialReducer;
-	public static Block copperboundStone;
-	public static Block radiantSolarGenerator;
-	public static Block alloyInductor;
-	public static Block silverboundStone;
-	public static Block waveringLunarGenerator;
-	public static Block electroplationEngine;
-	public static Block goldboundStone;
-	
 
 	public static Block cobaltTorch;
-	public static Block cobaltBlock;
-	public static Block cobaltBlockOff;
-	
 
-	public static Block platinumBlock;
-	
-
-	public static Block lithiumBlock;
-	
 	public static Block ghostlyVaporFlowing;
 	public static Block ghostlyVaporStill;
-	
-	public static Block monolithDemission;
-	public static Block monolithDemissionActivated;
-	
-	public static Block gravenStone;
-	
-	public static Block monolithInception;
-	public static Block monolithInceptionActivated;
 
-	
 	public static Block inisiaMushroom;
 	public static Block valensienMushroom;
 	public static Block mortaliaMushroom;
-	
-	public static Block monolithAscension;
-	public static Block monolithAscensionActivated;
-	
+
 	public static Block radiantLeaves;
-	
 
-	public static Block draconiumBlock;
-
-	public static Block monolithTermination;
-	public static Block monolithTerminationActivated;
-	
-	public static Block celestialBalanceGenerator;
-	
 	public void init(SupercraftConfiguration configObject) {
 		if(this.config != null) {
 			throw new RuntimeException("Block handler already loaded with configuration, cannot initialize again!"); 
@@ -186,13 +162,6 @@ public class BlockHandler {
 	}
 
 	private void populateLanguage() {
-		
-		// Material Extensions
-		
-		languageHandler.add(coalBlock, "Block of Coal");
-		
-		// Supercraft Trees
-		
 		ArrayList<String> supercraftLog1List = new ArrayList<String>();
 		supercraftLog1List.add("Olive Wood");
 		supercraftLog1List.add("Goldenwood Wood");
@@ -253,38 +222,6 @@ public class BlockHandler {
 		languageHandler.add(inisiaStairs, "Inisia Wood Stairs");
 		languageHandler.add(valensienStairs, "Valensien Wood Stairs");
 		languageHandler.add(mortaliaStairs, "Mortalia Wood Stairs");
-
-		languageHandler.add(aluminumBlock, "Block of Aluminum");
-		
-		languageHandler.add(tantalumBlock, "Block of Tantalum");
-		
-		languageHandler.add(copperBlock, "Block of Copper");
-
-		languageHandler.add(silverBlock, "Block of Silver");
-
-		languageHandler.add(electrumBlock, "Block of Electrum");
-
-		languageHandler.add(elinvarBlock, "Block of Elinvar");
-		
-		// Conduits
-		
-		ArrayList<String> conduitList = new ArrayList<String>();
-		conduitList.add("Wooden Conduit");
-		conduitList.add("Stone Conduit");
-		conduitList.add("Iron Conduit");
-		conduitList.add("Copper Conduit");
-		conduitList.add("Aluminum Conduit");
-		conduitList.add("Silver Conduit");
-		conduitList.add("Golden Conduit");
-		conduitList.add("Electrum Conduit");
-		conduitList.add("Diamond Conduit");
-		conduitList.add("Cobalt Conduit");
-		conduitList.add("Platinum Conduit");
-		conduitList.add("Tantalum Conduit");
-		conduitList.add("Lithium Conduit");
-		languageHandler.add(conduit, conduitList);
-		
-		// Refined Crafting Tables
 		
 		ArrayList<String> refinedCraftingTableList = new ArrayList<String>();
 		refinedCraftingTableList.add("Stone Crafting Table");
@@ -295,18 +232,10 @@ public class BlockHandler {
 		refinedCraftingTableList.add("Palestone Crafting Table");
 		refinedCraftingTableList.add("Nightrock Crafting Table");
 		languageHandler.add(refinedCraftingTable, refinedCraftingTableList);
-		
-		// Elinvar Generators
-		
-		languageHandler.add(redstoneGenerator, "Redstone Conversion Generator");
-		
-		// Supercraft Flowers
-		
+
 		languageHandler.add(bluebells, "Bluebells");
 		languageHandler.add(daisies, "Daisies");
 		languageHandler.add(snapdragon, "Snapdragon");
-		
-		// Palestone
 		
 		languageHandler.add(palestone, "Palestone");
 		languageHandler.add(palestoneBricks, "Palestone Bricks");
@@ -316,73 +245,23 @@ public class BlockHandler {
 		languageHandler.add(overgrownPalestone, "Overgrown Palestone Bricks");
 		languageHandler.add(burnedPalestone, "Burned Palestone Bricks");
 		
-		// Nightrock
-		
 		languageHandler.add(nightrock, "Nightrock");
 		languageHandler.add(nightrockBricks, "Nightrock Bricks");
 		languageHandler.add(nightrockStairs, "Nightrock Brick Stairs");
 		languageHandler.add(inscribedNightrock, "Inscribed Nightrock");
 		languageHandler.add(blockOfTenebral, "Block of the Tenebral");
 		languageHandler.add(burnedNightrock, "Burned Nightrock Bricks");
-		
-
-		languageHandler.add(nisilBlock, "Block of Nisil");
-		
-		// Machines
-		
-		languageHandler.add(ironboundStone, "Ironbound Stone");
-		languageHandler.add(essentialReducer, "Essential Reducer");
-		languageHandler.add(copperboundStone, "Copperbound Stone");
-		languageHandler.add(radiantSolarGenerator, "Radiant Solar Generator");
-		languageHandler.add(alloyInductor, "Alloy Inductor");
-		languageHandler.add(silverboundStone, "Silverbound Stone");
-		languageHandler.add(waveringLunarGenerator, "Wavering Lunar Generator");
-		languageHandler.add(electroplationEngine, "Electroplation Engine");
-		languageHandler.add(goldboundStone, "Goldbound Stone");
-		
+	
 		languageHandler.add(cobaltTorch, "Cobalt Torch");
-		languageHandler.add(cobaltBlock, "Block of Cobalt");
-		languageHandler.add(cobaltBlockOff, "Block of Cobalt");
-		
 
-		languageHandler.add(platinumBlock, "Block of Platinum");
-
-		languageHandler.add(lithiumBlock, "Block of Lithium");
-		
-		// The Deep
-		
 		languageHandler.add(ghostlyVaporFlowing, "Ghostly Vapor");
 		languageHandler.add(ghostlyVaporStill, "Ghostly Vapor");
-		
-		languageHandler.add(monolithDemission, "Monolith of Demission");
-		languageHandler.add(monolithDemissionActivated, "Monolith of Demission");
-		
-		ArrayList<String> gravenStoneList = new ArrayList<String>();
-		gravenStoneList.add("Graven Stone of Darkness");
-		gravenStoneList.add("Graven Stone of Shadow");
-		gravenStoneList.add("Graven Stone of Gleaming");
-		gravenStoneList.add("Graven Stone of Brilliance");
-		languageHandler.add(gravenStone, gravenStoneList);
-		
-		languageHandler.add(monolithInception, "Monolith of Inception");
-		languageHandler.add(monolithInceptionActivated, "Monolith of Inception");
-		
-		
+
 		languageHandler.add(inisiaMushroom, "Inisia Mushroom");
 		languageHandler.add(valensienMushroom, "Valensien Mushroom");
 		languageHandler.add(mortaliaMushroom, "Mortalia Mushroom");
 		
-		languageHandler.add(monolithAscension, "Monolith of Ascension");
-		languageHandler.add(monolithAscensionActivated, "Monolith of Ascension");
-		
 		languageHandler.add(radiantLeaves, "Radiant Leaves");
-
-		languageHandler.add(draconiumBlock, "Block of Draconium");
-		
-		languageHandler.add(monolithTermination, "Monolith of Termination");
-		languageHandler.add(monolithTerminationActivated, "Monolith of Termination");
-		
-		languageHandler.add(celestialBalanceGenerator, "Celestial Balance Generator");
 	}
 	
 	private void createBlocks() {
@@ -409,9 +288,53 @@ public class BlockHandler {
 		jadeOre = new BlockStoneOre(this.config.orejadeID, "supercraft:orejade").setInternalName("orejade").setExternalName("Jade Ore").register();
 		voltasniaOre = new BlockStoneOre(this.config.orevoltasniaID, "supercraft:orevoltasnia", this.config.voltasniarodID).setInternalName("orevoltasnia").setExternalName("Voltasnia Ore").register();
 		
+		coalBlock = new BlockStorage(this.config.blockcoalID, "supercraft:blockcoal", StorageType.DUST).setInternalName("blockcoal").setExternalName("Block of Coal").register();
+		aluminumBlock = new BlockStorage(this.config.blockaluminumID, "supercraft:blockaluminum").setInternalName("blockaluminum").setExternalName("Block of Aluminum").register();
+		copperBlock = new BlockStorage(this.config.blockcopperID, "supercraft:blockcopper").setInternalName("blockcopper").setExternalName("Block of Copper").register();
+		silverBlock = new BlockStorage(this.config.blocksilverID, "supercraft:blocksilver").setInternalName("blocksilver").setExternalName("Block of Silver").register();
+		electrumBlock = new BlockStorage(this.config.blockelectrumID, "supercraft:blockelectrum").setInternalName("blockelectrum").setExternalName("Block of Electrum").register();
+		tantalumBlock = new BlockStorage(this.config.blocktantalumID, "supercraft:blocktantalum", StorageType.CRYSTAL).setInternalName("blocktantalum").setExternalName("Block of Tantalum").register();
+		nisilBlock = new BlockStorage(this.config.blocknisilID, "supercraft:blocknisil").setInternalName("blocknisil").setExternalName("Block of Nisil").register();
+		platinumBlock = new BlockStorage(this.config.blockplatinumID, "supercraft:blockplatinum").setInternalName("blockplatinum").setExternalName("Block of Platinum").register();
+		lithiumBlock = new BlockStorage(this.config.blocklithiumID, "supercraft:blocklithium").setInternalName("blocklithium").setExternalName("Block of Lithium").register();
 		
-		coalBlock = new BlockStorage(this.config.blockcoalID, "coalBlock", "supercraft:blockcoal", StorageType.DUST);
-
+		elinvarBlock = new BlockStorage(this.config.blockelinvarID, "supercraft:blockelinvar", StorageType.DUST).setInternalName("blockelinvar").setExternalName("Block of Elinvar").register();
+		cobaltBlock = new BlockCobalt(this.config.blockcobaltID, true).register();
+		cobaltBlockOff = new BlockCobalt(this.config.blockcobaltoffID, false).register();
+		
+		draconiumBlock = new BlockStorage(this.config.blockdraconiumID, "supercraft:blockdraconium", StorageType.CRYSTAL).setInternalName("blockdraconium").setExternalName("Block of Draconium").register();
+		
+		conduit = new BlockConduit(this.config.conduitID).register();
+		
+		redstoneGenerator = new BlockRedstoneGenerator(this.config.redstoneconversiongeneratorID).register();
+		radiantSolarGenerator = new BlockRadiantSolarGenerator(this.config.radiantsolargeneratorID).register();
+		waveringLunarGenerator = new BlockWaveringLunarGenerator(this.config.waveringlunargeneratorID).register();
+		celestialBalanceGenerator = new BlockCelestialBalanceGenerator(this.config.celestialbalancegeneratorID).register();
+		
+		ironboundStone = new BlockBoundStone(this.config.ironboundstoneID, "supercraft:ironboundstone").setInternalName("ironboundstone").setExternalName("Ironbound Stone").register();
+		copperboundStone = new BlockBoundStone(this.config.copperboundstoneID, "supercraft:copperboundstone").setInternalName("copperboundstone").setExternalName("Copperbound Stone").register();
+		silverboundStone = new BlockBoundStone(this.config.silverboundstoneID, "supercraft:silverboundstone").setInternalName("silverboundstone").setExternalName("Silverbound Stone").register();
+		goldboundStone = new BlockBoundStone(this.config.goldboundstoneID, "supercraft:goldboundstone").setInternalName("goldboundstone").setExternalName("Goldbound Stone").register();
+		
+		essentialReducer = new BlockEssentialReducer(this.config.essentialreducerID).register();
+		alloyInductor = new BlockAlloyInductor(this.config.alloyinductorID).register();
+		electroplationEngine = new BlockElectroplationEngine(this.config.electroplationengineID).register();
+		
+		gravenStone = new BlockGravenStone(this.config.gravenStoneID).register();
+		
+		monolithDemission = new BlockMonolithDemission(this.config.monolithdemissionID, false).register();
+		monolithDemissionActivated = new BlockMonolithDemission(this.config.monolithdemissiononID, true).register();
+		monolithInception = new BlockMonolithInception(this.config.monolithinceptionID, false).register();
+		monolithInceptionActivated = new BlockMonolithInception(this.config.monolithinceptiononID, true).register();
+		monolithAscension = new BlockMonolithAscension(this.config.monolithascensionID, false).register();
+		monolithAscensionActivated = new BlockMonolithAscension(this.config.monolithascensiononID, true).register();
+		monolithTermination = new BlockMonolithTermination(this.config.monolithterminationID, false).register();
+		monolithTerminationActivated = new BlockMonolithTermination(this.config.monolithterminationonID, true).register();
+		
+		
+		
+		
+		
 		supercraftLog1 = new BlockSupercraftLog1(this.config.woodsupercraft1ID);
 		supercraftLog2 = new BlockSupercraftLog2(this.config.woodsupercraft2ID);
 		supercraftLeaves1 = new BlockSupercraftLeaves1(this.config.leavessupercraft1ID);
@@ -428,29 +351,9 @@ public class BlockHandler {
 		inisiaStairs = new BlockSupercraftStairs(this.config.stairsinisiaID, supercraftPlanks, 3).setUnlocalizedName("inisiaStairs");
 		valensienStairs = new BlockSupercraftStairs(this.config.stairsvalensienID, supercraftPlanks, 4).setUnlocalizedName("valensienStairs");
 		mortaliaStairs = new BlockSupercraftStairs(this.config.stairsmortaliaID, supercraftPlanks, 5).setUnlocalizedName("mortaliaStairs");
-		
 
-		
-		aluminumBlock = new BlockStorage(this.config.blockaluminumID, "aluminumBlock", "supercraft:blockaluminum");
-		tantalumBlock = new BlockStorage(this.config.blocktantalumID, "tantalumBlock", "supercraft:blocktantalum", StorageType.CRYSTAL);
-		copperBlock = new BlockStorage(this.config.blockcopperID, "copperBlock", "supercraft:blockcopper");
-		silverBlock = new BlockStorage(this.config.blocksilverID, "silverBlock", "supercraft:blocksilver");
-		electrumBlock = new BlockStorage(this.config.blockelectrumID, "electrumBlock", "supercraft:blockelectrum");
-		nisilBlock = new BlockStorage(this.config.blocknisilID, "nisilBlock", "supercraft:blocknisil");
-		platinumBlock = new BlockStorage(this.config.blockplatinumID, "platinumBlock", "supercraft:blockplatinum");
-		lithiumBlock = new BlockStorage(this.config.blocklithiumID, "lithiumBlock", "supercraft:blocklithium");
-		elinvarBlock = new BlockStorage(this.config.blockelinvarID, "elinvarBlock", "supercraft:blockelinvar", StorageType.DUST);
-		draconiumBlock = new BlockStorage(this.config.blockdraconiumID, "draconiumBlock", "supercraft:blockdraconium", StorageType.CRYSTAL);
-		
-		conduit = new BlockConduit(this.config.conduitID);
-		
 		refinedCraftingTable = new BlockRefinedCraftingTable(this.config.refinedcraftingtableID);
 
-		redstoneGenerator = new BlockRedstoneGenerator(this.config.redstoneconversiongeneratorID);
-		radiantSolarGenerator = new BlockRadiantSolarGenerator(this.config.radiantsolargeneratorID);
-		waveringLunarGenerator = new BlockWaveringLunarGenerator(this.config.waveringlunargeneratorID);
-		celestialBalanceGenerator = new BlockCelestialBalanceGenerator(this.config.celestialbalancegeneratorID);
-		
 		bluebells = new BlockSupercraftFlower(this.config.bluebellsID, "supercraft:bluebells", EnumPlantType.Plains).setUnlocalizedName("bluebells");
 		daisies = new BlockSupercraftFlower(this.config.daisiesID, "supercraft:daisies", EnumPlantType.Plains).setUnlocalizedName("daisies");
 		snapdragon = new BlockSupercraftFlower(this.config.snapdragonID, "supercraft:snapdragon", EnumPlantType.Plains).setUnlocalizedName("snapdragon");
@@ -470,51 +373,19 @@ public class BlockHandler {
 		blockOfTenebral = new BlockTenebral(this.config.blocktenebralID);
 		burnedNightrock = new BlockBurnedNightrock(this.config.burnednightrockbricksID);
 
-		essentialReducer = new BlockEssentialReducer(this.config.essentialreducerID);
-		alloyInductor = new BlockAlloyInductor(this.config.alloyinductorID);
-		electroplationEngine = new BlockElectroplationEngine(this.config.electroplationengineID);
-		
-		ironboundStone = new BlockBoundStone(this.config.ironboundstoneID, "ironboundStone", "supercraft:ironboundstone");
-		copperboundStone = new BlockBoundStone(this.config.copperboundstoneID, "copperboundStone", "supercraft:copperboundstone");
-		silverboundStone = new BlockBoundStone(this.config.silverboundstoneID, "silverboundStone", "supercraft:silverboundstone");
-		goldboundStone = new BlockBoundStone(this.config.goldboundstoneID, "goldboundStone", "supercraft:goldboundstone");
-
 		cobaltTorch = new BlockCobaltTorch(this.config.torchcobaltID);
-		cobaltBlock = new BlockCobalt(this.config.blockcobaltID, true);
-		cobaltBlockOff = new BlockCobalt(this.config.blockcobaltoffID, false);
 		
 		ghostlyVaporFlowing = new BlockGhostlyVaporFlowing(this.config.ghostlyvaporflowingID);
 		ghostlyVaporStill = new BlockGhostlyVaporStill(this.config.ghostlyvaporstillID);
-		
-		monolithDemission = new BlockMonolithDemission(this.config.monolithdemissionID, false);
-		monolithDemissionActivated = new BlockMonolithDemission(this.config.monolithdemissiononID, true);
-		
-		gravenStone = new BlockGravenStone(this.config.gravenStoneID);
-		
-		monolithInception = new BlockMonolithInception(this.config.monolithinceptionID, false);
-		monolithInceptionActivated = new BlockMonolithInception(this.config.monolithinceptiononID, true);
-	
+
 		inisiaMushroom = new BlockSupercraftMushroom(this.config.mushroominisiaID, "supercraft:mushroominisia", EnumPlantType.Cave).setUnlocalizedName("inisiaMushroom");
 		valensienMushroom = new BlockSupercraftMushroom(this.config.mushroomvalensienID, "supercraft:mushroomvalensien", EnumPlantType.Cave).setUnlocalizedName("valensienMushroom");
 		mortaliaMushroom = new BlockSupercraftMushroom(this.config.mushroommortaliaID, "supercraft:mushroommortalia", EnumPlantType.Cave).setUnlocalizedName("mortaliaMushroom");
-	
-		monolithAscension = new BlockMonolithAscension(this.config.monolithascensionID, false);
-		monolithAscensionActivated = new BlockMonolithAscension(this.config.monolithascensiononID, true);
-	
+
 		radiantLeaves = new BlockLeavesRadiant(this.config.radiantleavesID);
-		
-		monolithTermination = new BlockMonolithTermination(this.config.monolithterminationID, false);
-		monolithTerminationActivated = new BlockMonolithTermination(this.config.monolithterminationonID, true);
 	}
 	
 	private void registerBlocks() {
-		
-		// Material Extensions
-		
-		GameRegistry.registerBlock(coalBlock, "coalBlock");
-	
-		// Supercraft Trees
-		
 		GameRegistry.registerBlock(supercraftLog1, ItemSupercraftLog1.class, "supercraftLog1");
 		GameRegistry.registerBlock(supercraftLog2, ItemSupercraftLog2.class, "supercraftLog2");
 		GameRegistry.registerBlock(supercraftLeaves1, ItemSupercraftLeaves1.class, "supercraftLeaves1");
@@ -531,40 +402,13 @@ public class BlockHandler {
 		GameRegistry.registerBlock(inisiaStairs, "inisiaStairs");
 		GameRegistry.registerBlock(valensienStairs, "valensienStairs");
 		GameRegistry.registerBlock(mortaliaStairs, "mortaliaStairs");
-		
 
-		GameRegistry.registerBlock(aluminumBlock, "aluminumBlock");
-
-		GameRegistry.registerBlock(tantalumBlock, "tantalumBlock");
-
-		GameRegistry.registerBlock(copperBlock, "copperBlock");
-
-		GameRegistry.registerBlock(silverBlock, "silverBlock");
-
-		GameRegistry.registerBlock(electrumBlock, "electrumBlock");
-
-		GameRegistry.registerBlock(elinvarBlock, "elinvarBlock");
-		
-		// Elinvar Conduits
-		
-		GameRegistry.registerBlock(conduit, ItemConduit.class, "conduit");
-		
-		// Refined Crafting Tables
-		
 		GameRegistry.registerBlock(refinedCraftingTable, ItemRefinedCraftingTable.class, "refinedCraftingTable");
-		
-		// Elinvar Generators
-		
-		GameRegistry.registerBlock(redstoneGenerator, "redstoneGenerator");
-		
-		// Supercraft Flowers
-		
+
 		GameRegistry.registerBlock(bluebells, "bluebells");
 		GameRegistry.registerBlock(daisies, "daisies");
 		GameRegistry.registerBlock(snapdragon, "snapdragon");
-		
-		// Palestone
-		
+
 		GameRegistry.registerBlock(palestone, "palestone");
 		GameRegistry.registerBlock(palestoneBricks, "palestoneBricks");
 		GameRegistry.registerBlock(palestoneStairs, "palestoneStairs");
@@ -573,8 +417,6 @@ public class BlockHandler {
 		GameRegistry.registerBlock(overgrownPalestone, "overgrownPalestone");
 		GameRegistry.registerBlock(burnedPalestone, "burnedPalestone");
 		
-		// Nightrock
-
 		GameRegistry.registerBlock(nightrock, "nightrock");
 		GameRegistry.registerBlock(nightrockBricks, "nightrockBricks");
 		GameRegistry.registerBlock(nightrockStairs, "nightrockStairs");
@@ -582,64 +424,19 @@ public class BlockHandler {
 		GameRegistry.registerBlock(blockOfTenebral, "blockOfTenebral");
 		GameRegistry.registerBlock(burnedNightrock, "burnedNightrock");
 
-		GameRegistry.registerBlock(nisilBlock, "nisilBlock");
-		
-		// Machines
-		
-		GameRegistry.registerBlock(ironboundStone, "ironboundStone");
-		GameRegistry.registerBlock(essentialReducer, "essentialReducer");
-		GameRegistry.registerBlock(copperboundStone, "copperboundStone");
-		GameRegistry.registerBlock(radiantSolarGenerator, "radiantSolarGenerator");
-		GameRegistry.registerBlock(alloyInductor, "alloyInductor");
-		GameRegistry.registerBlock(silverboundStone, "silverboundStone");
-		GameRegistry.registerBlock(waveringLunarGenerator, "waveringLunarGenerator");
-		GameRegistry.registerBlock(celestialBalanceGenerator, "celestialBalanceGenerator");
-		GameRegistry.registerBlock(electroplationEngine, "electroplationEngine");
-		GameRegistry.registerBlock(goldboundStone, "goldboundStone");
-		
-
 		GameRegistry.registerBlock(cobaltTorch, "cobaltTorch");
-		GameRegistry.registerBlock(cobaltBlock, "cobaltBlock");
-		GameRegistry.registerBlock(cobaltBlockOff, "cobaltBlockOff");
 
-		GameRegistry.registerBlock(platinumBlock, "platinumBlock");
-
-		GameRegistry.registerBlock(lithiumBlock, "lithiumBlock");
-		
 		GameRegistry.registerBlock(ghostlyVaporFlowing, "ghostlyVaporFlowing");
 		GameRegistry.registerBlock(ghostlyVaporStill, "ghostlyVaporStill");
 		
-		GameRegistry.registerBlock(monolithDemission, "monolithDemission");
-		GameRegistry.registerBlock(monolithDemissionActivated, "monolithDemissionActivated");
-		
-		GameRegistry.registerBlock(gravenStone, ItemGravenStone.class, "gravenStone");
-		
-		GameRegistry.registerBlock(monolithInception, "monolithInception");
-		GameRegistry.registerBlock(monolithInceptionActivated, "monolithInceptionActivated");
-
 		GameRegistry.registerBlock(inisiaMushroom, "inisiaMushroom");
 		GameRegistry.registerBlock(valensienMushroom, "valensienMushroom");
 		GameRegistry.registerBlock(mortaliaMushroom, "mortaliaMushroom");
 		
-		GameRegistry.registerBlock(monolithAscension, "monolithAscension");
-		GameRegistry.registerBlock(monolithAscensionActivated, "monolithAscensionActivated");
-		
 		GameRegistry.registerBlock(radiantLeaves, "radiantLeaves");
-
-		GameRegistry.registerBlock(draconiumBlock, "draconiumBlock");
-		
-		GameRegistry.registerBlock(monolithTermination, "monolithTermination");
-		GameRegistry.registerBlock(monolithTerminationActivated, "monolithTerminationActivated");
 	}
 	
 	private void initializeLanguage() {
-
-		// Material Extensions
-		
-		LanguageRegistry.addName(coalBlock, (String)this.languageHandler.getString(coalBlock));
-		
-		// Supercraft Trees
-	
 		int i = 0;
 		for(String string : (ArrayList<String>)languageHandler.getString(supercraftLog1))  {
 			ItemStack stack = new ItemStack(supercraftLog1, 1, i);
@@ -702,30 +499,6 @@ public class BlockHandler {
 		LanguageRegistry.addName(valensienStairs, (String)this.languageHandler.getString(valensienStairs));
 		LanguageRegistry.addName(mortaliaStairs, (String)this.languageHandler.getString(mortaliaStairs));
 
-		LanguageRegistry.addName(aluminumBlock, (String)this.languageHandler.getString(aluminumBlock));
-
-		LanguageRegistry.addName(tantalumBlock, (String)this.languageHandler.getString(tantalumBlock));
-
-		LanguageRegistry.addName(copperBlock, (String)this.languageHandler.getString(copperBlock));
-		
-
-		LanguageRegistry.addName(silverBlock, (String)this.languageHandler.getString(silverBlock));
-
-		LanguageRegistry.addName(electrumBlock, (String)this.languageHandler.getString(electrumBlock));
-
-		LanguageRegistry.addName(elinvarBlock, (String)this.languageHandler.getString(elinvarBlock));
-		
-		// Elinvar Conduits
-		
-		i = 0;
-		for(String string : (ArrayList<String>)languageHandler.getString(conduit))  {
-			ItemStack stack = new ItemStack(conduit, 1, i);
-			LanguageRegistry.addName(stack, string);
-			i++;
-		}
-		
-		// Refined Crafting Tables
-		
 		i = 0;
 		for(String string : (ArrayList<String>)languageHandler.getString(refinedCraftingTable))  {
 			ItemStack stack = new ItemStack(refinedCraftingTable, 1, i);
@@ -733,18 +506,11 @@ public class BlockHandler {
 			i++;
 		}
 		
-		// Elinvar Generators
-		
-		LanguageRegistry.addName(redstoneGenerator, (String)this.languageHandler.getString(redstoneGenerator));
-		
-		// Supercraft Flowers
-		
+
 		LanguageRegistry.addName(bluebells, (String)this.languageHandler.getString(bluebells));
 		LanguageRegistry.addName(daisies, (String)this.languageHandler.getString(daisies));
 		LanguageRegistry.addName(snapdragon, (String)this.languageHandler.getString(snapdragon));
-		
-		// Palestone
-		
+
 		LanguageRegistry.addName(palestone, (String)this.languageHandler.getString(palestone));
 		LanguageRegistry.addName(palestoneBricks, (String)this.languageHandler.getString(palestoneBricks));
 		LanguageRegistry.addName(palestoneStairs, (String)this.languageHandler.getString(palestoneStairs));
@@ -752,9 +518,7 @@ public class BlockHandler {
 		LanguageRegistry.addName(blockOfGoldenwood, (String)this.languageHandler.getString(blockOfGoldenwood));
 		LanguageRegistry.addName(overgrownPalestone, (String)this.languageHandler.getString(overgrownPalestone));
 		LanguageRegistry.addName(burnedPalestone, (String)this.languageHandler.getString(burnedPalestone));
-		
-		// Nightrock
-		
+
 		LanguageRegistry.addName(nightrock, (String)this.languageHandler.getString(nightrock));
 		LanguageRegistry.addName(nightrockBricks, (String)this.languageHandler.getString(nightrockBricks));
 		LanguageRegistry.addName(nightrockStairs, (String)this.languageHandler.getString(nightrockStairs));
@@ -762,60 +526,16 @@ public class BlockHandler {
 		LanguageRegistry.addName(blockOfTenebral, (String)this.languageHandler.getString(blockOfTenebral));
 		LanguageRegistry.addName(burnedNightrock, (String)this.languageHandler.getString(burnedNightrock));
 
-		LanguageRegistry.addName(nisilBlock, (String)this.languageHandler.getString(nisilBlock));
-		
-		// Machines
-		
-		LanguageRegistry.addName(ironboundStone, (String)this.languageHandler.getString(ironboundStone));
-		LanguageRegistry.addName(essentialReducer, (String)this.languageHandler.getString(essentialReducer));
-		LanguageRegistry.addName(copperboundStone, (String)this.languageHandler.getString(copperboundStone));
-		LanguageRegistry.addName(radiantSolarGenerator, (String)this.languageHandler.getString(radiantSolarGenerator));
-		LanguageRegistry.addName(alloyInductor, (String)this.languageHandler.getString(alloyInductor));
-		LanguageRegistry.addName(silverboundStone, (String)this.languageHandler.getString(silverboundStone));
-		LanguageRegistry.addName(waveringLunarGenerator, (String)this.languageHandler.getString(waveringLunarGenerator));
-		LanguageRegistry.addName(celestialBalanceGenerator, (String)this.languageHandler.getString(celestialBalanceGenerator));
-		LanguageRegistry.addName(electroplationEngine, (String)this.languageHandler.getString(electroplationEngine));
-		LanguageRegistry.addName(goldboundStone, (String)this.languageHandler.getString(goldboundStone));
-
 		LanguageRegistry.addName(cobaltTorch, (String)this.languageHandler.getString(cobaltTorch));
-		LanguageRegistry.addName(cobaltBlock, (String)this.languageHandler.getString(cobaltBlock));
-		LanguageRegistry.addName(cobaltBlockOff, (String)this.languageHandler.getString(cobaltBlockOff));
-		
-
-		LanguageRegistry.addName(platinumBlock, (String)this.languageHandler.getString(platinumBlock));
-		
-
-		LanguageRegistry.addName(lithiumBlock, (String)this.languageHandler.getString(lithiumBlock));
 		
 		LanguageRegistry.addName(ghostlyVaporFlowing, (String)this.languageHandler.getString(ghostlyVaporFlowing));
 		LanguageRegistry.addName(ghostlyVaporStill, (String)this.languageHandler.getString(ghostlyVaporStill));
-		
-		LanguageRegistry.addName(monolithDemission, (String)this.languageHandler.getString(monolithDemission));
-		LanguageRegistry.addName(monolithDemissionActivated, (String)this.languageHandler.getString(monolithDemissionActivated));
-	
-		i = 0;
-		for(String string : (ArrayList<String>)languageHandler.getString(gravenStone))  {
-			ItemStack stack = new ItemStack(gravenStone, 1, i);
-			LanguageRegistry.addName(stack, string);
-			i++;
-		}
-		
-		LanguageRegistry.addName(monolithInception, (String)this.languageHandler.getString(monolithInception));
-		LanguageRegistry.addName(monolithInceptionActivated, (String)this.languageHandler.getString(monolithInceptionActivated));
 
 		LanguageRegistry.addName(inisiaMushroom, (String)this.languageHandler.getString(inisiaMushroom));
 		LanguageRegistry.addName(valensienMushroom, (String)this.languageHandler.getString(valensienMushroom));
 		LanguageRegistry.addName(mortaliaMushroom, (String)this.languageHandler.getString(mortaliaMushroom));
 		
-		LanguageRegistry.addName(monolithAscension, (String)this.languageHandler.getString(monolithAscension));
-		LanguageRegistry.addName(monolithAscensionActivated, (String)this.languageHandler.getString(monolithAscensionActivated));
-		
 		LanguageRegistry.addName(radiantLeaves, (String)this.languageHandler.getString(radiantLeaves));
-	
-		LanguageRegistry.addName(draconiumBlock, (String)this.languageHandler.getString(draconiumBlock));
-		
-		LanguageRegistry.addName(monolithTermination, (String)this.languageHandler.getString(monolithTermination));
-		LanguageRegistry.addName(monolithTerminationActivated, (String)this.languageHandler.getString(monolithTerminationActivated));
 	}
 
 }

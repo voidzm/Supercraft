@@ -23,7 +23,8 @@ public class BlockRedstoneGenerator extends BlockGenerator implements IGenerator
 	
 	public BlockRedstoneGenerator(int id) {
 		super(id);
-		this.setUnlocalizedName("redstoneGenerator");
+		this.setInternalName("redstoneconversiongenerator");
+		this.setExternalName("Redstone Conversion Generator");
 	}
 	
 	public void registerIcons(IconRegister par1IconRegister) {

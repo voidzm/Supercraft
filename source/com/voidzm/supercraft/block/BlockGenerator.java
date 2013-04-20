@@ -14,14 +14,14 @@ import net.minecraft.block.material.Material;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.world.World;
 
-public class BlockGenerator extends Block {
+public class BlockGenerator extends BlockSupercraft {
 
 	public BlockGenerator(int id) {
 		super(id, Material.iron);
 		this.setHardness(3.0F);
 		this.setResistance(5.0F);
 		this.setStepSound(Block.soundMetalFootstep);
-		this.setUnlocalizedName("generator");
+		this.setInternalName("generator");
 		this.setCreativeTab(Supercraft.elinvarTab);
 	}
 	

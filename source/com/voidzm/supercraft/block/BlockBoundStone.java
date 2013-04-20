@@ -12,16 +12,15 @@ import net.minecraft.client.renderer.texture.IconRegister;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.world.World;
 
-public class BlockBoundStone extends Block {
+public class BlockBoundStone extends BlockSupercraft {
 
 	private String iconString;
 	
-	public BlockBoundStone(int par1, String unlocalized, String icon) {
+	public BlockBoundStone(int par1, String icon) {
 		super(par1, Material.rock);
 		this.setHardness(3.0F);
 		this.setResistance(15.0F);
 		this.setStepSound(soundStoneFootstep);
-		this.setUnlocalizedName(unlocalized);
 		this.setCreativeTab(Supercraft.elinvarTab);
 		this.iconString = icon;
 	}

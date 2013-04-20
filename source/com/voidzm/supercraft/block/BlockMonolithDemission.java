@@ -18,7 +18,7 @@ import net.minecraft.world.World;
 import net.minecraft.world.WorldServer;
 import net.minecraftforge.common.DimensionManager;
 
-public class BlockMonolithDemission extends Block {
+public class BlockMonolithDemission extends BlockSupercraft {
 
 	private final boolean isActivated;
 	
@@ -28,10 +28,11 @@ public class BlockMonolithDemission extends Block {
 		this.setResistance(20.0F);
 		this.isActivated = par2;
 		this.setStepSound(soundStoneFootstep);
-		this.setUnlocalizedName("monolithDemission");
+		this.setInternalName("monolithdemission");
+		this.setExternalName("Monolith of Demission");
 		if(!par2) this.setCreativeTab(CreativeTabs.tabBlock);
 		if(par2) {
-			this.setUnlocalizedName("monolithDemissionActivated");
+			this.setInternalName("monolithdemissionactivated");
 			this.setLightValue(0.5F);
 		}
 	}

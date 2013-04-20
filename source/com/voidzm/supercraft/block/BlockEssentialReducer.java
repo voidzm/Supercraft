@@ -18,7 +18,7 @@ import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.Icon;
 import net.minecraft.world.World;
 
-public class BlockEssentialReducer extends BlockContainer {
+public class BlockEssentialReducer extends BlockSupercraft {
 
 	protected Icon textureTop, textureSide, textureBottom;
 	
@@ -27,7 +27,8 @@ public class BlockEssentialReducer extends BlockContainer {
 		this.setHardness(3.0F);
 		this.setResistance(15.0F);
 		this.setStepSound(soundStoneFootstep);
-		this.setUnlocalizedName("essentialReducer");
+		this.setInternalName("essentialreducer");
+		this.setExternalName("Essential Reducer");
 		this.setCreativeTab(Supercraft.elinvarTab);
 	}
 	
@@ -75,7 +76,12 @@ public class BlockEssentialReducer extends BlockContainer {
 	}
 	
 	@Override
-	public TileEntity createNewTileEntity(World var1) {
+	public boolean hasTileEntity(int meta) {
+		return true;
+	}
+	
+	@Override
+	public TileEntity createTileEntity(World world, int metadata) {
 		return new TileEntityEssentialReducer();
 	}
 	

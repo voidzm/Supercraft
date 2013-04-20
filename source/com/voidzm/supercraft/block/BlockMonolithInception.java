@@ -9,7 +9,7 @@ import net.minecraft.block.material.Material;
 import net.minecraft.client.renderer.texture.IconRegister;
 import net.minecraft.creativetab.CreativeTabs;
 
-public class BlockMonolithInception extends Block {
+public class BlockMonolithInception extends BlockSupercraft {
 
 	private final boolean isActivated;
 	
@@ -19,10 +19,11 @@ public class BlockMonolithInception extends Block {
 		this.setResistance(20.0F);
 		this.isActivated = par2;
 		this.setStepSound(soundStoneFootstep);
-		this.setUnlocalizedName("monolithInception");
+		this.setInternalName("monolithinception");
+		this.setExternalName("Monolith of Inception");
 		if(!par2) this.setCreativeTab(CreativeTabs.tabBlock);
 		if(par2) {
-			this.setUnlocalizedName("monolithInceptionActivated");
+			this.setInternalName("monolithinceptionactivated");
 			this.setLightValue(0.75F);
 		}
 	}

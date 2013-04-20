@@ -23,7 +23,7 @@ import com.voidzm.supercraft.tileentity.TileEntityEssentialReducer;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
-public class BlockElectroplationEngine extends BlockContainer {
+public class BlockElectroplationEngine extends BlockSupercraft {
 
 	protected Icon textureTop, textureSide, textureBottom;
 	
@@ -32,7 +32,8 @@ public class BlockElectroplationEngine extends BlockContainer {
 		this.setHardness(3.0F);
 		this.setResistance(15.0F);
 		this.setStepSound(soundStoneFootstep);
-		this.setUnlocalizedName("electroplationEngine");
+		this.setInternalName("electroplationengine");
+		this.setExternalName("Electroplation Engine");
 		this.setCreativeTab(Supercraft.elinvarTab);
 	}
 	
@@ -80,7 +81,12 @@ public class BlockElectroplationEngine extends BlockContainer {
 	}
 	
 	@Override
-	public TileEntity createNewTileEntity(World var1) {
+	public boolean hasTileEntity(int meta) {
+		return true;
+	}
+	
+	@Override
+	public TileEntity createTileEntity(World world, int metadata) {
 		return new TileEntityElectroplationEngine();
 	}
 

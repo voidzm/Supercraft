@@ -20,7 +20,7 @@ import net.minecraft.world.World;
 import net.minecraft.world.WorldServer;
 import net.minecraftforge.common.DimensionManager;
 
-public class BlockMonolithAscension extends Block {
+public class BlockMonolithAscension extends BlockSupercraft {
 
 	private final boolean isActivated;
 	
@@ -30,10 +30,11 @@ public class BlockMonolithAscension extends Block {
 		this.setResistance(20.0F);
 		this.isActivated = par2;
 		this.setStepSound(soundStoneFootstep);
-		this.setUnlocalizedName("monolithAscension");
+		this.setInternalName("monolithascension");
+		this.setExternalName("Monolith of Ascension");
 		if(!par2) this.setCreativeTab(CreativeTabs.tabBlock);
 		if(par2) {
-			this.setUnlocalizedName("monolithAscensionActivated");
+			this.setInternalName("monolithascensionactivated");
 			this.setLightValue(0.5F);
 		}
 	}

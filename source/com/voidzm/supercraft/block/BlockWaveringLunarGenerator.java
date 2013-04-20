@@ -14,13 +14,14 @@ import com.voidzm.supercraft.tileentity.TileEntityConduit;
 import com.voidzm.supercraft.tileentity.TileEntitySolarGenerator;
 import com.voidzm.supercraft.util.Timespan;
 
-public class BlockWaveringLunarGenerator extends BlockContainerGenerator implements IGenerator {
+public class BlockWaveringLunarGenerator extends BlockGenerator implements IGenerator {
 
 	protected Icon textureTop, textureSide, textureBottom;
 	
 	public BlockWaveringLunarGenerator(int id) {
 		super(id);
-		this.setUnlocalizedName("waveringLunarGenerator");
+		this.setInternalName("waveringlunargenerator");
+		this.setExternalName("Wavering Lunar Generator");
 	}
 
 	public void registerIcons(IconRegister par1IconRegister) {
@@ -51,13 +52,16 @@ public class BlockWaveringLunarGenerator extends BlockContainerGenerator impleme
 		else return false;
 	}
 	
+	@Override
 	public boolean hasTileEntity(int meta) {
 		return true;
 	}
 	
-	public TileEntity createNewTileEntity(World par1World) {
+	@Override
+	public TileEntity createTileEntity(World world, int metadata) {
 		Timespan midnight = new Timespan(15000, 21000);
 		ArrayList<Timespan> times = new ArrayList<Timespan>(Arrays.asList(midnight));
 		return new TileEntitySolarGenerator(times);
 	}
+
 }

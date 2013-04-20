@@ -7,6 +7,7 @@ import cpw.mods.fml.common.registry.LanguageRegistry;
 
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
+import net.minecraft.item.ItemBlock;
 import net.minecraft.item.ItemStack;
 
 public class BlockSupercraft extends Block {
@@ -17,6 +18,7 @@ public class BlockSupercraft extends Block {
 	public boolean isMultiblock = false;
 	
 	private ArrayList<String> externalNames = null;
+	private Class<? extends ItemBlock> itemClass = null;
 	
 	public BlockSupercraft(int par1, Material par2Material) {
 		super(par1, par2Material);
@@ -41,15 +43,23 @@ public class BlockSupercraft extends Block {
 		return this.externalName;
 	}
 	
-	public void makeMultiblock(ArrayList<String> names) {
+	public void makeMultiblock(ArrayList<String> names, Class<? extends ItemBlock> itemBlockClass) {
 		this.isMultiblock = true;
 		this.externalNames = names;
+		this.itemClass = itemBlockClass;
+	}
+	
+	public ArrayList<String> fetchExternalNames() {
+		return this.externalNames;
 	}
 	
 	public BlockSupercraft register() {
-		GameRegistry.registerBlock(this, this.internalName);
-		if(!this.isMultiblock) LanguageRegistry.addName(this, this.externalName);
+		if(!this.isMultiblock) {
+			GameRegistry.registerBlock(this, this.internalName);
+			LanguageRegistry.addName(this, this.externalName);
+		}
 		else {
+			GameRegistry.registerBlock(this, this.itemClass, this.internalName);
 			int i = 0;
 			for(String name : externalNames) {
 				ItemStack stack = new ItemStack(this, 1, i);

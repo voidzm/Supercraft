@@ -19,7 +19,7 @@ import net.minecraft.world.World;
 import net.minecraft.world.WorldServer;
 import net.minecraftforge.common.DimensionManager;
 
-public class BlockMonolithTermination extends Block {
+public class BlockMonolithTermination extends BlockSupercraft {
 
 	private final boolean isActivated;
 	
@@ -29,10 +29,11 @@ public class BlockMonolithTermination extends Block {
 		this.setResistance(20.0F);
 		this.isActivated = par2;
 		this.setStepSound(soundStoneFootstep);
-		this.setUnlocalizedName("monolithTermination");
+		this.setInternalName("monolithtermination");
+		this.setExternalName("Monolith of Termination");
 		if(!par2) this.setCreativeTab(CreativeTabs.tabBlock);
 		if(par2) {
-			this.setUnlocalizedName("monolithTerminationActivated");
+			this.setInternalName("monolithterminationactivated");
 			this.setLightValue(0.5F);
 		}
 	}
@@ -49,13 +50,7 @@ public class BlockMonolithTermination extends Block {
 			this.detonate(par1World, par2, par3, par4);
 			return;
 		}
-		//MinecraftServer server = MinecraftServer.getServer();
-		//WorldServer targetWorld = server.worldServerForDimension(theEndID);
 		par5Entity.travelToDimension(theEndID);
-		/*if(par5Entity instanceof EntityPlayerMP) {
-			server.getConfigurationManager().transferPlayerToDimension((EntityPlayerMP)par5Entity, theEndID);
-			return;
-		}*/
 	}
 	
 	public void detonate(World par1World, int par2, int par3, int par4) {

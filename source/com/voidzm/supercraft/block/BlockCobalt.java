@@ -14,7 +14,7 @@ import net.minecraft.client.renderer.texture.IconRegister;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.world.World;
 
-public class BlockCobalt extends Block {
+public class BlockCobalt extends BlockSupercraft {
 
 	private final boolean isGlowing;
 	
@@ -23,11 +23,13 @@ public class BlockCobalt extends Block {
 		this.isGlowing = par2;
 		this.setHardness(0.8F);
 		this.setStepSound(soundStoneFootstep);
-		this.setUnlocalizedName("cobaltBlock");
 		if(par2) {
 			this.setLightValue(1.0F);
 			this.setCreativeTab(CreativeTabs.tabBlock);
+			this.setInternalName("blockcobalt");
 		}
+		else this.setInternalName("blockcobaltoff");
+		this.setExternalName("Block of Cobalt");
 	}
 	
 	@Override

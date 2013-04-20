@@ -1,8 +1,11 @@
 package com.voidzm.supercraft.block;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import com.voidzm.supercraft.Supercraft;
+import com.voidzm.supercraft.item.ItemBlockSupercraft;
+import com.voidzm.supercraft.item.ItemGravenStone;
 
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
@@ -14,17 +17,29 @@ import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.Icon;
 
-public class BlockGravenStone extends Block {
+public class BlockGravenStone extends BlockSupercraft {
 	
 	public Icon[] textures = new Icon[4];
 	
+	private ArrayList<String> names = new ArrayList<String>();
+	
 	public BlockGravenStone(int par1) {
 		super(par1, Material.rock);
+		this.populateNames();
 		this.setHardness(3.0F);
 		this.setResistance(20.0F);
 		this.setStepSound(Block.soundStoneFootstep);
-		this.setUnlocalizedName("gravenStone");
+		this.setInternalName("gravenStone");
+		this.setExternalName("Graven Stone");
+		this.makeMultiblock(this.names, ItemBlockSupercraft.class);
 		this.setCreativeTab(CreativeTabs.tabBlock);
+	}
+	
+	private void populateNames() {
+		this.names.add("Graven Stone of Darkness");
+		this.names.add("Graven Stone of Shadow");
+		this.names.add("Graven Stone of Gleaming");
+		this.names.add("Graven Stone of Brilliance");
 	}
 	
 	public void registerIcons(IconRegister par1IconRegister) {

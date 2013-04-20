@@ -14,13 +14,14 @@ import com.voidzm.supercraft.tileentity.TileEntityConduit;
 import com.voidzm.supercraft.tileentity.TileEntitySolarGenerator;
 import com.voidzm.supercraft.util.Timespan;
 
-public class BlockCelestialBalanceGenerator extends BlockContainerGenerator implements IGenerator {
+public class BlockCelestialBalanceGenerator extends BlockGenerator implements IGenerator {
 
 	protected Icon textureTop, textureSide, textureBottom;
 	
 	public BlockCelestialBalanceGenerator(int id) {
 		super(id);
-		this.setUnlocalizedName("celestialBalanceGenerator");
+		this.setInternalName("celestialbalancegenerator");
+		this.setExternalName("Celestial Balance Generator");
 	}
 
 	public void registerIcons(IconRegister par1IconRegister) {
@@ -51,15 +52,18 @@ public class BlockCelestialBalanceGenerator extends BlockContainerGenerator impl
 		else return false;
 	}
 	
+	@Override
 	public boolean hasTileEntity(int meta) {
 		return true;
 	}
 	
-	public TileEntity createNewTileEntity(World par1World) {
+	@Override
+	public TileEntity createTileEntity(World world, int metadata) {
 		Timespan sunrise1 = new Timespan(22000, 23999);
 		Timespan sunrise2 = new Timespan(0, 2000);
 		Timespan sunset = new Timespan(10000, 14000);
 		ArrayList<Timespan> times = new ArrayList<Timespan>(Arrays.asList(sunrise1, sunrise2, sunset));
 		return new TileEntitySolarGenerator(times);
 	}
+	
 }
