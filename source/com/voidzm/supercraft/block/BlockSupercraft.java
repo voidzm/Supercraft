@@ -2,6 +2,10 @@ package com.voidzm.supercraft.block;
 
 import java.util.ArrayList;
 
+import com.voidzm.supercraft.protocol.IRegisterable;
+import com.voidzm.supercraft.util.RegisterData;
+import com.voidzm.supercraft.util.StartupStats;
+
 import cpw.mods.fml.common.registry.GameRegistry;
 import cpw.mods.fml.common.registry.LanguageRegistry;
 
@@ -57,6 +61,7 @@ public class BlockSupercraft extends Block {
 		if(!this.isMultiblock) {
 			GameRegistry.registerBlock(this, this.internalName);
 			LanguageRegistry.addName(this, this.externalName);
+			StartupStats.blockCreated();
 		}
 		else {
 			GameRegistry.registerBlock(this, this.itemClass, this.internalName);
@@ -64,10 +69,30 @@ public class BlockSupercraft extends Block {
 			for(String name : externalNames) {
 				ItemStack stack = new ItemStack(this, 1, i);
 				LanguageRegistry.addName(stack, name);
+				StartupStats.blockCreated();
 				i++;
 			}
 		}
 		return this;
+	}
+	
+	public static void register(Block block, RegisterData data) {
+		if(!(block instanceof IRegisterable)) return;
+		if(!data.isMultiblock) {
+			GameRegistry.registerBlock(block, data.internalName);
+			LanguageRegistry.addName(block, data.externalName);
+			StartupStats.blockCreated();
+		}
+		else {
+			GameRegistry.registerBlock(block, data.itemBlockClass, data.internalName);
+			int i = 0;
+			for(String name : data.externalNames) {
+				ItemStack stack = new ItemStack(block, 1, i);
+				LanguageRegistry.addName(stack, name);
+				StartupStats.blockCreated();
+				i++;
+			}
+		}
 	}
 
 }

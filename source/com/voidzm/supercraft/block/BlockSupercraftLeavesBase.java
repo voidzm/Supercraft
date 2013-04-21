@@ -18,19 +18,19 @@ import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 import net.minecraftforge.common.IShearable;
 
-public class BlockSupercraftLeavesBase extends BlockLeavesBase implements IShearable {
+public class BlockSupercraftLeavesBase extends BlockSupercraft implements IShearable {
 
 	protected int textureIndex;
 	int[] adjacentTreeBlocks;
 	
 	public BlockSupercraftLeavesBase(int par1) {
-		super(par1, Material.leaves, false);
+		super(par1, Material.leaves);
 		this.setTickRandomly(true);
 		this.setCreativeTab(CreativeTabs.tabDecorations);
 		this.setHardness(0.2F);
 		this.setLightOpacity(1);
 		this.setStepSound(Block.soundGrassFootstep);
-		this.setUnlocalizedName("supercraftLeavesBase");
+		this.setInternalName("supercraftleavesbase");
 	}
 
 	@Override

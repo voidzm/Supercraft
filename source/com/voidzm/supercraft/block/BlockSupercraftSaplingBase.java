@@ -16,7 +16,7 @@ import net.minecraft.world.World;
 import net.minecraft.world.gen.feature.WorldGenerator;
 import net.minecraftforge.event.terraingen.TerrainGen;
 
-public class BlockSupercraftSaplingBase extends BlockFlower {
+public class BlockSupercraftSaplingBase extends BlockSupercraftFlower {
 
     public BlockSupercraftSaplingBase(int par1) {
         super(par1);
@@ -26,7 +26,8 @@ public class BlockSupercraftSaplingBase extends BlockFlower {
         this.setCreativeTab(CreativeTabs.tabDecorations);
         this.setHardness(0.0F);
         this.setStepSound(Block.soundGrassFootstep);
-        this.setUnlocalizedName("supercraftSapling");
+        this.setInternalName("supercraftsaplingbase");
+        this.setExternalName("Supercraft Sapling Base");
     }
 	
     public void updateTick(World par1World, int par2, int par3, int par4, Random par5Random) {

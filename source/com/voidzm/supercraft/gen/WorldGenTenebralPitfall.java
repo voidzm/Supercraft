@@ -46,7 +46,7 @@ public class WorldGenTenebralPitfall extends WorldGenerator {
 						this.setBlock(var1, var3+ix, var4-16, var5+iz, BlockHandler.inscribedNightrock.blockID);
 					}
 					if(iy+depth < 0) this.setBlock(var1, var3+ix, var4+iy, var5+iz, BlockHandler.nightrockBricks.blockID);
-					else if(iy+depth == 0) this.setBlock(var1, var3+ix, var4+iy, var5+iz, BlockHandler.burnedNightrock.blockID);
+					else if(iy+depth == 0) this.setBlock(var1, var3+ix, var4+iy, var5+iz, BlockHandler.burnedNightrockBricks.blockID);
 					else this.setBlock(var1, var3+ix, var4+iy, var5+iz, 0);
 				}
 			}
@@ -54,34 +54,34 @@ public class WorldGenTenebralPitfall extends WorldGenerator {
 		for(int iy = -15; iy < 1; iy++) {
 			for(int iz = -1; iz < 2; iz++) {
 				if(var1.getBlockId(var3+2, var4+iy, var5+iz) == Block.stone.blockID && var2.nextInt(2) == 0) {
-					this.setBlock(var1, var3+2, var4+iy, var5+iz, BlockHandler.burnedNightrock.blockID);
+					this.setBlock(var1, var3+2, var4+iy, var5+iz, BlockHandler.burnedNightrockBricks.blockID);
 				}
 			}
 		}
 		for(int iy = -15; iy < 1; iy++) {
 			for(int iz = -1; iz < 2; iz++) {
 				if(var1.getBlockId(var3-2, var4+iy, var5+iz) == Block.stone.blockID && var2.nextInt(2) == 0) {
-					this.setBlock(var1, var3-2, var4+iy, var5+iz, BlockHandler.burnedNightrock.blockID);
+					this.setBlock(var1, var3-2, var4+iy, var5+iz, BlockHandler.burnedNightrockBricks.blockID);
 				}
 			}
 		}
 		for(int iy = -15; iy < 1; iy++) {
 			for(int ix = -1; ix < 2; ix++) {
 				if(var1.getBlockId(var3+ix, var4+iy, var5+2) == Block.stone.blockID && var2.nextInt(2) == 0) {
-					this.setBlock(var1, var3+ix, var4+iy, var5+2, BlockHandler.burnedNightrock.blockID);
+					this.setBlock(var1, var3+ix, var4+iy, var5+2, BlockHandler.burnedNightrockBricks.blockID);
 				}
 			}
 		}
 		for(int iy = -15; iy < 1; iy++) {
 			for(int ix = -1; ix < 2; ix++) {
 				if(var1.getBlockId(var3+ix, var4+iy, var5-2) == Block.stone.blockID && var2.nextInt(2) == 0) {
-					this.setBlock(var1, var3+ix, var4+iy, var5-2, BlockHandler.burnedNightrock.blockID);
+					this.setBlock(var1, var3+ix, var4+iy, var5-2, BlockHandler.burnedNightrockBricks.blockID);
 				}
 			}
 		}
 		for(int ix = -1; ix < 2; ix++) {
 			for(int iz = -1; iz < 2; iz++) {
-				if(!(ix == 0 && iz == 0)) this.setBlock(var1, var3+ix, var4-1, var5+iz, BlockHandler.burnedNightrock.blockID);
+				if(!(ix == 0 && iz == 0)) this.setBlock(var1, var3+ix, var4-1, var5+iz, BlockHandler.burnedNightrockBricks.blockID);
 			}
 		}
 		this.setBlock(var1, var3, var4-15, var5, Block.chest.blockID);

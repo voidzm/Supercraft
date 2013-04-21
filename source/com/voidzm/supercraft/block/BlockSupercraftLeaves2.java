@@ -1,9 +1,11 @@
 package com.voidzm.supercraft.block;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
 import com.voidzm.supercraft.handler.BlockHandler;
+import com.voidzm.supercraft.item.ItemBlockSupercraft;
 
 import net.minecraft.client.renderer.texture.IconRegister;
 import net.minecraft.creativetab.CreativeTabs;
@@ -14,13 +16,21 @@ import cpw.mods.fml.relauncher.SideOnly;
 
 public class BlockSupercraftLeaves2 extends BlockSupercraftLeavesBase {
 
-	public static final String[] leavesType = new String[] {"goldenwood", "tenebria"};
+	private ArrayList<String> names = new ArrayList<String>();
 	
 	protected Icon[] textures = new Icon[4];
 	
 	public BlockSupercraftLeaves2(int par1) {
 		super(par1);
-		this.setUnlocalizedName("supercraftLeaves2");
+		this.populateNames();
+		this.setInternalName("supercraftleaves2");
+		this.setExternalName("Supercraft Leaves 2");
+		this.makeMultiblock(this.names, ItemBlockSupercraft.class);
+	}
+	
+	private void populateNames() {
+		this.names.add("Goldenwood Leaves");
+		this.names.add("Tenebria Leaves");
 	}
 	
 	public void registerIcons(IconRegister par1IconRegister) {

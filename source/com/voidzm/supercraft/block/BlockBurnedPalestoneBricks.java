@@ -9,14 +9,15 @@ import net.minecraft.block.material.Material;
 import net.minecraft.client.renderer.texture.IconRegister;
 import net.minecraft.creativetab.CreativeTabs;
 
-public class BlockBurnedNightrock extends Block {
+public class BlockBurnedPalestoneBricks extends BlockSupercraft {
 
-	public BlockBurnedNightrock(int par1) {
+	public BlockBurnedPalestoneBricks(int par1) {
 		super(par1, Material.rock);
 		this.setHardness(1.0F);
 		this.setResistance(5.0F);
 		this.setStepSound(soundStoneFootstep);
-		this.setUnlocalizedName("burnedNightrock");
+		this.setInternalName("burnedpalestonebricks");
+		this.setExternalName("Burned Palestone Bricks");
 		this.setCreativeTab(CreativeTabs.tabBlock);
 	}
 	
@@ -32,7 +33,7 @@ public class BlockBurnedNightrock extends Block {
 	
 	@Override
 	public void registerIcons(IconRegister par1IconRegister) {
-		this.blockIcon = par1IconRegister.registerIcon("supercraft:burnednightrockbricks");
+		this.blockIcon = par1IconRegister.registerIcon("supercraft:burnedpalestonebricks");
 	}
 
 }

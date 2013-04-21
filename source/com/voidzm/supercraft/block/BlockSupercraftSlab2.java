@@ -6,11 +6,15 @@
 
 package com.voidzm.supercraft.block;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
 import com.voidzm.supercraft.CommonProxy;
 import com.voidzm.supercraft.handler.BlockHandler;
+import com.voidzm.supercraft.item.ItemBlockSupercraft;
+import com.voidzm.supercraft.protocol.IRegisterable;
+import com.voidzm.supercraft.util.RegisterData;
 
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
@@ -23,15 +27,32 @@ import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.Icon;
 
-public class BlockSupercraftSlab2 extends BlockSupercraftSlabBase {
+public class BlockSupercraftSlab2 extends BlockSupercraftSlabBase implements IRegisterable {
 
+	private ArrayList<String> names = new ArrayList<String>();
+	
 	private final String[] types = new String[] {"palestone", "nightrock"};
 	
 	protected Icon[] textures = new Icon[8];
 	
+	private RegisterData rdata = new RegisterData();
+	
 	public BlockSupercraftSlab2(int par1) {
 		super(par1, Material.rock);
-		this.setUnlocalizedName("supercraftSlab2");
+		this.populateNames();
+		this.buildRegisterData();
+	}
+	
+	private void populateNames() {
+		this.names.add("Palestone Bricks Slab");
+		this.names.add("Nightrock Bricks Slab");
+	}
+	
+	private void buildRegisterData() {
+		rdata.internalName = "supercraftslab2";
+		rdata.isMultiblock = true;
+		rdata.externalNames = this.names;
+		rdata.itemBlockClass = ItemBlockSupercraft.class;
 	}
 	
 	public void registerIcons(IconRegister par1IconRegister) {
@@ -57,6 +78,11 @@ public class BlockSupercraftSlab2 extends BlockSupercraftSlabBase {
         	par3List.add(new ItemStack(par1, 1, 1));
         }
     }
+	
+	@Override
+	public RegisterData getRegisterData() {
+		return this.rdata;
+	}
 	
 }
 

@@ -60,10 +60,10 @@ public class ItemBloodAmber extends Item {
 			}
 			if(!par2EntityPlayer.capabilities.isCreativeMode) par1ItemStack.stackSize--;
 			par3World.setBlock(par4, par5, par6, BlockHandler.blockOfTenebral.blockID);
-			par3World.setBlock(par4+1, par5, par6, BlockHandler.burnedNightrock.blockID);
-			par3World.setBlock(par4-1, par5, par6, BlockHandler.burnedNightrock.blockID);
-			par3World.setBlock(par4, par5, par6+1, BlockHandler.burnedNightrock.blockID);
-			par3World.setBlock(par4, par5, par6-1, BlockHandler.burnedNightrock.blockID);
+			par3World.setBlock(par4+1, par5, par6, BlockHandler.burnedNightrockBricks.blockID);
+			par3World.setBlock(par4-1, par5, par6, BlockHandler.burnedNightrockBricks.blockID);
+			par3World.setBlock(par4, par5, par6+1, BlockHandler.burnedNightrockBricks.blockID);
+			par3World.setBlock(par4, par5, par6-1, BlockHandler.burnedNightrockBricks.blockID);
 			par3World.setBlock(par4+1, par5, par6+1, Block.cobblestone.blockID);
 			par3World.setBlock(par4-1, par5, par6+1, Block.cobblestone.blockID);
 			par3World.setBlock(par4+1, par5, par6-1, Block.cobblestone.blockID);

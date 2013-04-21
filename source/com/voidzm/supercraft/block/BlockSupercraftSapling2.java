@@ -1,11 +1,14 @@
 package com.voidzm.supercraft.block;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
 import com.voidzm.supercraft.gen.WorldGenGoldenwood;
 import com.voidzm.supercraft.gen.WorldGenGoldenwoodShrine;
 import com.voidzm.supercraft.gen.WorldGenTenebria;
+import com.voidzm.supercraft.item.ItemBlockSupercraft;
+import com.voidzm.supercraft.item.ItemSupercraftSapling2;
 
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
@@ -20,10 +23,21 @@ import net.minecraftforge.event.terraingen.TerrainGen;
 
 public class BlockSupercraftSapling2 extends BlockSupercraftSaplingBase {
 
+	private ArrayList<String> names = new ArrayList<String>();
+	
 	protected Icon[] textures = new Icon[4];
 	
 	public BlockSupercraftSapling2(int par1) {
 		super(par1);
+		this.populateNames();
+		this.setInternalName("supercraftsapling2");
+		this.setExternalName("Supercraft Sapling 2");
+		this.makeMultiblock(this.names, ItemSupercraftSapling2.class);
+	}
+	
+	private void populateNames() {
+		this.names.add("Goldenwood Sapling");
+		this.names.add("Tenebria Sapling");
 	}
 	
 	public void registerIcons(IconRegister par1IconRegister) {

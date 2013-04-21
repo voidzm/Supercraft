@@ -155,7 +155,7 @@ public class CraftingHandler {
 		flint = new ItemStack(Item.flint);
 		
 		oliveWood = new ItemStack(BlockHandler.supercraftLog1, 1, 0);
-		olivePlanks = new ItemStack(BlockHandler.supercraftPlanks, 1, 0);
+		olivePlanks = new ItemStack(BlockHandler.supercraftPlanks1, 1, 0);
 		aluminum = new ItemStack(ItemHandler.aluminumIngot);
 		aluminumBlock = new ItemStack(BlockHandler.aluminumBlock);
 		copperChunk = new ItemStack(ItemHandler.copperChunk);
@@ -170,14 +170,14 @@ public class CraftingHandler {
 		elinvarDust = new ItemStack(ItemHandler.elinvarDust);
 		elinvarBlock = new ItemStack(BlockHandler.elinvarBlock);
 		goldenwoodWood = new ItemStack(BlockHandler.supercraftLog1, 1, 1);
-		goldenwoodPlanks = new ItemStack(BlockHandler.supercraftPlanks, 1, 1);
+		goldenwoodPlanks = new ItemStack(BlockHandler.supercraftPlanks1, 1, 1);
 		bluebells = new ItemStack(BlockHandler.bluebells);
 		daisies = new ItemStack(BlockHandler.daisies);
 		palestone = new ItemStack(BlockHandler.palestone);
 		palestoneBricks = new ItemStack(BlockHandler.palestoneBricks);
 		palestoneBrickSlab = new ItemStack(BlockHandler.supercraftSlab2, 1, 0);
 		tenebriaWood = new ItemStack(BlockHandler.supercraftLog1, 1, 2);
-		tenebriaPlanks = new ItemStack(BlockHandler.supercraftPlanks, 1, 2);
+		tenebriaPlanks = new ItemStack(BlockHandler.supercraftPlanks1, 1, 2);
 		nightrock = new ItemStack(BlockHandler.nightrock);
 		nightrockBricks = new ItemStack(BlockHandler.nightrockBricks);
 		nightrockBrickSlab = new ItemStack(BlockHandler.supercraftSlab2, 1, 1);
@@ -207,9 +207,9 @@ public class CraftingHandler {
 		inisiaWood = new ItemStack(BlockHandler.supercraftLog2, 1, 0);
 		valensienWood = new ItemStack(BlockHandler.supercraftLog2, 1, 1);
 		mortaliaWood = new ItemStack(BlockHandler.supercraftLog2, 1, 2);
-		inisiaPlanks = new ItemStack(BlockHandler.supercraftPlanks, 1, 3);
-		valensienPlanks = new ItemStack(BlockHandler.supercraftPlanks, 1, 4);
-		mortaliaPlanks = new ItemStack(BlockHandler.supercraftPlanks, 1, 5);
+		inisiaPlanks = new ItemStack(BlockHandler.supercraftPlanks1, 1, 3);
+		valensienPlanks = new ItemStack(BlockHandler.supercraftPlanks1, 1, 4);
+		mortaliaPlanks = new ItemStack(BlockHandler.supercraftPlanks1, 1, 5);
 		draconium = new ItemStack(ItemHandler.draconium);
 		draconiumBlock = new ItemStack(BlockHandler.draconiumBlock);
 		gravenStoneBrilliance = gravenStoneGleaming = new ItemStack(BlockHandler.gravenStone, 1, 3);
@@ -337,12 +337,12 @@ public class CraftingHandler {
 		if(this.config.doironscraprecipe) GameRegistry.addShapelessRecipe(new ItemStack(ItemHandler.ironScrap, 9), ironIngot);
 		if(this.config.dodiamondshardrecipe) GameRegistry.addShapelessRecipe(new ItemStack(ItemHandler.diamondShard, 9), diamond);
 
-		GameRegistry.addShapelessRecipe(new ItemStack(BlockHandler.supercraftPlanks, 4, 0), oliveWood);
-		GameRegistry.addShapelessRecipe(new ItemStack(BlockHandler.supercraftPlanks, 4, 1), goldenwoodWood);
-		GameRegistry.addShapelessRecipe(new ItemStack(BlockHandler.supercraftPlanks, 4, 2), tenebriaWood);
-		GameRegistry.addShapelessRecipe(new ItemStack(BlockHandler.supercraftPlanks, 4, 3), inisiaWood);
-		GameRegistry.addShapelessRecipe(new ItemStack(BlockHandler.supercraftPlanks, 4, 4), valensienWood);
-		GameRegistry.addShapelessRecipe(new ItemStack(BlockHandler.supercraftPlanks, 4, 5), mortaliaWood);
+		GameRegistry.addShapelessRecipe(new ItemStack(BlockHandler.supercraftPlanks1, 4, 0), oliveWood);
+		GameRegistry.addShapelessRecipe(new ItemStack(BlockHandler.supercraftPlanks1, 4, 1), goldenwoodWood);
+		GameRegistry.addShapelessRecipe(new ItemStack(BlockHandler.supercraftPlanks1, 4, 2), tenebriaWood);
+		GameRegistry.addShapelessRecipe(new ItemStack(BlockHandler.supercraftPlanks1, 4, 3), inisiaWood);
+		GameRegistry.addShapelessRecipe(new ItemStack(BlockHandler.supercraftPlanks1, 4, 4), valensienWood);
+		GameRegistry.addShapelessRecipe(new ItemStack(BlockHandler.supercraftPlanks1, 4, 5), mortaliaWood);
 
 		GameRegistry.addShapelessRecipe(new ItemStack(ItemHandler.aluminumIngot, 9), aluminumBlock);
 
@@ -415,12 +415,12 @@ public class CraftingHandler {
 		OreDictionary.registerOre("logWood", new ItemStack(BlockHandler.supercraftLog2, 1, 1));
 		OreDictionary.registerOre("logWood", new ItemStack(BlockHandler.supercraftLog2, 1, 2));
 		
-		OreDictionary.registerOre("plankWood", new ItemStack(BlockHandler.supercraftPlanks, 1, 0));
-		OreDictionary.registerOre("plankWood", new ItemStack(BlockHandler.supercraftPlanks, 1, 1));
-		OreDictionary.registerOre("plankWood", new ItemStack(BlockHandler.supercraftPlanks, 1, 2));
-		OreDictionary.registerOre("plankWood", new ItemStack(BlockHandler.supercraftPlanks, 1, 3));
-		OreDictionary.registerOre("plankWood", new ItemStack(BlockHandler.supercraftPlanks, 1, 4));
-		OreDictionary.registerOre("plankWood", new ItemStack(BlockHandler.supercraftPlanks, 1, 5));
+		OreDictionary.registerOre("plankWood", new ItemStack(BlockHandler.supercraftPlanks1, 1, 0));
+		OreDictionary.registerOre("plankWood", new ItemStack(BlockHandler.supercraftPlanks1, 1, 1));
+		OreDictionary.registerOre("plankWood", new ItemStack(BlockHandler.supercraftPlanks1, 1, 2));
+		OreDictionary.registerOre("plankWood", new ItemStack(BlockHandler.supercraftPlanks1, 1, 3));
+		OreDictionary.registerOre("plankWood", new ItemStack(BlockHandler.supercraftPlanks1, 1, 4));
+		OreDictionary.registerOre("plankWood", new ItemStack(BlockHandler.supercraftPlanks1, 1, 5));
 		
 		OreDictionary.registerOre("slabWood", new ItemStack(BlockHandler.supercraftSlab1, 1, 0));
 		OreDictionary.registerOre("slabWood", new ItemStack(BlockHandler.supercraftSlab1, 1, 1));

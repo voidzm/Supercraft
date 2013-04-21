@@ -65,7 +65,7 @@ public class WorldGenGoldenwoodShrine extends WorldGenerator {
 				this.setBlock(var1, var3+3, var4-j, var5, BlockHandler.palestoneBricks.blockID);
 			}
 			for(int j = 0; j < height; j++) {
-				this.setBlock(var1, var3+3, var4+j, var5, (j == height-1 ? BlockHandler.overgrownPalestone.blockID : BlockHandler.palestoneBricks.blockID));
+				this.setBlock(var1, var3+3, var4+j, var5, (j == height-1 ? BlockHandler.overgrownPalestoneBricks.blockID : BlockHandler.palestoneBricks.blockID));
 			}
 		}
 		if(openSide != 1) {
@@ -74,7 +74,7 @@ public class WorldGenGoldenwoodShrine extends WorldGenerator {
 				this.setBlock(var1, var3-3, var4-j, var5, BlockHandler.palestoneBricks.blockID);
 			}
 			for(int j = 0; j < height; j++) {
-				this.setBlock(var1, var3-3, var4+j, var5, (j == height-1 ? BlockHandler.overgrownPalestone.blockID : BlockHandler.palestoneBricks.blockID));
+				this.setBlock(var1, var3-3, var4+j, var5, (j == height-1 ? BlockHandler.overgrownPalestoneBricks.blockID : BlockHandler.palestoneBricks.blockID));
 			}
 		}
 		if(openSide != 2) {
@@ -83,7 +83,7 @@ public class WorldGenGoldenwoodShrine extends WorldGenerator {
 				this.setBlock(var1, var3, var4-j, var5+3, BlockHandler.palestoneBricks.blockID);
 			}
 			for(int j = 0; j < height; j++) {
-				this.setBlock(var1, var3, var4+j, var5+3, (j == height-1 ? BlockHandler.overgrownPalestone.blockID : BlockHandler.palestoneBricks.blockID));
+				this.setBlock(var1, var3, var4+j, var5+3, (j == height-1 ? BlockHandler.overgrownPalestoneBricks.blockID : BlockHandler.palestoneBricks.blockID));
 			}
 		}
 		if(openSide != 3) {
@@ -92,7 +92,7 @@ public class WorldGenGoldenwoodShrine extends WorldGenerator {
 				this.setBlock(var1, var3, var4-j, var5-3, BlockHandler.palestoneBricks.blockID);
 			}
 			for(int j = 0; j < height; j++) {
-				this.setBlock(var1, var3, var4+j, var5-3, (j == height-1 ? BlockHandler.overgrownPalestone.blockID : BlockHandler.palestoneBricks.blockID));
+				this.setBlock(var1, var3, var4+j, var5-3, (j == height-1 ? BlockHandler.overgrownPalestoneBricks.blockID : BlockHandler.palestoneBricks.blockID));
 			}
 		}
 		int height = var2.nextInt(3) + 1;
@@ -100,28 +100,28 @@ public class WorldGenGoldenwoodShrine extends WorldGenerator {
 			this.setBlock(var1, var3+2, var4-j, var5+2, BlockHandler.palestoneBricks.blockID);
 		}
 		for(int j = 0; j < height; j++) {
-			this.setBlock(var1, var3+2, var4+j, var5+2, (j == height-1 ? BlockHandler.overgrownPalestone.blockID : BlockHandler.palestoneBricks.blockID));
+			this.setBlock(var1, var3+2, var4+j, var5+2, (j == height-1 ? BlockHandler.overgrownPalestoneBricks.blockID : BlockHandler.palestoneBricks.blockID));
 		}
 		height = var2.nextInt(3) + 1;
 		for(int j = 1; j < 4; j++) {
 			this.setBlock(var1, var3-2, var4-j, var5-2, BlockHandler.palestoneBricks.blockID);
 		}
 		for(int j = 0; j < height; j++) {
-			this.setBlock(var1, var3-2, var4+j, var5-2, (j == height-1 ? BlockHandler.overgrownPalestone.blockID : BlockHandler.palestoneBricks.blockID));
+			this.setBlock(var1, var3-2, var4+j, var5-2, (j == height-1 ? BlockHandler.overgrownPalestoneBricks.blockID : BlockHandler.palestoneBricks.blockID));
 		}
 		height = var2.nextInt(3) + 1;
 		for(int j = 1; j < 4; j++) {
 			this.setBlock(var1, var3+2, var4-j, var5-2, BlockHandler.palestoneBricks.blockID);
 		}
 		for(int j = 0; j < height; j++) {
-			this.setBlock(var1, var3+2, var4+j, var5-2, (j == height-1 ? BlockHandler.overgrownPalestone.blockID : BlockHandler.palestoneBricks.blockID));
+			this.setBlock(var1, var3+2, var4+j, var5-2, (j == height-1 ? BlockHandler.overgrownPalestoneBricks.blockID : BlockHandler.palestoneBricks.blockID));
 		}
 		height = var2.nextInt(3) + 1;
 		for(int j = 1; j < 4; j++) {
 			this.setBlock(var1, var3-2, var4-j, var5+2, BlockHandler.palestoneBricks.blockID);
 		}
 		for(int j = 0; j < height; j++) {
-			this.setBlock(var1, var3-2, var4+j, var5+2, (j == height-1 ? BlockHandler.overgrownPalestone.blockID : BlockHandler.palestoneBricks.blockID));
+			this.setBlock(var1, var3-2, var4+j, var5+2, (j == height-1 ? BlockHandler.overgrownPalestoneBricks.blockID : BlockHandler.palestoneBricks.blockID));
 		}
 		this.setBlock(var1, var3, var4, var5, Block.chest.blockID);
 		TileEntityChest chestTE = (TileEntityChest)var1.getBlockTileEntity(var3, var4, var5);
@@ -141,14 +141,14 @@ public class WorldGenGoldenwoodShrine extends WorldGenerator {
 	private int randomlySelectDefiniteBlock(Random rand) {
 		int selection = rand.nextInt(4);
 		if(selection == 0) return BlockHandler.palestone.blockID;
-		else if(selection != 3) return BlockHandler.overgrownPalestone.blockID;
+		else if(selection != 3) return BlockHandler.overgrownPalestoneBricks.blockID;
 		else return BlockHandler.palestoneBricks.blockID;
 	}
 	
 	private int randomlySelectIndefiniteBlock(Random rand) {
 		int selection = rand.nextInt(4);
 		if(selection == 0) return BlockHandler.palestone.blockID;
-		else if(selection == 1) return BlockHandler.overgrownPalestone.blockID;
+		else if(selection == 1) return BlockHandler.overgrownPalestoneBricks.blockID;
 		else if(selection == 2) return BlockHandler.palestoneBricks.blockID;
 		else return Block.grass.blockID;
 	}

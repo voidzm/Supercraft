@@ -7,14 +7,15 @@ import net.minecraft.block.material.Material;
 import net.minecraft.client.renderer.texture.IconRegister;
 import net.minecraft.creativetab.CreativeTabs;
 
-public class BlockInscribedNightrock extends Block {
+public class BlockInscribedNightrock extends BlockSupercraft {
 
 	public BlockInscribedNightrock(int par1) {
 		super(par1, Material.rock);
 		this.setHardness(3.0F);
 		this.setResistance(15.0F);
 		this.setStepSound(soundStoneFootstep);
-		this.setUnlocalizedName("inscribedNightrock");
+		this.setInternalName("inscribednightrock");
+		this.setExternalName("Inscribed Nightrock");
 		this.setCreativeTab(CreativeTabs.tabBlock);
 	}
 	

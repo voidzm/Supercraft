@@ -5,32 +5,26 @@
 
 package com.voidzm.supercraft.handler;
 
-import java.util.ArrayList;
+import net.minecraft.block.Block;
+import net.minecraftforge.common.EnumPlantType;
 
 import com.voidzm.supercraft.block.*;
 import com.voidzm.supercraft.block.BlockStorage.StorageType;
-import com.voidzm.supercraft.client.ClientProxy;
-import com.voidzm.supercraft.item.*;
+import com.voidzm.supercraft.util.StartupStats;
 import com.voidzm.supercraft.util.SupercraftConfiguration;
-
-import cpw.mods.fml.common.registry.GameRegistry;
-import cpw.mods.fml.common.registry.LanguageRegistry;
-
-import net.minecraft.block.Block;
-import net.minecraft.block.material.Material;
-import net.minecraft.item.ItemBlock;
-import net.minecraft.item.ItemStack;
-import net.minecraftforge.common.EnumPlantType;
 
 public class BlockHandler {
 	
-	protected LanguageHandler languageHandler = new LanguageHandler();
 	protected SupercraftConfiguration config;
+	
+	//**  Glass  **//
 	
 	public static Block reinforcedGlass;
 	public static Block temperedGlass;
 	public static Block ornateGlass;
 	public static Block impactGlass;
+	
+	//**  Ores  **//
 	
 	public static Block aluminumOre;
 	public static Block copperOre;
@@ -51,6 +45,8 @@ public class BlockHandler {
 	public static Block jadeOre;
 	public static Block voltasniaOre;
 	
+	//**  Storage Blocks  **//
+	
 	public static Block coalBlock;
 	public static Block aluminumBlock;
 	public static Block copperBlock;
@@ -66,6 +62,13 @@ public class BlockHandler {
 	public static Block cobaltBlockOff;
 
 	public static Block draconiumBlock;
+
+	//**  Decor  **//
+	
+	public static Block refinedCraftingTable;
+	public static Block cobaltTorch;
+	
+	//**  Elinvar  **//
 	
 	public static Block conduit;
 	
@@ -83,6 +86,8 @@ public class BlockHandler {
 	public static Block alloyInductor;
 	public static Block electroplationEngine;
 
+	//**  Monoliths  **//
+	
 	public static Block gravenStone;
 	
 	public static Block monolithDemission;
@@ -94,18 +99,38 @@ public class BlockHandler {
 	public static Block monolithTermination;
 	public static Block monolithTerminationActivated;
 	
-	
-	
+	//**  Trees  **//
 	
 	public static Block supercraftLog1;
 	public static Block supercraftLog2;
 	public static Block supercraftLeaves1;
 	public static Block supercraftLeaves2;
-	public static Block supercraftPlanks;
+	public static Block radiantLeaves;
 	public static Block supercraftSapling1;
 	public static Block supercraftSapling2;
+	public static Block supercraftPlanks1;
+	
+	//**  Building Blocks  **//
+	
+	public static Block palestone;
+	public static Block palestoneBricks;
+	public static Block overgrownPalestoneBricks;
+	public static Block burnedPalestoneBricks;
+	public static Block inscribedPalestone;
+	public static Block blockOfGoldenwood;
+	
+	public static Block nightrock;
+	public static Block nightrockBricks;
+	public static Block burnedNightrockBricks;
+	public static Block inscribedNightrock;
+	public static Block blockOfTenebral;
+	
+	//**  Slabs  **//
+	
 	public static Block supercraftSlab1;
 	public static Block supercraftSlab2;
+	
+	//**  Stairs  **//
 	
 	public static Block oliveStairs;
 	public static Block goldenwoodStairs;
@@ -113,38 +138,22 @@ public class BlockHandler {
 	public static Block inisiaStairs;
 	public static Block valensienStairs;
 	public static Block mortaliaStairs;
+	public static Block palestoneStairs;
+	public static Block nightrockStairs;
 	
-	public static Block refinedCraftingTable;
+	//**  Plants  **//
 	
 	public static Block bluebells;
 	public static Block daisies;
 	public static Block snapdragon;
-	
-	public static Block palestone;
-	public static Block palestoneBricks;
-	public static Block palestoneStairs;
-	public static Block inscribedPalestone;
-	public static Block blockOfGoldenwood;
-	public static Block overgrownPalestone;
-	public static Block burnedPalestone;
-	
-	public static Block nightrock;
-	public static Block nightrockBricks;
-	public static Block nightrockStairs;
-	public static Block inscribedNightrock;
-	public static Block blockOfTenebral;
-	public static Block burnedNightrock;
-
-	public static Block cobaltTorch;
-
-	public static Block ghostlyVaporFlowing;
-	public static Block ghostlyVaporStill;
-
 	public static Block inisiaMushroom;
 	public static Block valensienMushroom;
 	public static Block mortaliaMushroom;
 
-	public static Block radiantLeaves;
+	//**  Liquids  **//
+	
+	public static Block ghostlyVaporFlowing;
+	public static Block ghostlyVaporStill;
 
 	public void init(SupercraftConfiguration configObject) {
 		if(this.config != null) {
@@ -155,121 +164,32 @@ public class BlockHandler {
 		}
 		this.config = configObject;
 		this.createBlocks();
-		this.populateLanguage();
-		this.registerBlocks();
-		this.initializeLanguage();
-		System.out.println("[Supercraft] " + languageHandler.count() + " blocks added.");
-	}
-
-	private void populateLanguage() {
-		ArrayList<String> supercraftLog1List = new ArrayList<String>();
-		supercraftLog1List.add("Olive Wood");
-		supercraftLog1List.add("Goldenwood Wood");
-		supercraftLog1List.add("Tenebria Wood");
-		supercraftLog1List.add("Crystalline Tenebria Wood");
-		languageHandler.add(supercraftLog1, supercraftLog1List);
-		
-		ArrayList<String> supercraftLog2List = new ArrayList<String>();
-		supercraftLog2List.add("Inisia Wood");
-		supercraftLog2List.add("Valensien Wood");
-		supercraftLog2List.add("Mortalia Wood");
-		languageHandler.add(supercraftLog2, supercraftLog2List);
-		
-		ArrayList<String> supercraftLeaves1List = new ArrayList<String>();
-		supercraftLeaves1List.add("Olive Leaves");
-		languageHandler.add(supercraftLeaves1, supercraftLeaves1List);
-		
-		ArrayList<String> supercraftLeaves2List = new ArrayList<String>();
-		supercraftLeaves2List.add("Goldenwood Leaves");
-		supercraftLeaves2List.add("Tenebria Leaves");
-		languageHandler.add(supercraftLeaves2, supercraftLeaves2List);
-		
-		ArrayList<String> supercraftPlanksList = new ArrayList<String>();
-		supercraftPlanksList.add("Olive Wood Planks");
-		supercraftPlanksList.add("Goldenwood Wood Planks");
-		supercraftPlanksList.add("Tenebria Wood Planks");
-		supercraftPlanksList.add("Inisia Wood Planks");
-		supercraftPlanksList.add("Valensien Wood Planks");
-		supercraftPlanksList.add("Mortalia Wood Planks");
-		languageHandler.add(supercraftPlanks, supercraftPlanksList);
-		
-		ArrayList<String> supercraftSapling1List = new ArrayList<String>();
-		supercraftSapling1List.add("Olive Sapling");
-		languageHandler.add(supercraftSapling1, supercraftSapling1List);
-		
-		ArrayList<String> supercraftSapling2List = new ArrayList<String>();
-		supercraftSapling2List.add("Goldenwood Sapling");
-		supercraftSapling2List.add("Tenebria Sapling");
-		languageHandler.add(supercraftSapling2, supercraftSapling2List);
-		
-		ArrayList<String> supercraftSlab1List = new ArrayList<String>();
-		supercraftSlab1List.add("Olive Wood Slab");
-		supercraftSlab1List.add("Goldenwood Wood Slab");
-		supercraftSlab1List.add("Tenebria Wood Slab");
-		supercraftSlab1List.add("Inisia Wood Slab");
-		supercraftSlab1List.add("Valensien Wood Slab");
-		supercraftSlab1List.add("Mortalia Wood Slab");
-		languageHandler.add(supercraftSlab1, supercraftSlab1List);
-		
-		ArrayList<String> supercraftSlab2List = new ArrayList<String>();
-		supercraftSlab2List.add("Palestone Bricks Slab");
-		supercraftSlab2List.add("Nightrock Bricks Slab");
-		languageHandler.add(supercraftSlab2, supercraftSlab2List);
-		
-		languageHandler.add(oliveStairs, "Olive Wood Stairs");
-		languageHandler.add(goldenwoodStairs, "Goldenwood Wood Stairs");
-		languageHandler.add(tenebriaStairs, "Tenebria Wood Stairs");
-		languageHandler.add(inisiaStairs, "Inisia Wood Stairs");
-		languageHandler.add(valensienStairs, "Valensien Wood Stairs");
-		languageHandler.add(mortaliaStairs, "Mortalia Wood Stairs");
-		
-		ArrayList<String> refinedCraftingTableList = new ArrayList<String>();
-		refinedCraftingTableList.add("Stone Crafting Table");
-		refinedCraftingTableList.add("Stone Crafting Table");
-		refinedCraftingTableList.add("Stone Crafting Table");
-		refinedCraftingTableList.add("Nether Crafting Table");
-		refinedCraftingTableList.add("End Crafting Table");
-		refinedCraftingTableList.add("Palestone Crafting Table");
-		refinedCraftingTableList.add("Nightrock Crafting Table");
-		languageHandler.add(refinedCraftingTable, refinedCraftingTableList);
-
-		languageHandler.add(bluebells, "Bluebells");
-		languageHandler.add(daisies, "Daisies");
-		languageHandler.add(snapdragon, "Snapdragon");
-		
-		languageHandler.add(palestone, "Palestone");
-		languageHandler.add(palestoneBricks, "Palestone Bricks");
-		languageHandler.add(palestoneStairs, "Palestone Brick Stairs");
-		languageHandler.add(inscribedPalestone, "Inscribed Palestone");
-		languageHandler.add(blockOfGoldenwood, "Block of the Goldenwood");
-		languageHandler.add(overgrownPalestone, "Overgrown Palestone Bricks");
-		languageHandler.add(burnedPalestone, "Burned Palestone Bricks");
-		
-		languageHandler.add(nightrock, "Nightrock");
-		languageHandler.add(nightrockBricks, "Nightrock Bricks");
-		languageHandler.add(nightrockStairs, "Nightrock Brick Stairs");
-		languageHandler.add(inscribedNightrock, "Inscribed Nightrock");
-		languageHandler.add(blockOfTenebral, "Block of the Tenebral");
-		languageHandler.add(burnedNightrock, "Burned Nightrock Bricks");
-	
-		languageHandler.add(cobaltTorch, "Cobalt Torch");
-
-		languageHandler.add(ghostlyVaporFlowing, "Ghostly Vapor");
-		languageHandler.add(ghostlyVaporStill, "Ghostly Vapor");
-
-		languageHandler.add(inisiaMushroom, "Inisia Mushroom");
-		languageHandler.add(valensienMushroom, "Valensien Mushroom");
-		languageHandler.add(mortaliaMushroom, "Mortalia Mushroom");
-		
-		languageHandler.add(radiantLeaves, "Radiant Leaves");
+		StartupStats.outputBlockStats();
 	}
 	
 	private void createBlocks() {
+		this.createGlass();
+		this.createOres();
+		this.createStorageBlocks();
+		this.createDecor();
+		this.createElinvar();
+		this.createMonoliths();
+		this.createTrees();
+		this.createBuildingBlocks();
+		this.createSlabs();
+		this.createStairs();
+		this.createPlants();
+		this.createLiquids();
+	}
+	
+	private void createGlass() {
 		reinforcedGlass = new BlockReinforcedGlass(this.config.reinforcedglassID).register();
 		temperedGlass = new BlockTemperedGlass(this.config.temperedglassID).register();
 		ornateGlass = new BlockOrnateGlass(this.config.ornateglassID).register();
 		impactGlass = new BlockImpactGlass(this.config.impactglassID).register();
-		
+	}
+	
+	private void createOres() {
 		aluminumOre = new BlockStoneOre(this.config.orealuminumID, "supercraft:orealuminum").setInternalName("orealuminum").setExternalName("Aluminum Ore").register();
 		copperOre = new BlockStoneOre(this.config.orecopperID, "supercraft:orecopper").setInternalName("orecopper").setExternalName("Copper Ore").register();
 		silverOre = new BlockStoneOre(this.config.oresilverID, "supercraft:oresilver").setInternalName("oresilver").setExternalName("Silver Ore").register();
@@ -287,7 +207,9 @@ public class BlockHandler {
 		luxificenOre = new BlockStoneOre(this.config.oreluxificenID, "supercraft:oreluxificen", this.config.luxificendustID).setExtraDrop(3).setInternalName("oreluxificen").setExternalName("Luxificen Ore").register();
 		jadeOre = new BlockStoneOre(this.config.orejadeID, "supercraft:orejade").setInternalName("orejade").setExternalName("Jade Ore").register();
 		voltasniaOre = new BlockStoneOre(this.config.orevoltasniaID, "supercraft:orevoltasnia", this.config.voltasniarodID).setInternalName("orevoltasnia").setExternalName("Voltasnia Ore").register();
-		
+	}
+	
+	private void createStorageBlocks() {
 		coalBlock = new BlockStorage(this.config.blockcoalID, "supercraft:blockcoal", StorageType.DUST).setInternalName("blockcoal").setExternalName("Block of Coal").register();
 		aluminumBlock = new BlockStorage(this.config.blockaluminumID, "supercraft:blockaluminum").setInternalName("blockaluminum").setExternalName("Block of Aluminum").register();
 		copperBlock = new BlockStorage(this.config.blockcopperID, "supercraft:blockcopper").setInternalName("blockcopper").setExternalName("Block of Copper").register();
@@ -303,7 +225,16 @@ public class BlockHandler {
 		cobaltBlockOff = new BlockCobalt(this.config.blockcobaltoffID, false).register();
 		
 		draconiumBlock = new BlockStorage(this.config.blockdraconiumID, "supercraft:blockdraconium", StorageType.CRYSTAL).setInternalName("blockdraconium").setExternalName("Block of Draconium").register();
-		
+	}
+	
+	
+	private void createDecor() {
+		refinedCraftingTable = new BlockRefinedCraftingTable(this.config.refinedcraftingtableID).register();
+		cobaltTorch = new BlockCobaltTorch(this.config.torchcobaltID);
+		BlockSupercraft.register(cobaltTorch, ((BlockCobaltTorch)cobaltTorch).getRegisterData());
+	}
+	
+	private void createElinvar() {
 		conduit = new BlockConduit(this.config.conduitID).register();
 		
 		redstoneGenerator = new BlockRedstoneGenerator(this.config.redstoneconversiongeneratorID).register();
@@ -319,7 +250,9 @@ public class BlockHandler {
 		essentialReducer = new BlockEssentialReducer(this.config.essentialreducerID).register();
 		alloyInductor = new BlockAlloyInductor(this.config.alloyinductorID).register();
 		electroplationEngine = new BlockElectroplationEngine(this.config.electroplationengineID).register();
-		
+	}
+	
+	private void createMonoliths() {
 		gravenStone = new BlockGravenStone(this.config.gravenStoneID).register();
 		
 		monolithDemission = new BlockMonolithDemission(this.config.monolithdemissionID, false).register();
@@ -330,212 +263,74 @@ public class BlockHandler {
 		monolithAscensionActivated = new BlockMonolithAscension(this.config.monolithascensiononID, true).register();
 		monolithTermination = new BlockMonolithTermination(this.config.monolithterminationID, false).register();
 		monolithTerminationActivated = new BlockMonolithTermination(this.config.monolithterminationonID, true).register();
+	}
+	
+	private void createTrees() {
+		supercraftLog1 = new BlockSupercraftLog1(this.config.woodsupercraft1ID).register();
+		supercraftLog2 = new BlockSupercraftLog2(this.config.woodsupercraft2ID).register();
+		supercraftLeaves1 = new BlockSupercraftLeaves1(this.config.leavessupercraft1ID).register();
+		supercraftLeaves2 = new BlockSupercraftLeaves2(this.config.leavessupercraft2ID).register();
+		radiantLeaves = new BlockLeavesRadiant(this.config.radiantleavesID).register();
+		supercraftSapling1 = new BlockSupercraftSapling1(this.config.saplingsupercraft1ID).register();
+		supercraftSapling2 = new BlockSupercraftSapling2(this.config.saplingsupercraft2ID).register();
+		supercraftPlanks1 = new BlockSupercraftPlanks1(this.config.plankssupercraft1ID).register();
+	}
+	
+	private void createBuildingBlocks() {
+		palestone = new BlockPalestone(this.config.palestoneID).register();
+		palestoneBricks = new BlockPalestoneBricks(this.config.palestonebricksID).register();
+		overgrownPalestoneBricks = new BlockOvergrownPalestoneBricks(this.config.overgrownpalestonebricksID).register();
+		burnedPalestoneBricks = new BlockBurnedPalestoneBricks(this.config.burnedpalestonebricksID).register();
+		inscribedPalestone = new BlockInscribedPalestone(this.config.inscribedpalestoneID).register();
+		blockOfGoldenwood = new BlockGoldenwood(this.config.blockgoldenwoodID).register();
 		
-		
-		
-		
-		
-		supercraftLog1 = new BlockSupercraftLog1(this.config.woodsupercraft1ID);
-		supercraftLog2 = new BlockSupercraftLog2(this.config.woodsupercraft2ID);
-		supercraftLeaves1 = new BlockSupercraftLeaves1(this.config.leavessupercraft1ID);
-		supercraftLeaves2 = new BlockSupercraftLeaves2(this.config.leavessupercraft2ID);
-		supercraftPlanks = new BlockSupercraftPlanks(this.config.plankssupercraft1ID);
-		supercraftSapling1 = new BlockSupercraftSapling1(this.config.saplingsupercraft1ID);
-		supercraftSapling2 = new BlockSupercraftSapling2(this.config.saplingsupercraft2ID);
+		nightrock = new BlockNightrock(this.config.nightrockID).register();
+		nightrockBricks = new BlockNightrockBricks(this.config.nightrockbricksID).register();
+		burnedNightrockBricks = new BlockBurnedNightrockBricks(this.config.burnednightrockbricksID).register();
+		inscribedNightrock = new BlockInscribedNightrock(this.config.inscribednightrockID).register();
+		blockOfTenebral = new BlockTenebral(this.config.blocktenebralID).register();
+	}
+	
+	private void createSlabs() {
 		supercraftSlab1 = new BlockSupercraftSlab1(this.config.slabsupercraft1ID);
+		BlockSupercraft.register(supercraftSlab1, ((BlockSupercraftSlab1)supercraftSlab1).getRegisterData());
 		supercraftSlab2 = new BlockSupercraftSlab2(this.config.slabsupercraft2ID);
-		
-		oliveStairs = new BlockSupercraftStairs(this.config.stairsoliveID, supercraftPlanks, 0).setUnlocalizedName("oliveStairs");
-		goldenwoodStairs = new BlockSupercraftStairs(this.config.stairsgoldenwoodID, supercraftPlanks, 1).setUnlocalizedName("goldenwoodStairs");
-		tenebriaStairs = new BlockSupercraftStairs(this.config.stairstenebriaID, supercraftPlanks, 2).setUnlocalizedName("tenebriaStairs");
-		inisiaStairs = new BlockSupercraftStairs(this.config.stairsinisiaID, supercraftPlanks, 3).setUnlocalizedName("inisiaStairs");
-		valensienStairs = new BlockSupercraftStairs(this.config.stairsvalensienID, supercraftPlanks, 4).setUnlocalizedName("valensienStairs");
-		mortaliaStairs = new BlockSupercraftStairs(this.config.stairsmortaliaID, supercraftPlanks, 5).setUnlocalizedName("mortaliaStairs");
-
-		refinedCraftingTable = new BlockRefinedCraftingTable(this.config.refinedcraftingtableID);
-
-		bluebells = new BlockSupercraftFlower(this.config.bluebellsID, "supercraft:bluebells", EnumPlantType.Plains).setUnlocalizedName("bluebells");
-		daisies = new BlockSupercraftFlower(this.config.daisiesID, "supercraft:daisies", EnumPlantType.Plains).setUnlocalizedName("daisies");
-		snapdragon = new BlockSupercraftFlower(this.config.snapdragonID, "supercraft:snapdragon", EnumPlantType.Plains).setUnlocalizedName("snapdragon");
-
-		palestone = new BlockPalestone(this.config.palestoneID);
-		palestoneBricks = new BlockPalestoneBricks(this.config.palestonebricksID);
-		palestoneStairs = new BlockSupercraftStairs(this.config.stairspalestoneID, palestoneBricks, 0).setUnlocalizedName("palestoneStairs");
-		inscribedPalestone = new BlockInscribedPalestone(this.config.inscribedpalestoneID);
-		blockOfGoldenwood = new BlockGoldenwood(this.config.blockgoldenwoodID);
-		overgrownPalestone = new BlockOvergrownPalestone(this.config.overgrownpalestonebricksID);
-		burnedPalestone = new BlockBurnedPalestone(this.config.burnedpalestonebricksID);
-
-		nightrock = new BlockNightrock(this.config.nightrockID);
-		nightrockBricks = new BlockNightrockBricks(this.config.nightrockbricksID);
-		nightrockStairs = new BlockSupercraftStairs(this.config.stairsnightrockID, nightrockBricks, 0).setUnlocalizedName("nightrockStairs");
-		inscribedNightrock = new BlockInscribedNightrock(this.config.inscribednightrockID);
-		blockOfTenebral = new BlockTenebral(this.config.blocktenebralID);
-		burnedNightrock = new BlockBurnedNightrock(this.config.burnednightrockbricksID);
-
-		cobaltTorch = new BlockCobaltTorch(this.config.torchcobaltID);
-		
+		BlockSupercraft.register(supercraftSlab2, ((BlockSupercraftSlab2)supercraftSlab2).getRegisterData());
+	}
+	
+	private void createStairs() {
+		oliveStairs = new BlockSupercraftStairs(this.config.stairsoliveID, supercraftPlanks1, 0, "stairsolive", "Olive Wood Stairs");
+		BlockSupercraft.register(oliveStairs, ((BlockSupercraftStairs)oliveStairs).getRegisterData());
+		goldenwoodStairs = new BlockSupercraftStairs(this.config.stairsgoldenwoodID, supercraftPlanks1, 1, "stairsgoldenwood", "Goldenwood Wood Stairs");
+		BlockSupercraft.register(goldenwoodStairs, ((BlockSupercraftStairs)goldenwoodStairs).getRegisterData());
+		tenebriaStairs = new BlockSupercraftStairs(this.config.stairstenebriaID, supercraftPlanks1, 2, "stairstenebria", "Tenebria Wood Stairs");
+		BlockSupercraft.register(tenebriaStairs, ((BlockSupercraftStairs)tenebriaStairs).getRegisterData());
+		inisiaStairs = new BlockSupercraftStairs(this.config.stairsinisiaID, supercraftPlanks1, 3, "stairsinisia", "Inisia Wood Stairs");
+		BlockSupercraft.register(inisiaStairs, ((BlockSupercraftStairs)inisiaStairs).getRegisterData());
+		valensienStairs = new BlockSupercraftStairs(this.config.stairsvalensienID, supercraftPlanks1, 4, "stairsvalensien", "Valensien Wood Stairs");
+		BlockSupercraft.register(valensienStairs, ((BlockSupercraftStairs)valensienStairs).getRegisterData());
+		mortaliaStairs = new BlockSupercraftStairs(this.config.stairsmortaliaID, supercraftPlanks1, 5, "stairsmortalia", "Mortalia Wood Stairs");
+		BlockSupercraft.register(mortaliaStairs, ((BlockSupercraftStairs)mortaliaStairs).getRegisterData());
+		palestoneStairs = new BlockSupercraftStairs(this.config.stairspalestoneID, palestoneBricks, 0, "stairspalestone", "Palestone Brick Stairs");
+		BlockSupercraft.register(palestoneStairs, ((BlockSupercraftStairs)palestoneStairs).getRegisterData());
+		nightrockStairs = new BlockSupercraftStairs(this.config.stairsnightrockID, nightrockBricks, 0, "stairsnightrock", "Nightrock Brick Stairs");
+		BlockSupercraft.register(nightrockStairs, ((BlockSupercraftStairs)nightrockStairs).getRegisterData());
+	}
+	
+	private void createPlants() {
+		bluebells = new BlockSupercraftFlower(this.config.bluebellsID, "supercraft:bluebells", EnumPlantType.Plains).setInternalName("bluebells").setExternalName("Bluebells").register();
+		daisies = new BlockSupercraftFlower(this.config.daisiesID, "supercraft:daisies", EnumPlantType.Plains).setInternalName("daisies").setExternalName("Daisies").register();
+		snapdragon = new BlockSupercraftFlower(this.config.snapdragonID, "supercraft:snapdragon", EnumPlantType.Plains).setInternalName("snapdragon").setExternalName("Snapdragon").register();
+		inisiaMushroom = new BlockSupercraftMushroom(this.config.mushroominisiaID, "supercraft:mushroominisia", EnumPlantType.Cave).setInternalName("mushroominisia").setExternalName("Inisia Mushroom").register();
+		valensienMushroom = new BlockSupercraftMushroom(this.config.mushroomvalensienID, "supercraft:mushroomvalensien", EnumPlantType.Cave).setInternalName("mushroomvalensien").setExternalName("Valensien Mushroom").register();
+		mortaliaMushroom = new BlockSupercraftMushroom(this.config.mushroommortaliaID, "supercraft:mushroommortalia", EnumPlantType.Cave).setInternalName("mushroommortalia").setExternalName("Mortalia Mushroom").register();
+	}
+	
+	private void createLiquids() {
 		ghostlyVaporFlowing = new BlockGhostlyVaporFlowing(this.config.ghostlyvaporflowingID);
+		BlockSupercraft.register(ghostlyVaporFlowing, ((BlockGhostlyVaporFlowing)ghostlyVaporFlowing).getRegisterData());
 		ghostlyVaporStill = new BlockGhostlyVaporStill(this.config.ghostlyvaporstillID);
-
-		inisiaMushroom = new BlockSupercraftMushroom(this.config.mushroominisiaID, "supercraft:mushroominisia", EnumPlantType.Cave).setUnlocalizedName("inisiaMushroom");
-		valensienMushroom = new BlockSupercraftMushroom(this.config.mushroomvalensienID, "supercraft:mushroomvalensien", EnumPlantType.Cave).setUnlocalizedName("valensienMushroom");
-		mortaliaMushroom = new BlockSupercraftMushroom(this.config.mushroommortaliaID, "supercraft:mushroommortalia", EnumPlantType.Cave).setUnlocalizedName("mortaliaMushroom");
-
-		radiantLeaves = new BlockLeavesRadiant(this.config.radiantleavesID);
-	}
-	
-	private void registerBlocks() {
-		GameRegistry.registerBlock(supercraftLog1, ItemSupercraftLog1.class, "supercraftLog1");
-		GameRegistry.registerBlock(supercraftLog2, ItemSupercraftLog2.class, "supercraftLog2");
-		GameRegistry.registerBlock(supercraftLeaves1, ItemSupercraftLeaves1.class, "supercraftLeaves1");
-		GameRegistry.registerBlock(supercraftLeaves2, ItemSupercraftLeaves2.class, "supercraftLeaves2");
-		GameRegistry.registerBlock(supercraftPlanks, ItemSupercraftPlanks.class, "supercraftPlanks");
-		GameRegistry.registerBlock(supercraftSapling1, ItemSupercraftSapling1.class, "supercraftSapling1");
-		GameRegistry.registerBlock(supercraftSapling2, ItemSupercraftSapling2.class, "supercraftSapling2");
-		GameRegistry.registerBlock(supercraftSlab1, ItemSupercraftSlab1.class, "supercraftSlab1");
-		GameRegistry.registerBlock(supercraftSlab2, ItemSupercraftSlab2.class, "supercraftSlab2");
-		
-		GameRegistry.registerBlock(oliveStairs, "oliveStairs");
-		GameRegistry.registerBlock(goldenwoodStairs, "goldenwoodStairs");
-		GameRegistry.registerBlock(tenebriaStairs, "tenebriaStairs");
-		GameRegistry.registerBlock(inisiaStairs, "inisiaStairs");
-		GameRegistry.registerBlock(valensienStairs, "valensienStairs");
-		GameRegistry.registerBlock(mortaliaStairs, "mortaliaStairs");
-
-		GameRegistry.registerBlock(refinedCraftingTable, ItemRefinedCraftingTable.class, "refinedCraftingTable");
-
-		GameRegistry.registerBlock(bluebells, "bluebells");
-		GameRegistry.registerBlock(daisies, "daisies");
-		GameRegistry.registerBlock(snapdragon, "snapdragon");
-
-		GameRegistry.registerBlock(palestone, "palestone");
-		GameRegistry.registerBlock(palestoneBricks, "palestoneBricks");
-		GameRegistry.registerBlock(palestoneStairs, "palestoneStairs");
-		GameRegistry.registerBlock(inscribedPalestone, "inscribedPalestone");
-		GameRegistry.registerBlock(blockOfGoldenwood, "blockOfGoldenwood");
-		GameRegistry.registerBlock(overgrownPalestone, "overgrownPalestone");
-		GameRegistry.registerBlock(burnedPalestone, "burnedPalestone");
-		
-		GameRegistry.registerBlock(nightrock, "nightrock");
-		GameRegistry.registerBlock(nightrockBricks, "nightrockBricks");
-		GameRegistry.registerBlock(nightrockStairs, "nightrockStairs");
-		GameRegistry.registerBlock(inscribedNightrock, "inscribedNightrock");
-		GameRegistry.registerBlock(blockOfTenebral, "blockOfTenebral");
-		GameRegistry.registerBlock(burnedNightrock, "burnedNightrock");
-
-		GameRegistry.registerBlock(cobaltTorch, "cobaltTorch");
-
-		GameRegistry.registerBlock(ghostlyVaporFlowing, "ghostlyVaporFlowing");
-		GameRegistry.registerBlock(ghostlyVaporStill, "ghostlyVaporStill");
-		
-		GameRegistry.registerBlock(inisiaMushroom, "inisiaMushroom");
-		GameRegistry.registerBlock(valensienMushroom, "valensienMushroom");
-		GameRegistry.registerBlock(mortaliaMushroom, "mortaliaMushroom");
-		
-		GameRegistry.registerBlock(radiantLeaves, "radiantLeaves");
-	}
-	
-	private void initializeLanguage() {
-		int i = 0;
-		for(String string : (ArrayList<String>)languageHandler.getString(supercraftLog1))  {
-			ItemStack stack = new ItemStack(supercraftLog1, 1, i);
-			LanguageRegistry.addName(stack, string);
-			i++;
-		}
-		i = 0;
-		for(String string : (ArrayList<String>)languageHandler.getString(supercraftLog2))  {
-			ItemStack stack = new ItemStack(supercraftLog2, 1, i);
-			LanguageRegistry.addName(stack, string);
-			i++;
-		}
-		i = 0;
-		for(String string : (ArrayList<String>)languageHandler.getString(supercraftLeaves1))  {
-			ItemStack stack = new ItemStack(supercraftLeaves1, 1, i);
-			LanguageRegistry.addName(stack, string);
-			i++;
-		}
-		i = 0;
-		for(String string : (ArrayList<String>)languageHandler.getString(supercraftLeaves2))  {
-			ItemStack stack = new ItemStack(supercraftLeaves2, 1, i);
-			LanguageRegistry.addName(stack, string);
-			i++;
-		}
-		i = 0;
-		for(String string : (ArrayList<String>)languageHandler.getString(supercraftPlanks))  {
-			ItemStack stack = new ItemStack(supercraftPlanks, 1, i);
-			LanguageRegistry.addName(stack, string);
-			i++;
-		}
-		i = 0;
-		for(String string : (ArrayList<String>)languageHandler.getString(supercraftSapling1))  {
-			ItemStack stack = new ItemStack(supercraftSapling1, 1, i);
-			LanguageRegistry.addName(stack, string);
-			i++;
-		}
-		i = 0;
-		for(String string : (ArrayList<String>)languageHandler.getString(supercraftSapling2))  {
-			ItemStack stack = new ItemStack(supercraftSapling2, 1, i);
-			LanguageRegistry.addName(stack, string);
-			i++;
-		}
-		i = 0;
-		for(String string : (ArrayList<String>)languageHandler.getString(supercraftSlab1))  {
-			ItemStack stack = new ItemStack(supercraftSlab1, 1, i);
-			LanguageRegistry.addName(stack, string);
-			i++;
-		}
-		i = 0;
-		for(String string : (ArrayList<String>)languageHandler.getString(supercraftSlab2))  {
-			ItemStack stack = new ItemStack(supercraftSlab2, 1, i);
-			LanguageRegistry.addName(stack, string);
-			i++;
-		}
-		
-		LanguageRegistry.addName(oliveStairs, (String)this.languageHandler.getString(oliveStairs));
-		LanguageRegistry.addName(goldenwoodStairs, (String)this.languageHandler.getString(goldenwoodStairs));
-		LanguageRegistry.addName(tenebriaStairs, (String)this.languageHandler.getString(tenebriaStairs));
-		LanguageRegistry.addName(inisiaStairs, (String)this.languageHandler.getString(inisiaStairs));
-		LanguageRegistry.addName(valensienStairs, (String)this.languageHandler.getString(valensienStairs));
-		LanguageRegistry.addName(mortaliaStairs, (String)this.languageHandler.getString(mortaliaStairs));
-
-		i = 0;
-		for(String string : (ArrayList<String>)languageHandler.getString(refinedCraftingTable))  {
-			ItemStack stack = new ItemStack(refinedCraftingTable, 1, i);
-			LanguageRegistry.addName(stack, string);
-			i++;
-		}
-		
-
-		LanguageRegistry.addName(bluebells, (String)this.languageHandler.getString(bluebells));
-		LanguageRegistry.addName(daisies, (String)this.languageHandler.getString(daisies));
-		LanguageRegistry.addName(snapdragon, (String)this.languageHandler.getString(snapdragon));
-
-		LanguageRegistry.addName(palestone, (String)this.languageHandler.getString(palestone));
-		LanguageRegistry.addName(palestoneBricks, (String)this.languageHandler.getString(palestoneBricks));
-		LanguageRegistry.addName(palestoneStairs, (String)this.languageHandler.getString(palestoneStairs));
-		LanguageRegistry.addName(inscribedPalestone, (String)this.languageHandler.getString(inscribedPalestone));
-		LanguageRegistry.addName(blockOfGoldenwood, (String)this.languageHandler.getString(blockOfGoldenwood));
-		LanguageRegistry.addName(overgrownPalestone, (String)this.languageHandler.getString(overgrownPalestone));
-		LanguageRegistry.addName(burnedPalestone, (String)this.languageHandler.getString(burnedPalestone));
-
-		LanguageRegistry.addName(nightrock, (String)this.languageHandler.getString(nightrock));
-		LanguageRegistry.addName(nightrockBricks, (String)this.languageHandler.getString(nightrockBricks));
-		LanguageRegistry.addName(nightrockStairs, (String)this.languageHandler.getString(nightrockStairs));
-		LanguageRegistry.addName(inscribedNightrock, (String)this.languageHandler.getString(inscribedNightrock));
-		LanguageRegistry.addName(blockOfTenebral, (String)this.languageHandler.getString(blockOfTenebral));
-		LanguageRegistry.addName(burnedNightrock, (String)this.languageHandler.getString(burnedNightrock));
-
-		LanguageRegistry.addName(cobaltTorch, (String)this.languageHandler.getString(cobaltTorch));
-		
-		LanguageRegistry.addName(ghostlyVaporFlowing, (String)this.languageHandler.getString(ghostlyVaporFlowing));
-		LanguageRegistry.addName(ghostlyVaporStill, (String)this.languageHandler.getString(ghostlyVaporStill));
-
-		LanguageRegistry.addName(inisiaMushroom, (String)this.languageHandler.getString(inisiaMushroom));
-		LanguageRegistry.addName(valensienMushroom, (String)this.languageHandler.getString(valensienMushroom));
-		LanguageRegistry.addName(mortaliaMushroom, (String)this.languageHandler.getString(mortaliaMushroom));
-		
-		LanguageRegistry.addName(radiantLeaves, (String)this.languageHandler.getString(radiantLeaves));
+		BlockSupercraft.register(ghostlyVaporStill, ((BlockGhostlyVaporStill)ghostlyVaporStill).getRegisterData());
 	}
 
 }

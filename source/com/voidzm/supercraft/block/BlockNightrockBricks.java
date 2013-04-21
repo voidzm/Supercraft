@@ -11,14 +11,15 @@ import net.minecraft.client.renderer.texture.IconRegister;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.world.World;
 
-public class BlockNightrockBricks extends Block {
+public class BlockNightrockBricks extends BlockSupercraft {
 
 	public BlockNightrockBricks(int par1) {
 		super(par1, Material.rock);
 		this.setHardness(2.0F);
 		this.setResistance(10.0F);
 		this.setStepSound(soundStoneFootstep);
-		this.setUnlocalizedName("nightrockBricks");
+		this.setInternalName("nightrockbricks");
+		this.setExternalName("Nightrock Bricks");
 		this.setCreativeTab(CreativeTabs.tabBlock);
 	}
 	

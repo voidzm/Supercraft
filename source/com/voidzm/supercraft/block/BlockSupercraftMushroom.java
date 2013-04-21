@@ -6,25 +6,29 @@ import com.voidzm.supercraft.CommonProxy;
 import com.voidzm.supercraft.gen.WorldGenDeepTree;
 import com.voidzm.supercraft.handler.BlockHandler;
 
+import net.minecraft.block.Block;
 import net.minecraft.block.BlockFlower;
 import net.minecraft.block.BlockMushroom;
 import net.minecraft.block.material.Material;
 import net.minecraft.client.renderer.texture.IconRegister;
 import net.minecraft.world.World;
 import net.minecraftforge.common.EnumPlantType;
+import net.minecraftforge.common.ForgeDirection;
 
-public class BlockSupercraftMushroom extends BlockMushroom {
+public class BlockSupercraftMushroom extends BlockSupercraftFlower {
 
 	public String iconLocation;
 	
 	private EnumPlantType plantType;
 	
 	public BlockSupercraftMushroom(int par1, String par2, EnumPlantType type) {
-		super(par1, par2);
+		super(par1, par2, type);
 		this.setHardness(0.0F);
 		this.setStepSound(soundGrassFootstep);
 		this.iconLocation = par2;
 		this.plantType = type;
+		float f = 0.2F;
+		this.setBlockBounds(0.5F - f, 0.0F, 0.5F - f, 0.5F + f, f * 2.0F, 0.5F + f);
 	}
 	
 	public EnumPlantType getPlantType(World world, int x, int y, int z) {
@@ -94,6 +98,23 @@ public class BlockSupercraftMushroom extends BlockMushroom {
 				}
 			}
 		}
+	}
+	
+	public boolean canPlaceBlockAt(World par1World, int par2, int par3, int par4){
+		return super.canPlaceBlockAt(par1World, par2, par3, par4) && this.canBlockStay(par1World, par2, par3, par4);
+	}
+	
+	protected boolean canThisPlantGrowOnThisBlockID(int par1){
+		return Block.opaqueCubeLookup[par1];
+	}
+	
+	public boolean canBlockStay(World par1World, int par2, int par3, int par4) {
+		if(par3 >= 0 && par3 < 256) {
+			int l = par1World.getBlockId(par2, par3 - 1, par4);
+			Block soil = Block.blocksList[l];
+			return (l == Block.mycelium.blockID || par1World.getFullBlockLightValue(par2, par3, par4) < 13) && (soil != null && soil.canSustainPlant(par1World, par2, par3 - 1, par4, ForgeDirection.UP, this));
+		}
+		else return false;
 	}
 
 }

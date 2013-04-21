@@ -16,7 +16,8 @@ public class BlockLeavesRadiant extends BlockSupercraftColoredLeavesBase {
 	
 	public BlockLeavesRadiant(int par1) {
 		super(par1);
-		this.setUnlocalizedName("radiantLeaves");
+		this.setInternalName("radiantleaves");
+		this.setExternalName("Radiant Leaves");
 		this.setLightValue(0.375F);
 	}
 	

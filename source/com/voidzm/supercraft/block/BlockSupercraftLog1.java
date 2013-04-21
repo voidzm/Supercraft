@@ -1,6 +1,9 @@
 package com.voidzm.supercraft.block;
 
+import java.util.ArrayList;
 import java.util.List;
+
+import com.voidzm.supercraft.item.ItemBlockSupercraft;
 
 import net.minecraft.client.renderer.texture.IconRegister;
 import net.minecraft.creativetab.CreativeTabs;
@@ -8,9 +11,21 @@ import net.minecraft.item.ItemStack;
 
 public class BlockSupercraftLog1 extends BlockSupercraftLogBase {
 
+	private ArrayList<String> names = new ArrayList<String>();
+	
 	public BlockSupercraftLog1(int par1) {
 		super(par1);
-		this.setUnlocalizedName("supercraftLog1");
+		this.populateNames();
+		this.setInternalName("supercraftlog1");
+		this.setExternalName("Supercraft Log 1");
+		this.makeMultiblock(this.names, ItemBlockSupercraft.class);
+	}
+	
+	private void populateNames() {
+		this.names.add("Olive Wood");
+		this.names.add("Goldenwood Wood");
+		this.names.add("Tenebria Wood");
+		this.names.add("Crystalline Tenebria Wood");
 	}
 	
 	@Override

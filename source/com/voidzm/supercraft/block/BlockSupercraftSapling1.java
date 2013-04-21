@@ -1,9 +1,12 @@
 package com.voidzm.supercraft.block;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
 import com.voidzm.supercraft.gen.WorldGenOlive;
+import com.voidzm.supercraft.item.ItemBlockSupercraft;
+import com.voidzm.supercraft.item.ItemSupercraftSapling1;
 
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
@@ -18,10 +21,20 @@ import net.minecraftforge.event.terraingen.TerrainGen;
 
 public class BlockSupercraftSapling1 extends BlockSupercraftSaplingBase {
 
+	private ArrayList<String> names = new ArrayList<String>();
+	
 	protected Icon[] textures = new Icon[4];
 	
 	public BlockSupercraftSapling1(int par1) {
 		super(par1);
+		this.populateNames();
+		this.setInternalName("supercraftsapling1");
+		this.setExternalName("Supercraft Sapling 1");
+		this.makeMultiblock(this.names, ItemSupercraftSapling1.class);
+	}
+	
+	private void populateNames() {
+		this.names.add("Olive Sapling");
 	}
 	
 	public void registerIcons(IconRegister par1IconRegister) {

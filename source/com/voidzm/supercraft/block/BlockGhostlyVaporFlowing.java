@@ -1,5 +1,8 @@
 package com.voidzm.supercraft.block;
 
+import com.voidzm.supercraft.protocol.IRegisterable;
+import com.voidzm.supercraft.util.RegisterData;
+
 import net.minecraft.block.BlockFlowing;
 import net.minecraft.block.material.Material;
 import net.minecraft.client.renderer.texture.IconRegister;
@@ -10,17 +13,21 @@ import net.minecraft.potion.PotionEffect;
 import net.minecraft.util.Icon;
 import net.minecraft.world.World;
 
-public class BlockGhostlyVaporFlowing extends BlockFlowing {
+public class BlockGhostlyVaporFlowing extends BlockFlowing implements IRegisterable {
 
 	public static Icon stillVapor;
 	public static Icon flowingVapor;
+	
+	private RegisterData rdata = new RegisterData();
 	
 	public BlockGhostlyVaporFlowing(int par1) {
 		super(par1, Material.water);
 		this.setHardness(100.0F);
 		this.setLightValue(0.375F);
-		this.setUnlocalizedName("ghostlyVapor");
+		this.setUnlocalizedName("ghostlyvaporflowing");
 		this.disableStats();
+		this.rdata.internalName = "ghostlyvaporflowing";
+		this.rdata.externalName = "Ghostly Vapor";
 	}
 	
 	public void registerIcons(IconRegister par1IconRegister) {
@@ -43,6 +50,11 @@ public class BlockGhostlyVaporFlowing extends BlockFlowing {
 			player.addPotionEffect(new PotionEffect(14, 100, 0));
 			player.addPotionEffect(new PotionEffect(15, 100, 0));
 		}
+	}
+
+	@Override
+	public RegisterData getRegisterData() {
+		return this.rdata;
 	}
 
 }

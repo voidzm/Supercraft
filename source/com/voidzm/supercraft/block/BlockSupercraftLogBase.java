@@ -11,7 +11,7 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.util.Icon;
 import net.minecraft.world.World;
 
-public class BlockSupercraftLogBase extends Block {
+public class BlockSupercraftLogBase extends BlockSupercraft {
 
 	protected Icon[][] textures = new Icon[4][2];
 	
@@ -20,7 +20,7 @@ public class BlockSupercraftLogBase extends Block {
 		this.setCreativeTab(CreativeTabs.tabBlock);
 		this.setHardness(2.0F);
 		this.setStepSound(Block.soundWoodFootstep);
-		this.setUnlocalizedName("supercraftLogBase");
+		this.setInternalName("supercraftlogbase");
 	}
 	
 	public int getRenderType() {

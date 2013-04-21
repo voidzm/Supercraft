@@ -6,9 +6,11 @@
 
 package com.voidzm.supercraft.block;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import com.voidzm.supercraft.CommonProxy;
+import com.voidzm.supercraft.item.ItemBlockSupercraft;
 
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
@@ -20,17 +22,31 @@ import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.Icon;
 
-public class BlockSupercraftPlanks extends Block {
+public class BlockSupercraftPlanks1 extends BlockSupercraft {
 
+	private ArrayList<String> names = new ArrayList<String>();
+	
 	protected Icon[] textures = new Icon[16];
 	
-	public BlockSupercraftPlanks(int par1) {
+	public BlockSupercraftPlanks1(int par1) {
 		super(par1, Material.wood);
+		this.populateNames();
 		this.setCreativeTab(CreativeTabs.tabBlock);
 		this.setHardness(2.0F);
 		this.setResistance(5.0F);
 		this.setStepSound(Block.soundWoodFootstep);
-		this.setUnlocalizedName("supercraftPlanks");
+		this.setInternalName("supercraftplanks1");
+		this.setExternalName("Supercraft Planks 1");
+		this.makeMultiblock(this.names, ItemBlockSupercraft.class);
+	}
+	
+	private void populateNames() {
+		this.names.add("Olive Wood Planks");
+		this.names.add("Goldenwood Wood Planks");
+		this.names.add("Tenebria Wood Planks");
+		this.names.add("Inisia Wood Planks");
+		this.names.add("Valensien Wood Planks");
+		this.names.add("Mortalia Wood Planks");
 	}
 	
 	public void registerIcons(IconRegister par1IconRegister) {

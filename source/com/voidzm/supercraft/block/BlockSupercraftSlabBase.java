@@ -11,6 +11,8 @@ import java.util.Random;
 
 import com.voidzm.supercraft.CommonProxy;
 import com.voidzm.supercraft.handler.BlockHandler;
+import com.voidzm.supercraft.protocol.IRegisterable;
+import com.voidzm.supercraft.util.RegisterData;
 
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
@@ -31,7 +33,7 @@ public class BlockSupercraftSlabBase extends BlockHalfSlab {
 		this.setResistance(5.0F);
 		if(par2 == Material.wood) this.setStepSound(Block.soundWoodFootstep);
 		else this.setStepSound(Block.soundStoneFootstep);
-		this.setUnlocalizedName("supercraftSlab");
+		this.setUnlocalizedName("supercraftslabbase");
 	}
 	
 	protected ItemStack createStackedBlock(int par1) {
@@ -41,6 +43,6 @@ public class BlockSupercraftSlabBase extends BlockHalfSlab {
 	public String getFullSlabName(int par1) {
 		return null;
     }
-
+	
 }
 

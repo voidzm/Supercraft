@@ -6,11 +6,13 @@
 
 package com.voidzm.supercraft.block;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import com.voidzm.supercraft.CommonProxy;
 import com.voidzm.supercraft.Supercraft;
 import com.voidzm.supercraft.gui.SCGuiCrafting;
+import com.voidzm.supercraft.item.ItemBlockSupercraft;
 
 import cpw.mods.fml.common.FMLCommonHandler;
 import cpw.mods.fml.relauncher.Side;
@@ -27,17 +29,32 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.util.Icon;
 import net.minecraft.world.World;
 
-public class BlockRefinedCraftingTable extends Block {
+public class BlockRefinedCraftingTable extends BlockSupercraft {
 
+	private ArrayList<String> names = new ArrayList<String>();
+	
 	protected Icon[][] textures = new Icon[16][3];
 	
 	public BlockRefinedCraftingTable(int par1) {
 		super(par1, Material.rock);
+		this.populateNames();
 		this.setHardness(1.5F);
 		this.setResistance(10.0F);
 		this.setStepSound(soundStoneFootstep);
 		this.setCreativeTab(CreativeTabs.tabDecorations);
-		this.setUnlocalizedName("refinedCraftingTable");
+		this.setInternalName("refinedcraftingtable");
+		this.setExternalName("Refined Crafting Table");
+		this.makeMultiblock(this.names, ItemBlockSupercraft.class);
+	}
+	
+	private void populateNames() {
+		this.names.add("Stone Crafting Table");
+		this.names.add("Stone Crafting Table");
+		this.names.add("Stone Crafting Table");
+		this.names.add("Nether Crafting Table");
+		this.names.add("End Crafting Table");
+		this.names.add("Palestone Crafting Table");
+		this.names.add("Nightrock Crafting Table");
 	}
 	
 	public void registerIcons(IconRegister par1IconRegister) {

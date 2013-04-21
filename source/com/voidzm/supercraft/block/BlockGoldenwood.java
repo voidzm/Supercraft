@@ -7,7 +7,7 @@ import net.minecraft.block.material.Material;
 import net.minecraft.client.renderer.texture.IconRegister;
 import net.minecraft.creativetab.CreativeTabs;
 
-public class BlockGoldenwood extends Block {
+public class BlockGoldenwood extends BlockSupercraft {
 
 	public BlockGoldenwood(int par1) {
 		super(par1, Material.rock);
@@ -15,7 +15,8 @@ public class BlockGoldenwood extends Block {
 		this.setResistance(15.0F);
 		this.setLightValue(0.8F);
 		this.setStepSound(soundStoneFootstep);
-		this.setUnlocalizedName("blockOfGoldenwood");
+		this.setInternalName("blockgoldenwood");
+		this.setExternalName("Block of the Goldenwood");
 		this.setCreativeTab(CreativeTabs.tabBlock);
 	}
 	
