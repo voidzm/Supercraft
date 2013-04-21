@@ -12,19 +12,23 @@ import net.minecraft.util.EnumMovingObjectType;
 import net.minecraft.util.MovingObjectPosition;
 import net.minecraft.world.World;
 
-public class ItemArcaneBucket extends Item {
+public class ItemArcaneBucket extends ItemSupercraft {
 
 	private int liquidID;
 	private String icon;
 	
 	public ItemArcaneBucket(int par1, int par2, String iconID) {
-		super(par1);
+		super(par1, iconID);
 		this.liquidID = par2;
 		this.icon = iconID;
 		this.setMaxStackSize(par2 == 0 ? 16 : 1);
 		this.setCreativeTab(CreativeTabs.tabMisc);
-		this.setUnlocalizedName("arcaneBucket");
-		if(par2 == BlockHandler.ghostlyVaporFlowing.blockID) this.setUnlocalizedName("bucketGhostlyVapor");
+		this.setInternalName("arcanebucket");
+		this.setExternalName("Arcane Bucket");
+		if(par2 == BlockHandler.ghostlyVaporFlowing.blockID) {
+			this.setInternalName("bucketghostlyvapor");
+			this.setExternalName("Ghostly Vapor Bucket");
+		}
 		if(par2 == 0) this.setContainerItem(ItemHandler.arcaneBucket);
 	}
 	

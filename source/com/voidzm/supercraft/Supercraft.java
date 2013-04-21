@@ -74,8 +74,6 @@ public class Supercraft {
 	@SidedProxy(clientSide="com.voidzm.supercraft.client.ClientProxy", serverSide="com.voidzm.supercraft.CommonProxy")
 	public static CommonProxy proxy;
 	
-	public static final BlockHandler blockHandler = new BlockHandler();
-	public static final ItemHandler itemHandler = new ItemHandler();
 	public static final CraftingHandler craftingHandler = new CraftingHandler();
 	public static final BiomeHandler biomeHandler = new BiomeHandler();
 	public static final FuelHandler fuelHandler = new FuelHandler();
@@ -97,8 +95,8 @@ public class Supercraft {
 	
 	@Init
 	public void load(FMLInitializationEvent event) {
-		blockHandler.init(configuration);
-		itemHandler.init(configuration);
+		BlockHandler.init(configuration);
+		ItemHandler.init(configuration);
 		craftingHandler.init(configuration);
 		biomeHandler.init(configuration);
 		dimensionHandler.init(configuration);

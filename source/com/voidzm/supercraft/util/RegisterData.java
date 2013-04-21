@@ -9,7 +9,7 @@ public class RegisterData {
 	public String internalName;
 	public String externalName;
 	
-	public boolean isMultiblock = false;
+	public boolean isMulti = false;
 	
 	public ArrayList<String> externalNames = null;
 	public Class<? extends ItemBlock> itemBlockClass = null;

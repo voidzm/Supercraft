@@ -15,7 +15,7 @@ import com.voidzm.supercraft.util.SupercraftConfiguration;
 
 public class BlockHandler {
 	
-	protected SupercraftConfiguration config;
+	private static SupercraftConfiguration config;
 	
 	//**  Glass  **//
 	
@@ -155,181 +155,181 @@ public class BlockHandler {
 	public static Block ghostlyVaporFlowing;
 	public static Block ghostlyVaporStill;
 
-	public void init(SupercraftConfiguration configObject) {
-		if(this.config != null) {
+	public static void init(SupercraftConfiguration configObject) {
+		if(config != null) {
 			throw new RuntimeException("Block handler already loaded with configuration, cannot initialize again!"); 
 		}
 		if(configObject == null) {
 			throw new RuntimeException("Configuration required for block handler initialization!");
 		}
-		this.config = configObject;
-		this.createBlocks();
+		config = configObject;
+		createBlocks();
 		StartupStats.outputBlockStats();
 	}
 	
-	private void createBlocks() {
-		this.createGlass();
-		this.createOres();
-		this.createStorageBlocks();
-		this.createDecor();
-		this.createElinvar();
-		this.createMonoliths();
-		this.createTrees();
-		this.createBuildingBlocks();
-		this.createSlabs();
-		this.createStairs();
-		this.createPlants();
-		this.createLiquids();
+	private static void createBlocks() {
+		createGlass();
+		createOres();
+		createStorageBlocks();
+		createDecor();
+		createElinvar();
+		createMonoliths();
+		createTrees();
+		createBuildingBlocks();
+		createSlabs();
+		createStairs();
+		createPlants();
+		createLiquids();
 	}
 	
-	private void createGlass() {
-		reinforcedGlass = new BlockReinforcedGlass(this.config.reinforcedglassID).register();
-		temperedGlass = new BlockTemperedGlass(this.config.temperedglassID).register();
-		ornateGlass = new BlockOrnateGlass(this.config.ornateglassID).register();
-		impactGlass = new BlockImpactGlass(this.config.impactglassID).register();
+	private static void createGlass() {
+		reinforcedGlass = new BlockReinforcedGlass(config.reinforcedglassID).register();
+		temperedGlass = new BlockTemperedGlass(config.temperedglassID).register();
+		ornateGlass = new BlockOrnateGlass(config.ornateglassID).register();
+		impactGlass = new BlockImpactGlass(config.impactglassID).register();
 	}
 	
-	private void createOres() {
-		aluminumOre = new BlockStoneOre(this.config.orealuminumID, "supercraft:orealuminum").setInternalName("orealuminum").setExternalName("Aluminum Ore").register();
-		copperOre = new BlockStoneOre(this.config.orecopperID, "supercraft:orecopper").setInternalName("orecopper").setExternalName("Copper Ore").register();
-		silverOre = new BlockStoneOre(this.config.oresilverID, "supercraft:oresilver").setInternalName("oresilver").setExternalName("Silver Ore").register();
-		electrumOre = new BlockStoneOre(this.config.oreelectrumID, "supercraft:oreelectrum").setInternalName("oreelectrum").setExternalName("Electrum Ore").register();
-		tantalumOre = new BlockStoneOre(this.config.oretantalumID, "supercraft:oretantalum").setInternalName("oretantalum").setExternalName("Tantalum Ore").register();
-		nisilOre = new BlockStoneOre(this.config.orenisilID, "supercraft:orenisil").setInternalName("orenisil").setExternalName("Nisil Ore").register();
-		platinumOre = new BlockStoneOre(this.config.oreplatinumID, "supercraft:oreplatinum").setInternalName("oreplatinum").setExternalName("Platinum Ore").register();
-		lithiumOre = new BlockStoneOre(this.config.orelithiumID, "supercraft:orelithium").setInternalName("orelithium").setExternalName("Lithium Ore").register();
+	private static void createOres() {
+		aluminumOre = new BlockStoneOre(config.orealuminumID, "supercraft:orealuminum").setInternalName("orealuminum").setExternalName("Aluminum Ore").register();
+		copperOre = new BlockStoneOre(config.orecopperID, "supercraft:orecopper").setInternalName("orecopper").setExternalName("Copper Ore").register();
+		silverOre = new BlockStoneOre(config.oresilverID, "supercraft:oresilver").setInternalName("oresilver").setExternalName("Silver Ore").register();
+		electrumOre = new BlockStoneOre(config.oreelectrumID, "supercraft:oreelectrum").setInternalName("oreelectrum").setExternalName("Electrum Ore").register();
+		tantalumOre = new BlockStoneOre(config.oretantalumID, "supercraft:oretantalum").setInternalName("oretantalum").setExternalName("Tantalum Ore").register();
+		nisilOre = new BlockStoneOre(config.orenisilID, "supercraft:orenisil").setInternalName("orenisil").setExternalName("Nisil Ore").register();
+		platinumOre = new BlockStoneOre(config.oreplatinumID, "supercraft:oreplatinum").setInternalName("oreplatinum").setExternalName("Platinum Ore").register();
+		lithiumOre = new BlockStoneOre(config.orelithiumID, "supercraft:orelithium").setInternalName("orelithium").setExternalName("Lithium Ore").register();
 
-		elinvarOre = new BlockNetherrackOre(this.config.oreelinvarID, "supercraft:oreelinvar", this.config.elinvardustID).setInternalName("oreelinvar").setExternalName("Elinvar Ore").register();
-		cobaltOre = new BlockNetherrackOre(this.config.orecobaltID, "supercraft:orecobalt", this.config.cobaltdustID).setExtraDrop(3).setInternalName("orecobalt").setExternalName("Cobalt Ore").register();
-		draconiumOre = new BlockEndStoneOre(this.config.oredraconiumID, "supercraft:oredraconium", this.config.draconiumID).setInternalName("oredraconium").setExternalName("Draconium Ore").register();
+		elinvarOre = new BlockNetherrackOre(config.oreelinvarID, "supercraft:oreelinvar", config.elinvardustID).setInternalName("oreelinvar").setExternalName("Elinvar Ore").register();
+		cobaltOre = new BlockNetherrackOre(config.orecobaltID, "supercraft:orecobalt", config.cobaltdustID).setExtraDrop(3).setInternalName("orecobalt").setExternalName("Cobalt Ore").register();
+		draconiumOre = new BlockEndStoneOre(config.oredraconiumID, "supercraft:oredraconium", config.draconiumID).setInternalName("oredraconium").setExternalName("Draconium Ore").register();
 		
-		incendiumOre = new BlockStoneOre(this.config.oreincendiumID, "supercraft:oreincendium", this.config.incendiumdustID).setExtraDrop(2).setInternalName("oreincendium").setExternalName("Incendium Ore").register();
-		luxificenOre = new BlockStoneOre(this.config.oreluxificenID, "supercraft:oreluxificen", this.config.luxificendustID).setExtraDrop(3).setInternalName("oreluxificen").setExternalName("Luxificen Ore").register();
-		jadeOre = new BlockStoneOre(this.config.orejadeID, "supercraft:orejade").setInternalName("orejade").setExternalName("Jade Ore").register();
-		voltasniaOre = new BlockStoneOre(this.config.orevoltasniaID, "supercraft:orevoltasnia", this.config.voltasniarodID).setInternalName("orevoltasnia").setExternalName("Voltasnia Ore").register();
+		incendiumOre = new BlockStoneOre(config.oreincendiumID, "supercraft:oreincendium", config.incendiumdustID).setExtraDrop(2).setInternalName("oreincendium").setExternalName("Incendium Ore").register();
+		luxificenOre = new BlockStoneOre(config.oreluxificenID, "supercraft:oreluxificen", config.luxificendustID).setExtraDrop(3).setInternalName("oreluxificen").setExternalName("Luxificen Ore").register();
+		jadeOre = new BlockStoneOre(config.orejadeID, "supercraft:orejade").setInternalName("orejade").setExternalName("Jade Ore").register();
+		voltasniaOre = new BlockStoneOre(config.orevoltasniaID, "supercraft:orevoltasnia", config.voltasniarodID).setInternalName("orevoltasnia").setExternalName("Voltasnia Ore").register();
 	}
 	
-	private void createStorageBlocks() {
-		coalBlock = new BlockStorage(this.config.blockcoalID, "supercraft:blockcoal", StorageType.DUST).setInternalName("blockcoal").setExternalName("Block of Coal").register();
-		aluminumBlock = new BlockStorage(this.config.blockaluminumID, "supercraft:blockaluminum").setInternalName("blockaluminum").setExternalName("Block of Aluminum").register();
-		copperBlock = new BlockStorage(this.config.blockcopperID, "supercraft:blockcopper").setInternalName("blockcopper").setExternalName("Block of Copper").register();
-		silverBlock = new BlockStorage(this.config.blocksilverID, "supercraft:blocksilver").setInternalName("blocksilver").setExternalName("Block of Silver").register();
-		electrumBlock = new BlockStorage(this.config.blockelectrumID, "supercraft:blockelectrum").setInternalName("blockelectrum").setExternalName("Block of Electrum").register();
-		tantalumBlock = new BlockStorage(this.config.blocktantalumID, "supercraft:blocktantalum", StorageType.CRYSTAL).setInternalName("blocktantalum").setExternalName("Block of Tantalum").register();
-		nisilBlock = new BlockStorage(this.config.blocknisilID, "supercraft:blocknisil").setInternalName("blocknisil").setExternalName("Block of Nisil").register();
-		platinumBlock = new BlockStorage(this.config.blockplatinumID, "supercraft:blockplatinum").setInternalName("blockplatinum").setExternalName("Block of Platinum").register();
-		lithiumBlock = new BlockStorage(this.config.blocklithiumID, "supercraft:blocklithium").setInternalName("blocklithium").setExternalName("Block of Lithium").register();
+	private static void createStorageBlocks() {
+		coalBlock = new BlockStorage(config.blockcoalID, "supercraft:blockcoal", StorageType.DUST).setInternalName("blockcoal").setExternalName("Block of Coal").register();
+		aluminumBlock = new BlockStorage(config.blockaluminumID, "supercraft:blockaluminum").setInternalName("blockaluminum").setExternalName("Block of Aluminum").register();
+		copperBlock = new BlockStorage(config.blockcopperID, "supercraft:blockcopper").setInternalName("blockcopper").setExternalName("Block of Copper").register();
+		silverBlock = new BlockStorage(config.blocksilverID, "supercraft:blocksilver").setInternalName("blocksilver").setExternalName("Block of Silver").register();
+		electrumBlock = new BlockStorage(config.blockelectrumID, "supercraft:blockelectrum").setInternalName("blockelectrum").setExternalName("Block of Electrum").register();
+		tantalumBlock = new BlockStorage(config.blocktantalumID, "supercraft:blocktantalum", StorageType.CRYSTAL).setInternalName("blocktantalum").setExternalName("Block of Tantalum").register();
+		nisilBlock = new BlockStorage(config.blocknisilID, "supercraft:blocknisil").setInternalName("blocknisil").setExternalName("Block of Nisil").register();
+		platinumBlock = new BlockStorage(config.blockplatinumID, "supercraft:blockplatinum").setInternalName("blockplatinum").setExternalName("Block of Platinum").register();
+		lithiumBlock = new BlockStorage(config.blocklithiumID, "supercraft:blocklithium").setInternalName("blocklithium").setExternalName("Block of Lithium").register();
 		
-		elinvarBlock = new BlockStorage(this.config.blockelinvarID, "supercraft:blockelinvar", StorageType.DUST).setInternalName("blockelinvar").setExternalName("Block of Elinvar").register();
-		cobaltBlock = new BlockCobalt(this.config.blockcobaltID, true).register();
-		cobaltBlockOff = new BlockCobalt(this.config.blockcobaltoffID, false).register();
+		elinvarBlock = new BlockStorage(config.blockelinvarID, "supercraft:blockelinvar", StorageType.DUST).setInternalName("blockelinvar").setExternalName("Block of Elinvar").register();
+		cobaltBlock = new BlockCobalt(config.blockcobaltID, true).register();
+		cobaltBlockOff = new BlockCobalt(config.blockcobaltoffID, false).register();
 		
-		draconiumBlock = new BlockStorage(this.config.blockdraconiumID, "supercraft:blockdraconium", StorageType.CRYSTAL).setInternalName("blockdraconium").setExternalName("Block of Draconium").register();
+		draconiumBlock = new BlockStorage(config.blockdraconiumID, "supercraft:blockdraconium", StorageType.CRYSTAL).setInternalName("blockdraconium").setExternalName("Block of Draconium").register();
 	}
 	
 	
-	private void createDecor() {
-		refinedCraftingTable = new BlockRefinedCraftingTable(this.config.refinedcraftingtableID).register();
-		cobaltTorch = new BlockCobaltTorch(this.config.torchcobaltID);
+	private static void createDecor() {
+		refinedCraftingTable = new BlockRefinedCraftingTable(config.refinedcraftingtableID).register();
+		cobaltTorch = new BlockCobaltTorch(config.torchcobaltID);
 		BlockSupercraft.register(cobaltTorch, ((BlockCobaltTorch)cobaltTorch).getRegisterData());
 	}
 	
-	private void createElinvar() {
-		conduit = new BlockConduit(this.config.conduitID).register();
+	private static void createElinvar() {
+		conduit = new BlockConduit(config.conduitID).register();
 		
-		redstoneGenerator = new BlockRedstoneGenerator(this.config.redstoneconversiongeneratorID).register();
-		radiantSolarGenerator = new BlockRadiantSolarGenerator(this.config.radiantsolargeneratorID).register();
-		waveringLunarGenerator = new BlockWaveringLunarGenerator(this.config.waveringlunargeneratorID).register();
-		celestialBalanceGenerator = new BlockCelestialBalanceGenerator(this.config.celestialbalancegeneratorID).register();
+		redstoneGenerator = new BlockRedstoneGenerator(config.redstoneconversiongeneratorID).register();
+		radiantSolarGenerator = new BlockRadiantSolarGenerator(config.radiantsolargeneratorID).register();
+		waveringLunarGenerator = new BlockWaveringLunarGenerator(config.waveringlunargeneratorID).register();
+		celestialBalanceGenerator = new BlockCelestialBalanceGenerator(config.celestialbalancegeneratorID).register();
 		
-		ironboundStone = new BlockBoundStone(this.config.ironboundstoneID, "supercraft:ironboundstone").setInternalName("ironboundstone").setExternalName("Ironbound Stone").register();
-		copperboundStone = new BlockBoundStone(this.config.copperboundstoneID, "supercraft:copperboundstone").setInternalName("copperboundstone").setExternalName("Copperbound Stone").register();
-		silverboundStone = new BlockBoundStone(this.config.silverboundstoneID, "supercraft:silverboundstone").setInternalName("silverboundstone").setExternalName("Silverbound Stone").register();
-		goldboundStone = new BlockBoundStone(this.config.goldboundstoneID, "supercraft:goldboundstone").setInternalName("goldboundstone").setExternalName("Goldbound Stone").register();
+		ironboundStone = new BlockBoundStone(config.ironboundstoneID, "supercraft:ironboundstone").setInternalName("ironboundstone").setExternalName("Ironbound Stone").register();
+		copperboundStone = new BlockBoundStone(config.copperboundstoneID, "supercraft:copperboundstone").setInternalName("copperboundstone").setExternalName("Copperbound Stone").register();
+		silverboundStone = new BlockBoundStone(config.silverboundstoneID, "supercraft:silverboundstone").setInternalName("silverboundstone").setExternalName("Silverbound Stone").register();
+		goldboundStone = new BlockBoundStone(config.goldboundstoneID, "supercraft:goldboundstone").setInternalName("goldboundstone").setExternalName("Goldbound Stone").register();
 		
-		essentialReducer = new BlockEssentialReducer(this.config.essentialreducerID).register();
-		alloyInductor = new BlockAlloyInductor(this.config.alloyinductorID).register();
-		electroplationEngine = new BlockElectroplationEngine(this.config.electroplationengineID).register();
+		essentialReducer = new BlockEssentialReducer(config.essentialreducerID).register();
+		alloyInductor = new BlockAlloyInductor(config.alloyinductorID).register();
+		electroplationEngine = new BlockElectroplationEngine(config.electroplationengineID).register();
 	}
 	
-	private void createMonoliths() {
-		gravenStone = new BlockGravenStone(this.config.gravenStoneID).register();
+	private static void createMonoliths() {
+		gravenStone = new BlockGravenStone(config.gravenStoneID).register();
 		
-		monolithDemission = new BlockMonolithDemission(this.config.monolithdemissionID, false).register();
-		monolithDemissionActivated = new BlockMonolithDemission(this.config.monolithdemissiononID, true).register();
-		monolithInception = new BlockMonolithInception(this.config.monolithinceptionID, false).register();
-		monolithInceptionActivated = new BlockMonolithInception(this.config.monolithinceptiononID, true).register();
-		monolithAscension = new BlockMonolithAscension(this.config.monolithascensionID, false).register();
-		monolithAscensionActivated = new BlockMonolithAscension(this.config.monolithascensiononID, true).register();
-		monolithTermination = new BlockMonolithTermination(this.config.monolithterminationID, false).register();
-		monolithTerminationActivated = new BlockMonolithTermination(this.config.monolithterminationonID, true).register();
+		monolithDemission = new BlockMonolithDemission(config.monolithdemissionID, false).register();
+		monolithDemissionActivated = new BlockMonolithDemission(config.monolithdemissiononID, true).register();
+		monolithInception = new BlockMonolithInception(config.monolithinceptionID, false).register();
+		monolithInceptionActivated = new BlockMonolithInception(config.monolithinceptiononID, true).register();
+		monolithAscension = new BlockMonolithAscension(config.monolithascensionID, false).register();
+		monolithAscensionActivated = new BlockMonolithAscension(config.monolithascensiononID, true).register();
+		monolithTermination = new BlockMonolithTermination(config.monolithterminationID, false).register();
+		monolithTerminationActivated = new BlockMonolithTermination(config.monolithterminationonID, true).register();
 	}
 	
-	private void createTrees() {
-		supercraftLog1 = new BlockSupercraftLog1(this.config.woodsupercraft1ID).register();
-		supercraftLog2 = new BlockSupercraftLog2(this.config.woodsupercraft2ID).register();
-		supercraftLeaves1 = new BlockSupercraftLeaves1(this.config.leavessupercraft1ID).register();
-		supercraftLeaves2 = new BlockSupercraftLeaves2(this.config.leavessupercraft2ID).register();
-		radiantLeaves = new BlockLeavesRadiant(this.config.radiantleavesID).register();
-		supercraftSapling1 = new BlockSupercraftSapling1(this.config.saplingsupercraft1ID).register();
-		supercraftSapling2 = new BlockSupercraftSapling2(this.config.saplingsupercraft2ID).register();
-		supercraftPlanks1 = new BlockSupercraftPlanks1(this.config.plankssupercraft1ID).register();
+	private static void createTrees() {
+		supercraftLog1 = new BlockSupercraftLog1(config.woodsupercraft1ID).register();
+		supercraftLog2 = new BlockSupercraftLog2(config.woodsupercraft2ID).register();
+		supercraftLeaves1 = new BlockSupercraftLeaves1(config.leavessupercraft1ID).register();
+		supercraftLeaves2 = new BlockSupercraftLeaves2(config.leavessupercraft2ID).register();
+		radiantLeaves = new BlockLeavesRadiant(config.radiantleavesID).register();
+		supercraftSapling1 = new BlockSupercraftSapling1(config.saplingsupercraft1ID).register();
+		supercraftSapling2 = new BlockSupercraftSapling2(config.saplingsupercraft2ID).register();
+		supercraftPlanks1 = new BlockSupercraftPlanks1(config.plankssupercraft1ID).register();
 	}
 	
-	private void createBuildingBlocks() {
-		palestone = new BlockPalestone(this.config.palestoneID).register();
-		palestoneBricks = new BlockPalestoneBricks(this.config.palestonebricksID).register();
-		overgrownPalestoneBricks = new BlockOvergrownPalestoneBricks(this.config.overgrownpalestonebricksID).register();
-		burnedPalestoneBricks = new BlockBurnedPalestoneBricks(this.config.burnedpalestonebricksID).register();
-		inscribedPalestone = new BlockInscribedPalestone(this.config.inscribedpalestoneID).register();
-		blockOfGoldenwood = new BlockGoldenwood(this.config.blockgoldenwoodID).register();
+	private static void createBuildingBlocks() {
+		palestone = new BlockPalestone(config.palestoneID).register();
+		palestoneBricks = new BlockPalestoneBricks(config.palestonebricksID).register();
+		overgrownPalestoneBricks = new BlockOvergrownPalestoneBricks(config.overgrownpalestonebricksID).register();
+		burnedPalestoneBricks = new BlockBurnedPalestoneBricks(config.burnedpalestonebricksID).register();
+		inscribedPalestone = new BlockInscribedPalestone(config.inscribedpalestoneID).register();
+		blockOfGoldenwood = new BlockGoldenwood(config.blockgoldenwoodID).register();
 		
-		nightrock = new BlockNightrock(this.config.nightrockID).register();
-		nightrockBricks = new BlockNightrockBricks(this.config.nightrockbricksID).register();
-		burnedNightrockBricks = new BlockBurnedNightrockBricks(this.config.burnednightrockbricksID).register();
-		inscribedNightrock = new BlockInscribedNightrock(this.config.inscribednightrockID).register();
-		blockOfTenebral = new BlockTenebral(this.config.blocktenebralID).register();
+		nightrock = new BlockNightrock(config.nightrockID).register();
+		nightrockBricks = new BlockNightrockBricks(config.nightrockbricksID).register();
+		burnedNightrockBricks = new BlockBurnedNightrockBricks(config.burnednightrockbricksID).register();
+		inscribedNightrock = new BlockInscribedNightrock(config.inscribednightrockID).register();
+		blockOfTenebral = new BlockTenebral(config.blocktenebralID).register();
 	}
 	
-	private void createSlabs() {
-		supercraftSlab1 = new BlockSupercraftSlab1(this.config.slabsupercraft1ID);
+	private static void createSlabs() {
+		supercraftSlab1 = new BlockSupercraftSlab1(config.slabsupercraft1ID);
 		BlockSupercraft.register(supercraftSlab1, ((BlockSupercraftSlab1)supercraftSlab1).getRegisterData());
-		supercraftSlab2 = new BlockSupercraftSlab2(this.config.slabsupercraft2ID);
+		supercraftSlab2 = new BlockSupercraftSlab2(config.slabsupercraft2ID);
 		BlockSupercraft.register(supercraftSlab2, ((BlockSupercraftSlab2)supercraftSlab2).getRegisterData());
 	}
 	
-	private void createStairs() {
-		oliveStairs = new BlockSupercraftStairs(this.config.stairsoliveID, supercraftPlanks1, 0, "stairsolive", "Olive Wood Stairs");
+	private static void createStairs() {
+		oliveStairs = new BlockSupercraftStairs(config.stairsoliveID, supercraftPlanks1, 0, "stairsolive", "Olive Wood Stairs");
 		BlockSupercraft.register(oliveStairs, ((BlockSupercraftStairs)oliveStairs).getRegisterData());
-		goldenwoodStairs = new BlockSupercraftStairs(this.config.stairsgoldenwoodID, supercraftPlanks1, 1, "stairsgoldenwood", "Goldenwood Wood Stairs");
+		goldenwoodStairs = new BlockSupercraftStairs(config.stairsgoldenwoodID, supercraftPlanks1, 1, "stairsgoldenwood", "Goldenwood Wood Stairs");
 		BlockSupercraft.register(goldenwoodStairs, ((BlockSupercraftStairs)goldenwoodStairs).getRegisterData());
-		tenebriaStairs = new BlockSupercraftStairs(this.config.stairstenebriaID, supercraftPlanks1, 2, "stairstenebria", "Tenebria Wood Stairs");
+		tenebriaStairs = new BlockSupercraftStairs(config.stairstenebriaID, supercraftPlanks1, 2, "stairstenebria", "Tenebria Wood Stairs");
 		BlockSupercraft.register(tenebriaStairs, ((BlockSupercraftStairs)tenebriaStairs).getRegisterData());
-		inisiaStairs = new BlockSupercraftStairs(this.config.stairsinisiaID, supercraftPlanks1, 3, "stairsinisia", "Inisia Wood Stairs");
+		inisiaStairs = new BlockSupercraftStairs(config.stairsinisiaID, supercraftPlanks1, 3, "stairsinisia", "Inisia Wood Stairs");
 		BlockSupercraft.register(inisiaStairs, ((BlockSupercraftStairs)inisiaStairs).getRegisterData());
-		valensienStairs = new BlockSupercraftStairs(this.config.stairsvalensienID, supercraftPlanks1, 4, "stairsvalensien", "Valensien Wood Stairs");
+		valensienStairs = new BlockSupercraftStairs(config.stairsvalensienID, supercraftPlanks1, 4, "stairsvalensien", "Valensien Wood Stairs");
 		BlockSupercraft.register(valensienStairs, ((BlockSupercraftStairs)valensienStairs).getRegisterData());
-		mortaliaStairs = new BlockSupercraftStairs(this.config.stairsmortaliaID, supercraftPlanks1, 5, "stairsmortalia", "Mortalia Wood Stairs");
+		mortaliaStairs = new BlockSupercraftStairs(config.stairsmortaliaID, supercraftPlanks1, 5, "stairsmortalia", "Mortalia Wood Stairs");
 		BlockSupercraft.register(mortaliaStairs, ((BlockSupercraftStairs)mortaliaStairs).getRegisterData());
-		palestoneStairs = new BlockSupercraftStairs(this.config.stairspalestoneID, palestoneBricks, 0, "stairspalestone", "Palestone Brick Stairs");
+		palestoneStairs = new BlockSupercraftStairs(config.stairspalestoneID, palestoneBricks, 0, "stairspalestone", "Palestone Brick Stairs");
 		BlockSupercraft.register(palestoneStairs, ((BlockSupercraftStairs)palestoneStairs).getRegisterData());
-		nightrockStairs = new BlockSupercraftStairs(this.config.stairsnightrockID, nightrockBricks, 0, "stairsnightrock", "Nightrock Brick Stairs");
+		nightrockStairs = new BlockSupercraftStairs(config.stairsnightrockID, nightrockBricks, 0, "stairsnightrock", "Nightrock Brick Stairs");
 		BlockSupercraft.register(nightrockStairs, ((BlockSupercraftStairs)nightrockStairs).getRegisterData());
 	}
 	
-	private void createPlants() {
-		bluebells = new BlockSupercraftFlower(this.config.bluebellsID, "supercraft:bluebells", EnumPlantType.Plains).setInternalName("bluebells").setExternalName("Bluebells").register();
-		daisies = new BlockSupercraftFlower(this.config.daisiesID, "supercraft:daisies", EnumPlantType.Plains).setInternalName("daisies").setExternalName("Daisies").register();
-		snapdragon = new BlockSupercraftFlower(this.config.snapdragonID, "supercraft:snapdragon", EnumPlantType.Plains).setInternalName("snapdragon").setExternalName("Snapdragon").register();
-		inisiaMushroom = new BlockSupercraftMushroom(this.config.mushroominisiaID, "supercraft:mushroominisia", EnumPlantType.Cave).setInternalName("mushroominisia").setExternalName("Inisia Mushroom").register();
-		valensienMushroom = new BlockSupercraftMushroom(this.config.mushroomvalensienID, "supercraft:mushroomvalensien", EnumPlantType.Cave).setInternalName("mushroomvalensien").setExternalName("Valensien Mushroom").register();
-		mortaliaMushroom = new BlockSupercraftMushroom(this.config.mushroommortaliaID, "supercraft:mushroommortalia", EnumPlantType.Cave).setInternalName("mushroommortalia").setExternalName("Mortalia Mushroom").register();
+	private static void createPlants() {
+		bluebells = new BlockSupercraftFlower(config.bluebellsID, "supercraft:bluebells", EnumPlantType.Plains).setInternalName("bluebells").setExternalName("Bluebells").register();
+		daisies = new BlockSupercraftFlower(config.daisiesID, "supercraft:daisies", EnumPlantType.Plains).setInternalName("daisies").setExternalName("Daisies").register();
+		snapdragon = new BlockSupercraftFlower(config.snapdragonID, "supercraft:snapdragon", EnumPlantType.Plains).setInternalName("snapdragon").setExternalName("Snapdragon").register();
+		inisiaMushroom = new BlockSupercraftMushroom(config.mushroominisiaID, "supercraft:mushroominisia", EnumPlantType.Cave).setInternalName("mushroominisia").setExternalName("Inisia Mushroom").register();
+		valensienMushroom = new BlockSupercraftMushroom(config.mushroomvalensienID, "supercraft:mushroomvalensien", EnumPlantType.Cave).setInternalName("mushroomvalensien").setExternalName("Valensien Mushroom").register();
+		mortaliaMushroom = new BlockSupercraftMushroom(config.mushroommortaliaID, "supercraft:mushroommortalia", EnumPlantType.Cave).setInternalName("mushroommortalia").setExternalName("Mortalia Mushroom").register();
 	}
 	
-	private void createLiquids() {
-		ghostlyVaporFlowing = new BlockGhostlyVaporFlowing(this.config.ghostlyvaporflowingID);
+	private static void createLiquids() {
+		ghostlyVaporFlowing = new BlockGhostlyVaporFlowing(config.ghostlyvaporflowingID);
 		BlockSupercraft.register(ghostlyVaporFlowing, ((BlockGhostlyVaporFlowing)ghostlyVaporFlowing).getRegisterData());
-		ghostlyVaporStill = new BlockGhostlyVaporStill(this.config.ghostlyvaporstillID);
+		ghostlyVaporStill = new BlockGhostlyVaporStill(config.ghostlyvaporstillID);
 		BlockSupercraft.register(ghostlyVaporStill, ((BlockGhostlyVaporStill)ghostlyVaporStill).getRegisterData());
 	}
 

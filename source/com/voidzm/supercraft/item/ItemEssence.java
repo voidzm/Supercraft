@@ -1,5 +1,6 @@
 package com.voidzm.supercraft.item;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import com.voidzm.supercraft.CommonProxy;
@@ -14,19 +15,40 @@ import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.Icon;
 
-public class ItemEssence extends Item {
+public class ItemEssence extends ItemSupercraft {
 
 	private final static String[] names = {"terraen", "aeronic", "infernal", "aquaeous", "verdeal", "nethereal", "draconic", "ferric", "radantis", "vidalis", "mortalic", "luxorum", "tenebra"};
+	
+	private ArrayList<String> namesExternal = new ArrayList<String>();
 	
 	protected Icon[] textures = new Icon[16];
 	
 	public ItemEssence(int par1) {
-		super(par1);
+		super(par1, null);
+		this.populateNames();
 		this.setMaxStackSize(64);
-		this.setUnlocalizedName("essence");
+		this.setInternalName("essence");
+		this.setExternalName("Essence");
+		this.makeMultiitem(this.namesExternal);
 		this.setCreativeTab(CreativeTabs.tabMisc);
 		this.setHasSubtypes(true);
 		this.setMaxDamage(0);
+	}
+	
+	private void populateNames() {
+		this.namesExternal.add("Terraen Essence");
+		this.namesExternal.add("Aeronic Essence");
+		this.namesExternal.add("Infernal Essence");
+		this.namesExternal.add("Aquaeous Essence");
+		this.namesExternal.add("Verdeal Essence");
+		this.namesExternal.add("Nethereal Essence");
+		this.namesExternal.add("Draconic Essence");
+		this.namesExternal.add("Ferric Essence");
+		this.namesExternal.add("Radantis Essence");
+		this.namesExternal.add("Vidalis Essence");
+		this.namesExternal.add("Mortalic Essence");
+		this.namesExternal.add("Luxorum Essence");
+		this.namesExternal.add("Tenebra Essence");
 	}
 	
 	public void updateIcons(IconRegister par1IconRegister) {

@@ -21,14 +21,20 @@ import net.minecraftforge.common.MinecraftForge;
 
 import com.voidzm.supercraft.CommonProxy;
 import com.voidzm.supercraft.Supercraft;
+import com.voidzm.supercraft.protocol.IRegisterable;
+import com.voidzm.supercraft.util.RegisterData;
 
-public class ItemAluminumShovel extends ItemSpade {
+public class ItemAluminumShovel extends ItemSpade implements IRegisterable {
 
+	private RegisterData rdata = new RegisterData();
+	
 	public ItemAluminumShovel(int par1) {
 		super(par1, Supercraft.aluminumTool);
-		this.setUnlocalizedName("aluminumShovel");
+		this.setUnlocalizedName("shovelaluminum");
 		this.setCreativeTab(CreativeTabs.tabTools);
 		MinecraftForge.setToolClass(this, "shovel", 1);
+		this.rdata.internalName = "shovelaluminum";
+		this.rdata.externalName = "Aluminum Shovel";
 	}
 
 	public void updateIcons(IconRegister par1IconRegister) {
@@ -42,6 +48,11 @@ public class ItemAluminumShovel extends ItemSpade {
 			par1ItemStack.damageItem(efficiencyLevel, par7EntityLiving);
 		}
 		return true;
+	}
+
+	@Override
+	public RegisterData getRegisterData() {
+		return this.rdata;
 	}
 	
 }

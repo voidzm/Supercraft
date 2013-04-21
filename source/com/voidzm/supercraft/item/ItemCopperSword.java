@@ -20,17 +20,28 @@ import net.minecraftforge.common.MinecraftForge;
 
 import com.voidzm.supercraft.CommonProxy;
 import com.voidzm.supercraft.Supercraft;
+import com.voidzm.supercraft.protocol.IRegisterable;
+import com.voidzm.supercraft.util.RegisterData;
 
-public class ItemCopperSword extends ItemSword {
+public class ItemCopperSword extends ItemSword implements IRegisterable {
 
+	private RegisterData rdata = new RegisterData();
+	
 	public ItemCopperSword(int par1) {
 		super(par1, Supercraft.copperTool);
 		this.setUnlocalizedName("copperSword");
 		this.setCreativeTab(CreativeTabs.tabCombat);
+		this.rdata.internalName = "swordcopper";
+		this.rdata.externalName = "Copper Sword";
 	}
 
 	public void updateIcons(IconRegister par1IconRegister) {
 		this.iconIndex = par1IconRegister.registerIcon("supercraft:swordcopper");
+	}
+
+	@Override
+	public RegisterData getRegisterData() {
+		return this.rdata;
 	}
 	
 }

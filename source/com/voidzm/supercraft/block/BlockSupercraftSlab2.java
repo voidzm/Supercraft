@@ -50,7 +50,7 @@ public class BlockSupercraftSlab2 extends BlockSupercraftSlabBase implements IRe
 	
 	private void buildRegisterData() {
 		rdata.internalName = "supercraftslab2";
-		rdata.isMultiblock = true;
+		rdata.isMulti = true;
 		rdata.externalNames = this.names;
 		rdata.itemBlockClass = ItemBlockSupercraft.class;
 	}

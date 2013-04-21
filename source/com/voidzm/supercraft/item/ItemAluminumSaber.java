@@ -20,13 +20,19 @@ import net.minecraftforge.common.MinecraftForge;
 
 import com.voidzm.supercraft.CommonProxy;
 import com.voidzm.supercraft.Supercraft;
+import com.voidzm.supercraft.protocol.IRegisterable;
+import com.voidzm.supercraft.util.RegisterData;
 
-public class ItemAluminumSaber extends ItemSword {
+public class ItemAluminumSaber extends ItemSword implements IRegisterable {
 
+	private RegisterData rdata = new RegisterData();
+	
 	public ItemAluminumSaber(int par1) {
 		super(par1, Supercraft.aluminumTool);
-		this.setUnlocalizedName("aluminumSaber");
+		this.setUnlocalizedName("swordaluminum");
 		this.setCreativeTab(CreativeTabs.tabCombat);
+		this.rdata.internalName = "swordaluminum";
+		this.rdata.externalName = "Aluminum Saber";
 	}
 
 	public void updateIcons(IconRegister par1IconRegister) {
@@ -44,6 +50,11 @@ public class ItemAluminumSaber extends ItemSword {
 			par1ItemStack.damageItem((sharpnessLevel*2), par7EntityLiving);
 		}
 		return true;
+	}
+
+	@Override
+	public RegisterData getRegisterData() {
+		return this.rdata;
 	}
 	
 }

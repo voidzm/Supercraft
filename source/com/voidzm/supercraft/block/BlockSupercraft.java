@@ -78,7 +78,7 @@ public class BlockSupercraft extends Block {
 	
 	public static void register(Block block, RegisterData data) {
 		if(!(block instanceof IRegisterable)) return;
-		if(!data.isMultiblock) {
+		if(!data.isMulti) {
 			GameRegistry.registerBlock(block, data.internalName);
 			LanguageRegistry.addName(block, data.externalName);
 			StartupStats.blockCreated();

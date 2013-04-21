@@ -18,19 +18,16 @@ import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.world.World;
 
-public class ItemBloodAmber extends Item {
+public class ItemBloodAmber extends ItemSupercraft {
 
 	public ItemBloodAmber(int id) {
-		super(id);
+		super(id, "supercraft:bloodamber");
 		this.setMaxStackSize(64);
-		this.setUnlocalizedName("bloodAmber");
+		this.setInternalName("bloodamber");
+		this.setExternalName("Blood Amber");
 		this.setCreativeTab(CreativeTabs.tabMaterials);
 	}
-	
-	public void updateIcons(IconRegister par1IconRegister) {
-		this.iconIndex = par1IconRegister.registerIcon("supercraft:bloodamber");
-	}
-	
+
 	public boolean onItemUse(ItemStack par1ItemStack, EntityPlayer par2EntityPlayer, World par3World, int par4, int par5, int par6, int par7, float par8, float par9, float par10) {
 		int bID = par3World.getBlockId(par4, par5, par6);
 		if(bID == BlockHandler.inscribedNightrock.blockID) {
