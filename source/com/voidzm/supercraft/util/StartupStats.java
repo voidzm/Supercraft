@@ -23,4 +23,8 @@ public class StartupStats {
 		FMLLog.info("[Supercraft] %d items successfully loaded.", itemsCreated);
 	}
 	
+	public static void outputCraftingStats(int number) {
+		FMLLog.info("[Supercraft] %d recipes successfully loaded.", number);
+	}
+	
 }

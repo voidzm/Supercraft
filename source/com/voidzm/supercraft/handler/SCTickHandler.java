@@ -41,7 +41,7 @@ public class SCTickHandler implements ITickHandler {
 
 	@Override
 	public EnumSet<TickType> ticks() {
-		return EnumSet.of(TickType.CLIENT, TickType.CLIENT);
+		return EnumSet.of(TickType.CLIENT);
 	}
 
 	@Override
