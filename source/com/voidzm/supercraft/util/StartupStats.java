@@ -6,6 +6,8 @@ public class StartupStats {
 
 	private static int blocksCreated = 0;
 	private static int itemsCreated = 0;
+	private static int biomesCreated = 0;
+	private static int tileEntitiesCreated = 0;
 	
 	public static void blockCreated() {
 		blocksCreated++;
@@ -25,6 +27,26 @@ public class StartupStats {
 	
 	public static void outputCraftingStats(int number) {
 		FMLLog.info("[Supercraft] %d recipes successfully loaded.", number);
+	}
+	
+	public static void biomeCreated() {
+		biomesCreated++;
+	}
+	
+	public static void outputBiomeStats() {
+		FMLLog.info("[Supercraft] %d biomes successfully loaded.", biomesCreated);
+	}
+	
+	public static void outputDimensionStats(int number) {
+		FMLLog.info("[Supercraft] %d dimensions successfully loaded.", number);
+	}
+	
+	public static void tileEntityCreated() {
+		tileEntitiesCreated++;
+	}
+	
+	public static void outputTileEntityStats() {
+		FMLLog.info("[Supercraft] %d tile entities successfully loaded.", tileEntitiesCreated);
 	}
 	
 }

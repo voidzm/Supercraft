@@ -49,11 +49,8 @@ public class Supercraft {
 	@SidedProxy(clientSide="com.voidzm.supercraft.client.ClientProxy", serverSide="com.voidzm.supercraft.CommonProxy")
 	public static CommonProxy proxy;
 	
-	public static final BiomeHandler biomeHandler = new BiomeHandler();
 	public static final FuelHandler fuelHandler = new FuelHandler();
 	public static final GuiHandler guiHandler = new GuiHandler();
-	public static final DimensionHandler dimensionHandler = new DimensionHandler();
-	public static final TileEntityHandler tileEntityHandler = new TileEntityHandler();
 	
 	public static SupercraftConfiguration configuration;
 	
@@ -72,14 +69,13 @@ public class Supercraft {
 		BlockHandler.init(configuration);
 		ItemHandler.init(configuration);
 		CraftingHandler.init(configuration);
-		biomeHandler.init(configuration);
-		dimensionHandler.init(configuration);
-		tileEntityHandler.init();
+		BiomeHandler.init(configuration);
+		DimensionHandler.init(configuration);
+		TileEntityHandler.init();
+		
 		proxy.registerRenderers();
 		proxy.initializeGui();
 
-		// biomeHandler.removeVanillaBiomes(); // For biome testing only.
-		
 		MinecraftForge.EVENT_BUS.register(new EventBonemeal());
 		MinecraftForge.EVENT_BUS.register(new EventDepths());
 		GameRegistry.registerWorldGenerator(new WorldGenOre());
