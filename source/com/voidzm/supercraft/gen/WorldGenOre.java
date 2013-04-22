@@ -1,14 +1,14 @@
-//////////////////////////////////////
-//*        WorldGenOre.java        *//
-//*           Supercraft           *//
-//*        (c) voidzm 2013         *//
-//////////////////////////////////////
+//**
+//**  WorldGenOre.java
+//**  Supercraft
+//**  (c) voidzm 2013 **//
 
 package com.voidzm.supercraft.gen;
 
 import java.util.Random;
 
 import com.voidzm.supercraft.handler.BlockHandler;
+import com.voidzm.supercraft.handler.FuelHandler;
 
 import net.minecraft.block.Block;
 import net.minecraft.world.World;
@@ -16,11 +16,26 @@ import net.minecraft.world.chunk.IChunkProvider;
 import net.minecraft.world.gen.feature.WorldGenMinable;
 
 import cpw.mods.fml.common.IWorldGenerator;
+import cpw.mods.fml.common.registry.GameRegistry;
 
 public class WorldGenOre implements IWorldGenerator {
 
+	private static WorldGenOre instance;
+	
+	public static WorldGenOre instance() {
+		if(instance == null) {
+			instance = new WorldGenOre();
+		}
+		return instance;
+	}
+	
+	public static void init() {
+		GameRegistry.registerWorldGenerator(instance());
+	}
+	
 	@Override
 	public void generate(Random random, int chunkX, int chunkZ, World world, IChunkProvider chunkGenerator, IChunkProvider chunkProvider) {
+		System.out.println("ID: "+world.provider.dimensionId);
 		switch(world.provider.dimensionId) {
 		case -1:
 			generateNether(world, random, chunkX, chunkZ);

@@ -29,7 +29,7 @@ public class DimensionHandler {
 		if(config.doalternatesurface) swapSurfaceProvider();
 		createDimensions();
 		int worldsAdded = DimensionManager.getWorlds().length - initialWorldListSize;
-		StartupStats.outputDimensionStats(worldsAdded);
+		StartupStats.outputDimensionStats();
 	}
 	
 	private static void swapSurfaceProvider() {

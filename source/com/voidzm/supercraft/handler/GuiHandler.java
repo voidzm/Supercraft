@@ -1,11 +1,14 @@
-//////////////////////////////////////
-//*        GuiHandler.java         *//
-//*           Supercraft           *//
-//*        (c) voidzm 2013         *//
-//////////////////////////////////////
+//**
+//**  GuiHandler.java
+//**  Supercraft
+//**  (c) voidzm 2013 **//
 
 package com.voidzm.supercraft.handler;
 
+import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.world.World;
+
+import com.voidzm.supercraft.Supercraft;
 import com.voidzm.supercraft.container.ContainerAlloyInductor;
 import com.voidzm.supercraft.container.ContainerElectroplationEngine;
 import com.voidzm.supercraft.container.ContainerEssentialReducer;
@@ -18,14 +21,23 @@ import com.voidzm.supercraft.tileentity.TileEntityAlloyInductor;
 import com.voidzm.supercraft.tileentity.TileEntityElectroplationEngine;
 import com.voidzm.supercraft.tileentity.TileEntityEssentialReducer;
 
-import net.minecraft.client.gui.inventory.GuiCrafting;
-import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.entity.player.InventoryPlayer;
-import net.minecraft.inventory.ContainerWorkbench;
-import net.minecraft.world.World;
 import cpw.mods.fml.common.network.IGuiHandler;
+import cpw.mods.fml.common.network.NetworkRegistry;
 
 public class GuiHandler implements IGuiHandler {
+	
+	private static GuiHandler instance;
+	
+	public static GuiHandler instance() {
+		if(instance == null) {
+			instance = new GuiHandler();
+		}
+		return instance;
+	}
+	
+	public static void init() {
+		NetworkRegistry.instance().registerGuiHandler(Supercraft.instance, instance());
+	}
 	
 	@Override
 	public Object getServerGuiElement(int ID, EntityPlayer player, World world, int x, int y, int z) {

@@ -8,7 +8,6 @@ import com.voidzm.supercraft.gen.WorldGenGoldenwood;
 import com.voidzm.supercraft.gen.WorldGenGoldenwoodShrine;
 import com.voidzm.supercraft.gen.WorldGenTenebria;
 import com.voidzm.supercraft.item.ItemBlockSupercraft;
-import com.voidzm.supercraft.item.ItemSupercraftSapling2;
 
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
@@ -32,7 +31,7 @@ public class BlockSupercraftSapling2 extends BlockSupercraftSaplingBase {
 		this.populateNames();
 		this.setInternalName("supercraftsapling2");
 		this.setExternalName("Supercraft Sapling 2");
-		this.makeMultiblock(this.names, ItemSupercraftSapling2.class);
+		this.makeMultiblock(this.names, ItemBlockSupercraft.class);
 	}
 	
 	private void populateNames() {
@@ -46,7 +45,7 @@ public class BlockSupercraftSapling2 extends BlockSupercraftSaplingBase {
 	}
 	
 	public Icon getBlockTextureFromSideAndMetadata(int side, int meta) {
-		return textures[meta];
+		return textures[meta & 3];
 	}
 	
 	@Override

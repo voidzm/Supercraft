@@ -37,8 +37,8 @@ public class StartupStats {
 		FMLLog.info("[Supercraft] %d biomes successfully loaded.", biomesCreated);
 	}
 	
-	public static void outputDimensionStats(int number) {
-		FMLLog.info("[Supercraft] %d dimensions successfully loaded.", number);
+	public static void outputDimensionStats() {
+		FMLLog.info("[Supercraft] Dimensions successfully loaded.");
 	}
 	
 	public static void tileEntityCreated() {
@@ -47,6 +47,10 @@ public class StartupStats {
 	
 	public static void outputTileEntityStats() {
 		FMLLog.info("[Supercraft] %d tile entities successfully loaded.", tileEntitiesCreated);
+	}
+	
+	public static void loadingDone() {
+		FMLLog.info("[Supercraft] Loading complete.");
 	}
 	
 }

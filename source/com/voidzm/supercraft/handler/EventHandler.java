@@ -1,22 +1,34 @@
-//////////////////////////////////////
-//*       EventBonemeal.java       *//
-//*           Supercraft           *//
-//*        (c) voidzm 2013         *//
-//////////////////////////////////////
+//**
+//**  EventHandler.java
+//**  Supercraft
+//**  (c) voidzm 2013 **//
 
-package com.voidzm.supercraft.event;
+package com.voidzm.supercraft.handler;
+
+import net.minecraftforge.common.MinecraftForge;
+import net.minecraftforge.event.ForgeSubscribe;
+import net.minecraftforge.event.entity.player.BonemealEvent;
+import net.minecraftforge.event.entity.player.FillBucketEvent;
 
 import com.voidzm.supercraft.block.BlockSupercraftMushroom;
 import com.voidzm.supercraft.block.BlockSupercraftSapling1;
 import com.voidzm.supercraft.block.BlockSupercraftSapling2;
-import com.voidzm.supercraft.block.BlockSupercraftSaplingBase;
-import com.voidzm.supercraft.handler.BlockHandler;
 
-import net.minecraftforge.event.ForgeSubscribe;
-import net.minecraftforge.event.entity.player.BonemealEvent;
+public class EventHandler {
 
-public class EventBonemeal {
-
+	private static EventHandler instance;
+	
+	public static EventHandler instance() {
+		if(instance == null) {
+			instance = new EventHandler();
+		}
+		return instance;
+	}
+	
+	public static void init() {
+		MinecraftForge.EVENT_BUS.register(instance());
+	}
+	
 	@ForgeSubscribe
 	public void onUseBonemeal(BonemealEvent event) {
 		if(event.world.isRemote) return;
@@ -28,6 +40,14 @@ public class EventBonemeal {
 		}
 		else if(event.ID == BlockHandler.inisiaMushroom.blockID || event.ID == BlockHandler.valensienMushroom.blockID || event.ID == BlockHandler.mortaliaMushroom.blockID) {
 			BlockSupercraftMushroom.doGrow(event.world, event.X, event.Y, event.Z, event.world.rand);
+		}
+	}
+	
+	@ForgeSubscribe
+	public void onBucketFilled(FillBucketEvent event) {
+		int targetedID = event.world.getBlockId(event.target.blockX, event.target.blockY, event.target.blockZ);
+		if(targetedID == BlockHandler.ghostlyVaporStill.blockID) {
+			event.setCanceled(true);
 		}
 	}
 	

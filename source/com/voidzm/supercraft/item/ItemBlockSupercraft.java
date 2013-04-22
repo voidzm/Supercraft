@@ -8,11 +8,16 @@ package com.voidzm.supercraft.item;
 import java.util.ArrayList;
 
 import com.voidzm.supercraft.block.BlockSupercraft;
+import com.voidzm.supercraft.handler.BlockHandler;
 import com.voidzm.supercraft.protocol.IRegisterable;
+
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
 
 import net.minecraft.block.Block;
 import net.minecraft.item.ItemBlock;
 import net.minecraft.item.ItemStack;
+import net.minecraft.util.Icon;
 
 public class ItemBlockSupercraft extends ItemBlock {
 
@@ -44,6 +49,14 @@ public class ItemBlockSupercraft extends ItemBlock {
 			return this.getUnlocalizedName() + "." + names.get(itemstack.getItemDamage());
 		}
 		return null;
+	}
+	
+	@Override
+	@SideOnly(Side.CLIENT)
+	public Icon getIconFromDamage(int par1) {
+		Block block = Block.blocksList[this.blockID];
+		if(block == null) return null;
+		return block.getBlockTextureFromSideAndMetadata(0, par1);
 	}
 	
 }

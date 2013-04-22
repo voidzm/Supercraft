@@ -9,46 +9,36 @@ package com.voidzm.supercraft.block;
 import java.io.ByteArrayOutputStream;
 import java.io.DataOutputStream;
 import java.util.ArrayList;
-import java.util.Iterator;
 import java.util.List;
 import java.util.Random;
 
-import com.voidzm.supercraft.CommonProxy;
-import com.voidzm.supercraft.Supercraft;
-import com.voidzm.supercraft.client.ClientProxy;
-import com.voidzm.supercraft.handler.BlockHandler;
-import com.voidzm.supercraft.item.ItemBlockSupercraft;
-import com.voidzm.supercraft.item.ItemConduit;
-import com.voidzm.supercraft.protocol.IGenerator;
-import com.voidzm.supercraft.protocol.IGenerator.GeneratorSide;
-import com.voidzm.supercraft.tileentity.TileEntityConduit;
-import com.voidzm.supercraft.tileentity.TileEntityConduit.CONDUIT_TYPE;
-import com.voidzm.supercraft.tileentity.TileEntityConduit.PACKET_ELINVAR;
-
-import cpw.mods.fml.client.FMLClientHandler;
-import cpw.mods.fml.common.FMLCommonHandler;
-import cpw.mods.fml.common.network.PacketDispatcher;
-import cpw.mods.fml.relauncher.Side;
-import cpw.mods.fml.relauncher.SideOnly;
-
 import net.minecraft.block.Block;
-import net.minecraft.block.BlockContainer;
 import net.minecraft.block.material.Material;
 import net.minecraft.client.renderer.texture.IconRegister;
 import net.minecraft.creativetab.CreativeTabs;
-import net.minecraft.entity.Entity;
 import net.minecraft.entity.item.EntityItem;
-import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.inventory.IInventory;
 import net.minecraft.item.ItemStack;
 import net.minecraft.network.packet.Packet250CustomPayload;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.AxisAlignedBB;
 import net.minecraft.util.Icon;
 import net.minecraft.world.IBlockAccess;
-import net.minecraft.world.IWorldAccess;
 import net.minecraft.world.World;
 
+import com.voidzm.supercraft.Supercraft;
+import com.voidzm.supercraft.client.ClientProxy;
+import com.voidzm.supercraft.handler.BlockHandler;
+import com.voidzm.supercraft.item.ItemBlockSupercraft;
+import com.voidzm.supercraft.protocol.IGenerator;
+import com.voidzm.supercraft.protocol.IGenerator.GeneratorSide;
+import com.voidzm.supercraft.tileentity.TileEntityConduit;
+import com.voidzm.supercraft.tileentity.TileEntityConduit.CONDUIT_TYPE;
+import com.voidzm.supercraft.tileentity.TileEntityConduit.PACKET_ELINVAR;
+
+import cpw.mods.fml.common.FMLCommonHandler;
+import cpw.mods.fml.common.network.PacketDispatcher;
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
 public class BlockConduit extends BlockSupercraft {
 	
 	public Icon[] textures = new Icon[13];
