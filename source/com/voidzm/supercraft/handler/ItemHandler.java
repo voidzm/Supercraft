@@ -68,6 +68,8 @@ public class ItemHandler {
 	public static Item voltasniaRod;
 	public static Item draconium;
 	public static Item bloodAmber;
+	public static Item arcaneRod;
+	public static Item venianRod;
 
 	public static void init(SupercraftConfiguration configObject) {
 		if(config != null) {
@@ -150,6 +152,8 @@ public class ItemHandler {
 		voltasniaRod = new ItemSupercraft(config.voltasniarodID, "supercraft:voltasniarod").setInternalName("voltasniarod").setExternalName("Voltasnia Rod").register();
 		draconium = new ItemSupercraft(config.draconiumID, "supercraft:draconium").setInternalName("draconium").setExternalName("Draconium").register();
 		bloodAmber = new ItemBloodAmber(config.bloodamberID).register();
+		arcaneRod = new ItemArcaneRod(config.arcanerodID).register();
+		venianRod = new ItemVenianRod(config.venianrodID).register();
 	}
 	
 }

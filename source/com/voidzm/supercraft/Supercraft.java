@@ -23,6 +23,7 @@ import com.voidzm.supercraft.handler.ItemHandler;
 import com.voidzm.supercraft.handler.PacketHandler;
 import com.voidzm.supercraft.handler.TileEntityHandler;
 import com.voidzm.supercraft.misc.CreativeTabElinvar;
+import com.voidzm.supercraft.misc.CreativeTabVeneficia;
 import com.voidzm.supercraft.util.StartupStats;
 import com.voidzm.supercraft.util.SupercraftConfiguration;
 
@@ -54,6 +55,7 @@ public class Supercraft {
 	public static EnumToolMaterial copperTool = EnumHelper.addToolMaterial("copper", 2, 593, 9.0F, 2, 10);
 	
 	public static CreativeTabs elinvarTab = new CreativeTabElinvar("elinvarTab");
+	public static CreativeTabs veneficiaTab = new CreativeTabVeneficia("veneficiaTab");
 	
 	@PreInit
 	public void preInit(FMLPreInitializationEvent event) {
@@ -61,10 +63,7 @@ public class Supercraft {
 	}
 	
 	@Init
-	public void load(FMLInitializationEvent event) {
-		proxy.registerRenderers();
-		proxy.initTickHandler();
-		
+	public void load(FMLInitializationEvent event) {		
 		BlockHandler.init(configuration);
 		ItemHandler.init(configuration);
 		CraftingHandler.init(configuration);
@@ -75,6 +74,9 @@ public class Supercraft {
 		FuelHandler.init();
 		GuiHandler.init();
 		WorldGenOre.init();
+		
+		proxy.registerRenderers();
+		proxy.initTickHandler();
 		
 		StartupStats.loadingDone();
 	}

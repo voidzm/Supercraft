@@ -85,11 +85,6 @@ public class ItemEssence extends ItemSupercraft {
 	}
 	
 	@Override
-	public boolean hasEffect(ItemStack par1) {
-		return false;
-	}
-	
-	@Override
 	public EnumRarity getRarity(ItemStack par1ItemStack) {
 		return EnumRarity.uncommon;
 	}

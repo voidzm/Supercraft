@@ -16,7 +16,11 @@ public class ElectroplationEngineRecipes {
 	}
 	
 	private static void populateCombos() {
-		mappings.add(new ElectroplationEngineMap(new ItemStack(ItemHandler.voltasniaRod), new ItemStack(ItemHandler.silverIngot), new ItemStack(Item.blazeRod)));
+		mappings.add(new ElectroplationEngineMap(new ItemStack(ItemHandler.voltasniaRod), new ItemStack(ItemHandler.silverIngot), new ItemStack(ItemHandler.arcaneRod, 1, 0)));
+		mappings.add(new ElectroplationEngineMap(new ItemStack(ItemHandler.voltasniaRod), new ItemStack(Item.ingotGold), new ItemStack(ItemHandler.arcaneRod, 1, 1)));
+		mappings.add(new ElectroplationEngineMap(new ItemStack(ItemHandler.voltasniaRod), new ItemStack(ItemHandler.copperIngot), new ItemStack(ItemHandler.arcaneRod, 1, 2)));
+		mappings.add(new ElectroplationEngineMap(new ItemStack(ItemHandler.voltasniaRod), new ItemStack(ItemHandler.nisilIngot), new ItemStack(ItemHandler.arcaneRod, 1, 3)));
+		mappings.add(new ElectroplationEngineMap(new ItemStack(ItemHandler.voltasniaRod), new ItemStack(ItemHandler.lithiumIngot), new ItemStack(ItemHandler.arcaneRod, 1, 4)));
 	}
 	
 	public static boolean isValidCatalyst(ItemStack stack) {

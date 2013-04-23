@@ -158,6 +158,8 @@ public class CraftingHandler {
 		GameRegistry.addRecipe(new ItemStack(ItemHandler.copperAxe), new Object[] {"cc", "sc", "s ", 'c', ItemHandler.copperIngot, 's', Item.stick});
 		GameRegistry.addRecipe(new ItemStack(ItemHandler.copperHoe), new Object[] {"cc", " s", " s", 'c', ItemHandler.copperIngot, 's', Item.stick});
 		GameRegistry.addRecipe(new ItemStack(ItemHandler.copperHoe), new Object[] {"cc", "s ", "s ", 'c', ItemHandler.copperIngot, 's', Item.stick});
+		
+		GameRegistry.addRecipe(new ItemStack(ItemHandler.arcaneBucket), new Object[] {"s s", " s ", 's', ItemHandler.silverIngot});
 	}
 	
 	private static void createConduitRecipes() {

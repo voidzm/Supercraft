@@ -179,6 +179,9 @@ public class SupercraftConfiguration {
 	
 	public int draconiumID;
 	
+	public int arcanerodID;
+	public int venianrodID;
+	
 	///*** RECIPES ***///
 	
 	public boolean docoalblockrecipe;
@@ -388,7 +391,10 @@ public class SupercraftConfiguration {
 		
 		draconiumID = internalCfg.get(Configuration.CATEGORY_ITEM, "draconiumID", "23035").getInt();
 		
-		// NEXT ID: 23036
+		arcanerodID = internalCfg.get(Configuration.CATEGORY_ITEM, "arcanerodID", "23036").getInt();
+		venianrodID = internalCfg.get(Configuration.CATEGORY_ITEM, "venianrodID", "23037").getInt();
+		
+		// NEXT ID: 23038
 		
 	}
 	

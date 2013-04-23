@@ -17,8 +17,6 @@ public class AlloyInductorRecipes {
 	
 	private static void populateCombos() {
 		comboMappings.add(new AlloyInductorComboMap(new ItemStack(ItemHandler.silverIngot), new ItemStack(Item.ingotGold), new ItemStack(ItemHandler.electrumIngot)));
-		comboMappings.add(new AlloyInductorComboMap(new ItemStack(ItemHandler.cobaltDust), new ItemStack(Item.ingotIron), new ItemStack(ItemHandler.metallicCobaltIngot)));
-		comboMappings.add(new AlloyInductorComboMap(new ItemStack(ItemHandler.cobaltDust), new ItemStack(ItemHandler.aluminumIngot), new ItemStack(ItemHandler.metallicCobaltIngot)));
 		comboMappings.add(new AlloyInductorComboMap(new ItemStack(ItemHandler.cobaltDust), new ItemStack(ItemHandler.silverIngot), new ItemStack(ItemHandler.metallicCobaltIngot)));
 	}
 	
