@@ -35,7 +35,6 @@ public class WorldGenOre implements IWorldGenerator {
 	
 	@Override
 	public void generate(Random random, int chunkX, int chunkZ, World world, IChunkProvider chunkGenerator, IChunkProvider chunkProvider) {
-		System.out.println("ID: "+world.provider.dimensionId);
 		switch(world.provider.dimensionId) {
 		case -1:
 			generateNether(world, random, chunkX, chunkZ);
