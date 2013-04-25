@@ -21,6 +21,7 @@ import com.voidzm.supercraft.handler.FuelHandler;
 import com.voidzm.supercraft.handler.GuiHandler;
 import com.voidzm.supercraft.handler.ItemHandler;
 import com.voidzm.supercraft.handler.PacketHandler;
+import com.voidzm.supercraft.handler.ServerTickHandler;
 import com.voidzm.supercraft.handler.TileEntityHandler;
 import com.voidzm.supercraft.misc.CreativeTabElinvar;
 import com.voidzm.supercraft.misc.CreativeTabVeneficia;
@@ -38,6 +39,8 @@ import cpw.mods.fml.common.event.FMLInitializationEvent;
 import cpw.mods.fml.common.event.FMLPostInitializationEvent;
 import cpw.mods.fml.common.event.FMLPreInitializationEvent;
 import cpw.mods.fml.common.network.NetworkMod;
+import cpw.mods.fml.common.registry.TickRegistry;
+import cpw.mods.fml.relauncher.Side;
 
 @Mod(modid="Supercraft", name="Supercraft", version="0.3.0")
 @NetworkMod(clientSideRequired=true, serverSideRequired=false, channels={"SCElinvar", "SCMachineUpdates"}, packetHandler=PacketHandler.class)
@@ -77,6 +80,7 @@ public class Supercraft {
 		
 		proxy.registerRenderers();
 		proxy.initTickHandler();
+		TickRegistry.registerTickHandler(new ServerTickHandler(), Side.SERVER);
 		
 		StartupStats.loadingDone();
 	}

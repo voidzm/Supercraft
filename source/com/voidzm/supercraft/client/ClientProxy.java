@@ -9,7 +9,7 @@ import net.minecraftforge.client.MinecraftForgeClient;
 
 import com.voidzm.supercraft.CommonProxy;
 import com.voidzm.supercraft.handler.ItemHandler;
-import com.voidzm.supercraft.handler.SCTickHandler;
+import com.voidzm.supercraft.handler.ClientTickHandler;
 import com.voidzm.supercraft.render.InventoryConduitRender;
 import com.voidzm.supercraft.render.InventoryVenianRodRender;
 import com.voidzm.supercraft.render.TileConduitRender;
@@ -34,7 +34,7 @@ public class ClientProxy extends CommonProxy {
 	
 	@Override
 	public void initTickHandler() {
-		TickRegistry.registerTickHandler(new SCTickHandler(), Side.CLIENT);
+		TickRegistry.registerTickHandler(new ClientTickHandler(), Side.CLIENT);
 	}
 	
 }
