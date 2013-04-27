@@ -39,11 +39,13 @@ public class BlockMonolithAscension extends BlockSupercraft {
 		}
 	}
 	
+	@Override
 	public void registerIcons(IconRegister par1IconRegister) {
 		if(isActivated) this.blockIcon = par1IconRegister.registerIcon("supercraft:monolithascension_on");
 		else this.blockIcon = par1IconRegister.registerIcon("supercraft:monolithascension");
 	}
 	
+	@Override
 	public void onEntityWalking(World par1World, int par2, int par3, int par4, Entity par5Entity) {
 		if(par1World.isRemote || !this.isActivated) return;
 		int theDeepID = Supercraft.configuration.thedeepID;
@@ -69,6 +71,7 @@ public class BlockMonolithAscension extends BlockSupercraft {
 		return true;
 	}
 	
+	@Override
 	public TileEntity createTileEntity(World world, int metadata) {
 		return new TileEntityMonolithAscension();
 	}

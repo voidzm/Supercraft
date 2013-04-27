@@ -32,20 +32,24 @@ public class BlockSupercraftLeaves1 extends BlockSupercraftColoredLeavesBase {
 		this.names.add("Olive Leaves");
 	}
 	
+	@Override
 	public void registerIcons(IconRegister par1IconRegister) {
 		textures[0] = par1IconRegister.registerIcon("supercraft:leavesolive_fancy");
 	}
 	
-	public Icon getBlockTextureFromSideAndMetadata(int par1, int par2) {
+	@Override
+	public Icon getIcon(int par1, int par2) {
 		int leavesCode = par2 & 3;
 		return textures[leavesCode];
 	}
 	
+	@Override
 	@SideOnly(Side.CLIENT)
 	public void getSubBlocks(int par1, CreativeTabs par2CreativeTabs, List par3List) {
 		par3List.add(new ItemStack(par1, 1, 0));
 	}
 	
+	@Override
 	public int idDropped(int par1, Random par2Random, int par3) {
 		return BlockHandler.supercraftSapling1.blockID;
 	}

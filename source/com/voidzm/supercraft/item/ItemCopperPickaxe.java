@@ -35,8 +35,8 @@ public class ItemCopperPickaxe extends ItemPickaxe implements IRegisterable {
 		this.rdata.externalName = "Copper Pickaxe";
 	}
 
-	public void updateIcons(IconRegister par1IconRegister) {
-		this.iconIndex = par1IconRegister.registerIcon("supercraft:pickaxecopper");
+	public void registerIcons(IconRegister par1IconRegister) {
+		this.itemIcon = par1IconRegister.registerIcon("supercraft:pickaxecopper");
 	}
 
 	@Override

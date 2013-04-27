@@ -40,6 +40,7 @@ public class BlockGravenStone extends BlockSupercraft {
 		this.names.add("Graven Stone of Brilliance");
 	}
 	
+	@Override
 	public void registerIcons(IconRegister par1IconRegister) {
 		textures[0] = par1IconRegister.registerIcon("supercraft:gravenstone_darkness");
 		textures[1] = par1IconRegister.registerIcon("supercraft:gravenstone_shadow");
@@ -47,14 +48,17 @@ public class BlockGravenStone extends BlockSupercraft {
 		textures[3] = par1IconRegister.registerIcon("supercraft:gravenstone_brilliance");
 	}
 	
-	public Icon getBlockTextureFromSideAndMetadata(int par1, int par2) {
+	@Override
+	public Icon getIcon(int par1, int par2) {
 		return this.textures[par2];
 	}
 	
+	@Override
 	public int damageDropped(int par1) {
 		return par1;
 	}
 	
+	@Override
 	@SideOnly(Side.CLIENT)
 	public void getSubBlocks(int par1, CreativeTabs par2CreativeTabs, List par3List) {
 		par3List.add(new ItemStack(par1, 1, 0));

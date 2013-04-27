@@ -28,26 +28,32 @@ public class BlockSupercraftGlass extends BlockSupercraft {
 		this.iconString = icon;
 	}
 	
+	@Override
 	public int quantityDropped(Random random) {
 		return 0;
 	}
 	
+	@Override
 	public int getRenderBlockPass() {
 		return 0;
 	}
 	
+	@Override
 	public boolean isOpaqueCube() {
 		return false;
 	}
 	
+	@Override
 	public boolean renderAsNormalBlock() {
 		return false;
 	}
 	
+	@Override
 	public boolean canSilkHarvest() {
 		return true;
 	}
 	
+	@Override
 	public boolean shouldSideBeRendered(IBlockAccess par1IBlockAccess, int par2, int par3, int par4, int par5) {
 		int blockID = par1IBlockAccess.getBlockId(par2, par3, par4);
 		return isGlassType(blockID) ? false : super.shouldSideBeRendered(par1IBlockAccess, par2, par3, par4, par5);
@@ -62,6 +68,7 @@ public class BlockSupercraftGlass extends BlockSupercraft {
 		else return false;
 	}
 	
+	@Override
 	public void registerIcons(IconRegister par1IconRegister) {
 		this.blockIcon = par1IconRegister.registerIcon(this.iconString);
 	}

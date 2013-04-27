@@ -25,10 +25,12 @@ public class BlockGenerator extends BlockSupercraft {
 		this.setCreativeTab(Supercraft.elinvarTab);
 	}
 	
+	@Override
 	public void onBlockAdded(World par1World, int par2, int par3, int par4) {
 		this.updateState(par1World, par2, par3, par4);
 	}
 	
+	@Override
 	public void onNeighborBlockChange(World par1World, int par2, int par3, int par4, int par5) {
 		this.updateState(par1World, par2, par3, par4);
 	}

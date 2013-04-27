@@ -113,7 +113,7 @@ public class BlockAlloyInductor extends BlockSupercraft {
 	}
 	
 	@Override
-	public Icon getBlockTextureFromSideAndMetadata(int side, int meta) {
+	public Icon getIcon(int side, int meta) {
 		if(side == 0) return textureBottom;
 		else if(side == 1) return textureTop;
 		else return textureSide;

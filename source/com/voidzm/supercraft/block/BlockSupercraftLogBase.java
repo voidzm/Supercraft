@@ -23,14 +23,17 @@ public class BlockSupercraftLogBase extends BlockSupercraft {
 		this.setInternalName("supercraftlogbase");
 	}
 	
+	@Override
 	public int getRenderType() {
 		return 31;
 	}
 	 
+	@Override
 	public int quantityDropped(Random par1Random) {
 		return 1;
 	}
 	
+	@Override
 	public void breakBlock(World par1World, int par2, int par3, int par4, int par5, int par6) {
 		byte var7 = 4;
 		int var8 = var7 + 1;
@@ -48,6 +51,7 @@ public class BlockSupercraftLogBase extends BlockSupercraft {
 		}
 	}
 	
+	@Override
 	public int onBlockPlaced(World par1World, int par2, int par3, int par4, int par5, float par6, float par7, float par8, int par9) {
 		int var10 = par9 & 3;
 		byte var11 = 0;
@@ -67,9 +71,11 @@ public class BlockSupercraftLogBase extends BlockSupercraft {
 		return var10 | var11;
 	}
 	
+	@Override
 	public void registerIcons(IconRegister par1IconRegister) {} // Overridden in subclasses.
 
-	public Icon getBlockTextureFromSideAndMetadata(int side, int meta) {
+	@Override
+	public Icon getIcon(int side, int meta) {
 		int logCode = meta & 3;
 		int rotationCode = meta & 12;
 		Icon logSide, logEnd;
@@ -149,6 +155,7 @@ public class BlockSupercraftLogBase extends BlockSupercraft {
 		}
 	}
 	
+	@Override
 	public int damageDropped(int par1) {
 		return par1 & 3;
 	}
@@ -157,8 +164,10 @@ public class BlockSupercraftLogBase extends BlockSupercraft {
 		return par0 & 3;
 	}
 
+	@Override
 	public void getSubBlocks(int par1, CreativeTabs par2CreativeTabs, List par3List) {} // Overridden in subclasses.
 
+	@Override
 	protected ItemStack createStackedBlock(int par1) {
 		return new ItemStack(this.blockID, 1, limitToValidMetadata(par1));
 	}

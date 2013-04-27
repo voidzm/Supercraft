@@ -49,6 +49,7 @@ public class BlockSupercraftPlanks1 extends BlockSupercraft {
 		this.names.add("Mortalia Wood Planks");
 	}
 	
+	@Override
 	public void registerIcons(IconRegister par1IconRegister) {
 		textures[0] = par1IconRegister.registerIcon("supercraft:planksolive");
 		textures[1] = par1IconRegister.registerIcon("supercraft:planksgoldenwood");
@@ -58,10 +59,12 @@ public class BlockSupercraftPlanks1 extends BlockSupercraft {
 		textures[5] = par1IconRegister.registerIcon("supercraft:planksmortalia");
 	}
 	
-	public Icon getBlockTextureFromSideAndMetadata(int side, int meta) {
+	@Override
+	public Icon getIcon(int side, int meta) {
 		return textures[meta];
 	}
 	
+	@Override
 	public int damageDropped(int par1) {
 		return par1;
 	}

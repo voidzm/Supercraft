@@ -31,10 +31,12 @@ public class BlockSupercraftMushroom extends BlockSupercraftFlower {
 		this.setBlockBounds(0.5F - f, 0.0F, 0.5F - f, 0.5F + f, f * 2.0F, 0.5F + f);
 	}
 	
+	@Override
 	public EnumPlantType getPlantType(World world, int x, int y, int z) {
 		return this.plantType;
 	}
 	
+	@Override
 	public void registerIcons(IconRegister par1IconRegister) {
 		this.blockIcon = par1IconRegister.registerIcon(this.iconLocation);
 	}
@@ -56,6 +58,7 @@ public class BlockSupercraftMushroom extends BlockSupercraftFlower {
 		gen.generate(par1World, par5Random, par2, par3, par4, type);
 	}
 	
+	@Override
 	public void updateTick(World par1World, int par2, int par3, int par4, Random par5Random) {
 		if(par5Random.nextInt(8) == 0) {
 			if(par5Random.nextInt(3) == 0) {
@@ -100,14 +103,17 @@ public class BlockSupercraftMushroom extends BlockSupercraftFlower {
 		}
 	}
 	
+	@Override
 	public boolean canPlaceBlockAt(World par1World, int par2, int par3, int par4){
 		return super.canPlaceBlockAt(par1World, par2, par3, par4) && this.canBlockStay(par1World, par2, par3, par4);
 	}
 	
+	@Override
 	protected boolean canThisPlantGrowOnThisBlockID(int par1){
 		return Block.opaqueCubeLookup[par1];
 	}
 	
+	@Override
 	public boolean canBlockStay(World par1World, int par2, int par3, int par4) {
 		if(par3 >= 0 && par3 < 256) {
 			int l = par1World.getBlockId(par2, par3 - 1, par4);

@@ -51,7 +51,7 @@ public class ItemEssence extends ItemSupercraft {
 		this.namesExternal.add("Tenebra Essence");
 	}
 	
-	public void updateIcons(IconRegister par1IconRegister) {
+	public void registerIcons(IconRegister par1IconRegister) {
 		textures[0] = par1IconRegister.registerIcon("supercraft:essenceterraen");
 		textures[1] = par1IconRegister.registerIcon("supercraft:essenceaeronic");
 		textures[2] = par1IconRegister.registerIcon("supercraft:essenceinfernal");

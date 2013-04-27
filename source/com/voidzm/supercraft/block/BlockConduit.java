@@ -97,10 +97,11 @@ public class BlockConduit extends BlockSupercraft {
 	}
 	
 	@Override
-	public Icon getBlockTextureFromSideAndMetadata(int par1, int par2) {
+	public Icon getIcon(int par1, int par2) {
 		return this.textures[par2];
 	}
 	
+	@Override
 	public void updateTick(World par1World, int par2, int par3, int par4, Random par5Random) {
 		if(!par1World.isRemote) {
 			super.updateTick(par1World, par2, par3, par4, par5Random);
@@ -114,10 +115,12 @@ public class BlockConduit extends BlockSupercraft {
 		}
 	}
 	
+	@Override
 	public boolean getBlocksMovement(IBlockAccess par1IBlockAccess, int par2, int par3, int par4) {
 		return false;
 	}
 	
+	@Override
 	public void setBlockBoundsBasedOnState(IBlockAccess world, int x, int y, int z) {
 		float lowX = 0.25F;
 		float lowY = 0.25F;
@@ -146,11 +149,13 @@ public class BlockConduit extends BlockSupercraft {
 		this.setBlockBounds(lowX, lowY, lowZ, highX, highY, highZ);
 	}
 	
+	@Override
 	public AxisAlignedBB getCollisionBoundingBoxFromPool(World par1World, int par2, int par3, int par4) {
 		this.setBlockBoundsBasedOnState(par1World, par2, par3, par4);
 		return super.getCollisionBoundingBoxFromPool(par1World, par2, par3, par4);
 	}
 	
+	@Override
 	public void onBlockAdded(World par1World, int par2, int par3, int par4) {
 		this.performElinvarUpdateChecks(par1World, par2, par3, par4, 0);
 	}
@@ -282,18 +287,22 @@ public class BlockConduit extends BlockSupercraft {
 		
 	}
 	
+	@Override
 	public void onNeighborBlockChange(World par1World, int par2, int par3, int par4, int par5) {
 		this.performElinvarUpdateChecks(par1World, par2, par3, par4, par5);
 	}
 
+	@Override
 	public boolean shouldSideBeRendered(IBlockAccess par1IBlockAccess, int par2, int par3, int par4, int par5) {
 		return false;
 	}
 	
+	@Override
 	public boolean isOpaqueCube() {
 		return false;
 	}
 	
+	@Override
 	public boolean renderAsNormalBlock() {
 		return false;
 	}
@@ -338,11 +347,13 @@ public class BlockConduit extends BlockSupercraft {
 		return null;
 	}
 	
+	@Override
 	public void breakBlock(World par1World, int par2, int par3, int par4, int par5, int par6) {
 		par1World.removeBlockTileEntity(par2, par3, par4);
 		super.breakBlock(par1World, par2, par3, par4, par5, par6);
 	}
 	
+	@Override
 	public int getRenderType() {
 		if(FMLCommonHandler.instance().getEffectiveSide() == Side.SERVER) return -1; // Added this to stop crashing the server.
 		else return ClientProxy.conduitInvRenderID;
@@ -401,10 +412,12 @@ public class BlockConduit extends BlockSupercraft {
 		}
 	}
 
+	@Override
 	public int damageDropped(int par1) {
 		return par1;
 	}
 	
+	@Override
 	@SideOnly(Side.CLIENT)
 	public void getSubBlocks(int par1, CreativeTabs par2CreativeTabs, List par3List) {
 		par3List.add(new ItemStack(par1, 1, 0));

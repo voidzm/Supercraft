@@ -20,6 +20,7 @@ public class BlockGoldenwood extends BlockSupercraft {
 		this.setCreativeTab(CreativeTabs.tabBlock);
 	}
 	
+	@Override
 	public void registerIcons(IconRegister par1IconRegister) {
 		this.blockIcon = par1IconRegister.registerIcon("supercraft:blockgoldenwood");
 	}

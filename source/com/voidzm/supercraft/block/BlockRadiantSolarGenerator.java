@@ -25,13 +25,15 @@ public class BlockRadiantSolarGenerator extends BlockGenerator implements IGener
 		this.setExternalName("Radiant Solar Generator");
 	}
 
+	@Override
 	public void registerIcons(IconRegister par1IconRegister) {
 		textureTop = par1IconRegister.registerIcon("supercraft:radiantsolargenerator_top");
 		textureSide = par1IconRegister.registerIcon("supercraft:radiantsolargenerator_side");
 		textureBottom = par1IconRegister.registerIcon("supercraft:copperboundstone_beveled");
 	}
 	
-	public Icon getBlockTextureFromSideAndMetadata(int side, int meta) {
+	@Override
+	public Icon getIcon(int side, int meta) {
 		if(side == 0) return textureBottom;
 		else if(side == 1) return textureTop;
 		else return textureSide;

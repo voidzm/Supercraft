@@ -55,15 +55,18 @@ public class BlockSupercraftSlab2 extends BlockSupercraftSlabBase implements IRe
 		rdata.itemBlockClass = ItemBlockSupercraft.class;
 	}
 	
+	@Override
 	public void registerIcons(IconRegister par1IconRegister) {
 		textures[0] = par1IconRegister.registerIcon("supercraft:palestonebricks");
 		textures[1] = par1IconRegister.registerIcon("supercraft:nightrockbricks");
 	}
 	
-	public Icon getBlockTextureFromSideAndMetadata(int side, int meta) {
+	@Override
+	public Icon getIcon(int side, int meta) {
 		return textures[meta & 7];
 	}
 	
+	@Override
 	public String getFullSlabName(int par1) {
 		if(par1 < 0 || par1 >= types.length) {
 			par1 = 0;
@@ -71,6 +74,7 @@ public class BlockSupercraftSlab2 extends BlockSupercraftSlabBase implements IRe
 		return super.getUnlocalizedName() + "." + types[par1];
 	}
 	
+	@Override
 	@SideOnly(Side.CLIENT)
     public void getSubBlocks(int par1, CreativeTabs par2CreativeTabs, List par3List) {
         if(par1 == BlockHandler.supercraftSlab2.blockID) {

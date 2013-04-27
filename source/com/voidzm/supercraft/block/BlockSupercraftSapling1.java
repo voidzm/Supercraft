@@ -36,11 +36,13 @@ public class BlockSupercraftSapling1 extends BlockSupercraftSaplingBase {
 		this.names.add("Olive Sapling");
 	}
 	
+	@Override
 	public void registerIcons(IconRegister par1IconRegister) {
 		textures[0] = par1IconRegister.registerIcon("supercraft:saplingolive");
 	}
 	
-	public Icon getBlockTextureFromSideAndMetadata(int side, int meta) {
+	@Override
+	public Icon getIcon(int side, int meta) {
 		return textures[meta & 3];
 	}
 	
@@ -55,6 +57,7 @@ public class BlockSupercraftSapling1 extends BlockSupercraftSaplingBase {
         }
     }
 	
+	@Override
     @SideOnly(Side.CLIENT)
     public void getSubBlocks(int par1, CreativeTabs par2CreativeTabs, List par3List) {
         par3List.add(new ItemStack(par1, 1, 0));

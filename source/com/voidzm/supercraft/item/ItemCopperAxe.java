@@ -35,8 +35,8 @@ public class ItemCopperAxe extends ItemAxe implements IRegisterable {
 		this.rdata.externalName = "Copper Axe";
 	}
 
-	public void updateIcons(IconRegister par1IconRegister) {
-		this.iconIndex = par1IconRegister.registerIcon("supercraft:axecopper");
+	public void registerIcons(IconRegister par1IconRegister) {
+		this.itemIcon = par1IconRegister.registerIcon("supercraft:axecopper");
 	}
 
 	@Override

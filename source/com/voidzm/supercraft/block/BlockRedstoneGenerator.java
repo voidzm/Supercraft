@@ -27,13 +27,15 @@ public class BlockRedstoneGenerator extends BlockGenerator implements IGenerator
 		this.setExternalName("Redstone Conversion Generator");
 	}
 	
+	@Override
 	public void registerIcons(IconRegister par1IconRegister) {
 		textureTop = par1IconRegister.registerIcon("supercraft:ironboundstone_beveled");
 		textureSide = par1IconRegister.registerIcon("supercraft:redstoneconversiongenerator_side");
 		textureBottom = par1IconRegister.registerIcon("supercraft:stone_beveled");
 	}
 	
-	public Icon getBlockTextureFromSideAndMetadata(int side, int meta) {
+	@Override
+	public Icon getIcon(int side, int meta) {
 		if(side == 0) return textureBottom;
 		else if(side == 1) return textureTop;
 		else return textureSide;

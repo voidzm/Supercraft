@@ -39,12 +39,14 @@ public class BlockSupercraftSapling2 extends BlockSupercraftSaplingBase {
 		this.names.add("Tenebria Sapling");
 	}
 	
+	@Override
 	public void registerIcons(IconRegister par1IconRegister) {
 		textures[0] = par1IconRegister.registerIcon("supercraft:saplinggoldenwood");
 		textures[1] = par1IconRegister.registerIcon("supercraft:saplingtenebria");
 	}
 	
-	public Icon getBlockTextureFromSideAndMetadata(int side, int meta) {
+	@Override
+	public Icon getIcon(int side, int meta) {
 		return textures[meta & 3];
 	}
 	

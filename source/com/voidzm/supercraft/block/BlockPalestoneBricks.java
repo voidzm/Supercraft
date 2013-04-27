@@ -24,10 +24,12 @@ public class BlockPalestoneBricks extends BlockSupercraft {
 		this.setCreativeTab(CreativeTabs.tabBlock);
 	}
 	
+	@Override
 	public void registerIcons(IconRegister par1IconRegister) {
 		this.blockIcon = par1IconRegister.registerIcon("supercraft:palestonebricks");
 	}
 	
+	@Override
 	public void updateTick(World par1World, int par2, int par3, int par4, Random par5Random) {
 		if(par2 < 255 && (par1World.getBlockId(par2, par3+1, par4) == Block.waterStill.blockID || par1World.getBlockId(par2, par3+1, par4) == Block.waterMoving.blockID)) {
 			if(par5Random.nextInt(10) == 0) {

@@ -25,6 +25,7 @@ public class BlockBoundStone extends BlockSupercraft {
 		this.iconString = icon;
 	}
 	
+	@Override
 	public void registerIcons(IconRegister par1IconRegister) {
 		this.blockIcon = par1IconRegister.registerIcon(this.iconString);
 	}

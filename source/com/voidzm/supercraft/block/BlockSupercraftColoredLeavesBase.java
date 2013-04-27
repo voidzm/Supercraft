@@ -23,6 +23,7 @@ public class BlockSupercraftColoredLeavesBase extends BlockSupercraftLeavesBase 
 		return ColorizerFoliage.getFoliageColorBasic();
 	}
 	
+	@Override
 	public int colorMultiplier(IBlockAccess par1IBlockAccess, int par2, int par3, int par4) {
 		int var6 = 0;
 		int var7 = 0;

@@ -108,7 +108,7 @@ public class EssentialReducerRecipes {
 		catalystMappings.add(new EssentialReducerCatalystMap(new ItemStack(Block.netherrack), EssentialAspect.NETHEREAL));
 		catalystMappings.add(new EssentialReducerCatalystMap(new ItemStack(Block.netherBrick), EssentialAspect.NETHEREAL));
 		catalystMappings.add(new EssentialReducerCatalystMap(new ItemStack(Block.whiteStone), EssentialAspect.DRACONIC));
-		catalystMappings.add(new EssentialReducerCatalystMap(new ItemStack(Block.blockSteel), EssentialAspect.FERRIC));
+		catalystMappings.add(new EssentialReducerCatalystMap(new ItemStack(Block.blockIron), EssentialAspect.FERRIC));
 		catalystMappings.add(new EssentialReducerCatalystMap(new ItemStack(Block.blockGold), EssentialAspect.FERRIC));
 		catalystMappings.add(new EssentialReducerCatalystMap(new ItemStack(Block.blockLapis), EssentialAspect.RADANTIS));
 		catalystMappings.add(new EssentialReducerCatalystMap(new ItemStack(Block.blockDiamond), EssentialAspect.RADANTIS));

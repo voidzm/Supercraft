@@ -35,8 +35,8 @@ public class ItemCopperSword extends ItemSword implements IRegisterable {
 		this.rdata.externalName = "Copper Sword";
 	}
 
-	public void updateIcons(IconRegister par1IconRegister) {
-		this.iconIndex = par1IconRegister.registerIcon("supercraft:swordcopper");
+	public void registerIcons(IconRegister par1IconRegister) {
+		this.itemIcon = par1IconRegister.registerIcon("supercraft:swordcopper");
 	}
 
 	@Override

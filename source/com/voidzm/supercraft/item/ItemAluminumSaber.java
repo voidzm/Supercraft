@@ -35,8 +35,8 @@ public class ItemAluminumSaber extends ItemSword implements IRegisterable {
 		this.rdata.externalName = "Aluminum Saber";
 	}
 
-	public void updateIcons(IconRegister par1IconRegister) {
-		this.iconIndex = par1IconRegister.registerIcon("supercraft:swordaluminum");
+	public void registerIcons(IconRegister par1IconRegister) {
+		this.itemIcon = par1IconRegister.registerIcon("supercraft:swordaluminum");
 	}
 	
 	public int getDamageVsEntity(Entity par1Entity) {

@@ -28,11 +28,13 @@ public class BlockMonolithInception extends BlockSupercraft {
 		}
 	}
 	
+	@Override
 	public void registerIcons(IconRegister par1IconRegister) {
 		if(isActivated) this.blockIcon = par1IconRegister.registerIcon("supercraft:monolithinception_on");
 		else this.blockIcon = par1IconRegister.registerIcon("supercraft:monolithinception");
 	}
 	
+	@Override
 	public int idDropped(int par1, Random par2Random, int par3) {
 		return BlockHandler.monolithInception.blockID;
 	}

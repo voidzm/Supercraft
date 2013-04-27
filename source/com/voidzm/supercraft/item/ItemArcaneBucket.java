@@ -33,8 +33,8 @@ public class ItemArcaneBucket extends ItemSupercraft {
 	}
 	
 	@Override
-	public void updateIcons(IconRegister par1IconRegister) {
-		this.iconIndex = par1IconRegister.registerIcon(this.icon);
+	public void registerIcons(IconRegister par1IconRegister) {
+		this.itemIcon = par1IconRegister.registerIcon(this.icon);
 	}
 	
 	public ItemStack onItemRightClick(ItemStack par1ItemStack, World par2World, EntityPlayer par3EntityPlayer) {

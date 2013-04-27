@@ -56,7 +56,7 @@ public class ItemBlockSupercraft extends ItemBlock {
 	public Icon getIconFromDamage(int par1) {
 		Block block = Block.blocksList[this.blockID];
 		if(block == null) return null;
-		return block.getBlockTextureFromSideAndMetadata(0, par1);
+		return block.getIcon(0, par1);
 	}
 	
 }

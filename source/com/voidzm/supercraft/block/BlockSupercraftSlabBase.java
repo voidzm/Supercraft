@@ -36,10 +36,12 @@ public class BlockSupercraftSlabBase extends BlockHalfSlab {
 		this.setUnlocalizedName("supercraftslabbase");
 	}
 	
+	@Override
 	protected ItemStack createStackedBlock(int par1) {
         return new ItemStack(this.blockID, 2, par1 & 7);
     }
 	
+	@Override
 	public String getFullSlabName(int par1) {
 		return null;
     }

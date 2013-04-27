@@ -37,8 +37,8 @@ public class ItemCopperShovel extends ItemSpade implements IRegisterable {
 		this.rdata.externalName = "Copper Shovel";
 	}
 
-	public void updateIcons(IconRegister par1IconRegister) {
-		this.iconIndex = par1IconRegister.registerIcon("supercraft:shovelcopper");
+	public void registerIcons(IconRegister par1IconRegister) {
+		this.itemIcon = par1IconRegister.registerIcon("supercraft:shovelcopper");
 	}
 
 	@Override

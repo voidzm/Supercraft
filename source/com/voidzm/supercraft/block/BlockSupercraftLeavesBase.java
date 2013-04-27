@@ -60,14 +60,17 @@ public class BlockSupercraftLeavesBase extends BlockSupercraft implements IShear
 		return new ItemStack(this.blockID, 1, par1 & 3);
 	}
 	
+	@Override
 	public boolean isOpaqueCube() {
 		return false;
 	}
 	
+	@Override
 	public int damageDropped(int par1) {
 		return par1 & 3;
 	}
 	
+	@Override
 	public void dropBlockAsItemWithChance(World par1World, int par2, int par3, int par4, int par5, float par6, int par7) {
 		if(!par1World.isRemote) {
 			byte var8 = 20;
@@ -98,6 +101,7 @@ public class BlockSupercraftLeavesBase extends BlockSupercraft implements IShear
 		}
 	}
 	
+	@Override
 	public void updateTick(World par1World, int par2, int par3, int par4, Random par5Random) {
 		if(!par1World.isRemote) {
 			int var6 = par1World.getBlockMetadata(par2, par3, par4);
@@ -178,6 +182,7 @@ public class BlockSupercraftLeavesBase extends BlockSupercraft implements IShear
 		}
 	}
 	
+	@Override
 	public void breakBlock(World par1World, int par2, int par3, int par4, int par5, int par6) {
 		byte var7 = 1;
 		int var8 = var7 + 1;
@@ -195,6 +200,7 @@ public class BlockSupercraftLeavesBase extends BlockSupercraft implements IShear
 		}
 	}
 	
+	@Override
 	public int onBlockPlaced(World par1World, int par2, int par3, int par4, int par5, float par6, float par7, float par8, int par9) {
 		// Fix for placed leaves in creative sometimes decaying
 		return par9 | 4;

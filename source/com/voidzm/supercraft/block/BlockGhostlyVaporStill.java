@@ -4,6 +4,9 @@ import com.voidzm.supercraft.handler.BlockHandler;
 import com.voidzm.supercraft.protocol.IRegisterable;
 import com.voidzm.supercraft.util.RegisterData;
 
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
+
 import net.minecraft.block.BlockStationary;
 import net.minecraft.block.material.Material;
 import net.minecraft.client.renderer.texture.IconRegister;
@@ -35,19 +38,23 @@ public class BlockGhostlyVaporStill extends BlockStationary implements IRegister
 		this.rdata.externalName = "Ghostly Vapor";
 	}
 	
+	@Override
 	public void registerIcons(IconRegister par1IconRegister) {
 		stillVapor = par1IconRegister.registerIcon("supercraft:ghostlyvapor");
 		flowingVapor = par1IconRegister.registerIcon("supercraft:ghostlyvapor_flow");
 	}
 	
+	@SideOnly(Side.CLIENT)
 	public static Icon func_94424_b(String par0Str) {
 		return stillVapor;
 	}
 	
-	public Icon getBlockTextureFromSideAndMetadata(int par1, int par2) {
+	@Override
+	public Icon getIcon(int par1, int par2) {
 		return par1 != 0 && par1 != 1 ? flowingVapor : stillVapor;
 	}
 	
+	@Override
 	public void onEntityCollidedWithBlock(World par1World, int par2, int par3, int par4, Entity par5Entity) {
 		if(par5Entity instanceof EntityPlayer) {
 			EntityPlayer player = (EntityPlayer)par5Entity;

@@ -24,13 +24,15 @@ public class BlockCelestialBalanceGenerator extends BlockGenerator implements IG
 		this.setExternalName("Celestial Balance Generator");
 	}
 
+	@Override
 	public void registerIcons(IconRegister par1IconRegister) {
 		textureTop = par1IconRegister.registerIcon("supercraft:celestialbalancegenerator_top");
 		textureSide = par1IconRegister.registerIcon("supercraft:celestialbalancegenerator_side");
 		textureBottom = par1IconRegister.registerIcon("supercraft:ironboundstone_beveled");
 	}
 	
-	public Icon getBlockTextureFromSideAndMetadata(int side, int meta) {
+	@Override
+	public Icon getIcon(int side, int meta) {
 		if(side == 0) return textureBottom;
 		else if(side == 1) return textureTop;
 		else return textureSide;

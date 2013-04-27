@@ -24,13 +24,15 @@ public class BlockWaveringLunarGenerator extends BlockGenerator implements IGene
 		this.setExternalName("Wavering Lunar Generator");
 	}
 
+	@Override
 	public void registerIcons(IconRegister par1IconRegister) {
 		textureTop = par1IconRegister.registerIcon("supercraft:waveringlunargenerator_top");
 		textureSide = par1IconRegister.registerIcon("supercraft:waveringlunargenerator_side");
 		textureBottom = par1IconRegister.registerIcon("supercraft:silverboundstone_beveled");
 	}
 	
-	public Icon getBlockTextureFromSideAndMetadata(int side, int meta) {
+	@Override
+	public Icon getIcon(int side, int meta) {
 		if(side == 0) return textureBottom;
 		else if(side == 1) return textureTop;
 		else return textureSide;

@@ -30,6 +30,7 @@ public class BlockSupercraftSaplingBase extends BlockSupercraftFlower {
         this.setExternalName("Supercraft Sapling Base");
     }
 	
+    @Override
     public void updateTick(World par1World, int par2, int par3, int par4, Random par5Random) {
         if(!par1World.isRemote) {
             super.updateTick(par1World, par2, par3, par4, par5Random);
@@ -53,6 +54,7 @@ public class BlockSupercraftSaplingBase extends BlockSupercraftFlower {
         return par1World.getBlockId(par2, par3, par4) == this.blockID && (par1World.getBlockMetadata(par2, par3, par4) & 3) == par5;
     }
 
+    @Override
     public int damageDropped(int par1) {
         return par1 & 3;
     }

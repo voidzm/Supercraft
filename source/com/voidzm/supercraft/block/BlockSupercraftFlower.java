@@ -44,6 +44,7 @@ public class BlockSupercraftFlower extends BlockSupercraft implements IPlantable
 		this(par1, null, EnumPlantType.Plains);
 	}
 	
+	@Override
 	public boolean canPlaceBlockAt(World par1World, int par2, int par3, int par4) {
 		return super.canPlaceBlockAt(par1World, par2, par3, par4) && canBlockStay(par1World, par2, par3, par4);
 	}
@@ -52,11 +53,13 @@ public class BlockSupercraftFlower extends BlockSupercraft implements IPlantable
 		return par1 == Block.grass.blockID || par1 == Block.dirt.blockID || par1 == Block.tilledField.blockID;
 	}
 	
+	@Override
 	public void onNeighborBlockChange(World par1World, int par2, int par3, int par4, int par5) {
 		super.onNeighborBlockChange(par1World, par2, par3, par4, par5);
 		this.checkFlowerChange(par1World, par2, par3, par4);
 	}
 	
+	@Override
 	public void updateTick(World par1World, int par2, int par3, int par4, Random par5Random) {
 		this.checkFlowerChange(par1World, par2, par3, par4);
 	}
@@ -68,23 +71,28 @@ public class BlockSupercraftFlower extends BlockSupercraft implements IPlantable
 		}
 	}
 	
+	@Override
 	public boolean canBlockStay(World par1World, int par2, int par3, int par4) {
 		Block soil = blocksList[par1World.getBlockId(par2, par3 - 1, par4)];
 		return (par1World.getFullBlockLightValue(par2, par3, par4) >= 8 || par1World.canBlockSeeTheSky(par2, par3, par4)) && (soil != null && soil.canSustainPlant(par1World, par2, par3 - 1, par4, ForgeDirection.UP, this));
 	}
 	
+	@Override
 	public AxisAlignedBB getCollisionBoundingBoxFromPool(World par1World, int par2, int par3, int par4) {
 		return null;
 	}
 	
+	@Override
 	public boolean isOpaqueCube() {
 		return false;
 	}
 	
+	@Override
 	public boolean renderAsNormalBlock() {
 		return false;
 	}
 	
+	@Override
 	public int getRenderType() {
 		return 1;
 	}
@@ -99,10 +107,12 @@ public class BlockSupercraftFlower extends BlockSupercraft implements IPlantable
 		return world.getBlockMetadata(x, y, z);
 	}
 	
+	@Override
 	public EnumPlantType getPlantType(World world, int x, int y, int z) {
 		return this.plantType;
 	}
 	
+	@Override
 	public void registerIcons(IconRegister par1IconRegister) {
 		this.blockIcon = par1IconRegister.registerIcon(this.iconLocation);
 	}

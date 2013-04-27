@@ -57,6 +57,7 @@ public class BlockRefinedCraftingTable extends BlockSupercraft {
 		this.names.add("Nightrock Crafting Table");
 	}
 	
+	@Override
 	public void registerIcons(IconRegister par1IconRegister) {
 		textures[0][0] = par1IconRegister.registerIcon("supercraft:refinedcraftingtable_stonebluetop");
 		textures[0][1] = par1IconRegister.registerIcon("supercraft:refinedcraftingtable_stoneblueside");
@@ -87,16 +88,19 @@ public class BlockRefinedCraftingTable extends BlockSupercraft {
 		textures[6][2] = par1IconRegister.registerIcon("supercraft:refinedcraftingtable_nightrockbottom");
 	}
 	
-	public Icon getBlockTextureFromSideAndMetadata(int side, int meta) {
+	@Override
+	public Icon getIcon(int side, int meta) {
 		if(side == 0) return this.textures[meta][2];
 		else if(side == 1) return this.textures[meta][0];
 		else return this.textures[meta][1];
 	}
 	
+	@Override
 	public int damageDropped(int par1) {
 		return par1;
 	}
 	
+	@Override
 	@SideOnly(Side.CLIENT)
 	public void getSubBlocks(int par1, CreativeTabs par2CreativeTabs, List par3List) {
 		par3List.add(new ItemStack(par1, 1, 0));
@@ -108,6 +112,7 @@ public class BlockRefinedCraftingTable extends BlockSupercraft {
 		par3List.add(new ItemStack(par1, 1, 6));
 	}
 	
+	@Override
 	public boolean onBlockActivated(World par1World, int par2, int par3, int par4, EntityPlayer par5EntityPlayer, int par6, float par7, float par8, float par9) {
 		if(par1World.isRemote) return true;
 		par5EntityPlayer.openGui(Supercraft.instance, 0, par1World, par2, par3, par4);

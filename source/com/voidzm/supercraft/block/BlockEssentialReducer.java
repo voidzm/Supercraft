@@ -85,10 +85,12 @@ public class BlockEssentialReducer extends BlockSupercraft {
 		return new TileEntityEssentialReducer();
 	}
 	
+	@Override
 	public void onBlockAdded(World par1World, int par2, int par3, int par4) {
 		this.doChecks(par1World, par2, par3, par4);
 	}
 	
+	@Override
 	public void onNeighborBlockChange(World par1World, int par2, int par3, int par4, int par5) {
 		this.doChecks(par1World, par2, par3, par4);
 	}
@@ -99,13 +101,15 @@ public class BlockEssentialReducer extends BlockSupercraft {
 		te.doUpdateCheck = true;
 	}
 	
+	@Override
 	public void registerIcons(IconRegister par1IconRegister) {
 		textureTop = par1IconRegister.registerIcon("supercraft:essentialreducer_top");
 		textureSide = par1IconRegister.registerIcon("supercraft:essentialreducer_side");
 		textureBottom = par1IconRegister.registerIcon("supercraft:ironboundstone_beveled");
 	}
 	
-	public Icon getBlockTextureFromSideAndMetadata(int side, int meta) {
+	@Override
+	public Icon getIcon(int side, int meta) {
 		if(side == 0) return textureBottom;
 		else if(side == 1) return textureTop;
 		else return textureSide;

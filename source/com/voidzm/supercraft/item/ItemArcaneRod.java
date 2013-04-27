@@ -41,7 +41,7 @@ public class ItemArcaneRod extends ItemSupercraft {
 		this.names.add("Lithium Arcane Rod");
 	}
 	
-	public void updateIcons(IconRegister par1IconRegister) {
+	public void registerIcons(IconRegister par1IconRegister) {
 		textures[0] = par1IconRegister.registerIcon("supercraft:arcanerod_silver");
 		textures[1] = par1IconRegister.registerIcon("supercraft:arcanerod_gold");
 		textures[2] = par1IconRegister.registerIcon("supercraft:arcanerod_copper");

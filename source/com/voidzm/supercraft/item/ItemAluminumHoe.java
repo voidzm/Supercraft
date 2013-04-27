@@ -38,8 +38,8 @@ public class ItemAluminumHoe extends ItemHoe implements IRegisterable {
 		this.rdata.externalName = "Aluminum Hoe";
 	}
 
-	public void updateIcons(IconRegister par1IconRegister) {
-		this.iconIndex = par1IconRegister.registerIcon("supercraft:hoealuminum");
+	public void registerIcons(IconRegister par1IconRegister) {
+		this.itemIcon = par1IconRegister.registerIcon("supercraft:hoealuminum");
 	}
 
 	@Override

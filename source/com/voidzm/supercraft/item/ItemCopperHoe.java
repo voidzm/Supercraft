@@ -37,8 +37,8 @@ public class ItemCopperHoe extends ItemHoe implements IRegisterable {
 		this.rdata.externalName = "Copper Hoe";
 	}
 
-	public void updateIcons(IconRegister par1IconRegister) {
-		this.iconIndex = par1IconRegister.registerIcon("supercraft:hoecopper");
+	public void registerIcons(IconRegister par1IconRegister) {
+		this.itemIcon = par1IconRegister.registerIcon("supercraft:hoecopper");
 	}
 
 	@Override
