@@ -1,4 +1,4 @@
-package com.voidzm.particle;
+package com.voidzm.supercraft.particle;
 
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.particle.EntityFX;

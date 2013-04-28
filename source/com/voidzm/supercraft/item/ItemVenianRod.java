@@ -4,16 +4,18 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
-import com.voidzm.particle.EntityVenianFX;
 import com.voidzm.supercraft.Supercraft;
 import com.voidzm.supercraft.misc.DamageSourceVeneficia;
+import com.voidzm.supercraft.particle.EntityVenianFX;
 import com.voidzm.supercraft.util.VenianProperties;
 import com.voidzm.supercraft.util.VenianProperties.VenianAspect;
 import com.voidzm.supercraft.util.VenianProperties.VenianMaterial;
 
+import cpw.mods.fml.client.FMLClientHandler;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
+import net.minecraft.block.Block;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.texture.IconRegister;
 import net.minecraft.creativetab.CreativeTabs;
@@ -102,6 +104,9 @@ public class ItemVenianRod extends ItemSupercraft {
 			}
 		}
 		else { // Client
+			double pdisplacment = 0.0D;
+			EntityPlayer thePlayer = FMLClientHandler.instance().getClient().thePlayer;
+			if(!thePlayer.isEntityEqual(player)) pdisplacment = 1.6D;
 			if(count >= 10 && count < 38) {
 				for(int i = 0; i < (40 - count) * 1.5; i++) {
 					double dist = (Math.random() * 15.0D);
@@ -111,7 +116,7 @@ public class ItemVenianRod extends ItemSupercraft {
 					double absdy = Math.random() * Math.random() * 4;
 					double dy = rand.nextBoolean() ? absdy : -absdy;
 					double posX = player.posX+dx;
-					double posY = player.posY+dy;
+					double posY = player.posY+dy+pdisplacment;
 					double posZ = player.posZ+dz;
 					double motionX = -dx / 9.0D;
 					double motionY = -dy / 9.0D;
@@ -120,16 +125,16 @@ public class ItemVenianRod extends ItemSupercraft {
 					Minecraft.getMinecraft().effectRenderer.addEffect(particle);
 				}
 			}
-			if(count <= 0) {
-				for(int i = 0; i < 200; i++) {
-					double dist = (Math.random() * 5.0D);
+			if(count <= 1) {
+				for(int i = 0; i < 300; i++) {
+					double dist = (Math.random() * 8.0D);
 					double rotation = (Math.random() * 2.0D * Math.PI);
 					double dx = dist * Math.cos(rotation);
 					double dz = dist * Math.sin(rotation);
 					double absdy = Math.random() * Math.random() * 4;
 					double dy = rand.nextBoolean() ? absdy : -absdy;
 					double posX = player.posX;
-					double posY = player.posY;
+					double posY = player.posY+pdisplacment;
 					double posZ = player.posZ;
 					double motionX = dx / 9.0D;
 					double motionY = dy / 9.0D;
@@ -155,19 +160,78 @@ public class ItemVenianRod extends ItemSupercraft {
 			int disparity = -targetEnergy;
 			player.attackEntityFrom(veneficiaDamage, disparity);
 		}
-		if(!player.capabilities.isCreativeMode) veneficia.setInteger("Cooldown", 5);
+		if(!player.capabilities.isCreativeMode) {
+			veneficia.setInteger("Cooldown", 5);
+		}
+		else veneficia.setInteger("Cooldown", 2);
 		VenianAspect aspect = spellProperties.aspect;
 		int range = spellProperties.range;
+		int power = spellProperties.power;
+		int px = MathHelper.floor_double(player.posX);
+		int py = MathHelper.floor_double(player.posY);
+		int pz = MathHelper.floor_double(player.posZ);
+		World world = player.worldObj;
 		if(aspect == VenianAspect.LIGHTNING) {
-			for(int i = 0; i < spellProperties.power; i++) {
+			for(int i = 0; i < power; i++) {
 				int rx = rand.nextInt(range+1);
 				if(rand.nextBoolean()) rx = -rx;
 				int rz = rand.nextInt(range+1);
 				if(rand.nextBoolean()) rz = -rz;
-				int tx = MathHelper.floor_double(player.posX + (double)rx);
-				int tz = MathHelper.floor_double(player.posZ + (double)rz);
-				int ty = player.worldObj.getHeightValue(tx, tz);
-				player.worldObj.addWeatherEffect(new EntityLightningBolt(player.worldObj, tx, ty, tz));	
+				int tx = px + rx;
+				int tz = pz + rz;
+				int ty = world.getHeightValue(tx, tz);
+				world.addWeatherEffect(new EntityLightningBolt(player.worldObj, tx, ty, tz));	
+			}
+		}
+		else if(aspect == VenianAspect.FLAMING) {
+			for(int ix = -range; ix < range; ix++) {
+				for(int iy = -range; iy < range; iy++) {
+					for(int iz = -range; iz < range; iz++) {
+						int id = world.getBlockId(px+ix, py+iy, pz+iz);
+						if(id == 0 && Block.fire.canPlaceBlockAt(world, px+ix, py+iy, pz+iz)) {
+							double distance = Math.sqrt(ix*ix + iz*iz);
+							distance = Math.sqrt(distance*distance + iy*iy);
+							if(distance > range) continue;
+							double adj = distance / (double)range;
+							adj = 1.0D - adj;
+							double moddedPower = power * adj;
+							int modifier = MathHelper.floor_double(100.0D - moddedPower);
+							if(modifier < 0) modifier = 0;
+							if(rand.nextInt() == 4 && rand.nextInt(100) > modifier) world.setBlock(px+ix, py+iy, pz+iz, Block.fire.blockID);
+						}
+						else if(id == Block.ice.blockID) {
+							double distance = Math.sqrt(ix*ix + iz*iz);
+							distance = Math.sqrt(distance*distance + iy*iy);
+							if(distance > range) continue;
+							double adj = distance / (double)range;
+							adj = 1.0D - adj;
+							double moddedPower = power * adj;
+							int modifier = MathHelper.floor_double(30.0D - moddedPower);
+							if(modifier < 0) modifier = 0;
+							if(rand.nextInt(30) > modifier) world.setBlock(px+ix, py+iy, pz+iz, 0);
+						}
+					}
+				}
+			}
+		}
+		else if(aspect == VenianAspect.FREEZING) {
+			for(int ix = -range; ix < range; ix++) {
+				for(int iy = -range; iy < range; iy++) {
+					for(int iz = -range; iz < range; iz++) {
+						int id = world.getBlockId(px+ix, py+iy, pz+iz);
+						if(id == Block.waterStill.blockID) {
+							double distance = Math.sqrt(ix*ix + iz*iz);
+							distance = Math.sqrt(distance*distance + iy*iy);
+							if(distance > range) continue;
+							double adj = distance / (double)range;
+							adj = 1.0D - adj;
+							double moddedPower = power * adj;
+							int modifier = MathHelper.floor_double(100.0D - moddedPower);
+							if(modifier < 0) modifier = 0;
+							if(rand.nextInt(100) > modifier) world.setBlock(px+ix, py+iy, pz+iz, Block.ice.blockID);
+						}
+					}
+				}
 			}
 		}
 	}
