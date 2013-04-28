@@ -19,6 +19,7 @@ import net.minecraft.block.Block;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.texture.IconRegister;
 import net.minecraft.creativetab.CreativeTabs;
+import net.minecraft.entity.Entity;
 import net.minecraft.entity.effect.EntityLightningBolt;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.EnumRarity;
@@ -98,6 +99,7 @@ public class ItemVenianRod extends ItemSupercraft {
 				player.stopUsingItem();
 				count = this.getMaxItemUseDuration(stack);
 			}
+			if(rand.nextInt(50) > count) player.worldObj.playSoundAtEntity(player, "random.pop", 0.5F, 2.0F); 
 			if(count <= 1) {
 				player.stopUsingItem();
 				this.doSpell(stack, player);
@@ -172,6 +174,7 @@ public class ItemVenianRod extends ItemSupercraft {
 		int pz = MathHelper.floor_double(player.posZ);
 		World world = player.worldObj;
 		if(aspect == VenianAspect.LIGHTNING) {
+			world.playSoundAtEntity(player, "random.explode", 2.0F, 1.0F);
 			for(int i = 0; i < power; i++) {
 				int rx = rand.nextInt(range+1);
 				if(rand.nextBoolean()) rx = -rx;
@@ -184,6 +187,7 @@ public class ItemVenianRod extends ItemSupercraft {
 			}
 		}
 		else if(aspect == VenianAspect.FLAMING) {
+			world.playSoundAtEntity(player, "random.explode", 2.0F, 1.0F);
 			for(int ix = -range; ix < range; ix++) {
 				for(int iy = -range; iy < range; iy++) {
 					for(int iz = -range; iz < range; iz++) {
@@ -197,24 +201,16 @@ public class ItemVenianRod extends ItemSupercraft {
 							double moddedPower = power * adj;
 							int modifier = MathHelper.floor_double(100.0D - moddedPower);
 							if(modifier < 0) modifier = 0;
-							if(rand.nextInt() == 4 && rand.nextInt(100) > modifier) world.setBlock(px+ix, py+iy, pz+iz, Block.fire.blockID);
-						}
-						else if(id == Block.ice.blockID) {
-							double distance = Math.sqrt(ix*ix + iz*iz);
-							distance = Math.sqrt(distance*distance + iy*iy);
-							if(distance > range) continue;
-							double adj = distance / (double)range;
-							adj = 1.0D - adj;
-							double moddedPower = power * adj;
-							int modifier = MathHelper.floor_double(30.0D - moddedPower);
-							if(modifier < 0) modifier = 0;
-							if(rand.nextInt(30) > modifier) world.setBlock(px+ix, py+iy, pz+iz, 0);
+							if(rand.nextInt(4) == 0 && rand.nextInt(100) > modifier) {
+								world.setBlock(px+ix, py+iy, pz+iz, Block.fire.blockID);
+							}
 						}
 					}
 				}
 			}
 		}
 		else if(aspect == VenianAspect.FREEZING) {
+			world.playSoundAtEntity(player, "random.glass", 2.0F, 1.0F);
 			for(int ix = -range; ix < range; ix++) {
 				for(int iy = -range; iy < range; iy++) {
 					for(int iz = -range; iz < range; iz++) {
