@@ -30,7 +30,7 @@ import net.minecraft.util.StringTranslate;
 public class SCMainMenu extends GuiScreen {
 
 	private BufferedImage background;
-	private ArrayList<SCGuiButton> buttons;
+	private ArrayList<GuiButtonTransparent> buttons;
 	
 	private int imageCycleTick = 0;
 	
@@ -38,7 +38,7 @@ public class SCMainMenu extends GuiScreen {
 	private static final int transitionTime = 100;
 	
 	public SCMainMenu() {
-		buttons = new ArrayList<SCGuiButton>();
+		buttons = new ArrayList<GuiButtonTransparent>();
 		try {
 			background = ImageIO.read(this.getClass().getResourceAsStream("/mods/supercraft/textures/gui/bg.png"));
 		} catch (Exception e) {
@@ -54,8 +54,8 @@ public class SCMainMenu extends GuiScreen {
 	}
 	
 	private void createButton(String text) {
-		if(buttons.size() != 4) buttons.add(new SCGuiButton(this, 22, 48 + (buttons.size() * 22), 106, 16, buttons.size(), text));
-		else buttons.add(new SCGuiButton(this, 22, 64 + (buttons.size() * 22), 106, 16, buttons.size(), text));
+		if(buttons.size() != 4) buttons.add(new GuiButtonTransparent(this, 22, 48 + (buttons.size() * 22), 106, 16, buttons.size(), text));
+		else buttons.add(new GuiButtonTransparent(this, 22, 64 + (buttons.size() * 22), 106, 16, buttons.size(), text));
 	} 
 	
 	public void buttonEvent(int id) {
@@ -85,7 +85,7 @@ public class SCMainMenu extends GuiScreen {
 	
 	@Override
 	protected void mouseClicked(int mx, int my, int par3) {
-		for(SCGuiButton button : buttons) {
+		for(GuiButtonTransparent button : buttons) {
 			button.clickEvent(mx, my);
 		}
 	}
@@ -125,7 +125,7 @@ public class SCMainMenu extends GuiScreen {
 		GL11.glBindTexture(GL11.GL_TEXTURE_2D, this.mc.renderEngine.getTexture("/mods/supercraft/textures/gui/minecraft.png"));
 		GL11.glColor4f(1.0F, 1.0F, 1.0F, 1.0F);
 		this.drawTexture(22, 22, 106, 16);
-		for(SCGuiButton iterated : buttons) {
+		for(GuiButtonTransparent iterated : buttons) {
 			iterated.draw(mouseX, mouseY);
 		}
 		this.drawCenteredString(mc.fontRenderer, "Minecraft 1.5.1", 75, height - 22, Color.GRAY.getRGB());

@@ -133,6 +133,8 @@ public class SupercraftConfiguration {
 	
 	public int goldboundstoneID;
 	
+	public int veneficiapodiumID;
+	
 	///*** ITEMS ***///
 	
 	public int ironscrapID;
@@ -342,7 +344,9 @@ public class SupercraftConfiguration {
 		
 		goldboundstoneID = internalCfg.get(Configuration.CATEGORY_BLOCK, "goldboundstoneID", "1692").getInt();
 		
-		// NEXT ID: 1693
+		veneficiapodiumID = internalCfg.get(Configuration.CATEGORY_BLOCK, "veneficiapodiumID", "1693").getInt();
+		
+		// NEXT ID: 1694
 		
 	}
 	

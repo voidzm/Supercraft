@@ -13,9 +13,11 @@ import com.voidzm.supercraft.container.ContainerAlloyInductor;
 import com.voidzm.supercraft.container.ContainerElectroplationEngine;
 import com.voidzm.supercraft.container.ContainerEssentialReducer;
 import com.voidzm.supercraft.container.ContainerRefinedWorkbench;
+import com.voidzm.supercraft.container.ContainerVeneficianPodium;
 import com.voidzm.supercraft.gui.GuiAlloyInductor;
 import com.voidzm.supercraft.gui.GuiElectroplationEngine;
 import com.voidzm.supercraft.gui.GuiEssentialReducer;
+import com.voidzm.supercraft.gui.GuiVeneficianPodium;
 import com.voidzm.supercraft.gui.SCGuiCrafting;
 import com.voidzm.supercraft.tileentity.TileEntityAlloyInductor;
 import com.voidzm.supercraft.tileentity.TileEntityElectroplationEngine;
@@ -53,6 +55,8 @@ public class GuiHandler implements IGuiHandler {
 		case 3:
 			TileEntityElectroplationEngine teElectroplationEngine = (TileEntityElectroplationEngine)world.getBlockTileEntity(x, y, z);
 			return new ContainerElectroplationEngine(player.inventory, teElectroplationEngine);
+		case 4:
+			return new ContainerVeneficianPodium(player.inventory, world, x, y, z, player);
 		default:
 			return null;
 		}
@@ -72,6 +76,8 @@ public class GuiHandler implements IGuiHandler {
 		case 3:
 			TileEntityElectroplationEngine teElectroplationEngine = (TileEntityElectroplationEngine)world.getBlockTileEntity(x, y, z);
 			return new GuiElectroplationEngine(player.inventory, teElectroplationEngine);
+		case 4:
+			return new GuiVeneficianPodium(player.inventory, world, x, y, z);
 		default:
 			return null;
 		}

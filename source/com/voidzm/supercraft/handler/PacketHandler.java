@@ -9,12 +9,12 @@ package com.voidzm.supercraft.handler;
 import java.io.ByteArrayInputStream;
 import java.io.DataInputStream;
 
+import com.voidzm.supercraft.container.ContainerVeneficianPodium;
 import com.voidzm.supercraft.tileentity.TileEntityAlloyInductor;
 import com.voidzm.supercraft.tileentity.TileEntityConduit;
 import com.voidzm.supercraft.tileentity.TileEntityElectroplationEngine;
 import com.voidzm.supercraft.tileentity.TileEntityEssentialReducer;
 import com.voidzm.supercraft.tileentity.TileEntityConduit.CONDUIT_TYPE;
-import com.voidzm.supercraft.tileentity.TileEntityConduit.PACKET_ELINVAR;
 
 import net.minecraft.client.Minecraft;
 import net.minecraft.entity.player.EntityPlayer;
@@ -28,116 +28,152 @@ import cpw.mods.fml.common.network.Player;
 import cpw.mods.fml.relauncher.Side;
 
 public class PacketHandler implements IPacketHandler {
-
-	public enum SCMachinePacketType {
-		ESSENTIALREDUCER(0), ALLOYINDUCTOR(1), ELECTROPLATIONENGINE(2);
+	
+	public enum SCClientElinvarType {
+		PROPAGATE(0), RENDER(1), ESSENTIALREDUCER(2), ALLOYINDUCTOR(3), ELECTROPLATIONENGINE(4);
 		public int index;
-		private SCMachinePacketType(int val) {
+		private SCClientElinvarType(int val) {
+			this.index = val;
+		}
+	}
+	
+	public enum SCServerVeneficiaType {
+		VENEFICIANPODIUM(0);
+		public int index;
+		private SCServerVeneficiaType(int val) {
 			this.index = val;
 		}
 	}
 	
 	@Override
 	public void onPacketData(INetworkManager manager, Packet250CustomPayload packet, Player player) {
-		if(packet.channel.equals("SCElinvar")) {
-			if(FMLCommonHandler.instance().getEffectiveSide() == Side.CLIENT) {
-				DataInputStream inputStream = new DataInputStream(new ByteArrayInputStream(packet.data));
-				int typeID;
-				try {
-					typeID = inputStream.readInt();
-				} catch(Exception e) {
-					e.printStackTrace();
-					return;
-				}
-				if(typeID == PACKET_ELINVAR.PROPAGATE.ordinal()) { // Elinvar propagation update
-					int x, y, z, newVal;
-					try {
-						x = inputStream.readInt();
-						y = inputStream.readInt();
-						z = inputStream.readInt();
-						newVal = inputStream.readInt();
-					} catch(Exception e) {
-						e.printStackTrace();
-						return;
-					}
-					this.handleElinvarPropagationUpdate((EntityPlayer)player, x, y, z, newVal);
-				}
-				else if(typeID == PACKET_ELINVAR.RENDER.ordinal()) { // Conduit TileEntity render
-					int x, y, z, correctVal, correctType;
-					try {
-						x = inputStream.readInt();
-						y = inputStream.readInt();
-						z = inputStream.readInt();
-						correctVal = inputStream.readInt();
-						correctType = inputStream.readInt();
-					} catch(Exception e) {
-						e.printStackTrace();
-						return;
-					}
-					this.handleConduitRender((EntityPlayer)player, x, y, z, correctVal, correctType);
-				}
-			}
+		String channel = packet.channel;
+		String side = channel.substring(0, 3);
+		String type = channel.substring(4);
+		if(side.equals("SCC")) this.handleClientPacket(packet, player, type);
+		else if(side.equals("SCS")) this.handleServerPacket(packet, player, type);
+	}
+	
+	private void handleClientPacket(Packet250CustomPayload packet, Player player, String clientType) {
+		if(FMLCommonHandler.instance().getEffectiveSide() == Side.SERVER) return;
+		if(clientType.equals("Elinvar")) {
+			this.handleElinvarClientPacket(packet, player);
 		}
-		else if(packet.channel.equals("SCMachineUpdates")) {
-			if(FMLCommonHandler.instance().getEffectiveSide() == Side.CLIENT) {
-				DataInputStream inputStream = new DataInputStream(new ByteArrayInputStream(packet.data));
-				SCMachinePacketType packetType = null;
-				try {
-					packetType = SCMachinePacketType.values()[inputStream.readInt()];
-				} catch(Exception e) {
-					e.printStackTrace();
-					return;
-				}
-				if(packetType == SCMachinePacketType.ESSENTIALREDUCER) {
-					int x, y, z, time;
-					boolean reducing, powered;
-					try {
-						x = inputStream.readInt();
-						y = inputStream.readInt();
-						z = inputStream.readInt();
-						reducing = inputStream.readBoolean();
-						powered = inputStream.readBoolean();
-						time = inputStream.readInt();
-					} catch (Exception e) {
-						e.printStackTrace();
-						return;
-					}
-					this.handleEssentialReducerUpdate((EntityPlayer)player, x, y, z, reducing, powered, time);
-				}
-				else if(packetType == SCMachinePacketType.ALLOYINDUCTOR) {
-					int x, y, z, time, essence;
-					boolean inducting, powered;
-					try {
-						x = inputStream.readInt();
-						y = inputStream.readInt();
-						z = inputStream.readInt();
-						inducting = inputStream.readBoolean();
-						powered = inputStream.readBoolean();
-						time = inputStream.readInt();
-						essence = inputStream.readInt();
-					} catch (Exception e) {
-						e.printStackTrace();
-						return;
-					}
-					this.handleAlloyInductorUpdate((EntityPlayer)player, x, y, z, inducting, powered, time, essence);
-				}
-				else if(packetType == SCMachinePacketType.ELECTROPLATIONENGINE) {
-					int x, y, z, time;
-					boolean electroplating, powered;
-					try {
-						x = inputStream.readInt();
-						y = inputStream.readInt();
-						z = inputStream.readInt();
-						electroplating = inputStream.readBoolean();
-						powered = inputStream.readBoolean();
-						time = inputStream.readInt();
-					} catch (Exception e) {
-						e.printStackTrace();
-						return;
-					}
-					this.handleElectroplationEngineUpdate((EntityPlayer)player, x, y, z, electroplating, powered, time);
-				}
+	}
+	
+	private void handleElinvarClientPacket(Packet250CustomPayload packet, Player player) {
+		DataInputStream inputStream = new DataInputStream(new ByteArrayInputStream(packet.data));
+		int typeID;
+		try {
+			typeID = inputStream.readInt();
+		} catch(Exception e) {
+			e.printStackTrace();
+			return;
+		}
+		if(typeID == SCClientElinvarType.PROPAGATE.index) {
+			int x, y, z, newVal;
+			try {
+				x = inputStream.readInt();
+				y = inputStream.readInt();
+				z = inputStream.readInt();
+				newVal = inputStream.readInt();
+			} catch(Exception e) {
+				e.printStackTrace();
+				return;
 			}
+			this.handleElinvarPropagationUpdate((EntityPlayer)player, x, y, z, newVal);
+		}
+		else if(typeID == SCClientElinvarType.RENDER.index) {
+			int x, y, z, correctVal, correctType;
+			try {
+				x = inputStream.readInt();
+				y = inputStream.readInt();
+				z = inputStream.readInt();
+				correctVal = inputStream.readInt();
+				correctType = inputStream.readInt();
+			} catch(Exception e) {
+				e.printStackTrace();
+				return;
+			}
+			this.handleConduitRender((EntityPlayer)player, x, y, z, correctVal, correctType);
+		}
+		else if(typeID == SCClientElinvarType.ESSENTIALREDUCER.index) {
+			int x, y, z, time;
+			boolean reducing, powered;
+			try {
+				x = inputStream.readInt();
+				y = inputStream.readInt();
+				z = inputStream.readInt();
+				reducing = inputStream.readBoolean();
+				powered = inputStream.readBoolean();
+				time = inputStream.readInt();
+			} catch (Exception e) {
+				e.printStackTrace();
+				return;
+			}
+			this.handleEssentialReducerUpdate((EntityPlayer)player, x, y, z, reducing, powered, time);
+		}
+		else if(typeID == SCClientElinvarType.ALLOYINDUCTOR.index) {
+			int x, y, z, time, essence;
+			boolean inducting, powered;
+			try {
+				x = inputStream.readInt();
+				y = inputStream.readInt();
+				z = inputStream.readInt();
+				inducting = inputStream.readBoolean();
+				powered = inputStream.readBoolean();
+				time = inputStream.readInt();
+				essence = inputStream.readInt();
+			} catch (Exception e) {
+				e.printStackTrace();
+				return;
+			}
+			this.handleAlloyInductorUpdate((EntityPlayer)player, x, y, z, inducting, powered, time, essence);
+		}
+		else if(typeID == SCClientElinvarType.ELECTROPLATIONENGINE.index) {
+			int x, y, z, time;
+			boolean electroplating, powered;
+			try {
+				x = inputStream.readInt();
+				y = inputStream.readInt();
+				z = inputStream.readInt();
+				electroplating = inputStream.readBoolean();
+				powered = inputStream.readBoolean();
+				time = inputStream.readInt();
+			} catch (Exception e) {
+				e.printStackTrace();
+				return;
+			}
+			this.handleElectroplationEngineUpdate((EntityPlayer)player, x, y, z, electroplating, powered, time);
+		}
+	}
+	
+	private void handleServerPacket(Packet250CustomPayload packet, Player player, String serverType) {
+		if(FMLCommonHandler.instance().getEffectiveSide() == Side.CLIENT) return;
+		if(serverType.equals("Veneficia")) {
+			this.handleVeneficiaServerPacket(packet, player);
+		}
+	}
+	
+	private void handleVeneficiaServerPacket(Packet250CustomPayload packet, Player player) {
+		DataInputStream inputStream = new DataInputStream(new ByteArrayInputStream(packet.data));
+		int typeID;
+		try {
+			typeID = inputStream.readInt();
+		} catch(Exception e) {
+			e.printStackTrace();
+			return;
+		}
+		if(typeID == SCServerVeneficiaType.VENEFICIANPODIUM.index) {
+			int field, val;
+			try {
+				field = inputStream.readInt();
+				val = inputStream.readInt();
+			} catch(Exception e) {
+				e.printStackTrace();
+				return;
+			}
+			this.handleVeneficianPodiumUpdate((EntityPlayer)player, field, val);
 		}
 	}
 	
@@ -192,6 +228,13 @@ public class PacketHandler implements IPacketHandler {
 		te.setElectroplating(electroplating);
 		te.powered = powered;
 		te.timeUntilElectroplation = timeLeft;
+	}
+	
+	private void handleVeneficianPodiumUpdate(EntityPlayer player, int fieldID, int newVal) {
+		if(player.openContainer instanceof ContainerVeneficianPodium) {
+			ContainerVeneficianPodium container = (ContainerVeneficianPodium)player.openContainer;
+			container.setField(fieldID, newVal);
+		}
 	}
 
 }

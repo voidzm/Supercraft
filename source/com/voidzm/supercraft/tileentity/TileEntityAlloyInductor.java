@@ -5,7 +5,7 @@ import java.io.DataOutputStream;
 
 import com.voidzm.supercraft.block.BlockConduit;
 import com.voidzm.supercraft.handler.ItemHandler;
-import com.voidzm.supercraft.handler.PacketHandler.SCMachinePacketType;
+import com.voidzm.supercraft.handler.PacketHandler.SCClientElinvarType;
 import com.voidzm.supercraft.util.AlloyInductorComboMap;
 import com.voidzm.supercraft.util.AlloyInductorRecipes;
 import com.voidzm.supercraft.util.EssentialReducerRecipes;
@@ -54,7 +54,7 @@ public class TileEntityAlloyInductor extends TileEntity implements IInventory {
 		ByteArrayOutputStream byteArray = new ByteArrayOutputStream(26);
 		DataOutputStream dataStream = new DataOutputStream(byteArray);
 		try {
-			dataStream.writeInt(SCMachinePacketType.ALLOYINDUCTOR.index);
+			dataStream.writeInt(SCClientElinvarType.ALLOYINDUCTOR.index);
 			dataStream.writeInt(this.xCoord);
 			dataStream.writeInt(this.yCoord);
 			dataStream.writeInt(this.zCoord);
@@ -66,7 +66,7 @@ public class TileEntityAlloyInductor extends TileEntity implements IInventory {
 			e.printStackTrace();
 		}
 		Packet250CustomPayload packet = new Packet250CustomPayload();
-		packet.channel = "SCMachineUpdates";
+		packet.channel = "SCC|Elinvar";
 		packet.data = byteArray.toByteArray();
 		packet.length = byteArray.size();
 		packet.isChunkDataPacket = true;

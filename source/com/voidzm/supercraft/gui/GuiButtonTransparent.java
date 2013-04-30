@@ -11,15 +11,15 @@ import java.awt.Color;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.FontRenderer;
 
-public class SCGuiButton {
-
+public class GuiButtonTransparent {
+	
 	private SCMainMenu mainMenu;
 	private int x, y, width, height, alpha;
 	public int id;
 	private String text;
 	private FontRenderer render;
 
-	public SCGuiButton(SCMainMenu menu, int par1, int par2, int par3, int par4, int par5, String string) {
+	public GuiButtonTransparent(SCMainMenu menu, int par1, int par2, int par3, int par4, int par5, String string) {
 		this.mainMenu = menu;
 		this.x = par1;
 		this.y = par2;

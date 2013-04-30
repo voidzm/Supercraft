@@ -154,7 +154,11 @@ public class BlockHandler {
 	
 	public static Block ghostlyVaporFlowing;
 	public static Block ghostlyVaporStill;
+	
+	//**  Veneficia  **//
 
+	public static Block veneficianPodium;
+	
 	public static void init(SupercraftConfiguration configObject) {
 		if(config != null) {
 			throw new RuntimeException("Block handler already loaded with configuration, cannot initialize again!"); 
@@ -180,6 +184,7 @@ public class BlockHandler {
 		createStairs();
 		createPlants();
 		createLiquids();
+		createVeneficia();
 	}
 	
 	private static void createGlass() {
@@ -331,6 +336,10 @@ public class BlockHandler {
 		BlockSupercraft.register(ghostlyVaporFlowing, ((BlockGhostlyVaporFlowing)ghostlyVaporFlowing).getRegisterData());
 		ghostlyVaporStill = new BlockGhostlyVaporStill(config.ghostlyvaporstillID);
 		BlockSupercraft.register(ghostlyVaporStill, ((BlockGhostlyVaporStill)ghostlyVaporStill).getRegisterData());
+	}
+	
+	private static void createVeneficia() {
+		veneficianPodium = new BlockVeneficianPodium(config.veneficiapodiumID).register();
 	}
 
 }

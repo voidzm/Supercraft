@@ -28,12 +28,12 @@ import net.minecraft.world.World;
 import com.voidzm.supercraft.Supercraft;
 import com.voidzm.supercraft.client.ClientProxy;
 import com.voidzm.supercraft.handler.BlockHandler;
+import com.voidzm.supercraft.handler.PacketHandler.SCClientElinvarType;
 import com.voidzm.supercraft.item.ItemBlockSupercraft;
 import com.voidzm.supercraft.protocol.IGenerator;
 import com.voidzm.supercraft.protocol.IGenerator.GeneratorSide;
 import com.voidzm.supercraft.tileentity.TileEntityConduit;
 import com.voidzm.supercraft.tileentity.TileEntityConduit.CONDUIT_TYPE;
-import com.voidzm.supercraft.tileentity.TileEntityConduit.PACKET_ELINVAR;
 
 import cpw.mods.fml.common.FMLCommonHandler;
 import cpw.mods.fml.common.network.PacketDispatcher;
@@ -394,7 +394,7 @@ public class BlockConduit extends BlockSupercraft {
 		ByteArrayOutputStream byteArray = new ByteArrayOutputStream(20);
 		DataOutputStream dataStream = new DataOutputStream(byteArray);
 		try {
-			dataStream.writeInt(PACKET_ELINVAR.PROPAGATE.ordinal());
+			dataStream.writeInt(SCClientElinvarType.PROPAGATE.ordinal());
 			dataStream.writeInt(x);
 			dataStream.writeInt(y);
 			dataStream.writeInt(z);
@@ -403,7 +403,7 @@ public class BlockConduit extends BlockSupercraft {
 			e.printStackTrace();
 		}
 		Packet250CustomPayload packet = new Packet250CustomPayload();
-		packet.channel = "SCElinvar";
+		packet.channel = "SCC|Elinvar";
 		packet.data = byteArray.toByteArray();
 		packet.length = byteArray.size();
 		Side side = FMLCommonHandler.instance().getEffectiveSide();

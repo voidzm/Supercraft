@@ -65,12 +65,8 @@ public class VenianProperties {
 			display = new NBTTagCompound();
 			tag.setTag("display", display);
 		}
-		NBTTagList lore;
-		if(display.hasKey("Lore")) lore = display.getTagList("Lore");
-		else {
-			lore = new NBTTagList();
-			display.setTag("Lore", lore);
-		}
+		NBTTagList lore = new NBTTagList();
+		display.setTag("Lore", lore);
 		lore.appendTag(new NBTTagString("", "§7Strength: "+strengthFormatSymbolFromInt(this.power)+this.power));
 		lore.appendTag(new NBTTagString("", "§7Perception: "+rangeFormatSymbolFromInt(this.range)+this.range));
 		lore.appendTag(new NBTTagString("", "§7Impact: "+drainFormatSymbolFromInt(this.drain)+this.drain));

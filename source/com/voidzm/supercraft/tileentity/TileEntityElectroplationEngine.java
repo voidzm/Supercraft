@@ -4,7 +4,7 @@ import java.io.ByteArrayOutputStream;
 import java.io.DataOutputStream;
 
 import com.voidzm.supercraft.block.BlockConduit;
-import com.voidzm.supercraft.handler.PacketHandler.SCMachinePacketType;
+import com.voidzm.supercraft.handler.PacketHandler.SCClientElinvarType;
 import com.voidzm.supercraft.util.AlloyInductorRecipes;
 import com.voidzm.supercraft.util.ElectroplationEngineRecipes;
 import com.voidzm.supercraft.util.EssentialReducerRecipes;
@@ -46,7 +46,7 @@ public class TileEntityElectroplationEngine extends TileEntity implements IInven
 		ByteArrayOutputStream byteArray = new ByteArrayOutputStream(22);
 		DataOutputStream dataStream = new DataOutputStream(byteArray);
 		try {
-			dataStream.writeInt(SCMachinePacketType.ELECTROPLATIONENGINE.index);
+			dataStream.writeInt(SCClientElinvarType.ELECTROPLATIONENGINE.index);
 			dataStream.writeInt(this.xCoord);
 			dataStream.writeInt(this.yCoord);
 			dataStream.writeInt(this.zCoord);
@@ -57,7 +57,7 @@ public class TileEntityElectroplationEngine extends TileEntity implements IInven
 			e.printStackTrace();
 		}
 		Packet250CustomPayload packet = new Packet250CustomPayload();
-		packet.channel = "SCMachineUpdates";
+		packet.channel = "SCC|Elinvar";
 		packet.data = byteArray.toByteArray();
 		packet.length = byteArray.size();
 		packet.isChunkDataPacket = true;

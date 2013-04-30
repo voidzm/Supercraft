@@ -12,6 +12,7 @@ import java.util.List;
 
 import com.voidzm.supercraft.block.BlockConduit;
 import com.voidzm.supercraft.handler.BlockHandler;
+import com.voidzm.supercraft.handler.PacketHandler.SCClientElinvarType;
 
 import cpw.mods.fml.common.FMLCommonHandler;
 import cpw.mods.fml.common.network.PacketDispatcher;
@@ -26,10 +27,6 @@ public class TileEntityConduit extends TileEntity {
 	public enum CONDUIT_TYPE { 
 		WOOD, STONE, IRON, COPPER, ALUMINUM, SILVER,
 		GOLD, ELECTRUM, DIAMOND, COBALT, PLATINUM, TANTALUM, LITHIUM
-	}
-	
-	public enum PACKET_ELINVAR {
-		PROPAGATE, RENDER
 	}
 	
 	private int powerLevel;
@@ -145,7 +142,7 @@ public class TileEntityConduit extends TileEntity {
 		ByteArrayOutputStream byteArray = new ByteArrayOutputStream(24);
 		DataOutputStream dataStream = new DataOutputStream(byteArray);
 		try {
-			dataStream.writeInt(PACKET_ELINVAR.RENDER.ordinal());
+			dataStream.writeInt(SCClientElinvarType.RENDER.ordinal());
 			dataStream.writeInt(x);
 			dataStream.writeInt(y);
 			dataStream.writeInt(z);
@@ -155,7 +152,7 @@ public class TileEntityConduit extends TileEntity {
 			e.printStackTrace();
 		}
 		Packet250CustomPayload packet = new Packet250CustomPayload();
-		packet.channel = "SCElinvar";
+		packet.channel = "SCC|Elinvar";
 		packet.data = byteArray.toByteArray();
 		packet.length = byteArray.size();
 		Side side = FMLCommonHandler.instance().getEffectiveSide();
