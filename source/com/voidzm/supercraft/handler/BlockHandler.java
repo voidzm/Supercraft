@@ -284,7 +284,7 @@ public class BlockHandler {
 	
 	private static void createBuildingBlocks() {
 		palestone = new BlockSupercraftStone(config.palestoneID, SupercraftStoneType.STONE, "supercraft:palestone").setInternalName("palestone").setExternalName("Palestone").register();
-		palestoneBricks = new BlockSupercraftStone(config.palestonebricksID, SupercraftStoneType.LARGEBRICKS, "supercraft:palestonebricks").setInternalName("palestonebricks").setExternalName("Palestone Bricks").register();
+		palestoneBricks = new BlockSupercraftStone(config.palestonebricksID, SupercraftStoneType.LARGEBRICKS, "supercraft:palestonebricks", true).setInternalName("palestonebricks").setExternalName("Palestone Bricks").register();
 		overgrownPalestoneBricks = new BlockSupercraftStone(config.overgrownpalestonebricksID, SupercraftStoneType.LARGEBRICKS, "supercraft:overgrownpalestonebricks").setInternalName("overgrownpalestonebricks").setExternalName("Overgrown Palestone Bricks").register();
 		burnedPalestoneBricks = new BlockSupercraftStone(config.burnedpalestonebricksID, SupercraftStoneType.WEAKBRICKS, "supercraft:burnedpalestonebricks").setInternalName("burnedpalestonebricks").setExternalName("Burned Palestone Bricks").register();
 		inscribedPalestone = new BlockSupercraftStone(config.inscribedpalestoneID, SupercraftStoneType.STRONGSTONE, "supercraft:inscribedpalestone").setInternalName("inscribedpalestone").setExternalName("Inscribed Palestone").register();
