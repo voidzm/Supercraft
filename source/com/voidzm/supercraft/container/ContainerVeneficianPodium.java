@@ -44,18 +44,18 @@ public class ContainerVeneficianPodium extends Container {
 		this.y = par4;
 		this.z = par5;
 		this.player = par6EntityPlayer;
-		this.addSlotToContainer(new SlotVenianRod(this.slot, 0, 26, 35));
+		this.addSlotToContainer(new SlotVenianRod(this.slot, 0, 30, 45));
 		this.bindPlayerInventory(par1InventoryPlayer);
 	}
 	
 	protected void bindPlayerInventory(InventoryPlayer player) {
 		for(int i = 0; i < 3; i++) {
 			for(int j = 0; j < 9; j++) {
-				this.addSlotToContainer(new Slot(player, j + i * 9 + 9, 8 + j * 18, 84 + i * 18));
+				this.addSlotToContainer(new Slot(player, j + i * 9 + 9, 8 + j * 18, 104 + i * 18));
 			}
 		}
 		for(int i = 0; i < 9; i++) {
-			this.addSlotToContainer(new Slot(player, i, 8 + i * 18, 142));
+			this.addSlotToContainer(new Slot(player, i, 8 + i * 18, 162));
 		}
 	}
 	

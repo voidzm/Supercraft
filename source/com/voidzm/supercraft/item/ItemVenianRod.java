@@ -191,20 +191,28 @@ public class ItemVenianRod extends ItemSupercraft {
 			for(int ix = -range; ix < range; ix++) {
 				for(int iy = -range; iy < range; iy++) {
 					for(int iz = -range; iz < range; iz++) {
+						double distance = Math.sqrt(ix*ix + iz*iz);
+						distance = Math.sqrt(distance*distance + iy*iy);
+						if(distance > range) continue;
+						double adj = distance / (double)range;
+						adj = 1.0D - adj;
+						double moddedPower = power * adj;
+						int modifier = MathHelper.floor_double(100.0D - moddedPower);
+						if(modifier < 0) modifier = 0;
+						if(modifier > 98) modifier = 98;
+						
 						int id = world.getBlockId(px+ix, py+iy, pz+iz);
 						if(id == 0 && Block.fire.canPlaceBlockAt(world, px+ix, py+iy, pz+iz)) {
-							double distance = Math.sqrt(ix*ix + iz*iz);
-							distance = Math.sqrt(distance*distance + iy*iy);
-							if(distance > range) continue;
-							double adj = distance / (double)range;
-							adj = 1.0D - adj;
-							double moddedPower = power * adj;
-							int modifier = MathHelper.floor_double(100.0D - moddedPower);
-							if(modifier < 0) modifier = 0;
 							if(rand.nextInt(4) == 0 && rand.nextInt(100) > modifier) {
 								world.setBlock(px+ix, py+iy, pz+iz, Block.fire.blockID);
 							}
 						}
+						if(id == Block.ice.blockID) {
+							if(rand.nextInt(2) == 0 && rand.nextInt(100) > modifier) {
+								world.setBlock(px+ix, py+iy, pz+iz, 0);
+							}
+						}
+						
 					}
 				}
 			}
@@ -214,16 +222,17 @@ public class ItemVenianRod extends ItemSupercraft {
 			for(int ix = -range; ix < range; ix++) {
 				for(int iy = -range; iy < range; iy++) {
 					for(int iz = -range; iz < range; iz++) {
+						double distance = Math.sqrt(ix*ix + iz*iz);
+						distance = Math.sqrt(distance*distance + iy*iy);
+						if(distance > range) continue;
+						double adj = distance / (double)range;
+						adj = 1.0D - adj;
+						double moddedPower = power * adj;
+						int modifier = MathHelper.floor_double(100.0D - moddedPower);
+						if(modifier < 0) modifier = 0;
+						if(modifier > 98) modifier = 98;
 						int id = world.getBlockId(px+ix, py+iy, pz+iz);
 						if(id == Block.waterStill.blockID) {
-							double distance = Math.sqrt(ix*ix + iz*iz);
-							distance = Math.sqrt(distance*distance + iy*iy);
-							if(distance > range) continue;
-							double adj = distance / (double)range;
-							adj = 1.0D - adj;
-							double moddedPower = power * adj;
-							int modifier = MathHelper.floor_double(100.0D - moddedPower);
-							if(modifier < 0) modifier = 0;
 							if(rand.nextInt(100) > modifier) world.setBlock(px+ix, py+iy, pz+iz, Block.ice.blockID);
 						}
 					}

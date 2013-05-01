@@ -42,24 +42,25 @@ public class GuiVeneficianPodium extends GuiContainer implements ICrafting {
 		super(new ContainerVeneficianPodium(par1, par2World, par3, par4, par5, Minecraft.getMinecraft().thePlayer));
 		this.inventoryPlayer = par1;
 		this.container = (ContainerVeneficianPodium)this.inventorySlots;
+		this.ySize = 186;
 	}
 
 	public void initGui() {
 		super.initGui();
 		int i = (this.width - this.xSize) / 2;
 		int j = (this.height - this.ySize) / 2;
-		this.buttonList.add(new GuiSupercraftButton(this, 0, i+72, j+15, 20, 20, "-"));
-		this.buttonList.add(new GuiSupercraftButton(this, 1, i+130, j+15, 20, 20, "+"));
-		this.buttonList.add(new GuiSupercraftButton(this, 2, i+72, j+34, 20, 20, "-"));
-		this.buttonList.add(new GuiSupercraftButton(this, 3, i+130, j+34, 20, 20, "+"));
-		this.buttonList.add(new GuiSupercraftButton(this, 4, i+72, j+53, 20, 20, "-"));
-		this.buttonList.add(new GuiSupercraftButton(this, 5, i+130, j+53, 20, 20, "+"));
+		this.buttonList.add(new GuiSupercraftButton(this, 0, i+67, j+25, 20, 20, "-"));
+		this.buttonList.add(new GuiSupercraftButton(this, 1, i+125, j+25, 20, 20, "+"));
+		this.buttonList.add(new GuiSupercraftButton(this, 2, i+67, j+44, 20, 20, "-"));
+		this.buttonList.add(new GuiSupercraftButton(this, 3, i+125, j+44, 20, 20, "+"));
+		this.buttonList.add(new GuiSupercraftButton(this, 4, i+67, j+63, 20, 20, "-"));
+		this.buttonList.add(new GuiSupercraftButton(this, 5, i+125, j+63, 20, 20, "+"));
 		for(GuiButton button : (List<GuiButton>)this.buttonList) {
 			button.enabled = false;
 		}
-		this.powerField = new GuiTextField(this.fontRenderer, 93, 16, 36, 18);
-		this.rangeField = new GuiTextField(this.fontRenderer, 93, 35, 36, 18);
-		this.drainField = new GuiTextField(this.fontRenderer, 93, 54, 36, 18);
+		this.powerField = new GuiTextField(this.fontRenderer, 88, 26, 36, 18);
+		this.rangeField = new GuiTextField(this.fontRenderer, 88, 45, 36, 18);
+		this.drainField = new GuiTextField(this.fontRenderer, 88, 64, 36, 18);
 		this.powerField.setFocused(false);
 		this.powerField.func_82266_h(14737632);
 		this.powerField.func_82265_c(false);

@@ -36,7 +36,7 @@ public class VenianProperties {
 	public int drain;
 	
 	public VenianProperties(VenianAspect par1, VenianMaterial par2) {
-		this(par1, par2, rand.nextInt(3)+1, rand.nextInt(5)+3, getRandomDrainForAspect(par1));
+		this(par1, par2, rand.nextInt(5)+3, rand.nextInt(5)+3, getRandomDrainForAspect(par1));
 	}
 	
 	public VenianProperties(VenianAspect par1, VenianMaterial par2, int spellPower, int spellRange, int spellDrain) {
@@ -96,50 +96,50 @@ public class VenianProperties {
 	}
 	
 	private static String strengthFormatSymbolFromInt(int par1) {
-		if(par1 <= 2) return "§c";
-		else if(par1 <= 4) return "§6";
-		else if(par1 <= 6) return "§e";
-		else if(par1 <= 8) return "§a";
+		if(par1 <= 5) return "§c";
+		else if(par1 <= 10) return "§6";
+		else if(par1 <= 25) return "§e";
+		else if(par1 <= 50) return "§a";
 		else return "§9";
 	}
 	
 	public static int getPowerIndexFromInt(int par1) {
-		if(par1 <= 2) return 0;
-		else if(par1 <= 4) return 1;
-		else if(par1 <= 6) return 2;
-		else if(par1 <= 8) return 3;
+		if(par1 <= 5) return 0;
+		else if(par1 <= 10) return 1;
+		else if(par1 <= 25) return 2;
+		else if(par1 <= 50) return 3;
 		else return 4;
 	}
 	
 	private static String rangeFormatSymbolFromInt(int par1) {
-		if(par1 <= 4) return "§c";
+		if(par1 <= 5) return "§c";
 		else if(par1 <= 10) return "§6";
-		else if(par1 <= 15) return "§e";
-		else if(par1 <= 25) return "§a";
+		else if(par1 <= 25) return "§e";
+		else if(par1 <= 50) return "§a";
 		else return "§9";
 	}
 	
 	public static int getRangeIndexFromInt(int par1) {
-		if(par1 <= 4) return 0;
+		if(par1 <= 5) return 0;
 		else if(par1 <= 10) return 1;
-		else if(par1 <= 15) return 2;
-		else if(par1 <= 25) return 3;
+		else if(par1 <= 25) return 2;
+		else if(par1 <= 50) return 3;
 		else return 4;
 	}
 	
 	private static String drainFormatSymbolFromInt(int par1) {
 		if(par1 >= 50) return "§c";
-		else if(par1 >= 30) return "§6";
-		else if(par1 >= 15) return "§e";
-		else if(par1 >= 7) return "§a";
+		else if(par1 >= 25) return "§6";
+		else if(par1 >= 10) return "§e";
+		else if(par1 >= 5) return "§a";
 		else return "§9";
 	}
 	
 	public static int getDrainIndexFromInt(int par1) {
 		if(par1 >= 50) return 0;
-		else if(par1 >= 30) return 1;
-		else if(par1 >= 15) return 2;
-		else if(par1 >= 7) return 3;
+		else if(par1 >= 25) return 1;
+		else if(par1 >= 10) return 2;
+		else if(par1 >= 5) return 3;
 		else return 4;
 	}
 	
