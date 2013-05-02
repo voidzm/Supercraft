@@ -5,12 +5,14 @@
 
 package com.voidzm.supercraft.handler;
 
+import net.minecraft.block.Block;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 
 import com.voidzm.supercraft.item.*;
 import com.voidzm.supercraft.util.StartupStats;
 import com.voidzm.supercraft.util.SupercraftConfiguration;
+import com.voidzm.supercraft.util.TransformationMatrix;
 
 public class ItemHandler {
 
@@ -93,7 +95,8 @@ public class ItemHandler {
 	
 	private static void createVanillaMaterials() {
 		ironScrap = new ItemSupercraft(config.ironscrapID, "supercraft:ironscrap").setInternalName("ironscrap").setExternalName("Iron Scrap").register();
-		diamondShard = new ItemSupercraft(config.diamondshardID, "supercraft:diamondshard").setInternalName("diamondshard").setExternalName("Diamond Shard").register();
+		TransformationMatrix desertMatrix = new TransformationMatrix(BlockHandler.inscribedSandstone.blockID, 0, BlockHandler.sandstoneBricks.blockID, 0, Block.sand.blockID, 0, BlockHandler.blockOfDesert.blockID, 0, Block.sand.blockID, 0, Block.glass.blockID, 0);
+		diamondShard = new ItemSupercraft(config.diamondshardID, "supercraft:diamondshard").setInternalName("diamondshard").setExternalName("Diamond Shard").makeTransforming(desertMatrix).register();
 	}
 	
 	private static void createMetals() {
@@ -103,7 +106,8 @@ public class ItemHandler {
 		silverIngot = new ItemSupercraft(config.ingotsilverID, "supercraft:ingotsilver").setInternalName("ingotsilver").setExternalName("Silver Ingot").register();
 		silverFragment = new ItemSupercraft(config.silverfragmentID, "supercraft:silverfragment").setInternalName("silverfragment").setExternalName("Silver Fragment").register();
 		electrumIngot = new ItemSupercraft(config.ingotelectrumID, "supercraft:ingotelectrum").setInternalName("ingotelectrum").setExternalName("Electrum Ingot").register();
-		electrumBit = new ItemElectrumBit(config.electrumbitID).register();	
+		TransformationMatrix goldenwoodMatrix = new TransformationMatrix(BlockHandler.inscribedPalestone.blockID, 0, BlockHandler.overgrownPalestoneBricks.blockID, 0, BlockHandler.supercraftLog1.blockID, 1, BlockHandler.blockOfGoldenwood.blockID, 0, BlockHandler.burnedPalestoneBricks.blockID, 0, Block.cobblestone.blockID, 0);
+		electrumBit = new ItemSupercraft(config.electrumbitID, "supercraft:electrumbit").setInternalName("electrumbit").setExternalName("Electrum Bit").makeTransforming(goldenwoodMatrix).register();
 		nisilIngot = new ItemSupercraft(config.ingotnisilID, "supercraft:ingotnisil").setInternalName("ingotnisil").setExternalName("Nisil Ingot").register();
 		nisilShard = new ItemSupercraft(config.nisilshardID, "supercraft:nisilshard").setInternalName("nisilshard").setExternalName("Nisil Shard").register();
 		platinumIngot = new ItemSupercraft(config.ingotplatinumID, "supercraft:ingotplatinum").setInternalName("ingotplatinum").setExternalName("Platinum Ingot").register();
@@ -150,8 +154,10 @@ public class ItemHandler {
 		tantalumCrystal = new ItemSupercraft(config.tantalumcrystalID, "supercraft:tantalumcrystal").setHasShimmerEffect(true).setInternalName("tantalumcrystal").setExternalName("Tantalum Crystal").register();
 		jadeCrystal = new ItemSupercraft(config.jadecrystalID, "supercraft:jadecrystal").setInternalName("jadecrystal").setExternalName("Jade Crystal").register();
 		voltasniaRod = new ItemSupercraft(config.voltasniarodID, "supercraft:voltasniarod").setInternalName("voltasniarod").setExternalName("Voltasnia Rod").register();
-		draconium = new ItemSupercraft(config.draconiumID, "supercraft:draconium").setInternalName("draconium").setExternalName("Draconium").register();
-		bloodAmber = new ItemBloodAmber(config.bloodamberID).register();
+		TransformationMatrix skyMatrix = new TransformationMatrix(BlockHandler.inscribedEndstone.blockID, 0, BlockHandler.endstoneBricks.blockID, 0, Block.obsidian.blockID, 0, BlockHandler.blockOfSky.blockID, 0, Block.whiteStone.blockID, 0, Block.obsidian.blockID, 0);
+		draconium = new ItemSupercraft(config.draconiumID, "supercraft:draconium").setInternalName("draconium").setExternalName("Draconium").makeTransforming(skyMatrix).register();
+		TransformationMatrix tenebralMatrix = new TransformationMatrix(BlockHandler.inscribedNightrock.blockID, 0, BlockHandler.nightrockBricks.blockID, 0, BlockHandler.supercraftLog1.blockID, 2, BlockHandler.blockOfTenebral.blockID, 0, BlockHandler.burnedNightrockBricks.blockID, 0, Block.cobblestone.blockID, 0);
+		bloodAmber = new ItemSupercraft(config.bloodamberID, "supercraft:bloodamber").setInternalName("bloodamber").setExternalName("Blood Amber").makeTransforming(tenebralMatrix).register();
 		arcaneRod = new ItemArcaneRod(config.arcanerodID).register();
 		venianRod = new ItemVenianRod(config.venianrodID).register();
 	}

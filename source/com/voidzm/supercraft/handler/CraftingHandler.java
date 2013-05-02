@@ -72,6 +72,8 @@ public class CraftingHandler {
 	
 		GameRegistry.addRecipe(new ItemStack(BlockHandler.supercraftSlab2, 6, 0), new Object[] {"PPP", 'P', BlockHandler.palestoneBricks});
 		GameRegistry.addRecipe(new ItemStack(BlockHandler.supercraftSlab2, 6, 1), new Object[] {"NNN", 'N', BlockHandler.nightrockBricks});
+		GameRegistry.addRecipe(new ItemStack(BlockHandler.supercraftSlab2, 6, 2), new Object[] {"SSS", 'S', BlockHandler.sandstoneBricks});
+		GameRegistry.addRecipe(new ItemStack(BlockHandler.supercraftSlab2, 6, 3), new Object[] {"EEE", 'E', BlockHandler.endstoneBricks});
 	}
 	
 	private static void createStairRecipes() {
@@ -92,6 +94,10 @@ public class CraftingHandler {
 		GameRegistry.addRecipe(new ItemStack(BlockHandler.palestoneStairs, 4), new Object[] {"  P", " PP", "PPP", 'P', BlockHandler.palestoneBricks});
 		GameRegistry.addRecipe(new ItemStack(BlockHandler.nightrockStairs, 4), new Object[] {"N  ", "NN ", "NNN", 'N', BlockHandler.nightrockBricks});
 		GameRegistry.addRecipe(new ItemStack(BlockHandler.nightrockStairs, 4), new Object[] {"  N", " NN", "NNN", 'N', BlockHandler.nightrockBricks});
+		GameRegistry.addRecipe(new ItemStack(BlockHandler.sandstonebrickStairs, 4), new Object[] {"S  ", "SS ", "SSS", 'S', BlockHandler.sandstoneBricks});
+		GameRegistry.addRecipe(new ItemStack(BlockHandler.sandstonebrickStairs, 4), new Object[] {"  S", " SS", "SSS", 'S', BlockHandler.sandstoneBricks});
+		GameRegistry.addRecipe(new ItemStack(BlockHandler.endstonebrickStairs, 4), new Object[] {"E  ", "EE ", "EEE", 'E', BlockHandler.endstoneBricks});
+		GameRegistry.addRecipe(new ItemStack(BlockHandler.endstonebrickStairs, 4), new Object[] {"  E", " EE", "EEE", 'E', BlockHandler.endstoneBricks});
 	}
 	
 	private static void createSubmaterialToMaterialRecipes() {
@@ -199,6 +205,11 @@ public class CraftingHandler {
 		GameRegistry.addRecipe(new ItemStack(BlockHandler.inscribedPalestone), new Object[] {"P", "P", 'P', new ItemStack(BlockHandler.supercraftSlab2, 1, 0)});
 		GameRegistry.addRecipe(new ItemStack(BlockHandler.nightrockBricks, 4), new Object[] {"NN", "NN", 'N', BlockHandler.nightrock});
 		GameRegistry.addRecipe(new ItemStack(BlockHandler.inscribedNightrock), new Object[] {"N", "N", 'N', new ItemStack(BlockHandler.supercraftSlab2, 1, 1)});
+		GameRegistry.addRecipe(new ItemStack(BlockHandler.sandstoneBricks, 9), new Object[] {"SSS", "SSS", "SSS", 'S', new ItemStack(Block.sandStone, 1, 2)});
+		
+		GameRegistry.addRecipe(new ItemStack(BlockHandler.inscribedSandstone), new Object[] {"S", "S", 'S', new ItemStack(BlockHandler.supercraftSlab2, 1, 2)});
+		GameRegistry.addRecipe(new ItemStack(BlockHandler.endstoneBricks, 4), new Object[] {"EE", "EE", 'E', Block.whiteStone});
+		GameRegistry.addRecipe(new ItemStack(BlockHandler.inscribedEndstone), new Object[] {"E", "E", 'E', new ItemStack(BlockHandler.supercraftSlab2, 1, 3)});
 
 		GameRegistry.addRecipe(new ItemStack(BlockHandler.gravenStone, 1, 0), new Object[] {" N ", "NNN", " N ", 'N', BlockHandler.nightrock});
 		GameRegistry.addRecipe(new ItemStack(BlockHandler.gravenStone, 1, 1), new Object[] {" N ", "NSN", " N ", 'N', BlockHandler.nightrock, 'S', Block.stone});
