@@ -31,7 +31,7 @@ public class BlockSupercraftSlab2 extends BlockSupercraftSlabBase implements IRe
 
 	private ArrayList<String> names = new ArrayList<String>();
 	
-	private final String[] types = new String[] {"palestone", "nightrock"};
+	private final String[] types = new String[] {"palestone", "nightrock", "sandstonebricks", "endstone"};
 	
 	protected Icon[] textures = new Icon[8];
 	
@@ -46,6 +46,8 @@ public class BlockSupercraftSlab2 extends BlockSupercraftSlabBase implements IRe
 	private void populateNames() {
 		this.names.add("Palestone Bricks Slab");
 		this.names.add("Nightrock Bricks Slab");
+		this.names.add("Sandstone Bricks Slab");
+		this.names.add("End Stone Bricks Slab");
 	}
 	
 	private void buildRegisterData() {
@@ -59,6 +61,8 @@ public class BlockSupercraftSlab2 extends BlockSupercraftSlabBase implements IRe
 	public void registerIcons(IconRegister par1IconRegister) {
 		textures[0] = par1IconRegister.registerIcon("supercraft:palestonebricks");
 		textures[1] = par1IconRegister.registerIcon("supercraft:nightrockbricks");
+		textures[2] = par1IconRegister.registerIcon("supercraft:sandstonebricks");
+		textures[3] = par1IconRegister.registerIcon("supercraft:endstonebricks");
 	}
 	
 	@Override
@@ -80,6 +84,8 @@ public class BlockSupercraftSlab2 extends BlockSupercraftSlabBase implements IRe
         if(par1 == BlockHandler.supercraftSlab2.blockID) {
         	par3List.add(new ItemStack(par1, 1, 0));
         	par3List.add(new ItemStack(par1, 1, 1));
+        	par3List.add(new ItemStack(par1, 1, 2));
+        	par3List.add(new ItemStack(par1, 1, 3));
         }
     }
 	

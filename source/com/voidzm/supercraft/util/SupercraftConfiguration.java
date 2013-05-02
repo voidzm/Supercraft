@@ -135,6 +135,17 @@ public class SupercraftConfiguration {
 	
 	public int veneficiapodiumID;
 	
+	public int sandstonebricksID;
+	public int inscribedsandstoneID;
+	public int blockdesertID;
+	
+	public int endstonebricksID;
+	public int inscribedendstoneID;
+	public int blockskyID;
+	
+	public int stairssandstonebricksID;
+	public int stairsendstonebrickID;
+	
 	///*** ITEMS ***///
 	
 	public int ironscrapID;
@@ -346,7 +357,18 @@ public class SupercraftConfiguration {
 		
 		veneficiapodiumID = internalCfg.get(Configuration.CATEGORY_BLOCK, "veneficiapodiumID", "1693").getInt();
 		
-		// NEXT ID: 1694
+		sandstonebricksID = internalCfg.get(Configuration.CATEGORY_BLOCK, "sandstonebricksID", "1694").getInt();
+		inscribedsandstoneID = internalCfg.get(Configuration.CATEGORY_BLOCK, "inscribedsandstoneID", "1695").getInt();
+		blockdesertID = internalCfg.get(Configuration.CATEGORY_BLOCK, "blockdesertID", "1696").getInt();
+		
+		endstonebricksID = internalCfg.get(Configuration.CATEGORY_BLOCK, "endstonebricksID", "1697").getInt();
+		inscribedendstoneID = internalCfg.get(Configuration.CATEGORY_BLOCK, "inscribedendstoneID", "1698").getInt();
+		blockskyID = internalCfg.get(Configuration.CATEGORY_BLOCK, "blockskyID", "1699").getInt();
+		
+		stairssandstonebricksID = internalCfg.get(Configuration.CATEGORY_BLOCK, "stairssandstonebricksID", "1700").getInt();
+		stairsendstonebrickID = internalCfg.get(Configuration.CATEGORY_BLOCK, "stairsendstonebrickID", "1701").getInt();
+		
+		// NEXT ID: 1702
 		
 	}
 	

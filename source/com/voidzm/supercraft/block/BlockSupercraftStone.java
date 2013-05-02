@@ -13,7 +13,7 @@ import net.minecraft.world.World;
 public class BlockSupercraftStone extends BlockSupercraft {
 
 	public enum SupercraftStoneType {
-		STONE(1.5F, 10.0F), LARGEBRICKS(2.0F, 10.0F), SMALLBRICKS(2.0F, 10.0F), WEAKBRICKS(1.0F, 8.0F), STRONGSTONE(3.0F, 15.0F);
+		STONE(1.5F, 10.0F), LARGEBRICKS(2.0F, 10.0F), SMALLBRICKS(2.0F, 10.0F), WEAKBRICKS(1.0F, 8.0F), STRONGSTONE(3.0F, 15.0F), ESSENTIAL(4.0F, 15.0F);
 		public float hardness, resistance;
 		private SupercraftStoneType(float hard, float rest) {
 			this.hardness = hard;
@@ -31,6 +31,7 @@ public class BlockSupercraftStone extends BlockSupercraft {
 		this.setResistance(type.resistance);
 		this.icon = string;
 		this.setTickRandomly(ticks);
+		if(type == SupercraftStoneType.ESSENTIAL) this.setLightValue(0.625F);
 	}
 	
 	public BlockSupercraftStone(int par1, SupercraftStoneType type, String string) {

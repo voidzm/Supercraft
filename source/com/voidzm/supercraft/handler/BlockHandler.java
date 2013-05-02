@@ -126,6 +126,14 @@ public class BlockHandler {
 	public static Block inscribedNightrock;
 	public static Block blockOfTenebral;
 	
+	public static Block sandstoneBricks;
+	public static Block inscribedSandstone;
+	public static Block blockOfDesert;
+	
+	public static Block endstoneBricks;
+	public static Block inscribedEndstone;
+	public static Block blockOfSky;
+	
 	//**  Slabs  **//
 	
 	public static Block supercraftSlab1;
@@ -141,6 +149,8 @@ public class BlockHandler {
 	public static Block mortaliaStairs;
 	public static Block palestoneStairs;
 	public static Block nightrockStairs;
+	public static Block sandstonebrickStairs;
+	public static Block endstonebrickStairs;
 	
 	//**  Plants  **//
 	
@@ -288,13 +298,21 @@ public class BlockHandler {
 		overgrownPalestoneBricks = new BlockSupercraftStone(config.overgrownpalestonebricksID, SupercraftStoneType.LARGEBRICKS, "supercraft:overgrownpalestonebricks").setInternalName("overgrownpalestonebricks").setExternalName("Overgrown Palestone Bricks").register();
 		burnedPalestoneBricks = new BlockSupercraftStone(config.burnedpalestonebricksID, SupercraftStoneType.WEAKBRICKS, "supercraft:burnedpalestonebricks").setInternalName("burnedpalestonebricks").setExternalName("Burned Palestone Bricks").register();
 		inscribedPalestone = new BlockSupercraftStone(config.inscribedpalestoneID, SupercraftStoneType.STRONGSTONE, "supercraft:inscribedpalestone").setInternalName("inscribedpalestone").setExternalName("Inscribed Palestone").register();
-		blockOfGoldenwood = new BlockGoldenwood(config.blockgoldenwoodID).register();
+		blockOfGoldenwood = new BlockSupercraftStone(config.blockgoldenwoodID, SupercraftStoneType.ESSENTIAL, "supercraft:blockgoldenwood").setInternalName("blockgoldenwood").setExternalName("Block of the Goldenwood").register();
 		
 		nightrock = new BlockSupercraftStone(config.nightrockID, SupercraftStoneType.STONE, "supercraft:nightrock").setInternalName("nightrock").setExternalName("Nightrock").register();
 		nightrockBricks = new BlockSupercraftStone(config.nightrockbricksID, SupercraftStoneType.LARGEBRICKS, "supercraft:nightrockbricks").setInternalName("nightrockbricks").setExternalName("Nightrock Bricks").register();
 		burnedNightrockBricks = new BlockSupercraftStone(config.burnednightrockbricksID, SupercraftStoneType.WEAKBRICKS, "supercraft:burnednightrockbricks").setInternalName("burnednightrockbricks").setExternalName("Burned Nightrock Bricks").register();
 		inscribedNightrock = new BlockSupercraftStone(config.inscribednightrockID, SupercraftStoneType.STRONGSTONE, "supercraft:inscribednightrock").setInternalName("inscribednightrock").setExternalName("Inscribed Nightrock").register();
-		blockOfTenebral = new BlockTenebral(config.blocktenebralID).register();
+		blockOfTenebral = new BlockSupercraftStone(config.blocktenebralID, SupercraftStoneType.ESSENTIAL, "supercraft:blocktenebral").setInternalName("blocktenebral").setExternalName("Block of the Tenebral").register();
+		
+		sandstoneBricks = new BlockSupercraftStone(config.sandstonebricksID, SupercraftStoneType.WEAKBRICKS, "supercraft:sandstonebricks").setInternalName("sandstonebricks").setExternalName("Sandstone Bricks").register();
+		inscribedSandstone = new BlockSupercraftStone(config.inscribedsandstoneID, SupercraftStoneType.STRONGSTONE, "supercraft:inscribedsandstone").setInternalName("inscribedsandstone").setExternalName("Inscribed Sandstone").register();
+		blockOfDesert = new BlockSupercraftStone(config.blockdesertID, SupercraftStoneType.ESSENTIAL, "supercraft:blockdesert").setInternalName("blockdesert").setExternalName("Block of the Desert").register();
+		
+		endstoneBricks = new BlockSupercraftStone(config.endstonebricksID, SupercraftStoneType.STRONGSTONE, "supercraft:endstonebricks").setInternalName("endstonebricks").setExternalName("End Stone Bricks").register();
+		inscribedEndstone = new BlockSupercraftStone(config.inscribedendstoneID, SupercraftStoneType.STRONGSTONE, "supercraft:inscribedendstone").setInternalName("inscribedendstone").setExternalName("Inscribed End Stone").register();
+		blockOfSky = new BlockSupercraftStone(config.blockskyID, SupercraftStoneType.ESSENTIAL, "supercraft:blocksky").setInternalName("blocksky").setExternalName("Block of the Sky").register();
 	}
 	
 	private static void createSlabs() {
@@ -321,6 +339,10 @@ public class BlockHandler {
 		BlockSupercraft.register(palestoneStairs, ((BlockSupercraftStairs)palestoneStairs).getRegisterData());
 		nightrockStairs = new BlockSupercraftStairs(config.stairsnightrockID, nightrockBricks, 0, "stairsnightrock", "Nightrock Brick Stairs");
 		BlockSupercraft.register(nightrockStairs, ((BlockSupercraftStairs)nightrockStairs).getRegisterData());
+		sandstonebrickStairs = new BlockSupercraftStairs(config.stairssandstonebricksID, sandstoneBricks, 0, "stairssandstonebricks", "Sandstone Brick Stairs");
+		BlockSupercraft.register(sandstonebrickStairs, ((BlockSupercraftStairs)sandstonebrickStairs).getRegisterData());
+		endstonebrickStairs = new BlockSupercraftStairs(config.stairsendstonebrickID, endstoneBricks, 0, "stairsendstonebricks", "End Stone Brick Stairs");
+		BlockSupercraft.register(endstonebrickStairs, ((BlockSupercraftStairs)endstonebrickStairs).getRegisterData());
 	}
 	
 	private static void createPlants() {

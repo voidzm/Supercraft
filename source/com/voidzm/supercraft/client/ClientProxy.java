@@ -13,6 +13,7 @@ import com.voidzm.supercraft.handler.ClientTickHandler;
 import com.voidzm.supercraft.render.InventoryConduitRender;
 import com.voidzm.supercraft.render.InventoryVenianRodRender;
 import com.voidzm.supercraft.render.TileConduitRender;
+import com.voidzm.supercraft.render.VeneficianPodiumRender;
 import com.voidzm.supercraft.tileentity.TileEntityConduit;
 
 import cpw.mods.fml.client.registry.ClientRegistry;
@@ -23,12 +24,15 @@ import cpw.mods.fml.relauncher.Side;
 public class ClientProxy extends CommonProxy {
 	
 	public static int conduitInvRenderID;
+	public static int veneficianPodiumRenderID;
 	
 	@Override
 	public void registerRenderers() {
 		ClientRegistry.bindTileEntitySpecialRenderer(TileEntityConduit.class, new TileConduitRender());
 		conduitInvRenderID = RenderingRegistry.getNextAvailableRenderId();
+		veneficianPodiumRenderID = RenderingRegistry.getNextAvailableRenderId();
 		RenderingRegistry.registerBlockHandler(new InventoryConduitRender());
+		RenderingRegistry.registerBlockHandler(new VeneficianPodiumRender());
 		MinecraftForgeClient.registerItemRenderer(ItemHandler.venianRod.itemID, new InventoryVenianRodRender());
 	}
 	

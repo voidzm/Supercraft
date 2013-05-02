@@ -49,18 +49,18 @@ public class GuiVeneficianPodium extends GuiContainer implements ICrafting {
 		super.initGui();
 		int i = (this.width - this.xSize) / 2;
 		int j = (this.height - this.ySize) / 2;
-		this.buttonList.add(new GuiSupercraftButton(this, 0, i+67, j+25, 20, 20, "-"));
-		this.buttonList.add(new GuiSupercraftButton(this, 1, i+125, j+25, 20, 20, "+"));
-		this.buttonList.add(new GuiSupercraftButton(this, 2, i+67, j+44, 20, 20, "-"));
-		this.buttonList.add(new GuiSupercraftButton(this, 3, i+125, j+44, 20, 20, "+"));
-		this.buttonList.add(new GuiSupercraftButton(this, 4, i+67, j+63, 20, 20, "-"));
-		this.buttonList.add(new GuiSupercraftButton(this, 5, i+125, j+63, 20, 20, "+"));
+		this.buttonList.add(new GuiSupercraftButton(this, 0, i+70, j+25, 20, 20, "-"));
+		this.buttonList.add(new GuiSupercraftButton(this, 1, i+128, j+25, 20, 20, "+"));
+		this.buttonList.add(new GuiSupercraftButton(this, 2, i+70, j+44, 20, 20, "-"));
+		this.buttonList.add(new GuiSupercraftButton(this, 3, i+128, j+44, 20, 20, "+"));
+		this.buttonList.add(new GuiSupercraftButton(this, 4, i+70, j+63, 20, 20, "-"));
+		this.buttonList.add(new GuiSupercraftButton(this, 5, i+128, j+63, 20, 20, "+"));
 		for(GuiButton button : (List<GuiButton>)this.buttonList) {
 			button.enabled = false;
 		}
-		this.powerField = new GuiTextField(this.fontRenderer, 88, 26, 36, 18);
-		this.rangeField = new GuiTextField(this.fontRenderer, 88, 45, 36, 18);
-		this.drainField = new GuiTextField(this.fontRenderer, 88, 64, 36, 18);
+		this.powerField = new GuiTextField(this.fontRenderer, 91, 26, 36, 18);
+		this.rangeField = new GuiTextField(this.fontRenderer, 91, 45, 36, 18);
+		this.drainField = new GuiTextField(this.fontRenderer, 91, 64, 36, 18);
 		this.powerField.setFocused(false);
 		this.powerField.func_82266_h(14737632);
 		this.powerField.func_82265_c(false);
