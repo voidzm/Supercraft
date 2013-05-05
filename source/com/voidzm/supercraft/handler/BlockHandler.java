@@ -310,9 +310,9 @@ public class BlockHandler {
 		inscribedSandstone = new BlockSupercraftStone(config.inscribedsandstoneID, SupercraftStoneType.STRONGSTONE, "supercraft:inscribedsandstone").setInternalName("inscribedsandstone").setExternalName("Inscribed Sandstone").register();
 		blockOfDesert = new BlockSupercraftStone(config.blockdesertID, SupercraftStoneType.ESSENTIAL, "supercraft:blockdesert").setInternalName("blockdesert").setExternalName("Block of the Desert").register();
 		
-		endstoneBricks = new BlockSupercraftStone(config.endstonebricksID, SupercraftStoneType.STRONGSTONE, "supercraft:endstonebricks").setInternalName("endstonebricks").setExternalName("End Stone Bricks").register();
-		inscribedEndstone = new BlockSupercraftStone(config.inscribedendstoneID, SupercraftStoneType.STRONGSTONE, "supercraft:inscribedendstone").setInternalName("inscribedendstone").setExternalName("Inscribed End Stone").register();
-		blockOfSky = new BlockSupercraftStone(config.blockskyID, SupercraftStoneType.ESSENTIAL, "supercraft:blocksky").setInternalName("blocksky").setExternalName("Block of the Sky").register();
+		endstoneBricks = new BlockSupercraftStone(config.endstonebricksID, SupercraftStoneType.STRONGSTONE, "supercraft:endstonebricks").setInternalName("endstonebricks").setExternalName("End Stone Bricks").makeDragonUnbreakable().register();
+		inscribedEndstone = new BlockSupercraftStone(config.inscribedendstoneID, SupercraftStoneType.STRONGSTONE, "supercraft:inscribedendstone").setInternalName("inscribedendstone").setExternalName("Inscribed End Stone").makeDragonUnbreakable().register();
+		blockOfSky = new BlockSupercraftStone(config.blockskyID, SupercraftStoneType.ESSENTIAL, "supercraft:blocksky").setInternalName("blocksky").setExternalName("Block of the Sky").makeDragonUnbreakable().register();
 	}
 	
 	private static void createSlabs() {

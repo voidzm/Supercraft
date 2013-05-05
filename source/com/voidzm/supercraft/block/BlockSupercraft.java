@@ -13,6 +13,7 @@ import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 import net.minecraft.item.ItemBlock;
 import net.minecraft.item.ItemStack;
+import net.minecraft.world.World;
 
 public class BlockSupercraft extends Block {
 
@@ -23,6 +24,8 @@ public class BlockSupercraft extends Block {
 	
 	private ArrayList<String> externalNames = null;
 	private Class<? extends ItemBlock> itemClass = null;
+	
+	private boolean dragonDestroys = true;
 	
 	public BlockSupercraft(int par1, Material par2Material) {
 		super(par1, par2Material);
@@ -93,6 +96,16 @@ public class BlockSupercraft extends Block {
 				i++;
 			}
 		}
+	}
+	
+	public BlockSupercraft makeDragonUnbreakable() {
+		this.dragonDestroys = false;
+		return this;
+	}
+	
+	@Override
+	public boolean canDragonDestroy(World world, int x, int y, int z) {
+		return this.dragonDestroys;
 	}
 
 }
