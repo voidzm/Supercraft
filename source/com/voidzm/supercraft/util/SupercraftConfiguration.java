@@ -214,6 +214,9 @@ public class SupercraftConfiguration {
 	public int goldenwoodforestID;
 	public int tenebralwoodsID;
 	public int depthsID;
+	public int cordiferhillsID;
+	public int temperateforestID;
+	public int glacialwastelandID;
 	
 	///*** PROVIDERS ***///
 	
@@ -442,6 +445,9 @@ public class SupercraftConfiguration {
 		goldenwoodforestID = internalCfg.get(this.CATEGORY_BIOME, "goldenwoodforestID", "31").getInt();
 		tenebralwoodsID = internalCfg.get(this.CATEGORY_BIOME, "tenebralwoodsID", "32").getInt();
 		depthsID = internalCfg.get(this.CATEGORY_BIOME, "depthsID", "33").getInt();
+		cordiferhillsID = internalCfg.get(this.CATEGORY_BIOME, "cordiferhillsID", "34").getInt();
+		temperateforestID = internalCfg.get(this.CATEGORY_BIOME, "temperateforestID", "35").getInt();
+		glacialwastelandID = internalCfg.get(this.CATEGORY_BIOME, "glacialwastelandID", "36").getInt();
 	}
 	
 	private void loadDimensionConfig() {

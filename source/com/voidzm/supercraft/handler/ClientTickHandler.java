@@ -11,7 +11,6 @@ import java.util.EnumSet;
 import org.lwjgl.opengl.GL11;
 
 import com.voidzm.supercraft.Supercraft;
-import com.voidzm.supercraft.biome.BiomeGenTenebralWoods;
 import com.voidzm.supercraft.client.ClientProxy;
 import com.voidzm.supercraft.gui.SCMainMenu;
 

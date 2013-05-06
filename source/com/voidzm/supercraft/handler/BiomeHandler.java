@@ -5,6 +5,7 @@
 
 package com.voidzm.supercraft.handler;
 
+import net.minecraft.block.Block;
 import net.minecraft.world.biome.BiomeGenBase;
 import net.minecraftforge.common.BiomeManager;
 
@@ -29,6 +30,9 @@ public class BiomeHandler {
 	public static BiomeGenBase goldenwoodForest;
 	public static BiomeGenBase tenebralWoods;
 	public static BiomeGenBase depths;
+	public static BiomeGenBase cordiferHills;
+	public static BiomeGenBase temperateForest;
+	public static BiomeGenBase glacialWasteland;
 	
 	public static void init(SupercraftConfiguration configObject, boolean doVanillaBiomes) {
 		if(config != null) {
@@ -48,17 +52,20 @@ public class BiomeHandler {
 	}
 	
 	private static void createBiomes() {
-		extremeForest = new BiomeGenExtremeForest(config.extremeforestID);
-		insaneHills = new BiomeGenInsaneHills(config.insanehillsID);
-		grassySummits = new BiomeGenGrassySummits(config.grassysummitsID);
-		winterForest = new BiomeGenWinterForest(config.winterforestID);
-		alpha = new BiomeGenAlpha(config.alphaID);
-		savanna = new BiomeGenSavanna(config.savannaID);
-		sandyPeaks = new BiomeGenSandyPeaks(config.sandypeaksID);
-		icyRidges = new BiomeGenIcyRidges(config.icyridgesID);
-		goldenwoodForest = new BiomeGenGoldenwoodForest(config.goldenwoodforestID);
-		tenebralWoods = new BiomeGenTenebralWoods(config.tenebralwoodsID);
+		extremeForest = new BiomeSupercraft(config.extremeforestID, BiomeProperties.EXTREMEFOREST, "Extreme Forest");
+		insaneHills = new BiomeSupercraft(config.insanehillsID, BiomeProperties.INSANEHILLS, "Insane Hills");
+		grassySummits = new BiomeSupercraft(config.grassysummitsID, BiomeProperties.GRASSYSUMMITS, "Grassy Summits");
+		winterForest = new BiomeSupercraft(config.winterforestID, BiomeProperties.WINTERFOREST, "Winter Forest").setSnowy();
+		alpha = new BiomeSupercraft(config.alphaID, BiomeProperties.ALPHA, "Alpha");
+		savanna = new BiomeSupercraft(config.savannaID, BiomeProperties.SAVANNA, "Savanna");
+		sandyPeaks = new BiomeSupercraft(config.sandypeaksID, BiomeProperties.SANDYPEAKS, "Sandy Peaks").setDesert();
+		icyRidges = new BiomeSupercraft(config.icyridgesID, BiomeProperties.ICYRIDGES, "Icy Ridges").setSnowy();
+		goldenwoodForest = new BiomeSupercraft(config.goldenwoodforestID, BiomeProperties.GOLDENWOODFOREST, "Goldenwood Forest").setSkyColor(0xD8EDED);
+		tenebralWoods = new BiomeSupercraft(config.tenebralwoodsID, BiomeProperties.TENEBRALWOODS, "Tenebral Woods").setSkyColor(0x646770).setWaterMultiplier(0xDDAA44).setNoAnimals();
 		depths = new BiomeGenDepths(config.depthsID);
+		cordiferHills = new BiomeSupercraft(config.cordiferhillsID, BiomeProperties.CORDIFERHILLS, "Cordifer Hills");
+		temperateForest = new BiomeSupercraft(config.temperateforestID, BiomeProperties.TEMPERATEFOREST, "Temperate Forest");
+		glacialWasteland = new BiomeSupercraft(config.glacialwastelandID, BiomeProperties.GLACIALWASTELAND, "Glacial Wasteland").setTopBlock((byte)Block.blockSnow.blockID).setFillerBlock((byte)Block.ice.blockID).setSnowy();
 	}
 	
 	private static void registerBiomes() {
@@ -72,6 +79,9 @@ public class BiomeHandler {
 		addStandardBiome(icyRidges);
 		addStandardBiome(goldenwoodForest);
 		addStandardBiome(tenebralWoods);
+		addStandardBiome(cordiferHills);
+		addStandardBiome(temperateForest);
+		addStandardBiome(glacialWasteland);
 	}
 	
 	private static void removeVanillaBiomes() {

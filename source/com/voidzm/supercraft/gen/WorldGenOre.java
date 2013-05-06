@@ -7,6 +7,7 @@ package com.voidzm.supercraft.gen;
 
 import java.util.Random;
 
+import com.voidzm.supercraft.handler.BiomeHandler;
 import com.voidzm.supercraft.handler.BlockHandler;
 import com.voidzm.supercraft.handler.FuelHandler;
 
@@ -66,42 +67,70 @@ public class WorldGenOre implements IWorldGenerator {
 	}
 	
 	private void generateOverworld(World world, Random rand, int cx, int cz) {
-		int ky = 96; // Aluminum
+		int ky = 96;
 		for(int i = 0; i < 6; i++) {
 			int rx = (cx * 16) + rand.nextInt(16);
 			int ry = ky + rand.nextInt(32);
 			int rz = (cz * 16) + rand.nextInt(16);
 			new WorldGenMinable(BlockHandler.aluminumOre.blockID, 12).generate(world, rand, rx, ry, rz);
 		}
-		ky = 0; // Tantalum
-		for(int i = 0; i < 1; i++) {
-			int rx = (cx * 16) + rand.nextInt(16);
-			int ry = ky + rand.nextInt(24);
-			int rz = (cz * 16) + rand.nextInt(16);
-			new WorldGenMinable(BlockHandler.tantalumOre.blockID, 4).generate(world, rand, rx, ry, rz);
-		}
-		ky = 64; // Copper
+		ky = 64;
 		for(int i = 0; i < 8; i++) {
 			int rx = (cx * 16) + rand.nextInt(16);
 			int ry = ky + rand.nextInt(32);
 			int rz = (cz * 16) + rand.nextInt(16);
 			new WorldGenMinable(BlockHandler.copperOre.blockID, 4).generate(world, rand, rx, ry, rz);
 		}
-		ky = 0; // Silver
+		ky = 0;
 		for(int i = 0; i < 3; i++) {
 			int rx = (cx * 16) + rand.nextInt(16);
 			int ry = ky + rand.nextInt(10);
 			int rz = (cz * 16) + rand.nextInt(16);
 			new WorldGenMinable(BlockHandler.silverOre.blockID, 6).generate(world, rand, rx, ry, rz);
 		}
-		ky = 0; // Platinum
+		ky = 0;
+		if(rand.nextInt(9) == 0) {
+			int rx = (cx * 16) + rand.nextInt(16);
+			int ry = ky + rand.nextInt(64);
+			int rz = (cz * 16) + rand.nextInt(16);
+			if(world.getBiomeGenForCoords(rx, rz).equals(BiomeHandler.goldenwoodForest)) new WorldGenMinable(BlockHandler.electrumOre.blockID, 16).generate(world, rand, rx, ry, rz);
+		}
+		ky = 0;
+		for(int i = 0; i < 6; i++) {
+			int rx = (cx * 16) + rand.nextInt(16);
+			int ry = ky + rand.nextInt(128);
+			int rz = (cz * 16) + rand.nextInt(16);
+			if(world.getBiomeGenForCoords(rx, rz).equals(BiomeHandler.goldenwoodForest)) new WorldGenMinable(BlockHandler.palestone.blockID, 24).generate(world, rand, rx, ry, rz);
+		}
+		ky = 0;
+		for(int i = 0; i < 10; i++) {
+			int rx = (cx * 16) + rand.nextInt(16);
+			int ry = ky + rand.nextInt(64);
+			int rz = (cz * 16) + rand.nextInt(16);
+			if(world.getBiomeGenForCoords(rx, rz).equals(BiomeHandler.tenebralWoods)) new WorldGenMinable(BlockHandler.nisilOre.blockID, 8).generate(world, rand, rx, ry, rz);
+		}
+		ky = 0;
+		for(int i = 0; i < 6; i++) {
+			int rx = (cx * 16) + rand.nextInt(16);
+			int ry = ky + rand.nextInt(128);
+			int rz = (cz * 16) + rand.nextInt(16);
+			if(world.getBiomeGenForCoords(rx, rz).equals(BiomeHandler.tenebralWoods)) new WorldGenMinable(BlockHandler.nightrock.blockID, 24).generate(world, rand, rx, ry, rz);
+		}
+		ky = 0;
 		for(int i = 0; i < 8; i++) {
 			int rx = (cx * 16) + rand.nextInt(16);
 			int ry = ky + rand.nextInt(32);
 			int rz = (cz * 16) + rand.nextInt(16);
 			new WorldGenMinable(BlockHandler.platinumOre.blockID, 1).generate(world, rand, rx, ry, rz);
 		}
-		ky = 0; // Lithium
+		ky = 0;
+		for(int i = 0; i < 1; i++) {
+			int rx = (cx * 16) + rand.nextInt(16);
+			int ry = ky + rand.nextInt(24);
+			int rz = (cz * 16) + rand.nextInt(16);
+			new WorldGenMinable(BlockHandler.tantalumOre.blockID, 4).generate(world, rand, rx, ry, rz);
+		}
+		ky = 0;
 		if(rand.nextInt(4) == 0) {
 			int rx = (cx * 16) + rand.nextInt(16);
 			int ry = ky + rand.nextInt(16);

@@ -2,7 +2,7 @@ package com.voidzm.supercraft.gen;
 
 import java.util.Random;
 
-import com.voidzm.supercraft.biome.BiomeGenGoldenwoodForest;
+import com.voidzm.supercraft.handler.BiomeHandler;
 import com.voidzm.supercraft.handler.BlockHandler;
 import com.voidzm.supercraft.handler.ItemHandler;
 
@@ -21,7 +21,7 @@ import net.minecraft.world.gen.feature.WorldGenerator;
 public class WorldGenGoldenwoodShrine extends WorldGenerator {
 
 	public boolean generate(World var1, Random var2, int var3, int var4, int var5) {
-		if(!(var1.provider.getBiomeGenForCoords(var3, var5) instanceof BiomeGenGoldenwoodForest)) return false;
+		if(!(var1.provider.getBiomeGenForCoords(var3, var5).equals(BiomeHandler.goldenwoodForest))) return false;
 		if(var1.getBlockMaterial(var3, var4-1, var5) == Material.water) return false;
 		int[] groundHeights = new int[25];
 		int i = 0;
