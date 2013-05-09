@@ -127,8 +127,9 @@ public class ChunkProviderDeep implements IChunkProvider {
 	}
 
 	@Override
-	public void recreateStructures(int i, int j) {
-		
-	}
+	public void recreateStructures(int i, int j) {}
+
+	@Override
+	public void func_104112_b() {}
 
 }

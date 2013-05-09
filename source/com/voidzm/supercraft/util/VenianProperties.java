@@ -67,9 +67,9 @@ public class VenianProperties {
 		}
 		NBTTagList lore = new NBTTagList();
 		display.setTag("Lore", lore);
-		lore.appendTag(new NBTTagString("", "§7Strength: "+strengthFormatSymbolFromInt(this.power)+this.power));
-		lore.appendTag(new NBTTagString("", "§7Perception: "+rangeFormatSymbolFromInt(this.range)+this.range));
-		lore.appendTag(new NBTTagString("", "§7Impact: "+drainFormatSymbolFromInt(this.drain)+this.drain));
+		lore.appendTag(new NBTTagString("", "\u00A77Strength: "+strengthFormatSymbolFromInt(this.power)+this.power));
+		lore.appendTag(new NBTTagString("", "\u00A77Perception: "+rangeFormatSymbolFromInt(this.range)+this.range));
+		lore.appendTag(new NBTTagString("", "\u00A77Impact: "+drainFormatSymbolFromInt(this.drain)+this.drain));
 		
 		NBTTagCompound venian = new NBTTagCompound();
 		venian.setInteger("aspect", this.aspect.index);
@@ -96,11 +96,11 @@ public class VenianProperties {
 	}
 	
 	private static String strengthFormatSymbolFromInt(int par1) {
-		if(par1 <= 5) return "§c";
-		else if(par1 <= 10) return "§6";
-		else if(par1 <= 25) return "§e";
-		else if(par1 <= 50) return "§a";
-		else return "§9";
+		if(par1 <= 5) return "\u00A7c";
+		else if(par1 <= 10) return "\u00A76";
+		else if(par1 <= 25) return "\u00A7e";
+		else if(par1 <= 50) return "\u00A7a";
+		else return "\u00A79";
 	}
 	
 	public static int getPowerIndexFromInt(int par1) {
@@ -112,11 +112,11 @@ public class VenianProperties {
 	}
 	
 	private static String rangeFormatSymbolFromInt(int par1) {
-		if(par1 <= 5) return "§c";
-		else if(par1 <= 10) return "§6";
-		else if(par1 <= 25) return "§e";
-		else if(par1 <= 50) return "§a";
-		else return "§9";
+		if(par1 <= 5) return "\u00A7c";
+		else if(par1 <= 10) return "\u00A76";
+		else if(par1 <= 25) return "\u00A7e";
+		else if(par1 <= 50) return "\u00A7a";
+		else return "\u00A79";
 	}
 	
 	public static int getRangeIndexFromInt(int par1) {
@@ -128,11 +128,11 @@ public class VenianProperties {
 	}
 	
 	private static String drainFormatSymbolFromInt(int par1) {
-		if(par1 >= 50) return "§c";
-		else if(par1 >= 25) return "§6";
-		else if(par1 >= 10) return "§e";
-		else if(par1 >= 5) return "§a";
-		else return "§9";
+		if(par1 >= 50) return "\u00A7c";
+		else if(par1 >= 25) return "\u00A76";
+		else if(par1 >= 10) return "\u00A7e";
+		else if(par1 >= 5) return "\u00A7a";
+		else return "\u00A79";
 	}
 	
 	public static int getDrainIndexFromInt(int par1) {

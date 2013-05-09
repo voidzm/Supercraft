@@ -62,14 +62,14 @@ public class GuiVeneficianPodium extends GuiContainer implements ICrafting {
 		this.rangeField = new GuiTextField(this.fontRenderer, 91, 45, 36, 18);
 		this.drainField = new GuiTextField(this.fontRenderer, 91, 64, 36, 18);
 		this.powerField.setFocused(false);
-		this.powerField.func_82266_h(14737632);
-		this.powerField.func_82265_c(false);
+		this.powerField.setTextColor(14737632);
+		this.powerField.setEnabled(false);
 		this.rangeField.setFocused(false);
-		this.rangeField.func_82266_h(14737632);
-		this.rangeField.func_82265_c(false);
+		this.rangeField.setTextColor(14737632);
+		this.rangeField.setEnabled(false);
 		this.drainField.setFocused(false);
-		this.drainField.func_82266_h(14737632);
-		this.drainField.func_82265_c(false);
+		this.drainField.setTextColor(14737632);
+		this.drainField.setEnabled(false);
 		this.inventorySlots.removeCraftingFromCrafters(this);
 		this.inventorySlots.addCraftingToCrafters(this);
 	}

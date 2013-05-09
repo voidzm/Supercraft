@@ -42,7 +42,7 @@ import cpw.mods.fml.common.network.NetworkMod;
 import cpw.mods.fml.common.registry.TickRegistry;
 import cpw.mods.fml.relauncher.Side;
 
-@Mod(modid="Supercraft", name="Supercraft", version="0.3.0")
+@Mod(modid="Supercraft", name="Supercraft", version="0.4.0")
 @NetworkMod(clientSideRequired=true, serverSideRequired=false, channels={"SCC|Elinvar", "SCS|Veneficia"}, packetHandler=PacketHandler.class)
 public class Supercraft {
 

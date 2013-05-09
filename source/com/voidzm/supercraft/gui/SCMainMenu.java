@@ -128,7 +128,7 @@ public class SCMainMenu extends GuiScreen {
 		for(GuiButtonTransparent iterated : buttons) {
 			iterated.draw(mouseX, mouseY);
 		}
-		this.drawCenteredString(mc.fontRenderer, "Minecraft 1.5.1", 75, height - 22, Color.GRAY.getRGB());
+		this.drawCenteredString(mc.fontRenderer, "Minecraft 1.5.2", 75, height - 22, Color.GRAY.getRGB());
 	}
 	
 	private int[] calcPositions() {

@@ -8,6 +8,7 @@ import com.voidzm.supercraft.gen.WorldGenOlive;
 import com.voidzm.supercraft.gen.WorldGenScatteredFlowers;
 import com.voidzm.supercraft.gen.WorldGenTenebralPitfall;
 import com.voidzm.supercraft.gen.WorldGenTenebria;
+import com.voidzm.supercraft.gen.WorldGenIcySpikes;
 import com.voidzm.supercraft.handler.BlockHandler;
 
 import net.minecraft.world.World;
@@ -24,7 +25,7 @@ public class BiomeStructureGen {
 		SMALLTREE(new WorldGenTrees(false), true), BIGTREE(new WorldGenBigTree(false), true), BIRCHTREE(new WorldGenForest(false), true), SPRUCETREE1(new WorldGenTaiga1(), true),
 		SPRUCETREE2(new WorldGenTaiga2(false), true), OLIVETREE(new WorldGenOlive(), true), GOLDENWOODTREE(new WorldGenGoldenwood(), true), BLUEBELLS(new WorldGenScatteredFlowers(BlockHandler.bluebells.blockID), false),
 		DAISIES(new WorldGenScatteredFlowers(BlockHandler.daisies.blockID), false), GOLDENWOODSHRINE(new WorldGenGoldenwoodShrine(), true), TENEBRALPITFALL(new WorldGenTenebralPitfall(), true),
-		TENEBRIATREE(new WorldGenTenebria(), true), SNAPDRAGON(new WorldGenScatteredFlowers(BlockHandler.snapdragon.blockID), false);
+		TENEBRIATREE(new WorldGenTenebria(), true), SNAPDRAGON(new WorldGenScatteredFlowers(BlockHandler.snapdragon.blockID), false), ICYSPIKES(new WorldGenIcySpikes(), true);
 		public WorldGenerator gen;
 		public boolean isOnSurface;
 		private StructureGenType(WorldGenerator generator, boolean surface) {

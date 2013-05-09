@@ -21,7 +21,7 @@ public enum BiomeProperties {
 	TENEBRALWOODS(2, 1, -999, 0.4F, 0.5F, 0.5F, 0.5F, 0x525A5B, 0x525A5B, new BiomeStructureGen(StructureGenType.TENEBRALPITFALL, false, 128), new BiomeStructureGen(StructureGenType.TENEBRIATREE, true, 7), new BiomeStructureGen(StructureGenType.SNAPDRAGON, true, 12)),
 	CORDIFERHILLS(2, 10, 3, 0.3F, 0.7F, 0.5F, 0.5F, new BiomeStructureGen(StructureGenType.BIRCHTREE, true, 6)),
 	TEMPERATEFOREST(1, 10, 4, 0.2F, 0.5F, 0.4F, 0.6F, new BiomeStructureGen(StructureGenType.BIRCHTREE, true, 3), new BiomeStructureGen(StructureGenType.SMALLTREE, true, 6), new BiomeStructureGen(StructureGenType.BIGTREE, true, 1), new BiomeStructureGen(StructureGenType.SPRUCETREE2, true, 4)),
-	GLACIALWASTELAND(-999, -999, -999, 0.1F, 0.3F, 0.0F, 0.5F, new BiomeStructureGen[]{});
+	GLACIALWASTELAND(-999, -999, -999, 0.1F, 0.5F, 0.0F, 0.3F, new BiomeStructureGen(StructureGenType.ICYSPIKES, false, 5));
 	
 	public int grass;
 	public int sugarCane;

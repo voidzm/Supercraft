@@ -65,7 +65,7 @@ public class BiomeHandler {
 		depths = new BiomeGenDepths(config.depthsID);
 		cordiferHills = new BiomeSupercraft(config.cordiferhillsID, BiomeProperties.CORDIFERHILLS, "Cordifer Hills");
 		temperateForest = new BiomeSupercraft(config.temperateforestID, BiomeProperties.TEMPERATEFOREST, "Temperate Forest");
-		glacialWasteland = new BiomeSupercraft(config.glacialwastelandID, BiomeProperties.GLACIALWASTELAND, "Glacial Wasteland").setTopBlock((byte)Block.blockSnow.blockID).setFillerBlock((byte)Block.ice.blockID).setSnowy();
+		glacialWasteland = new BiomeSupercraft(config.glacialwastelandID, BiomeProperties.GLACIALWASTELAND, "Glacial Wasteland").setTopBlock((byte)Block.blockSnow.blockID).setFillerBlock((byte)Block.blockSnow.blockID).setSnowy().setNoAnimals();
 	}
 	
 	private static void registerBiomes() {
