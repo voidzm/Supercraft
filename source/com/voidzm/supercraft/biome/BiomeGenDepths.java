@@ -1,29 +1,19 @@
-//////////////////////////////////////
-//*       BiomeGenDepths.java      *//
-//*           Supercraft           *//
-//*        (c) voidzm 2013         *//
-//////////////////////////////////////
+//**
+//**  BiomeGenDepths.java
+//**  Supercraft
+//**  (c) voidzm 2013 **//
 
 package com.voidzm.supercraft.biome;
 
 import java.util.Random;
 
+import net.minecraft.block.Block;
+import net.minecraft.world.World;
+import net.minecraft.world.biome.BiomeGenBase;
+
 import com.voidzm.supercraft.gen.WorldGenDeepVines;
 import com.voidzm.supercraft.gen.WorldGenScatteredFlowers;
 import com.voidzm.supercraft.handler.BlockHandler;
-
-import net.minecraft.block.Block;
-import net.minecraft.entity.monster.EntityCreeper;
-import net.minecraft.entity.monster.EntityEnderman;
-import net.minecraft.entity.monster.EntitySkeleton;
-import net.minecraft.entity.monster.EntitySpider;
-import net.minecraft.entity.passive.EntityWolf;
-import net.minecraft.world.World;
-import net.minecraft.world.biome.BiomeGenBase;
-import net.minecraft.world.biome.SpawnListEntry;
-import net.minecraft.world.gen.feature.WorldGenMinable;
-import net.minecraft.world.gen.feature.WorldGenVines;
-import net.minecraft.world.gen.feature.WorldGenerator;
 
 public class BiomeGenDepths extends BiomeGenBase {
 
@@ -78,62 +68,6 @@ public class BiomeGenDepths extends BiomeGenBase {
 					}
 				}
 			}
-		}
-		for(int i = 0; i < 1; i++) {
-			WorldGenMinable palestoneGen = new WorldGenMinable(BlockHandler.palestone.blockID, 12);
-			int x = par3 + par2Random.nextInt(16);
-			int y = par2Random.nextInt(128);
-			int z = par4 + par2Random.nextInt(16);
-			palestoneGen.generate(par1World, par2Random, x, y, z);
-		}
-		for(int i = 0; i < 1; i++) {
-			WorldGenMinable nightrockGen = new WorldGenMinable(BlockHandler.nightrock.blockID, 12);
-			int x = par3 + par2Random.nextInt(16);
-			int y = par2Random.nextInt(128);
-			int z = par4 + par2Random.nextInt(16);
-			nightrockGen.generate(par1World, par2Random, x, y, z);
-		}
-		for(int i = 0; i < 4; i++) {
-			WorldGenMinable gravelGen = new WorldGenMinable(Block.gravel.blockID, 32);
-			int x = par3 + par2Random.nextInt(16);
-			int y = par2Random.nextInt(128);
-			int z = par4 + par2Random.nextInt(16);
-			gravelGen.generate(par1World, par2Random, x, y, z);
-		}
-		for(int i = 0; i < 12; i++) {
-			WorldGenMinable coalGen = new WorldGenMinable(Block.oreCoal.blockID, 12);
-			int x = par3 + par2Random.nextInt(16);
-			int y = par2Random.nextInt(128);
-			int z = par4 + par2Random.nextInt(16);
-			coalGen.generate(par1World, par2Random, x, y, z);
-		}
-		for(int i = 0; i < 4; i++) {
-			WorldGenMinable jadeGen = new WorldGenMinable(BlockHandler.jadeOre.blockID, 3);
-			int x = par3 + par2Random.nextInt(16);
-			int y = 104 + par2Random.nextInt(24);
-			int z = par4 + par2Random.nextInt(16);
-			jadeGen.generate(par1World, par2Random, x, y, z);
-		}
-		for(int i = 0; i < 6; i++) {
-			WorldGenMinable incendiumGen = new WorldGenMinable(BlockHandler.incendiumOre.blockID, 8);
-			int x = par3 + par2Random.nextInt(16);
-			int y = par2Random.nextInt(128);
-			int z = par4 + par2Random.nextInt(16);
-			incendiumGen.generate(par1World, par2Random, x, y, z);
-		}
-		for(int i = 0; i < 6; i++) {
-			WorldGenMinable luxificenGen = new WorldGenMinable(BlockHandler.luxificenOre.blockID, 8);
-			int x = par3 + par2Random.nextInt(16);
-			int y = par2Random.nextInt(128);
-			int z = par4 + par2Random.nextInt(16);
-			luxificenGen.generate(par1World, par2Random, x, y, z);
-		}
-		for(int i = 0; i < 2; i++) {
-			WorldGenMinable voltasniaGen = new WorldGenMinable(BlockHandler.voltasniaOre.blockID, 4);
-			int x = par3 + par2Random.nextInt(16);
-			int y = par2Random.nextInt(24);
-			int z = par4 + par2Random.nextInt(16);
-			voltasniaGen.generate(par1World, par2Random, x, y, z);
 		}
 		for(int i = 0; i < 8; i++) {
 			WorldGenScatteredFlowers gen = new WorldGenScatteredFlowers(BlockHandler.inisiaMushroom.blockID);

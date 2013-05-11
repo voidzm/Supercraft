@@ -38,6 +38,7 @@ public class ClientProxy extends CommonProxy {
 	
 	@Override
 	public void initTickHandler() {
+		super.initTickHandler();
 		TickRegistry.registerTickHandler(new ClientTickHandler(), Side.CLIENT);
 	}
 	

@@ -1,3 +1,8 @@
+//**
+//**  BiomeSupercraft.java
+//**  Supercraft
+//**  (c) voidzm 2013 **//
+
 package com.voidzm.supercraft.biome;
 
 import java.util.Random;

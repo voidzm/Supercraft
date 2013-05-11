@@ -5,7 +5,6 @@
 
 package com.voidzm.supercraft;
 
-import com.voidzm.supercraft.handler.ClientTickHandler;
 import com.voidzm.supercraft.handler.ServerTickHandler;
 
 import cpw.mods.fml.common.registry.TickRegistry;
@@ -16,7 +15,7 @@ public class CommonProxy {
 	public void registerRenderers() {}
 	
 	public void initTickHandler() {
-		
+		TickRegistry.registerTickHandler(new ServerTickHandler(), Side.SERVER);
 	}
 	
 }

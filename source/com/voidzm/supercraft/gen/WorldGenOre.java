@@ -7,14 +7,14 @@ package com.voidzm.supercraft.gen;
 
 import java.util.Random;
 
-import com.voidzm.supercraft.handler.BiomeHandler;
-import com.voidzm.supercraft.handler.BlockHandler;
-import com.voidzm.supercraft.handler.FuelHandler;
-
 import net.minecraft.block.Block;
 import net.minecraft.world.World;
 import net.minecraft.world.chunk.IChunkProvider;
 import net.minecraft.world.gen.feature.WorldGenMinable;
+
+import com.voidzm.supercraft.Supercraft;
+import com.voidzm.supercraft.handler.BiomeHandler;
+import com.voidzm.supercraft.handler.BlockHandler;
 
 import cpw.mods.fml.common.IWorldGenerator;
 import cpw.mods.fml.common.registry.GameRegistry;
@@ -46,6 +46,9 @@ public class WorldGenOre implements IWorldGenerator {
 		case 1:
 			generateEnd(world, random, chunkX, chunkZ);
 			break;
+		}
+		if(world.provider.dimensionId == Supercraft.configuration.thedeepID) {
+			generateDeep(world, random, chunkX, chunkZ);
 		}
 	}
 
@@ -146,6 +149,65 @@ public class WorldGenOre implements IWorldGenerator {
 			int ry = rand.nextInt(56);
 			int rz = (cz * 16) + rand.nextInt(16);
 			new WorldGenMinable(BlockHandler.draconiumOre.blockID, 8, Block.whiteStone.blockID).generate(world, rand, rx, ry, rz);
+		}
+	}
+	
+	private void generateDeep(World world, Random rand, int cx, int cz) {
+		for(int i = 0; i < 1; i++) {
+			WorldGenMinable palestoneGen = new WorldGenMinable(BlockHandler.palestone.blockID, 12);
+			int x = cx + rand.nextInt(16);
+			int y = rand.nextInt(128);
+			int z = cz + rand.nextInt(16);
+			palestoneGen.generate(world, rand, x, y, z);
+		}
+		for(int i = 0; i < 1; i++) {
+			WorldGenMinable nightrockGen = new WorldGenMinable(BlockHandler.nightrock.blockID, 12);
+			int x = cx + rand.nextInt(16);
+			int y = rand.nextInt(128);
+			int z = cz + rand.nextInt(16);
+			nightrockGen.generate(world, rand, x, y, z);
+		}
+		for(int i = 0; i < 4; i++) {
+			WorldGenMinable gravelGen = new WorldGenMinable(Block.gravel.blockID, 32);
+			int x = cx + rand.nextInt(16);
+			int y = rand.nextInt(128);
+			int z = cz + rand.nextInt(16);
+			gravelGen.generate(world, rand, x, y, z);
+		}
+		for(int i = 0; i < 12; i++) {
+			WorldGenMinable coalGen = new WorldGenMinable(Block.oreCoal.blockID, 12);
+			int x = cx + rand.nextInt(16);
+			int y = rand.nextInt(128);
+			int z = cz + rand.nextInt(16);
+			coalGen.generate(world, rand, x, y, z);
+		}
+		for(int i = 0; i < 4; i++) {
+			WorldGenMinable jadeGen = new WorldGenMinable(BlockHandler.jadeOre.blockID, 3);
+			int x = cx + rand.nextInt(16);
+			int y = 104 + rand.nextInt(24);
+			int z = cz + rand.nextInt(16);
+			jadeGen.generate(world, rand, x, y, z);
+		}
+		for(int i = 0; i < 6; i++) {
+			WorldGenMinable incendiumGen = new WorldGenMinable(BlockHandler.incendiumOre.blockID, 8);
+			int x = cx + rand.nextInt(16);
+			int y = rand.nextInt(128);
+			int z = cz + rand.nextInt(16);
+			incendiumGen.generate(world, rand, x, y, z);
+		}
+		for(int i = 0; i < 6; i++) {
+			WorldGenMinable luxificenGen = new WorldGenMinable(BlockHandler.luxificenOre.blockID, 8);
+			int x = cx + rand.nextInt(16);
+			int y = rand.nextInt(128);
+			int z = cz + rand.nextInt(16);
+			luxificenGen.generate(world, rand, x, y, z);
+		}
+		for(int i = 0; i < 2; i++) {
+			WorldGenMinable voltasniaGen = new WorldGenMinable(BlockHandler.voltasniaOre.blockID, 4);
+			int x = cx + rand.nextInt(16);
+			int y = rand.nextInt(24);
+			int z = cz + rand.nextInt(16);
+			voltasniaGen.generate(world, rand, x, y, z);
 		}
 	}
 	

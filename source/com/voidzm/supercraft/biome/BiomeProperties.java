@@ -1,3 +1,8 @@
+//**
+//**  BiomeProperties.java
+//**  Supercraft
+//**  (c) voidzm 2013 **//
+
 package com.voidzm.supercraft.biome;
 
 import net.minecraft.util.MathHelper;

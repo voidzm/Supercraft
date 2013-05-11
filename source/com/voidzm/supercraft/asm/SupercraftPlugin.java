@@ -24,7 +24,7 @@ public class SupercraftPlugin implements IFMLLoadingPlugin, IFMLCallHook {
 
 	@Override
 	public String getModContainerClass() {
-		return "com.voidzm.supercraft.Supercraft";
+		return "com.voidzm.supercraft.asm.SupercraftModContainer";
 	}
 
 	@Override
