@@ -1,3 +1,8 @@
+//**
+//**  SupercraftModContainer.java
+//**  Supercraft
+//**  (c) voidzm 2013 **//
+
 package com.voidzm.supercraft.asm;
 
 import java.io.File;
@@ -61,7 +66,7 @@ public class SupercraftModContainer extends DummyModContainer {
 
 	@Override
 	public String getVersion() {
-		return "0.4.0";
+		return Supercraft.supercraftVersion;
 	}
 
 	@Override
@@ -74,7 +79,7 @@ public class SupercraftModContainer extends DummyModContainer {
 		ModMetadata meta = new ModMetadata();
 		meta.modId = "SupercraftCore";
 		meta.name = "Supercraft Core";
-		meta.version = "0.4.0";
+		meta.version = Supercraft.supercraftVersion;
 		meta.authorList = Arrays.asList("voidzm");
 		meta.description = "The coremod functionality of Supercraft.";
 		meta.credits = "Designed and coded by voidzm.";
@@ -143,13 +148,13 @@ public class SupercraftModContainer extends DummyModContainer {
 
 	@Override
 	public String getDisplayVersion() {
-		return "0.4.0";
+		return Supercraft.supercraftVersion;
 	}
 
 	@Override
 	public VersionRange acceptableMinecraftVersionRange() {
 		try {
-			return VersionRange.createFromVersionSpec("1.5.2");
+			return VersionRange.createFromVersionSpec(Supercraft.minecraftVersion);
 		} catch (InvalidVersionSpecificationException e) {
 			e.printStackTrace();
 			return null;

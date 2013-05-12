@@ -36,10 +36,13 @@ import cpw.mods.fml.common.event.FMLPostInitializationEvent;
 import cpw.mods.fml.common.event.FMLPreInitializationEvent;
 import cpw.mods.fml.common.network.NetworkMod;
 
-@Mod(modid="Supercraft", name="Supercraft", version="0.4.0")
+@Mod(modid="Supercraft", name="Supercraft", version=Supercraft.supercraftVersion)
 @NetworkMod(clientSideRequired=true, serverSideRequired=false, channels={"SCC|Elinvar", "SCS|Veneficia"}, packetHandler=PacketHandler.class)
 public class Supercraft {
 
+	public static final String supercraftVersion = "0.4.0";
+	public static final String minecraftVersion = "1.5.2";
+	
 	@Instance(value="Supercraft")
 	public static Supercraft instance;
 	
@@ -64,7 +67,7 @@ public class Supercraft {
 		BlockHandler.init(configuration);
 		ItemHandler.init(configuration);
 		CraftingHandler.init(configuration);
-		BiomeHandler.init(configuration);
+		BiomeHandler.init(configuration, false);
 		DimensionHandler.init(configuration);
 		GuiHandler.init();
 		TileEntityHandler.init();

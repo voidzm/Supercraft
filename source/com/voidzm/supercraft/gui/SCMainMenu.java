@@ -17,6 +17,8 @@ import javax.imageio.ImageIO;
 
 import org.lwjgl.opengl.GL11;
 
+import com.voidzm.supercraft.Supercraft;
+
 import cpw.mods.fml.client.GuiModList;
 
 import net.minecraft.client.gui.GuiMultiplayer;
@@ -128,7 +130,7 @@ public class SCMainMenu extends GuiScreen {
 		for(GuiButtonTransparent iterated : buttons) {
 			iterated.draw(mouseX, mouseY);
 		}
-		this.drawCenteredString(mc.fontRenderer, "Minecraft 1.5.2", 75, height - 22, Color.GRAY.getRGB());
+		this.drawCenteredString(mc.fontRenderer, "Minecraft "+Supercraft.minecraftVersion, 75, height - 22, Color.GRAY.getRGB());
 	}
 	
 	private int[] calcPositions() {

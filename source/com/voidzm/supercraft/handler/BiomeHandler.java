@@ -69,7 +69,7 @@ public class BiomeHandler {
 	}
 	
 	private static void registerBiomes() {
-		addStandardBiome(extremeForest);
+		/*addStandardBiome(extremeForest);
 		addStandardBiome(insaneHills);
 		addStandardBiome(grassySummits);
 		addStandardBiome(winterForest);
@@ -80,7 +80,7 @@ public class BiomeHandler {
 		addStandardBiome(goldenwoodForest);
 		addStandardBiome(tenebralWoods);
 		addStandardBiome(cordiferHills);
-		addStandardBiome(temperateForest);
+		addStandardBiome(temperateForest);*/
 		addStandardBiome(glacialWasteland);
 	}
 	
