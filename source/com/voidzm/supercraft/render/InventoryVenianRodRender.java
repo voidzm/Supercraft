@@ -23,6 +23,7 @@ public class InventoryVenianRodRender implements IItemRenderer {
 		if(type == ItemRenderType.INVENTORY) return true;
 		else if(type == ItemRenderType.ENTITY) return true;
 		else if(type == ItemRenderType.EQUIPPED) return true;
+		else if(type == ItemRenderType.EQUIPPED_FIRST_PERSON) return true;
 		return false;
 	}
 
@@ -35,6 +36,7 @@ public class InventoryVenianRodRender implements IItemRenderer {
 	public void renderItem(ItemRenderType type, ItemStack item, Object... data) {
 		if(type == ItemRenderType.INVENTORY) this.renderInInventory(type, item, data);
 		else if(type == ItemRenderType.EQUIPPED) this.renderInHand(type, item, data);
+		else if(type == ItemRenderType.EQUIPPED_FIRST_PERSON) this.renderInHand(type, item, data);
 		else if(type == ItemRenderType.ENTITY) this.renderOnGround(type, item, data);
 	}
 	
