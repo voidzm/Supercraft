@@ -1,0 +1,6 @@
+1.5.2
+class,net.minecraft.client.gui.GuiScreen,axr
+class,net.minecraft.world.gen.layer.GenLayerRiverMix,aix
+method,net.minecraft.client.Minecraft/displayGuiScreen,a
+method,net.minecraft.world.gen.layer.GenLayerRiverMix/getInts,a
+field,net.minecraft.client.settings.GameSettings/showDebugInfo,ab

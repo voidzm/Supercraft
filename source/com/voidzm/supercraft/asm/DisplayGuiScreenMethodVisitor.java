@@ -26,7 +26,8 @@ public class DisplayGuiScreenMethodVisitor extends MethodVisitor {
 
 	@Override
 	public void visitFieldInsn(int opcode, String owner, String name, String desc) {
-		if(opcode == PUTFIELD || name.equals("currentScreen")) {
+		String fieldName = SupercraftPlugin.isDevEnvironment ? "showDebugInfo" : ReobfuscationMappingHelper.getInstance().attemptRemapFieldName("net.minecraft.client.settings.GameSettings/showDebugInfo");
+		if(opcode == PUTFIELD && name.equals(fieldName)) {
 			mv.visitVarInsn(ALOAD, 1);
 			mv.visitTypeInsn(INSTANCEOF, "net/minecraft/client/gui/GuiMainMenu");
 			Label j1 = new Label();
