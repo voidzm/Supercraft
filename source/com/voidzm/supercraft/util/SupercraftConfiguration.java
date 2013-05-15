@@ -145,6 +145,8 @@ public class SupercraftConfiguration {
 	public int stairssandstonebricksID;
 	public int stairsendstonebrickID;
 	
+	public int deadspawnerID;
+	
 	///*** ITEMS ***///
 	
 	public int ironscrapID;
@@ -193,6 +195,12 @@ public class SupercraftConfiguration {
 	
 	public int arcanerodID;
 	public int venianrodID;
+	
+	public int pickaxelithiumID;
+	public int swordlithiumID;
+	public int shovellithiumID;
+	public int axelithiumID;
+	public int hoelithiumID;
 	
 	///*** RECIPES ***///
 	
@@ -372,7 +380,9 @@ public class SupercraftConfiguration {
 		stairssandstonebricksID = internalCfg.get(Configuration.CATEGORY_BLOCK, "stairssandstonebricksID", "1700").getInt();
 		stairsendstonebrickID = internalCfg.get(Configuration.CATEGORY_BLOCK, "stairsendstonebrickID", "1701").getInt();
 		
-		// NEXT ID: 1702
+		deadspawnerID = internalCfg.get(Configuration.CATEGORY_BLOCK, "deadspawnerID", "1702").getInt();
+		
+		// NEXT ID: 1703
 		
 	}
 	
@@ -424,7 +434,13 @@ public class SupercraftConfiguration {
 		arcanerodID = internalCfg.get(Configuration.CATEGORY_ITEM, "arcanerodID", "23036").getInt();
 		venianrodID = internalCfg.get(Configuration.CATEGORY_ITEM, "venianrodID", "23037").getInt();
 		
-		// NEXT ID: 23038
+		pickaxelithiumID = internalCfg.get(Configuration.CATEGORY_ITEM, "pickaxelithiumID", "23038").getInt();
+		swordlithiumID = internalCfg.get(Configuration.CATEGORY_ITEM, "swordlithiumID", "23039").getInt();
+		shovellithiumID = internalCfg.get(Configuration.CATEGORY_ITEM, "shovellithiumID", "23040").getInt();
+		axelithiumID = internalCfg.get(Configuration.CATEGORY_ITEM, "axelithiumID", "23041").getInt();
+		hoelithiumID = internalCfg.get(Configuration.CATEGORY_ITEM, "hoelithiumID", "23042").getInt();
+		
+		// NEXT ID: 23043
 		
 	}
 	

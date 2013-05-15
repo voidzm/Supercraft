@@ -14,6 +14,7 @@ import com.voidzm.supercraft.block.BlockCelestialBalanceGenerator;
 import com.voidzm.supercraft.block.BlockCobalt;
 import com.voidzm.supercraft.block.BlockCobaltTorch;
 import com.voidzm.supercraft.block.BlockConduit;
+import com.voidzm.supercraft.block.BlockDeadSpawner;
 import com.voidzm.supercraft.block.BlockElectroplationEngine;
 import com.voidzm.supercraft.block.BlockEndStoneOre;
 import com.voidzm.supercraft.block.BlockEssentialReducer;
@@ -175,6 +176,8 @@ public class BlockHandler {
 	public static Block endstoneBricks;
 	public static Block inscribedEndstone;
 	public static Block blockOfSky;
+	
+	public static Block deadSpawner;
 	
 	//**  Slabs  **//
 	
@@ -355,6 +358,8 @@ public class BlockHandler {
 		endstoneBricks = new BlockSupercraftStone(config.endstonebricksID, SupercraftStoneType.STRONGSTONE, "supercraft:endstonebricks").setInternalName("endstonebricks").setExternalName("End Stone Bricks").makeDragonUnbreakable().register();
 		inscribedEndstone = new BlockSupercraftStone(config.inscribedendstoneID, SupercraftStoneType.STRONGSTONE, "supercraft:inscribedendstone").setInternalName("inscribedendstone").setExternalName("Inscribed End Stone").makeDragonUnbreakable().register();
 		blockOfSky = new BlockSupercraftStone(config.blockskyID, SupercraftStoneType.ESSENTIAL, "supercraft:blocksky").setInternalName("blocksky").setExternalName("Block of the Sky").makeDragonUnbreakable().register();
+	
+		deadSpawner = new BlockDeadSpawner(config.deadspawnerID).register();
 	}
 	
 	private static void createSlabs() {

@@ -5,7 +5,6 @@
 
 package com.voidzm.supercraft.block;
 
-
 public class BlockImpactGlass extends BlockSupercraftGlass {
 
 	public BlockImpactGlass(int id) {

@@ -8,20 +8,17 @@ package com.voidzm.supercraft.handler;
 import net.minecraft.block.Block;
 import net.minecraft.item.Item;
 
-import com.voidzm.supercraft.item.ItemAluminumAxe;
-import com.voidzm.supercraft.item.ItemAluminumHoe;
-import com.voidzm.supercraft.item.ItemAluminumPickaxe;
-import com.voidzm.supercraft.item.ItemAluminumSaber;
-import com.voidzm.supercraft.item.ItemAluminumShovel;
+import com.voidzm.supercraft.Supercraft;
+import com.voidzm.supercraft.block.BlockSupercraftStone.SupercraftStoneType;
 import com.voidzm.supercraft.item.ItemArcaneBucket;
 import com.voidzm.supercraft.item.ItemArcaneRod;
-import com.voidzm.supercraft.item.ItemCopperAxe;
-import com.voidzm.supercraft.item.ItemCopperHoe;
-import com.voidzm.supercraft.item.ItemCopperPickaxe;
-import com.voidzm.supercraft.item.ItemCopperShovel;
-import com.voidzm.supercraft.item.ItemCopperSword;
 import com.voidzm.supercraft.item.ItemEssence;
 import com.voidzm.supercraft.item.ItemSupercraft;
+import com.voidzm.supercraft.item.ItemSupercraftAxe;
+import com.voidzm.supercraft.item.ItemSupercraftHoe;
+import com.voidzm.supercraft.item.ItemSupercraftPickaxe;
+import com.voidzm.supercraft.item.ItemSupercraftShovel;
+import com.voidzm.supercraft.item.ItemSupercraftSword;
 import com.voidzm.supercraft.item.ItemVenianRod;
 import com.voidzm.supercraft.util.StartupStats;
 import com.voidzm.supercraft.util.SupercraftConfiguration;
@@ -64,6 +61,12 @@ public class ItemHandler {
 	public static Item copperShovel;
 	public static Item copperAxe;
 	public static Item copperHoe;
+	
+	public static Item lithiumPickaxe;
+	public static Item lithiumSword;
+	public static Item lithiumShovel;
+	public static Item lithiumAxe;
+	public static Item lithiumHoe;
 	
 	public static Item arcaneBucket;
 	public static Item bucketGhostlyVapor;
@@ -129,27 +132,38 @@ public class ItemHandler {
 	}
 	
 	private static void createTools() {
-		aluminumPickaxe = new ItemAluminumPickaxe(config.pickaxealuminumID);
-		ItemSupercraft.register(aluminumPickaxe, ((ItemAluminumPickaxe)aluminumPickaxe).getRegisterData());
-		aluminumSaber = new ItemAluminumSaber(config.swordaluminumID);
-		ItemSupercraft.register(aluminumSaber, ((ItemAluminumSaber)aluminumSaber).getRegisterData());
-		aluminumShovel = new ItemAluminumShovel(config.shovelaluminumID);
-		ItemSupercraft.register(aluminumShovel, ((ItemAluminumShovel)aluminumShovel).getRegisterData());
-		aluminumAxe = new ItemAluminumAxe(config.axealuminumID);
-		ItemSupercraft.register(aluminumAxe, ((ItemAluminumAxe)aluminumAxe).getRegisterData());
-		aluminumHoe = new ItemAluminumHoe(config.hoealuminumID);
-		ItemSupercraft.register(aluminumHoe, ((ItemAluminumHoe)aluminumHoe).getRegisterData());
+		aluminumPickaxe = new ItemSupercraftPickaxe(config.pickaxealuminumID, Supercraft.aluminumTool, "pickaxealuminum", "Aluminum Pickaxe", "supercraft:pickaxealuminum");
+		ItemSupercraft.register(aluminumPickaxe, ((ItemSupercraftPickaxe)aluminumPickaxe).getRegisterData());
+		aluminumSaber = new ItemSupercraftSword(config.swordaluminumID, Supercraft.aluminumTool, "swordaluminum", "Aluminum Saber", "supercraft:swordaluminum");
+		ItemSupercraft.register(aluminumSaber, ((ItemSupercraftSword)aluminumSaber).getRegisterData());
+		aluminumShovel = new ItemSupercraftShovel(config.shovelaluminumID, Supercraft.aluminumTool, "shovelaluminum", "Aluminum Shovel", "supercraft:shovelaluminum");
+		ItemSupercraft.register(aluminumShovel, ((ItemSupercraftShovel)aluminumShovel).getRegisterData());
+		aluminumAxe = new ItemSupercraftAxe(config.axealuminumID, Supercraft.aluminumTool, "axealuminum", "Aluminum Axe", "supercraft:axealuminum");
+		ItemSupercraft.register(aluminumAxe, ((ItemSupercraftAxe)aluminumAxe).getRegisterData());
+		aluminumHoe = new ItemSupercraftHoe(config.hoealuminumID, Supercraft.aluminumTool, "hoealuminum", "Aluminum Hoe", "supercraft:hoealuminum");
+		ItemSupercraft.register(aluminumHoe, ((ItemSupercraftHoe)aluminumHoe).getRegisterData());
 
-		copperPickaxe = new ItemCopperPickaxe(config.pickaxecopperID);
-		ItemSupercraft.register(copperPickaxe, ((ItemCopperPickaxe)copperPickaxe).getRegisterData());
-		copperSword = new ItemCopperSword(config.swordcopperID);
-		ItemSupercraft.register(copperSword, ((ItemCopperSword)copperSword).getRegisterData());
-		copperShovel = new ItemCopperShovel(config.shovelcopperID);
-		ItemSupercraft.register(copperShovel, ((ItemCopperShovel)copperShovel).getRegisterData());
-		copperAxe = new ItemCopperAxe(config.axecopperID);
-		ItemSupercraft.register(copperAxe, ((ItemCopperAxe)copperAxe).getRegisterData());
-		copperHoe = new ItemCopperHoe(config.hoecopperID);
-		ItemSupercraft.register(copperHoe, ((ItemCopperHoe)copperHoe).getRegisterData());
+		copperPickaxe = new ItemSupercraftPickaxe(config.pickaxecopperID, Supercraft.copperTool, "pickaxecopper", "Copper Pickaxe", "supercraft:pickaxecopper");
+		ItemSupercraft.register(copperPickaxe, ((ItemSupercraftPickaxe)copperPickaxe).getRegisterData());
+		copperSword = new ItemSupercraftSword(config.swordcopperID, Supercraft.copperTool, "swordcopper", "Copper Sword", "supercraft:swordcopper");
+		ItemSupercraft.register(copperSword, ((ItemSupercraftSword)copperSword).getRegisterData());
+		copperShovel = new ItemSupercraftShovel(config.shovelcopperID, Supercraft.copperTool, "shovelcopper", "Copper Shovel", "supercraft:shovelcopper");
+		ItemSupercraft.register(copperShovel, ((ItemSupercraftShovel)copperShovel).getRegisterData());
+		copperAxe = new ItemSupercraftAxe(config.axecopperID, Supercraft.copperTool, "axecopper", "Copper Axe", "supercraft:axecopper");
+		ItemSupercraft.register(copperAxe, ((ItemSupercraftAxe)copperAxe).getRegisterData());
+		copperHoe = new ItemSupercraftHoe(config.hoecopperID, Supercraft.copperTool, "hoecopper", "Copper Hoe", "supercraft:hoecopper");
+		ItemSupercraft.register(copperHoe, ((ItemSupercraftHoe)copperHoe).getRegisterData());
+		
+		lithiumPickaxe = new ItemSupercraftPickaxe(config.pickaxelithiumID, Supercraft.lithiumTool, "pickaxelithium", "Lithium Pickaxe", "supercraft:pickaxelithium");
+		ItemSupercraft.register(lithiumPickaxe, ((ItemSupercraftPickaxe)lithiumPickaxe).getRegisterData());
+		lithiumSword = new ItemSupercraftSword(config.swordlithiumID, Supercraft.lithiumTool, "swordlithium", "Lithium Sword", "supercraft:swordlithium");
+		ItemSupercraft.register(lithiumSword, ((ItemSupercraftSword)lithiumSword).getRegisterData());
+		lithiumShovel = new ItemSupercraftShovel(config.shovellithiumID, Supercraft.lithiumTool, "shovellithium", "Lithium Shovel", "supercraft:shovellithium");
+		ItemSupercraft.register(lithiumShovel, ((ItemSupercraftShovel)lithiumShovel).getRegisterData());
+		lithiumAxe = new ItemSupercraftAxe(config.axelithiumID, Supercraft.lithiumTool, "axelithium", "Lithium Axe", "supercraft:axelithium");
+		ItemSupercraft.register(lithiumAxe, ((ItemSupercraftAxe)lithiumAxe).getRegisterData());
+		lithiumHoe = new ItemSupercraftHoe(config.hoelithiumID, Supercraft.lithiumTool, "hoelithium", "Lithium Hoe", "supercraft:hoelithium");
+		ItemSupercraft.register(lithiumHoe, ((ItemSupercraftHoe)lithiumHoe).getRegisterData());
 		
 		arcaneBucket = new ItemArcaneBucket(config.arcanebucketID, 0, "supercraft:arcanebucket").register();
 		bucketGhostlyVapor = new ItemArcaneBucket(config.bucketghostlyvaporID, BlockHandler.ghostlyVaporFlowing.blockID, "supercraft:bucketghostlyvapor").register();

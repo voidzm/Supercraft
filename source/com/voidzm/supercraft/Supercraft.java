@@ -53,6 +53,7 @@ public class Supercraft {
 	
 	public static EnumToolMaterial aluminumTool = EnumHelper.addToolMaterial("aluminum", 1, 2343, 4.0F, 1, 1);
 	public static EnumToolMaterial copperTool = EnumHelper.addToolMaterial("copper", 2, 593, 9.0F, 2, 10);
+	public static EnumToolMaterial lithiumTool = EnumHelper.addToolMaterial("lithium", 3, 2, 255.0F, 10, -1);
 	
 	public static CreativeTabs elinvarTab = new CreativeTabElinvar("elinvarTab");
 	public static CreativeTabs veneficiaTab = new CreativeTabVeneficia("veneficiaTab");
