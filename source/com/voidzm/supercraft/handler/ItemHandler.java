@@ -7,9 +7,22 @@ package com.voidzm.supercraft.handler;
 
 import net.minecraft.block.Block;
 import net.minecraft.item.Item;
-import net.minecraft.item.ItemStack;
 
-import com.voidzm.supercraft.item.*;
+import com.voidzm.supercraft.item.ItemAluminumAxe;
+import com.voidzm.supercraft.item.ItemAluminumHoe;
+import com.voidzm.supercraft.item.ItemAluminumPickaxe;
+import com.voidzm.supercraft.item.ItemAluminumSaber;
+import com.voidzm.supercraft.item.ItemAluminumShovel;
+import com.voidzm.supercraft.item.ItemArcaneBucket;
+import com.voidzm.supercraft.item.ItemArcaneRod;
+import com.voidzm.supercraft.item.ItemCopperAxe;
+import com.voidzm.supercraft.item.ItemCopperHoe;
+import com.voidzm.supercraft.item.ItemCopperPickaxe;
+import com.voidzm.supercraft.item.ItemCopperShovel;
+import com.voidzm.supercraft.item.ItemCopperSword;
+import com.voidzm.supercraft.item.ItemEssence;
+import com.voidzm.supercraft.item.ItemSupercraft;
+import com.voidzm.supercraft.item.ItemVenianRod;
 import com.voidzm.supercraft.util.StartupStats;
 import com.voidzm.supercraft.util.SupercraftConfiguration;
 import com.voidzm.supercraft.util.TransformationMatrix;

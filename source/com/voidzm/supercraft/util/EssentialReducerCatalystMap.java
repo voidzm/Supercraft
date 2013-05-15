@@ -1,8 +1,8 @@
 package com.voidzm.supercraft.util;
 
-import com.voidzm.supercraft.util.EssentialReducerRecipes.EssentialAspect;
-
 import net.minecraft.item.ItemStack;
+
+import com.voidzm.supercraft.util.EssentialReducerRecipes.EssentialAspect;
 
 public class EssentialReducerCatalystMap {
 

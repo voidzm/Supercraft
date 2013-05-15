@@ -7,27 +7,24 @@
 package com.voidzm.supercraft.gui;
 
 import java.awt.Color;
-import java.awt.geom.QuadCurve2D;
 import java.awt.image.BufferedImage;
-import java.io.File;
 import java.util.ArrayList;
 import java.util.Random;
 
 import javax.imageio.ImageIO;
-
-import org.lwjgl.opengl.GL11;
-
-import com.voidzm.supercraft.Supercraft;
-
-import cpw.mods.fml.client.GuiModList;
 
 import net.minecraft.client.gui.GuiMultiplayer;
 import net.minecraft.client.gui.GuiOptions;
 import net.minecraft.client.gui.GuiScreen;
 import net.minecraft.client.gui.GuiSelectWorld;
 import net.minecraft.client.renderer.Tessellator;
-import net.minecraft.client.texturepacks.GuiTexturePacks;
 import net.minecraft.util.StringTranslate;
+
+import org.lwjgl.opengl.GL11;
+
+import com.voidzm.supercraft.Supercraft;
+
+import cpw.mods.fml.client.GuiModList;
 
 public class SCMainMenu extends GuiScreen {
 

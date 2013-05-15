@@ -2,15 +2,15 @@ package com.voidzm.supercraft.block;
 
 import java.util.Random;
 
-import com.voidzm.supercraft.CommonProxy;
+import net.minecraft.block.BlockTorch;
+import net.minecraft.client.renderer.texture.IconRegister;
+import net.minecraft.world.World;
+
 import com.voidzm.supercraft.protocol.IRegisterable;
 import com.voidzm.supercraft.util.RegisterData;
 
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
-import net.minecraft.block.BlockTorch;
-import net.minecraft.client.renderer.texture.IconRegister;
-import net.minecraft.world.World;
 
 public class BlockCobaltTorch extends BlockTorch implements IRegisterable {
 

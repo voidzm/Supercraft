@@ -1,13 +1,13 @@
 package com.voidzm.supercraft.tileentity;
 
-import com.voidzm.supercraft.handler.BlockHandler;
-
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.network.INetworkManager;
 import net.minecraft.network.packet.Packet;
 import net.minecraft.network.packet.Packet132TileEntityData;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.world.World;
+
+import com.voidzm.supercraft.handler.BlockHandler;
 
 public class TileEntityMonolithAscension extends TileEntity {
 

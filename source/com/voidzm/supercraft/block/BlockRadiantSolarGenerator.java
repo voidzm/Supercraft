@@ -9,10 +9,7 @@ import net.minecraft.util.Icon;
 import net.minecraft.world.World;
 
 import com.voidzm.supercraft.protocol.IGenerator;
-import com.voidzm.supercraft.protocol.IGenerator.GeneratorSide;
-import com.voidzm.supercraft.tileentity.TileEntityConduit;
 import com.voidzm.supercraft.tileentity.TileEntitySolarGenerator;
-import com.voidzm.supercraft.tileentity.TileEntityConduit.CONDUIT_TYPE;
 import com.voidzm.supercraft.util.Timespan;
 
 public class BlockRadiantSolarGenerator extends BlockGenerator implements IGenerator {

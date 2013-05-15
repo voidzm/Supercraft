@@ -1,15 +1,13 @@
 package com.voidzm.supercraft.gui;
 
-import org.lwjgl.opengl.GL11;
-
-import com.voidzm.supercraft.container.ContainerAlloyInductor;
-import com.voidzm.supercraft.container.ContainerEssentialReducer;
-import com.voidzm.supercraft.tileentity.TileEntityAlloyInductor;
-import com.voidzm.supercraft.tileentity.TileEntityEssentialReducer;
-
 import net.minecraft.client.gui.inventory.GuiContainer;
 import net.minecraft.entity.player.InventoryPlayer;
 import net.minecraft.util.StatCollector;
+
+import org.lwjgl.opengl.GL11;
+
+import com.voidzm.supercraft.container.ContainerAlloyInductor;
+import com.voidzm.supercraft.tileentity.TileEntityAlloyInductor;
 
 public class GuiAlloyInductor extends GuiContainer {
 

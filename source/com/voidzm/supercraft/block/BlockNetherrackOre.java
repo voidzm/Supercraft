@@ -7,13 +7,9 @@ package com.voidzm.supercraft.block;
 
 import java.util.Random;
 
-import com.voidzm.supercraft.handler.ItemHandler;
-
-import net.minecraft.block.BlockOre;
 import net.minecraft.block.material.Material;
 import net.minecraft.client.renderer.texture.IconRegister;
 import net.minecraft.creativetab.CreativeTabs;
-import net.minecraft.item.Item;
 
 public class BlockNetherrackOre extends BlockSupercraft {
 

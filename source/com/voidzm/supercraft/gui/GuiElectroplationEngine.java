@@ -1,15 +1,13 @@
 package com.voidzm.supercraft.gui;
 
-import org.lwjgl.opengl.GL11;
-
-import com.voidzm.supercraft.container.ContainerElectroplationEngine;
-import com.voidzm.supercraft.tileentity.TileEntityAlloyInductor;
-import com.voidzm.supercraft.tileentity.TileEntityElectroplationEngine;
-import com.voidzm.supercraft.tileentity.TileEntityEssentialReducer;
-
 import net.minecraft.client.gui.inventory.GuiContainer;
 import net.minecraft.entity.player.InventoryPlayer;
 import net.minecraft.util.StatCollector;
+
+import org.lwjgl.opengl.GL11;
+
+import com.voidzm.supercraft.container.ContainerElectroplationEngine;
+import com.voidzm.supercraft.tileentity.TileEntityElectroplationEngine;
 
 public class GuiElectroplationEngine extends GuiContainer {
 

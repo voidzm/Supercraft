@@ -6,13 +6,11 @@
 
 package com.voidzm.supercraft.block;
 
-import com.voidzm.supercraft.CommonProxy;
-import com.voidzm.supercraft.Supercraft;
-
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
-import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.world.World;
+
+import com.voidzm.supercraft.Supercraft;
 
 public class BlockGenerator extends BlockSupercraft {
 

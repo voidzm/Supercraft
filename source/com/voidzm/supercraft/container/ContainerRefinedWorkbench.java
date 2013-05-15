@@ -6,13 +6,12 @@
 
 package com.voidzm.supercraft.container;
 
-import com.voidzm.supercraft.handler.BlockHandler;
-
-import net.minecraft.block.Block;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.InventoryPlayer;
 import net.minecraft.inventory.ContainerWorkbench;
 import net.minecraft.world.World;
+
+import com.voidzm.supercraft.handler.BlockHandler;
 
 public class ContainerRefinedWorkbench extends ContainerWorkbench {
 

@@ -2,7 +2,6 @@ package com.voidzm.supercraft.block;
 
 import java.util.Random;
 
-import net.minecraft.block.BlockContainer;
 import net.minecraft.block.material.Material;
 import net.minecraft.client.renderer.texture.IconRegister;
 import net.minecraft.entity.item.EntityItem;
@@ -14,13 +13,8 @@ import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.Icon;
 import net.minecraft.world.World;
 
-import com.voidzm.supercraft.CommonProxy;
 import com.voidzm.supercraft.Supercraft;
 import com.voidzm.supercraft.tileentity.TileEntityAlloyInductor;
-import com.voidzm.supercraft.tileentity.TileEntityEssentialReducer;
-
-import cpw.mods.fml.relauncher.Side;
-import cpw.mods.fml.relauncher.SideOnly;
 
 public class BlockAlloyInductor extends BlockSupercraft {
 

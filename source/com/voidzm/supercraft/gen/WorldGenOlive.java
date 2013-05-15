@@ -8,12 +8,11 @@ package com.voidzm.supercraft.gen;
 
 import java.util.Random;
 
-import com.voidzm.supercraft.handler.BlockHandler;
-
 import net.minecraft.block.Block;
 import net.minecraft.world.World;
-import net.minecraft.world.biome.BiomeGenBase;
 import net.minecraft.world.gen.feature.WorldGenerator;
+
+import com.voidzm.supercraft.handler.BlockHandler;
 
 public class WorldGenOlive extends WorldGenerator {
 

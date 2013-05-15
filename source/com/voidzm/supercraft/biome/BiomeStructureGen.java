@@ -7,22 +7,24 @@ package com.voidzm.supercraft.biome;
 
 import java.util.Random;
 
-import com.voidzm.supercraft.gen.WorldGenGoldenwood;
-import com.voidzm.supercraft.gen.WorldGenGoldenwoodShrine;
-import com.voidzm.supercraft.gen.WorldGenOlive;
-import com.voidzm.supercraft.gen.WorldGenScatteredFlowers;
-import com.voidzm.supercraft.gen.WorldGenTenebralPitfall;
-import com.voidzm.supercraft.gen.WorldGenTenebria;
-import com.voidzm.supercraft.gen.WorldGenIcySpikes;
-import com.voidzm.supercraft.handler.BlockHandler;
-
 import net.minecraft.world.World;
 import net.minecraft.world.gen.feature.WorldGenBigTree;
 import net.minecraft.world.gen.feature.WorldGenForest;
+import net.minecraft.world.gen.feature.WorldGenHugeTrees;
+import net.minecraft.world.gen.feature.WorldGenShrub;
 import net.minecraft.world.gen.feature.WorldGenTaiga1;
 import net.minecraft.world.gen.feature.WorldGenTaiga2;
 import net.minecraft.world.gen.feature.WorldGenTrees;
 import net.minecraft.world.gen.feature.WorldGenerator;
+
+import com.voidzm.supercraft.gen.WorldGenGoldenwood;
+import com.voidzm.supercraft.gen.WorldGenGoldenwoodShrine;
+import com.voidzm.supercraft.gen.WorldGenIcySpikes;
+import com.voidzm.supercraft.gen.WorldGenOlive;
+import com.voidzm.supercraft.gen.WorldGenScatteredFlowers;
+import com.voidzm.supercraft.gen.WorldGenTenebralPitfall;
+import com.voidzm.supercraft.gen.WorldGenTenebria;
+import com.voidzm.supercraft.handler.BlockHandler;
 
 public class BiomeStructureGen {
 
@@ -30,7 +32,8 @@ public class BiomeStructureGen {
 		SMALLTREE(new WorldGenTrees(false), true), BIGTREE(new WorldGenBigTree(false), true), BIRCHTREE(new WorldGenForest(false), true), SPRUCETREE1(new WorldGenTaiga1(), true),
 		SPRUCETREE2(new WorldGenTaiga2(false), true), OLIVETREE(new WorldGenOlive(), true), GOLDENWOODTREE(new WorldGenGoldenwood(), true), BLUEBELLS(new WorldGenScatteredFlowers(BlockHandler.bluebells.blockID), false),
 		DAISIES(new WorldGenScatteredFlowers(BlockHandler.daisies.blockID), false), GOLDENWOODSHRINE(new WorldGenGoldenwoodShrine(), true), TENEBRALPITFALL(new WorldGenTenebralPitfall(), true),
-		TENEBRIATREE(new WorldGenTenebria(), true), SNAPDRAGON(new WorldGenScatteredFlowers(BlockHandler.snapdragon.blockID), false), ICYSPIKES(new WorldGenIcySpikes(), true);
+		TENEBRIATREE(new WorldGenTenebria(), true), SNAPDRAGON(new WorldGenScatteredFlowers(BlockHandler.snapdragon.blockID), false), ICYSPIKES(new WorldGenIcySpikes(), true),
+		JUNGLESHRUB(new WorldGenShrub(0, 3), true), BIGJUNGLETREE(new WorldGenHugeTrees(false, 20, 3, 3), true), JUNGLETREE(new WorldGenTrees(false, 7, 3, 3, true), true);
 		public WorldGenerator gen;
 		public boolean isOnSurface;
 		private StructureGenType(WorldGenerator generator, boolean surface) {

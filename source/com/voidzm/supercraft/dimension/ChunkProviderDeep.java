@@ -1,6 +1,5 @@
 package com.voidzm.supercraft.dimension;
 
-import java.util.Arrays;
 import java.util.List;
 import java.util.Random;
 
@@ -13,7 +12,6 @@ import net.minecraft.world.biome.BiomeGenBase;
 import net.minecraft.world.chunk.Chunk;
 import net.minecraft.world.chunk.IChunkProvider;
 import net.minecraft.world.gen.MapGenBase;
-import net.minecraft.world.gen.MapGenCaves;
 
 public class ChunkProviderDeep implements IChunkProvider {
 

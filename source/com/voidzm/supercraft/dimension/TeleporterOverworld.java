@@ -2,15 +2,15 @@ package com.voidzm.supercraft.dimension;
 
 import java.util.Random;
 
-import com.voidzm.supercraft.handler.BlockHandler;
-import com.voidzm.supercraft.util.DeepPortalLocation;
-
 import net.minecraft.block.Block;
 import net.minecraft.entity.Entity;
 import net.minecraft.util.MathHelper;
 import net.minecraft.world.Teleporter;
 import net.minecraft.world.World;
 import net.minecraft.world.WorldServer;
+
+import com.voidzm.supercraft.handler.BlockHandler;
+import com.voidzm.supercraft.util.DeepPortalLocation;
 
 public class TeleporterOverworld extends Teleporter {
 

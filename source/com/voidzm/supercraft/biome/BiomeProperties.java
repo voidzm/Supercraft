@@ -8,7 +8,6 @@ package com.voidzm.supercraft.biome;
 import net.minecraft.util.MathHelper;
 import net.minecraft.world.ColorizerFoliage;
 import net.minecraft.world.ColorizerGrass;
-import net.minecraft.world.biome.BiomeGenBase;
 
 import com.voidzm.supercraft.biome.BiomeStructureGen.StructureGenType;
 
@@ -26,7 +25,9 @@ public enum BiomeProperties {
 	TENEBRALWOODS(2, 1, -999, 0.4F, 0.5F, 0.5F, 0.5F, 0x525A5B, 0x525A5B, new BiomeStructureGen(StructureGenType.TENEBRALPITFALL, false, 128), new BiomeStructureGen(StructureGenType.TENEBRIATREE, true, 7), new BiomeStructureGen(StructureGenType.SNAPDRAGON, true, 12)),
 	CORDIFERHILLS(2, 10, 3, 0.3F, 0.7F, 0.5F, 0.5F, new BiomeStructureGen(StructureGenType.BIRCHTREE, true, 6)),
 	TEMPERATEFOREST(1, 10, 4, 0.2F, 0.5F, 0.4F, 0.6F, new BiomeStructureGen(StructureGenType.BIRCHTREE, true, 3), new BiomeStructureGen(StructureGenType.SMALLTREE, true, 6), new BiomeStructureGen(StructureGenType.BIGTREE, true, 1), new BiomeStructureGen(StructureGenType.SPRUCETREE2, true, 4)),
-	GLACIALWASTELAND(-999, -999, -999, 0.1F, 0.3F, 0.0F, 0.3F, new BiomeStructureGen(StructureGenType.ICYSPIKES, false, 96));
+	GLACIALWASTELAND(-999, -999, -999, 0.1F, 0.3F, 0.0F, 0.3F, new BiomeStructureGen(StructureGenType.ICYSPIKES, false, 96)),
+	JUNGLEMOUNTAINS(25, 2, 4, 0.8F, 2.0F, 1.2F, 0.9F, new BiomeStructureGen(StructureGenType.BIGJUNGLETREE, true, 4), new BiomeStructureGen(StructureGenType.JUNGLETREE, true, 7), new BiomeStructureGen(StructureGenType.BIGTREE, true, 3), new BiomeStructureGen(StructureGenType.JUNGLESHRUB, true, 30)),
+	CONIFEROUSWOODS(2, 0, 1, 0.1F, 0.4F, 0.2F, 0.7F, new BiomeStructureGen(StructureGenType.SPRUCETREE1, true, 5), new BiomeStructureGen(StructureGenType.SPRUCETREE2, true, 5));
 	
 	public int grass;
 	public int sugarCane;

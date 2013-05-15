@@ -1,15 +1,12 @@
 package com.voidzm.supercraft.dimension;
 
-import com.voidzm.supercraft.Supercraft;
-import com.voidzm.supercraft.handler.BiomeHandler;
-
 import net.minecraft.util.Vec3;
 import net.minecraft.world.WorldProvider;
-import net.minecraft.world.biome.WorldChunkManager;
 import net.minecraft.world.biome.WorldChunkManagerHell;
 import net.minecraft.world.chunk.IChunkProvider;
-import net.minecraft.world.gen.ChunkProviderFlat;
-import net.minecraft.world.gen.ChunkProviderHell;
+
+import com.voidzm.supercraft.Supercraft;
+import com.voidzm.supercraft.handler.BiomeHandler;
 
 public class WorldProviderDeep extends WorldProvider {
 

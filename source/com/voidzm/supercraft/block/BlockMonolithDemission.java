@@ -1,22 +1,19 @@
 package com.voidzm.supercraft.block;
 
-import com.voidzm.supercraft.Supercraft;
-import com.voidzm.supercraft.dimension.TeleporterDeep;
-import com.voidzm.supercraft.tileentity.TileEntityMonolithDemission;
-
-import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 import net.minecraft.client.renderer.texture.IconRegister;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.Entity;
-import net.minecraft.entity.EntityLiving;
 import net.minecraft.entity.item.EntityItem;
 import net.minecraft.entity.player.EntityPlayerMP;
 import net.minecraft.server.MinecraftServer;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.world.World;
 import net.minecraft.world.WorldServer;
-import net.minecraftforge.common.DimensionManager;
+
+import com.voidzm.supercraft.Supercraft;
+import com.voidzm.supercraft.dimension.TeleporterDeep;
+import com.voidzm.supercraft.tileentity.TileEntityMonolithDemission;
 
 public class BlockMonolithDemission extends BlockSupercraft {
 

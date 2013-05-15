@@ -9,25 +9,19 @@ package com.voidzm.supercraft.block;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.voidzm.supercraft.CommonProxy;
-import com.voidzm.supercraft.Supercraft;
-import com.voidzm.supercraft.gui.SCGuiCrafting;
-import com.voidzm.supercraft.item.ItemBlockSupercraft;
-
-import cpw.mods.fml.common.FMLCommonHandler;
-import cpw.mods.fml.relauncher.Side;
-import cpw.mods.fml.relauncher.SideOnly;
-
-import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
-import net.minecraft.client.Minecraft;
-import net.minecraft.client.gui.inventory.GuiCrafting;
 import net.minecraft.client.renderer.texture.IconRegister;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.Icon;
 import net.minecraft.world.World;
+
+import com.voidzm.supercraft.Supercraft;
+import com.voidzm.supercraft.item.ItemBlockSupercraft;
+
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
 
 public class BlockRefinedCraftingTable extends BlockSupercraft {
 

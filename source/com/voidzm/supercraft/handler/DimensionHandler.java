@@ -5,7 +5,6 @@
 
 package com.voidzm.supercraft.handler;
 
-import net.minecraft.item.crafting.CraftingManager;
 import net.minecraftforge.common.DimensionManager;
 
 import com.voidzm.supercraft.dimension.WorldProviderDeep;

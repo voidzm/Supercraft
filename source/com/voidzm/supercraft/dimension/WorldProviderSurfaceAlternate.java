@@ -1,8 +1,8 @@
 package com.voidzm.supercraft.dimension;
 
-import com.voidzm.supercraft.handler.BiomeHandler;
-
 import net.minecraft.world.WorldProviderSurface;
+
+import com.voidzm.supercraft.handler.BiomeHandler;
 
 public class WorldProviderSurfaceAlternate extends WorldProviderSurface {
 

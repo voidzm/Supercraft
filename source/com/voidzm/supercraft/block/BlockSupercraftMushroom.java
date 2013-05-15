@@ -2,18 +2,14 @@ package com.voidzm.supercraft.block;
 
 import java.util.Random;
 
-import com.voidzm.supercraft.CommonProxy;
-import com.voidzm.supercraft.gen.WorldGenDeepTree;
-import com.voidzm.supercraft.handler.BlockHandler;
-
 import net.minecraft.block.Block;
-import net.minecraft.block.BlockFlower;
-import net.minecraft.block.BlockMushroom;
-import net.minecraft.block.material.Material;
 import net.minecraft.client.renderer.texture.IconRegister;
 import net.minecraft.world.World;
 import net.minecraftforge.common.EnumPlantType;
 import net.minecraftforge.common.ForgeDirection;
+
+import com.voidzm.supercraft.gen.WorldGenDeepTree;
+import com.voidzm.supercraft.handler.BlockHandler;
 
 public class BlockSupercraftMushroom extends BlockSupercraftFlower {
 

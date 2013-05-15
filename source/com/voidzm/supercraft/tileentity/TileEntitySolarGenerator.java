@@ -2,16 +2,14 @@ package com.voidzm.supercraft.tileentity;
 
 import java.util.ArrayList;
 
-import com.voidzm.supercraft.handler.BlockHandler;
-import com.voidzm.supercraft.util.Timespan;
-
-import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.nbt.NBTTagList;
 import net.minecraft.network.INetworkManager;
 import net.minecraft.network.packet.Packet;
 import net.minecraft.network.packet.Packet132TileEntityData;
 import net.minecraft.tileentity.TileEntity;
+
+import com.voidzm.supercraft.util.Timespan;
 
 public class TileEntitySolarGenerator extends TileEntity {
 

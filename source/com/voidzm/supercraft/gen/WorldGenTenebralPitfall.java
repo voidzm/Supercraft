@@ -2,10 +2,6 @@ package com.voidzm.supercraft.gen;
 
 import java.util.Random;
 
-import com.voidzm.supercraft.handler.BiomeHandler;
-import com.voidzm.supercraft.handler.BlockHandler;
-import com.voidzm.supercraft.handler.ItemHandler;
-
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 import net.minecraft.item.Item;
@@ -16,6 +12,10 @@ import net.minecraft.nbt.NBTTagString;
 import net.minecraft.tileentity.TileEntityChest;
 import net.minecraft.world.World;
 import net.minecraft.world.gen.feature.WorldGenerator;
+
+import com.voidzm.supercraft.handler.BiomeHandler;
+import com.voidzm.supercraft.handler.BlockHandler;
+import com.voidzm.supercraft.handler.ItemHandler;
 
 public class WorldGenTenebralPitfall extends WorldGenerator {
 

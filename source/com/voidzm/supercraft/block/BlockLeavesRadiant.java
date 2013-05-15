@@ -1,16 +1,9 @@
 package com.voidzm.supercraft.block;
 
-import java.util.List;
 import java.util.Random;
 
-import com.voidzm.supercraft.handler.BlockHandler;
-
 import net.minecraft.client.renderer.texture.IconRegister;
-import net.minecraft.creativetab.CreativeTabs;
-import net.minecraft.item.ItemStack;
 import net.minecraft.util.Icon;
-import cpw.mods.fml.relauncher.Side;
-import cpw.mods.fml.relauncher.SideOnly;
 
 public class BlockLeavesRadiant extends BlockSupercraftColoredLeavesBase {
 	

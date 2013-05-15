@@ -6,11 +6,6 @@
 
 package com.voidzm.supercraft.item;
 
-import com.voidzm.supercraft.CommonProxy;
-import com.voidzm.supercraft.Supercraft;
-import com.voidzm.supercraft.protocol.IRegisterable;
-import com.voidzm.supercraft.util.RegisterData;
-
 import net.minecraft.block.Block;
 import net.minecraft.client.renderer.texture.IconRegister;
 import net.minecraft.creativetab.CreativeTabs;
@@ -21,6 +16,10 @@ import net.minecraft.item.ItemAxe;
 import net.minecraft.item.ItemStack;
 import net.minecraft.world.World;
 import net.minecraftforge.common.MinecraftForge;
+
+import com.voidzm.supercraft.Supercraft;
+import com.voidzm.supercraft.protocol.IRegisterable;
+import com.voidzm.supercraft.util.RegisterData;
 
 public class ItemAluminumAxe extends ItemAxe implements IRegisterable {
 

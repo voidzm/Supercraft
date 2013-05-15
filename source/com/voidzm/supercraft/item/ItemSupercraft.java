@@ -2,8 +2,14 @@ package com.voidzm.supercraft.item;
 
 import java.util.ArrayList;
 
-import com.voidzm.supercraft.block.BlockSupercraft;
-import com.voidzm.supercraft.handler.BlockHandler;
+import net.minecraft.client.renderer.texture.IconRegister;
+import net.minecraft.creativetab.CreativeTabs;
+import net.minecraft.entity.effect.EntityLightningBolt;
+import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.item.Item;
+import net.minecraft.item.ItemStack;
+import net.minecraft.world.World;
+
 import com.voidzm.supercraft.protocol.IRegisterable;
 import com.voidzm.supercraft.util.RegisterData;
 import com.voidzm.supercraft.util.StartupStats;
@@ -11,16 +17,6 @@ import com.voidzm.supercraft.util.TransformationMatrix;
 
 import cpw.mods.fml.common.registry.GameRegistry;
 import cpw.mods.fml.common.registry.LanguageRegistry;
-
-import net.minecraft.block.Block;
-import net.minecraft.client.renderer.texture.IconRegister;
-import net.minecraft.creativetab.CreativeTabs;
-import net.minecraft.entity.effect.EntityLightningBolt;
-import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.item.Item;
-import net.minecraft.item.ItemBlock;
-import net.minecraft.item.ItemStack;
-import net.minecraft.world.World;
 
 public class ItemSupercraft extends Item {
 

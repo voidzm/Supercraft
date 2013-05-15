@@ -6,17 +6,6 @@
 
 package com.voidzm.supercraft.block;
 
-import java.util.List;
-import java.util.Random;
-
-import com.voidzm.supercraft.CommonProxy;
-import com.voidzm.supercraft.handler.BlockHandler;
-import com.voidzm.supercraft.protocol.IRegisterable;
-import com.voidzm.supercraft.util.RegisterData;
-
-import cpw.mods.fml.relauncher.Side;
-import cpw.mods.fml.relauncher.SideOnly;
-
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockHalfSlab;
 import net.minecraft.block.material.Material;

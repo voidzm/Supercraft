@@ -6,12 +6,11 @@
 
 package com.voidzm.supercraft.block;
 
-import com.voidzm.supercraft.CommonProxy;
-import com.voidzm.supercraft.protocol.IRegisterable;
-import com.voidzm.supercraft.util.RegisterData;
-
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockStairs;
+
+import com.voidzm.supercraft.protocol.IRegisterable;
+import com.voidzm.supercraft.util.RegisterData;
 
 public class BlockSupercraftStairs extends BlockStairs implements IRegisterable {
 

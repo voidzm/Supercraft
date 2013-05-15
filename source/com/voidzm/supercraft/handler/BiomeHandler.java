@@ -9,7 +9,9 @@ import net.minecraft.block.Block;
 import net.minecraft.world.biome.BiomeGenBase;
 import net.minecraftforge.common.BiomeManager;
 
-import com.voidzm.supercraft.biome.*;
+import com.voidzm.supercraft.biome.BiomeGenDepths;
+import com.voidzm.supercraft.biome.BiomeProperties;
+import com.voidzm.supercraft.biome.BiomeSupercraft;
 import com.voidzm.supercraft.util.StartupStats;
 import com.voidzm.supercraft.util.SupercraftConfiguration;
 
@@ -33,6 +35,8 @@ public class BiomeHandler {
 	public static BiomeGenBase cordiferHills;
 	public static BiomeGenBase temperateForest;
 	public static BiomeGenBase glacialWasteland;
+	public static BiomeGenBase jungleMountains;
+	public static BiomeGenBase coniferousWoods;
 	
 	public static void init(SupercraftConfiguration configObject, boolean doVanillaBiomes) {
 		if(config != null) {
@@ -45,6 +49,7 @@ public class BiomeHandler {
 		createBiomes();
 		registerBiomes();
 		if(!doVanillaBiomes) removeVanillaBiomes();
+		StartupStats.outputBiomeStats();
 	}
 	
 	public static void init(SupercraftConfiguration configObject) {
@@ -66,6 +71,8 @@ public class BiomeHandler {
 		cordiferHills = new BiomeSupercraft(config.cordiferhillsID, BiomeProperties.CORDIFERHILLS, "Cordifer Hills");
 		temperateForest = new BiomeSupercraft(config.temperateforestID, BiomeProperties.TEMPERATEFOREST, "Temperate Forest");
 		glacialWasteland = new BiomeSupercraft(config.glacialwastelandID, BiomeProperties.GLACIALWASTELAND, "Glacial Wasteland").setTopBlock((byte)Block.blockSnow.blockID).setFillerBlock((byte)Block.blockSnow.blockID).setSnowy().setNoAnimals();
+		jungleMountains = new BiomeSupercraft(config.junglemountainsID, BiomeProperties.JUNGLEMOUNTAINS, "Jungle Mountains");
+		coniferousWoods = new BiomeSupercraft(config.coniferouswoodsID, BiomeProperties.CONIFEROUSWOODS, "Coniferous Woods");
 	}
 	
 	private static void registerBiomes() {
@@ -82,6 +89,8 @@ public class BiomeHandler {
 		addStandardBiome(cordiferHills);
 		addStandardBiome(temperateForest);
 		addVillageBiome(glacialWasteland);
+		addStandardBiome(jungleMountains);
+		addStandardBiome(coniferousWoods);
 	}
 	
 	private static void removeVanillaBiomes() {

@@ -1,6 +1,5 @@
 package com.voidzm.supercraft.particle;
 
-import net.minecraft.client.Minecraft;
 import net.minecraft.client.particle.EntityFX;
 import net.minecraft.util.Icon;
 import net.minecraft.world.World;

@@ -1,12 +1,10 @@
 package com.voidzm.supercraft.inventory;
 
-import com.voidzm.supercraft.container.ContainerVeneficianPodium;
-import com.voidzm.supercraft.handler.ItemHandler;
-import com.voidzm.supercraft.render.InventoryConduitRender;
-
-import net.minecraft.inventory.Container;
 import net.minecraft.inventory.InventoryBasic;
 import net.minecraft.item.ItemStack;
+
+import com.voidzm.supercraft.container.ContainerVeneficianPodium;
+import com.voidzm.supercraft.handler.ItemHandler;
 
 public class InventoryVeneficianPodium extends InventoryBasic {
 

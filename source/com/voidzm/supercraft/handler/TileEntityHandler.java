@@ -7,7 +7,14 @@ package com.voidzm.supercraft.handler;
 
 import net.minecraft.tileentity.TileEntity;
 
-import com.voidzm.supercraft.tileentity.*;
+import com.voidzm.supercraft.tileentity.TileEntityAlloyInductor;
+import com.voidzm.supercraft.tileentity.TileEntityConduit;
+import com.voidzm.supercraft.tileentity.TileEntityElectroplationEngine;
+import com.voidzm.supercraft.tileentity.TileEntityEssentialReducer;
+import com.voidzm.supercraft.tileentity.TileEntityMonolithAscension;
+import com.voidzm.supercraft.tileentity.TileEntityMonolithDemission;
+import com.voidzm.supercraft.tileentity.TileEntityMonolithTermination;
+import com.voidzm.supercraft.tileentity.TileEntitySolarGenerator;
 import com.voidzm.supercraft.util.StartupStats;
 
 import cpw.mods.fml.common.registry.GameRegistry;

@@ -1,10 +1,10 @@
 package com.voidzm.supercraft.misc;
 
-import com.voidzm.supercraft.handler.ItemHandler;
-
 import net.minecraft.inventory.IInventory;
 import net.minecraft.inventory.Slot;
 import net.minecraft.item.ItemStack;
+
+import com.voidzm.supercraft.handler.ItemHandler;
 
 public class SlotVenianRod extends Slot {
 

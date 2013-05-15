@@ -9,9 +9,7 @@
 
 package com.voidzm.supercraft.handler;
 
-import java.util.Dictionary;
 import java.util.HashMap;
-import java.util.Map;
 
 public class LanguageHandler {
 

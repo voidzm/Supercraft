@@ -3,15 +3,6 @@ package com.voidzm.supercraft.tileentity;
 import java.io.ByteArrayOutputStream;
 import java.io.DataOutputStream;
 
-import com.voidzm.supercraft.block.BlockConduit;
-import com.voidzm.supercraft.handler.ItemHandler;
-import com.voidzm.supercraft.handler.PacketHandler.SCClientElinvarType;
-import com.voidzm.supercraft.util.AlloyInductorComboMap;
-import com.voidzm.supercraft.util.AlloyInductorRecipes;
-import com.voidzm.supercraft.util.EssentialReducerRecipes;
-import com.voidzm.supercraft.util.EssentialReducerRecipes.EssentialAspect;
-
-import cpw.mods.fml.common.network.PacketDispatcher;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.inventory.IInventory;
 import net.minecraft.item.ItemStack;
@@ -22,6 +13,14 @@ import net.minecraft.network.packet.Packet;
 import net.minecraft.network.packet.Packet132TileEntityData;
 import net.minecraft.network.packet.Packet250CustomPayload;
 import net.minecraft.tileentity.TileEntity;
+
+import com.voidzm.supercraft.block.BlockConduit;
+import com.voidzm.supercraft.handler.ItemHandler;
+import com.voidzm.supercraft.handler.PacketHandler.SCClientElinvarType;
+import com.voidzm.supercraft.util.AlloyInductorRecipes;
+import com.voidzm.supercraft.util.EssentialReducerRecipes.EssentialAspect;
+
+import cpw.mods.fml.common.network.PacketDispatcher;
 
 public class TileEntityAlloyInductor extends TileEntity implements IInventory {
 

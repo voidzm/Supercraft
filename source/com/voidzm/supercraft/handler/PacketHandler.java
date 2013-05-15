@@ -9,19 +9,18 @@ package com.voidzm.supercraft.handler;
 import java.io.ByteArrayInputStream;
 import java.io.DataInputStream;
 
-import com.voidzm.supercraft.container.ContainerVeneficianPodium;
-import com.voidzm.supercraft.tileentity.TileEntityAlloyInductor;
-import com.voidzm.supercraft.tileentity.TileEntityConduit;
-import com.voidzm.supercraft.tileentity.TileEntityElectroplationEngine;
-import com.voidzm.supercraft.tileentity.TileEntityEssentialReducer;
-import com.voidzm.supercraft.tileentity.TileEntityConduit.CONDUIT_TYPE;
-
-import net.minecraft.client.Minecraft;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.network.INetworkManager;
 import net.minecraft.network.packet.Packet250CustomPayload;
 import net.minecraft.world.World;
-import net.minecraftforge.common.MinecraftForge;
+
+import com.voidzm.supercraft.container.ContainerVeneficianPodium;
+import com.voidzm.supercraft.tileentity.TileEntityAlloyInductor;
+import com.voidzm.supercraft.tileentity.TileEntityConduit;
+import com.voidzm.supercraft.tileentity.TileEntityConduit.CONDUIT_TYPE;
+import com.voidzm.supercraft.tileentity.TileEntityElectroplationEngine;
+import com.voidzm.supercraft.tileentity.TileEntityEssentialReducer;
+
 import cpw.mods.fml.common.FMLCommonHandler;
 import cpw.mods.fml.common.network.IPacketHandler;
 import cpw.mods.fml.common.network.Player;

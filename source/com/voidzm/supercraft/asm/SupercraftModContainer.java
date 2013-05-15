@@ -9,46 +9,20 @@ import java.io.File;
 import java.security.cert.Certificate;
 import java.util.Arrays;
 import java.util.Collections;
-import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
 import com.google.common.eventbus.EventBus;
-import com.google.common.eventbus.Subscribe;
-import com.voidzm.supercraft.CommonProxy;
 import com.voidzm.supercraft.Supercraft;
-import com.voidzm.supercraft.client.ClientProxy;
-import com.voidzm.supercraft.gen.WorldGenOre;
-import com.voidzm.supercraft.handler.BiomeHandler;
-import com.voidzm.supercraft.handler.BlockHandler;
-import com.voidzm.supercraft.handler.CraftingHandler;
-import com.voidzm.supercraft.handler.DimensionHandler;
-import com.voidzm.supercraft.handler.EventHandler;
-import com.voidzm.supercraft.handler.FuelHandler;
-import com.voidzm.supercraft.handler.GuiHandler;
-import com.voidzm.supercraft.handler.ItemHandler;
-import com.voidzm.supercraft.handler.ServerTickHandler;
-import com.voidzm.supercraft.handler.TileEntityHandler;
-import com.voidzm.supercraft.util.StartupStats;
-import com.voidzm.supercraft.util.SupercraftConfiguration;
 
 import cpw.mods.fml.common.DummyModContainer;
 import cpw.mods.fml.common.LoadController;
 import cpw.mods.fml.common.MetadataCollection;
-import cpw.mods.fml.common.ModContainer;
 import cpw.mods.fml.common.ModMetadata;
-import cpw.mods.fml.common.event.FMLConstructionEvent;
-import cpw.mods.fml.common.event.FMLInitializationEvent;
-import cpw.mods.fml.common.event.FMLPostInitializationEvent;
-import cpw.mods.fml.common.event.FMLPreInitializationEvent;
-import cpw.mods.fml.common.network.FMLNetworkHandler;
-import cpw.mods.fml.common.network.NetworkRegistry;
-import cpw.mods.fml.common.registry.TickRegistry;
 import cpw.mods.fml.common.versioning.ArtifactVersion;
 import cpw.mods.fml.common.versioning.DefaultArtifactVersion;
 import cpw.mods.fml.common.versioning.InvalidVersionSpecificationException;
 import cpw.mods.fml.common.versioning.VersionRange;
-import cpw.mods.fml.relauncher.Side;
 
 public class SupercraftModContainer extends DummyModContainer {
 	

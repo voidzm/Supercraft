@@ -3,11 +3,11 @@ package com.voidzm.supercraft.block;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.voidzm.supercraft.item.ItemBlockSupercraft;
-
 import net.minecraft.client.renderer.texture.IconRegister;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.ItemStack;
+
+import com.voidzm.supercraft.item.ItemBlockSupercraft;
 
 public class BlockSupercraftLog1 extends BlockSupercraftLogBase {
 

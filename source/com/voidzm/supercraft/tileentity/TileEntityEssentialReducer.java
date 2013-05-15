@@ -2,38 +2,24 @@ package com.voidzm.supercraft.tileentity;
 
 import java.io.ByteArrayOutputStream;
 import java.io.DataOutputStream;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.HashMap;
-
-import com.google.common.collect.ArrayListMultimap;
-import com.voidzm.supercraft.block.BlockConduit;
-import com.voidzm.supercraft.handler.BlockHandler;
-import com.voidzm.supercraft.handler.ItemHandler;
-import com.voidzm.supercraft.handler.PacketHandler.SCClientElinvarType;
-import com.voidzm.supercraft.util.EssentialReducerCatalystMap;
-import com.voidzm.supercraft.util.EssentialReducerInputMap;
-import com.voidzm.supercraft.util.EssentialReducerRecipes;
-
-import cpw.mods.fml.common.FMLCommonHandler;
-import cpw.mods.fml.common.network.PacketDispatcher;
-import cpw.mods.fml.relauncher.Side;
 
 import net.minecraft.block.Block;
-import net.minecraft.block.BlockOre;
-import net.minecraft.block.material.Material;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.inventory.IInventory;
-import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.nbt.NBTTagList;
 import net.minecraft.network.INetworkManager;
-import net.minecraft.network.packet.NetHandler;
 import net.minecraft.network.packet.Packet;
 import net.minecraft.network.packet.Packet132TileEntityData;
 import net.minecraft.network.packet.Packet250CustomPayload;
 import net.minecraft.tileentity.TileEntity;
+
+import com.voidzm.supercraft.block.BlockConduit;
+import com.voidzm.supercraft.handler.PacketHandler.SCClientElinvarType;
+import com.voidzm.supercraft.util.EssentialReducerRecipes;
+
+import cpw.mods.fml.common.network.PacketDispatcher;
 
 public class TileEntityEssentialReducer extends TileEntity implements IInventory {
 

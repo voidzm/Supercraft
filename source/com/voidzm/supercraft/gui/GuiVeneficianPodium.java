@@ -4,20 +4,8 @@ import java.io.ByteArrayOutputStream;
 import java.io.DataOutputStream;
 import java.util.List;
 
-import org.lwjgl.opengl.GL11;
-
-import com.voidzm.supercraft.container.ContainerVeneficianPodium;
-import com.voidzm.supercraft.handler.PacketHandler.SCClientElinvarType;
-import com.voidzm.supercraft.handler.PacketHandler.SCServerVeneficiaType;
-import com.voidzm.supercraft.util.VenianProperties;
-
-import cpw.mods.fml.client.GuiModList;
-
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiButton;
-import net.minecraft.client.gui.GuiMultiplayer;
-import net.minecraft.client.gui.GuiOptions;
-import net.minecraft.client.gui.GuiSelectWorld;
 import net.minecraft.client.gui.GuiTextField;
 import net.minecraft.client.gui.inventory.GuiContainer;
 import net.minecraft.entity.player.InventoryPlayer;
@@ -27,6 +15,12 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.network.packet.Packet250CustomPayload;
 import net.minecraft.util.StatCollector;
 import net.minecraft.world.World;
+
+import org.lwjgl.opengl.GL11;
+
+import com.voidzm.supercraft.container.ContainerVeneficianPodium;
+import com.voidzm.supercraft.handler.PacketHandler.SCServerVeneficiaType;
+import com.voidzm.supercraft.util.VenianProperties;
 
 public class GuiVeneficianPodium extends GuiContainer implements ICrafting {
 

@@ -6,16 +6,14 @@
 
 package com.voidzm.supercraft.gui;
 
+import net.minecraft.client.gui.inventory.GuiContainer;
+import net.minecraft.entity.player.InventoryPlayer;
+import net.minecraft.util.StatCollector;
+import net.minecraft.world.World;
+
 import org.lwjgl.opengl.GL11;
 
 import com.voidzm.supercraft.container.ContainerRefinedWorkbench;
-
-import net.minecraft.client.gui.inventory.GuiContainer;
-import net.minecraft.client.gui.inventory.GuiCrafting;
-import net.minecraft.entity.player.InventoryPlayer;
-import net.minecraft.inventory.ContainerWorkbench;
-import net.minecraft.util.StatCollector;
-import net.minecraft.world.World;
 
 public class SCGuiCrafting extends GuiContainer {
 

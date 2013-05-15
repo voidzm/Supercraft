@@ -6,14 +6,15 @@
 
 package com.voidzm.supercraft.render;
 
-import org.lwjgl.opengl.GL11;
-
-import com.voidzm.supercraft.client.ClientProxy;
-
 import net.minecraft.block.Block;
 import net.minecraft.client.renderer.RenderBlocks;
 import net.minecraft.client.renderer.Tessellator;
 import net.minecraft.world.IBlockAccess;
+
+import org.lwjgl.opengl.GL11;
+
+import com.voidzm.supercraft.client.ClientProxy;
+
 import cpw.mods.fml.client.registry.ISimpleBlockRenderingHandler;
 
 public class InventoryConduitRender implements ISimpleBlockRenderingHandler {

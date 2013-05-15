@@ -8,19 +8,16 @@ package com.voidzm.supercraft.tileentity;
 
 import java.io.ByteArrayOutputStream;
 import java.io.DataOutputStream;
-import java.util.List;
 
-import com.voidzm.supercraft.block.BlockConduit;
-import com.voidzm.supercraft.handler.BlockHandler;
+import net.minecraft.nbt.NBTTagCompound;
+import net.minecraft.network.packet.Packet250CustomPayload;
+import net.minecraft.tileentity.TileEntity;
+
 import com.voidzm.supercraft.handler.PacketHandler.SCClientElinvarType;
 
 import cpw.mods.fml.common.FMLCommonHandler;
 import cpw.mods.fml.common.network.PacketDispatcher;
 import cpw.mods.fml.relauncher.Side;
-import net.minecraft.nbt.NBTTagCompound;
-import net.minecraft.network.packet.Packet250CustomPayload;
-import net.minecraft.tileentity.TileEntity;
-import net.minecraft.world.World;
 
 public class TileEntityConduit extends TileEntity {
 

@@ -9,9 +9,7 @@ import net.minecraft.item.ItemStack;
 import com.voidzm.supercraft.handler.ItemHandler;
 import com.voidzm.supercraft.misc.SlotOutputOnly;
 import com.voidzm.supercraft.tileentity.TileEntityAlloyInductor;
-import com.voidzm.supercraft.tileentity.TileEntityEssentialReducer;
 import com.voidzm.supercraft.util.AlloyInductorRecipes;
-import com.voidzm.supercraft.util.EssentialReducerRecipes;
 import com.voidzm.supercraft.util.EssentialReducerRecipes.EssentialAspect;
 
 public class ContainerAlloyInductor extends Container {

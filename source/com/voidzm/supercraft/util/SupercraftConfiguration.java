@@ -2,7 +2,6 @@ package com.voidzm.supercraft.util;
 
 import java.io.File;
 
-import net.minecraft.block.Block;
 import net.minecraftforge.common.Configuration;
 
 public class SupercraftConfiguration {
@@ -217,6 +216,8 @@ public class SupercraftConfiguration {
 	public int cordiferhillsID;
 	public int temperateforestID;
 	public int glacialwastelandID;
+	public int junglemountainsID;
+	public int coniferouswoodsID;
 	
 	///*** PROVIDERS ***///
 	
@@ -448,6 +449,8 @@ public class SupercraftConfiguration {
 		cordiferhillsID = internalCfg.get(this.CATEGORY_BIOME, "cordiferhillsID", "34").getInt();
 		temperateforestID = internalCfg.get(this.CATEGORY_BIOME, "temperateforestID", "35").getInt();
 		glacialwastelandID = internalCfg.get(this.CATEGORY_BIOME, "glacialwastelandID", "36").getInt();
+		junglemountainsID = internalCfg.get(this.CATEGORY_BIOME, "junglemountainsID", "37").getInt();
+		coniferouswoodsID = internalCfg.get(this.CATEGORY_BIOME, "coniferouswoodsID", "38").getInt();
 	}
 	
 	private void loadDimensionConfig() {

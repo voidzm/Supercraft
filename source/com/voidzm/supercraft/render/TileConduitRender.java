@@ -6,31 +6,19 @@
 
 package com.voidzm.supercraft.render;
 
-import org.lwjgl.opengl.GL11;
-
-import com.voidzm.supercraft.block.BlockConduit;
-import com.voidzm.supercraft.client.ClientProxy;
-import com.voidzm.supercraft.handler.BlockHandler;
-import com.voidzm.supercraft.protocol.IGenerator;
-import com.voidzm.supercraft.protocol.IGenerator.GeneratorSide;
-import com.voidzm.supercraft.tileentity.TileEntityConduit;
-
-import cpw.mods.fml.common.registry.GameRegistry;
-
 import net.minecraft.block.Block;
-import net.minecraft.client.Minecraft;
-import net.minecraft.client.model.ModelBase;
-import net.minecraft.client.model.ModelRenderer;
-import net.minecraft.client.renderer.RenderBlocks;
 import net.minecraft.client.renderer.RenderEngine;
 import net.minecraft.client.renderer.Tessellator;
 import net.minecraft.client.renderer.tileentity.TileEntitySpecialRenderer;
 import net.minecraft.tileentity.TileEntity;
-import net.minecraft.util.Icon;
 import net.minecraft.world.World;
-import net.minecraftforge.client.ForgeHooksClient;
-import net.minecraftforge.client.MinecraftForgeClient;
-import net.minecraftforge.common.MinecraftForge;
+
+import org.lwjgl.opengl.GL11;
+
+import com.voidzm.supercraft.block.BlockConduit;
+import com.voidzm.supercraft.protocol.IGenerator;
+import com.voidzm.supercraft.protocol.IGenerator.GeneratorSide;
+import com.voidzm.supercraft.tileentity.TileEntityConduit;
 
 public class TileConduitRender extends TileEntitySpecialRenderer {
 
