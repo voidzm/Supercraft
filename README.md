@@ -1,6 +1,8 @@
 Supercraft is an in-development mod for Minecraft. You can get some more information about it on the [wiki](https://www.github.com/voidzm/Supercraft/wiki).
 
-Build scripts are provided in the repository for both Mac and Windows. You **need** a valid modding installation of Minecraft Forge to make the build scripts work. You should have the repository folder named "supercraft" placed alongside the "forge" folder. The build scripts will take care of assembling the sources and the resources into one place and producing the artifact. You need to zip everything in the "forge\mcp\reobf\minecraft" folder together (NOT the folder itself), and then you can install it in a Forge-modded version of Minecraft.
+In order to compile Supercraft for a full client installation of Forge, you need an src installation of [Minecraft Forge](http://www.minecraftforge.net). Your directory structure should have the "forge" folder alongside the repository folder called "supercraft". Make sure you have run the FML Setup script to install the decompiled sources before you try attempt to compile Supercraft.
+
+Simply run "supercraft\build_supercraft.bat" to produce a compiled product. You may need to "press any key to continue" a few times. If everything goes well, the script will produce a file at "forge\mcp\reobf\minecraft". The jar labeled "Supercraftv.v.v.jar" is the compiled mod. Drop this into the "coremods" folder of a Forge-modded Minecraft installation, and you should be good to go.
 
 I am not providing support for this mod until it is released. Things are highly experimential, subject to change, and at times very buggy.
 

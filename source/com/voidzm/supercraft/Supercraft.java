@@ -67,7 +67,7 @@ public class Supercraft {
 		BlockHandler.init(configuration);
 		ItemHandler.init(configuration);
 		CraftingHandler.init(configuration);
-		BiomeHandler.init(configuration, false);
+		BiomeHandler.init(configuration);
 		DimensionHandler.init(configuration);
 		GuiHandler.init();
 		TileEntityHandler.init();
