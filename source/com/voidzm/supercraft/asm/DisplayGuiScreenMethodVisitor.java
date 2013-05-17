@@ -32,9 +32,9 @@ public class DisplayGuiScreenMethodVisitor extends MethodVisitor {
 			mv.visitTypeInsn(INSTANCEOF, "net/minecraft/client/gui/GuiMainMenu");
 			Label j1 = new Label();
 			mv.visitJumpInsn(IFEQ, j1);
-			mv.visitTypeInsn(NEW, "com/voidzm/supercraft/gui/SCMainMenu");
+			mv.visitTypeInsn(NEW, "com/voidzm/supercraft/gui/GuiSupercraftMainMenu");
 			mv.visitInsn(DUP);
-			mv.visitMethodInsn(INVOKESPECIAL, "com/voidzm/supercraft/gui/SCMainMenu", "<init>", "()V");
+			mv.visitMethodInsn(INVOKESPECIAL, "com/voidzm/supercraft/gui/GuiSupercraftMainMenu", "<init>", "()V");
 			mv.visitVarInsn(ASTORE, 1);
 			mv.visitLabel(j1);
 		}

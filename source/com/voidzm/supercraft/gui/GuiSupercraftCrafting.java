@@ -1,5 +1,5 @@
 //////////////////////////////////////
-//*       SCGuiCrafting.java       *//
+//*       GuiSupercraftCrafting.java       *//
 //*           Supercraft           *//
 //*        (c) voidzm 2013         *//
 //////////////////////////////////////
@@ -15,9 +15,9 @@ import org.lwjgl.opengl.GL11;
 
 import com.voidzm.supercraft.container.ContainerRefinedWorkbench;
 
-public class SCGuiCrafting extends GuiContainer {
+public class GuiSupercraftCrafting extends GuiContainer {
 
-	public SCGuiCrafting(InventoryPlayer par1InventoryPlayer, World par2World, int par3, int par4, int par5) {
+	public GuiSupercraftCrafting(InventoryPlayer par1InventoryPlayer, World par2World, int par3, int par4, int par5) {
 		super(new ContainerRefinedWorkbench(par1InventoryPlayer, par2World, par3, par4, par5));
 	}
 

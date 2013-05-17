@@ -1,5 +1,5 @@
 //////////////////////////////////////
-//*        SCMainMenu.java         *//
+//*        GuiSupercraftMainMenu.java         *//
 //*           Supercraft           *//
 //*        (c) voidzm 2013         *//
 //////////////////////////////////////
@@ -23,20 +23,21 @@ import net.minecraft.util.StringTranslate;
 import org.lwjgl.opengl.GL11;
 
 import com.voidzm.supercraft.Supercraft;
+import com.voidzm.supercraft.protocol.ISupercraftGui;
 
 import cpw.mods.fml.client.GuiModList;
 
-public class SCMainMenu extends GuiScreen {
+public class GuiSupercraftMainMenu extends GuiScreen implements ISupercraftGui {
 
 	private BufferedImage background;
 	private ArrayList<GuiButtonTransparent> buttons;
 	
-	private int imageCycleTick = 0;
+	public int imageCycleTick = 0;
 	
 	private static final int imageTime = 200;
 	private static final int transitionTime = 100;
 	
-	public SCMainMenu() {
+	public GuiSupercraftMainMenu() {
 		buttons = new ArrayList<GuiButtonTransparent>();
 		try {
 			background = ImageIO.read(this.getClass().getResourceAsStream("/mods/supercraft/textures/gui/bg.png"));
@@ -60,7 +61,7 @@ public class SCMainMenu extends GuiScreen {
 	public void buttonEvent(int id) {
 		switch(id) {
 		case 0:
-			mc.displayGuiScreen(new GuiSelectWorld(this));
+			mc.displayGuiScreen(new GuiSupercraftSelectWorld(this));
 			this.mc.sndManager.playSoundFX("random.click", 1.0F, 1.0F);
 			break;
 		case 1:
@@ -154,6 +155,11 @@ public class SCMainMenu extends GuiScreen {
 		tes.addVertexWithUV(x + w, y, 0, 1, 0);
 		tes.addVertexWithUV(x, y, 0, 0, 0);
 		tes.draw();
+	}
+
+	@Override
+	public void drawQuad(int x, int y, int i, int j, int rgb) {
+		this.drawRect(x, y, i, j, rgb);
 	}
 	
 }

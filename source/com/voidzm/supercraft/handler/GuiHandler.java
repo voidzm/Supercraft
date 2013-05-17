@@ -18,7 +18,7 @@ import com.voidzm.supercraft.gui.GuiAlloyInductor;
 import com.voidzm.supercraft.gui.GuiElectroplationEngine;
 import com.voidzm.supercraft.gui.GuiEssentialReducer;
 import com.voidzm.supercraft.gui.GuiVeneficianPodium;
-import com.voidzm.supercraft.gui.SCGuiCrafting;
+import com.voidzm.supercraft.gui.GuiSupercraftCrafting;
 import com.voidzm.supercraft.tileentity.TileEntityAlloyInductor;
 import com.voidzm.supercraft.tileentity.TileEntityElectroplationEngine;
 import com.voidzm.supercraft.tileentity.TileEntityEssentialReducer;
@@ -66,7 +66,7 @@ public class GuiHandler implements IGuiHandler {
 	public Object getClientGuiElement(int ID, EntityPlayer player, World world, int x, int y, int z) {
 		switch(ID) {
 		case 0:
-			return new SCGuiCrafting(player.inventory, world, x, y, z);
+			return new GuiSupercraftCrafting(player.inventory, world, x, y, z);
 		case 1:
 			TileEntityEssentialReducer teEssentialReducer = (TileEntityEssentialReducer)world.getBlockTileEntity(x, y, z);
 			return new GuiEssentialReducer(player.inventory, teEssentialReducer);

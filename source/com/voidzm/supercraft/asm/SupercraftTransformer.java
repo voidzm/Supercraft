@@ -32,7 +32,7 @@ public class SupercraftTransformer extends AccessTransformer {
 		return bytes;
 	}
 	
-	private byte[] transformMinecraft(String name, byte[] bytes) { // Prevents GuiMainMenu from ever displaying, using SCMainMenu instead.
+	private byte[] transformMinecraft(String name, byte[] bytes) { // Prevents GuiMainMenu from ever displaying, using GuiSupercraftMainMenu instead.
 		String className = SupercraftPlugin.isDevEnvironment ? "net.minecraft.client.Minecraft" : ReobfuscationMappingHelper.getInstance().attemptRemapClassName("net.minecraft.client.Minecraft");
 		if(name.equals(className)) {
 			ClassReader cr = new ClassReader(bytes);
