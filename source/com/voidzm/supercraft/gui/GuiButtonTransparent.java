@@ -8,22 +8,20 @@ package com.voidzm.supercraft.gui;
 
 import java.awt.Color;
 
-import com.voidzm.supercraft.protocol.ISupercraftGui;
-
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.FontRenderer;
 import net.minecraft.client.gui.GuiScreen;
 
 public class GuiButtonTransparent {
 	
-	private ISupercraftGui mainMenu;
+	private GuiSupercraftScreen mainMenu;
 	private int x, y, width, height, alpha;
 	public int id;
 	private String text;
 	private FontRenderer render;
 	public boolean enabled = true;
 
-	public GuiButtonTransparent(ISupercraftGui menu, int par1, int par2, int par3, int par4, int par5, String string) {
+	public GuiButtonTransparent(GuiSupercraftScreen menu, int par1, int par2, int par3, int par4, int par5, String string) {
 		this.mainMenu = menu;
 		this.x = par1;
 		this.y = par2;
@@ -48,7 +46,7 @@ public class GuiButtonTransparent {
 			textMod = "> " + textMod + " <";
 		}
 		mainMenu.drawCenteredString(render, textMod, x + (width / 2), y + (height / 4), this.enabled ? Color.WHITE.getRGB() : 6710886);
-		mainMenu.drawQuad(x, y, x + width, y + height, boxColor.getRGB());
+		mainMenu.drawRect(x, y, x + width, y + height, boxColor.getRGB());
 	}
 	
 	public boolean isInside(int mx, int my) {

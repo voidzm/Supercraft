@@ -1,3 +1,8 @@
+//**
+//**  GuiSupercraftSelectWorld.java
+//**  Supercraft
+//**  (c) voidzm 2013 **//
+
 package com.voidzm.supercraft.gui;
 
 import java.awt.Color;
@@ -14,8 +19,6 @@ import javax.imageio.ImageIO;
 import org.lwjgl.opengl.GL11;
 
 import com.voidzm.supercraft.Supercraft;
-import com.voidzm.supercraft.protocol.ISupercraftGui;
-
 import cpw.mods.fml.client.GuiModList;
 
 import net.minecraft.client.AnvilConverterException;
@@ -39,15 +42,7 @@ import net.minecraft.world.storage.ISaveHandler;
 import net.minecraft.world.storage.SaveFormatComparator;
 import net.minecraft.world.storage.WorldInfo;
 
-public class GuiSupercraftSelectWorld extends GuiScreen implements ISupercraftGui {
-
-	private BufferedImage background;
-	private ArrayList<GuiButtonTransparent> buttons = new ArrayList<GuiButtonTransparent>();
-	
-	private int imageCycleTick = 0;
-	
-	private static final int imageTime = 200;
-	private static final int transitionTime = 100;
+public class GuiSupercraftSelectWorld extends GuiSupercraftScreen {
 	
 	private final DateFormat dateFormat = new SimpleDateFormat();
 	private GuiSupercraftMainMenu parent;
@@ -71,12 +66,7 @@ public class GuiSupercraftSelectWorld extends GuiScreen implements ISupercraftGu
 	
 	public GuiSupercraftSelectWorld(GuiSupercraftMainMenu parentScreen) {
 		this.parent = parentScreen;
-		try {
-			background = ImageIO.read(this.getClass().getResourceAsStream("/mods/supercraft/textures/gui/bg.png"));
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-		imageCycleTick = parentScreen.imageCycleTick;
+		imageTick = parentScreen.imageTick;
 	}
 	
 	@Override
@@ -171,71 +161,15 @@ public class GuiSupercraftSelectWorld extends GuiScreen implements ISupercraftGu
 	}
 	
 	@Override
-	public void updateScreen() {
-		imageCycleTick++;
-	}
-	
-	public void drawScreen(int mouseX, int mouseY, float tick) {
-		if(imageCycleTick >= imageTime*4) imageCycleTick = 0;
-		float basef = imageCycleTick / imageTime;
-		int base = (int)Math.floor(basef);
-		int prog = (int)imageCycleTick % imageTime;
-		if(base == 0) GL11.glBindTexture(GL11.GL_TEXTURE_2D, this.mc.renderEngine.getTexture("/mods/supercraft/textures/gui/bg.png"));
-		else if(base == 1) GL11.glBindTexture(GL11.GL_TEXTURE_2D, this.mc.renderEngine.getTexture("/mods/supercraft/textures/gui/bg2.png"));
-		else if(base == 2) GL11.glBindTexture(GL11.GL_TEXTURE_2D, this.mc.renderEngine.getTexture("/mods/supercraft/textures/gui/bg3.png"));
-		else if(base == 3) GL11.glBindTexture(GL11.GL_TEXTURE_2D, this.mc.renderEngine.getTexture("/mods/supercraft/textures/gui/bg4.png"));
-		GL11.glColor4f(1.0F, 1.0F, 1.0F, 1.0F);
-		int[] locs = this.calcPositions();
-		this.drawTexture(locs[0], locs[1], locs[2], locs[3]);
-		if(prog >= (imageTime-transitionTime)) {
-			GL11.glPushMatrix();
-			int alpha = (prog-(imageTime-transitionTime))*2;
-			if(base == 0) GL11.glBindTexture(GL11.GL_TEXTURE_2D, this.mc.renderEngine.getTexture("/mods/supercraft/textures/gui/bg2.png"));
-			else if(base == 1) GL11.glBindTexture(GL11.GL_TEXTURE_2D, this.mc.renderEngine.getTexture("/mods/supercraft/textures/gui/bg3.png"));
-			else if(base == 2) GL11.glBindTexture(GL11.GL_TEXTURE_2D, this.mc.renderEngine.getTexture("/mods/supercraft/textures/gui/bg4.png"));
-			else if(base == 3) GL11.glBindTexture(GL11.GL_TEXTURE_2D, this.mc.renderEngine.getTexture("/mods/supercraft/textures/gui/bg.png"));
-			GL11.glEnable(GL11.GL_BLEND);
-			GL11.glBlendFunc(GL11.GL_SRC_ALPHA, GL11.GL_ONE_MINUS_SRC_ALPHA);
-			GL11.glColor4f(1.0F, 1.0F, 1.0F, ((float)alpha)/100);
-			this.drawTexture(locs[0], locs[1], locs[2], locs[3]);
-			GL11.glPopMatrix();
-		}
+	public void drawScreenForeground(int mouseX, int mouseY, float tick) {
 		this.drawRect(0, 0, width, height, 0x88000000);
 		this.drawRect(0, 0, width, 48, 0x66000000);
 		this.drawRect(0, height-80, width, height, 0x66000000);
 		this.drawRect(0, 48, width, 49, 0xAA000000);
 		this.drawRect(0, height-79, width, height-80, 0xAA000000);
-		for(GuiButtonTransparent iterated : buttons) {
-			iterated.draw(mouseX, mouseY);
-		}
 		this.worldSlotContainer.drawScreen(mouseX, mouseY, tick);
 		this.drawCenteredString(this.fontRenderer, this.title, this.width / 2, 20, 16777215);
-	}
-	
-	private int[] calcPositions() {
-		int[] pos = new int[4];
-		float bgRatio = (float)background.getWidth() / (float)background.getHeight();
-		if((float)this.width / (float)this.height < bgRatio) {
-			pos[2] = (int)(height * bgRatio);
-			pos[3] = height;
-		}
-		else {
-			pos[2] = width;
-			pos[3] = (int)(width / bgRatio);
-		}
-		pos[0] = width / 2 - pos[2] / 2;
-		pos[1] = height / 2 - pos[3] / 2;
-		return pos;
-	}
-	
-	private void drawTexture(int x, int y, int w, int h) {
-		Tessellator tes = Tessellator.instance;
-		tes.startDrawingQuads();
-		tes.addVertexWithUV(x, y + h, 0, 0, 1);
-		tes.addVertexWithUV(x + w, y + h, 0, 1, 1);
-		tes.addVertexWithUV(x + w, y, 0, 1, 0);
-		tes.addVertexWithUV(x, y, 0, 0, 0);
-		tes.draw();
+		super.drawScreenForeground(mouseX, mouseY, tick);
 	}
 	
 	public static GuiYesNo getDeleteWorldScreen(GuiScreen par0GuiScreen, String par1Str, int par2) {
@@ -306,13 +240,13 @@ public class GuiSupercraftSelectWorld extends GuiScreen implements ISupercraftGu
 	public void buttonEvent(int id) {
 		switch(id) {
 		case 0:
-			this.parent.imageCycleTick = this.imageCycleTick;
+			this.parent.imageTick = this.imageTick;
 			this.mc.displayGuiScreen(this.parent);
 			this.mc.sndManager.playSoundFX("random.click", 1.0F, 1.0F);
 			break;
 		case 1:
-			this.selectWorld(this.selectedWorld);
 			this.mc.sndManager.playSoundFX("random.click", 1.0F, 1.0F);
+			this.selectWorld(this.selectedWorld);
 			break;
 		case 2:
 			String s = this.getSaveName(this.selectedWorld);
@@ -340,11 +274,6 @@ public class GuiSupercraftSelectWorld extends GuiScreen implements ISupercraftGu
 			this.mc.displayGuiScreen(guicreateworld);
 			break;
 		}
-	}
-
-	@Override
-	public void drawQuad(int x, int y, int i, int j, int rgb) {
-		this.drawRect(x, y, i, j, rgb);
 	}
 	
 }
