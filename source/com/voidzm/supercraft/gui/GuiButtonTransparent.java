@@ -17,9 +17,10 @@ public class GuiButtonTransparent {
 	private GuiSupercraftScreen mainMenu;
 	private int x, y, width, height, alpha;
 	public int id;
-	private String text;
+	public String text;
 	private FontRenderer render;
 	public boolean enabled = true;
+	public boolean drawButton = true;
 
 	public GuiButtonTransparent(GuiSupercraftScreen menu, int par1, int par2, int par3, int par4, int par5, String string) {
 		this.mainMenu = menu;
@@ -34,6 +35,7 @@ public class GuiButtonTransparent {
 	}
 	
 	public void draw(int mx, int my) {
+		if(!drawButton) return;
 		if(isInside(mx, my) && this.enabled) {
 			alpha = 30;
 		}
@@ -54,7 +56,7 @@ public class GuiButtonTransparent {
 	}
 	
 	public void clickEvent(int mx, int my) {
-		if(isInside(mx, my) && this.enabled) {
+		if((isInside(mx, my) && this.enabled) && this.drawButton) {
 			alpha = 60;
 			this.mainMenu.buttonEvent(this.id);
 		}

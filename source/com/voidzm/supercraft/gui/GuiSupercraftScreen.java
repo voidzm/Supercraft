@@ -12,6 +12,8 @@ import org.lwjgl.opengl.GL11;
 import com.voidzm.supercraft.Supercraft;
 import cpw.mods.fml.client.GuiModList;
 
+import net.minecraft.client.Minecraft;
+import net.minecraft.client.gui.FontRenderer;
 import net.minecraft.client.gui.GuiMultiplayer;
 import net.minecraft.client.gui.GuiOptions;
 import net.minecraft.client.gui.GuiScreen;
@@ -113,6 +115,18 @@ public class GuiSupercraftScreen extends GuiScreen {
 		tes.addVertexWithUV(x + w, y, 0, 1, 0);
 		tes.addVertexWithUV(x, y, 0, 0, 0);
 		tes.draw();
+	}
+	
+	public Minecraft getMinecraft() {
+		return this.mc;
+	}
+	
+	public FontRenderer getFontRenderer() {
+		return this.fontRenderer;
+	}
+	
+	public float getZLevel() {
+		return this.zLevel;
 	}
 	
 }

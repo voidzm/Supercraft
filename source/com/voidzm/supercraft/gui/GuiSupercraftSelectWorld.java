@@ -163,8 +163,8 @@ public class GuiSupercraftSelectWorld extends GuiSupercraftScreen {
 	@Override
 	public void drawScreenForeground(int mouseX, int mouseY, float tick) {
 		this.drawRect(0, 0, width, height, 0x88000000);
-		this.drawRect(0, 0, width, 48, 0x66000000);
-		this.drawRect(0, height-80, width, height, 0x66000000);
+		this.drawRect(0, 0, width, 48, 0x77000000);
+		this.drawRect(0, height-80, width, height, 0x77000000);
 		this.drawRect(0, 48, width, 49, 0xAA000000);
 		this.drawRect(0, height-79, width, height-80, 0xAA000000);
 		this.worldSlotContainer.drawScreen(mouseX, mouseY, tick);
@@ -229,13 +229,6 @@ public class GuiSupercraftSelectWorld extends GuiSupercraftScreen {
 	public FontRenderer fontRenderer() {
 		return this.fontRenderer;
 	}
-
-	@Override
-	protected void mouseClicked(int mx, int my, int par3) {
-		for(GuiButtonTransparent button : buttons) {
-			button.clickEvent(mx, my);
-		}
-	}
 	
 	public void buttonEvent(int id) {
 		switch(id) {
@@ -258,7 +251,7 @@ public class GuiSupercraftSelectWorld extends GuiSupercraftScreen {
 			this.mc.sndManager.playSoundFX("random.click", 1.0F, 1.0F);
 			break;
 		case 3:
-			this.mc.displayGuiScreen(new GuiCreateWorld(this));
+			this.mc.displayGuiScreen(new GuiSupercraftCreateWorld(this));
 			this.mc.sndManager.playSoundFX("random.click", 1.0F, 1.0F);
 			break;
 		case 6:
@@ -266,12 +259,13 @@ public class GuiSupercraftSelectWorld extends GuiSupercraftScreen {
 			this.mc.sndManager.playSoundFX("random.click", 1.0F, 1.0F);
 			break;
 		case 7:
-			GuiCreateWorld guicreateworld = new GuiCreateWorld(this);
+			GuiSupercraftCreateWorld guicreateworld = new GuiSupercraftCreateWorld(this);
 			ISaveHandler isavehandler = this.mc.getSaveLoader().getSaveLoader(this.getSaveFileName(this.selectedWorld), false);
 			WorldInfo worldinfo = isavehandler.loadWorldInfo();
 			isavehandler.flush();
 			guicreateworld.func_82286_a(worldinfo);
 			this.mc.displayGuiScreen(guicreateworld);
+			this.mc.sndManager.playSoundFX("random.click", 1.0F, 1.0F);
 			break;
 		}
 	}
