@@ -5,34 +5,15 @@
 
 package com.voidzm.supercraft.gui;
 
-import java.awt.Color;
-import java.awt.image.BufferedImage;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
-import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
-import java.util.Random;
-
-import javax.imageio.ImageIO;
-
-import org.lwjgl.opengl.GL11;
-
-import com.voidzm.supercraft.Supercraft;
-import cpw.mods.fml.client.GuiModList;
 
 import net.minecraft.client.AnvilConverterException;
 import net.minecraft.client.gui.FontRenderer;
-import net.minecraft.client.gui.GuiButton;
-import net.minecraft.client.gui.GuiCreateWorld;
 import net.minecraft.client.gui.GuiErrorScreen;
-import net.minecraft.client.gui.GuiMultiplayer;
-import net.minecraft.client.gui.GuiOptions;
-import net.minecraft.client.gui.GuiRenameWorld;
 import net.minecraft.client.gui.GuiScreen;
-import net.minecraft.client.gui.GuiSelectWorld;
-import net.minecraft.client.gui.GuiYesNo;
-import net.minecraft.client.renderer.Tessellator;
 import net.minecraft.util.MathHelper;
 import net.minecraft.util.StringTranslate;
 import net.minecraft.world.EnumGameType;
@@ -143,6 +124,7 @@ public class GuiSupercraftSelectWorld extends GuiSupercraftScreen {
 		}
 	}
 	
+	@Override
 	public void confirmClicked(boolean par1, int par2) {
 		if(this.deleting) {
 			this.deleting = false;
@@ -182,47 +164,47 @@ public class GuiSupercraftSelectWorld extends GuiSupercraftScreen {
 		return confirmDelete;
 	}
 	
-	static List getSize(GuiSupercraftSelectWorld par0GuiSelectWorld) {
+	public static List getSize(GuiSupercraftSelectWorld par0GuiSelectWorld) {
 		return par0GuiSelectWorld.saveList;
 	}
 	
-	static int onElementSelected(GuiSupercraftSelectWorld par0GuiSelectWorld, int par1) {
+	public static int onElementSelected(GuiSupercraftSelectWorld par0GuiSelectWorld, int par1) {
 		return par0GuiSelectWorld.selectedWorld = par1;
 	}
 
-	static int getSelectedWorld(GuiSupercraftSelectWorld par0GuiSelectWorld){
+	public static int getSelectedWorld(GuiSupercraftSelectWorld par0GuiSelectWorld){
 		return par0GuiSelectWorld.selectedWorld;
 	}
 
-	static GuiButtonTransparent getSelectButton(GuiSupercraftSelectWorld par0GuiSelectWorld){
+	public static GuiButtonTransparent getSelectButton(GuiSupercraftSelectWorld par0GuiSelectWorld){
 		return par0GuiSelectWorld.buttonSelect;
 	}
 
-	static GuiButtonTransparent getRenameButton(GuiSupercraftSelectWorld par0GuiSelectWorld) {
+	public static GuiButtonTransparent getRenameButton(GuiSupercraftSelectWorld par0GuiSelectWorld) {
 		return par0GuiSelectWorld.buttonDelete;
 	}
 
-	static GuiButtonTransparent getDeleteButton(GuiSupercraftSelectWorld par0GuiSelectWorld) {
+	public static GuiButtonTransparent getDeleteButton(GuiSupercraftSelectWorld par0GuiSelectWorld) {
 		return par0GuiSelectWorld.buttonRename;
 	}
 
-	static GuiButtonTransparent func_82312_f(GuiSupercraftSelectWorld par0GuiSelectWorld) {
+	public static GuiButtonTransparent func_82312_f(GuiSupercraftSelectWorld par0GuiSelectWorld) {
 		return par0GuiSelectWorld.buttonRecreate;
 	}
 
-	static String func_82313_g(GuiSupercraftSelectWorld par0GuiSelectWorld) {
+	public static String func_82313_g(GuiSupercraftSelectWorld par0GuiSelectWorld) {
 		return par0GuiSelectWorld.localizedWorldText;
 	}
 
-	static DateFormat func_82315_h(GuiSupercraftSelectWorld par0GuiSelectWorld) {
+	public static DateFormat func_82315_h(GuiSupercraftSelectWorld par0GuiSelectWorld) {
 		return par0GuiSelectWorld.dateFormat;
 	}
 
-	static String func_82311_i(GuiSupercraftSelectWorld par0GuiSelectWorld) {
+	public static String func_82311_i(GuiSupercraftSelectWorld par0GuiSelectWorld) {
 		return par0GuiSelectWorld.localizedConvertText;
 	}
 
-	static String[] func_82314_j(GuiSupercraftSelectWorld par0GuiSelectWorld) {
+	public static String[] func_82314_j(GuiSupercraftSelectWorld par0GuiSelectWorld) {
 		return par0GuiSelectWorld.localizedGamemodeText;
 	}
 	
@@ -230,6 +212,7 @@ public class GuiSupercraftSelectWorld extends GuiSupercraftScreen {
 		return this.fontRenderer;
 	}
 	
+	@Override
 	public void buttonEvent(int id) {
 		switch(id) {
 		case 0:
@@ -255,7 +238,7 @@ public class GuiSupercraftSelectWorld extends GuiSupercraftScreen {
 			this.mc.sndManager.playSoundFX("random.click", 1.0F, 1.0F);
 			break;
 		case 6:
-			this.mc.displayGuiScreen(new GuiRenameWorld(this, this.getSaveFileName(this.selectedWorld)));
+			this.mc.displayGuiScreen(new GuiSupercraftRenameWorld(this, this.getSaveFileName(this.selectedWorld)));
 			this.mc.sndManager.playSoundFX("random.click", 1.0F, 1.0F);
 			break;
 		case 7:

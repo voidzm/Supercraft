@@ -1,17 +1,12 @@
+//**
+//**  GuiSupercraftCreateFlatWorld.java
+//**  Supercraft
+//**  (c) voidzm 2013 **//
+
 package com.voidzm.supercraft.gui;
 
-import java.util.Random;
-
-import net.minecraft.client.gui.GuiButton;
-import net.minecraft.client.gui.GuiCreateFlatWorld;
-import net.minecraft.client.gui.GuiFlatPresets;
-import net.minecraft.client.gui.GuiScreen;
 import net.minecraft.client.renderer.entity.RenderItem;
-import net.minecraft.util.MathHelper;
 import net.minecraft.util.StatCollector;
-import net.minecraft.world.EnumGameType;
-import net.minecraft.world.WorldSettings;
-import net.minecraft.world.WorldType;
 import net.minecraft.world.gen.FlatGeneratorInfo;
 
 public class GuiSupercraftCreateFlatWorld extends GuiSupercraftScreen {
@@ -39,6 +34,7 @@ public class GuiSupercraftCreateFlatWorld extends GuiSupercraftScreen {
 		this.genInfo = FlatGeneratorInfo.createFlatGeneratorFromString(par1Str);
 	}
 	
+	@Override
 	public void initGui() {
 		this.buttons.clear();
 		this.customizationTitle = StatCollector.translateToLocal("createWorld.customize.flat.title");
@@ -54,6 +50,7 @@ public class GuiSupercraftCreateFlatWorld extends GuiSupercraftScreen {
 		this.func_82270_g();
 	}
 
+	@Override
 	public void buttonEvent(int id) {
 		int i = this.genInfo.getFlatLayers().size() - this.listSlot.field_82454_a - 1;
 		switch(id) {
@@ -107,11 +104,11 @@ public class GuiSupercraftCreateFlatWorld extends GuiSupercraftScreen {
 		this.drawString(this.fontRenderer, this.heightLabel, k + 2 + 213 - this.fontRenderer.getStringWidth(this.heightLabel), 32, 16777215);
 	}
 
-	static RenderItem getRenderItem(){
+	public static RenderItem getRenderItem(){
 		return renderItem;
 	}
 
-	static FlatGeneratorInfo func_82271_a(GuiSupercraftCreateFlatWorld par0GuiCreateFlatWorld) {
+	public static FlatGeneratorInfo func_82271_a(GuiSupercraftCreateFlatWorld par0GuiCreateFlatWorld) {
 		return par0GuiCreateFlatWorld.genInfo;
 	}
 }

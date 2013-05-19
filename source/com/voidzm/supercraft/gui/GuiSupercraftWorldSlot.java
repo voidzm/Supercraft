@@ -1,15 +1,13 @@
+//**
+//**  GuiSupercraftWorldSlot.java
+//**  Supercraft
+//**  (c) voidzm 2013 **//
+
 package com.voidzm.supercraft.gui;
 
 import java.util.Date;
-import java.util.List;
-
-import org.lwjgl.input.Mouse;
-import org.lwjgl.opengl.GL11;
 
 import net.minecraft.client.Minecraft;
-import net.minecraft.client.gui.GuiButton;
-import net.minecraft.client.gui.GuiSelectWorld;
-import net.minecraft.client.gui.GuiSlot;
 import net.minecraft.client.renderer.Tessellator;
 import net.minecraft.util.EnumChatFormatting;
 import net.minecraft.util.MathHelper;
@@ -30,6 +28,7 @@ public class GuiSupercraftWorldSlot extends GuiSupercraftSlot {
 		return GuiSupercraftSelectWorld.getSize(this.parent).size();
 	}
 
+	@Override
 	protected void elementClicked(int par1, boolean par2) {
 		GuiSupercraftSelectWorld.onElementSelected(this.parent, par1);
 		boolean flag1 = GuiSupercraftSelectWorld.getSelectedWorld(this.parent) >= 0 && GuiSupercraftSelectWorld.getSelectedWorld(this.parent) < this.getSize();

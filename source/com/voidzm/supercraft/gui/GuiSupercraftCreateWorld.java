@@ -1,16 +1,15 @@
+//**
+//**  GuiSupercraftCreateWorld.java
+//**  Supercraft
+//**  (c) voidzm 2013 **//
+
 package com.voidzm.supercraft.gui;
 
 import java.util.Random;
 
-import org.lwjgl.input.Keyboard;
-
 import net.minecraft.client.gui.GuiButton;
-import net.minecraft.client.gui.GuiCreateFlatWorld;
-import net.minecraft.client.gui.GuiCreateWorld;
-import net.minecraft.client.gui.GuiRenameWorld;
 import net.minecraft.client.gui.GuiScreen;
 import net.minecraft.client.gui.GuiTextField;
-import net.minecraft.client.gui.GuiYesNo;
 import net.minecraft.util.ChatAllowedCharacters;
 import net.minecraft.util.MathHelper;
 import net.minecraft.util.StatCollector;
@@ -19,8 +18,9 @@ import net.minecraft.world.EnumGameType;
 import net.minecraft.world.WorldSettings;
 import net.minecraft.world.WorldType;
 import net.minecraft.world.storage.ISaveFormat;
-import net.minecraft.world.storage.ISaveHandler;
 import net.minecraft.world.storage.WorldInfo;
+
+import org.lwjgl.input.Keyboard;
 
 public class GuiSupercraftCreateWorld extends GuiSupercraftScreen {
 
@@ -162,10 +162,12 @@ public class GuiSupercraftCreateWorld extends GuiSupercraftScreen {
 		return par1Str;
 	}
 	
+	@Override
 	public void onGuiClosed() {
 		Keyboard.enableRepeatEvents(false);
 	}
 	
+	@Override
 	public void buttonEvent(int id) {
 		switch(id) {
 		case 0:
@@ -308,6 +310,7 @@ public class GuiSupercraftCreateWorld extends GuiSupercraftScreen {
 		}
 	}
 
+	@Override
 	protected void keyTyped(char par1, int par2){
 		if (this.textWorldName.isFocused() && !this.moreOptions){
 			this.textWorldName.textboxKeyTyped(par1, par2);
@@ -324,6 +327,7 @@ public class GuiSupercraftCreateWorld extends GuiSupercraftScreen {
 		this.makeUseableName();
 	}
 	
+	@Override
 	protected void mouseClicked(int par1, int par2, int par3){
 		super.mouseClicked(par1, par2, par3);
 		if(this.moreOptions){

@@ -1,3 +1,8 @@
+//**
+//**  GuiSupercraftButton.java
+//**  Supercraft
+//**  (c) voidzm 2013 **//
+
 package com.voidzm.supercraft.gui;
 
 import net.minecraft.client.gui.GuiButton;
@@ -23,7 +28,7 @@ public class GuiSupercraftButton extends GuiButton {
 	public void clickEvent(int mx, int my) {
 		if(isInside(mx, my)) {
 			if(this.parent instanceof GuiVeneficianPodium) {
-				((GuiVeneficianPodium) this.parent).buttonEvent(this.id);
+				((GuiVeneficianPodium)this.parent).buttonEvent(this.id);
 			}
 		}
 	}

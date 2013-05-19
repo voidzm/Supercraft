@@ -1,8 +1,10 @@
+//**
+//**  GuiSupercraftYesNo.java
+//**  Supercraft
+//**  (c) voidzm 2013 **//
+
 package com.voidzm.supercraft.gui;
 
-import net.minecraft.client.gui.GuiButton;
-import net.minecraft.client.gui.GuiScreen;
-import net.minecraft.client.gui.GuiSmallButton;
 import net.minecraft.util.StringTranslate;
 
 public class GuiSupercraftYesNo extends GuiSupercraftScreen {
@@ -39,6 +41,7 @@ public class GuiSupercraftYesNo extends GuiSupercraftScreen {
 
 	@Override
 	public void initGui() {
+		this.buttons.clear();
 		this.buttons.add(new GuiButtonTransparent(this, this.width / 2 - 155, this.height / 6 + 96, 140, 16, 0, this.buttonText1));
 		this.buttons.add(new GuiButtonTransparent(this, this.width / 2 - 155 + 160, this.height / 6 + 96, 140, 16, 1, this.buttonText2));
 	}

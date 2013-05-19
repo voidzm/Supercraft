@@ -1,16 +1,19 @@
+//**
+//**  GuiSupercraftFlatWorldListSlot.java
+//**  Supercraft
+//**  (c) voidzm 2013 **//
+
 package com.voidzm.supercraft.gui;
 
-import org.lwjgl.opengl.GL11;
-import org.lwjgl.opengl.GL12;
-
-import net.minecraft.client.Minecraft;
-import net.minecraft.client.gui.GuiCreateFlatWorld;
 import net.minecraft.client.renderer.RenderHelper;
 import net.minecraft.client.renderer.Tessellator;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.StatCollector;
 import net.minecraft.world.gen.FlatLayerInfo;
+
+import org.lwjgl.opengl.GL11;
+import org.lwjgl.opengl.GL12;
 
 public class GuiSupercraftFlatWorldListSlot extends GuiSupercraftSlot {
 
@@ -23,7 +26,6 @@ public class GuiSupercraftFlatWorldListSlot extends GuiSupercraftSlot {
 		this.parent = parentScreen;
 		this.field_82454_a = -1;
 	}
-
 
 	private void func_82452_a(int par1, int par2, ItemStack par3ItemStack) {
 		this.func_82451_d(par1 + 1, par2 + 1);

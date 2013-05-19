@@ -1,3 +1,8 @@
+//**
+//**  GuiSupercraftFlatPresets.java
+//**  Supercraft
+//**  (c) voidzm 2013 **//
+
 package com.voidzm.supercraft.gui;
 
 import java.util.ArrayList;
@@ -6,11 +11,7 @@ import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
 
-import org.lwjgl.input.Keyboard;
-
 import net.minecraft.block.Block;
-import net.minecraft.client.gui.GuiButton;
-import net.minecraft.client.gui.GuiFlatPresets;
 import net.minecraft.client.gui.GuiTextField;
 import net.minecraft.client.renderer.entity.RenderItem;
 import net.minecraft.item.Item;
@@ -18,6 +19,8 @@ import net.minecraft.util.StatCollector;
 import net.minecraft.world.biome.BiomeGenBase;
 import net.minecraft.world.gen.FlatGeneratorInfo;
 import net.minecraft.world.gen.FlatLayerInfo;
+
+import org.lwjgl.input.Keyboard;
 
 public class GuiSupercraftFlatPresets extends GuiSupercraftScreen {
 
@@ -53,21 +56,25 @@ public class GuiSupercraftFlatPresets extends GuiSupercraftScreen {
 		this.func_82296_g();
 	}
 
+	@Override
 	public void onGuiClosed() {
 		Keyboard.enableRepeatEvents(false);
 	}
 
+	@Override
 	protected void mouseClicked(int par1, int par2, int par3) {
 		this.theTextField.mouseClicked(par1, par2, par3);
 		super.mouseClicked(par1, par2, par3);
 	}
 
+	@Override
 	protected void keyTyped(char par1, int par2) {
 		if(!this.theTextField.textboxKeyTyped(par1, par2)) {
 			super.keyTyped(par1, par2);
 		}
 	}
 
+	@Override
 	public void buttonEvent(int id) {
 		switch(id) {
 		case 0:
@@ -101,6 +108,7 @@ public class GuiSupercraftFlatPresets extends GuiSupercraftScreen {
 		this.theTextField.drawTextBox();
 	}
 
+	@Override
 	public void updateScreen() {
 		this.theTextField.updateCursorCounter();
 		super.updateScreen();
@@ -112,8 +120,7 @@ public class GuiSupercraftFlatPresets extends GuiSupercraftScreen {
 	}
 
 	private boolean func_82293_j() {
-		return true;
-		//return this.theFlatPresetsListSlot.field_82459_a > -1 && this.theFlatPresetsListSlot.field_82459_a < presets.size() || this.theTextField.getText().length() > 1;
+		return this.theFlatPresetsListSlot.field_82459_a > -1 && this.theFlatPresetsListSlot.field_82459_a < presets.size() || this.theTextField.getText().length() > 1;
 	}
 
 	public static void addPresetNoFeatures(String par0Str, int par1, BiomeGenBase par2BiomeGenBase, FlatLayerInfo ... par3ArrayOfFlatLayerInfo) {
@@ -137,19 +144,19 @@ public class GuiSupercraftFlatPresets extends GuiSupercraftScreen {
 		presets.add(new GuiFlatPresetsItem(par1, par0Str, flatgeneratorinfo.toString()));
 	}
 
-	static RenderItem getPresetIconRenderer() {
+	public static RenderItem getPresetIconRenderer() {
 		return renderItem;
 	}
 
-	static List getPresets() {
+	public static List getPresets() {
 		return presets;
 	}
 
-	static GuiSupercraftPresetsListSlot func_82292_a(GuiSupercraftFlatPresets par0GuiFlatPresets) {
+	public static GuiSupercraftPresetsListSlot func_82292_a(GuiSupercraftFlatPresets par0GuiFlatPresets) {
 		return par0GuiFlatPresets.theFlatPresetsListSlot;
 	}
 
-	static GuiTextField func_82298_b(GuiSupercraftFlatPresets par0GuiFlatPresets) {
+	public static GuiTextField func_82298_b(GuiSupercraftFlatPresets par0GuiFlatPresets) {
 		return par0GuiFlatPresets.theTextField;
 	}
 
