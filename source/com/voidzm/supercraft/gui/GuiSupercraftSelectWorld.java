@@ -172,13 +172,13 @@ public class GuiSupercraftSelectWorld extends GuiSupercraftScreen {
 		super.drawScreenForeground(mouseX, mouseY, tick);
 	}
 	
-	public static GuiYesNo getDeleteWorldScreen(GuiScreen par0GuiScreen, String par1Str, int par2) {
+	public static GuiSupercraftYesNo getDeleteWorldScreen(GuiSupercraftScreen par0GuiScreen, String par1Str, int par2) {
 		StringTranslate t = StringTranslate.getInstance();
 		String s1 = t.translateKey("selectWorld.deleteQuestion");
 		String s2 = "\'" + par1Str + "\' " + t.translateKey("selectWorld.deleteWarning");
 		String s3 = t.translateKey("selectWorld.deleteButton");
 		String s4 = t.translateKey("gui.cancel");
-		GuiYesNo confirmDelete = new GuiYesNo(par0GuiScreen, s1, s2, s3, s4, par2);
+		GuiSupercraftYesNo confirmDelete = new GuiSupercraftYesNo(par0GuiScreen, s1, s2, s3, s4, par2);
 		return confirmDelete;
 	}
 	
@@ -245,7 +245,7 @@ public class GuiSupercraftSelectWorld extends GuiSupercraftScreen {
 			String s = this.getSaveName(this.selectedWorld);
 			if(s != null) {
 				this.deleting = true;
-				GuiYesNo confirmDelete = getDeleteWorldScreen(this, s, this.selectedWorld);
+				GuiSupercraftYesNo confirmDelete = getDeleteWorldScreen(this, s, this.selectedWorld);
 				this.mc.displayGuiScreen(confirmDelete);
 			}
 			this.mc.sndManager.playSoundFX("random.click", 1.0F, 1.0F);
@@ -269,5 +269,5 @@ public class GuiSupercraftSelectWorld extends GuiSupercraftScreen {
 			break;
 		}
 	}
-	
+
 }
