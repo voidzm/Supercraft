@@ -95,7 +95,7 @@ public class GuiSupercraftCreateFlatWorld extends GuiSupercraftScreen {
 		this.drawRect(0, 0, width, 43, 0x77000000);
 		this.drawRect(0, height-60, width, height, 0x77000000);
 		this.drawRect(0, 43, width, 44, 0xAA000000);
-		this.drawRect(0, height-59, width, height-60, 0xAA000000);
+		this.drawRect(0, height-61, width, height-60, 0xAA000000);
 		super.drawScreenForeground(par1, par2, par3);
 		this.listSlot.drawScreen(par1, par2, par3);
 		this.drawCenteredString(this.fontRenderer, this.customizationTitle, this.width / 2, 8, 16777215);

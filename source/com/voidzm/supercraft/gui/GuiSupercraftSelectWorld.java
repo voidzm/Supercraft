@@ -148,7 +148,7 @@ public class GuiSupercraftSelectWorld extends GuiSupercraftScreen {
 		this.drawRect(0, 0, width, 48, 0x77000000);
 		this.drawRect(0, height-80, width, height, 0x77000000);
 		this.drawRect(0, 48, width, 49, 0xAA000000);
-		this.drawRect(0, height-79, width, height-80, 0xAA000000);
+		this.drawRect(0, height-81, width, height-80, 0xAA000000);
 		this.worldSlotContainer.drawScreen(mouseX, mouseY, tick);
 		this.drawCenteredString(this.fontRenderer, this.title, this.width / 2, 20, 16777215);
 		super.drawScreenForeground(mouseX, mouseY, tick);
