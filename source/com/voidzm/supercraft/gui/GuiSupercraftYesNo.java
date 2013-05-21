@@ -51,11 +51,9 @@ public class GuiSupercraftYesNo extends GuiSupercraftScreen {
 		this.parent.imageTick = this.imageTick;
 		switch(id) {
 		case 0:
-			this.mc.sndManager.playSoundFX("random.click", 1.0F, 1.0F);
 			this.parent.confirmClicked(true, this.worldNumber);
 			break;
 		case 1:
-			this.mc.sndManager.playSoundFX("random.click", 1.0F, 1.0F);
 			this.parent.confirmClicked(false, this.worldNumber);
 			break;
 		}

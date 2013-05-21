@@ -218,10 +218,8 @@ public class GuiSupercraftSelectWorld extends GuiSupercraftScreen {
 		case 0:
 			this.parent.imageTick = this.imageTick;
 			this.mc.displayGuiScreen(this.parent);
-			this.mc.sndManager.playSoundFX("random.click", 1.0F, 1.0F);
 			break;
 		case 1:
-			this.mc.sndManager.playSoundFX("random.click", 1.0F, 1.0F);
 			this.selectWorld(this.selectedWorld);
 			break;
 		case 2:
@@ -231,15 +229,12 @@ public class GuiSupercraftSelectWorld extends GuiSupercraftScreen {
 				GuiSupercraftYesNo confirmDelete = getDeleteWorldScreen(this, s, this.selectedWorld);
 				this.mc.displayGuiScreen(confirmDelete);
 			}
-			this.mc.sndManager.playSoundFX("random.click", 1.0F, 1.0F);
 			break;
 		case 3:
 			this.mc.displayGuiScreen(new GuiSupercraftCreateWorld(this));
-			this.mc.sndManager.playSoundFX("random.click", 1.0F, 1.0F);
 			break;
 		case 6:
 			this.mc.displayGuiScreen(new GuiSupercraftRenameWorld(this, this.getSaveFileName(this.selectedWorld)));
-			this.mc.sndManager.playSoundFX("random.click", 1.0F, 1.0F);
 			break;
 		case 7:
 			GuiSupercraftCreateWorld guicreateworld = new GuiSupercraftCreateWorld(this);
@@ -248,7 +243,6 @@ public class GuiSupercraftSelectWorld extends GuiSupercraftScreen {
 			isavehandler.flush();
 			guicreateworld.func_82286_a(worldinfo);
 			this.mc.displayGuiScreen(guicreateworld);
-			this.mc.sndManager.playSoundFX("random.click", 1.0F, 1.0F);
 			break;
 		}
 	}

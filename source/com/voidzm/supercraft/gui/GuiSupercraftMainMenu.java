@@ -41,23 +41,18 @@ public class GuiSupercraftMainMenu extends GuiSupercraftScreen {
 		switch(id) {
 		case 0:
 			mc.displayGuiScreen(new GuiSupercraftSelectWorld(this));
-			this.mc.sndManager.playSoundFX("random.click", 1.0F, 1.0F);
 			break;
 		case 1:
 			mc.displayGuiScreen(new GuiSupercraftMultiplayer(this));
-			this.mc.sndManager.playSoundFX("random.click", 1.0F, 1.0F);
 			break;
 		case 2:
 			mc.displayGuiScreen(new GuiOptions(this, this.mc.gameSettings));
-			this.mc.sndManager.playSoundFX("random.click", 1.0F, 1.0F);
 			break;
 		case 3:
 			mc.displayGuiScreen(new GuiModList(this));
-			this.mc.sndManager.playSoundFX("random.click", 1.0F, 1.0F);
 			break;
 		case 4:
 			mc.shutdown();
-			this.mc.sndManager.playSoundFX("random.click", 1.0F, 1.0F);
 			break;
 		}
 	}

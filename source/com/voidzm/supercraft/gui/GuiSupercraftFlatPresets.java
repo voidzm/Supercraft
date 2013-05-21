@@ -82,13 +82,11 @@ public class GuiSupercraftFlatPresets extends GuiSupercraftScreen {
 				this.parent.setFlatGeneratorInfo(this.theTextField.getText());
 				this.parent.imageTick = this.imageTick;
 				this.mc.displayGuiScreen(this.parent);
-				this.mc.sndManager.playSoundFX("random.click", 1.0F, 1.0F);
 			}
 			break;
 		case 1:
 			this.parent.imageTick = this.imageTick;
 			this.mc.displayGuiScreen(this.parent);
-			this.mc.sndManager.playSoundFX("random.click", 1.0F, 1.0F);
 			break;
 		}
 	}

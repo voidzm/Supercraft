@@ -57,6 +57,7 @@ public class GuiButtonTransparent {
 	public void clickEvent(int mx, int my) {
 		if((isInside(mx, my) && this.enabled) && this.drawButton) {
 			alpha = 60;
+			this.mainMenu.getMinecraft().sndManager.playSoundFX("random.click", 1.0F, 1.0F);
 			this.mainMenu.buttonEvent(this.id);
 		}
 	}

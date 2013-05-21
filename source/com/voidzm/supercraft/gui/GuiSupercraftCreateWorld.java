@@ -198,13 +198,11 @@ public class GuiSupercraftCreateWorld extends GuiSupercraftScreen {
 			if(this.allowCheats && !this.isHardcore) {
 				worldsettings.enableCommands();
 			}
-			this.mc.sndManager.playSoundFX("random.click", 1.0F, 1.0F);
 			this.mc.launchIntegratedServer(this.folderName, this.textWorldName.getText().trim(), worldsettings);
 			break;
 		case 1:
 			this.parent.imageTick = this.imageTick;
 			this.mc.displayGuiScreen(this.parent);
-			this.mc.sndManager.playSoundFX("random.click", 1.0F, 1.0F);
 			break;
 		case 2:
 			if(this.gamemode.equals("survival")) {
@@ -240,16 +238,13 @@ public class GuiSupercraftCreateWorld extends GuiSupercraftScreen {
 				this.isHardcore = false;
 			}
 			this.updateButtonText();
-			this.mc.sndManager.playSoundFX("random.click", 1.0F, 1.0F);
 			break;
 		case 3:
 			this.func_82287_i();
-			this.mc.sndManager.playSoundFX("random.click", 1.0F, 1.0F);
 			break;
 		case 4:
 			this.generateStructures = !this.generateStructures;
 			this.updateButtonText();
-			this.mc.sndManager.playSoundFX("random.click", 1.0F, 1.0F);
 			break;
 		case 5:
 			++this.worldTypeID;
@@ -265,24 +260,20 @@ public class GuiSupercraftCreateWorld extends GuiSupercraftScreen {
 			this.genOptions = "";
 			this.updateButtonText();
 			this.func_82288_a(this.moreOptions);
-			this.mc.sndManager.playSoundFX("random.click", 1.0F, 1.0F);
 			break;
 		case 6:
 			this.cheatsToggled = true;
 			this.allowCheats = !this.allowCheats;
 			this.updateButtonText();
-			this.mc.sndManager.playSoundFX("random.click", 1.0F, 1.0F);
 			break;
 		case 7:
 			this.bonusChest = !this.bonusChest;
 			this.updateButtonText();
-			this.mc.sndManager.playSoundFX("random.click", 1.0F, 1.0F);
 			break;
 		case 8:
 			if(WorldType.worldTypes[this.worldTypeID] == WorldType.FLAT) {
 				this.mc.displayGuiScreen(new GuiSupercraftCreateFlatWorld(this, this.genOptions));
 			}
-			this.mc.sndManager.playSoundFX("random.click", 1.0F, 1.0F);
 			break;
 		}
 	}

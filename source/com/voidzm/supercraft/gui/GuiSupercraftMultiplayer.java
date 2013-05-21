@@ -128,10 +128,8 @@ public class GuiSupercraftMultiplayer extends GuiSupercraftScreen {
 		case 0:
 			this.parent.imageTick = this.imageTick;
 			this.mc.displayGuiScreen(this.parent);
-			this.mc.sndManager.playSoundFX("random.click", 1.0F, 1.0F);
 			break;
 		case 1:
-			this.mc.sndManager.playSoundFX("random.click", 1.0F, 1.0F);
 			this.joinServer(this.selectedServer);
 			break;
 		case 2:
@@ -145,31 +143,26 @@ public class GuiSupercraftMultiplayer extends GuiSupercraftScreen {
 				String s4 = t.translateKey("gui.cancel");
 				GuiSupercraftYesNo guiyesno = new GuiSupercraftYesNo(this, s1, s2, s3, s4, this.selectedServer);
 				this.mc.displayGuiScreen(guiyesno);
-				this.mc.sndManager.playSoundFX("random.click", 1.0F, 1.0F);
 			}
 			break;
 		case 3:
 			this.addClicked = true;
-			this.mc.displayGuiScreen(new GuiScreenAddServer(this, this.serverData = new ServerData(StatCollector.translateToLocal("selectServer.defaultName"), "")));
-			this.mc.sndManager.playSoundFX("random.click", 1.0F, 1.0F);
+			this.mc.displayGuiScreen(new GuiSupercraftAddServer(this, this.serverData = new ServerData(StatCollector.translateToLocal("selectServer.defaultName"), "")));
 			break;
 		case 4:
 			this.directClicked = true;
-			this.mc.displayGuiScreen(new GuiScreenServerList(this, this.serverData = new ServerData(StatCollector.translateToLocal("selectServer.defaultName"), "")));
-			this.mc.sndManager.playSoundFX("random.click", 1.0F, 1.0F);
+			this.mc.displayGuiScreen(new GuiSupercraftDirectConnect(this, this.serverData = new ServerData(StatCollector.translateToLocal("selectServer.defaultName"), "")));
 			break;
 		case 7:
 			this.editClicked = true;
 			ServerData sdata = this.internetServerList.getServerData(this.selectedServer);
 			this.serverData = new ServerData(sdata.serverName, sdata.serverIP);
 			this.serverData.setHideAddress(sdata.isHidingAddress());
-			this.mc.displayGuiScreen(new GuiScreenAddServer(this, this.serverData));
-			this.mc.sndManager.playSoundFX("random.click", 1.0F, 1.0F);
+			this.mc.displayGuiScreen(new GuiSupercraftAddServer(this, this.serverData));
 			break;
 		case 8:
 			this.parent.imageTick = this.imageTick;
 			this.mc.displayGuiScreen(new GuiSupercraftMultiplayer(this.parent));
-			this.mc.sndManager.playSoundFX("random.click", 1.0F, 1.0F);
 			break;
 		}
 	}
@@ -282,7 +275,7 @@ public class GuiSupercraftMultiplayer extends GuiSupercraftScreen {
 	}
 
 	private void connectToServer(ServerData par1ServerData) {
-		this.mc.displayGuiScreen(new GuiConnecting(this, this.mc, par1ServerData));
+		this.mc.displayGuiScreen(new GuiSupercraftConnecting(this, this.mc, par1ServerData));
 	}
 
 	private static void func_74017_b(ServerData par1ServerData) throws IOException {

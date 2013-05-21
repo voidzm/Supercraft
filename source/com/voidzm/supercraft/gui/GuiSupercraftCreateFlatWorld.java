@@ -58,23 +58,19 @@ public class GuiSupercraftCreateFlatWorld extends GuiSupercraftScreen {
 			this.parent.genOptions = this.getFlatGeneratorInfo();
 			this.parent.imageTick = this.imageTick;
 			this.mc.displayGuiScreen(this.parent);
-			this.mc.sndManager.playSoundFX("random.click", 1.0F, 1.0F);
 			break;
 		case 1:
 			this.parent.imageTick = this.imageTick;
 			this.mc.displayGuiScreen(this.parent);
-			this.mc.sndManager.playSoundFX("random.click", 1.0F, 1.0F);
 			break;
 		case 4:
 			if(this.func_82272_i()) {
 				this.genInfo.getFlatLayers().remove(i);
 				this.listSlot.field_82454_a = Math.min(this.listSlot.field_82454_a, this.genInfo.getFlatLayers().size() - 1);
 			}
-			this.mc.sndManager.playSoundFX("random.click", 1.0F, 1.0F);
 			break;
 		case 5:
 			this.mc.displayGuiScreen(new GuiSupercraftFlatPresets(this));
-			this.mc.sndManager.playSoundFX("random.click", 1.0F, 1.0F);
 		}
 		this.genInfo.func_82645_d();
 		this.func_82270_g();
