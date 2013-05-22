@@ -18,7 +18,7 @@ public class BlockSupercraftStairs extends BlockStairs implements IRegisterable 
 	
 	public BlockSupercraftStairs(int par1, Block par2Block, int par3, String internal, String external) {
 		super(par1, par2Block, par3);
-		this.useNeighborBrightness[par1] = true;
+		Block.useNeighborBrightness[par1] = true;
 		this.setStepSound(Block.soundWoodFootstep);
 		this.setUnlocalizedName(internal);
 		this.rdata.internalName = internal;

@@ -22,8 +22,6 @@ public abstract class GuiSupercraftSlot {
 	private int height;
 	protected int top;
 	protected int bottom;
-	private int right;
-	private int left;
 	protected final int slotHeight;
 
 	private int scrollUpButtonID;
@@ -52,8 +50,6 @@ public abstract class GuiSupercraftSlot {
 		this.top = par3;
 		this.bottom = par4;
 		this.slotHeight = par5;
-		this.left = 0;
-		this.right = par1;
 	}
 	
 	public void func_77207_a(int par1, int par2, int par3, int par4) {
@@ -61,8 +57,6 @@ public abstract class GuiSupercraftSlot {
 		this.height = par2;
 		this.top = par3;
 		this.bottom = par4;
-		this.left = 0;
-		this.right = par1;
 	}
 	
 	protected abstract int getSize();
@@ -266,7 +260,6 @@ public abstract class GuiSupercraftSlot {
 			}
 		}
 		GL11.glDisable(GL11.GL_DEPTH_TEST);
-		byte b0 = 4;
 		this.overlayBackground(0, this.top, 255, 255);
 		this.overlayBackground(this.bottom, this.height, 255, 255);
 		GL11.glEnable(GL11.GL_BLEND);

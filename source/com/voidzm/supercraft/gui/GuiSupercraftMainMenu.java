@@ -6,9 +6,6 @@
 package com.voidzm.supercraft.gui;
 
 import java.awt.Color;
-import java.awt.image.BufferedImage;
-
-import net.minecraft.client.gui.GuiMultiplayer;
 import net.minecraft.client.gui.GuiOptions;
 import net.minecraft.util.StringTranslate;
 
@@ -19,8 +16,6 @@ import com.voidzm.supercraft.Supercraft;
 import cpw.mods.fml.client.GuiModList;
 
 public class GuiSupercraftMainMenu extends GuiSupercraftScreen {
-
-	private BufferedImage background;
 	
 	public GuiSupercraftMainMenu() {
 		StringTranslate translator = StringTranslate.getInstance();

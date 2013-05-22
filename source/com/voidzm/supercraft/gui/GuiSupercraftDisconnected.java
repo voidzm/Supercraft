@@ -3,8 +3,6 @@ package com.voidzm.supercraft.gui;
 import java.util.Iterator;
 import java.util.List;
 
-import net.minecraft.client.gui.GuiButton;
-import net.minecraft.client.gui.GuiScreen;
 import net.minecraft.util.StringTranslate;
 
 public class GuiSupercraftDisconnected extends GuiSupercraftScreen {

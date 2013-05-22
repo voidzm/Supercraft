@@ -63,7 +63,6 @@ public class VeneficianPodiumRender implements ISimpleBlockRenderingHandler {
 	@Override
 	public boolean renderWorldBlock(IBlockAccess world, int x, int y, int z, Block block, int modelId, RenderBlocks renderer) {
 		if(block.getRenderType() != ClientProxy.veneficianPodiumRenderID) return false;
-		Tessellator t = Tessellator.instance;
 		renderer.renderAllFaces = true;
 		renderer.setRenderBounds(0.0625, 0.0, 0.0625, 0.9375, 0.125, 0.9375);
 		renderer.renderStandardBlock(Block.obsidian, x, y, z);

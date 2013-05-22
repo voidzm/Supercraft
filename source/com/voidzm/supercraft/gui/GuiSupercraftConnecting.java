@@ -1,11 +1,9 @@
 package com.voidzm.supercraft.gui;
 
 import net.minecraft.client.Minecraft;
-import net.minecraft.client.gui.GuiScreen;
 import net.minecraft.client.multiplayer.NetClientHandler;
 import net.minecraft.client.multiplayer.ServerAddress;
 import net.minecraft.client.multiplayer.ServerData;
-import net.minecraft.client.multiplayer.WorldClient;
 import net.minecraft.util.StringTranslate;
 
 import com.voidzm.supercraft.thread.ThreadSupercraftConnectToServer;

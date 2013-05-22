@@ -59,7 +59,7 @@ public class BlockConduit extends BlockSupercraft {
 		this.makeMultiblock(this.names, ItemBlockSupercraft.class);
 		this.setCreativeTab(Supercraft.elinvarTab);
 		this.setLightOpacity(0);
-		this.useNeighborBrightness[par1] = true;
+		Block.useNeighborBrightness[par1] = true;
 		this.setTickRandomly(true);
 	}
 	
@@ -107,7 +107,7 @@ public class BlockConduit extends BlockSupercraft {
 			super.updateTick(par1World, par2, par3, par4, par5Random);
 			TileEntityConduit te = (TileEntityConduit)par1World.getBlockTileEntity(par2, par3, par4);
 			if(te == null) return;
-			if(te.powerLevel() > te.limitForType(te.conduitType())) {
+			if(te.powerLevel() > TileEntityConduit.limitForType(te.conduitType())) {
 				par1World.removeBlockTileEntity(par2, par3, par4);
 				par1World.setBlockToAir(par2, par3, par4);
 				par1World.createExplosion(new EntityItem(par1World), (double)par2, (double)par3, (double)par4, 1.0F, true);
@@ -128,22 +128,22 @@ public class BlockConduit extends BlockSupercraft {
 		float highX = 0.75F;
 		float highY = 0.75F;
 		float highZ = 0.75F;
-		if(this.isConduitConnectable(world.getBlockId(x+1, y, z), GeneratorSide.EAST)) {
+		if(BlockConduit.isConduitConnectable(world.getBlockId(x+1, y, z), GeneratorSide.EAST)) {
 			highX = 1.0F;
 		}
-		if(this.isConduitConnectable(world.getBlockId(x-1, y, z), GeneratorSide.WEST)) {
+		if(BlockConduit.isConduitConnectable(world.getBlockId(x-1, y, z), GeneratorSide.WEST)) {
 			lowX = 0.0F;
 		}
-		if(this.isConduitConnectable(world.getBlockId(x, y+1, z), GeneratorSide.TOP)) {
+		if(BlockConduit.isConduitConnectable(world.getBlockId(x, y+1, z), GeneratorSide.TOP)) {
 			highY = 1.0F;
 		}
-		if(this.isConduitConnectable(world.getBlockId(x, y-1, z), GeneratorSide.BOTTOM)) {
+		if(BlockConduit.isConduitConnectable(world.getBlockId(x, y-1, z), GeneratorSide.BOTTOM)) {
 			lowY = 0.0F;
 		}
-		if(this.isConduitConnectable(world.getBlockId(x, y, z+1), GeneratorSide.SOUTH)) {
+		if(BlockConduit.isConduitConnectable(world.getBlockId(x, y, z+1), GeneratorSide.SOUTH)) {
 			highZ = 1.0F;
 		}
-		if(this.isConduitConnectable(world.getBlockId(x, y, z-1), GeneratorSide.NORTH)) {
+		if(BlockConduit.isConduitConnectable(world.getBlockId(x, y, z-1), GeneratorSide.NORTH)) {
 			lowZ = 0.0F;
 		}
 		this.setBlockBounds(lowX, lowY, lowZ, highX, highY, highZ);
@@ -182,7 +182,7 @@ public class BlockConduit extends BlockSupercraft {
 		int currentPower = te.powerLevel();
 		int maxPowerFound = 0;
 		for(int neighbor : neighborIDs) {
-			if(this.isConduit(neighbor)) {
+			if(BlockConduit.isConduit(neighbor)) {
 				TileEntityConduit nTE = (TileEntityConduit)par1World.getBlockTileEntity(par2 + (i == 0 ? 1 : (i == 1 ? -1 : 0)), par3 + (i == 4 ? 1 : (i == 5 ? -1 : 0)), par4 + (i == 2 ? 1 : (i == 3 ? -1 : 0)));
 				if(nTE.powerLevel() - 1 >= currentPower && nTE.powerLevel() - 1 > maxPowerFound) {
 					maxPowerFound = nTE.powerLevel() - 1;
@@ -239,7 +239,7 @@ public class BlockConduit extends BlockSupercraft {
 		else {
 			int j = 0;
 			for(int neighbor : neighborIDs) {
-				if(this.isConduit(neighbor)) {
+				if(BlockConduit.isConduit(neighbor)) {
 					TileEntityConduit nTE = (TileEntityConduit)par1World.getBlockTileEntity(par2 + (j == 0 ? 1 : (j == 1 ? -1 : 0)), par3 + (j == 4 ? 1 : (j == 5 ? -1 : 0)), par4 + (j == 2 ? 1 : (j == 3 ? -1 : 0)));
 					if(nTE.powerLevel() < currentPower - 1) {
 						nTE.setPower(currentPower - 1);

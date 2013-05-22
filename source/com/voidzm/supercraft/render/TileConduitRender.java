@@ -25,8 +25,6 @@ public class TileConduitRender extends TileEntitySpecialRenderer {
 	public static String normalPowerLineTexture = "supercraft:renderpowerok";
 	public static String dangerPowerLineTexture = "supercraft:renderpowerdanger";
 	
-	private static String[] postfixes = new String[] {"wood", "stone", "iron", "copper", "aluminum", "silver", "gold", "electrum", "diamond", "cobalt", "platinum", "tantalum", "lithium"};
-	
 	@Override
 	public void renderTileEntityAt(TileEntity var1, double var2, double var4, double var6, float var8) {
 		this.render(var1, var2, var4, var6, var8);
@@ -413,10 +411,6 @@ public class TileConduitRender extends TileEntitySpecialRenderer {
 		double xem = xEnd;
 		double ysm = yStart;
 		double yem = yEnd;
-		
-		double widthDiff = ((16 - (width * 16)) / 2) / 256.0F;
-		double depthDiff = ((16 - (depth * 16)) / 2) / 256.0F;
-		double heightDiff = ((16 - (height * 16)) / 2) / 256.0F;
 
 		t.addVertexWithUV(x1, y1+height, z1, xsm, ysm);
 		t.addVertexWithUV(x1, y1, z1, xsm, yem);

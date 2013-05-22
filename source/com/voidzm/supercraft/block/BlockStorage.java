@@ -9,7 +9,6 @@ public class BlockStorage extends BlockSupercraft {
 
 	public enum StorageType { METAL, CRYSTAL, DUST };
 	
-	private StorageType storageType = StorageType.METAL;
 	private String iconString;
 	
 	public BlockStorage(int id, String iconName, StorageType type) {
@@ -18,7 +17,6 @@ public class BlockStorage extends BlockSupercraft {
 		this.setResistance(5.0F);
 		this.setStepSound((type == StorageType.METAL ? Block.soundMetalFootstep : Block.soundStoneFootstep));
 		this.setCreativeTab(CreativeTabs.tabBlock);
-		this.storageType = type;
 		this.iconString = iconName;
 	}
 	

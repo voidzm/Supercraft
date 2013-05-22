@@ -23,7 +23,6 @@ public class TeleporterDeep extends Teleporter {
 	
 	public void placeInPortal(Entity par1Entity, double par2, double par4, double par6, float par8) {
 		int ex = MathHelper.floor_double(par2);
-		int ey = MathHelper.floor_double(par4);
 		int ez = MathHelper.floor_double(par6);
 		
 		DeepPortalLocation portalLoc = this.locateExistingDeepSpawn(ex, ez);

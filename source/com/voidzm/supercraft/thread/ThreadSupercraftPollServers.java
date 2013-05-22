@@ -18,10 +18,8 @@ import cpw.mods.fml.relauncher.SideOnly;
 public class ThreadSupercraftPollServers extends Thread {
 
 	private final ServerData pollServersServerData;
-	private final GuiSupercraftServerSlot serverSlotContainer;
-
+	
 	public ThreadSupercraftPollServers(GuiSupercraftServerSlot par1GuiSlotServer, ServerData par2ServerData) {
-		this.serverSlotContainer = par1GuiSlotServer;
 		this.pollServersServerData = par2ServerData;
 	}
 

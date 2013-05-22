@@ -28,13 +28,10 @@ public class GuiVeneficianPodium extends GuiContainer implements ICrafting {
 	private GuiTextField powerField;
 	private GuiTextField rangeField;
 	private GuiTextField drainField;
-	private InventoryPlayer inventoryPlayer;
-	
 	private boolean isDisabled = true;
 	
 	public GuiVeneficianPodium(InventoryPlayer par1, World par2World, int par3, int par4, int par5) {
 		super(new ContainerVeneficianPodium(par1, par2World, par3, par4, par5, Minecraft.getMinecraft().thePlayer));
-		this.inventoryPlayer = par1;
 		this.container = (ContainerVeneficianPodium)this.inventorySlots;
 		this.ySize = 186;
 	}

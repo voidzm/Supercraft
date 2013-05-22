@@ -6,8 +6,6 @@ import java.net.UnknownHostException;
 import com.voidzm.supercraft.gui.GuiSupercraftConnecting;
 import com.voidzm.supercraft.gui.GuiSupercraftDisconnected;
 
-import net.minecraft.client.gui.GuiDisconnected;
-import net.minecraft.client.multiplayer.GuiConnecting;
 import net.minecraft.client.multiplayer.NetClientHandler;
 import net.minecraft.network.packet.Packet2ClientProtocol;
 import cpw.mods.fml.relauncher.Side;

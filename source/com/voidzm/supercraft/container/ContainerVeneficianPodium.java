@@ -27,8 +27,6 @@ public class ContainerVeneficianPodium extends Container {
 	private int y;
 	private int z;
 	
-	private EntityPlayer player;
-	
 	private int powerVal = 0;
 	private int rangeVal = 0;
 	private int drainVal = 0;
@@ -40,7 +38,6 @@ public class ContainerVeneficianPodium extends Container {
 		this.x = par3;
 		this.y = par4;
 		this.z = par5;
-		this.player = par6EntityPlayer;
 		this.addSlotToContainer(new SlotVenianRod(this.slot, 0, 30, 45));
 		this.bindPlayerInventory(par1InventoryPlayer);
 	}

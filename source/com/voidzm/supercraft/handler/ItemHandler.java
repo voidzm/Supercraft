@@ -9,7 +9,6 @@ import net.minecraft.block.Block;
 import net.minecraft.item.Item;
 
 import com.voidzm.supercraft.Supercraft;
-import com.voidzm.supercraft.block.BlockSupercraftStone.SupercraftStoneType;
 import com.voidzm.supercraft.item.ItemArcaneBucket;
 import com.voidzm.supercraft.item.ItemArcaneRod;
 import com.voidzm.supercraft.item.ItemEssence;

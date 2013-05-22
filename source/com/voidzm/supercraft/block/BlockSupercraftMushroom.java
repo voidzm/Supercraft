@@ -58,7 +58,7 @@ public class BlockSupercraftMushroom extends BlockSupercraftFlower {
 	public void updateTick(World par1World, int par2, int par3, int par4, Random par5Random) {
 		if(par5Random.nextInt(8) == 0) {
 			if(par5Random.nextInt(3) == 0) {
-				this.doGrow(par1World, par2, par3, par4, par5Random);
+				BlockSupercraftMushroom.doGrow(par1World, par2, par3, par4, par5Random);
 			}
 			else {
 				byte b0 = 4;

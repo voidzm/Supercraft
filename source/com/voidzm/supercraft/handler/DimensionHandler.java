@@ -24,10 +24,8 @@ public class DimensionHandler {
 			throw new RuntimeException("Configuration required for dimension handler initialization!");
 		}
 		config = configObject;
-		int initialWorldListSize = DimensionManager.getWorlds().length;
 		if(config.doalternatesurface) swapSurfaceProvider();
 		createDimensions();
-		int worldsAdded = DimensionManager.getWorlds().length - initialWorldListSize;
 		StartupStats.outputDimensionStats();
 	}
 	

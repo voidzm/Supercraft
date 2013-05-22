@@ -10,12 +10,6 @@ import java.util.List;
 
 import org.lwjgl.input.Keyboard;
 
-import net.minecraft.client.gui.GuiButton;
-import net.minecraft.client.gui.GuiMultiplayer;
-import net.minecraft.client.gui.GuiScreenAddServer;
-import net.minecraft.client.gui.GuiScreenServerList;
-import net.minecraft.client.gui.GuiYesNo;
-import net.minecraft.client.multiplayer.GuiConnecting;
 import net.minecraft.client.multiplayer.LanServer;
 import net.minecraft.client.multiplayer.LanServerList;
 import net.minecraft.client.multiplayer.ServerAddress;

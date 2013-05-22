@@ -143,7 +143,6 @@ public class WorldGenOre implements IWorldGenerator {
 	}
 	
 	private void generateEnd(World world, Random rand, int cx, int cz) {
-		int ky = 0; // Draconium
 		for(int i = 0; i < 16; i++) {
 			int rx = (cx * 16) + rand.nextInt(16);
 			int ry = rand.nextInt(56);

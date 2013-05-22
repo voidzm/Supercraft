@@ -10,13 +10,11 @@ import com.voidzm.supercraft.util.RegisterData;
 
 public class ItemSupercraftHoe extends ItemHoe implements IRegisterable {
 
-	private EnumToolMaterial material;
 	private RegisterData rdata = new RegisterData();
 	private String icon;
 	
 	public ItemSupercraftHoe(int par1, EnumToolMaterial par2EnumToolMaterial, String unlocalized, String localized, String iconPath) {
 		super(par1, par2EnumToolMaterial);
-		material = par2EnumToolMaterial;
 		this.setUnlocalizedName(unlocalized);
 		this.setCreativeTab(CreativeTabs.tabTools);
 		rdata.internalName = unlocalized;

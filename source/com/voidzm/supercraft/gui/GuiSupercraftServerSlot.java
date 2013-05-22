@@ -130,7 +130,6 @@ public class GuiSupercraftServerSlot extends GuiSupercraftSlot {
 		GL11.glColor4f(1.0F, 1.0F, 1.0F, 1.0F);
 		this.parent.getMinecraft().renderEngine.bindTexture("/gui/icons.png");
 		byte b0 = 0;
-		boolean flag3 = false;
 		String s1 = "";
 		int i1;
 		if(flag2) {

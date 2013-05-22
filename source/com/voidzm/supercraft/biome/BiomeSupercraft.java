@@ -15,8 +15,6 @@ import net.minecraft.world.biome.SpawnListEntry;
 
 public class BiomeSupercraft extends BiomeGenBase {
 	
-	private BiomeProperties properties;
-	
 	private int grassColor;
 	private int leavesColor;
 	
@@ -27,7 +25,6 @@ public class BiomeSupercraft extends BiomeGenBase {
 	
 	public BiomeSupercraft(int par1, BiomeProperties prop, String name) {
 		super(par1);
-		this.properties = prop;
 		this.theBiomeDecorator.treesPerChunk = -999;
 		this.theBiomeDecorator.grassPerChunk = prop.grass;
 		this.theBiomeDecorator.reedsPerChunk = prop.sugarCane;

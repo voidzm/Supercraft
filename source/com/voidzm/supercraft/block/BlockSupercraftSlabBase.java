@@ -17,7 +17,7 @@ public class BlockSupercraftSlabBase extends BlockHalfSlab {
 	public BlockSupercraftSlabBase(int par1, Material par2) {
 		super(par1, false, par2);
 		this.setCreativeTab(CreativeTabs.tabBlock);
-		this.useNeighborBrightness[par1] = true;
+		Block.useNeighborBrightness[par1] = true;
 		this.setHardness(2.0F);
 		this.setResistance(5.0F);
 		if(par2 == Material.wood) this.setStepSound(Block.soundWoodFootstep);
