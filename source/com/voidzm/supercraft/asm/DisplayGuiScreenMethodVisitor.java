@@ -25,6 +25,20 @@ public class DisplayGuiScreenMethodVisitor extends MethodVisitor {
 	}
 
 	@Override
+	public void visitCode() {
+		mv.visitVarInsn(ALOAD, 1);
+		mv.visitTypeInsn(INSTANCEOF, "net/minecraft/client/gui/GuiIngameMenu");
+		Label j1 = new Label();
+		mv.visitJumpInsn(IFEQ, j1);
+		mv.visitTypeInsn(NEW, "com/voidzm/supercraft/gui/GuiSupercraftIngameMenu");
+		mv.visitInsn(DUP);
+		mv.visitMethodInsn(INVOKESPECIAL, "com/voidzm/supercraft/gui/GuiSupercraftIngameMenu", "<init>", "()V");
+		mv.visitVarInsn(ASTORE, 1);
+		mv.visitLabel(j1);
+		mv.visitCode();
+	}
+	
+	@Override
 	public void visitFieldInsn(int opcode, String owner, String name, String desc) {
 		String fieldName = SupercraftPlugin.isDevEnvironment ? "showDebugInfo" : ReobfuscationMappingHelper.getInstance().attemptRemapFieldName("net.minecraft.client.settings.GameSettings/showDebugInfo");
 		if(opcode == PUTFIELD && name.equals(fieldName)) {

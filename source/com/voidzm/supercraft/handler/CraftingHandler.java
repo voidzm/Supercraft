@@ -165,6 +165,14 @@ public class CraftingHandler {
 		GameRegistry.addRecipe(new ItemStack(ItemHandler.copperHoe), new Object[] {"cc", " s", " s", 'c', ItemHandler.copperIngot, 's', Item.stick});
 		GameRegistry.addRecipe(new ItemStack(ItemHandler.copperHoe), new Object[] {"cc", "s ", "s ", 'c', ItemHandler.copperIngot, 's', Item.stick});
 		
+		GameRegistry.addRecipe(new ItemStack(ItemHandler.lithiumPickaxe), new Object[] {"lll", " s ", " s ", 'l', ItemHandler.lithiumIngot, 's', Item.stick});
+		GameRegistry.addRecipe(new ItemStack(ItemHandler.lithiumSword), new Object[] {"l", "l", "s", 'l', ItemHandler.lithiumIngot, 's', Item.stick});
+		GameRegistry.addRecipe(new ItemStack(ItemHandler.lithiumShovel), new Object[] {"l", "s", "s", 'l', ItemHandler.lithiumIngot, 's', Item.stick});
+		GameRegistry.addRecipe(new ItemStack(ItemHandler.lithiumAxe), new Object[] {"ll", "ls", " s", 'l', ItemHandler.lithiumIngot, 's', Item.stick});
+		GameRegistry.addRecipe(new ItemStack(ItemHandler.lithiumAxe), new Object[] {"ll", "sl", "s ", 'l', ItemHandler.lithiumIngot, 's', Item.stick});
+		GameRegistry.addRecipe(new ItemStack(ItemHandler.lithiumHoe), new Object[] {"ll", " s", " s", 'l', ItemHandler.lithiumIngot, 's', Item.stick});
+		GameRegistry.addRecipe(new ItemStack(ItemHandler.lithiumHoe), new Object[] {"ll", "s ", "s ", 'l', ItemHandler.lithiumIngot, 's', Item.stick});
+		
 		GameRegistry.addRecipe(new ItemStack(ItemHandler.arcaneBucket), new Object[] {"s s", " s ", 's', ItemHandler.silverIngot});
 	}
 	
