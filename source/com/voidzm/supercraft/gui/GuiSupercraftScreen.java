@@ -26,8 +26,8 @@ public class GuiSupercraftScreen extends GuiScreen {
 	
 	public int imageTick = 0;
 	
-	private static final int imageTime = 200;
-	private static final int transitionTime = 100;
+	private static final float imageTime = 250.0F;
+	private static final float transitionTime = 120.0F;
 	
 	public GuiSupercraftScreen() {
 		try {
@@ -35,7 +35,7 @@ public class GuiSupercraftScreen extends GuiScreen {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		imageTick = new Random().nextInt(4)*imageTime;
+		imageTick = new Random().nextInt(4)*(int)imageTime;
 	}
 	
 	public void buttonEvent(int id) {}
@@ -69,26 +69,30 @@ public class GuiSupercraftScreen extends GuiScreen {
 
 	public void drawScreenBackground(int mouseX, int mouseY, float tick) {
 		if(imageTick >= imageTime*4) imageTick = 0;
-		float basef = imageTick / imageTime;
-		int base = (int)Math.floor(basef);
-		int prog = (int)imageTick % imageTime;
-		if(base == 0) GL11.glBindTexture(GL11.GL_TEXTURE_2D, this.mc.renderEngine.getTexture("/mods/supercraft/textures/gui/bg.png"));
-		else if(base == 1) GL11.glBindTexture(GL11.GL_TEXTURE_2D, this.mc.renderEngine.getTexture("/mods/supercraft/textures/gui/bg2.png"));
-		else if(base == 2) GL11.glBindTexture(GL11.GL_TEXTURE_2D, this.mc.renderEngine.getTexture("/mods/supercraft/textures/gui/bg3.png"));
-		else if(base == 3) GL11.glBindTexture(GL11.GL_TEXTURE_2D, this.mc.renderEngine.getTexture("/mods/supercraft/textures/gui/bg4.png"));
+		float tickf = ((float)imageTick)+tick;
+		float indexf = imageTick / imageTime;
+		int index = (int)Math.floor(indexf);
+		float progress = tickf - (imageTime * (float)index);
+		if(index == 0) GL11.glBindTexture(GL11.GL_TEXTURE_2D, this.mc.renderEngine.getTexture("/mods/supercraft/textures/gui/bg.png"));
+		else if(index == 1) GL11.glBindTexture(GL11.GL_TEXTURE_2D, this.mc.renderEngine.getTexture("/mods/supercraft/textures/gui/bg2.png"));
+		else if(index == 2) GL11.glBindTexture(GL11.GL_TEXTURE_2D, this.mc.renderEngine.getTexture("/mods/supercraft/textures/gui/bg3.png"));
+		else if(index == 3) GL11.glBindTexture(GL11.GL_TEXTURE_2D, this.mc.renderEngine.getTexture("/mods/supercraft/textures/gui/bg4.png"));
 		GL11.glColor4f(1.0F, 1.0F, 1.0F, 1.0F);
 		int[] locs = this.calcPositions();
 		this.drawTexture(locs[0], locs[1], locs[2], locs[3]);
-		if(prog >= (imageTime-transitionTime)) {
+		if(progress >= (imageTime-transitionTime)) {
 			GL11.glPushMatrix();
-			int alpha = (prog-(imageTime-transitionTime))*2;
-			if(base == 0) GL11.glBindTexture(GL11.GL_TEXTURE_2D, this.mc.renderEngine.getTexture("/mods/supercraft/textures/gui/bg2.png"));
-			else if(base == 1) GL11.glBindTexture(GL11.GL_TEXTURE_2D, this.mc.renderEngine.getTexture("/mods/supercraft/textures/gui/bg3.png"));
-			else if(base == 2) GL11.glBindTexture(GL11.GL_TEXTURE_2D, this.mc.renderEngine.getTexture("/mods/supercraft/textures/gui/bg4.png"));
-			else if(base == 3) GL11.glBindTexture(GL11.GL_TEXTURE_2D, this.mc.renderEngine.getTexture("/mods/supercraft/textures/gui/bg.png"));
+			double elapsed = progress-(imageTime-transitionTime);
+			elapsed /= (double)transitionTime;
+			double alpha = calculateEasingFunction(elapsed);
+			System.out.println("For tick "+elapsed+", value is "+alpha+".");
+			if(index == 0) GL11.glBindTexture(GL11.GL_TEXTURE_2D, this.mc.renderEngine.getTexture("/mods/supercraft/textures/gui/bg2.png"));
+			else if(index == 1) GL11.glBindTexture(GL11.GL_TEXTURE_2D, this.mc.renderEngine.getTexture("/mods/supercraft/textures/gui/bg3.png"));
+			else if(index == 2) GL11.glBindTexture(GL11.GL_TEXTURE_2D, this.mc.renderEngine.getTexture("/mods/supercraft/textures/gui/bg4.png"));
+			else if(index == 3) GL11.glBindTexture(GL11.GL_TEXTURE_2D, this.mc.renderEngine.getTexture("/mods/supercraft/textures/gui/bg.png"));
 			GL11.glEnable(GL11.GL_BLEND);
 			GL11.glBlendFunc(GL11.GL_SRC_ALPHA, GL11.GL_ONE_MINUS_SRC_ALPHA);
-			GL11.glColor4f(1.0F, 1.0F, 1.0F, ((float)alpha)/100);
+			GL11.glColor4d(1.0D, 1.0D, 1.0D, (double)alpha);
 			this.drawTexture(locs[0], locs[1], locs[2], locs[3]);
 			GL11.glPopMatrix();
 		}
@@ -142,6 +146,11 @@ public class GuiSupercraftScreen extends GuiScreen {
 	
 	public float getZLevel() {
 		return this.zLevel;
+	}
+	
+	public static double calculateEasingFunction(double elapsed) {
+		double constant = 4.0D;
+		return Math.pow(elapsed, constant) / (Math.pow(elapsed, constant) + Math.pow(1.0D - elapsed, constant));
 	}
 
 }

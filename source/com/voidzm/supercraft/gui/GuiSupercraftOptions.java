@@ -12,16 +12,19 @@ import net.minecraft.util.StatCollector;
 import net.minecraft.util.StringTranslate;
 
 public class GuiSupercraftOptions extends GuiSupercraftScreen {
-
-	//private static final EnumOptions[] relevantOptions = { EnumOptions.MUSIC, EnumOptions.SOUND, EnumOptions.INVERT_MOUSE, EnumOptions.SENSITIVITY, EnumOptions.FOV, EnumOptions.DIFFICULTY, EnumOptions.TOUCHSCREEN };
 	
 	private GuiSupercraftScreen parent;
 	private GameSettings settings;
 	private String screenTitle = "Options";
 	
+	public boolean isIngame = false;
+	
 	public GuiSupercraftOptions(GuiSupercraftScreen par1GuiScreen, GameSettings par2GameSettings) {
 		this.parent = par1GuiScreen;
 		this.imageTick = par1GuiScreen.imageTick;
+		if(par1GuiScreen instanceof GuiSupercraftIngameMenu) {
+			this.isIngame = true;
+		}
 		this.settings = par2GameSettings;
 	}
 
@@ -65,7 +68,7 @@ public class GuiSupercraftOptions extends GuiSupercraftScreen {
 				break;
 			case 7:
 				this.mc.gameSettings.saveOptions();
-				this.mc.displayGuiScreen(new GuiVideoSettings(this, this.settings));
+				this.mc.displayGuiScreen(new GuiSupercraftVideoSettings(this, this.settings));
 				break;
 			case 8:
 				this.mc.gameSettings.saveOptions();
@@ -99,7 +102,7 @@ public class GuiSupercraftOptions extends GuiSupercraftScreen {
 
 	@Override
 	public void drawScreen(int par1, int par2, float par3) {
-		if(!(this.parent instanceof GuiSupercraftIngameMenu)) {
+		if(!isIngame) {
 			super.drawScreenBackground(par1, par2, par3);
 		}
 		this.drawRect(0, 0, width, height, 0xBB000000);
