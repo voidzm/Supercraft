@@ -331,8 +331,7 @@ public class GuiSupercraftCreateWorld extends GuiSupercraftScreen {
 
 	@Override
 	public void drawScreenForeground(int par1, int par2, float par3) {
-		this.drawRect(0, 0, width, height, 0x88000000);
-		this.drawRect(0, 0, width, height, 0x77000000);
+		this.drawRect(0, 0, width, height, 0xBB000000);
 		super.drawScreenForeground(par1, par2, par3);
 		StringTranslate t = StringTranslate.getInstance();
 		this.drawCenteredString(this.fontRenderer, t.translateKey("selectWorld.create"), this.width / 2, 20, 16777215);

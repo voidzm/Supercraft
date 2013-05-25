@@ -6,7 +6,6 @@
 package com.voidzm.supercraft.gui;
 
 import java.awt.Color;
-import net.minecraft.client.gui.GuiOptions;
 import net.minecraft.util.StringTranslate;
 
 import org.lwjgl.opengl.GL11;
@@ -41,7 +40,7 @@ public class GuiSupercraftMainMenu extends GuiSupercraftScreen {
 			mc.displayGuiScreen(new GuiSupercraftMultiplayer(this));
 			break;
 		case 2:
-			mc.displayGuiScreen(new GuiOptions(this, this.mc.gameSettings));
+			mc.displayGuiScreen(new GuiSupercraftOptions(this, this.mc.gameSettings));
 			break;
 		case 3:
 			mc.displayGuiScreen(new GuiModList(this));

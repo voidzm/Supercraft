@@ -144,11 +144,11 @@ public class GuiSupercraftSelectWorld extends GuiSupercraftScreen {
 	
 	@Override
 	public void drawScreenForeground(int mouseX, int mouseY, float tick) {
-		this.drawRect(0, 0, width, height, 0x88000000);
-		this.drawRect(0, 0, width, 48, 0x77000000);
-		this.drawRect(0, height-80, width, height, 0x77000000);
-		this.drawRect(0, 48, width, 49, 0xAA000000);
-		this.drawRect(0, height-81, width, height-80, 0xAA000000);
+		this.drawRect(0, 0, width, 48, 0xBB000000);
+		this.drawRect(0, 48, width, 49, 0xDD000000);
+		this.drawRect(0, 49, width, height-81, 0x88000000);
+		this.drawRect(0, height-81, width, height-80, 0xDD000000);
+		this.drawRect(0, height-80, width, height, 0xBB000000);
 		this.worldSlotContainer.drawScreen(mouseX, mouseY, tick);
 		this.drawCenteredString(this.fontRenderer, this.title, this.width / 2, 20, 16777215);
 		super.drawScreenForeground(mouseX, mouseY, tick);

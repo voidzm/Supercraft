@@ -93,11 +93,11 @@ public class GuiSupercraftFlatPresets extends GuiSupercraftScreen {
 
 	@Override
 	public void drawScreenForeground(int par1, int par2, float par3) {
-		this.drawRect(0, 0, width, height, 0x88000000);
-		this.drawRect(0, 0, width, 80, 0x77000000);
-		this.drawRect(0, height-37, width, height, 0x77000000);
-		this.drawRect(0, 80, width, 81, 0xAA000000);
-		this.drawRect(0, height-38, width, height-37, 0xAA000000);
+		this.drawRect(0, 0, width, 80, 0xBB000000);
+		this.drawRect(0, 80, width, 81, 0xDD000000);
+		this.drawRect(0, 81, width, height-38, 0x88000000);
+		this.drawRect(0, height-38, width, height-37, 0xDD000000);
+		this.drawRect(0, height-37, width, height, 0xBB000000);
 		super.drawScreenForeground(par1, par2, par3);
 		this.theFlatPresetsListSlot.drawScreen(par1, par2, par3);
 		this.drawCenteredString(this.fontRenderer, this.field_82300_d, this.width / 2, 8, 16777215);

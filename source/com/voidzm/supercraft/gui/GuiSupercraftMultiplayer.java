@@ -240,11 +240,11 @@ public class GuiSupercraftMultiplayer extends GuiSupercraftScreen {
 
 	@Override
 	public void drawScreenForeground(int par1, int par2, float par3) {
-		this.drawRect(0, 0, width, height, 0x88000000);
-		this.drawRect(0, 0, width, 32, 0x77000000);
-		this.drawRect(0, height-64, width, height, 0x77000000);
-		this.drawRect(0, 32, width, 33, 0xAA000000);
-		this.drawRect(0, height-65, width, height-64, 0xAA000000);
+		this.drawRect(0, 0, width, 32, 0xBB000000);
+		this.drawRect(0, 32, width, 33, 0xDD000000);
+		this.drawRect(0, 33, width, height-65, 0x88000000);
+		this.drawRect(0, height-65, width, height-64, 0xDD000000);
+		this.drawRect(0, height-64, width, height, 0xBB000000);
 		super.drawScreenForeground(par1, par2, par3);
 		this.lagTooltip = null;
 		StringTranslate t = StringTranslate.getInstance();

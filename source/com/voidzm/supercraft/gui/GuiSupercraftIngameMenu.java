@@ -1,6 +1,5 @@
 package com.voidzm.supercraft.gui;
 
-import net.minecraft.client.gui.GuiOptions;
 import net.minecraft.client.gui.GuiScreen;
 import net.minecraft.client.gui.GuiShareToLan;
 import net.minecraft.client.gui.achievement.GuiAchievements;
@@ -31,7 +30,7 @@ public class GuiSupercraftIngameMenu extends GuiSupercraftScreen {
 	public void buttonEvent(int id) {
 		switch(id) {
 			case 0:
-				this.mc.displayGuiScreen(new GuiOptions(this, this.mc.gameSettings));
+				this.mc.displayGuiScreen(new GuiSupercraftOptions(this, this.mc.gameSettings));
 				break;
 			case 1:
 				this.buttons.get(0).enabled = false;

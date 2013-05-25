@@ -61,8 +61,7 @@ public class GuiSupercraftYesNo extends GuiSupercraftScreen {
 
 	@Override
 	public void drawScreenForeground(int par1, int par2, float par3) {
-		this.drawRect(0, 0, width, height, 0x88000000);
-		this.drawRect(0, 0, width, height, 0x77000000);
+		this.drawRect(0, 0, width, height, 0xBB000000);
 		super.drawScreenForeground(par1, par2, par3);
 		this.drawCenteredString(this.fontRenderer, this.message1, this.width / 2, 70, 16777215);
 		this.drawCenteredString(this.fontRenderer, this.message2, this.width / 2, 90, 16777215);

@@ -87,11 +87,11 @@ public class GuiSupercraftCreateFlatWorld extends GuiSupercraftScreen {
 
 	@Override
 	public void drawScreenForeground(int par1, int par2, float par3) {
-		this.drawRect(0, 0, width, height, 0x88000000);
-		this.drawRect(0, 0, width, 43, 0x77000000);
-		this.drawRect(0, height-60, width, height, 0x77000000);
-		this.drawRect(0, 43, width, 44, 0xAA000000);
-		this.drawRect(0, height-61, width, height-60, 0xAA000000);
+		this.drawRect(0, 0, width, 43, 0xBB000000);
+		this.drawRect(0, 43, width, 44, 0xDD000000);
+		this.drawRect(0, 44, width, height-61, 0x88000000);
+		this.drawRect(0, height-61, width, height-60, 0xDD000000);
+		this.drawRect(0, height-60, width, height, 0xBB000000);
 		super.drawScreenForeground(par1, par2, par3);
 		this.listSlot.drawScreen(par1, par2, par3);
 		this.drawCenteredString(this.fontRenderer, this.customizationTitle, this.width / 2, 8, 16777215);

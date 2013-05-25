@@ -9,11 +9,12 @@ import java.awt.Color;
 
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.FontRenderer;
+import net.minecraft.client.gui.Gui;
 
-public class GuiButtonTransparent {
+public class GuiButtonTransparent extends Gui {
 	
 	private GuiSupercraftScreen mainMenu;
-	private int x, y, width, height, alpha;
+	public int x, y, width, height, alpha;
 	public int id;
 	public String text;
 	private FontRenderer render;
@@ -32,6 +33,17 @@ public class GuiButtonTransparent {
 		this.render = Minecraft.getMinecraft().fontRenderer;
 	}
 	
+	public int getHoverState(boolean par1) {
+		byte b0 = 1;
+		if(!this.enabled) {
+			b0 = 0;
+		}
+		else if(par1) {
+			b0 = 2;
+		}
+		return b0;
+	}
+
 	public void draw(int mx, int my) {
 		if(!drawButton) return;
 		if(isInside(mx, my) && this.enabled) {
@@ -47,18 +59,23 @@ public class GuiButtonTransparent {
 		}
 		mainMenu.drawCenteredString(render, textMod, x + (width / 2), y + (height / 4), this.enabled ? Color.WHITE.getRGB() : 6710886);
 		mainMenu.drawRect(x, y, x + width, y + height, boxColor.getRGB());
+		this.draggedEvent(mx, my);
 	}
 	
 	public boolean isInside(int mx, int my) {
 		return mx >= x && my >= y && mx <= x + width && my <= y + height;
 	}
 	
-	public void clickEvent(int mx, int my) {
+	public boolean clickEvent(int mx, int my) {
 		if((isInside(mx, my) && this.enabled) && this.drawButton) {
 			alpha = 60;
-			this.mainMenu.getMinecraft().sndManager.playSoundFX("random.click", 1.0F, 1.0F);
-			this.mainMenu.buttonEvent(this.id);
+			return true;
 		}
+		return false;
 	}
 	
+	public void draggedEvent(int par1, int par2) {}
+	
+	public void releasedEvent(int par1, int par2) {}
+
 }

@@ -22,6 +22,7 @@ public class GuiSupercraftScreen extends GuiScreen {
 
 	private BufferedImage background;
 	protected ArrayList<GuiButtonTransparent> buttons = new ArrayList<GuiButtonTransparent>();
+	private GuiButtonTransparent selectedButton = null;
 	
 	public int imageTick = 0;
 	
@@ -38,19 +39,34 @@ public class GuiSupercraftScreen extends GuiScreen {
 	}
 	
 	public void buttonEvent(int id) {}
-	
+
 	@Override
 	protected void mouseClicked(int mx, int my, int par3) {
-		for(GuiButtonTransparent button : buttons) {
-			button.clickEvent(mx, my);
+		if(par3 == 0) {
+			for(int l = 0; l < this.buttons.size(); ++l) {
+				GuiButtonTransparent guibutton = (GuiButtonTransparent)this.buttons.get(l);
+				if(guibutton.clickEvent(mx, my)) {
+					this.selectedButton = guibutton;
+					this.mc.sndManager.playSoundFX("random.click", 1.0F, 1.0F);
+					this.buttonEvent(guibutton.id);
+				}
+			}
 		}
 	}
-	
+
+	@Override
+	protected void mouseMovedOrUp(int mx, int my, int par3) {
+		if(this.selectedButton != null && par3 == 0) {
+			this.selectedButton.releasedEvent(mx, my);
+			this.selectedButton = null;
+		}
+	}
+
 	@Override
 	public void updateScreen() {
 		imageTick++;
 	}
-	
+
 	public void drawScreenBackground(int mouseX, int mouseY, float tick) {
 		if(imageTick >= imageTime*4) imageTick = 0;
 		float basef = imageTick / imageTime;
@@ -127,5 +143,5 @@ public class GuiSupercraftScreen extends GuiScreen {
 	public float getZLevel() {
 		return this.zLevel;
 	}
-	
+
 }
