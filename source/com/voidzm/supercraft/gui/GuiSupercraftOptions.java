@@ -72,11 +72,11 @@ public class GuiSupercraftOptions extends GuiSupercraftScreen {
 				break;
 			case 8:
 				this.mc.gameSettings.saveOptions();
-				this.mc.displayGuiScreen(new GuiControls(this, this.settings));
+				this.mc.displayGuiScreen(new GuiSupercraftControls(this, this.settings));
 				break;
 			case 9:
 				this.mc.gameSettings.saveOptions();
-				this.mc.displayGuiScreen(new GuiLanguage(this, this.settings));
+				this.mc.displayGuiScreen(new GuiSupercraftLanguage(this, this.settings));
 				break;
 			case 10:
 				this.mc.gameSettings.saveOptions();

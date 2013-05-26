@@ -9,6 +9,7 @@ import java.util.List;
 
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiButton;
+import net.minecraft.client.gui.ScaledResolution;
 import net.minecraft.client.renderer.Tessellator;
 
 import org.lwjgl.input.Mouse;
@@ -234,6 +235,13 @@ public abstract class GuiSupercraftSlot {
 			i2 = this.slotHeight - 4;
 			if(j2 <= this.bottom && j2 + i2 >= this.top) {
 				if(this.showSelectionBox && this.isSelected(l1)) {
+					GL11.glPushMatrix();
+					GL11.glEnable(GL11.GL_SCISSOR_TEST);
+					ScaledResolution res = new ScaledResolution(mc.gameSettings, mc.displayWidth, mc.displayHeight);
+					int f = res.getScaleFactor();
+					int trueb = this.height - this.bottom;
+					int trueh = this.height - this.top;
+					GL11.glScissor(0, (trueb*f), this.width*f, (trueh - trueb)*f);
 					i3 = this.width / 2 - 110;
 					int j3 = this.width / 2 + 110;
 					GL11.glColor4f(1.0F, 1.0F, 1.0F, 1.0F);
@@ -255,6 +263,8 @@ public abstract class GuiSupercraftSlot {
 					tessellator.addVertexWithUV((double)((i3 + 1) - boxshift), (double)((j2 - 1) - boxshift), 0.0D, 0.0D, 0.0D);
 					tessellator.draw();
 					GL11.glEnable(GL11.GL_TEXTURE_2D);
+					GL11.glDisable(GL11.GL_SCISSOR_TEST);
+					GL11.glPopMatrix();
 				}
 				this.drawSlot(l1, j1, j2, i2, tessellator);
 			}

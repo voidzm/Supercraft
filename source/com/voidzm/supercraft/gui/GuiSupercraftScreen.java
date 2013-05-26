@@ -85,7 +85,6 @@ public class GuiSupercraftScreen extends GuiScreen {
 			double elapsed = progress-(imageTime-transitionTime);
 			elapsed /= (double)transitionTime;
 			double alpha = calculateEasingFunction(elapsed);
-			System.out.println("For tick "+elapsed+", value is "+alpha+".");
 			if(index == 0) GL11.glBindTexture(GL11.GL_TEXTURE_2D, this.mc.renderEngine.getTexture("/mods/supercraft/textures/gui/bg2.png"));
 			else if(index == 1) GL11.glBindTexture(GL11.GL_TEXTURE_2D, this.mc.renderEngine.getTexture("/mods/supercraft/textures/gui/bg3.png"));
 			else if(index == 2) GL11.glBindTexture(GL11.GL_TEXTURE_2D, this.mc.renderEngine.getTexture("/mods/supercraft/textures/gui/bg4.png"));
