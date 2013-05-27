@@ -80,7 +80,7 @@ public class GuiSupercraftOptions extends GuiSupercraftScreen {
 				break;
 			case 10:
 				this.mc.gameSettings.saveOptions();
-				this.mc.displayGuiScreen(new ScreenChatOptions(this, this.settings));
+				this.mc.displayGuiScreen(new GuiSupercraftMultiplayerOptions(this, this.settings));
 				break;
 			case 11:
 				this.mc.gameSettings.saveOptions();

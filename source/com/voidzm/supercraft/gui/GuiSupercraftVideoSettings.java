@@ -19,8 +19,6 @@ public class GuiSupercraftVideoSettings extends GuiSupercraftScreen {
 	private boolean is64Bit = false;
 	
 	public boolean isIngame = false;
-	
-	private static EnumOptions[] videoOptions = new EnumOptions[] { EnumOptions.GRAPHICS, EnumOptions.RENDER_DISTANCE, EnumOptions.AMBIENT_OCCLUSION, EnumOptions.FRAMERATE_LIMIT, EnumOptions.ANAGLYPH, EnumOptions.VIEW_BOBBING, EnumOptions.GUI_SCALE, EnumOptions.ADVANCED_OPENGL, EnumOptions.GAMMA, EnumOptions.RENDER_CLOUDS, EnumOptions.PARTICLES, EnumOptions.USE_SERVER_TEXTURES, EnumOptions.USE_FULLSCREEN, EnumOptions.ENABLE_VSYNC };
 
 	public GuiSupercraftVideoSettings(GuiSupercraftScreen par1GuiScreen, GameSettings par2GameSettings) {
 		this.parent = par1GuiScreen;
