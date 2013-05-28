@@ -238,7 +238,7 @@ public abstract class GuiSupercraftSlot {
 				int f = res.getScaleFactor();
 				int trueb = this.height - this.bottom;
 				int trueh = this.height - this.top;
-				GL11.glScissor(0, (trueb*f), this.width*f, (trueh - trueb)*f);
+				GL11.glScissor(0, (trueb+1)*f, this.width*f, ((trueh - trueb) - 2)*f);
 				if(this.showSelectionBox && this.isSelected(l1)) {
 					i3 = this.width / 2 - 110;
 					int j3 = this.width / 2 + 110;
