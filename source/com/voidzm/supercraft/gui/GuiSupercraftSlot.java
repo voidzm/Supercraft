@@ -19,8 +19,8 @@ public abstract class GuiSupercraftSlot {
 
 	private final Minecraft mc;
 
-	private int width;
-	private int height;
+	protected int width;
+	protected int height;
 	protected int top;
 	protected int bottom;
 	protected final int slotHeight;

@@ -57,6 +57,8 @@ public class SupercraftModContainer extends DummyModContainer {
 		meta.authorList = Arrays.asList("voidzm");
 		meta.description = "The coremod functionality of Supercraft.";
 		meta.credits = "Designed and coded by voidzm.";
+		meta.url = "https://github.com/voidzm/Supercraft/";
+		meta.logoFile = "/mods/supercraft/textures/gui/logo.png";
 		return meta;
 	}
 

@@ -43,7 +43,7 @@ public class GuiSupercraftMainMenu extends GuiSupercraftScreen {
 			mc.displayGuiScreen(new GuiSupercraftOptions(this, this.mc.gameSettings));
 			break;
 		case 3:
-			mc.displayGuiScreen(new GuiModList(this));
+			mc.displayGuiScreen(new GuiSupercraftModList(this));
 			break;
 		case 4:
 			mc.shutdown();

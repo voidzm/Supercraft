@@ -7,6 +7,8 @@
 	"credits": "Designed and coded by voidzm",
 	"mcversion": "1.5.2",
 	"authors": ["voidzm"],
+	"url": "https://github.com/voidzm/Supercraft/",
+	"logoFile": "/mods/supercraft/textures/gui/logo.png",
 	"dependencies": ["mod_MinecraftForge"]
 }
 ]
