@@ -48,13 +48,13 @@ public class GuiSupercraftIngameMenu extends GuiSupercraftScreen {
 				this.mc.sndManager.resumeAllSounds();
 				break;
 			case 5:
-				this.mc.displayGuiScreen(new GuiAchievements(this.mc.statFileWriter));
+				this.mc.displayGuiScreen(new GuiSupercraftAchievements(this.mc.statFileWriter));
 				break;
 			case 6:
 				this.mc.displayGuiScreen(new GuiStats(this, this.mc.statFileWriter));
 				break;
 			case 7:
-				this.mc.displayGuiScreen(new GuiShareToLan(this));
+				this.mc.displayGuiScreen(new GuiSupercraftOpenToLAN(this));
 		}
 	}
 
