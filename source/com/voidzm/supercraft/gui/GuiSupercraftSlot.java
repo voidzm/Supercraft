@@ -220,6 +220,15 @@ public abstract class GuiSupercraftSlot {
 		this.bindAmountScrolled();
 		GL11.glDisable(GL11.GL_LIGHTING);
 		GL11.glDisable(GL11.GL_FOG);
+		
+		GL11.glPushMatrix();
+		GL11.glEnable(GL11.GL_SCISSOR_TEST);
+		ScaledResolution res = new ScaledResolution(mc.gameSettings, mc.displayWidth, mc.displayHeight);
+		int f = res.getScaleFactor();
+		int trueb = this.height - this.bottom;
+		int trueh = this.height - this.top;
+		GL11.glScissor(0, (trueb+1)*f, this.width*f, ((trueh - trueb) - 2)*f);
+		
 		Tessellator tessellator = Tessellator.instance;
 		drawContainerBackground(tessellator);
 		j1 = this.width / 2 - 92 - 16;
@@ -232,13 +241,6 @@ public abstract class GuiSupercraftSlot {
 			j2 = k1 + l1 * this.slotHeight + this.field_77242_t;
 			i2 = this.slotHeight - 4;
 			if(j2 <= this.bottom && j2 + i2 >= this.top) {
-				GL11.glPushMatrix();
-				GL11.glEnable(GL11.GL_SCISSOR_TEST);
-				ScaledResolution res = new ScaledResolution(mc.gameSettings, mc.displayWidth, mc.displayHeight);
-				int f = res.getScaleFactor();
-				int trueb = this.height - this.bottom;
-				int trueh = this.height - this.top;
-				GL11.glScissor(0, (trueb+1)*f, this.width*f, ((trueh - trueb) - 2)*f);
 				if(this.showSelectionBox && this.isSelected(l1)) {
 					i3 = this.width / 2 - 110;
 					int j3 = this.width / 2 + 110;
@@ -263,8 +265,6 @@ public abstract class GuiSupercraftSlot {
 					GL11.glEnable(GL11.GL_TEXTURE_2D);
 				}
 				this.drawSlot(l1, j1, j2, i2, tessellator);
-				GL11.glDisable(GL11.GL_SCISSOR_TEST);
-				GL11.glPopMatrix();
 			}
 		}
 		GL11.glDisable(GL11.GL_DEPTH_TEST);
@@ -315,6 +315,9 @@ public abstract class GuiSupercraftSlot {
 		GL11.glShadeModel(GL11.GL_FLAT);
 		GL11.glEnable(GL11.GL_ALPHA_TEST);
 		GL11.glDisable(GL11.GL_BLEND);
+		
+		GL11.glDisable(GL11.GL_SCISSOR_TEST);
+		GL11.glPopMatrix();
 	}
 
 	protected int getScrollBarX() {

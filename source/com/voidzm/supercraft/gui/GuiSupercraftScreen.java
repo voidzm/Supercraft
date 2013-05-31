@@ -35,7 +35,7 @@ public class GuiSupercraftScreen extends GuiScreen {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		imageTick = new Random().nextInt(4)*(int)imageTime;
+		imageTick = new Random().nextInt(6)*(int)imageTime;
 	}
 	
 	public void buttonEvent(int id) {}
@@ -68,7 +68,7 @@ public class GuiSupercraftScreen extends GuiScreen {
 	}
 
 	public void drawScreenBackground(int mouseX, int mouseY, float tick) {
-		if(imageTick >= imageTime*4) imageTick = 0;
+		if(imageTick >= imageTime*6) imageTick = 0;
 		float tickf = ((float)imageTick)+tick;
 		float indexf = imageTick / imageTime;
 		int index = (int)Math.floor(indexf);
@@ -77,6 +77,8 @@ public class GuiSupercraftScreen extends GuiScreen {
 		else if(index == 1) GL11.glBindTexture(GL11.GL_TEXTURE_2D, this.mc.renderEngine.getTexture("/mods/supercraft/textures/gui/bg2.png"));
 		else if(index == 2) GL11.glBindTexture(GL11.GL_TEXTURE_2D, this.mc.renderEngine.getTexture("/mods/supercraft/textures/gui/bg3.png"));
 		else if(index == 3) GL11.glBindTexture(GL11.GL_TEXTURE_2D, this.mc.renderEngine.getTexture("/mods/supercraft/textures/gui/bg4.png"));
+		else if(index == 4) GL11.glBindTexture(GL11.GL_TEXTURE_2D, this.mc.renderEngine.getTexture("/mods/supercraft/textures/gui/bg5.png"));
+		else if(index == 5) GL11.glBindTexture(GL11.GL_TEXTURE_2D, this.mc.renderEngine.getTexture("/mods/supercraft/textures/gui/bg6.png"));
 		GL11.glColor4f(1.0F, 1.0F, 1.0F, 1.0F);
 		int[] locs = this.calcPositions();
 		this.drawTexture(locs[0], locs[1], locs[2], locs[3]);
@@ -88,7 +90,9 @@ public class GuiSupercraftScreen extends GuiScreen {
 			if(index == 0) GL11.glBindTexture(GL11.GL_TEXTURE_2D, this.mc.renderEngine.getTexture("/mods/supercraft/textures/gui/bg2.png"));
 			else if(index == 1) GL11.glBindTexture(GL11.GL_TEXTURE_2D, this.mc.renderEngine.getTexture("/mods/supercraft/textures/gui/bg3.png"));
 			else if(index == 2) GL11.glBindTexture(GL11.GL_TEXTURE_2D, this.mc.renderEngine.getTexture("/mods/supercraft/textures/gui/bg4.png"));
-			else if(index == 3) GL11.glBindTexture(GL11.GL_TEXTURE_2D, this.mc.renderEngine.getTexture("/mods/supercraft/textures/gui/bg.png"));
+			else if(index == 3) GL11.glBindTexture(GL11.GL_TEXTURE_2D, this.mc.renderEngine.getTexture("/mods/supercraft/textures/gui/bg5.png"));
+			else if(index == 4) GL11.glBindTexture(GL11.GL_TEXTURE_2D, this.mc.renderEngine.getTexture("/mods/supercraft/textures/gui/bg6.png"));
+			else if(index == 5) GL11.glBindTexture(GL11.GL_TEXTURE_2D, this.mc.renderEngine.getTexture("/mods/supercraft/textures/gui/bg.png"));
 			GL11.glEnable(GL11.GL_BLEND);
 			GL11.glBlendFunc(GL11.GL_SRC_ALPHA, GL11.GL_ONE_MINUS_SRC_ALPHA);
 			GL11.glColor4d(1.0D, 1.0D, 1.0D, (double)alpha);
