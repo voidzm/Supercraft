@@ -1,5 +1,9 @@
 package com.voidzm.supercraft.gui;
 
+import java.util.ArrayList;
+
+import cpw.mods.fml.client.FMLClientHandler;
+import cpw.mods.fml.common.ModContainer;
 import net.minecraft.client.gui.GuiControls;
 import net.minecraft.client.gui.GuiLanguage;
 import net.minecraft.client.gui.GuiSnooper;
@@ -68,7 +72,14 @@ public class GuiSupercraftOptions extends GuiSupercraftScreen {
 				break;
 			case 7:
 				this.mc.gameSettings.saveOptions();
-				this.mc.displayGuiScreen(new GuiSupercraftVideoSettings(this, this.settings));
+				ArrayList<ModContainer> ofList = new ArrayList<ModContainer>();
+				FMLClientHandler.instance().addSpecialModEntries(ofList);
+				if(!ofList.isEmpty()) {
+					this.mc.displayGuiScreen(new GuiVideoSettings(this, this.settings));
+				}
+				else {
+					this.mc.displayGuiScreen(new GuiSupercraftVideoSettings(this, this.settings));
+				}
 				break;
 			case 8:
 				this.mc.gameSettings.saveOptions();
