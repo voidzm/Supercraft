@@ -13,7 +13,7 @@ import cpw.mods.fml.relauncher.IFMLLoadingPlugin;
 import cpw.mods.fml.relauncher.IFMLLoadingPlugin.MCVersion;
 import cpw.mods.fml.relauncher.IFMLLoadingPlugin.TransformerExclusions;
 
-@TransformerExclusions(value={"com.voidzm.supercraft.asm"})
+@TransformerExclusions(value={"com.voidzm.supercraft.asm", "com.voidzm.supercraft.gui"})
 @MCVersion(value="1.5.2")
 public class SupercraftPlugin implements IFMLLoadingPlugin, IFMLCallHook {
 
