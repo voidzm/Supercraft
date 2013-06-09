@@ -21,7 +21,7 @@ public class InventoryVeneficianPodium extends InventoryBasic {
 	}
 	
 	public boolean isStackValidForSlot(int par1, ItemStack par2ItemStack) {
-		if(par2ItemStack.itemID == ItemHandler.venianRod.itemID) return true;
+		if(par2ItemStack.itemID == ItemHandler.veneficianRod.itemID) return true;
 		return false;
 	}
 

@@ -20,14 +20,14 @@ import org.lwjgl.opengl.GL11;
 
 import com.voidzm.supercraft.container.ContainerVeneficianPodium;
 import com.voidzm.supercraft.handler.PacketHandler.SCServerVeneficiaType;
-import com.voidzm.supercraft.util.VenianProperties;
+import com.voidzm.supercraft.util.VeneficianProperties;
 
 public class GuiVeneficianPodium extends GuiContainer implements ICrafting {
 
 	private ContainerVeneficianPodium container;
-	private GuiTextField powerField;
-	private GuiTextField rangeField;
-	private GuiTextField drainField;
+	private GuiTextField vitalityField;
+	private GuiTextField perceptionField;
+	private GuiTextField energyField;
 	private boolean isDisabled = true;
 	
 	public GuiVeneficianPodium(InventoryPlayer par1, World par2World, int par3, int par4, int par5) {
@@ -49,18 +49,18 @@ public class GuiVeneficianPodium extends GuiContainer implements ICrafting {
 		for(GuiButton button : (List<GuiButton>)this.buttonList) {
 			button.enabled = false;
 		}
-		this.powerField = new GuiTextField(this.fontRenderer, 91, 26, 36, 18);
-		this.rangeField = new GuiTextField(this.fontRenderer, 91, 45, 36, 18);
-		this.drainField = new GuiTextField(this.fontRenderer, 91, 64, 36, 18);
-		this.powerField.setFocused(false);
-		this.powerField.setTextColor(14737632);
-		this.powerField.setEnabled(false);
-		this.rangeField.setFocused(false);
-		this.rangeField.setTextColor(14737632);
-		this.rangeField.setEnabled(false);
-		this.drainField.setFocused(false);
-		this.drainField.setTextColor(14737632);
-		this.drainField.setEnabled(false);
+		this.vitalityField = new GuiTextField(this.fontRenderer, 91, 26, 36, 18);
+		this.perceptionField = new GuiTextField(this.fontRenderer, 91, 45, 36, 18);
+		this.energyField = new GuiTextField(this.fontRenderer, 91, 64, 36, 18);
+		this.vitalityField.setFocused(false);
+		this.vitalityField.setDisabledTextColour(14737632);
+		this.vitalityField.setEnabled(false);
+		this.perceptionField.setFocused(false);
+		this.perceptionField.setDisabledTextColour(14737632);
+		this.perceptionField.setEnabled(false);
+		this.energyField.setFocused(false);
+		this.energyField.setDisabledTextColour(14737632);
+		this.energyField.setEnabled(false);
 		this.inventorySlots.removeCraftingFromCrafters(this);
 		this.inventorySlots.addCraftingToCrafters(this);
 	}
@@ -85,37 +85,43 @@ public class GuiVeneficianPodium extends GuiContainer implements ICrafting {
 	public void buttonEvent(int id) {
 		ItemStack stack = this.container.getItemStack();
 		if(stack == null) return;
-		VenianProperties prop = VenianProperties.readFromItemStack(stack);
+		VeneficianProperties prop = VeneficianProperties.readFromItemStack(stack);
 		switch(id) {
 		case 0:
-			if(prop.power > 1) {
-				this.container.setPower(prop.power-1);
-				this.mc.thePlayer.sendQueue.addToSendQueue(this.createPacket(0, prop.power-1));
+			if(prop.vitality > 1) {
+				this.container.setPower(prop.vitality-1);
+				this.mc.thePlayer.sendQueue.addToSendQueue(this.createPacket(0, prop.vitality-1));
 			}
 			break;
 		case 1:
-			this.container.setPower(prop.power+1);
-			this.mc.thePlayer.sendQueue.addToSendQueue(this.createPacket(0, prop.power+1));
+			if(prop.vitality < 128) {
+				this.container.setPower(prop.vitality+1);
+				this.mc.thePlayer.sendQueue.addToSendQueue(this.createPacket(0, prop.vitality+1));
+			}
 			break;
 		case 2:
-			if(prop.range > 1) {
-				this.container.setRange(prop.range-1);
-				this.mc.thePlayer.sendQueue.addToSendQueue(this.createPacket(1, prop.range-1));
+			if(prop.perception > 4) {
+				this.container.setRange(prop.perception-1);
+				this.mc.thePlayer.sendQueue.addToSendQueue(this.createPacket(1, prop.perception-1));
 			}
 			break;
 		case 3:
-			this.container.setRange(prop.range+1);
-			this.mc.thePlayer.sendQueue.addToSendQueue(this.createPacket(1, prop.range+1));
+			if(prop.perception < 64) {
+				this.container.setRange(prop.perception+1);
+				this.mc.thePlayer.sendQueue.addToSendQueue(this.createPacket(1, prop.perception+1));
+			}
 			break;
 		case 4:
-			if(prop.drain > 1) {
-				this.container.setDrain(prop.drain-1);
-				this.mc.thePlayer.sendQueue.addToSendQueue(this.createPacket(2, prop.drain-1));
+			if(prop.energy > 1) {
+				this.container.setDrain(prop.energy-1);
+				this.mc.thePlayer.sendQueue.addToSendQueue(this.createPacket(2, prop.energy-1));
 			}
 			break;
 		case 5:
-			this.container.setDrain(prop.drain+1);
-			this.mc.thePlayer.sendQueue.addToSendQueue(this.createPacket(2, prop.drain+1));
+			if(prop.energy < 256) {
+				this.container.setDrain(prop.energy+1);
+				this.mc.thePlayer.sendQueue.addToSendQueue(this.createPacket(2, prop.energy+1));
+			}
 			break;
 		default:
 			break;
@@ -143,12 +149,12 @@ public class GuiVeneficianPodium extends GuiContainer implements ICrafting {
 		GL11.glDisable(GL11.GL_LIGHTING);
 		this.fontRenderer.drawString("Venefician Podium", 8, 6, 4210752);
 		this.fontRenderer.drawString(StatCollector.translateToLocal("container.inventory"), 8, this.ySize - 96 + 2, 4210752);
-		this.powerField.setText(""+this.container.getPower());
-		this.powerField.drawTextBox();
-		this.rangeField.setText(""+this.container.getRange());
-		this.rangeField.drawTextBox();
-		this.drainField.setText(""+this.container.getDrain());
-		this.drainField.drawTextBox();
+		this.vitalityField.setText(""+this.container.getPower());
+		this.vitalityField.drawTextBox();
+		this.perceptionField.setText(""+this.container.getRange());
+		this.perceptionField.drawTextBox();
+		this.energyField.setText(""+this.container.getDrain());
+		this.energyField.drawTextBox();
 		if(this.container.getItemStack() != null && this.isDisabled) {
 			this.isDisabled = false;
 			for(GuiButton button : (List<GuiButton>)this.buttonList) {

@@ -10,7 +10,8 @@ import net.minecraftforge.client.MinecraftForgeClient;
 import com.voidzm.supercraft.CommonProxy;
 import com.voidzm.supercraft.handler.ItemHandler;
 import com.voidzm.supercraft.render.InventoryConduitRender;
-import com.voidzm.supercraft.render.InventoryVenianRodRender;
+import com.voidzm.supercraft.render.InventoryVeneficiaCellRender;
+import com.voidzm.supercraft.render.InventoryVeneficianRodRender;
 import com.voidzm.supercraft.render.TileConduitRender;
 import com.voidzm.supercraft.render.VeneficianPodiumRender;
 import com.voidzm.supercraft.tileentity.TileEntityConduit;
@@ -30,7 +31,8 @@ public class ClientProxy extends CommonProxy {
 		veneficianPodiumRenderID = RenderingRegistry.getNextAvailableRenderId();
 		RenderingRegistry.registerBlockHandler(new InventoryConduitRender());
 		RenderingRegistry.registerBlockHandler(new VeneficianPodiumRender());
-		MinecraftForgeClient.registerItemRenderer(ItemHandler.venianRod.itemID, new InventoryVenianRodRender());
+		MinecraftForgeClient.registerItemRenderer(ItemHandler.veneficianRod.itemID, new InventoryVeneficianRodRender());
+		MinecraftForgeClient.registerItemRenderer(ItemHandler.veneficiaCell.itemID, new InventoryVeneficiaCellRender());
 	}
 	
 	@Override

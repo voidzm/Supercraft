@@ -409,7 +409,7 @@ public class BlockHandler {
 	}
 	
 	private static void createVeneficia() {
-		veneficianPodium = new BlockVeneficianPodium(config.veneficiapodiumID).register();
+		veneficianPodium = new BlockVeneficianPodium(config.veneficianpodiumID).register();
 	}
 
 }

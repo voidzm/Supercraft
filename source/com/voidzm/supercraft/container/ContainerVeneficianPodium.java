@@ -12,8 +12,8 @@ import net.minecraft.world.World;
 import com.voidzm.supercraft.handler.BlockHandler;
 import com.voidzm.supercraft.handler.ItemHandler;
 import com.voidzm.supercraft.inventory.InventoryVeneficianPodium;
-import com.voidzm.supercraft.misc.SlotVenianRod;
-import com.voidzm.supercraft.util.VenianProperties;
+import com.voidzm.supercraft.misc.SlotVeneficianRod;
+import com.voidzm.supercraft.util.VeneficianProperties;
 
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
@@ -27,9 +27,9 @@ public class ContainerVeneficianPodium extends Container {
 	private int y;
 	private int z;
 	
-	private int powerVal = 0;
-	private int rangeVal = 0;
-	private int drainVal = 0;
+	private int vitality = 0;
+	private int perception = 0;
+	private int energy = 0;
 	
 	private int invSize = 1;
 	
@@ -38,7 +38,7 @@ public class ContainerVeneficianPodium extends Container {
 		this.x = par3;
 		this.y = par4;
 		this.z = par5;
-		this.addSlotToContainer(new SlotVenianRod(this.slot, 0, 30, 45));
+		this.addSlotToContainer(new SlotVeneficianRod(this.slot, 0, 30, 45));
 		this.bindPlayerInventory(par1InventoryPlayer);
 	}
 	
@@ -54,29 +54,29 @@ public class ContainerVeneficianPodium extends Container {
 	}
 	
 	public int getPower() {
-		return this.powerVal;
+		return this.vitality;
 	}
 	
 	public int getRange() {
-		return this.rangeVal;
+		return this.perception;
 	}
 	
 	public int getDrain() {
-		return this.drainVal;
+		return this.energy;
 	}
 	
 	public void setPower(int par1) {
-		this.powerVal = par1;
+		this.vitality = par1;
 		this.updateRodProperties();
 	}
 	
 	public void setRange(int par1) {
-		this.rangeVal = par1;
+		this.perception = par1;
 		this.updateRodProperties();
 	}
 	
 	public void setDrain(int par1) {
-		this.drainVal = par1;
+		this.energy = par1;
 		this.updateRodProperties();
 	}
 	
@@ -99,8 +99,8 @@ public class ContainerVeneficianPodium extends Container {
 	private void updateRodProperties() {
 		ItemStack stack = this.getItemStack();
 		if(stack == null) return;
-		VenianProperties oldProp = VenianProperties.readFromItemStack(stack);
-		VenianProperties newProp = new VenianProperties(oldProp.aspect, oldProp.material, this.powerVal, this.rangeVal, this.drainVal);
+		VeneficianProperties oldProp = VeneficianProperties.readFromItemStack(stack);
+		VeneficianProperties newProp = new VeneficianProperties(oldProp.aspect, oldProp.material, this.vitality, this.perception, this.energy, oldProp.stability);
 		newProp.applyProperties(stack);
 	}
 	
@@ -108,15 +108,15 @@ public class ContainerVeneficianPodium extends Container {
 	public void onCraftMatrixChanged(IInventory par1IInventory) {
 		super.onCraftMatrixChanged(par1IInventory);
 		if(par1IInventory.getStackInSlot(0) == null) {
-			this.powerVal = 0;
-			this.rangeVal = 0;
-			this.drainVal = 0;
+			this.vitality = 0;
+			this.perception = 0;
+			this.energy = 0;
 		}
 		else {
-			VenianProperties prop = VenianProperties.readFromItemStack(par1IInventory.getStackInSlot(0));
-			this.powerVal = prop.power;
-			this.rangeVal = prop.range;
-			this.drainVal = prop.drain;
+			VeneficianProperties prop = VeneficianProperties.readFromItemStack(par1IInventory.getStackInSlot(0));
+			this.vitality = prop.vitality;
+			this.perception = prop.perception;
+			this.energy = prop.energy;
 		}
 	}
 	
@@ -127,9 +127,9 @@ public class ContainerVeneficianPodium extends Container {
 	@Override
 	public void addCraftingToCrafters(ICrafting par1ICrafting) {
 		super.addCraftingToCrafters(par1ICrafting);
-		par1ICrafting.sendProgressBarUpdate(this, 0, this.powerVal);
-		par1ICrafting.sendProgressBarUpdate(this, 1, this.rangeVal);
-		par1ICrafting.sendProgressBarUpdate(this, 2, this.drainVal);
+		par1ICrafting.sendProgressBarUpdate(this, 0, this.vitality);
+		par1ICrafting.sendProgressBarUpdate(this, 1, this.perception);
+		par1ICrafting.sendProgressBarUpdate(this, 2, this.energy);
 	}
 	
 	@Override
@@ -137,13 +137,13 @@ public class ContainerVeneficianPodium extends Container {
 	public void updateProgressBar(int par1, int par2) {
 		switch(par1) {
 		case 0:
-			this.powerVal = par2;
+			this.vitality = par2;
 			break;
 		case 1:
-			this.rangeVal = par2;
+			this.perception = par2;
 			break;
 		case 2:
-			this.drainVal = par2;
+			this.energy = par2;
 			break;
 		default:
 			break;
@@ -179,7 +179,7 @@ public class ContainerVeneficianPodium extends Container {
 				}
 			}
 			else {
-				if(stackInSlot.itemID == ItemHandler.venianRod.itemID) {
+				if(stackInSlot.itemID == ItemHandler.veneficianRod.itemID) {
 					if(!this.mergeItemStack(stackInSlot, 0, 1, false)) {
 						return null;
 					}

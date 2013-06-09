@@ -132,7 +132,7 @@ public class SupercraftConfiguration {
 	
 	public int goldboundstoneID;
 	
-	public int veneficiapodiumID;
+	public int veneficianpodiumID;
 	
 	public int sandstonebricksID;
 	public int inscribedsandstoneID;
@@ -194,13 +194,15 @@ public class SupercraftConfiguration {
 	public int draconiumID;
 	
 	public int arcanerodID;
-	public int venianrodID;
+	public int veneficianrodID;
 	
 	public int pickaxelithiumID;
 	public int swordlithiumID;
 	public int shovellithiumID;
 	public int axelithiumID;
 	public int hoelithiumID;
+	
+	public int veneficiacellID;
 	
 	///*** RECIPES ***///
 	
@@ -367,7 +369,7 @@ public class SupercraftConfiguration {
 		
 		goldboundstoneID = internalCfg.get(Configuration.CATEGORY_BLOCK, "goldboundstoneID", "1692").getInt();
 		
-		veneficiapodiumID = internalCfg.get(Configuration.CATEGORY_BLOCK, "veneficiapodiumID", "1693").getInt();
+		veneficianpodiumID = internalCfg.get(Configuration.CATEGORY_BLOCK, "veneficianpodiumID", "1693").getInt();
 		
 		sandstonebricksID = internalCfg.get(Configuration.CATEGORY_BLOCK, "sandstonebricksID", "1694").getInt();
 		inscribedsandstoneID = internalCfg.get(Configuration.CATEGORY_BLOCK, "inscribedsandstoneID", "1695").getInt();
@@ -432,7 +434,7 @@ public class SupercraftConfiguration {
 		draconiumID = internalCfg.get(Configuration.CATEGORY_ITEM, "draconiumID", "23035").getInt();
 		
 		arcanerodID = internalCfg.get(Configuration.CATEGORY_ITEM, "arcanerodID", "23036").getInt();
-		venianrodID = internalCfg.get(Configuration.CATEGORY_ITEM, "venianrodID", "23037").getInt();
+		veneficianrodID = internalCfg.get(Configuration.CATEGORY_ITEM, "veneficianrodID", "23037").getInt();
 		
 		pickaxelithiumID = internalCfg.get(Configuration.CATEGORY_ITEM, "pickaxelithiumID", "23038").getInt();
 		swordlithiumID = internalCfg.get(Configuration.CATEGORY_ITEM, "swordlithiumID", "23039").getInt();
@@ -440,7 +442,9 @@ public class SupercraftConfiguration {
 		axelithiumID = internalCfg.get(Configuration.CATEGORY_ITEM, "axelithiumID", "23041").getInt();
 		hoelithiumID = internalCfg.get(Configuration.CATEGORY_ITEM, "hoelithiumID", "23042").getInt();
 		
-		// NEXT ID: 23043
+		veneficiacellID = internalCfg.get(Configuration.CATEGORY_ITEM, "veneficiacellID", "23043").getInt();
+		
+		// NEXT ID: 23044
 		
 	}
 	

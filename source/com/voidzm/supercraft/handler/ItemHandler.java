@@ -18,7 +18,8 @@ import com.voidzm.supercraft.item.ItemSupercraftHoe;
 import com.voidzm.supercraft.item.ItemSupercraftPickaxe;
 import com.voidzm.supercraft.item.ItemSupercraftShovel;
 import com.voidzm.supercraft.item.ItemSupercraftSword;
-import com.voidzm.supercraft.item.ItemVenianRod;
+import com.voidzm.supercraft.item.ItemVeneficiaCell;
+import com.voidzm.supercraft.item.ItemVeneficianRod;
 import com.voidzm.supercraft.util.StartupStats;
 import com.voidzm.supercraft.util.SupercraftConfiguration;
 import com.voidzm.supercraft.util.TransformationMatrix;
@@ -86,7 +87,8 @@ public class ItemHandler {
 	public static Item draconium;
 	public static Item bloodAmber;
 	public static Item arcaneRod;
-	public static Item venianRod;
+	public static Item veneficianRod;
+	public static Item veneficiaCell;
 
 	public static void init(SupercraftConfiguration configObject) {
 		if(config != null) {
@@ -185,7 +187,8 @@ public class ItemHandler {
 		TransformationMatrix tenebralMatrix = new TransformationMatrix(BlockHandler.inscribedNightrock.blockID, 0, BlockHandler.nightrockBricks.blockID, 0, BlockHandler.supercraftLog1.blockID, 2, BlockHandler.blockOfTenebral.blockID, 0, BlockHandler.burnedNightrockBricks.blockID, 0, Block.cobblestone.blockID, 0);
 		bloodAmber = new ItemSupercraft(config.bloodamberID, "supercraft:bloodamber").setInternalName("bloodamber").setExternalName("Blood Amber").makeTransforming(tenebralMatrix).register();
 		arcaneRod = new ItemArcaneRod(config.arcanerodID).register();
-		venianRod = new ItemVenianRod(config.venianrodID).register();
+		veneficianRod = new ItemVeneficianRod(config.veneficianrodID).register();
+		veneficiaCell = new ItemVeneficiaCell(config.veneficiacellID).register();
 	}
 	
 }

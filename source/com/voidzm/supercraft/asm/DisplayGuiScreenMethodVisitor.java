@@ -40,10 +40,10 @@ public class DisplayGuiScreenMethodVisitor extends MethodVisitor {
 		mv.visitTypeInsn(INSTANCEOF, "net/minecraft/client/gui/GuiDisconnected");
 		Label j2 = new Label();
 		mv.visitJumpInsn(IFEQ, j2);
-		mv.visitTypeInsn(NEW, "com/voidzm/novamenu/gui/GuiSupercraftDisconnected");
+		mv.visitTypeInsn(NEW, "com/voidzm/supercraft/gui/GuiSupercraftDisconnected");
 		mv.visitInsn(DUP);
 		mv.visitVarInsn(ALOAD, 1);
-		mv.visitMethodInsn(INVOKESPECIAL, "com/voidzm/novamenu/gui/GuiSupercraftDisconnected", "<init>", "(Lnet/minecraft/client/gui/GuiScreen;)V");
+		mv.visitMethodInsn(INVOKESPECIAL, "com/voidzm/supercraft/gui/GuiSupercraftDisconnected", "<init>", "(Lnet/minecraft/client/gui/GuiScreen;)V");
 		mv.visitVarInsn(ASTORE, 1);
 		mv.visitLabel(j2);
 		

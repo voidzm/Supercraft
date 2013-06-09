@@ -17,57 +17,52 @@ import net.minecraft.world.World;
 import com.voidzm.supercraft.Supercraft;
 import com.voidzm.supercraft.misc.DamageSourceVeneficia;
 import com.voidzm.supercraft.particle.EntityVenianFX;
-import com.voidzm.supercraft.util.VenianProperties;
-import com.voidzm.supercraft.util.VenianProperties.VenianAspect;
-import com.voidzm.supercraft.util.VenianProperties.VenianMaterial;
+import com.voidzm.supercraft.util.VeneficianProperties;
+import com.voidzm.supercraft.util.VeneficianProperties.VeneficiaType;
+import com.voidzm.supercraft.util.VeneficianProperties.VeneficiaMaterial;
 
 import cpw.mods.fml.client.FMLClientHandler;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
-public class ItemVenianRod extends ItemSupercraft {
+public class ItemVeneficianRod extends ItemSupercraft {
 	
-	private String[] powerNames = {"Impotent", "Weak", "Sturdy", "Strong", "Omnipotent"};
-	private String[] rangeNames = {"Blind", "Nearsighted", "Seeing", "Farsighted", "Allseeing"};
-	private String[] drainNames = {"Draining", "Demanding", "Balanced", "Efficient", "Self-Sustaining"};
-	private String[] aspectNames = {"Lightning", "Flaming", "Freezing"};
-
 	public static DamageSource veneficiaDamage = new DamageSourceVeneficia();
 	
 	private Random rand = new Random();
 	
-	public ItemVenianRod(int par1) {
+	public ItemVeneficianRod(int par1) {
 		super(par1, "supercraft:arcanerod_silver");
 		this.setMaxStackSize(1);
-		this.setInternalName("venianrod");
-		this.setExternalName("Venian Rod");
+		this.setInternalName("veneficianrod");
+		this.setExternalName("Venefician Rod");
 		this.setCreativeTab(Supercraft.veneficiaTab);
 		this.setMaxDamage(0);
 	}
 	
 	public String getItemDisplayName(ItemStack par1ItemStack) {
-		VenianProperties prop = VenianProperties.readFromItemStack(par1ItemStack);
-		int powerIndex = VenianProperties.getPowerIndexFromInt(prop.power);
-		int rangeIndex = VenianProperties.getRangeIndexFromInt(prop.range);
-		int drainIndex = VenianProperties.getDrainIndexFromInt(prop.drain);
+		VeneficianProperties prop = VeneficianProperties.readFromItemStack(par1ItemStack);
+		int vitality = VeneficianProperties.getVitalityIndex(prop.vitality);
+		int perception = VeneficianProperties.getPerceptionIndex(prop.perception);
+		int energy = VeneficianProperties.getEnergyIndex(prop.energy);
 		String descriptor;
-		if(drainIndex > rangeIndex && drainIndex > powerIndex) descriptor = drainNames[drainIndex];
-		else if(rangeIndex > powerIndex) descriptor = rangeNames[rangeIndex];
-		else descriptor = powerNames[powerIndex];
-		String aspect = aspectNames[prop.aspect.index];
+		if(energy > perception && energy > vitality) descriptor = VeneficianProperties.energyNames[energy];
+		else if(perception > vitality) descriptor = VeneficianProperties.perceptionNames[perception];
+		else descriptor = VeneficianProperties.vitalityNames[vitality];
+		String aspect = VeneficianProperties.aspectNames[prop.aspect.index];
 		return descriptor + " Rod of " + aspect;
 	}
 	
 	@SideOnly(Side.CLIENT)
 	public void getSubItems(int itemID, CreativeTabs tabs, List list) {
 		ItemStack lightningStack = new ItemStack(itemID, 1, 0);
-		VenianProperties lightning = new VenianProperties(VenianAspect.LIGHTNING, VenianMaterial.LITHIUM, 10, 30, 3);
+		VeneficianProperties lightning = new VeneficianProperties(VeneficiaType.LIGHTNING, VeneficiaMaterial.LITHIUM, 16, 16, 1, 10);
 		list.add(lightning.applyProperties(lightningStack));
 		ItemStack flamingStack = new ItemStack(itemID, 1, 0);
-		VenianProperties flaming = new VenianProperties(VenianAspect.FLAMING, VenianMaterial.LITHIUM, 10, 30, 3);
-		list.add(flaming.applyProperties(flamingStack));
+		VeneficianProperties blazing = new VeneficianProperties(VeneficiaType.BLAZING, VeneficiaMaterial.LITHIUM, 16, 16, 1, 10);
+		list.add(blazing.applyProperties(flamingStack));
 		ItemStack freezingStack = new ItemStack(itemID, 1, 0);
-		VenianProperties freezing = new VenianProperties(VenianAspect.FREEZING, VenianMaterial.LITHIUM, 10, 30, 3);
+		VeneficianProperties freezing = new VeneficianProperties(VeneficiaType.FREEZING, VeneficiaMaterial.LITHIUM, 16, 16, 1, 10);
 		list.add(freezing.applyProperties(freezingStack));
 	}
 	
@@ -146,8 +141,8 @@ public class ItemVenianRod extends ItemSupercraft {
 		if(!data.hasKey("Veneficia")) return;
 		NBTTagCompound veneficia = data.getCompoundTag("Veneficia");
 		int currentEnergy = veneficia.getInteger("Energy");
-		VenianProperties spellProperties = VenianProperties.readFromItemStack(stack);
-		int targetEnergy = currentEnergy - spellProperties.drain;
+		VeneficianProperties spellProperties = VeneficianProperties.readFromItemStack(stack);
+		int targetEnergy = currentEnergy - spellProperties.energy;
 		if(targetEnergy >= 0) veneficia.setInteger("Energy", targetEnergy);
 		else {
 			veneficia.setInteger("Energy", 0);
@@ -158,14 +153,14 @@ public class ItemVenianRod extends ItemSupercraft {
 			veneficia.setInteger("Cooldown", 5);
 		}
 		else veneficia.setInteger("Cooldown", 2);
-		VenianAspect aspect = spellProperties.aspect;
-		int range = spellProperties.range;
-		int power = spellProperties.power;
+		VeneficiaType aspect = spellProperties.aspect;
+		int range = spellProperties.perception;
+		int power = spellProperties.vitality;
 		int px = MathHelper.floor_double(player.posX);
 		int py = MathHelper.floor_double(player.posY);
 		int pz = MathHelper.floor_double(player.posZ);
 		World world = player.worldObj;
-		if(aspect == VenianAspect.LIGHTNING) {
+		if(aspect == VeneficiaType.LIGHTNING) {
 			world.playSoundAtEntity(player, "random.explode", 2.0F, 1.0F);
 			for(int i = 0; i < power; i++) {
 				int rx = rand.nextInt(range+1);
@@ -178,7 +173,7 @@ public class ItemVenianRod extends ItemSupercraft {
 				world.addWeatherEffect(new EntityLightningBolt(player.worldObj, tx, ty, tz));	
 			}
 		}
-		else if(aspect == VenianAspect.FLAMING) {
+		else if(aspect == VeneficiaType.BLAZING) {
 			world.playSoundAtEntity(player, "random.explode", 2.0F, 1.0F);
 			for(int ix = -range; ix < range; ix++) {
 				for(int iy = -range; iy < range; iy++) {
@@ -209,7 +204,7 @@ public class ItemVenianRod extends ItemSupercraft {
 				}
 			}
 		}
-		else if(aspect == VenianAspect.FREEZING) {
+		else if(aspect == VeneficiaType.FREEZING) {
 			world.playSoundAtEntity(player, "random.glass", 2.0F, 1.0F);
 			for(int ix = -range; ix < range; ix++) {
 				for(int iy = -range; iy < range; iy++) {
