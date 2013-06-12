@@ -6,6 +6,9 @@
 package com.voidzm.supercraft.asm;
 
 import java.io.IOException;
+import java.lang.reflect.Method;
+import java.util.LinkedList;
+import java.util.List;
 
 import org.objectweb.asm.ClassReader;
 import org.objectweb.asm.ClassWriter;
@@ -15,10 +18,31 @@ import cpw.mods.fml.relauncher.FMLRelauncher;
 
 public class SupercraftTransformer extends AccessTransformer {
 
+	private static SupercraftTransformer instance;
+	private static List<String> mapFiles = new LinkedList<String>();
+	
 	public SupercraftTransformer() throws IOException {
 		super();
+		instance = this;
+		mapFiles.add("supercraft_at.cfg");
+		for(String map : mapFiles) {
+			this.readMapFile(map);
+		}
+		mapFiles = null;
 	}
 
+	private void readMapFile(String map) {
+		System.out.println("Adding Access Transformer: "+map);
+		try {
+			Method parentMap = AccessTransformer.class.getDeclaredMethod("readMapFile", String.class);
+			parentMap.setAccessible(true);
+			parentMap.invoke(this, map);
+		}
+		catch(Exception e) {
+			throw new RuntimeException(e);
+		}
+	}
+	
 	@Override
 	public byte[] transform(String name, String transformedName, byte[] bytes) {
 		try {

@@ -20,10 +20,12 @@ public class VeneficianProperties {
 	public static String[] materialNames = {"Aluminum", "Copper", "Silver", "Golden", "Electrum", "Nisilic", "Cobalt", "Platinum", "Lithium"};
 	
 	public enum VeneficiaType {
-		DECAY(0), ATROPHY(1), ARACHNIA(2), DETONATION(3), LIGHTNING(4), BLAZING(5), RIFTING(6), RAGE(7), DESPAIR(8), BREACHING(9), WITHERING(10), DISPARITY(11), ERUPTION(12), INFECTION(13), IRRIGATION(14), FREEZING(15), EMPTY(16), VOID(17); 
+		DECAY(0, "Zombie"), ATROPHY(1, "Skeleton"), ARACHNIA(2, "Spider"), DETONATION(3, "Creeper"), LIGHTNING(4, "Creeper"), BLAZING(5, "Blaze"), RIFTING(6, "Enderman"), RAGE(7, "PigZombie"), DESPAIR(8, "Ghast"), BREACHING(9, "Silverfish"), WITHERING(10, "Skeleton"), DISPARITY(11, "Slime"), ERUPTION(12, "LavaSlime"), INFECTION(13, "CaveSpider"), IRRIGATION(14, "Squid"), FREEZING(15, "SnowMan"), EMPTY(16, ""), VOID(17, "");
 		public int index;
-		private VeneficiaType(int par1) {
+		public String entityName;
+		private VeneficiaType(int par1, String eName) {
 			index = par1;
+			entityName = eName;
 		}
 	}
 	
