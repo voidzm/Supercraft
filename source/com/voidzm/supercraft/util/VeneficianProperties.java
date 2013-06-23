@@ -19,6 +19,19 @@ public class VeneficianProperties {
 	public static String[] stabilityWords = {"Mutating", "Unstable", "Unpredictable", "Tempermental", "Predictable", "Stable", "Inert"};
 	public static String[] materialNames = {"Aluminum", "Copper", "Silver", "Golden", "Electrum", "Nisilic", "Cobalt", "Platinum", "Lithium"};
 	
+	private static int[][] energyChangeFactors = {{0, 5}, {-2, 5}, {-2, 3}, {-10, 2}, {-5, 5}, {0, 10}, {0, 5}, {-5, 0}, {-2, 2}}; // Downward is positive. Largest changes should be about 10.
+	private static int[][] perceptionChangeFactors = {{-2, 0}, {-2, 1}, {-1, 1}, {-1, 4}, {-2, 2}, {-4, 0}, {-2, 0}, {0, 2}, {-1, 1}}; // Upward is positive. Largest changes should be about 4.
+	private static int[][] vitalityChangeFactors = {{-1, 0}, {-1, 1}, {-1, 1}, {-1, 3}, {-2, 2}, {-3, 0}, {-2, 0}, {0, 2}, {-1, 1}}; // Upward is positive. Largest changes should be about 3.
+	
+	private static VeneficiaType[][] aspectMutations = {{VeneficiaType.DECAY, VeneficiaType.RAGE}, {VeneficiaType.BREACHING, VeneficiaType.WITHERING},
+		{VeneficiaType.BREACHING, VeneficiaType.INFECTION}, {VeneficiaType.DISPARITY, VeneficiaType.LIGHTNING}, {VeneficiaType.DETONATION, VeneficiaType.RIFTING},
+		{VeneficiaType.ERUPTION, VeneficiaType.DESPAIR}, {VeneficiaType.LIGHTNING, VeneficiaType.DESPAIR}, {VeneficiaType.DECAY, VeneficiaType.BLAZING},
+		{VeneficiaType.RIFTING, VeneficiaType.ERUPTION}, {VeneficiaType.BREACHING, VeneficiaType.ATROPHY}, {VeneficiaType.ATROPHY, VeneficiaType.DESPAIR},
+		{VeneficiaType.DECAY, VeneficiaType.ERUPTION}, {VeneficiaType.DISPARITY, VeneficiaType.BLAZING}, {VeneficiaType.ARACHNIA, VeneficiaType.IRRIGATION},
+		{VeneficiaType.INFECTION, VeneficiaType.FREEZING}, {VeneficiaType.IRRIGATION, VeneficiaType.DECAY}};
+	
+	private static boolean[] aspectMutationFactors = {false, false, false, true, true, false, false, true, true};
+	
 	public enum VeneficiaType {
 		DECAY(0, "Zombie"), ATROPHY(1, "Skeleton"), ARACHNIA(2, "Spider"), DETONATION(3, "Creeper"), LIGHTNING(4, "Creeper"), BLAZING(5, "Blaze"), RIFTING(6, "Enderman"), RAGE(7, "PigZombie"), DESPAIR(8, "Ghast"), BREACHING(9, "Silverfish"), WITHERING(10, "Skeleton"), DISPARITY(11, "Slime"), ERUPTION(12, "LavaSlime"), INFECTION(13, "CaveSpider"), IRRIGATION(14, "Squid"), FREEZING(15, "SnowMan"), EMPTY(16, ""), VOID(17, "");
 		public int index;
@@ -236,6 +249,77 @@ public class VeneficianProperties {
 	
 	public static VeneficianProperties newVoidProperties(VeneficiaMaterial par1Mat) {
 		return new VeneficianProperties(VeneficiaType.VOID, par1Mat, 0, 0, 0, 0);
+	}
+	
+	public boolean runStabilityUpdate() { // Try to mutate these properties. As Stability goes from 0 to 10, chance of mutation goes from 100% to 0%.
+		if(this.aspect == VeneficiaType.EMPTY || this.aspect == VeneficiaType.VOID) return false;
+		Random rand = new Random();
+		if(!(rand.nextInt(10) < this.stability)) { // Do an update based on Stability.
+			// Select a mutation. Energy and Perception each mutate 30% of the time, Vitality mutates 25% of the time, and Aspect only mutates 15% of the time.
+			int factor = rand.nextInt(100);
+			if(factor < 30) {
+				this.doEnergyMutation(rand);
+			}
+			else if(factor < 60) {
+				this.doPerceptionMutation(rand);
+			}
+			else if(factor < 85) {
+				this.doVitalityMutation(rand);
+			}
+			else {
+				this.doAspectMutation(rand);
+			}
+			// Since a mutation occured, the probability of mutation decreases by a random amount.
+			this.stability += (rand.nextInt(2) + 1);
+			this.checkLimits();
+			return true;
+		}
+		else return false;
+	}
+	
+	private void doEnergyMutation(Random rand) {
+		int[] aspectFactors = perceptionChangeFactors[this.material.index];
+		int lowestPossibleDelta = aspectFactors[0];
+		int highestPossibleDelta = aspectFactors[1];
+		int difference = highestPossibleDelta - lowestPossibleDelta;
+		int unadjusted = rand.nextInt(difference + 1);
+		int adjusted = unadjusted + lowestPossibleDelta;
+		this.perception += adjusted;
+		this.checkLimits();
+	}
+	
+	private void doPerceptionMutation(Random rand) {
+		int[] aspectFactors = energyChangeFactors[this.material.index];
+		int lowestPossibleDelta = aspectFactors[0];
+		int highestPossibleDelta = aspectFactors[1];
+		int difference = highestPossibleDelta - lowestPossibleDelta;
+		int unadjusted = rand.nextInt(difference + 1);
+		int adjusted = unadjusted + lowestPossibleDelta;
+		this.energy += adjusted;
+		this.checkLimits();
+	}
+	
+	private void doVitalityMutation(Random rand) {
+		int[] aspectFactors = vitalityChangeFactors[this.material.index];
+		int lowestPossibleDelta = aspectFactors[0];
+		int highestPossibleDelta = aspectFactors[1];
+		int difference = highestPossibleDelta - lowestPossibleDelta;
+		int unadjusted = rand.nextInt(difference + 1);
+		int adjusted = unadjusted + lowestPossibleDelta;
+		this.vitality += adjusted;
+		this.checkLimits();
+	}
+
+	private void doAspectMutation(Random rand) {
+		VeneficiaType[] possibleNewAspects = aspectMutations[this.aspect.index];
+		boolean doPositiveMutation = aspectMutationFactors[this.material.index];
+		if(doPositiveMutation) {
+			this.aspect = possibleNewAspects[1];
+		}
+		else {
+			this.aspect = possibleNewAspects[0];
+		}
+		this.checkLimits();
 	}
 	
 }

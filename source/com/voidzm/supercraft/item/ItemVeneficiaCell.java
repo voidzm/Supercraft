@@ -81,6 +81,14 @@ public class ItemVeneficiaCell extends ItemSupercraft {
 		list.add(prop.applyProperties(lithium));
 	}
 	
+	public ItemStack onItemRightClick(ItemStack par1ItemStack, World par2World, EntityPlayer par3EntityPlayer) {
+		VeneficianProperties prop = VeneficianProperties.readFromItemStack(par1ItemStack);
+		if(prop == null) return par1ItemStack;
+		prop.runStabilityUpdate();
+		prop.applyProperties(par1ItemStack);
+		return par1ItemStack;
+	}
+	
 	public boolean onItemUse(ItemStack par1ItemStack, EntityPlayer par2EntityPlayer, World par3World, int par4, int par5, int par6, int par7, float par8, float par9, float par10) {
 		int block = par3World.getBlockId(par4, par5, par6);
 		if(block == BlockHandler.deadSpawner.blockID) { // Attempt Veneficia injection.
@@ -142,7 +150,7 @@ public class ItemVeneficiaCell extends ItemSupercraft {
 				prop.perception = baseLogic.spawnRange;
 				int medianSpawnTime = (baseLogic.maxSpawnDelay + baseLogic.minSpawnDelay) / 2;
 				prop.energy = medianSpawnTime / 50;
-				prop.stability = 10;
+				prop.stability = 0;
 				if(par3World.isRemote) par2EntityPlayer.sendChatToPlayer("Veneficia successfully extracted.");
 				prop.applyProperties(par1ItemStack);
 				return true;

@@ -34,7 +34,6 @@ public class ReobfuscationMappingHelper {
 			throw new RuntimeException(e);
 		}
 		String versionIdentifier = lines.remove(0);
-		System.out.println("Comparing "+versionIdentifier+" to "+Supercraft.minecraftVersion+".");
 		if(!versionIdentifier.equals(Supercraft.minecraftVersion)) {
 			throw new RuntimeException("The mappings in remap.csv DO NOT match the current Minecraft version! This version of Supercraft is likely out of date.");
 		}

@@ -13,7 +13,9 @@ import cpw.mods.fml.relauncher.IFMLLoadingPlugin;
 import cpw.mods.fml.relauncher.IFMLLoadingPlugin.MCVersion;
 import cpw.mods.fml.relauncher.IFMLLoadingPlugin.TransformerExclusions;
 
-@TransformerExclusions(value={"com.voidzm.supercraft.asm", "com.voidzm.supercraft.gui"})
+import com.voidzm.novamenu.asm.NovamenuPlugin;
+
+@TransformerExclusions(value={"com.voidzm.supercraft.asm", "com.voidzm.supercraft.gui", "com.voidzm.novamenu.asm", "com.voidzm.novamenu.gui"})
 @MCVersion(value="1.5.2")
 public class SupercraftPlugin implements IFMLLoadingPlugin, IFMLCallHook {
 
@@ -27,7 +29,7 @@ public class SupercraftPlugin implements IFMLLoadingPlugin, IFMLCallHook {
 
 	@Override
 	public String[] getASMTransformerClass() {
-		return new String[]{"com.voidzm.supercraft.asm.SupercraftTransformer"};
+		return new String[]{"com.voidzm.supercraft.asm.SupercraftTransformer", "com.voidzm.novamenu.asm.NovamenuTransformer"};
 	}
 
 	@Override
@@ -44,6 +46,7 @@ public class SupercraftPlugin implements IFMLLoadingPlugin, IFMLCallHook {
 	public void injectData(Map<String, Object> data) {
 		if(data.containsKey("coremodLocation")) location = (File)data.get("coremodLocation");
 		if(data.containsKey("runtimeDeobfuscationEnabled")) isDevEnvironment = !(Boolean)data.get("runtimeDeobfuscationEnabled");
+		NovamenuPlugin.instance().injectData(data);
 	}
 
 	@Override
