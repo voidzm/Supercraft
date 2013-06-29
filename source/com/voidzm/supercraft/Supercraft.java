@@ -5,10 +5,14 @@
 
 package com.voidzm.supercraft;
 
+import java.io.File;
+
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.EnumToolMaterial;
 import net.minecraftforge.common.EnumHelper;
 
+import com.voidzm.novamenu.asm.NovamenuPlugin;
+import com.voidzm.novamenu.util.NovamenuConfiguration;
 import com.voidzm.supercraft.gen.WorldGenOre;
 import com.voidzm.supercraft.handler.BiomeHandler;
 import com.voidzm.supercraft.handler.BlockHandler;

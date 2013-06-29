@@ -1,6 +1,7 @@
 package com.voidzm.supercraft.item;
 
 import java.util.List;
+import java.util.Random;
 
 import net.minecraft.block.Block;
 import net.minecraft.creativetab.CreativeTabs;
@@ -21,6 +22,11 @@ import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
 public class ItemVeneficiaCell extends ItemSupercraft {
+	
+	public static int[] injectionChance = {50, 50, 65, 35, 50, 70, 65, 90, 95};
+	public static int[] extractionChance = {50, 60, 65, 35, 50, 70, 85, 80, 95};
+	
+	public static int[][] stabilityRanges = {{0, 4}, {2, 6}, {0, 2}, {8, 10}, {3, 7}, {5, 8}, {0, 2}, {8, 10}, {10, 10}};
 	
 	public ItemVeneficiaCell(int par1) {
 		super(par1, "supercraft:veneficiacell_lithium");
@@ -89,6 +95,11 @@ public class ItemVeneficiaCell extends ItemSupercraft {
 		return par1ItemStack;
 	}
 	
+	/**
+	 * This deals with all of the changes that happen when someone right-clicks a block with a Veneficia Cell.
+	 * Generally, these changes will fall into three categories: extracting Veneficia from a spawner, injecting Veneficia into a spawner,
+	 * and creating a Void Cell. Otherwise, nothing happens.
+	 */
 	public boolean onItemUse(ItemStack par1ItemStack, EntityPlayer par2EntityPlayer, World par3World, int par4, int par5, int par6, int par7, float par8, float par9, float par10) {
 		int block = par3World.getBlockId(par4, par5, par6);
 		if(block == BlockHandler.deadSpawner.blockID) { // Attempt Veneficia injection.
@@ -105,6 +116,13 @@ public class ItemVeneficiaCell extends ItemSupercraft {
 				if(par3World.isRemote) par2EntityPlayer.sendChatToPlayer("Vacuum dispersed.");
 				return true;
 			}
+			Random rand = new Random();
+			if(rand.nextInt(100) > injectionChance[prop.aspect.index]) { // The injection failed.
+				if(par3World.isRemote) par2EntityPlayer.sendChatToPlayer("Injection failed.");
+				VeneficianProperties newProp = VeneficianProperties.newEmptyProperties(prop.material);
+				newProp.applyProperties(par1ItemStack);
+			}
+			prop.runStabilityUpdate();
 			par3World.setBlock(par4, par5, par6, Block.mobSpawner.blockID);
 			MobSpawnerBaseLogic baseLogic = ((TileEntityMobSpawner)par3World.getBlockTileEntity(par4, par5, par6)).func_98049_a();
 			baseLogic.mobID = prop.aspect.entityName;
@@ -146,13 +164,36 @@ public class ItemVeneficiaCell extends ItemSupercraft {
 					if(par3World.isRemote) par2EntityPlayer.sendChatToPlayer("This type of Veneficia could not be extracted.");
 					return false;
 				}
+				Random rand = new Random();
+				if(rand.nextInt(100) > extractionChance[prop.aspect.index]) { // The extraction failed.
+					if(par3World.isRemote) par2EntityPlayer.sendChatToPlayer("Extraction failed.");
+					par3World.removeBlockTileEntity(par4, par5, par6);
+					par3World.setBlock(par4, par5, par6, BlockHandler.deadSpawner.blockID);
+					VeneficianProperties newProp = VeneficianProperties.newEmptyProperties(prop.material);
+					newProp.applyProperties(par1ItemStack);
+				}
 				prop.vitality = baseLogic.spawnCount;
 				prop.perception = baseLogic.spawnRange;
 				int medianSpawnTime = (baseLogic.maxSpawnDelay + baseLogic.minSpawnDelay) / 2;
 				prop.energy = medianSpawnTime / 50;
-				prop.stability = 0;
+				int[] stabilityRange = stabilityRanges[prop.material.index];
+				int lowest = stabilityRange[0];
+				int highest = stabilityRange[1];
+				int adjusted;
+				if(lowest == highest) {
+					adjusted = lowest;
+				}
+				else {
+					int diff = highest - lowest;
+					int unadjusted = rand.nextInt(diff + 1);
+					adjusted = unadjusted + lowest;
+				}
+				prop.stability = adjusted;
+				prop.runStabilityUpdate();
 				if(par3World.isRemote) par2EntityPlayer.sendChatToPlayer("Veneficia successfully extracted.");
 				prop.applyProperties(par1ItemStack);
+				par3World.removeBlockTileEntity(par4, par5, par6);
+				par3World.setBlock(par4, par5, par6, BlockHandler.deadSpawner.blockID);
 				return true;
 			}
 			else {
