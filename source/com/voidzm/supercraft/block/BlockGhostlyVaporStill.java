@@ -8,9 +8,6 @@ import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.potion.PotionEffect;
 import net.minecraft.util.Icon;
 import net.minecraft.world.World;
-import net.minecraftforge.liquids.LiquidContainerRegistry;
-import net.minecraftforge.liquids.LiquidDictionary;
-import net.minecraftforge.liquids.LiquidStack;
 
 import com.voidzm.supercraft.protocol.IRegisterable;
 import com.voidzm.supercraft.util.RegisterData;
@@ -31,7 +28,6 @@ public class BlockGhostlyVaporStill extends BlockStationary implements IRegister
 		this.setLightValue(0.375F);
 		this.setUnlocalizedName("ghostlyvaporstill");
 		this.disableStats();
-		LiquidDictionary.getOrCreateLiquid("Ghostly Vapor", new LiquidStack(this, LiquidContainerRegistry.BUCKET_VOLUME));
 		this.rdata.internalName = "ghostlyvaporstill";
 		this.rdata.externalName = "Ghostly Vapor";
 	}

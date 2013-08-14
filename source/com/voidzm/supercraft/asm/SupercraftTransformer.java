@@ -14,7 +14,6 @@ import org.objectweb.asm.ClassReader;
 import org.objectweb.asm.ClassWriter;
 
 import cpw.mods.fml.common.asm.transformers.AccessTransformer;
-import cpw.mods.fml.relauncher.FMLRelauncher;
 
 public class SupercraftTransformer extends AccessTransformer {
 

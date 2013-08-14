@@ -43,7 +43,7 @@ public class EssentialReducerRecipes {
 		inputMappings.add(new EssentialReducerInputMap(new ItemStack(Item.clay), EssentialAspect.TERRAEN, EssentialAspect.VERDEAL));
 		inputMappings.add(new EssentialReducerInputMap(new ItemStack(Item.reed), EssentialAspect.VIDALIS, EssentialAspect.VERDEAL));
 		inputMappings.add(new EssentialReducerInputMap(new ItemStack(Item.egg), EssentialAspect.VERDEAL, EssentialAspect.VIDALIS));
-		inputMappings.add(new EssentialReducerInputMap(new ItemStack(Item.lightStoneDust), EssentialAspect.LUXORUM, EssentialAspect.NETHEREAL));
+		inputMappings.add(new EssentialReducerInputMap(new ItemStack(Item.glowstone), EssentialAspect.LUXORUM, EssentialAspect.NETHEREAL));
 		inputMappings.add(new EssentialReducerInputMap(new ItemStack(Item.sugar), EssentialAspect.VERDEAL, EssentialAspect.VIDALIS));
 		inputMappings.add(new EssentialReducerInputMap(new ItemStack(Item.pumpkinSeeds), EssentialAspect.VIDALIS, EssentialAspect.VERDEAL));
 		inputMappings.add(new EssentialReducerInputMap(new ItemStack(Item.melonSeeds), EssentialAspect.VIDALIS, EssentialAspect.VERDEAL));

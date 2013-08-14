@@ -7,6 +7,7 @@ import net.minecraft.enchantment.Enchantment;
 import net.minecraft.enchantment.EnchantmentHelper;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLiving;
+import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.item.EnumToolMaterial;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.ItemSword;
@@ -37,14 +38,8 @@ public class ItemSupercraftSword extends ItemSword implements IRegisterable {
 		this.itemIcon = par1IconRegister.registerIcon(this.icon);
 	}
 	
-	public int getDamageVsEntity(Entity par1Entity) {
-		if(this.material.equals(Supercraft.aluminumTool)) return 2;
-		else if(this.material.equals(Supercraft.lithiumTool)) return 1024;
-		else return super.getDamageVsEntity(par1Entity);
-	}
-	
 	@Override
-	public boolean onBlockDestroyed(ItemStack par1ItemStack, World par2World, int par3, int par4, int par5, int par6, EntityLiving par7EntityLiving) {
+	public boolean onBlockDestroyed(ItemStack par1ItemStack, World par2World, int par3, int par4, int par5, int par6, EntityLivingBase par7EntityLiving) {
 		super.onBlockDestroyed(par1ItemStack, par2World, par3, par4, par5, par6, par7EntityLiving);
 		if(!this.material.equals(Supercraft.aluminumTool)) return true;
 		if((double)Block.blocksList[par3].getBlockHardness(par2World, par4, par5, par6) != 0.0D) {

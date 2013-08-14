@@ -7,10 +7,11 @@
 package com.voidzm.supercraft.render;
 
 import net.minecraft.block.Block;
-import net.minecraft.client.renderer.RenderEngine;
 import net.minecraft.client.renderer.Tessellator;
+import net.minecraft.client.renderer.texture.TextureManager;
 import net.minecraft.client.renderer.tileentity.TileEntitySpecialRenderer;
 import net.minecraft.tileentity.TileEntity;
+import net.minecraft.util.ResourceLocation;
 import net.minecraft.world.World;
 
 import org.lwjgl.opengl.GL11;
@@ -21,9 +22,9 @@ import com.voidzm.supercraft.protocol.IGenerator.GeneratorSide;
 import com.voidzm.supercraft.tileentity.TileEntityConduit;
 
 public class TileConduitRender extends TileEntitySpecialRenderer {
-
-	public static String normalPowerLineTexture = "supercraft:renderpowerok";
-	public static String dangerPowerLineTexture = "supercraft:renderpowerdanger";
+	
+	private static ResourceLocation POWERNORMAL = new ResourceLocation("supercraft:textures/blocks/renderpowerok.png");
+	private static ResourceLocation POWERDANGER = new ResourceLocation("supercraft:textures/blocks/renderpowerdanger.png");
 	
 	@Override
 	public void renderTileEntityAt(TileEntity var1, double var2, double var4, double var6, float var8) {
@@ -41,7 +42,7 @@ public class TileConduitRender extends TileEntitySpecialRenderer {
 			if(block == null) return;
 			int metadata = world.getBlockMetadata(tileX, tileY, tileZ);
 			
-			RenderEngine engine = this.tileEntityRenderer.renderEngine;
+			TextureManager engine = this.tileEntityRenderer.renderEngine;
 			
 			Tessellator t = Tessellator.instance;
 			if(!t.isDrawing) {
@@ -79,10 +80,10 @@ public class TileConduitRender extends TileEntitySpecialRenderer {
 			}
 			if(((TileEntityConduit)tile).powerLevel() != 0) {
 				if(((TileEntityConduit)tile).powerLevel() <= TileEntityConduit.limitForType(((TileEntityConduit)tile).conduitType())) {
-					GL11.glBindTexture(GL11.GL_TEXTURE_2D, engine.getTexture("/mods/supercraft/textures/blocks/renderpowerok.png"));
+					engine.func_110577_a(POWERNORMAL);
 				}
 				else {
-					GL11.glBindTexture(GL11.GL_TEXTURE_2D, engine.getTexture("/mods/supercraft/textures/blocks/renderpowerdanger.png"));
+					engine.func_110577_a(POWERDANGER);
 				}
 				this.renderCuboidInGlobalCoords(t, x+minX, y+0.4375, z+0.4375, (maxX-minX), 0.125, 0.125);
 				if(minZ != 0.4375F) {
@@ -106,7 +107,8 @@ public class TileConduitRender extends TileEntitySpecialRenderer {
 			t.setBrightness(block.getMixedBrightnessForBlock(world, tileX, tileY, tileZ));
 			t.setColorOpaque_F(1.0F, 1.0F, 1.0F);
 			
-			GL11.glBindTexture(GL11.GL_TEXTURE_2D, engine.getTexture("/mods/supercraft/textures/blocks/"+BlockConduit.texturePaths[metadata]));
+			ResourceLocation resource = new ResourceLocation("supercraft:textures/blocks/"+BlockConduit.texturePaths[metadata]);
+			engine.func_110577_a(resource);
 			
 			double xStart = 0.25;
 			double xMid = 0.5;

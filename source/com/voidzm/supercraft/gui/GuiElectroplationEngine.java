@@ -2,6 +2,7 @@ package com.voidzm.supercraft.gui;
 
 import net.minecraft.client.gui.inventory.GuiContainer;
 import net.minecraft.entity.player.InventoryPlayer;
+import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.StatCollector;
 
 import org.lwjgl.opengl.GL11;
@@ -13,6 +14,8 @@ public class GuiElectroplationEngine extends GuiContainer {
 
 	private TileEntityElectroplationEngine tile;
 	
+	private static final ResourceLocation ELECTROPLATIONENGINE_BACKGROUND = new ResourceLocation("supercraft:textures/gui/electroplationengine.png");
+	
 	public GuiElectroplationEngine(InventoryPlayer player, TileEntityElectroplationEngine te) {
 		super(new ContainerElectroplationEngine(player, te));
 		tile = te;
@@ -21,7 +24,7 @@ public class GuiElectroplationEngine extends GuiContainer {
 	@Override
 	protected void drawGuiContainerBackgroundLayer(float var1, int var2, int var3) {
 		GL11.glColor4f(1.0F, 1.0F, 1.0F, 1.0F);
-		this.mc.renderEngine.bindTexture("/mods/supercraft/textures/gui/electroplationengine.png");
+		this.mc.renderEngine.func_110577_a(ELECTROPLATIONENGINE_BACKGROUND);
 		int x = (width - xSize) / 2;
 		int y = (height - ySize) / 2;
 		this.drawTexturedModalRect(x, y, 0, 0, xSize, ySize);

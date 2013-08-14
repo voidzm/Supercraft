@@ -13,6 +13,7 @@ import net.minecraft.inventory.Container;
 import net.minecraft.inventory.ICrafting;
 import net.minecraft.item.ItemStack;
 import net.minecraft.network.packet.Packet250CustomPayload;
+import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.StatCollector;
 import net.minecraft.world.World;
 
@@ -29,6 +30,8 @@ public class GuiVeneficianPodium extends GuiContainer implements ICrafting {
 	private GuiTextField perceptionField;
 	private GuiTextField energyField;
 	private boolean isDisabled = true;
+	
+	private static final ResourceLocation VENEFICIANPODIUM_BACKGROUND = new ResourceLocation("supercraft:textures/gui/veneficianpodium.png");
 	
 	public GuiVeneficianPodium(InventoryPlayer par1, World par2World, int par3, int par4, int par5) {
 		super(new ContainerVeneficianPodium(par1, par2World, par3, par4, par5, Minecraft.getMinecraft().thePlayer));
@@ -173,7 +176,7 @@ public class GuiVeneficianPodium extends GuiContainer implements ICrafting {
 	@Override
 	protected void drawGuiContainerBackgroundLayer(float var1, int var2, int var3) {
 		GL11.glColor4f(1.0F, 1.0F, 1.0F, 1.0F);
-		this.mc.renderEngine.bindTexture("/mods/supercraft/textures/gui/veneficianpodium.png");
+		this.mc.renderEngine.func_110577_a(VENEFICIANPODIUM_BACKGROUND);
 		int x = (width - xSize) / 2;
 		int y = (height - ySize) / 2;
 		this.drawTexturedModalRect(x, y, 0, 0, xSize, ySize);

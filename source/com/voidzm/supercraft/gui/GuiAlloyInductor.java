@@ -2,6 +2,7 @@ package com.voidzm.supercraft.gui;
 
 import net.minecraft.client.gui.inventory.GuiContainer;
 import net.minecraft.entity.player.InventoryPlayer;
+import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.StatCollector;
 
 import org.lwjgl.opengl.GL11;
@@ -13,6 +14,8 @@ public class GuiAlloyInductor extends GuiContainer {
 
 	private TileEntityAlloyInductor tile;
 	
+	private static final ResourceLocation ALLOYINDUCTOR_BACKGROUND = new ResourceLocation("supercraft:textures/gui/alloyinductor.png");
+	
 	public GuiAlloyInductor(InventoryPlayer player, TileEntityAlloyInductor te) {
 		super(new ContainerAlloyInductor(player, te));
 		tile = te;
@@ -21,7 +24,7 @@ public class GuiAlloyInductor extends GuiContainer {
 	@Override
 	protected void drawGuiContainerBackgroundLayer(float var1, int var2, int var3) {
 		GL11.glColor4f(1.0F, 1.0F, 1.0F, 1.0F);
-		this.mc.renderEngine.bindTexture("/mods/supercraft/textures/gui/alloyinductor.png");
+		this.mc.renderEngine.func_110577_a(ALLOYINDUCTOR_BACKGROUND);
 		int x = (width - xSize) / 2;
 		int y = (height - ySize) / 2;
 		this.drawTexturedModalRect(x, y, 0, 0, xSize, ySize);

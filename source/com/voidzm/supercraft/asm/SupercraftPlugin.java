@@ -16,7 +16,7 @@ import cpw.mods.fml.relauncher.IFMLLoadingPlugin.TransformerExclusions;
 import com.voidzm.novamenu.asm.NovamenuPlugin;
 
 @TransformerExclusions(value={"com.voidzm.supercraft.asm", "com.voidzm.supercraft.gui", "com.voidzm.novamenu.asm", "com.voidzm.novamenu.gui"})
-@MCVersion(value="1.5.2")
+@MCVersion(value="1.6.2")
 public class SupercraftPlugin implements IFMLLoadingPlugin, IFMLCallHook {
 
 	public static File location;

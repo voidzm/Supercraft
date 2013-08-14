@@ -374,7 +374,7 @@ public class TileEntityAlloyInductor extends TileEntity implements IInventory {
 	}
 
 	@Override
-	public boolean isStackValidForSlot(int i, ItemStack itemstack) {
+	public boolean isItemValidForSlot(int i, ItemStack itemstack) {
 		switch(i) {
 		case 0:
 			return AlloyInductorRecipes.isValidAlloyInput(itemstack);

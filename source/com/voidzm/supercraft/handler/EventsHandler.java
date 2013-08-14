@@ -14,13 +14,13 @@ import com.voidzm.supercraft.block.BlockSupercraftMushroom;
 import com.voidzm.supercraft.block.BlockSupercraftSapling1;
 import com.voidzm.supercraft.block.BlockSupercraftSapling2;
 
-public class EventHandler {
+public class EventsHandler {
 
-	private static EventHandler instance;
+	private static EventsHandler instance;
 	
-	public static EventHandler instance() {
+	public static EventsHandler instance() {
 		if(instance == null) {
-			instance = new EventHandler();
+			instance = new EventsHandler();
 		}
 		return instance;
 	}

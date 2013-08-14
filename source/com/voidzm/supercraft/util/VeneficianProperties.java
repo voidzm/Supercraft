@@ -18,6 +18,7 @@ public class VeneficianProperties {
 	public static String[] aspectNames = {"Decay", "Atrophy", "Arachnia", "Detonation", "Lightning", "Blazing", "Rifting", "Rage", "Despair", "Breaching", "Withering", "Disparity", "Eruption", "Infection", "Irrigation", "Freezing", "Empty", "Void"};
 	public static String[] stabilityWords = {"Mutating", "Unstable", "Unpredictable", "Tempermental", "Predictable", "Stable", "Inert"};
 	public static String[] materialNames = {"Aluminum", "Copper", "Silver", "Golden", "Electrum", "Nisilic", "Cobalt", "Platinum", "Lithium"};
+	public static String[] materialResourceNames = {"aluminum", "copper", "silver", "gold", "electrum", "nisil", "cobalt", "platinum", "lithium"};
 	
 	private static int[][] energyChangeFactors = {{0, 5}, {-2, 5}, {-2, 3}, {-10, 2}, {-5, 5}, {0, 10}, {0, 5}, {-5, 0}, {-2, 2}}; // Downward is positive. Largest changes should be about 10.
 	private static int[][] perceptionChangeFactors = {{-2, 0}, {-2, 1}, {-1, 1}, {-1, 4}, {-2, 2}, {-4, 0}, {-2, 0}, {0, 2}, {-1, 1}}; // Upward is positive. Largest changes should be about 4.

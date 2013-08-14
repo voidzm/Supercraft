@@ -113,18 +113,18 @@ public class ItemVeneficiaCell extends ItemSupercraft {
 			if(prop.aspect == VeneficiaType.VOID) {
 				prop.aspect = VeneficiaType.EMPTY;
 				prop.applyProperties(par1ItemStack);
-				if(par3World.isRemote) par2EntityPlayer.sendChatToPlayer("Vacuum dispersed.");
+				if(par3World.isRemote) par2EntityPlayer.addChatMessage("Vacuum dispersed.");
 				return true;
 			}
 			Random rand = new Random();
 			if(rand.nextInt(100) > injectionChance[prop.aspect.index]) { // The injection failed.
-				if(par3World.isRemote) par2EntityPlayer.sendChatToPlayer("Injection failed.");
+				if(par3World.isRemote) par2EntityPlayer.addChatMessage("Injection failed.");
 				VeneficianProperties newProp = VeneficianProperties.newEmptyProperties(prop.material);
 				newProp.applyProperties(par1ItemStack);
 			}
 			prop.runStabilityUpdate();
 			par3World.setBlock(par4, par5, par6, Block.mobSpawner.blockID);
-			MobSpawnerBaseLogic baseLogic = ((TileEntityMobSpawner)par3World.getBlockTileEntity(par4, par5, par6)).func_98049_a();
+			MobSpawnerBaseLogic baseLogic = ((TileEntityMobSpawner)par3World.getBlockTileEntity(par4, par5, par6)).getSpawnerLogic();
 			baseLogic.mobID = prop.aspect.entityName;
 			baseLogic.spawnCount = prop.vitality;
 			baseLogic.maxNearbyEntities = (int)((double)prop.vitality * 1.5);
@@ -136,7 +136,7 @@ public class ItemVeneficiaCell extends ItemSupercraft {
 			if(minSpawnTime < 1) minSpawnTime = 1;
 			baseLogic.minSpawnDelay = minSpawnTime;
 			baseLogic.maxSpawnDelay = maxSpawnTime;
-			if(par3World.isRemote) par2EntityPlayer.sendChatToPlayer("Veneficia successfully injected.");
+			if(par3World.isRemote) par2EntityPlayer.addChatMessage("Veneficia successfully injected.");
 			VeneficianProperties newProp = VeneficianProperties.newEmptyProperties(prop.material);
 			newProp.applyProperties(par1ItemStack);
 			return true;
@@ -147,11 +147,11 @@ public class ItemVeneficiaCell extends ItemSupercraft {
 				return false;
 			}
 			if(prop.aspect == VeneficiaType.EMPTY) {
-				if(par3World.isRemote) par2EntityPlayer.sendChatToPlayer("Veneficia requires a vacuum in order to be extracted.");
+				if(par3World.isRemote) par2EntityPlayer.addChatMessage("Veneficia requires a vacuum in order to be extracted.");
 				return false;
 			}
 			if(prop.aspect == VeneficiaType.VOID) {
-				MobSpawnerBaseLogic baseLogic = ((TileEntityMobSpawner)par3World.getBlockTileEntity(par4, par5, par6)).func_98049_a();
+				MobSpawnerBaseLogic baseLogic = ((TileEntityMobSpawner)par3World.getBlockTileEntity(par4, par5, par6)).getSpawnerLogic();
 				boolean typeLocated = false;
 				for(VeneficiaType type : VeneficiaType.values()) {
 					if(type.entityName.equals(baseLogic.mobID)) {
@@ -161,12 +161,12 @@ public class ItemVeneficiaCell extends ItemSupercraft {
 					}
 				}
 				if(typeLocated == false) {
-					if(par3World.isRemote) par2EntityPlayer.sendChatToPlayer("This type of Veneficia could not be extracted.");
+					if(par3World.isRemote) par2EntityPlayer.addChatMessage("This type of Veneficia could not be extracted.");
 					return false;
 				}
 				Random rand = new Random();
 				if(rand.nextInt(100) > extractionChance[prop.aspect.index]) { // The extraction failed.
-					if(par3World.isRemote) par2EntityPlayer.sendChatToPlayer("Extraction failed.");
+					if(par3World.isRemote) par2EntityPlayer.addChatMessage("Extraction failed.");
 					par3World.removeBlockTileEntity(par4, par5, par6);
 					par3World.setBlock(par4, par5, par6, BlockHandler.deadSpawner.blockID);
 					VeneficianProperties newProp = VeneficianProperties.newEmptyProperties(prop.material);
@@ -190,14 +190,14 @@ public class ItemVeneficiaCell extends ItemSupercraft {
 				}
 				prop.stability = adjusted;
 				prop.runStabilityUpdate();
-				if(par3World.isRemote) par2EntityPlayer.sendChatToPlayer("Veneficia successfully extracted.");
+				if(par3World.isRemote) par2EntityPlayer.addChatMessage("Veneficia successfully extracted.");
 				prop.applyProperties(par1ItemStack);
 				par3World.removeBlockTileEntity(par4, par5, par6);
 				par3World.setBlock(par4, par5, par6, BlockHandler.deadSpawner.blockID);
 				return true;
 			}
 			else {
-				if(par3World.isRemote) par2EntityPlayer.sendChatToPlayer("This cell is already filled with Veneficia.");
+				if(par3World.isRemote) par2EntityPlayer.addChatMessage("This cell is already filled with Veneficia.");
 				return false;
 			}
 		}
@@ -210,15 +210,15 @@ public class ItemVeneficiaCell extends ItemSupercraft {
 				if(prop.aspect == VeneficiaType.EMPTY) {
 					prop.aspect = VeneficiaType.VOID;
 					prop.applyProperties(par1ItemStack);
-					if(par3World.isRemote) par2EntityPlayer.sendChatToPlayer("Matter destroyed.");
+					if(par3World.isRemote) par2EntityPlayer.addChatMessage("Matter destroyed.");
 					return true;
 				}
 				if(prop.aspect == VeneficiaType.VOID) {
-					if(par3World.isRemote) par2EntityPlayer.sendChatToPlayer("This cell is already devoid of matter.");
+					if(par3World.isRemote) par2EntityPlayer.addChatMessage("This cell is already devoid of matter.");
 					return true;
 				}
 				else {
-					if(par3World.isRemote) par2EntityPlayer.sendChatToPlayer("This cell is already filled with Veneficia.");
+					if(par3World.isRemote) par2EntityPlayer.addChatMessage("This cell is already filled with Veneficia.");
 					return false;
 				}
 			}

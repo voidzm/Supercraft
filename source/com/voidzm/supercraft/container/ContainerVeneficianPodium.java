@@ -151,8 +151,8 @@ public class ContainerVeneficianPodium extends Container {
 	}
 	
 	@Override
-	public void onCraftGuiClosed(EntityPlayer par1EntityPlayer){
-		super.onCraftGuiClosed(par1EntityPlayer);
+	public void onContainerClosed(EntityPlayer par1EntityPlayer){
+		super.onContainerClosed(par1EntityPlayer);
 		if(!this.world.isRemote){
 			ItemStack itemstack = this.slot.getStackInSlotOnClosing(0);
 			if(itemstack != null){
